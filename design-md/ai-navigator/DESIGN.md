@@ -261,6 +261,14 @@ components:
     padding: 7px 12px
 ---
 
+> **⚠ Superseded default (2026-09-28).** This file documents the legacy **dark-cosmic / lime** theme
+> (extracted 2026-04-22). The product is now **Vera AI** and its default theme is **`corp-dark`**:
+> navy `#010D16` / `#04141F`, ice-blue accent `#7FD4FF` / `#A5E2FF`, text `#DCEEF9` / `#B9D2E0` / `#9FC2D6`,
+> amber ambient `#E8B54D` (light counterpart: `corp-light`, `#E8F0F6` + `#1878AE`). **Do not use lime
+> `#D4FF00` for Vera work.** Take live tokens from ai-navigator `lib/themes.ts` (`DEFAULT_THEME`)
+> and `app/globals.css` `[data-theme="corp-dark"]`. The Vera mark is fixed across themes: cyan
+> `#7FD4FF` with the third bar red `#E8434A` (`components/vera-mark.tsx`).
+
 ## Overview
 
 AI Navigator reads like a live ops console that has been given a sci-fi skin. The home canvas (`{colors.bg-0}` `#05060A`) is deeper than near-black — it carries a faint blue-violet cast. A fixed ambient radial gradient on `body::before` breathes life into the otherwise flat dark: electric lime bleeds from the top-left corner at 6% opacity, and a soft violet mirrors it from the bottom-right. All page content sits above this layer at `z-index: 1`.
