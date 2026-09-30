@@ -261,12 +261,14 @@ components:
     padding: 7px 12px
 ---
 
-> **⚠ Superseded default (2026-09-28).** This file documents the legacy **dark-cosmic / lime** theme
-> (extracted 2026-04-22). The product is now **Vera AI** and its default theme is **`corp-dark`**:
-> navy `#010D16` / `#04141F`, ice-blue accent `#7FD4FF` / `#A5E2FF`, text `#DCEEF9` / `#B9D2E0` / `#9FC2D6`,
-> amber ambient `#E8B54D` (light counterpart: `corp-light`, `#E8F0F6` + `#1878AE`). **Do not use lime
+> **⚠ Superseded default (2026-09-28, corrected 2026-09-30).** This file documents the legacy **dark-cosmic / lime** theme
+> (extracted 2026-04-22). The product is now **Vera AI** and it uses the **corp pair** — the default
+> has flipped between the two (`corp-light` as of 2026-09-29), so read `DEFAULT_THEME`, never assume.
+> **`corp-dark`**: navy `#010D16` / `#04141F`, ice-blue accent `#7FD4FF` / `#A5E2FF`, text `#DCEEF9` / `#B9D2E0` / `#9FC2D6`,
+> amber ambient `#E8B54D`. **`corp-light`**: `#E8F0F6` / `#FFFFFF`, accent `#1878AE` / `#2B8CC4`, text
+> `#0B2A3C` / `#28465A` / `#3E5D71`. **Do not use lime
 > `#D4FF00` for Vera work.** Take live tokens from ai-navigator `lib/themes.ts` (`DEFAULT_THEME`)
-> and `app/globals.css` `[data-theme="corp-dark"]`. The Vera mark is fixed across themes: cyan
+> and the matching `[data-theme="corp-dark"]` / `[data-theme="corp-light"]` block in `app/globals.css`. The Vera mark is fixed across themes: cyan
 > `#7FD4FF` with the third bar red `#E8434A` (`components/vera-mark.tsx`).
 
 ## Overview
