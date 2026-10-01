@@ -123,6 +123,7 @@ You can [request a DESIGN.md](https://getdesign.md/request) for specific website
 
 ### Productivity & SaaS
 
+- [**Vera Corp**](https://getdesign.md/vera-corp/design-md) - Vera AI and AutoAlchemy Hub console system. Corporate navy, Corp Dark / Corp Light, rounded radius ladder, raised cards on sunken wells, glowing ice-blue accent
 - [**Cal.com**](https://getdesign.md/cal/design-md) - Open-source scheduling. Clean neutral UI, developer-oriented simplicity
 - [**Intercom**](https://getdesign.md/intercom/design-md) - Customer messaging. Friendly blue palette, conversational UI patterns
 - [**Linear**](https://getdesign.md/linear.app/design-md) - Project management for engineers. Ultra-minimal, precise, purple accent
@@ -139,7 +140,6 @@ You can [request a DESIGN.md](https://getdesign.md/request) for specific website
 - [**Framer**](https://getdesign.md/framer/design-md) - Website builder. Bold black and blue, motion-first, design-forward
 - [**Futura**](https://getdesign.md/futura/design-md) - Concept poster system. Swiss-brutalist "future data" language, light-gray canvas, single volt accent
 - [**Futura Dark**](https://getdesign.md/futura-dark/design-md) - Dark inversion of Futura. Near-black canvas, light-gray slabs, same volt accent
-- [**Futura Corp**](https://getdesign.md/futura-corp/design-md) - AutoAlchemy Hub production system. Futura instrument-panel structure in corporate navy; Corp Dark default with an ice-blue accent, Corp Light paired
 - [**Miro**](https://getdesign.md/miro/design-md) - Visual collaboration. Bright yellow accent, infinite canvas aesthetic
 - [**Webflow**](https://getdesign.md/webflow/design-md) - Visual web builder. Blue-accented, polished marketing site aesthetic
 
