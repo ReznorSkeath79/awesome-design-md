@@ -1,6 +1,6 @@
 # Vera Transmutation rubric (owner, 2026-10-02)
 
-For leadership-facing plan / design pages built in **Vera Corp** (Corp Dark default, Corp Light paired) with the AutoAlchemy "Transmutation" art direction. **Dark only** (owner, 2026-10-02): the 3D art is dark, so these pages ship in Corp Dark with no theme switch. First used on the OVCC AI interviewer design page (86/100). Art direction: `DESIGN.md` in this folder.
+For leadership-facing plan / design pages built in **Vera Hub** (Corp Dark default, Corp Light paired) with the AutoAlchemy "Transmutation" art direction. **Dark only** (owner, 2026-10-02): the 3D art is dark, so these pages ship in Corp Dark with no theme switch. First used on the OVCC AI interviewer design page (86/100). Art direction: `DESIGN.md` in this folder.
 
 **Pass:** total **≥ 85 / 100**, target **90**, no dimension below **7**. Every hard gate must PASS or the round fails regardless of score.
 
@@ -19,7 +19,7 @@ For leadership-facing plan / design pages built in **Vera Corp** (Corp Dark defa
 | # | Dimension | 5 looks like | 10 looks like |
 |---|---|---|---|
 | 1 | **Leadership first impression** | Polished but generic; hero reads like a template | The first screen makes an executive stop scrolling: cinematic hero art, confident headline, instantly clear what the plan is |
-| 2 | **Art direction and brand fit** | Nice parts that don't feel like one piece; drifts off Vera Corp | One coherent world: Vera Corp navy, the ice-to-lavender gradient used with intent, the Transmutation idea visible but never kitsch |
+| 2 | **Art direction and brand fit** | Nice parts that don't feel like one piece; drifts off Vera Hub | One coherent world: Vera Hub navy, the ice-to-lavender gradient used with intent, the Transmutation idea visible but never kitsch |
 | 3 | **Motion: purposeful and calm** | Motion is everywhere or decorative; eye keeps getting pulled | Motion explains (flow, data, process) and settles; nothing competes with reading; owner would not ask to remove anything |
 | 4 | **Readability and hierarchy** | Dense or repetitive; duplicate titles; long lines | Scannable in five seconds per section: clear titles, ledes, ≤ 72ch lines, mono only for data, no duplicated headings |
 | 5 | **Spacing and rhythm** | Uneven gaps, cramped sections, stray margins | One spacing scale, generous section breaks (~96 px), consistent inner gaps, nothing touching or floating |

@@ -1,7 +1,7 @@
 ---
 version: alpha
-name: Vera-corp-design-analysis
-description: "Vera Corp is the corporate navy design system shared by the Vera AI apps and, since the 2026-10-01 redesign, the AutoAlchemy Hub. Two palettes: Corp Dark (deep navy #010D16 canvas, #04141F cards, ice-blue #7FD4FF accent) and Corp Light (#E8F0F6 canvas, white cards, #1878AE accent). Premium console feel: the app floats in a 28px-radius shell frame on a fixed ambient dual radial glow; raised cards (radius 14, soft drop shadow, top-lit gradient) sit on sunken wells (inset shadow); one accent that glows; hairline borders only; a consistent radius ladder (controls 10, tiles 12, cards 14, heroes 18, shell 28, chips 999). Inter for prose, JetBrains Mono for every number, label, pill and eyebrow, Michroma for the brand. Optional signature layer (data-skin="ovcc", 2026-10-02): Michroma page titles with a cyan→lavender gradient word, hollow section numerals, spotlight glass, glowing KPI wells, fact ticker, ring-gauge header core, reveal-once motion — reference Vera AI Dashboards. Source of truth: autoalchmey_tracker app/src/theme-corp.css and docs/design/VERA-DESIGN-BRIEF.md (Vera AI Assist globals.css primary, Vera dashboard shading layer as the upgrade)."
+name: Vera-hub-design-analysis
+description: "Vera Hub (formerly Vera Corp; renamed 2026-10-02) is the corporate navy design system shared by the Vera AI apps and, since the 2026-10-01 redesign, the AutoAlchemy Hub. Two palettes: Corp Dark (deep navy #010D16 canvas, #04141F cards, ice-blue #7FD4FF accent) and Corp Light (#E8F0F6 canvas, white cards, #1878AE accent). Premium console feel: the app floats in a 28px-radius shell frame on a fixed ambient dual radial glow; raised cards (radius 14, soft drop shadow, top-lit gradient) sit on sunken wells (inset shadow); one accent that glows; hairline borders only; a consistent radius ladder (controls 10, tiles 12, cards 14, heroes 18, shell 28, chips 999). Inter for prose, JetBrains Mono for every number, label, pill and eyebrow, Michroma for the brand. Optional signature layer (data-skin="ovcc", 2026-10-02): Michroma page titles with a cyan→lavender gradient word, hollow section numerals, spotlight glass, glowing KPI wells, fact ticker, ring-gauge header core, reveal-once motion — reference Vera AI Dashboards. Source of truth: autoalchmey_tracker app/src/theme-corp.css and docs/design/VERA-DESIGN-BRIEF.md (Vera AI Assist globals.css primary, Vera dashboard shading layer as the upgrade)."
 
 colors:
   # Corp Dark
@@ -220,7 +220,7 @@ components:
 
 ## Overview
 
-**Vera Corp** is the corporate navy design system of the Vera AI apps (Vera AI Assist, the Vera dashboard) and, since the **2026-10-01 hub redesign**, of the **AutoAlchemy Hub** too. Refer to it as **Vera Corp**, with two palettes: **Corp Dark** (`data-theme="corp-dark"`) and **Corp Light** (`data-theme="corp-light"`). The hub ships Corp Light as its default and Corp Dark as the paired mode.
+**Vera Hub** is the corporate navy design system of the Vera AI apps (Vera AI Assist, the Vera dashboard) and, since the **2026-10-01 hub redesign**, of the **AutoAlchemy Hub** too. Refer to it as **Vera Hub** (registry `vera-hub`; called Vera Corp until 2026-10-02 — "Vera Corp", "corp dark" and "the hub design" all mean this entry), with two palettes: **Corp Dark** (`data-theme="corp-dark"`) and **Corp Light** (`data-theme="corp-light"`). The hub ships Corp Light as its default and Corp Dark as the paired mode.
 
 It reads as a premium console: the whole app floats inside a large rounded shell frame on a softly glowing navy canvas; content cards are raised with a soft drop shadow and a top-lit gradient; numbers sit "pressed into" sunken wells; one ice-blue (dark) or corporate-blue (light) accent carries every active and primary signal and glows where it is filled. Borders are hairlines only. Corners follow a fixed ladder, never ad hoc.
 
@@ -343,8 +343,8 @@ Prose capped near 68ch. `font-variant-numeric: tabular-nums` on all numeric span
 The motion and type voice of the OVCC AI-interviewer plan page (`../vera-transmutation`), adapted to a working
 app. First and reference implementation: **Vera AI Dashboards** (`~/Work/Concentrix/locETL_PowerBI/vera-ai-dashboard`,
 `src/global.css` block "OVCC LANGUAGE + MOTION", rubric `docs/design/REDESIGN-RUBRICS.md` Rubric C). Say
-**"Vera Corp with the OVCC look"** / **"Vera Corp with Transmutation"** to get it. Everything below sits on top of
-the Vera Corp base above — same canvas, cards, radius ladder, both themes.
+**"Vera Hub with the OVCC look"** / **"Vera Hub with Transmutation"** to get it. Everything below sits on top of
+the Vera Hub base above — same canvas, cards, radius ladder, both themes.
 
 **Activation:** `<html data-skin="ovcc">`; every rule is scoped `html[data-skin="ovcc"] …`, so the plain corp skin
 stays intact underneath.
@@ -431,7 +431,7 @@ or the Vera equaliser mark.
 - Verify Corp Light separately: no white-only rgba on light surfaces; use the light fills and inks.
 
 **Don't**
-- No square 0px cards and no hard offset shadows — that is Futura / AutoAlchemy, not Vera Corp.
+- No square 0px cards and no hard offset shadows — that is Futura / AutoAlchemy, not Vera Hub.
 - No green for OK; OK is the accent colour.
 - No zebra striping in tables.
 - No second accent hue; amber and red are status only.
@@ -450,6 +450,6 @@ or the Vera equaliser mark.
 
 - [`vera-transmutation`](../vera-transmutation/DESIGN.md): the leadership plan-page art direction this signature layer comes from (OVCC AI interviewer page). Single pages use it in full; apps use the signature layer above.
 
-- [`ai-navigator`](../ai-navigator/DESIGN.md): the legacy lime "dark cosmic" Vera spec. Its radius and type scales still hold; its colours are superseded by Vera Corp.
+- [`ai-navigator`](../ai-navigator/DESIGN.md): the legacy lime "dark cosmic" Vera spec. Its radius and type scales still hold; its colours are superseded by Vera Hub.
 - [`futura`](../futura/DESIGN.md) / [`futura-dark`](../futura-dark/DESIGN.md): the hub's original frozen kit (0px, no shadows). Still the class kit underneath the hub, but not its current look under the corp themes.
 - [`autoalchemy`](../autoalchemy/DESIGN.md): warm paper with hard offset shadows; the hub's other theme pair. Different language; do not mix.

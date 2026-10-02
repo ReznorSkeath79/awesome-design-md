@@ -1,13 +1,13 @@
 ---
 version: 1.0
 name: Vera-transmutation
-description: "Vera Transmutation is the leadership-page art direction built on the Vera Corp design system (Corp Dark only). It turns a plan, design proposal or brief into a cinematic single page that makes an executive stop scrolling: an animated SVG transmutation-circle hero, hollow outlined section numerals, feathered dark 3D renders with registered SVG motion overlays, charts built only from figures on the page, a slow fact ticker, an aurora background and a finale band that ends on the decisions. One signature motion per area, everything else calm. Ships as one self-contained HTML file (images inlined) gated by a measured rubric (pass ≥ 85/100). First built for the OVCC in-house AI interviewer design (2026-10-02, rubric 86)."
+description: "Vera Transmutation is the leadership-page art direction built on the Vera Hub design system (Corp Dark only). It turns a plan, design proposal or brief into a cinematic single page that makes an executive stop scrolling: an animated SVG transmutation-circle hero, hollow outlined section numerals, feathered dark 3D renders with registered SVG motion overlays, charts built only from figures on the page, a slow fact ticker, an aurora background and a finale band that ends on the decisions. One signature motion per area, everything else calm. Ships as one self-contained HTML file (images inlined) gated by a measured rubric (pass ≥ 85/100). First built for the OVCC in-house AI interviewer design (2026-10-02, rubric 86)."
 
-extends: vera-corp
+extends: vera-hub
 theme: corp-dark            # dark only — the renders are dark; no theme switch
 
 colors:
-  # Inherited from vera-corp Corp Dark (do not redefine; listed for quick reference)
+  # Inherited from vera-hub Corp Dark (do not redefine; listed for quick reference)
   canvas: "#010D16"
   card: "#04141F"
   card-hi: "#0A2233"
@@ -47,7 +47,7 @@ rubric: "./rubric.md"
 
 ## 1. What it is, and when to use it
 
-**Vera Corp** (`design-md/vera-corp`) is the design system — tokens, cards, type, the Hub's look.
+**Vera Hub** (`design-md/vera-hub`) is the design system — tokens, cards, type, the Hub's look.
 **Vera Transmutation** is an *art direction on top of it* for one kind of artefact: a **leadership-facing
 single page** — a plan, design proposal, decision brief, programme review — that has to impress before it
 informs, and then inform without friction.
@@ -59,7 +59,7 @@ engineered, never as fantasy: no runes, no gold, no smoke.
 
 Use it for: executive plan pages, design proposals sent for sign-off, programme/portfolio briefs, launch
 one-pagers that live as HTML. Do **not** use it for: working dashboards, app UI, dense audit reports, docs
-people come back to daily (use plain Vera Corp), or anything that must ship in Corp Light.
+people come back to daily (use plain Vera Hub), or anything that must ship in Corp Light.
 
 ## 2. Non-negotiables (owner calls, 2026-10-02)
 
@@ -80,14 +80,14 @@ people come back to daily (use plain Vera Corp), or anything that must ship in C
 | # | Block | Kit class / id | Notes |
 |---|---|---|---|
 | — | Atmosphere | `.bg-aurora` (img), `.blobs`, `.atmos` | Fixed aurora render drifting 40 s; three blurred gradient blobs at 9 % opacity; 48 px grid + film grain overlay. |
-| — | Shell | `.frame` | Vera Corp floating shell: max 1520 px, radius 28, shell shadow. Goes edge-to-edge ≤ 768 px. |
+| — | Shell | `.frame` | Vera Hub floating shell: max 1520 px, radius 28, shell shadow. Goes edge-to-edge ≤ 768 px. |
 | 0 | Top bar | `.topbar`, `.brand`, `.progress` | Monogram tile + Michroma name + mono sub; Export PDF as `.btn.primary`; 2 px gradient scroll-progress line along the bottom. |
 | — | Sidebar | `.sidebar`, `.nav`, `.readout` | Sticky 240 px rail: grouped section links with mono counters, glowing active bar, a live readout (current section · % read). Collapses to 68 px icons ≤ 1024, hidden ≤ 768. |
 | 1 | Hero | `.hero`, `.hero-copy`, `.hero-stage`, `.transmuter` | Left: mono eyebrow, Michroma h1 with one `.grad` phrase, lede, `.pills` (one `.hot`). Right: the transmutation circle — two counter-rotating rings, 60-tick ring (every 5th long), orbiting nodes with labels, a core. |
 | 2 | KPI rail | `.rail`, `.kpi` | Four raised tiles: mono label, 32 px count-up value with accent glow, one-line sub, 2 px glowing base bar. First tile `.kpi-lead`. |
 | 3 | Fact ticker | `.marquee`, `.marquee-track` | Mono uppercase facts, 72 s loop, edge-faded, pauses on hover. The only text that moves. |
 | 4… | Sections | `section#sN` › `header.shead` (`.snum` + `.shead-txt`) | 96 px apart with a gradient hairline divider. Header = hollow numeral + mono eyebrow + h2 (one `.sec-grad` word allowed) + one-paragraph lede. |
-| — | Section bodies | `.card`, `.grid2`, `.alert(.warn)`, `.table-wrap`, `.steps`, `.diagram`/`.lane`/`.conn`, `.timeline` | Vera Corp components; glass (`--glass`) for chips, lanes and decision cards. |
+| — | Section bodies | `.card`, `.grid2`, `.alert(.warn)`, `.table-wrap`, `.steps`, `.diagram`/`.lane`/`.conn`, `.timeline` | Vera Hub components; glass (`--glass`) for chips, lanes and decision cards. |
 | — | Figures | `.fig` › `.fig-frame` + overlay SVG + `.figcap` | Feathered render + registered overlay + mono caption. See §5. |
 | — | Charts | `.chart` (`.ctitle`, `.csub`), `.charts2`, `.gauges`, `.tier`, … | See §6. |
 | n | Finale | `.finale`, `.decisions`, `.decision`, `.needs` | Border-hot panel with outer glow; the finale render on the left third; decisions as numbered glass cards with hollow `.dnum`; one "⚠ NEEDS YOU" chip. |
@@ -188,9 +188,9 @@ source `~/Work/Concentrix/ovcc/docs/reviews/src/2026-10-02-ovcc-ai-interviewer-d
 `…/docs/reviews/2026-10-02-ovcc-ai-interviewer-design.html`, rounds `…/docs/reviews/rounds/`. Client content —
 read it for patterns, never copy its text.
 
-## 11. App mode — use the Vera Corp signature layer
+## 11. App mode — use the Vera Hub signature layer
 
-For a working app, do not apply this page spec. Use **`vera-corp` + its "Signature layer" section**
+For a working app, do not apply this page spec. Use **`vera-hub` + its "Signature layer" section**
 (`data-skin="ovcc"`), which is the tested adaptation of this language to an app — reference implementation Vera AI
 Dashboards (2026-10-02). Differences from this page spec, by design: both themes (Corp Light has its own designed
 gradient `#0A6FA8 → #1C9BD0 → #5B57D6`), section numerals 56px, the hero circle becomes a ring-gauge header core,
