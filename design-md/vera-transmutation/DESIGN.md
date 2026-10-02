@@ -187,3 +187,33 @@ Worked example (rubric 86, 2026-10-02): OVCC in-house AI interviewer design —
 source `~/Work/Concentrix/ovcc/docs/reviews/src/2026-10-02-ovcc-ai-interviewer-design.src.html`, built
 `…/docs/reviews/2026-10-02-ovcc-ai-interviewer-design.html`, rounds `…/docs/reviews/rounds/`. Client content —
 read it for patterns, never copy its text.
+
+## 11. App mode — Transmutation typography and motion inside a working app
+
+Trigger: **"Vera Corp with Transmutation"** / **"Transmutation app mode"**. The base stays `vera-corp` (layout,
+components, density, both themes); this layer adds the type voice and the motion. Apps are used daily, so the
+rule is *delight on arrival, silence while working*.
+
+**Carry over**
+
+| Element | In an app |
+|---|---|
+| Michroma display | Page titles (h1) and empty-state / onboarding headlines only; one `.grad` phrase allowed on landing, login and empty states. Inter stays for every heading inside panels. |
+| Hollow numerals | Step numbers in wizards, onboarding, section headers on long settings or report pages. Never in tables. |
+| JetBrains Mono | Every number, label, pill, eyebrow, table header (already Vera Corp). |
+| Count-up | KPI tiles count up **once per page load**, never on a data refresh or filter change (values just swap). |
+| Draw-in charts | Bars, arcs, gauges draw once to their value on first view; later updates transition ≤ 300 ms. |
+| Reveal | Cards fade + 8 px rise on first paint of a page (stagger 40 ms, max 6 items), never on tab switches or re-renders. |
+| Hover / press | Card lift 2 px, nav shift 4 px, 150–200 ms, `cubic-bezier(.22,1,.36,1)`. |
+| Gradient progress line | 2 px top-bar line for page loads and long jobs. |
+| Transmutation circle | Login / landing hero, the full-page loader for long operations, and big empty states. Not in the working shell. |
+| Feathered render | At most one, on a landing or empty state. |
+
+**Leave out:** the fact ticker, aurora/blob drift, 3D renders on working screens, looping figure overlays, any
+infinite animation inside the working shell (spinners excepted), and the hover crawl.
+
+**Themes:** both Corp Dark and Corp Light. In Light, `.grad` text and hollow numerals use the Light accent
+(`#1878AE`) solid instead of the ice→lavender gradient (the gradient washes out on white).
+
+**Gate for apps:** reduced motion → no animation, final values shown; nothing animates on a data refresh;
+no layout shift from reveals (reserve space); interaction feedback < 100 ms.
