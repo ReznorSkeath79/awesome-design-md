@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vera-corp-design-analysis
-description: "Vera Corp is the corporate navy design system shared by the Vera AI apps and, since the 2026-10-01 redesign, the AutoAlchemy Hub. Two palettes: Corp Dark (deep navy #010D16 canvas, #04141F cards, ice-blue #7FD4FF accent) and Corp Light (#E8F0F6 canvas, white cards, #1878AE accent). Premium console feel: the app floats in a 28px-radius shell frame on a fixed ambient dual radial glow; raised cards (radius 14, soft drop shadow, top-lit gradient) sit on sunken wells (inset shadow); one accent that glows; hairline borders only; a consistent radius ladder (controls 10, tiles 12, cards 14, heroes 18, shell 28, chips 999). Inter for prose, JetBrains Mono for every number, label, pill and eyebrow, Michroma for the brand. Source of truth: autoalchmey_tracker app/src/theme-corp.css and docs/design/VERA-DESIGN-BRIEF.md (Vera AI Assist globals.css primary, Vera dashboard shading layer as the upgrade)."
+description: "Vera Corp is the corporate navy design system shared by the Vera AI apps and, since the 2026-10-01 redesign, the AutoAlchemy Hub. Two palettes: Corp Dark (deep navy #010D16 canvas, #04141F cards, ice-blue #7FD4FF accent) and Corp Light (#E8F0F6 canvas, white cards, #1878AE accent). Premium console feel: the app floats in a 28px-radius shell frame on a fixed ambient dual radial glow; raised cards (radius 14, soft drop shadow, top-lit gradient) sit on sunken wells (inset shadow); one accent that glows; hairline borders only; a consistent radius ladder (controls 10, tiles 12, cards 14, heroes 18, shell 28, chips 999). Inter for prose, JetBrains Mono for every number, label, pill and eyebrow, Michroma for the brand. Optional signature layer (data-skin="ovcc", 2026-10-02): Michroma page titles with a cyan→lavender gradient word, hollow section numerals, spotlight glass, glowing KPI wells, fact ticker, ring-gauge header core, reveal-once motion — reference Vera AI Dashboards. Source of truth: autoalchmey_tracker app/src/theme-corp.css and docs/design/VERA-DESIGN-BRIEF.md (Vera AI Assist globals.css primary, Vera dashboard shading layer as the upgrade)."
 
 colors:
   # Corp Dark
@@ -292,6 +292,7 @@ Corp Dark values (Corp Light equivalents are in the source):
 | Table head | JetBrains Mono 10.5 / 600, uppercase, 1px |
 | Data | JetBrains Mono 12, tabular |
 | Brand / agent names | Michroma |
+| Page title / section numerals (signature layer) | Michroma — see the signature layer section |
 
 Prose capped near 68ch. `font-variant-numeric: tabular-nums` on all numeric spans.
 
@@ -327,7 +328,7 @@ Prose capped near 68ch. `font-variant-numeric: tabular-nums` on all numeric span
 - **Progress:** 6px pill track on `--card-hi`, accent gradient fill with glow.
 - **Status:** SVG icon plus word, coloured ok / warn / crit ink.
 - **Focus:** `outline: 2px solid` accent, offset 2, radius 4.
-- **Loading:** the Vera mark animating as an equaliser; no spinners or skeletons.
+- **Loading:** the Vera mark animating as an equaliser, or content-shaped skeletons for query loads; no spinners, no shimmer.
 
 ## Motion
 
@@ -335,6 +336,90 @@ Prose capped near 68ch. `font-variant-numeric: tabular-nums` on all numeric span
 - Rail item hover `translateX(4px)`; tiles lift 2px on hover.
 - Optional hero flourishes: conic "crawling" border on hover (3.6s), spotlight dims siblings to `.35` opacity.
 - `prefers-reduced-motion` collapses all animation and transition durations.
+- The full reveal / count-up / draw-in system is the signature layer below (`data-skin="ovcc"`).
+
+## Signature layer — the OVCC / Transmutation language in apps (`data-skin="ovcc"`, 2026-10-02)
+
+The motion and type voice of the OVCC AI-interviewer plan page (`../vera-transmutation`), adapted to a working
+app. First and reference implementation: **Vera AI Dashboards** (`~/Work/Concentrix/locETL_PowerBI/vera-ai-dashboard`,
+`src/global.css` block "OVCC LANGUAGE + MOTION", rubric `docs/design/REDESIGN-RUBRICS.md` Rubric C). Say
+**"Vera Corp with the OVCC look"** / **"Vera Corp with Transmutation"** to get it. Everything below sits on top of
+the Vera Corp base above — same canvas, cards, radius ladder, both themes.
+
+**Activation:** `<html data-skin="ovcc">`; every rule is scoped `html[data-skin="ovcc"] …`, so the plain corp skin
+stays intact underneath.
+
+### Tokens added
+
+| Token | Corp Dark | Corp Light (designed, not inverted) |
+|---|---|---|
+| `--grad-1` | `#7FD4FF` ice | `#0A6FA8` deep cyan (AA ink) |
+| `--grad-3` | `#6CDCFF` cyan | `#1C9BD0` |
+| `--grad-2` | `#AAA6FF` lavender | `#5B57D6` violet |
+| `--grad` | `linear-gradient(120deg, grad-1 0%, grad-3 45%, grad-2 100%)` | same formula |
+| `--num-stroke` | `rgba(127,212,255,.42)` | `rgba(10,111,168,.42)` |
+| `--ease` | `cubic-bezier(.22,1,.36,1)` | same |
+
+The gradient is the one place a second hue appears; use it with intent only: the display word, primary/decision
+buttons, the lead KPI value and its base bar, progress, the active marker. Status stays ok/warn/crit.
+
+### Fonts
+
+Self-host all three as woff2 (`src/assets/fonts/`, `@font-face` with `font-display:swap`) — embedded hosts
+(Fabric, Power BI, Teams) block Google Fonts. Inter and JetBrains Mono are the variable builds.
+
+| Role | Spec |
+|---|---|
+| Page title | **Michroma 400**, ~40–44px desktop, `-0.02em`, one word or phrase in `--grad` ("Portfolio **health**") |
+| Page eyebrow | JetBrains Mono 11/600, uppercase, 1.5px, accent ink — `PORTFOLIO · SEP 2026 · VS AUG` |
+| Page lede | Inter 15, `--text-1`: the one-line answer to the page's question |
+| Section numeral | **Michroma 56px** (40px ≤ 768), transparent fill, `-webkit-text-stroke:1px var(--num-stroke)`, aria-hidden |
+| Section eyebrow | JetBrains Mono 10/700, uppercase, 1.5px, accent ink |
+| Section title | Inter 600, `clamp(20px,2vw,26px)/1.15`, phrased as the question it answers; the key words in `--grad` ("Where are we **at target?**") |
+| KPI value | JetBrains Mono, large, tabular, `text-shadow:0 0 22px var(--acc-glow)`; RAG-coloured when it is a status |
+| Finale heading | Michroma `clamp(20px,2.4vw,30px)`, whole heading in `--grad` |
+| Ticker | JetBrains Mono 11/500, uppercase, 1.5px, `--text-2`, `·` separators in `--border-hot` |
+| Everything else | unchanged from the Typography table above (Inter UI, Mono for every number/label) |
+
+### Components
+
+- **Section head** (`SectionHead`): grid `numeral | eyebrow + title | controls` (gap 18), sitting **above** its card;
+  the card keeps only content. Sections are separated by a 1px gradient hairline (`grad-1 → grad-3`, faded ends, 55 %).
+- **Page header core**: two dashed concentric rings + an orbiting accent dot around **nested ring gauges** (outer =
+  headline share, inner = secondary), 168px, top-right of the page header; hidden ≤ 1099px. The app's version of
+  the transmutation circle. Keep the two values from overlapping (inner value smaller, offset below the outer).
+- **KPI well**: tiles radius 14, `--sh-tile`, 2px base bar `linear-gradient(90deg, transparent, accent)` with glow;
+  the **lead** tile's value and bar use `--grad`.
+- **Spotlight glass**: cards/tiles carry `radial-gradient(320px circle at var(--mx) var(--my), var(--acc-soft), transparent 62%)`
+  over `--glass` / `--sh-tile`; `--mx/--my` written by one delegated pointer listener (`useSpotlight`).
+- **Fact ticker** (`FactTicker`): a masked-edge strip under the KPI well repeating the page's own headline figures;
+  aria-hidden (the numbers already exist on the page).
+- **"3 things to know"** card: mono uppercase head, three lines each with a status icon — the narrative answer.
+- **Ring gauge** (`RingGauge`): track `--line-2`, round-cap progress, mono value centred, mono label + sub below.
+- **Sparkline** (`Sparkline`): 64×22, 4 months, dashed target line, RAG stroke; on risk rows (hidden on phone).
+- **Quadrant** (level vs change): photo dots that settle in, median line labelled, four corner labels.
+- **Dumbbell** (new vs tenured): warn dot = new, accent dot = tenured, dashed target.
+- **Finale / Actions band**: hot border, outer glow, a faint conic edge (static), Michroma gradient heading,
+  numbered glass decision cards with hollow numerals and a `--grad` action button.
+
+### Motion
+
+| Motion | Trigger | Spec |
+|---|---|---|
+| Reveal | first time 8 % visible (`useReveal`), then the observer detaches | fade + 14px rise, 500ms `--ease`; children `.rv-i` stagger 60ms by `--i` (grids reveal as a wave) |
+| Section numeral wipe | with its section's reveal | `clip-path inset(0 100% 0 0) → 0`, 700ms, 100ms delay |
+| Count-up | KPI tile mount (`useCountUp`) | 0 → value, 400ms ease-out cubic via rAF (real number every frame); never on refresh or filter change |
+| Ring / gauge draw | reveal | `stroke-dashoffset` circ → value, 1.2s `--ease` |
+| Bars grow | reveal | `scaleY(0→1)` from the bottom, 600ms, stagger 25–30ms per bar |
+| Sparkline draw | reveal | dashoffset 140 → 0, 900ms |
+| Quadrant dots | reveal | fade + `scale(.5→1)`, 400ms, 180ms delay + 35ms stagger |
+| Dumbbell rows | reveal | fade + `translateX(-6px→0)`, 500ms, 40ms stagger |
+| Hover | pointer | card/tile lift 2px (200ms); spotlight follows the pointer (fine pointers only) |
+| **Continuous (only these two)** | while on screen and the tab is visible | header core rings + orbit 36s linear; fact ticker 72s linear, pauses on hover |
+
+`prefers-reduced-motion: reduce` → no animation at all, every value in its final state, no spotlight. No motion
+replays on data refresh, tab switch or re-render. Loading = content-shaped skeletons for query loads (no shimmer)
+or the Vera equaliser mark.
 
 ## Do's and Don'ts
 
@@ -350,7 +435,7 @@ Prose capped near 68ch. `font-variant-numeric: tabular-nums` on all numeric span
 - No green for OK; OK is the accent colour.
 - No zebra striping in tables.
 - No second accent hue; amber and red are status only.
-- No generic spinners or skeleton shimmer.
+- No generic spinners or skeleton shimmer (static content-shaped skeletons are fine).
 
 ## Responsive Behavior
 
@@ -362,6 +447,8 @@ Prose capped near 68ch. `font-variant-numeric: tabular-nums` on all numeric span
 | ≤ 600 | KPI rail to 1 column; phone chrome |
 
 ## Relationship to other entries
+
+- [`vera-transmutation`](../vera-transmutation/DESIGN.md): the leadership plan-page art direction this signature layer comes from (OVCC AI interviewer page). Single pages use it in full; apps use the signature layer above.
 
 - [`ai-navigator`](../ai-navigator/DESIGN.md): the legacy lime "dark cosmic" Vera spec. Its radius and type scales still hold; its colours are superseded by Vera Corp.
 - [`futura`](../futura/DESIGN.md) / [`futura-dark`](../futura-dark/DESIGN.md): the hub's original frozen kit (0px, no shadows). Still the class kit underneath the hub, but not its current look under the corp themes.
