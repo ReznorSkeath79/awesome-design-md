@@ -346,6 +346,12 @@ app. First and reference implementation: **Vera AI Dashboards** (`~/Work/Concent
 **"Vera Hub with the OVCC look"** / **"Vera Hub with Transmutation"** to get it. Everything below sits on top of
 the Vera Hub base above — same canvas, cards, radius ladder, both themes.
 
+> **Status: provisional — the reference app is still being redesigned.** Synced 2026-10-02 from
+> `vera-ai-dashboard` HEAD `7131275` **plus its uncommitted round-5 work** (`src/global.css` block "OVCC LANGUAGE +
+> MOTION", `src/components/{section-head,ring-gauge,sparkline,fact-ticker}.tsx`, `src/hooks/use-{reveal,count-up,spotlight}.ts`).
+> Re-sync when the redesign lands: diff that CSS block and those files against this section, and add new tokens,
+> components and motion; drop anything the app removed. The app wins where they disagree.
+
 **Activation:** `<html data-skin="ovcc">`; every rule is scoped `html[data-skin="ovcc"] …`, so the plain corp skin
 stays intact underneath.
 
