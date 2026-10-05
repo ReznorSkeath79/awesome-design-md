@@ -97,11 +97,20 @@ for (const theme of ['corp-dark']) {
 const overflow = {};
 for (const w of [1440, 1024, 768, 390]) {
   const { ctx, page } = await open(w, 'corp-dark');
-  overflow[w] = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth }));
+  // scrollWidth alone misses overflow that .frame{overflow:clip} hides (2026-10-06: Teams-card mocks cut off at 390 px),
+  // so also flag any element in <main> whose box runs past the viewport edge (scrolling tables/ticker excluded).
+  overflow[w] = await page.evaluate(() => {
+    const iw = window.innerWidth;
+    const clipped = [...document.querySelectorAll('main *')]
+      .filter((el) => !el.closest('.table-wrap, .marquee, svg, .fig-frame') && el.getClientRects().length)
+      .filter((el) => el.getBoundingClientRect().right > iw + 1)
+      .slice(0, 8).map((el) => el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).join('.') : '') + ' @' + Math.round(el.getBoundingClientRect().right));
+    return { scrollWidth: document.documentElement.scrollWidth, innerWidth: iw, clipped };
+  });
   if (w === 390 || w === 1024) result.shots.push(...await segments(page, `w${w}-corp-dark`));
   await ctx.close();
 }
-result.gates.G4_overflow = { pass: Object.values(overflow).every((o) => o.scrollWidth <= o.innerWidth), overflow };
+result.gates.G4_overflow = { pass: Object.values(overflow).every((o) => o.scrollWidth <= o.innerWidth && o.clipped.length === 0), overflow };
 
 // G5 reduced motion
 {
