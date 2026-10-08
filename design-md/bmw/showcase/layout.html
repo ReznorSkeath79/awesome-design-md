@@ -1,0 +1,100 @@
+<div class="own-bmw">
+  <header class="bw-nav">
+    <a class="bw-badge" href="#bw-top" aria-label="Northwind home">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 3v42M3 24h42" stroke="currentColor" stroke-width="2"/><path d="M24 24V3a21 21 0 0 1 0 42z" fill="currentColor" opacity=".28"/></svg>
+    </a>
+    <nav class="bw-menu" aria-label="Primary">
+      <a href="#bw-models">Models</a>
+      <a href="#bw-grid">Next generation</a>
+      <a href="#bw-inventory">Pre-owned</a>
+      <a href="#bw-cta">Dealers</a>
+      <a href="#bw-cta">Test drive</a>
+    </nav>
+    <div class="bw-nav-right">
+      <button class="bw-icobtn" type="button" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m20 20-4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+      <button class="bw-icobtn" type="button" aria-label="Wishlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 2.8C19 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <button class="bw-icobtn" type="button" aria-label="Profile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.4-3.4 4-5 7-5s5.6 1.6 7 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+    </div>
+  </header>
+
+  <main id="bw-top">
+    <section class="bw-hero" aria-labelledby="bw-h1">
+      <div class="bw-hero-copy">
+        <p class="bw-hero-label">Northwind Operations</p>
+        <h1 id="bw-h1" class="bw-hero-h">The network,<br>engineered to read.</h1>
+        <p class="bw-hero-sub">Every region on one governed model. Throughput, yield, and cost resolved to the same number — the way a factory floor deserves to be measured.</p>
+        <div class="bw-hero-cta">
+          <a class="bw-btn bw-btn-primary" href="#bw-grid">Explore the boards</a>
+          <a class="bw-btn bw-btn-secondary-dark" href="#bw-cta">Book a walkthrough</a>
+        </div>
+      </div>
+      <div class="bw-hero-visual" aria-hidden="true">
+        <div class="bw-lines">
+          <span style="height:44%"></span><span style="height:60%"></span><span style="height:52%"></span><span style="height:74%"></span><span style="height:66%"></span><span style="height:88%"></span><span style="height:80%"></span><span style="height:96%"></span>
+        </div>
+        <div class="bw-hero-chip"><b>98.1%</b><span>on-time, all regions</span></div>
+      </div>
+    </section>
+
+    <section class="bw-mstripe" aria-label="Northwind M performance"></section>
+
+    <section id="bw-models" class="bw-band" aria-labelledby="bw-models-h">
+      <div class="bw-band-head">
+        <h2 id="bw-models-h" class="bw-h2">Choose your board</h2>
+        <a class="bw-textlink" href="#">View all boards <span aria-hidden="true">›</span></a>
+      </div>
+      <div class="bw-model-grid" id="bwModelGrid"></div>
+    </section>
+
+    <section id="bw-grid" class="bw-spec" aria-labelledby="bw-spec-h">
+      <h2 id="bw-spec-h" class="bw-h2">The numbers behind the board</h2>
+      <div class="bw-spec-row">
+        <div class="bw-spec-cell"><b>412k</b><span class="bw-spec-label">Units / day</span></div>
+        <div class="bw-spec-cell"><b>94.6%</b><span class="bw-spec-label">Line yield</span></div>
+        <div class="bw-spec-cell"><b>12</b><span class="bw-spec-label">Regions live</span></div>
+        <div class="bw-spec-cell"><b>$2.41</b><span class="bw-spec-label">Cost / unit</span></div>
+        <div class="bw-spec-cell"><b>99.98%</b><span class="bw-spec-label">Model uptime</span></div>
+      </div>
+    </section>
+
+    <section id="bw-inventory" class="bw-inventory" aria-labelledby="bw-inv-h">
+      <div class="bw-band-head">
+        <h2 id="bw-inv-h" class="bw-h2">Region inventory</h2>
+        <div class="bw-filters" id="bwFilters" role="group" aria-label="Filter regions"></div>
+      </div>
+      <div class="bw-inv-list" id="bwInvList"></div>
+    </section>
+
+    <section class="bw-config" aria-labelledby="bw-config-h">
+      <div class="bw-config-copy">
+        <p class="bw-config-label">Configure your plan</p>
+        <h2 id="bw-config-h" class="bw-h2">Ops tier · up to 40 seats</h2>
+        <p class="bw-body">Add regions at $180 per month. The first thirty days are free, no card required.</p>
+        <p class="bw-config-price"><span id="bwAmount">$4,900</span><small>/ month</small></p>
+        <a class="bw-btn bw-btn-primary" href="#">Request this plan</a>
+      </div>
+      <div class="bw-config-tiles" id="bwConfigTiles" role="radiogroup" aria-label="Regions included"></div>
+    </section>
+
+    <section id="bw-cta" class="bw-cta" aria-labelledby="bw-cta-h">
+      <div class="bw-cta-copy">
+        <h2 id="bw-cta-h" class="bw-cta-h">Book your operations walkthrough</h2>
+        <p class="bw-cta-sub">Thirty minutes with the ops desk, on your own data.</p>
+      </div>
+      <a class="bw-btn bw-btn-secondary-dark" href="#">Find a dealer <span aria-hidden="true">›</span></a>
+    </section>
+  </main>
+
+  <footer class="bw-footer">
+    <div class="bw-foot-cols">
+      <div class="bw-foot-col"><h3>Models</h3><a href="#">Throughput board</a><a href="#">Yield board</a><a href="#">Cost board</a><a href="#">Compare</a></div>
+      <div class="bw-foot-col"><h3>Services</h3><a href="#">Ops desk</a><a href="#">Onboarding</a><a href="#">Support</a></div>
+      <div class="bw-foot-col"><h3>Dealers</h3><a href="#">Find a partner</a><a href="#">Become a partner</a><a href="#">Regional desks</a></div>
+      <div class="bw-foot-col"><h3>About</h3><a href="#">Company</a><a href="#">Careers</a><a href="#">Contact</a></div>
+    </div>
+    <div class="bw-legal">
+      <span>© 2026 Northwind Analytics — sample data, showcase only.</span>
+      <span class="bw-legal-links"><a href="#">Legal notice</a><a href="#">Privacy</a><a href="#">Cookies</a></span>
+    </div>
+  </footer>
+</div>

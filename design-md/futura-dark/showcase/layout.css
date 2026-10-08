@@ -1,0 +1,327 @@
+/* ══ FUTURA DARK — the night-mode inversion of the Futura poster language ════
+   Same own layout as design-md/futura/showcase/, re-skinned with the
+   futura-dark DESIGN.md tokens: near-black canvas #161716, pure-black panels,
+   light-gray slabs, one volt accent; no glow, no gradients, no shadows.
+   Root scope: .own-futura-dark. */
+
+.own-futura-dark {
+  --volt: #dcfc52;
+  --volt-dim: #b8d944;
+  --canvas: #161716;
+  --ink: #e6e8e9;
+  --ink-inverse: #161716;
+  --surface-light: #e6e8e9;
+  --black: #000000;
+  --hairline: #e6e8e9;
+  --hairline-soft: #6e736e;
+  --ramp-2: #c6cfc6;
+  --ramp-3: #b0b8b0;
+  --ramp-4: #9aa19a;
+  --ramp-5: #848a84;
+  --ramp-6: #6e736e;
+  --ramp-8: #424542;
+  --ramp-9: #2c2e2c;
+  --ramp-10: #161716;
+  --on-volt: #000000;
+  --grot: 'Futura Grotesk Display', 'Futura Grotesk Text', 'Inter Tight', Helvetica, Arial, sans-serif;
+  --mono: 'Futura Mono', 'Space Mono', ui-monospace, Menlo, monospace;
+
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--grot);
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  overflow-x: clip;
+  border-radius: 13px;
+}
+
+.own-futura-dark *,
+.own-futura-dark *::before,
+.own-futura-dark *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+.own-futura-dark a { color: inherit; text-decoration: none; }
+.own-futura-dark ul { list-style: none; }
+.own-futura-dark button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.own-futura-dark ::selection { background: var(--volt); color: var(--on-volt); }
+.own-futura-dark :focus-visible { outline: 2px solid var(--volt); outline-offset: 2px; }
+
+/* ── TYPE UTILITIES ─────────────────────────────────────────────── */
+.own-futura-dark .owf-data { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; line-height: 1.5; }
+.own-futura-dark .owf-eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.own-futura-dark .owf-micro { font-size: 9px; letter-spacing: .2px; line-height: 1.35; }
+.own-futura-dark .owf-caption { font-size: 11px; letter-spacing: .3px; line-height: 1.4; }
+.own-futura-dark .owf-phonetic { font-size: 18px; letter-spacing: 0; }
+.own-futura-dark .owf-rule { height: 1px; background: var(--hairline); border: 0; }
+
+/* ── NAV ─────────────────────────────────────────────────────────── */
+.own-futura-dark .owf-nav {
+  height: 48px; display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 0 32px; border-bottom: 1px solid var(--hairline-soft);
+  position: sticky; top: 68px; background: var(--canvas); z-index: 30;
+}
+.own-futura-dark .owf-nav-logo { font-family: var(--grot); font-weight: 700; font-size: 20px; letter-spacing: -.4px; white-space: nowrap; }
+.own-futura-dark .owf-nav-logo sup { font-family: var(--mono); font-size: 9px; font-weight: 400; letter-spacing: 1px; }
+.own-futura-dark .owf-nav-links { display: flex; gap: 32px; }
+.own-futura-dark .owf-nav-links a { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; text-transform: uppercase; padding: 2px 0; color: var(--ramp-3); }
+.own-futura-dark .owf-nav-links a:hover { background: var(--volt); color: var(--on-volt); padding: 2px 4px; margin: 0 -4px; }
+.own-futura-dark .owf-nav-right { font-family: var(--mono); font-size: 11px; letter-spacing: .5px; display: flex; gap: 24px; align-items: center; color: var(--ramp-4); white-space: nowrap; }
+
+/* ── HERO ────────────────────────────────────────────────────────── */
+.own-futura-dark .owf-hero {
+  position: relative; padding: 48px 32px 0; min-height: min(78vh, 900px);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; overflow: hidden;
+}
+.own-futura-dark .owf-hero-left { position: relative; z-index: 2; }
+.own-futura-dark .owf-hero-ids { display: flex; gap: 12px 32px; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; }
+.own-futura-dark .owf-bracket-id { font-weight: 700; font-size: 28px; letter-spacing: -.4px; }
+.own-futura-dark .owf-hero h1 {
+  font-weight: 700; text-transform: uppercase;
+  font-size: clamp(72px, 11cqi, 168px); line-height: .9; letter-spacing: -.02em;
+}
+.own-futura-dark .owf-hero h1 .owf-volt-band {
+  display: inline; background: var(--volt); color: var(--on-volt); padding: 0 24px 4px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.own-futura-dark .owf-hero h1 .owf-outline { color: transparent; -webkit-text-stroke: 2px var(--hairline); }
+.own-futura-dark .owf-phonetic-row { display: flex; align-items: center; gap: 16px; margin: 28px 0 12px; }
+.own-futura-dark .owf-phonetic-row .owf-circled {
+  width: 20px; height: 20px; border: 1.5px solid var(--hairline); border-radius: 9999px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex: none;
+}
+.own-futura-dark .owf-dict-def { max-width: 420px; }
+.own-futura-dark .owf-dict-def .owf-micro { display: block; hyphens: auto; color: var(--ramp-3); }
+.own-futura-dark .owf-hero-datastrip {
+  margin-top: 40px; padding-top: 8px; border-top: 1px solid var(--hairline-soft);
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.own-futura-dark .owf-hero-right { position: relative; }
+.own-futura-dark .owf-mega-glyph {
+  position: absolute; top: -90px; right: -70px; z-index: 1;
+  font-weight: 700; font-size: clamp(300px, 34cqi, 560px); line-height: .8;
+  color: transparent; -webkit-text-stroke: 2px var(--hairline); pointer-events: none; user-select: none;
+}
+.own-futura-dark .owf-hero-panel {
+  position: relative; z-index: 2; background: var(--black); color: var(--volt);
+  padding: 32px; margin-top: 190px; max-width: 420px; justify-self: end;
+  border: 1px solid var(--hairline-soft);
+}
+.own-futura-dark .owf-hero-panel .owf-eyebrow { color: var(--volt); }
+.own-futura-dark .owf-hero-panel p { color: var(--ramp-3); font-size: 16px; line-height: 1.45; margin: 16px 0 24px; }
+.own-futura-dark .owf-btn {
+  display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 13px;
+  letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 24px;
+  background: var(--black); color: var(--volt); border: 1px solid var(--volt);
+}
+.own-futura-dark .owf-btn:hover { background: var(--volt); color: var(--on-volt); }
+.own-futura-dark .owf-hero-panel .owf-btn { background: var(--volt); color: var(--on-volt); border-color: var(--volt); }
+.own-futura-dark .owf-hero-panel .owf-btn:hover { background: var(--black); color: var(--volt); }
+.own-futura-dark .owf-wireframe { position: absolute; z-index: 1; pointer-events: none; color: var(--hairline-soft); }
+.own-futura-dark .owf-arrow-volt { position: absolute; z-index: 3; }
+.own-futura-dark .owf-crop { position: absolute; width: 18px; height: 18px; z-index: 5; pointer-events: none; }
+.own-futura-dark .owf-crop::before,
+.own-futura-dark .owf-crop::after { content: ""; position: absolute; background: var(--hairline-soft); }
+.own-futura-dark .owf-crop::before { width: 100%; height: 1.5px; }
+.own-futura-dark .owf-crop::after { width: 1.5px; height: 100%; }
+.own-futura-dark .owf-tl { top: 60px; left: 12px; }
+.own-futura-dark .owf-tr { top: 60px; right: 12px; transform: scaleX(-1); }
+.own-futura-dark .owf-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.own-futura-dark .owf-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+/* ── TICKER ──────────────────────────────────────────────────────── */
+.own-futura-dark .owf-ticker {
+  background: var(--black); color: var(--volt); overflow: hidden; white-space: nowrap;
+  border-top: 1px solid var(--hairline-soft); border-bottom: 1px solid var(--hairline-soft);
+  padding: 10px 0;
+}
+.own-futura-dark .owf-ticker span {
+  display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: .5px;
+  padding-right: 64px; animation: owf-tick 28s linear infinite;
+}
+@keyframes owf-tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTION SHARED ───────────────────────────────────────────────── */
+.own-futura-dark section { padding: 96px 32px; position: relative; }
+.own-futura-dark .owf-section-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  margin-bottom: 48px; border-bottom: 1px solid var(--hairline-soft); padding-bottom: 16px;
+}
+.own-futura-dark .owf-section-head h2 { font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 5cqi, 64px); letter-spacing: -.03em; line-height: 1; }
+.own-futura-dark .owf-section-head .owf-eyebrow { color: var(--ramp-3); }
+
+/* ── SIGNALS (black panel, darker than canvas) ───────────────────── */
+.own-futura-dark .owf-trending { background: var(--black); color: var(--ramp-3); }
+.own-futura-dark .owf-trending .owf-section-head { border-color: var(--ramp-8); }
+.own-futura-dark .owf-trending .owf-section-head h2 { color: var(--volt); }
+.own-futura-dark .owf-trending .owf-section-head .owf-eyebrow { color: var(--volt); }
+.own-futura-dark .owf-trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ramp-8); }
+.own-futura-dark .owf-trend-card { background: var(--black); padding: 32px; position: relative; transition: background .15s; }
+.own-futura-dark .owf-trend-card:hover { background: var(--ramp-9); }
+.own-futura-dark .owf-trend-card:hover .owf-trend-title { background: var(--volt); color: var(--on-volt); }
+.own-futura-dark .owf-trend-rank { font-weight: 700; font-size: 64px; letter-spacing: -.03em; color: transparent; -webkit-text-stroke: 1.5px var(--volt); line-height: 1; }
+.own-futura-dark .owf-trend-card:hover .owf-trend-rank { color: var(--volt); -webkit-text-stroke: 0; }
+.own-futura-dark .owf-trend-title { font-weight: 700; font-size: 28px; letter-spacing: -.4px; color: var(--ink); margin: 16px 0 4px; display: inline-block; }
+.own-futura-dark .owf-trend-genre { color: var(--ramp-4); }
+.own-futura-dark .owf-trend-meta { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--ramp-8); display: flex; justify-content: space-between; gap: 8px; color: var(--ramp-4); flex-wrap: wrap; }
+.own-futura-dark .owf-trend-meta b { color: var(--volt); font-weight: 400; }
+.own-futura-dark .owf-barcode {
+  height: 34px; margin-top: 20px;
+  background: repeating-linear-gradient(90deg,
+    var(--volt) 0 2px, transparent 2px 5px,
+    var(--volt) 5px 9px, transparent 9px 11px,
+    var(--volt) 11px 12px, transparent 12px 17px,
+    var(--volt) 17px 21px, transparent 21px 23px,
+    var(--volt) 23px 24px, transparent 24px 29px,
+    var(--volt) 29px 33px, transparent 33px 36px);
+}
+
+/* ── LATEST (light slabs on dark canvas + dot field) ─────────────── */
+.own-futura-dark .owf-latest { background-image: radial-gradient(var(--hairline-soft) 1px, transparent 1px); background-size: 22px 22px; }
+.own-futura-dark .owf-latest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-futura-dark .owf-ep-card {
+  background: var(--surface-light); color: var(--ink-inverse);
+  border: 1px solid var(--hairline); padding: 24px; position: relative;
+  display: flex; flex-direction: column; gap: 12px; transition: transform .15s, box-shadow .15s;
+}
+.own-futura-dark .owf-ep-card:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0 var(--volt); }
+.own-futura-dark .owf-ep-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.own-futura-dark .owf-ep-cover { aspect-ratio: 3 / 4; border: 1px solid var(--ink-inverse); position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 12px; }
+.own-futura-dark .owf-ep-cover .owf-cover-glyph {
+  position: absolute; top: -14%; right: -22%; font-weight: 700; font-size: 190px; line-height: .8;
+  color: transparent; -webkit-text-stroke: 1.5px var(--ink-inverse); opacity: .9; user-select: none;
+}
+.own-futura-dark .owf-ep-cover.owf-volt .owf-cover-glyph { color: var(--volt); -webkit-text-stroke: 0; }
+.own-futura-dark .owf-ep-cover.owf-black { background: var(--black); border-color: var(--black); }
+.own-futura-dark .owf-ep-cover.owf-black .owf-cover-glyph { -webkit-text-stroke: 1.5px var(--volt); }
+.own-futura-dark .owf-ep-cover .owf-cover-title { position: relative; font-weight: 700; text-transform: uppercase; font-size: 20px; line-height: 1.05; letter-spacing: -.3px; color: var(--ink-inverse); }
+.own-futura-dark .owf-ep-cover.owf-black .owf-cover-title { color: var(--volt); }
+.own-futura-dark .owf-ep-cover.owf-volt { background: var(--volt); border-color: var(--volt); }
+.own-futura-dark .owf-ep-cover.owf-volt .owf-cover-title { color: var(--on-volt); }
+.own-futura-dark .owf-checker {
+  width: 22px; height: 22px; flex: none;
+  background: conic-gradient(var(--black) 25%, var(--surface-light) 0 50%, var(--black) 0 75%, var(--surface-light) 0);
+  background-size: 11px 11px; border: 1px solid var(--black);
+}
+.own-futura-dark .owf-ep-title { font-weight: 700; font-size: 18px; letter-spacing: -.3px; }
+.own-futura-dark .owf-ep-ch { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; }
+.own-futura-dark .owf-ep-ch b { background: var(--volt); color: var(--on-volt); padding: 1px 6px; font-weight: 400; }
+.own-futura-dark .owf-ep-summary { color: var(--ramp-6); }
+.own-futura-dark .owf-ep-foot { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--ink-inverse); display: flex; justify-content: space-between; gap: 8px; }
+
+/* ── DICTIONARY BAND ─────────────────────────────────────────────── */
+.own-futura-dark .owf-dict-band { background: var(--volt); color: var(--on-volt); padding: 64px 32px; position: relative; overflow: hidden; }
+.own-futura-dark .owf-dict-band .owf-band-word { font-weight: 700; text-transform: uppercase; font-size: clamp(48px, 9cqi, 128px); letter-spacing: -.03em; line-height: .9; color: var(--on-volt); overflow-wrap: anywhere; }
+.own-futura-dark .owf-dict-band .owf-rule { background: var(--on-volt); }
+.own-futura-dark .owf-dict-band .owf-band-word .owf-inv { background: var(--black); color: var(--volt); padding: 0 20px 4px; }
+.own-futura-dark .owf-dict-band .owf-band-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; align-items: end; }
+.own-futura-dark .owf-dict-band .owf-phonetic { font-size: 22px; }
+.own-futura-dark .owf-dict-band .owf-micro { max-width: 380px; display: block; }
+.own-futura-dark .owf-vertical-note {
+  position: absolute; top: 32px; right: 32px; writing-mode: vertical-rl;
+  font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+}
+.own-futura-dark .owf-band-data { padding-right: 56px; text-align: right; }
+.own-futura-dark .owf-dict-band .owf-rule { margin: 16px 0; }
+
+/* ── STATS ────────────────────────────────────────────────────────── */
+.own-futura-dark .owf-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hairline-soft); border: 1px solid var(--hairline-soft); }
+.own-futura-dark .owf-stat { background: var(--canvas); padding: 32px; position: relative; }
+.own-futura-dark .owf-stat:hover { background: var(--surface-light); color: var(--ink-inverse); }
+.own-futura-dark .owf-stat-num { font-weight: 700; font-size: 64px; letter-spacing: -.03em; line-height: 1; }
+.own-futura-dark .owf-stat-num sup { font-size: 20px; letter-spacing: 0; }
+.own-futura-dark .owf-stat-label { margin-top: 12px; color: var(--ramp-3); }
+.own-futura-dark .owf-stat:hover .owf-stat-label { color: var(--ramp-6); }
+.own-futura-dark .owf-stat .owf-waveform { position: absolute; top: 24px; right: 24px; color: var(--ink); }
+
+/* ── REGION INDEX ─────────────────────────────────────────────────── */
+.own-futura-dark .owf-index { padding-top: 0; }
+.own-futura-dark .owf-genre-rows { border-top: 1px solid var(--hairline-soft); }
+.own-futura-dark .owf-genre-row {
+  display: grid; grid-template-columns: 80px 1fr auto auto; gap: 32px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--hairline-soft);
+}
+.own-futura-dark .owf-genre-row:hover { background: var(--volt); color: var(--on-volt); }
+.own-futura-dark .owf-genre-row:hover .owf-genre-name { padding-left: 12px; }
+.own-futura-dark .owf-genre-idx { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; color: var(--ramp-4); }
+.own-futura-dark .owf-genre-row:hover .owf-genre-idx { color: var(--on-volt); }
+.own-futura-dark .owf-genre-name { font-weight: 700; text-transform: uppercase; font-size: 40px; letter-spacing: -.02em; transition: padding .15s; }
+.own-futura-dark .owf-genre-row:hover .owf-genre-name { color: var(--on-volt); }
+.own-futura-dark .owf-genre-count { font-family: var(--mono); font-size: 13px; }
+
+/* ── CTA ───────────────────────────────────────────────────────────── */
+.own-futura-dark .owf-cta { background: var(--black); color: var(--ramp-3); text-align: left; position: relative; overflow: hidden; border-top: 1px solid var(--hairline-soft); }
+.own-futura-dark .owf-cta h2 { font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 7cqi, 110px); letter-spacing: -.03em; line-height: .92; color: var(--volt); max-width: 900px; position: relative; z-index: 2; }
+.own-futura-dark .owf-cta h2 .owf-w { color: var(--ramp-2); }
+.own-futura-dark .owf-cta p { max-width: 440px; margin: 32px 0; color: var(--ramp-4); position: relative; z-index: 2; }
+.own-futura-dark .owf-cta .owf-mega-x { position: absolute; bottom: -18%; right: -4%; font-weight: 700; font-size: 520px; line-height: .8; color: transparent; -webkit-text-stroke: 1.5px var(--ramp-8); user-select: none; z-index: 1; }
+.own-futura-dark .owf-cta-form { display: flex; gap: 0; max-width: 560px; position: relative; z-index: 2; }
+.own-futura-dark .owf-cta-form input {
+  flex: 1; min-width: 0; background: var(--ramp-10); border: 1px solid var(--ramp-8); border-right: 0;
+  color: var(--volt); font-family: var(--mono); font-size: 13px; letter-spacing: .5px; padding: 14px 16px; outline: none;
+}
+.own-futura-dark .owf-cta-form input::placeholder { color: var(--ramp-5); }
+.own-futura-dark .owf-cta-form input:focus { border-color: var(--volt); }
+.own-futura-dark .owf-cta .owf-eyebrow { color: var(--volt); }
+
+/* ── FOOTER ────────────────────────────────────────────────────────── */
+.own-futura-dark .owf-foot { background: var(--black); color: var(--volt); padding: 48px 32px 24px; border-top: 1px solid var(--hairline-soft); }
+.own-futura-dark .owf-foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.own-futura-dark .owf-foot-grid h4 { color: var(--ink); margin-bottom: 16px; }
+.own-futura-dark .owf-foot-grid li { margin-bottom: 8px; }
+.own-futura-dark .owf-foot-grid a:hover { background: var(--volt); color: var(--on-volt); }
+.own-futura-dark .owf-foot-bottom { border-top: 1px solid var(--ramp-8); padding-top: 16px; display: flex; justify-content: space-between; color: var(--ramp-5); flex-wrap: wrap; gap: 16px; }
+.own-futura-dark .owf-foot-logo { color: var(--volt); margin-bottom: 16px; }
+.own-futura-dark .owf-foot-blurb { color: var(--ramp-4); max-width: 280px; display: block; }
+.own-futura-dark .owf-foot-globe { margin-top: 24px; opacity: .9; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-futura-dark .owf-nav-right { display: none; }
+  .own-futura-dark .owf-nav-links { gap: 20px; }
+  .own-futura-dark .owf-hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 64px; }
+  .own-futura-dark .owf-mega-glyph { top: -40px; right: -30px; font-size: 300px; }
+  .own-futura-dark .owf-hero-panel { margin-top: 80px; justify-self: start; }
+  .own-futura-dark .owf-trend-grid { grid-template-columns: 1fr 1fr; }
+  .own-futura-dark .owf-latest-grid { grid-template-columns: 1fr 1fr; }
+  .own-futura-dark .owf-stats-grid { grid-template-columns: 1fr 1fr; }
+  .own-futura-dark .owf-dict-band .owf-band-grid { grid-template-columns: 1fr; align-items: start; }
+  .own-futura-dark .owf-vertical-note { writing-mode: horizontal-tb; position: static; display: block; margin-top: 24px; }
+  .own-futura-dark .owf-band-data { padding-right: 0; text-align: left; }
+  .own-futura-dark .owf-arrow-volt { display: none; }
+  .own-futura-dark .owf-foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-futura-dark .owf-nav { padding: 0 16px; gap: 12px; }
+  .own-futura-dark .owf-nav-links { display: none; }
+  .own-futura-dark .owf-nav-right { display: none; }
+  .own-futura-dark section { padding: 64px 16px; }
+  .own-futura-dark .owf-index { padding-top: 0; }
+  .own-futura-dark .owf-hero { padding: 32px 16px 48px; }
+  .own-futura-dark .owf-hero h1 { font-size: clamp(56px, 14cqi, 120px); }
+  .own-futura-dark .owf-trend-grid,
+  .own-futura-dark .owf-latest-grid,
+  .own-futura-dark .owf-stats-grid { grid-template-columns: 1fr; }
+  .own-futura-dark .owf-genre-row { grid-template-columns: 48px 1fr auto; }
+  .own-futura-dark .owf-genre-count { display: none; }
+  .own-futura-dark .owf-genre-name { font-size: 26px; }
+  .own-futura-dark .owf-cta-form { flex-direction: column; }
+  .own-futura-dark .owf-cta-form input { border-right: 1px solid var(--ramp-8); }
+  .own-futura-dark .owf-cta-form .owf-btn { text-align: center; }
+  .own-futura-dark .owf-dict-band { padding: 48px 16px; }
+  .own-futura-dark .owf-foot { padding: 40px 16px 20px; }
+}
+@container frame (max-width: 430px) {
+  .own-futura-dark .owf-hero h1 { font-size: clamp(48px, 13cqi, 86px); }
+  .own-futura-dark .owf-mega-glyph { font-size: 48cqi; }
+  .own-futura-dark .owf-bracket-id { font-size: 22px; }
+  .own-futura-dark .owf-foot-grid { grid-template-columns: 1fr; gap: 32px; }
+  .own-futura-dark .owf-section-head h2 { font-size: clamp(32px, 9cqi, 44px); }
+  .own-futura-dark .owf-hero-panel { padding: 24px; }
+  .own-futura-dark .owf-trend-card { padding: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-futura-dark *,
+  .own-futura-dark *::before,
+  .own-futura-dark *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .own-futura-dark .owf-ticker span { animation: none; }
+}

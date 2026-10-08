@@ -1,0 +1,237 @@
+/* ══ ZAPIER — own layout for showcase.html ═════════════════════════════════
+   Ported from the Zapier design language in DESIGN.md: warm-cream canvas
+   #fffefb (never pure white), deep coffee ink #201515 (never pure black),
+   single saturated orange CTA #ff4f00, Degular Display weight 500 hero (Inter
+   500 substitute) paired with Inter, 12px radius on buttons + cards, cream
+   #f8f4f0 soft surfaces as the primary elevation cue. Scoped `.own-zapier`. */
+
+.own-zapier {
+  --za-orange: #ff4f00;
+  --za-on-primary: #fffefb;
+  --za-ink: #201515;
+  --za-ink-soft: #2f2a26;
+  --za-body: #605d52;
+  --za-body-mid: #939084;
+  --za-mute: #c5c0b1;
+  --za-canvas: #fffefb;
+  --za-canvas-soft: #f8f4f0;
+  --za-display: 'Degular Display', 'Inter', system-ui, -apple-system, sans-serif;
+  --za-gut: clamp(20px, 4cqi, 48px);
+
+  position: relative;
+  background: var(--za-canvas);
+  color: var(--za-ink);
+  font-family: var(--za-display);
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  border-radius: 13px;
+}
+
+.own-zapier *, .own-zapier *::before, .own-zapier *::after { box-sizing: border-box; }
+.own-zapier p { margin: 0; }
+.own-zapier a { color: inherit; text-decoration: none; }
+.own-zapier :focus-visible { outline: 3px solid var(--za-orange); outline-offset: 2px; border-radius: 6px; }
+.own-zapier .za-eyebrow {
+  font-size: 14px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--za-ink); margin-bottom: 14px;
+}
+.own-zapier .za-sec-title {
+  font-size: clamp(28px, 4.4cqi, 48px); font-weight: 500; line-height: 1; letter-spacing: -.02em;
+  max-width: 22ch;
+}
+.own-zapier .za-sec-head { max-width: 1280px; margin: 0 auto 40px; }
+
+/* ── buttons ─────────────────────────────────────────────────────────────── */
+.own-zapier .za-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--za-display); font-size: 18px; font-weight: 600;
+  padding: 12px 24px; border-radius: 12px; border: 1px solid transparent;
+  cursor: pointer; transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.own-zapier .za-btn:active { transform: translateY(1px); }
+.own-zapier .za-btn-sm { padding: 8px 16px; font-size: 14px; }
+.own-zapier .za-btn-primary { background: var(--za-orange); color: var(--za-on-primary); }
+.own-zapier .za-btn-primary:hover { background: #e64700; }
+.own-zapier .za-btn-tertiary { background: var(--za-canvas); color: var(--za-ink); border-color: var(--za-ink); }
+.own-zapier .za-btn-tertiary:hover { background: var(--za-canvas-soft); }
+.own-zapier .za-btn-block { width: 100%; margin-top: auto; }
+.own-zapier .za-btn-outline-inv { background: transparent; color: var(--za-canvas); border-color: rgba(255,254,251,.4); }
+.own-zapier .za-btn-outline-inv:hover { border-color: var(--za-canvas); }
+.own-zapier .za-link { font-size: 16px; font-weight: 600; }
+
+/* ── nav ─────────────────────────────────────────────────────────────────── */
+.own-zapier .za-nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 32px; height: 64px; padding: 0 var(--za-gut);
+  background: rgba(255,254,251,.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(32,21,21,.1);
+}
+.own-zapier .za-brand { display: inline-flex; align-items: center; gap: 9px; }
+.own-zapier .za-mark { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: #fff2ec; }
+.own-zapier .za-mark svg { width: 20px; height: 20px; }
+.own-zapier .za-brand-name { font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.own-zapier .za-nav-links { display: flex; align-items: center; gap: 24px; }
+.own-zapier .za-nav-links a { font-size: 16px; font-weight: 500; color: var(--za-body); }
+.own-zapier .za-nav-links a:hover { color: var(--za-ink); }
+.own-zapier .za-nav-actions { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+
+/* ── hero ────────────────────────────────────────────────────────────────── */
+.own-zapier .za-hero {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+  max-width: 1280px; margin: 0 auto; padding: 80px var(--za-gut) 64px;
+}
+.own-zapier .za-hero-title {
+  font-size: clamp(40px, 6.6cqi, 56px); font-weight: 500; line-height: 1; letter-spacing: -.03em;
+  max-width: 14ch;
+}
+.own-zapier .za-hero-lead { font-size: 20px; line-height: 1.5; letter-spacing: -.2px; color: var(--za-body); max-width: 46ch; margin-top: 22px; }
+.own-zapier .za-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.own-zapier .za-hero-note { font-size: 14px; color: var(--za-body-mid); margin-top: 16px; }
+
+/* ── workflow builder (illustrative) ─────────────────────────────────────── */
+.own-zapier .za-workflow {
+  display: flex; flex-direction: column; gap: 0; padding: 28px;
+  background: var(--za-canvas-soft); border: 1px solid rgba(32,21,21,.1); border-radius: 12px;
+}
+.own-zapier .za-flow-node {
+  display: flex; align-items: center; gap: 14px; padding: 16px;
+  background: var(--za-canvas); border: 1px solid rgba(32,21,21,.12); border-radius: 12px;
+}
+.own-zapier .za-node-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; flex: none; }
+.own-zapier .za-node-ico svg { width: 20px; height: 20px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-zapier .za-node-trigger { background: #fff2ec; }
+.own-zapier .za-node-trigger svg { stroke: var(--za-orange); }
+.own-zapier .za-node-action { background: var(--za-canvas-soft); }
+.own-zapier .za-node-action svg { stroke: var(--za-ink); }
+.own-zapier .za-node-alert { background: #eaf5ea; }
+.own-zapier .za-node-alert svg { stroke: #2f7d32; }
+.own-zapier .za-node-body { display: flex; flex-direction: column; gap: 2px; }
+.own-zapier .za-node-body b { font-size: 16px; font-weight: 600; }
+.own-zapier .za-node-body span { font-size: 14px; color: var(--za-body); }
+.own-zapier .za-flow-line { width: 2px; height: 22px; margin-left: 36px; background: var(--za-mute); }
+
+/* ── logos ───────────────────────────────────────────────────────────────── */
+.own-zapier .za-logos { padding: 16px var(--za-gut) 8px; max-width: 1280px; margin: 0 auto; text-align: center; }
+.own-zapier .za-logos-label { font-size: 14px; color: var(--za-body-mid); margin-bottom: 18px; }
+.own-zapier .za-logos-row {
+  list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 40px;
+  margin: 0; padding: 0;
+}
+.own-zapier .za-logos-row li { font-size: 20px; font-weight: 500; letter-spacing: -.02em; color: var(--za-body); }
+
+/* ── features ────────────────────────────────────────────────────────────── */
+.own-zapier .za-features { padding: 72px var(--za-gut) 24px; max-width: 1280px; margin: 0 auto; }
+.own-zapier .za-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-zapier .za-card {
+  display: flex; flex-direction: column; gap: 14px; padding: 24px;
+  border-radius: 12px; min-height: 220px;
+}
+.own-zapier .za-card-cream { background: var(--za-canvas-soft); }
+.own-zapier .za-card-dark { background: var(--za-ink); color: var(--za-on-primary); }
+.own-zapier .za-ico { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--za-canvas); }
+.own-zapier .za-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--za-orange); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-zapier .za-ico-dark { background: rgba(255,79,0,.16); }
+.own-zapier .za-ico-dark svg { stroke: #ff8a55; }
+.own-zapier .za-card h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+.own-zapier .za-card p { font-size: 18px; line-height: 1.5; }
+.own-zapier .za-card-cream p { color: var(--za-body); }
+.own-zapier .za-card-dark p { color: #d8d2c8; }
+
+/* ── regions ─────────────────────────────────────────────────────────────── */
+.own-zapier .za-regions { padding: 72px var(--za-gut); background: var(--za-canvas-soft); margin-top: 48px; }
+.own-zapier .za-region-grid { display: flex; flex-direction: column; gap: 4px; max-width: 1280px; margin: 0 auto; }
+.own-zapier .za-region {
+  display: grid; grid-template-columns: 1.2fr 120px 1fr; align-items: center; gap: 20px;
+  padding: 16px 20px; background: var(--za-canvas); border: 1px solid rgba(32,21,21,.1); border-radius: 12px;
+}
+.own-zapier .za-region-label { font-size: 18px; font-weight: 600; }
+.own-zapier .za-region-num { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.own-zapier .za-bar { display: block; height: 10px; border-radius: 9999px; background: #eae4db; overflow: hidden; }
+.own-zapier .za-bar-fill { display: block; height: 100%; width: var(--w, 50%); border-radius: 9999px; background: var(--za-orange); }
+
+/* ── pricing ─────────────────────────────────────────────────────────────── */
+.own-zapier .za-pricing { padding: 72px var(--za-gut) 24px; max-width: 1280px; margin: 0 auto; }
+.own-zapier .za-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.own-zapier .za-price-card {
+  position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px;
+  border-radius: 12px; background: var(--za-canvas); border: 1px solid var(--za-ink);
+}
+.own-zapier .za-price-feat { background: var(--za-ink); color: var(--za-on-primary); border-color: var(--za-ink); }
+.own-zapier .za-chip {
+  position: absolute; top: 20px; right: 20px; padding: 3px 12px; border-radius: 9999px;
+  font-size: 14px; font-weight: 600; background: var(--za-orange); color: var(--za-on-primary);
+}
+.own-zapier .za-price-card h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+.own-zapier .za-price { font-size: 15px; color: var(--za-body-mid); }
+.own-zapier .za-price span { font-size: 40px; font-weight: 500; letter-spacing: -.03em; color: var(--za-ink); }
+.own-zapier .za-price-feat .za-price { color: #c9c0b5; }
+.own-zapier .za-price-feat .za-price span { color: var(--za-canvas); }
+.own-zapier .za-price-lead { font-size: 16px; color: var(--za-body); }
+.own-zapier .za-price-feat .za-price-lead { color: #c9c0b5; }
+.own-zapier .za-feats { list-style: none; margin: 4px 0 8px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.own-zapier .za-feats li { position: relative; padding-left: 26px; font-size: 18px; color: var(--za-body); }
+.own-zapier .za-price-feat .za-feats li { color: #e2dbd1; }
+.own-zapier .za-feats li::before {
+  content: ''; position: absolute; left: 2px; top: 8px; width: 12px; height: 7px;
+  border-left: 2px solid var(--za-orange); border-bottom: 2px solid var(--za-orange);
+  transform: rotate(-45deg);
+}
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.own-zapier .za-cta { padding: 24px var(--za-gut) 64px; }
+.own-zapier .za-cta-inner {
+  max-width: 1280px; margin: 0 auto; text-align: center; padding: 72px 40px;
+  border-radius: 12px; background: var(--za-ink); color: var(--za-on-primary);
+}
+.own-zapier .za-cta-title { font-size: clamp(32px, 4.6cqi, 56px); font-weight: 500; letter-spacing: -.03em; line-height: 1; }
+.own-zapier .za-cta-lead { font-size: 20px; color: #c9c0b5; margin-top: 16px; }
+.own-zapier .za-cta .za-hero-cta { justify-content: center; }
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.own-zapier .za-footer { background: var(--za-ink); color: var(--za-canvas-soft); padding: 64px var(--za-gut) 32px; }
+.own-zapier .za-foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 32px; max-width: 1280px; margin: 0 auto; }
+.own-zapier .za-brand-foot { color: var(--za-canvas); }
+.own-zapier .za-foot-brand p { font-size: 16px; line-height: 1.6; color: #b3aca2; margin-top: 12px; max-width: 32ch; }
+.own-zapier .za-foot-col { display: flex; flex-direction: column; gap: 10px; }
+.own-zapier .za-foot-col h4 { font-size: 14px; font-weight: 600; color: var(--za-orange); margin-bottom: 4px; }
+.own-zapier .za-foot-col a { font-size: 16px; color: #b3aca2; }
+.own-zapier .za-foot-col a:hover { color: var(--za-canvas); }
+.own-zapier .za-foot-base {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  max-width: 1280px; margin: 48px auto 0; padding-top: 20px;
+  border-top: 1px solid rgba(255,254,251,.14); font-size: 14px; color: #8f887e;
+}
+
+/* ── responsive — @container frame ───────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-zapier .za-hero { grid-template-columns: 1fr; gap: 40px; padding-top: 56px; }
+  .own-zapier .za-feat-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-zapier .za-price-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-zapier .za-price-feat { grid-column: span 2; }
+  .own-zapier .za-foot-grid { grid-template-columns: 1fr 1fr; }
+  .own-zapier .za-foot-brand { grid-column: span 2; }
+}
+@container frame (max-width: 760px) {
+  .own-zapier .za-nav-links { display: none; }
+  .own-zapier .za-feat-grid { grid-template-columns: 1fr; }
+  .own-zapier .za-price-grid { grid-template-columns: 1fr; }
+  .own-zapier .za-price-feat { grid-column: span 1; }
+  .own-zapier .za-region { grid-template-columns: 1.4fr 1fr; }
+  .own-zapier .za-region .za-bar { display: none; }
+  .own-zapier .za-cta-inner { padding: 48px 24px; }
+}
+@container frame (max-width: 430px) {
+  .own-zapier .za-hero-cta { flex-direction: column; }
+  .own-zapier .za-hero-cta .za-btn { width: 100%; }
+  .own-zapier .za-logos-row li { font-size: 17px; }
+  .own-zapier .za-region { grid-template-columns: 1fr; gap: 6px; }
+  .own-zapier .za-region-num { text-align: left; }
+  .own-zapier .za-foot-grid { grid-template-columns: 1fr; }
+  .own-zapier .za-foot-brand { grid-column: span 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-zapier .za-btn { transition: none; }
+}

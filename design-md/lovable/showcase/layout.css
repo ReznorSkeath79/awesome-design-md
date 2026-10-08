@@ -1,0 +1,221 @@
+/* ══ NORTHWIND — own layout in the Lovable design language ═══════════════════
+   Warm parchment canvas, opacity-derived neutrals from #1c1c1c, humanist display
+   type with tight negative tracking, inset-shadow dark buttons, border-contained
+   cards, and a soft warm gradient wash behind the hero. Scoped to .own-lovable. */
+
+.own-lovable {
+  --cream: #f7f4ed;
+  --charcoal: #1c1c1c;
+  --off-white: #fcfbf8;
+  --muted: #5f5f5d;
+  --border: #eceae4;
+  --border-strong: rgba(28, 28, 28, .4);
+  --ink-83: rgba(28, 28, 28, .83);
+  --ink-40: rgba(28, 28, 28, .4);
+  --ink-04: rgba(28, 28, 28, .04);
+  --inset: rgba(255, 255, 255, .2) 0px .5px 0px 0px inset,
+           rgba(0, 0, 0, .2) 0px 0px 0px .5px inset,
+           rgba(0, 0, 0, .05) 0px 1px 2px 0px;
+  --focus: rgba(0, 0, 0, .1) 0px 4px 12px;
+  --ring: rgba(59, 130, 246, .5);
+  --display: 'Camera Plain Variable', ui-sans-serif, system-ui, sans-serif;
+  --gut: clamp(20px, 5cqi, 64px);
+
+  position: relative;
+  border-radius: 13px;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--display);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+.own-lovable *,
+.own-lovable *::before,
+.own-lovable *::after { box-sizing: border-box; }
+.own-lovable :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: 4px; }
+.own-lovable .lv-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.own-lovable .lv-muted { color: var(--muted); }
+.own-lovable .lv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
+
+/* ── type ────────────────────────────────────────────────────────────────── */
+.own-lovable .lv-h1 { font-weight: 600; font-size: clamp(38px, 5cqi, 60px); line-height: 1.06; letter-spacing: -1.5px; }
+.own-lovable .lv-h2 { font-weight: 600; font-size: clamp(30px, 3.6cqi, 48px); line-height: 1.02; letter-spacing: -1.2px; }
+.own-lovable .lv-eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.own-lovable .lv-lead { color: var(--muted); font-size: 18px; line-height: 1.4; max-width: 54ch; }
+.own-lovable .lv-lead-center { margin: 16px auto 0; text-align: center; }
+.own-lovable .lv-sub { color: var(--ink-83); font-size: 18px; line-height: 1.4; max-width: 50ch; margin-top: 20px; }
+.own-lovable .lv-card-title { font-weight: 400; font-size: 20px; line-height: 1.25; }
+.own-lovable .lv-card-desc { color: var(--muted); font-size: 14px; line-height: 1.5; margin-top: 6px; }
+
+/* ── nav ─────────────────────────────────────────────────────────────────── */
+.own-lovable .lv-nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 28px;
+  max-width: 1200px; margin: 18px auto 0; padding: 10px 14px 10px 20px;
+  border-radius: 9999px;
+  background: rgba(247, 244, 237, .82);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+}
+.own-lovable .lv-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--charcoal); white-space: nowrap; }
+.own-lovable .lv-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--charcoal); color: var(--off-white); display: grid; place-items: center; font-weight: 600; font-size: 15px; }
+.own-lovable .lv-word { font-weight: 600; font-size: 18px; letter-spacing: -.4px; }
+.own-lovable .lv-links { display: flex; align-items: center; gap: 26px; margin-left: 8px; }
+.own-lovable .lv-links a { color: var(--ink-83); text-decoration: none; font-size: 15px; }
+.own-lovable .lv-links a:hover { color: var(--charcoal); }
+.own-lovable .lv-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+/* ── buttons ────────────────────────────────────────────────────────────── */
+.own-lovable .lv-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 38px; padding: 0 16px; border-radius: 6px; font-family: var(--display);
+  font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer;
+  border: 1px solid transparent; transition: opacity .15s, box-shadow .15s;
+}
+.own-lovable .lv-btn:active { opacity: .8; }
+.own-lovable .lv-btn:focus-visible { box-shadow: var(--focus); }
+.own-lovable .lv-btn-dark { background: var(--charcoal); color: var(--off-white); box-shadow: var(--inset); }
+.own-lovable .lv-btn-ghost { background: transparent; color: var(--charcoal); border-color: var(--border-strong); }
+.own-lovable .lv-btn-outline { background: var(--cream); color: var(--charcoal); border-color: var(--border-strong); }
+.own-lovable .lv-menu { display: none; width: 38px; height: 38px; align-items: center; justify-content: center; background: var(--cream); color: var(--charcoal); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
+.own-lovable .lv-menu svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+
+/* ── hero ────────────────────────────────────────────────────────────────── */
+.own-lovable .lv-hero { position: relative; overflow: hidden; padding: clamp(48px, 8cqi, 96px) 0 64px; }
+.own-lovable .lv-wash {
+  position: absolute; inset: -20% -10% auto -10%; height: 620px; z-index: 0;
+  background:
+    radial-gradient(42% 58% at 22% 30%, rgba(255, 173, 121, .40), transparent 70%),
+    radial-gradient(40% 55% at 68% 18%, rgba(255, 128, 168, .34), transparent 70%),
+    radial-gradient(46% 60% at 52% 58%, rgba(120, 170, 255, .30), transparent 72%);
+  filter: blur(14px);
+  opacity: .8;
+  pointer-events: none;
+}
+.own-lovable .lv-hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 var(--gut); text-align: center; }
+
+/* chat input */
+.own-lovable .lv-chat {
+  margin: 30px auto 0; max-width: 680px; text-align: left;
+  background: var(--cream); border: 1px solid var(--border); border-radius: 16px;
+  padding: 16px; box-shadow: var(--focus);
+}
+.own-lovable .lv-chat textarea {
+  width: 100%; border: 0; background: transparent; resize: none; color: var(--charcoal);
+  font-family: var(--display); font-size: 16px; line-height: 1.5; min-height: 52px;
+}
+.own-lovable .lv-chat textarea::placeholder { color: var(--muted); }
+.own-lovable .lv-chat textarea:focus { outline: none; }
+.own-lovable .lv-chat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.own-lovable .lv-suggest { display: flex; flex-wrap: wrap; gap: 8px; }
+.own-lovable .lv-pill {
+  height: 32px; padding: 0 14px; border-radius: 9999px; cursor: pointer;
+  background: var(--cream); color: var(--ink-83); border: 1px solid var(--border);
+  font-family: var(--display); font-size: 13px; transition: background .15s;
+}
+.own-lovable .lv-pill:hover { background: var(--ink-04); }
+.own-lovable .lv-send {
+  flex: none; width: 40px; height: 40px; border-radius: 9999px; border: 0; cursor: pointer;
+  background: var(--charcoal); color: var(--off-white); box-shadow: var(--inset);
+  display: grid; place-items: center; transition: opacity .15s;
+}
+.own-lovable .lv-send:hover { opacity: .85; }
+.own-lovable .lv-send svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.own-lovable .lv-trust { text-align: center; color: var(--muted); font-size: 13px; margin-top: 18px; }
+
+/* ── sections ───────────────────────────────────────────────────────────── */
+.own-lovable .lv-sec { padding: clamp(56px, 8cqi, 128px) 0; }
+.own-lovable .lv-sec-tight { padding: clamp(40px, 5cqi, 72px) 0; }
+.own-lovable .lv-sec-head { max-width: 640px; margin: 0 auto 48px; text-align: center; }
+.own-lovable .lv-sec-head.lv-left { margin-left: 0; text-align: left; }
+.own-lovable .lv-sec-head .lv-lead { margin-top: 14px; }
+
+/* template gallery */
+.own-lovable .lv-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-lovable .lv-card {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; transition: border-color .2s, transform .2s;
+}
+.own-lovable .lv-card:hover { border-color: var(--ink-40); transform: translateY(-2px); }
+.own-lovable .lv-thumb { position: relative; height: 180px; border-bottom: 1px solid var(--border); display: grid; }
+.own-lovable .lv-thumb-label { position: absolute; left: 14px; bottom: 12px; font-size: 12px; font-weight: 600; color: var(--ink-83); }
+.own-lovable .lv-thumb-a { grid-template-columns: 1fr 1fr; gap: 8px; padding: 18px; background: linear-gradient(180deg, #fbf6ee, #f3ede1); }
+.own-lovable .lv-thumb-a .lv-tile { border: 1px solid var(--border); border-radius: 8px; background: var(--cream); }
+.own-lovable .lv-thumb-a .lv-tile:nth-child(2) { background: rgba(28,28,28,.06); }
+.own-lovable .lv-thumb-a .lv-tile:nth-child(4) { background: rgba(28,28,28,.1); }
+.own-lovable .lv-thumb-b { place-items: center; background: linear-gradient(180deg, #fbf6ee, #f6e9e2); }
+.own-lovable .lv-thumb-b .lv-ring { position: absolute; width: 120px; height: 120px; border: 1px solid var(--ink-40); border-radius: 50%; }
+.own-lovable .lv-thumb-b .lv-ring:nth-child(2) { width: 72px; height: 72px; border-color: var(--ink-83); }
+.own-lovable .lv-thumb-c { place-items: end center; padding: 22px; background: linear-gradient(180deg, #fbf6ee, #edf1f7); }
+.own-lovable .lv-bars { display: flex; align-items: flex-end; gap: 12px; height: 120px; }
+.own-lovable .lv-bars i { display: block; width: 16px; height: var(--h); background: var(--charcoal); border-radius: 4px 4px 0 0; opacity: .8; }
+.own-lovable .lv-bars i:nth-child(3) { opacity: 1; }
+.own-lovable .lv-card-body { padding: 18px 20px 22px; }
+.own-lovable .lv-cat { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 9999px; padding: 3px 10px; }
+
+/* stats */
+.own-lovable .lv-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 40px 0; }
+.own-lovable .lv-stat b { display: block; font-weight: 600; font-size: clamp(32px, 3.4cqi, 48px); letter-spacing: -1.2px; line-height: 1; }
+.own-lovable .lv-stat span { display: block; margin-top: 10px; color: var(--muted); font-size: 15px; }
+
+/* features */
+.own-lovable .lv-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-lovable .lv-feat { background: var(--cream); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+.own-lovable .lv-fi { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--ink-04); border: 1px solid var(--border); margin-bottom: 20px; }
+.own-lovable .lv-fi svg { width: 22px; height: 22px; fill: none; stroke: var(--charcoal); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* quote */
+.own-lovable .lv-quote { max-width: 800px; margin: 0 auto; text-align: center; }
+.own-lovable .lv-quote blockquote p { font-weight: 480; font-size: clamp(24px, 3cqi, 36px); line-height: 1.24; letter-spacing: -.9px; }
+.own-lovable .lv-quote figcaption { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 28px; font-size: 15px; text-align: left; }
+.own-lovable .lv-avatar { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9999px; background: var(--charcoal); color: var(--off-white); font-weight: 600; font-size: 14px; }
+
+/* cta */
+.own-lovable .lv-cta { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 16px; padding: clamp(40px, 6cqi, 80px) 32px; text-align: center; background: var(--cream); }
+.own-lovable .lv-cta-wash { position: absolute; inset: -40% -10% auto -10%; height: 320px; background: radial-gradient(40% 60% at 30% 40%, rgba(255, 173, 121, .34), transparent 72%), radial-gradient(44% 60% at 72% 30%, rgba(120, 170, 255, .26), transparent 72%); filter: blur(16px); opacity: .8; pointer-events: none; }
+.own-lovable .lv-cta > * { position: relative; z-index: 1; }
+.own-lovable .lv-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.own-lovable .lv-foot { border-top: 1px solid var(--border); margin-top: clamp(40px, 5cqi, 80px); padding: 56px 0 32px; background: linear-gradient(180deg, var(--cream), #f1ece0); }
+.own-lovable .lv-foot-top { display: grid; grid-template-columns: 1.2fr 2fr; gap: 40px; }
+.own-lovable .lv-foot-brand .lv-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--charcoal); color: var(--off-white); font-weight: 600; font-size: 15px; }
+.own-lovable .lv-foot-brand .lv-word { font-weight: 600; font-size: 18px; margin-left: 8px; }
+.own-lovable .lv-foot-brand p { margin-top: 12px; font-size: 14px; max-width: 30ch; }
+.own-lovable .lv-foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-lovable .lv-foot-col h3 { font-weight: 600; font-size: 14px; margin-bottom: 14px; }
+.own-lovable .lv-foot-col a { display: block; color: var(--muted); text-decoration: none; font-size: 14px; margin-bottom: 9px; }
+.own-lovable .lv-foot-col a:hover { color: var(--charcoal); text-decoration: underline; }
+.own-lovable .lv-foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+.own-lovable .lv-foot-links { display: flex; gap: 20px; }
+.own-lovable .lv-foot-links a { color: var(--muted); text-decoration: none; }
+.own-lovable .lv-foot-links a:hover { color: var(--charcoal); text-decoration: underline; }
+
+/* ── responsive ──────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-lovable .lv-links { display: none; }
+  .own-lovable .lv-gallery { grid-template-columns: repeat(2, 1fr); }
+  .own-lovable .lv-stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+  .own-lovable .lv-feats { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-lovable .lv-nav { top: 10px; margin: 10px 12px 0; border-radius: 16px; }
+  .own-lovable .lv-links { display: none; }
+  .own-lovable .lv-menu { display: inline-flex; }
+  .own-lovable .lv-gallery { grid-template-columns: 1fr; }
+  .own-lovable .lv-chat-foot { flex-direction: column; align-items: stretch; }
+  .own-lovable .lv-send { align-self: flex-end; }
+  .own-lovable .lv-foot-top { grid-template-columns: 1fr; }
+  .own-lovable .lv-foot-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 430px) {
+  .own-lovable .lv-stats { grid-template-columns: 1fr; }
+  .own-lovable .lv-foot-cols { grid-template-columns: 1fr; }
+  .own-lovable .lv-nav { padding: 8px 10px 8px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-lovable *, .own-lovable *::before, .own-lovable *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}

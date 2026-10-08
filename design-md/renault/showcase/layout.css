@@ -1,0 +1,222 @@
+/* ══ NORTHWIND — in the Renault design language, for showcase.html ══════════
+   Two-tone canvas (white catalogue / black storytelling), one Sunlight Yellow
+   accent, monolithic NouvelR-style type at weight 700 / line-height 0.95,
+   square geometry, photography-led tiles. */
+
+.own-renault {
+  --primary: #ffed00;
+  --primary-deep: #e6d200;
+  --on-primary: #000000;
+  --ink: #000000;
+  --body: #222222;
+  --charcoal: #333333;
+  --mute: #666666;
+  --ash: #8a8a8a;
+  --stone: #c4c4c4;
+  --on-dark: #ffffff;
+  --on-dark-mute: rgba(255, 255, 255, .72);
+  --canvas: #ffffff;
+  --surface-soft: #f7f7f7;
+  --surface-card: #ffffff;
+  --surface-dark: #000000;
+  --surface-deep: #111111;
+  --hairline: #f2f2f2;
+  --hairline-strong: #000000;
+  --divider-dark: rgba(255, 255, 255, .16);
+
+  --r-none: 0;
+  --r-xs: 2px;
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-pill: 46px;
+  --r-full: 9999px;
+
+  --font: 'NouvelR', 'Inter Tight', Manrope, 'HK Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --gut: clamp(20px, 4.5cqi, 64px);
+  --section: 80px;
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+  border-radius: 13px;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+.own-renault *, .own-renault *::before, .own-renault *::after { box-sizing: border-box; }
+.own-renault a { color: inherit; text-decoration: none; }
+.own-renault button { font: inherit; cursor: pointer; }
+.own-renault :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: var(--r-xs); }
+.own-renault .rn-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.own-renault .rn-overline { font-size: 10px; font-weight: 700; line-height: 1.45; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+.own-renault .rn-overline-dark { color: var(--on-dark-mute); }
+.own-renault .rn-h2 { font-size: clamp(26px, 3.4cqi, 40px); font-weight: 700; line-height: .95; color: var(--ink); }
+.own-renault .rn-h2-sm { font-size: clamp(24px, 3cqi, 32px); }
+
+/* ── nav ──────────────────────────────────────────────────────────────────── */
+.own-renault .rn-nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 20px;
+  height: 60px; padding: 0 var(--gut);
+  background: var(--canvas); border-bottom: 1px solid var(--hairline);
+}
+.own-renault .rn-brand { display: inline-flex; align-items: center; color: var(--ink); }
+.own-renault .rn-diamond { width: 30px; height: 30px; }
+.own-renault .rn-menu { display: flex; align-items: center; gap: 26px; margin: 0 auto; }
+.own-renault .rn-menu a { font-size: 14.4px; font-weight: 700; letter-spacing: .144px; color: var(--ink); padding: 4px 0; border-bottom: 2px solid transparent; }
+.own-renault .rn-menu a:hover { border-bottom-color: var(--ink); }
+.own-renault .rn-nav-right { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+.own-renault .rn-icon { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--hairline-strong); border-radius: var(--r-xs); background: var(--canvas); color: var(--ink); }
+.own-renault .rn-icon svg { width: 18px; height: 18px; }
+.own-renault .rn-login { display: inline-flex; align-items: center; gap: 8px; font-size: 14.4px; font-weight: 700; letter-spacing: .144px; }
+.own-renault .rn-login svg { width: 18px; height: 18px; }
+.own-renault .rn-burger { display: none; flex-direction: column; gap: 4px; width: 40px; height: 40px; align-items: center; justify-content: center; border: 1px solid var(--hairline-strong); border-radius: var(--r-xs); background: var(--canvas); }
+.own-renault .rn-burger span { display: block; width: 16px; height: 2px; background: var(--ink); }
+
+/* ── buttons ──────────────────────────────────────────────────────────────── */
+.own-renault .rn-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 24px; border: 1px solid transparent; border-radius: var(--r-xs); font-size: 14.4px; font-weight: 700; letter-spacing: .144px; line-height: 1; transition: background-color .2s; }
+.own-renault .rn-btn-primary { background: var(--primary); color: var(--on-primary); }
+.own-renault .rn-btn-primary:hover { background: var(--primary-deep); }
+.own-renault .rn-btn-outline-light { background: var(--surface-dark); color: var(--on-dark); border-color: var(--on-dark); }
+.own-renault .rn-btn-outline-light:hover { background: #1a1a1a; }
+.own-renault .rn-pill { display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border: 1px solid var(--hairline-strong); border-radius: var(--r-pill); background: var(--canvas); color: var(--ink); font-size: 13px; font-weight: 600; letter-spacing: .13px; white-space: nowrap; }
+.own-renault .rn-pill:hover { background: var(--surface-soft); }
+
+/* ── hero (black storytelling band) ────────────────────────────────────────── */
+.own-renault .rn-hero { position: relative; overflow: hidden; background: var(--surface-dark); color: var(--on-dark); padding: var(--section) var(--gut); display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+.own-renault .rn-hero-glow { position: absolute; inset: -30% -10% auto auto; width: 70%; height: 140%; background: radial-gradient(50% 50% at 60% 40%, rgba(255, 237, 0, .22), transparent 70%), radial-gradient(40% 40% at 30% 70%, rgba(0, 123, 194, .3), transparent 72%); pointer-events: none; }
+.own-renault .rn-hero-inner { position: relative; max-width: 640px; }
+.own-renault .rn-hero .rn-overline { color: var(--on-dark-mute); }
+.own-renault .rn-h1 { font-size: clamp(40px, 6.4cqi, 56px); font-weight: 700; line-height: .95; letter-spacing: 0; color: var(--on-dark); }
+.own-renault .rn-hero-sub { margin-top: 20px; max-width: 52ch; color: var(--on-dark-mute); font-size: 18px; line-height: 1.5; font-weight: 400; }
+.own-renault .rn-hero-cta { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.own-renault .rn-hero-visual { position: relative; }
+.own-renault .rn-dash-mock { border-radius: var(--r-none); border: 1px solid var(--divider-dark); background: var(--surface-deep); padding: 18px; display: grid; gap: 16px; }
+.own-renault .rn-dash-bar { display: flex; gap: 6px; }
+.own-renault .rn-dash-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider-dark); }
+.own-renault .rn-dash-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.own-renault .rn-gauge { position: relative; display: grid; gap: 2px; padding: 14px; border: 1px solid var(--divider-dark); border-radius: var(--r-none); }
+.own-renault .rn-gauge-fill { position: absolute; left: 0; bottom: 0; height: 4px; width: var(--v); background: var(--primary); }
+.own-renault .rn-gauge b { font-size: 28px; font-weight: 700; line-height: .95; }
+.own-renault .rn-gauge small { color: var(--on-dark-mute); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.own-renault .rn-dash-spark { width: 100%; height: 80px; }
+
+/* ── sub-nav pills ─────────────────────────────────────────────────────────── */
+.own-renault .rn-subnav { display: flex; gap: 10px; padding: 24px var(--gut); overflow-x: auto; border-bottom: 1px solid var(--hairline); scrollbar-width: none; }
+.own-renault .rn-subnav::-webkit-scrollbar { display: none; }
+
+/* ── promo tiles (2-up grid) ────────────────────────────────────────────────── */
+.own-renault .rn-promo { padding: var(--section) var(--gut) 0; }
+.own-renault .rn-promo .rn-h2 { margin-bottom: 28px; }
+.own-renault .rn-promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--hairline); }
+.own-renault .rn-tile { display: grid; gap: 12px; padding: 32px; border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); align-content: start; }
+.own-renault .rn-tile:nth-child(2n) { border-right: 0; }
+.own-renault .rn-tile:nth-child(n+3) { border-bottom: 0; }
+.own-renault .rn-tile-light { background: var(--canvas); color: var(--ink); }
+.own-renault .rn-tile-dark { background: var(--surface-dark); color: var(--on-dark); border-color: var(--divider-dark) !important; }
+.own-renault .rn-tile-yellow { background: var(--primary); color: var(--on-primary); }
+.own-renault .rn-tile-art { height: 168px; border-radius: var(--r-none); }
+.own-renault .rn-art-a { background: linear-gradient(120deg, #e9f2ff, #007bc2 90%); }
+.own-renault .rn-art-b { background: linear-gradient(120deg, #1a1a1a, #444 90%, #e61e49 160%); }
+.own-renault .rn-art-c { background: linear-gradient(120deg, #eafaf3, #00a87e 92%); }
+.own-renault .rn-art-d { background: repeating-linear-gradient(135deg, #000 0 18px, #191919 18px 36px), radial-gradient(60% 80% at 80% 20%, rgba(255, 255, 255, .4), transparent); }
+.own-renault .rn-tile-h { font-size: 24px; font-weight: 700; line-height: .95; }
+.own-renault .rn-tile-p { font-size: 14px; line-height: 1.57; color: inherit; opacity: .82; max-width: 42ch; }
+.own-renault .rn-tile-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14.4px; font-weight: 700; letter-spacing: .144px; border-bottom: 2px solid currentColor; padding-bottom: 2px; justify-self: start; margin-top: 4px; }
+.own-renault .rn-tile-link:hover { gap: 12px; }
+
+/* ── platform range ─────────────────────────────────────────────────────────── */
+.own-renault .rn-range { padding: var(--section) var(--gut) 0; }
+.own-renault .rn-range-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+.own-renault .rn-text-link { font-size: 14.4px; font-weight: 700; letter-spacing: .144px; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
+.own-renault .rn-range-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.own-renault .rn-vehicle { display: grid; gap: 4px; position: relative; }
+.own-renault .rn-vehicle-photo { position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-none); overflow: hidden; }
+.own-renault .rn-photo-1 { background: linear-gradient(135deg, #1a1a2e, #ffed00 145%); }
+.own-renault .rn-photo-2 { background: linear-gradient(135deg, #0b2a4a, #8dc572 150%); }
+.own-renault .rn-photo-3 { background: linear-gradient(135deg, #2a1a0b, #ec7e00 150%); }
+.own-renault .rn-photo-4 { background: linear-gradient(135deg, #2a0b1a, #e61e49 150%); }
+.own-renault .rn-badge-new { position: absolute; left: 14px; bottom: 14px; padding: 6px 14px; border-radius: var(--r-full); background: var(--primary); color: var(--on-primary); font-size: 12px; font-weight: 700; text-transform: lowercase; }
+.own-renault .rn-vehicle-name { margin-top: 12px; font-size: 20px; font-weight: 700; line-height: .95; }
+.own-renault .rn-vehicle-sub { font-size: 14px; line-height: 1.57; color: var(--mute); }
+.own-renault .rn-vehicle-arrow { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-top: 8px; border: 1px solid var(--hairline-strong); border-radius: var(--r-xs); color: var(--ink); }
+.own-renault .rn-vehicle-arrow:hover { background: var(--primary); border-color: var(--primary); }
+.own-renault .rn-vehicle-arrow svg { width: 18px; height: 18px; }
+
+/* ── configurator (white card, yellow dots, neutral chrome) ─────────────────── */
+.own-renault .rn-config { margin-top: var(--section); background: var(--surface-dark); color: var(--on-dark); display: grid; grid-template-columns: 1.2fr 1fr; }
+.own-renault .rn-config-visual { position: relative; display: grid; place-items: center; min-height: 520px; padding: 40px; background: radial-gradient(70% 70% at 50% 45%, #1b1b1b, #000); }
+.own-renault .rn-config-canvas { position: relative; width: 100%; max-width: 420px; aspect-ratio: 1; }
+.own-renault .rn-config-ring { position: absolute; inset: 0; border: 1px solid var(--divider-dark); border-radius: 50%; }
+.own-renault .rn-config-ring::after { content: ''; position: absolute; inset: 14%; border: 1px dashed var(--divider-dark); border-radius: 50%; }
+.own-renault .rn-config-core { position: absolute; inset: 38%; border-radius: 2px; background: linear-gradient(135deg, var(--primary), #fff8b0); box-shadow: 0 0 60px rgba(255, 237, 0, .35); }
+.own-renault .rn-config-dot { position: absolute; left: var(--x); top: var(--y); width: 14px; height: 14px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4px rgba(255, 237, 0, .18); }
+.own-renault .rn-config-panel { padding: clamp(28px, 4cqi, 56px); display: grid; gap: 20px; align-content: start; }
+.own-renault .rn-config-panel .rn-h2 { color: var(--on-dark); }
+.own-renault .rn-config-lead { color: var(--on-dark-mute); font-size: 16px; line-height: 1.5; max-width: 46ch; }
+.own-renault .rn-config-row { display: grid; gap: 10px; padding: 20px 0; border-top: 1px solid var(--divider-dark); }
+.own-renault .rn-config-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-mute); }
+.own-renault .rn-config-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.own-renault .rn-chip { height: 36px; padding: 0 16px; border: 1px solid var(--divider-dark); border-radius: var(--r-pill); background: transparent; color: var(--on-dark); font-size: 13px; font-weight: 600; letter-spacing: .13px; }
+.own-renault .rn-chip:hover { border-color: var(--on-dark); }
+.own-renault .rn-chip-on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.own-renault .rn-swatches { display: flex; gap: 12px; }
+.own-renault .rn-swatch { width: 44px; height: 44px; border: 1px solid var(--divider-dark); border-radius: var(--r-full); background: var(--sw); padding: 0; }
+.own-renault .rn-sw-on { box-shadow: 0 0 0 2px var(--surface-dark), 0 0 0 4px var(--primary); }
+.own-renault .rn-config-list { list-style: none; display: grid; }
+.own-renault .rn-config-list li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--divider-dark); font-size: 16px; }
+.own-renault .rn-config-list b { font-weight: 700; color: var(--primary); }
+.own-renault .rn-config-total { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 8px; }
+.own-renault .rn-config-total-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-mute); }
+.own-renault .rn-config-total-num { font-size: 32px; font-weight: 700; line-height: .95; color: var(--on-dark); }
+.own-renault .rn-config-total-unit { font-size: 14px; color: var(--on-dark-mute); }
+
+/* ── quote band ─────────────────────────────────────────────────────────────── */
+.own-renault .rn-quote { background: var(--primary); color: var(--on-primary); padding: var(--section) var(--gut); text-align: center; }
+.own-renault .rn-quote-h { font-size: clamp(24px, 3.4cqi, 40px); font-weight: 700; line-height: .95; }
+.own-renault .rn-quote-by { margin-top: 14px; font-size: 14px; color: rgba(0, 0, 0, .68); }
+
+/* ── footer (always dark) ───────────────────────────────────────────────────── */
+.own-renault .rn-foot { background: var(--surface-dark); color: var(--on-dark); padding: 64px var(--gut) 28px; }
+.own-renault .rn-foot-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; max-width: 1440px; margin: 0 auto; }
+.own-renault .rn-foot-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--on-dark); font-size: 20px; font-weight: 700; }
+.own-renault .rn-foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+.own-renault .rn-foot-col { display: grid; gap: 10px; align-content: start; }
+.own-renault .rn-foot-col h3 { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-mute); margin-bottom: 4px; }
+.own-renault .rn-foot-col a { font-size: 14px; color: var(--on-dark); }
+.own-renault .rn-foot-col a:hover { color: var(--primary); }
+.own-renault .rn-foot-legal { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; max-width: 1440px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid var(--divider-dark); font-size: 12px; color: var(--on-dark-mute); }
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-renault .rn-menu { display: none; }
+  .own-renault .rn-burger { display: flex; }
+  .own-renault .rn-hero { grid-template-columns: 1fr; }
+  .own-renault .rn-range-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-renault .rn-config { grid-template-columns: 1fr; }
+  .own-renault .rn-config-visual { min-height: 360px; }
+}
+@container frame (max-width: 760px) {
+  .own-renault .rn-nav { height: 60px; gap: 10px; }
+  .own-renault .rn-login { display: none; }
+  .own-renault .rn-promo-grid { grid-template-columns: 1fr; }
+  .own-renault .rn-tile { border-right: 0 !important; }
+  .own-renault .rn-tile:nth-child(3) { border-bottom: 1px solid var(--hairline); }
+  .own-renault .rn-range-grid { grid-template-columns: 1fr 1fr; }
+  .own-renault .rn-hero { padding: 48px var(--gut); }
+  .own-renault .rn-quote { padding: 48px var(--gut); }
+  .own-renault .rn-config-panel { padding: 28px 20px; }
+}
+@container frame (max-width: 430px) {
+  .own-renault .rn-h1 { font-size: 40px; }
+  .own-renault .rn-range-grid { grid-template-columns: 1fr; }
+  .own-renault .rn-dash-body { grid-template-columns: 1fr; }
+  .own-renault .rn-foot { padding: 48px 16px 24px; }
+  .own-renault .rn-foot-cols { gap: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-renault *, .own-renault *::before, .own-renault *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}

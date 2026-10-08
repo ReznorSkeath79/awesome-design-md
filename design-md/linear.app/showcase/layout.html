@@ -1,0 +1,294 @@
+<div class="own-linear-app">
+  <a class="skip" href="#linearMain">Skip to content</a>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="nav" id="linearNav">
+    <div class="nav-in">
+      <a class="brand" href="#linearMain" aria-label="Northwind home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3.6 13.2 10.8 20.4A9 9 0 0 1 3.6 13.2ZM3 10.9 13.1 21a9 9 0 0 0 2.1-.4L3.4 8.8A9 9 0 0 0 3 10.9ZM3.9 7.6 16.4 20.1a9 9 0 0 0 1.6-1L4.9 6a9 9 0 0 0-1 1.6ZM6 5.1l13 13a9 9 0 0 0 1.2-1.4L7.4 3.9A9 9 0 0 0 6 5.1ZM9 3.4l11.6 11.6a9 9 0 0 0-11.6-11.6Z"/></svg>
+        </span>
+        <span class="brand-name">Northwind</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#linearProduct">Product</a>
+        <a href="#linearFeatures">Features</a>
+        <a href="#linearPricing">Pricing</a>
+        <a href="#linearCustomers">Customers</a>
+        <a href="#linearBuild">Changelog</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="#">Sign in</a>
+        <a class="btn btn-primary" href="#linearPricing">Get started</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-drawer" hidden data-nav-drawer>
+      <a href="#linearProduct">Product</a>
+      <a href="#linearFeatures">Features</a>
+      <a href="#linearPricing">Pricing</a>
+      <a href="#linearCustomers">Customers</a>
+      <a href="#linearBuild">Changelog</a>
+    </div>
+  </header>
+
+  <main id="linearMain">
+    <!-- ── HERO ──────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="eyebrow reveal" data-reveal>Northwind · operations analytics</p>
+        <h1 class="hero-title reveal" data-reveal>Plan, track, and ship operations in one system.</h1>
+        <p class="hero-lead reveal" data-reveal>Northwind gives ops teams a single surface for regions, throughput, and revenue — issues, dashboards, and forecasts that stay in sync with the work itself.</p>
+        <div class="hero-cta reveal" data-reveal>
+          <a class="btn btn-primary btn-lg" href="#linearPricing">Start free</a>
+          <a class="btn btn-secondary btn-lg" href="#linearProduct">See the product
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="hero-note reveal" data-reveal>Free for 3 seats · No credit card · SOC 2 Type II</p>
+
+        <!-- product UI screenshot (issue list) -->
+        <div class="app reveal" data-reveal aria-label="Northwind issue list preview">
+          <div class="app-bar">
+            <span class="app-dot"></span><span class="app-dot"></span><span class="app-dot"></span>
+            <span class="app-crumb">Northwind / <b>Q3 Ops</b></span>
+            <span class="app-seg">
+              <span class="on">List</span><span>Board</span><span>Timeline</span>
+            </span>
+            <span class="app-avatar">AL</span>
+          </div>
+          <div class="app-body">
+            <aside class="app-side" aria-hidden="true">
+              <span class="side-item on"><i class="sq"></i>Inbox</span>
+              <span class="side-item"><i class="sq"></i>My issues</span>
+              <span class="side-item"><i class="sq"></i>Dashboards</span>
+              <span class="side-item"><i class="sq"></i>Forecasts</span>
+              <span class="side-sep"></span>
+              <span class="side-label">Teams</span>
+              <span class="side-item"><i class="sq"></i>Logistics</span>
+              <span class="side-item"><i class="sq"></i>Revenue</span>
+              <span class="side-item"><i class="sq"></i>Support</span>
+            </aside>
+            <div class="app-main">
+              <div class="app-toolbar">
+                <span class="app-view">All issues</span>
+                <span class="app-count">128</span>
+                <span class="app-spacer"></span>
+                <span class="app-pill">Filter</span>
+                <span class="app-pill">Group</span>
+              </div>
+              <ul class="issue-list" id="issueList"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LOGO MARQUEE ──────────────────────────────────────────────── -->
+    <section class="logos" aria-label="Customers">
+      <p class="logos-cap wrap">Trusted by operations teams at</p>
+      <div class="marquee"><div class="marquee-track">
+        <span>Vector Freight</span><span>Halden Retail</span><span>Miro Labs</span><span>Aperture Foods</span><span>Kestrel Bank</span><span>Northgate Health</span>
+        <span>Vector Freight</span><span>Halden Retail</span><span>Miro Labs</span><span>Aperture Foods</span><span>Kestrel Bank</span><span>Northgate Health</span>
+      </div></div>
+    </section>
+
+    <!-- ── PRODUCT / BENTO ───────────────────────────────────────────── -->
+    <section class="section" id="linearProduct">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">The system</p>
+          <h2 class="sec-title">Issue tracking built on the data, not beside it.</h2>
+          <p class="sec-lead">Every initiative, shipment, and revenue line is an issue or a panel. Northwind keeps them on the same ledger so a status change in logistics updates the forecast instantly.</p>
+        </div>
+        <div class="bento">
+          <article class="card card-lg reveal" data-reveal>
+            <div class="card-visual">
+              <div class="spark">
+                <svg viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
+                  <defs><linearGradient id="lgrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#5e6ad2" stop-opacity=".45"/><stop offset="1" stop-color="#5e6ad2" stop-opacity="0"/>
+                  </linearGradient></defs>
+                  <path class="spark-fill" d="M0 92 L40 80 L80 88 L120 60 L160 66 L200 40 L240 48 L280 24 L320 30 L320 120 L0 120 Z" fill="url(#lgrad)"/>
+                  <path class="spark-line" d="M0 92 L40 80 L80 88 L120 60 L160 66 L200 40 L240 48 L280 24 L320 30" fill="none"/>
+                </svg>
+              </div>
+              <div class="spark-foot"><span class="kpi-num" data-count="48.2" data-prefix="$" data-suffix="k" data-decimals="1">$0k</span><span class="kpi-lab">Revenue tracked weekly</span></div>
+            </div>
+            <div class="card-copy">
+              <h3>Live revenue ledger</h3>
+              <p>Dashboards recompute from the source issues — no stale exports, no reconciliation sprints.</p>
+            </div>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+            <h3>Throughput pulse</h3>
+            <p>Track cycle time per region and get warned before a lane slips its SLA.</p>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+            <h3>Automation rules</h3>
+            <p>Route, assign, and escalate from deterministic rules that ops can read and audit.</p>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+            <h3>Forecasts that explain</h3>
+            <p>Every projection shows its inputs, variance, and confidence — click any number to trace it.</p>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M12 12l8-4M12 12v9M12 12 4 8"/></svg></div>
+            <h3>Regions in one view</h3>
+            <p>Six regions, one schema. Compare like-for-like across currencies and time zones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURE ROW ───────────────────────────────────────────────── -->
+    <section class="section" id="linearFeatures">
+      <div class="wrap feature">
+        <div class="feature-copy reveal" data-reveal>
+          <p class="eyebrow">Built for operators</p>
+          <h2 class="sec-title">The dashboard is the backlog. The backlog is the dashboard.</h2>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>Keyboard-first.</b> Every action has a command — open, filter, and reassign without a mouse.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>Realtime.</b> Updates stream to every teammate the moment the source changes.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>API-first.</b> Everything in the UI is available over a typed GraphQL API.</span></li>
+          </ul>
+          <a class="tlink" href="#">Read the docs
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="feature-shot reveal" data-reveal aria-hidden="true">
+          <div class="mini-bar"><span class="mini-title">Panel · Throughput</span><span class="mini-tag">Live</span></div>
+          <div class="bars">
+            <span style="--h:52%"></span><span style="--h:68%"></span><span style="--h:44%"></span><span style="--h:80%"></span><span style="--h:61%"></span><span style="--h:92%"></span><span style="--h:70%"></span>
+          </div>
+          <div class="mini-rows">
+            <span>Logistics <b class="ok">+12.4%</b></span>
+            <span>Revenue <b class="ok">+8.1%</b></span>
+            <span>Support <b class="warn">-2.3%</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ───────────────────────────────────────────────────── -->
+    <section class="section" id="linearPricing">
+      <div class="wrap">
+        <div class="sec-head center reveal" data-reveal>
+          <p class="eyebrow">Pricing</p>
+          <h2 class="sec-title">Plans that scale with the floor.</h2>
+          <div class="tabs" role="tablist" aria-label="Billing cadence">
+            <button class="tab on" type="button" role="tab" aria-selected="true" data-cycle="monthly">Monthly</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-cycle="annual">Annual <em>-20%</em></button>
+          </div>
+        </div>
+        <div class="tiers">
+          <article class="tier reveal" data-reveal>
+            <h3>Starter</h3>
+            <p class="tier-note">For one team finding its rhythm.</p>
+            <p class="price"><span data-price="0">$0</span><small>/seat</small></p>
+            <ul><li>3 seats included</li><li>Unlimited issues</li><li>Core dashboards</li><li>Community support</li></ul>
+            <a class="btn btn-secondary btn-block" href="#">Start free</a>
+          </article>
+          <article class="tier tier-feat reveal" data-reveal>
+            <span class="tier-badge">Most popular</span>
+            <h3>Team</h3>
+            <p class="tier-note">For ops running multiple regions.</p>
+            <p class="price"><span data-price="12">$12</span><small>/seat</small></p>
+            <ul><li>Everything in Starter</li><li>Automation rules</li><li>Forecasts &amp; variance</li><li>SSO + SCIM</li></ul>
+            <a class="btn btn-primary btn-block" href="#">Get started</a>
+          </article>
+          <article class="tier reveal" data-reveal>
+            <h3>Enterprise</h3>
+            <p class="tier-note">For the whole operation, audited.</p>
+            <p class="price"><span data-price="28">$28</span><small>/seat</small></p>
+            <ul><li>Everything in Team</li><li>Audit log &amp; retention</li><li>Data residency</li><li>Dedicated CSM</li></ul>
+            <a class="btn btn-secondary btn-block" href="#">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIAL ───────────────────────────────────────────────── -->
+    <section class="section" id="linearCustomers">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">Customers</p>
+          <h2 class="sec-title">Operations teams stop reconciling.</h2>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“We cut weekly reporting from two days to twenty minutes. The numbers are just... already there.”</blockquote>
+            <figcaption><span class="av">MK</span><span><b>Mira Kessler</b>VP Operations, Vector Freight</span></figcaption>
+          </figure>
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“The forecast shows its work. For the first time finance and ops argue about inputs, not about whose spreadsheet is right.”</blockquote>
+            <figcaption><span class="av">DO</span><span><b>Daniel Okafor</b>Head of Planning, Kestrel Bank</span></figcaption>
+          </figure>
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“It feels like software built by people who actually run a floor.”</blockquote>
+            <figcaption><span class="av">LS</span><span><b>Lena Sørensen</b>Director, Aperture Foods</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CHANGELOG ─────────────────────────────────────────────────── -->
+    <section class="section" id="linearBuild">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">Changelog</p>
+          <h2 class="sec-title">Shipped this month.</h2>
+        </div>
+        <div class="changelog reveal" data-reveal>
+          <div class="cl-row"><span class="cl-v">v2.14</span><span class="cl-date">Oct 03</span><p>Forecast overlays on every dashboard, with variance bands.</p></div>
+          <div class="cl-row"><span class="cl-v">v2.13</span><span class="cl-date">Sep 19</span><p>Region-level SLA rules and escalation automations.</p></div>
+          <div class="cl-row"><span class="cl-v">v2.12</span><span class="cl-date">Sep 05</span><p>Typed GraphQL mutations for bulk issue operations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ───────────────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="wrap">
+        <div class="cta reveal" data-reveal>
+          <div>
+            <h2>Bring your operation onto one system.</h2>
+            <p>Set up Northwind for your team in an afternoon. Import from your current tracker and keep working.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-inverse btn-lg" href="#">Get started</a>
+            <a class="btn btn-ghost-light btn-lg" href="#linearPricing">Talk to sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <span class="brand-name">Northwind</span>
+        <p>Operations analytics for teams that run on the numbers.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div><h4>Product</h4><a href="#linearProduct">Overview</a><a href="#linearFeatures">Features</a><a href="#linearPricing">Pricing</a><a href="#linearBuild">Changelog</a></div>
+        <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Customers</a><a href="#">Contact</a></div>
+        <div><h4>Resources</h4><a href="#">Docs</a><a href="#">API</a><a href="#">Status</a><a href="#">Security</a></div>
+        <div><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">DPA</a></div>
+      </nav>
+    </div>
+    <div class="wrap foot-base">
+      <span>© 2026 Northwind Analytics, Inc.</span>
+      <span>Sample content — showcase only</span>
+    </div>
+  </footer>
+</div>

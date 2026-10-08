@@ -1,0 +1,276 @@
+/* ══ OLLAMA — own layout for showcase.html ══════════════════════════════════
+   A paper-white, documentation-first marketing page: centre-aligned 36px hero,
+   a single black pill CTA, an inline install snippet, one dark pricing tier, and
+   a hand-drawn llama mascot as the only ornament. Everything interactive is a
+   full pill; the few pricing cards are 12px radius on a 1px hairline. Ported from
+   the DESIGN.md token vocabulary. Container queries mirror the documented
+   breakpoints (768 / 640 / 430) so Tablet (820) and Phone (390) reflow. */
+
+.own-ollama {
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --ink: #000000;
+  --ink-deep: #090909;
+  --charcoal: #525252;
+  --body: #737373;
+  --mute: #a3a3a3;
+  --canvas: #ffffff;
+  --surface-soft: #fafafa;
+  --hairline: #e5e5e5;
+  --hairline-strong: #d4d4d4;
+  --on-dark: #ffffff;
+  --on-dark-mute: rgba(255, 255, 255, 0.7);
+  --surface-dark: #171717;
+  --focus-ring: rgba(59, 130, 246, 0.5);
+  --terminal-red: #ff5f56;
+  --terminal-yellow: #ffbd2e;
+  --terminal-green: #27c93f;
+
+  --display: 'SF Pro Rounded', 'Nunito', system-ui, -apple-system, sans-serif;
+  --ui: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-full: 9999px;
+  --gut: clamp(20px, 5cqi, 40px);
+  --section: 88px;
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--ui);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 13px;
+  overflow-x: clip;
+}
+.own-ollama *, .own-ollama *::before, .own-ollama *::after { box-sizing: border-box; }
+.own-ollama :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+.own-ollama .oll-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.own-ollama .oll-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.own-ollama a { color: inherit; }
+.own-ollama h1, .own-ollama h2, .own-ollama h3 { margin: 0; font-family: var(--display); font-weight: 500; letter-spacing: 0; }
+.own-ollama p { margin: 0; }
+
+/* ── shared bits ──────────────────────────────────────────────────────── */
+.own-ollama .oll-center { text-align: center; }
+.own-ollama .oll-llama { color: var(--ink); }
+.own-ollama .oll-llama-sm { width: 26px; height: 26px; }
+.own-ollama .oll-llama-xs { width: 34px; height: 34px; }
+.own-ollama .oll-llama-lg { width: clamp(80px, 9cqi, 112px); height: clamp(80px, 9cqi, 112px); }
+
+.own-ollama .oll-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 36px; padding: 0 20px; border-radius: var(--r-full);
+  font-family: var(--ui); font-size: 14px; font-weight: 500; line-height: 1;
+  border: 1px solid transparent; text-decoration: none; white-space: nowrap;
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.own-ollama .oll-btn-lg { height: 44px; padding: 0 26px; font-size: 15px; }
+.own-ollama .oll-btn-primary { background: var(--primary); color: var(--on-primary); }
+.own-ollama .oll-btn-primary:hover { background: var(--ink-deep); }
+.own-ollama .oll-btn-secondary { background: var(--canvas); color: var(--ink); border-color: var(--hairline-strong); }
+.own-ollama .oll-btn-secondary:hover { border-color: var(--ink); }
+.own-ollama .oll-btn-light { background: var(--canvas); color: var(--ink); }
+.own-ollama .oll-btn-light:hover { background: var(--surface-soft); }
+
+/* ── nav ───────────────────────────────────────────────────────────────── */
+.own-ollama .oll-nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  height: 56px; margin: 0 var(--gut); padding: 0;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--hairline);
+}
+.own-ollama .oll-brand {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 600; font-size: 17px;
+  text-decoration: none; color: var(--ink); white-space: nowrap;
+}
+.own-ollama .oll-nav-links { display: flex; align-items: center; gap: 20px; font-size: 14px; font-weight: 500; }
+.own-ollama .oll-nav-links a { color: var(--ink); text-decoration: none; }
+.own-ollama .oll-nav-links a:hover { text-decoration: underline; }
+.own-ollama .oll-search {
+  display: flex; align-items: center; gap: 8px; margin-left: auto;
+  width: min(360px, 34cqi); height: 36px; padding: 0 16px;
+  background: var(--surface-soft); border-radius: var(--r-full);
+}
+.own-ollama .oll-search svg { flex: none; width: 16px; height: 16px; fill: none; stroke: var(--body); stroke-width: 2; }
+.own-ollama .oll-search input { width: 100%; border: 0; background: none; color: var(--ink); font: inherit; font-size: 14px; }
+.own-ollama .oll-search input::placeholder { color: var(--mute); }
+.own-ollama .oll-search input:focus { outline: none; }
+.own-ollama .oll-search:focus-within { background: var(--canvas); box-shadow: 0 0 0 2px var(--focus-ring); }
+.own-ollama .oll-nav-right { display: flex; align-items: center; gap: 10px; }
+.own-ollama .oll-burger { display: none; place-items: center; width: 40px; height: 40px; border: 0; background: none; cursor: pointer; }
+.own-ollama .oll-burger svg { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.own-ollama .oll-drawer { display: none; }
+
+/* ── hero ──────────────────────────────────────────────────────────────── */
+.own-ollama .oll-hero {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  max-width: 720px; margin: 0 auto; padding: clamp(48px, 8cqi, 96px) var(--gut) var(--section);
+}
+.own-ollama .oll-hero h1 {
+  font-size: clamp(28px, 4cqi, 36px); font-weight: 500; line-height: 1.11;
+  max-width: 18ch; margin-top: 20px;
+}
+.own-ollama .oll-hero-sub { margin-top: 14px; font-size: 16px; color: var(--body); }
+.own-ollama .oll-install {
+  display: flex; align-items: center; gap: 12px; margin-top: 26px;
+  max-width: 100%; height: 48px; padding: 0 8px 0 20px;
+  background: var(--surface-soft); border-radius: var(--r-full);
+}
+.own-ollama .oll-install code {
+  font-family: var(--mono); font-size: 15px; color: var(--ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.own-ollama .oll-copy {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  height: 32px; padding: 0 14px; border: 0; border-radius: var(--r-full);
+  background: var(--canvas); color: var(--ink); font-size: 13px; font-weight: 500;
+  cursor: pointer; box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.own-ollama .oll-copy:hover { box-shadow: inset 0 0 0 1px var(--ink); }
+.own-ollama .oll-copy svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.own-ollama .oll-copy.done { color: #0a7d3c; }
+.own-ollama .oll-hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+
+/* ── automate split ───────────────────────────────────────────────────── */
+.own-ollama .oll-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4cqi, 56px);
+  align-items: center; max-width: 960px; margin: 0 auto; padding: 0 var(--gut);
+}
+.own-ollama .oll-split-copy h2 { font-size: clamp(20px, 2.6cqi, 24px); font-weight: 600; line-height: 1.33; }
+.own-ollama .oll-split-copy p { margin-top: 14px; font-size: 16px; color: var(--body); max-width: 46ch; }
+.own-ollama .oll-chips { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.own-ollama .oll-tag {
+  display: inline-block; padding: 6px 12px; border-radius: var(--r-full);
+  background: var(--surface-soft); font-family: var(--mono); font-size: 13px; color: var(--ink);
+}
+.own-ollama .oll-terminal {
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg);
+  padding: 16px; min-width: 0;
+}
+.own-ollama .oll-terminal-bar { display: flex; gap: 6px; margin-bottom: 14px; }
+.own-ollama .oll-dot { width: 12px; height: 12px; border-radius: var(--r-full); }
+.own-ollama .oll-dot-r { background: var(--terminal-red); }
+.own-ollama .oll-dot-y { background: var(--terminal-yellow); }
+.own-ollama .oll-dot-g { background: var(--terminal-green); }
+.own-ollama .oll-terminal-body {
+  margin: 0; font-family: var(--mono); font-size: 13.5px; line-height: 1.7;
+  color: var(--ink); white-space: pre-wrap; word-break: break-word; overflow-x: auto;
+}
+.own-ollama .oll-cmt { color: var(--mute); }
+.own-ollama .oll-ok { color: #0a7d3c; }
+.own-ollama .oll-key { color: var(--ink); }
+.own-ollama .oll-cursor {
+  display: inline-block; width: 8px; height: 15px; background: var(--ink);
+  vertical-align: -2px; animation: oll-blink 1.1s steps(1) infinite;
+}
+@keyframes oll-blink { 50% { opacity: 0; } }
+
+/* ── privacy ──────────────────────────────────────────────────────────── */
+.own-ollama .oll-privacy {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  max-width: 640px; margin: 0 auto; padding: var(--section) var(--gut) 0;
+}
+.own-ollama .oll-lock { width: 48px; height: 48px; color: var(--ink); }
+.own-ollama .oll-privacy h2 { font-size: clamp(22px, 3cqi, 30px); font-weight: 500; line-height: 1.2; margin-top: 18px; }
+.own-ollama .oll-privacy-copy { margin-top: 14px; font-size: 16px; color: var(--body); max-width: 52ch; }
+.own-ollama .oll-bullets { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 10px; text-align: left; }
+.own-ollama .oll-bullets li { display: flex; gap: 10px; font-size: 15px; color: var(--charcoal); }
+.own-ollama .oll-bullets li::before { content: "✓"; color: var(--ink); font-weight: 600; }
+
+/* ── pricing ──────────────────────────────────────────────────────────── */
+.own-ollama .oll-pricing { max-width: 960px; margin: 0 auto; padding: var(--section) var(--gut) 0; }
+.own-ollama .oll-pricing > h2 { font-size: clamp(24px, 3.2cqi, 30px); font-weight: 500; line-height: 1.2; }
+.own-ollama .oll-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.own-ollama .oll-tier {
+  display: flex; flex-direction: column; padding: 32px;
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg);
+}
+.own-ollama .oll-tier-dark { background: var(--surface-dark); border-color: var(--surface-dark); color: var(--on-dark); }
+.own-ollama .oll-tier h3 { margin-top: 14px; font-size: 20px; font-weight: 500; line-height: 1.4; }
+.own-ollama .oll-tier-note { margin-top: 6px; font-size: 14px; color: var(--body); }
+.own-ollama .oll-tier-dark .oll-tier-note { color: var(--on-dark-mute); }
+.own-ollama .oll-price { margin-top: 18px; font-family: var(--display); font-size: 30px; font-weight: 500; line-height: 1.2; }
+.own-ollama .oll-tier-cta { align-self: flex-start; margin-top: 20px; }
+.own-ollama .oll-tier-rule { width: 100%; border: 0; border-top: 1px solid var(--hairline); margin: 26px 0 20px; }
+.own-ollama .oll-tier-dark .oll-tier-rule { border-color: rgba(255, 255, 255, .16); }
+.own-ollama .oll-tier-eyebrow { font-size: 14px; font-weight: 500; color: var(--ink); }
+.own-ollama .oll-tier-dark .oll-tier-eyebrow { color: var(--on-dark); }
+.own-ollama .oll-features { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+.own-ollama .oll-features li { display: flex; gap: 10px; font-size: 14px; color: var(--charcoal); }
+.own-ollama .oll-tier-dark .oll-features li { color: var(--on-dark-mute); }
+.own-ollama .oll-features li > span { color: var(--ink); flex: none; }
+.own-ollama .oll-tier-dark .oll-features li > span { color: var(--on-dark); }
+
+/* ── faq ───────────────────────────────────────────────────────────────── */
+.own-ollama .oll-faq { max-width: 720px; margin: 0 auto; padding: var(--section) var(--gut) 0; }
+.own-ollama .oll-faq > h2 { font-size: clamp(24px, 3.2cqi, 30px); font-weight: 500; line-height: 1.2; }
+.own-ollama .oll-faq-list { margin-top: 34px; }
+.own-ollama .oll-faq-row { padding: 16px 0; border-bottom: 1px solid var(--hairline); }
+.own-ollama .oll-faq-row:first-child { border-top: 1px solid var(--hairline); }
+.own-ollama .oll-faq-row h3 { font-size: 18px; font-weight: 500; line-height: 1.56; font-family: var(--ui); }
+.own-ollama .oll-faq-row p { margin-top: 6px; font-size: 16px; color: var(--body); }
+
+/* ── footer ────────────────────────────────────────────────────────────── */
+.own-ollama .oll-foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 20px;
+  max-width: 960px; margin: 0 auto; padding: 32px var(--gut) 40px;
+  border-top: 1px solid var(--hairline);
+}
+.own-ollama .oll-foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
+.own-ollama .oll-foot-links a { font-size: 12px; color: var(--body); text-decoration: none; }
+.own-ollama .oll-foot-links a:hover { color: var(--ink); text-decoration: underline; }
+.own-ollama .oll-copyright { font-size: 12px; color: var(--body); }
+
+/* ── responsive (container queries mirror DESIGN.md breakpoints) ──────── */
+@container frame (max-width: 900px) {
+  .own-ollama .oll-split { grid-template-columns: 1fr; }
+  .own-ollama .oll-terminal { order: 2; }
+}
+@container frame (max-width: 768px) {
+  .own-ollama .oll-nav { height: 56px; }
+  .own-ollama .oll-nav-links { display: none; }
+  .own-ollama .oll-search { display: none; }
+  .own-ollama .oll-nav-signin { display: none; }
+  .own-ollama .oll-burger { display: grid; }
+  .own-ollama .oll-drawer {
+    display: grid; gap: 16px; width: 100%; order: 5; margin: 0;
+    padding: 16px 0 18px; border-top: 1px solid var(--hairline);
+    background: var(--canvas);
+  }
+  .own-ollama .oll-drawer[hidden] { display: none; }
+  .own-ollama .oll-drawer a { font-size: 15px; font-weight: 500; text-decoration: none; }
+  .own-ollama .oll-pricing > h2, .own-ollama .oll-faq > h2 { text-align: center; }
+  .own-ollama .oll-tiers { grid-template-columns: 1fr 1fr; }
+  .own-ollama .oll-tiers .oll-tier:last-child { grid-column: 1 / -1; }
+  .own-ollama { --section: 64px; }
+}
+@container frame (max-width: 640px) {
+  .own-ollama .oll-hero h1 { font-size: 28px; line-height: 1.15; }
+  .own-ollama .oll-install { height: auto; flex-wrap: wrap; padding: 12px 14px; border-radius: var(--r-lg); }
+  .own-ollama .oll-install code { white-space: normal; }
+  .own-ollama .oll-copy { margin-left: auto; }
+  .own-ollama .oll-tiers { grid-template-columns: 1fr; }
+  .own-ollama .oll-tiers .oll-tier:last-child { grid-column: auto; }
+}
+@container frame (max-width: 430px) {
+  .own-ollama { --section: 48px; }
+  .own-ollama .oll-hero-cta { width: 100%; }
+  .own-ollama .oll-hero-cta .oll-btn { flex: 1 1 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-ollama *, .own-ollama *::before, .own-ollama *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .own-ollama .oll-cursor { animation: none; }
+}

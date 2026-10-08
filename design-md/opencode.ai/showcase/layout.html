@@ -1,0 +1,205 @@
+<div class="own-opencode-ai">
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="oc-nav">
+    <a class="oc-brand" href="#oc-top" aria-label="Northwind home">
+      <pre class="oc-wordmark oc-wordmark-sm" aria-hidden="true">█ █  ███  ██   ███  █ █  █   █  ███  █ █  ██ 
+███  █ █  █ █   █   █ █  █   █   █   ███  █ █
+█ █  █ █  ██    █   ███  █ █ █   █   █ █  █ █
+█ █  █ █  █ █   █   █ █  ██ ██   █   █ █  █ █
+█ █  ███  █ █   █   █ █  █   █  ███  █ █  ██ </pre>
+      <span class="oc-sr">Northwind</span>
+    </a>
+    <nav class="oc-nav-links" aria-label="Primary">
+      <a href="#oc-stats">Regions <span class="oc-count">[42]</span></a>
+      <a href="#oc-docs">Docs</a>
+      <a href="#oc-faq">FAQ</a>
+      <a href="#oc-quotes">Customers</a>
+    </nav>
+    <div class="oc-nav-right">
+      <button class="oc-iconbtn" type="button" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      </button>
+      <a class="oc-btn oc-btn-primary" href="#oc-top">Download</a>
+      <button class="oc-burger" type="button" aria-label="Menu" data-oc-burger>
+        <span aria-hidden="true">[+]</span>
+      </button>
+    </div>
+    <nav class="oc-drawer" aria-label="Mobile" data-oc-drawer hidden>
+      <a href="#oc-stats">Regions [42]</a>
+      <a href="#oc-docs">Docs</a>
+      <a href="#oc-faq">FAQ</a>
+      <a href="#oc-quotes">Customers</a>
+    </nav>
+  </header>
+
+  <div class="oc-clip">
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <section class="oc-hero" id="oc-top" aria-labelledby="ocHeroH">
+    <p class="oc-badge-news">News</p>
+    <h1 id="ocHeroH">The open operations agent for your whole data stack</h1>
+    <p class="oc-hero-sub">Ask a question in plain text. Northwind loads the right connectors, runs the query, and writes the answer back to your board — locally or in the region you choose.</p>
+
+    <div class="oc-install">
+      <div class="oc-tabs" role="tablist" aria-label="Install method">
+        <button class="oc-tab on" type="button" role="tab" aria-selected="true" data-oc-tab="curl">curl</button>
+        <button class="oc-tab" type="button" role="tab" aria-selected="false" data-oc-tab="npm">npm</button>
+        <button class="oc-tab" type="button" role="tab" aria-selected="false" data-oc-tab="brew">brew</button>
+      </div>
+      <div class="oc-snippet" data-oc-snippet>
+        <code data-oc-cmd>curl -fsSL https://get.northwind.dev/install | bash</code>
+        <button class="oc-snippet-copy" type="button" aria-label="Copy command" data-oc-copy>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5h10"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="oc-hero-cta">
+      <a class="oc-btn oc-btn-primary oc-btn-lg" href="#oc-top">Read the docs &rarr;</a>
+      <a class="oc-btn oc-btn-secondary oc-btn-lg" href="#oc-stats">See the numbers</a>
+    </div>
+  </section>
+
+  <!-- ── DARK TUI MOCKUP ──────────────────────────────────────────────── -->
+  <section class="oc-tui" aria-label="Northwind terminal interface">
+    <div class="oc-tui-inner">
+      <pre class="oc-tui-mark" aria-hidden="true">
+ ██   ██  ██████  ██████  ████████ ██   ██ ██     ██ ██ ███    ██ ██████
+ ███  ██ ██    ██ ██   ██    ██    ██   ██ ██     ██ ██ ████   ██ ██   ██
+ ██ █ ██ ██    ██ ██████     ██    ███████ ██  █  ██ ██ ██ ██  ██ ██   ██
+ ██  ███ ██    ██ ██   ██    ██    ██   ██ ██ ███ ██ ██ ██  ██ ██ ██   ██
+ ██   ██  ██████  ██   ██    ██    ██   ██  ███ ███  ██ ██   ████ ██████</pre>
+      <div class="oc-prompt">
+        <span class="oc-pipe" aria-hidden="true">|</span>
+        <span class="oc-prompt-cmd">Build</span>
+        <span class="oc-prompt-model">[Northwind Local]</span>
+        <span class="oc-prompt-hint">pulling ops.daily_throughput …</span>
+        <span class="oc-caret" aria-hidden="true"></span>
+      </div>
+      <div class="oc-tui-keys" aria-hidden="true">
+        <span><b>tab</b> switch region</span>
+        <span><b>ctrl-p</b> commands</span>
+        <span><b>ctrl-r</b> refresh board</span>
+        <span><b>?</b> help</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ─────────────────────────────────────────────────────────── -->
+  <section class="oc-stats" id="oc-stats" aria-labelledby="ocStatsH">
+    <div class="oc-stats-head">
+      <h2 id="ocStatsH">Built for the data you already have</h2>
+      <p>Northwind reads warehouses, CSVs, and webhooks without copying them out. These charts refresh on the same sync schedule as your board.</p>
+    </div>
+    <div class="oc-charts">
+      <figure class="oc-chart">
+        <svg viewBox="0 0 260 90" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="0,74 22,68 44,70 66,55 88,58 110,42 132,46 154,30 176,34 198,20 220,26 242,12 260,16"/>
+          <g class="oc-dots"><circle cx="66" cy="55" r="2"/><circle cx="132" cy="46" r="2"/><circle cx="198" cy="20" r="2"/></g>
+        </svg>
+        <figcaption>Fig 1. Throughput up 12.4% QoQ</figcaption>
+      </figure>
+      <figure class="oc-chart">
+        <svg viewBox="0 0 260 90" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="0,60 22,62 44,52 66,56 88,44 110,48 132,36 154,40 176,28 198,32 220,22 242,24 260,14"/>
+          <g class="oc-dots"><circle cx="44" cy="52" r="2"/><circle cx="110" cy="48" r="2"/><circle cx="176" cy="28" r="2"/></g>
+        </svg>
+        <figcaption>Fig 2. 42 regions connected</figcaption>
+      </figure>
+      <figure class="oc-chart">
+        <svg viewBox="0 0 260 90" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="0,80 22,70 44,74 66,58 88,62 110,50 132,54 154,38 176,42 198,30 220,18 242,22 260,10"/>
+          <g class="oc-dots"><circle cx="66" cy="58" r="2"/><circle cx="132" cy="54" r="2"/><circle cx="220" cy="18" r="2"/></g>
+        </svg>
+        <figcaption>Fig 3. 6.5M events analyzed daily</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── DOCS FEATURES ─────────────────────────────────────────────────── -->
+  <section class="oc-docs" id="oc-docs" aria-labelledby="ocDocsH">
+    <div class="oc-docs-head">
+      <h2 id="ocDocsH">What is Northwind?</h2>
+      <hr class="oc-rule">
+    </div>
+    <ul class="oc-rows">
+      <li><b class="oc-mark">[+]</b><span class="oc-row-label">Warehouse connectors</span><span class="oc-row-desc">Reads Postgres, BigQuery, and S3 without a copy step.</span></li>
+      <li><b class="oc-mark">[+]</b><span class="oc-row-label">Plain-text queries</span><span class="oc-row-desc">Ask in English; the agent writes the SQL and shows its work.</span></li>
+      <li><b class="oc-mark">[+]</b><span class="oc-row-label">Local or cloud</span><span class="oc-row-desc">Run inference on your machine or a region you control.</span></li>
+      <li><b class="oc-mark">[+]</b><span class="oc-row-label">Scheduled boards</span><span class="oc-row-desc">Every answer can be pinned and refreshed on a cron.</span></li>
+      <li><b class="oc-mark">[x]</b><span class="oc-row-label">Audit trail</span><span class="oc-row-desc">Every query, export, and credential use is logged.</span></li>
+    </ul>
+  </section>
+
+  <!-- ── TESTIMONIALS ──────────────────────────────────────────────────── -->
+  <section class="oc-quotes" id="oc-quotes" aria-labelledby="ocQuotesH">
+    <div class="oc-docs-head">
+      <h2 id="ocQuotesH">Built for teams who ship</h2>
+      <hr class="oc-rule">
+    </div>
+    <div class="oc-quote-list">
+      <article class="oc-quote">
+        <span class="oc-avatar" aria-hidden="true">DO</span>
+        <div>
+          <p class="oc-quote-who">Dana Ocampo &middot; Operations Lead &middot; Northbeam</p>
+          <p class="oc-quote-text">"Our Monday board went from a two-hour scramble to a single question. Northwind wrote the query and I approved it."</p>
+        </div>
+      </article>
+      <article class="oc-quote">
+        <span class="oc-avatar" aria-hidden="true">RS</span>
+        <div>
+          <p class="oc-quote-who">Ravi Sandhu &middot; Head of Data &middot; Cobalt Freight</p>
+          <p class="oc-quote-text">"Running inference locally was the whole reason we could adopt it. Nothing sensitive leaves our network."</p>
+        </div>
+      </article>
+      <article class="oc-quote">
+        <span class="oc-avatar" aria-hidden="true">LM</span>
+        <div>
+          <p class="oc-quote-who">Lena Marchetti &middot; CFO &middot; Harbor Grid</p>
+          <p class="oc-quote-text">"I ask for the number, I get the number, and I can see exactly which tables it touched."</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────────────────── -->
+  <section class="oc-faq" id="oc-faq" aria-labelledby="ocFaqH">
+    <div class="oc-docs-head">
+      <h2 id="ocFaqH">FAQ</h2>
+      <hr class="oc-rule">
+    </div>
+    <div class="oc-faq-list">
+      <div class="oc-faq-row">
+        <h3><span class="oc-mark" aria-hidden="true">+</span> Does Northwind store my data?</h3>
+        <p>No. It reads your warehouse in place and keeps only the query and its result cache. The cloud tier is opt-in per region.</p>
+      </div>
+      <div class="oc-faq-row">
+        <h3><span class="oc-mark" aria-hidden="true">&minus;</span> Which warehouses are supported?</h3>
+        <p>Postgres, MySQL, BigQuery, Snowflake, Redshift, S3, and any source you can expose as a CSV drop or webhook.</p>
+      </div>
+      <div class="oc-faq-row">
+        <h3><span class="oc-mark" aria-hidden="true">+</span> Can I run it without internet?</h3>
+        <p>Yes. The installer bundles the local runtime; models download once and run offline after that.</p>
+      </div>
+      <div class="oc-faq-row">
+        <h3><span class="oc-mark" aria-hidden="true">+</span> How is pricing measured?</h3>
+        <p>Per connected region, per month. The Free tier covers one region and five dashboards; Pro and Max scale from there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────────── -->
+  <footer class="oc-foot">
+    <nav class="oc-foot-grid" aria-label="Footer">
+      <a href="#oc-top">Install</a>
+      <a href="#oc-docs">Docs</a>
+      <a href="#oc-stats">Changelog</a>
+      <a href="#oc-quotes">Customers</a>
+      <a href="#oc-faq">Support</a>
+    </nav>
+    <div class="oc-foot-bottom">
+      <span>&copy; 2026 Northwind</span>
+      <span class="oc-foot-utils"><a href="#">Brand</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; English &#9662;</span>
+    </div>
+  </footer>
+  </div><!-- /.oc-clip -->
+</div>

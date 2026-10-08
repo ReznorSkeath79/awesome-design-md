@@ -1,0 +1,240 @@
+/* ══ NORTHWIND — own layout in the Cal.com design language ═══════════════
+   Scoped under .own-cal. Tokens from design-md/cal/DESIGN.md. White canvas,
+   black primary CTAs, Cal Sans display (substituted by Inter 600 with negative
+   tracking), light-gray cards holding product UI fragments, pastel badge set,
+   and the single dark footer that closes the page. */
+
+.own-cal {
+  --canvas: #ffffff;
+  --surface-soft: #f8f9fa;
+  --surface-card: #f5f5f5;
+  --surface-strong: #e5e7eb;
+  --surface-dark: #101010;
+  --surface-dark-elevated: #1a1a1a;
+  --ink: #111111;
+  --body: #374151;
+  --muted: #6b7280;
+  --muted-soft: #898989;
+  --hairline: #e5e7eb;
+  --hairline-soft: #f3f4f6;
+  --on-primary: #ffffff;
+  --on-dark: #ffffff;
+  --on-dark-soft: #a1a1aa;
+  --brand-accent: #3b82f6;
+  --badge-orange: #fb923c;
+  --badge-pink: #ec4899;
+  --badge-violet: #8b5cf6;
+  --badge-emerald: #34d399;
+  --error: #ef4444;
+
+  --display: "Cal Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --gut: clamp(20px, 4.4cqi, 32px);
+  --section: clamp(56px, 8cqi, 96px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+.own-cal *,
+.own-cal *::before,
+.own-cal *::after { box-sizing: border-box; }
+.own-cal :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.own-cal a { color: inherit; text-decoration: none; }
+.own-cal .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
+.own-cal .center { text-align: center; }
+.own-cal .muted { color: var(--muted); }
+.own-cal .lead { color: var(--body); font-size: 17px; line-height: 1.55; }
+
+/* ── type ─────────────────────────────────────────────────────────────── */
+.own-cal .display-lg {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(30px, 4.2cqi, 48px); line-height: 1.1; letter-spacing: -.045em; margin: 0;
+}
+.own-cal .display-sm {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(24px, 2.6cqi, 28px); line-height: 1.2; letter-spacing: -.02em; margin: 0;
+}
+.own-cal .eyebrow {
+  font-family: var(--body-font); font-weight: 500; font-size: 13px;
+  color: var(--muted); margin: 0 0 12px;
+}
+
+/* ── buttons ─────────────────────────────────────────────────────────── */
+.own-cal .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 20px; border-radius: 8px;
+  font-family: var(--body-font); font-weight: 600; font-size: 14px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  transition: background-color .15s ease, border-color .15s ease, filter .15s ease;
+}
+.own-cal .btn-primary { background: var(--ink); color: var(--on-primary); }
+.own-cal .btn-primary:hover { background: #242424; }
+.own-cal .btn-secondary { background: var(--canvas); color: var(--ink); border-color: var(--hairline); }
+.own-cal .btn-secondary:hover { border-color: #d1d5db; }
+.own-cal .btn-lg { height: 44px; padding: 0 26px; font-size: 15px; }
+.own-cal .badge-pill {
+  display: inline-block; background: var(--surface-card); color: var(--ink);
+  font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: 9999px; margin-bottom: 20px;
+}
+.own-cal .badge-pill.dark { background: rgba(255,255,255,.12); color: var(--on-dark); }
+
+/* ── nav ──────────────────────────────────────────────────────────────── */
+.own-cal .nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 32px;
+  height: 64px; padding: 0 var(--gut);
+  background: rgba(255,255,255,.92); border-bottom: 1px solid var(--hairline-soft);
+  backdrop-filter: blur(8px);
+}
+.own-cal .brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -.03em; }
+.own-cal .brand-mark { width: 22px; height: 22px; border-radius: 9999px; background: var(--ink); position: relative; display: inline-block; }
+.own-cal .brand-mark::after { content: ""; position: absolute; inset: 6px; border-radius: 9999px; background: var(--canvas); }
+.own-cal .nav-links { display: flex; align-items: center; gap: 26px; }
+.own-cal .nav-links a { font-size: 14px; font-weight: 500; color: var(--body); transition: color .15s; }
+.own-cal .nav-links a:hover { color: var(--ink); }
+.own-cal .nav-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.own-cal .nav-signin { font-size: 14px; font-weight: 500; }
+.own-cal .nav-signin:hover { color: var(--muted); }
+
+/* ── hero ─────────────────────────────────────────────────────────────── */
+.own-cal .hero { padding: var(--section) 0; }
+.own-cal .hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(24px, 4cqi, 56px); align-items: center; }
+.own-cal .hero h1 {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(38px, 5.4cqi, 64px); line-height: 1.05; letter-spacing: -.03em; margin: 0 0 20px;
+}
+.own-cal .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0; }
+.own-cal .hero-tabs {
+  display: inline-flex; gap: 4px; padding: 6px; border-radius: 9999px; background: var(--surface-soft);
+}
+.own-cal .hero-tabs .tab {
+  background: none; border: 0; cursor: pointer; padding: 8px 16px; border-radius: 8px;
+  font-family: var(--body-font); font-size: 14px; font-weight: 500; color: var(--muted);
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.own-cal .hero-tabs .tab[aria-selected="true"] { background: var(--canvas); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+/* product mock in hero */
+.own-cal .hero-mock { background: var(--canvas); border: 1px solid var(--hairline); border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,.08); overflow: hidden; }
+.own-cal .mock-head { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--hairline-soft); }
+.own-cal .mock-head .dot { width: 10px; height: 10px; border-radius: 9999px; background: var(--surface-strong); }
+.own-cal .mock-title { margin-left: 10px; font-size: 12px; color: var(--muted); font-weight: 500; }
+.own-cal .mock-body { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 18px; }
+.own-cal .mock-cal-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+.own-cal .mock-cal-head b { font-size: 14px; }
+.own-cal .mock-cal-head span { font-size: 11px; color: var(--muted); }
+.own-cal .mock-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.own-cal .mock-grid i { display: block; aspect-ratio: 1; border-radius: 4px; background: var(--surface-card); }
+.own-cal .mock-grid i.on { background: var(--ink); }
+.own-cal .mock-slots { display: flex; flex-direction: column; gap: 8px; }
+.own-cal .slot-time { font-size: 11px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.own-cal .slot { display: block; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--hairline); font-size: 13px; font-weight: 600; text-align: center; }
+.own-cal .slot.on { background: var(--ink); color: var(--on-primary); border-color: var(--ink); }
+.own-cal .mock-confirm { width: 100%; margin-top: auto; height: 36px; }
+
+/* ── features ────────────────────────────────────────────────────────── */
+.own-cal .features { padding: var(--section) 0; }
+.own-cal .features .display-lg { max-width: 640px; margin: 0 auto; }
+.own-cal .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.own-cal .feature-card { background: var(--surface-card); border-radius: 12px; padding: 32px; }
+.own-cal .ficon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; background: var(--canvas); margin-bottom: 20px; }
+.own-cal .ficon svg { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-cal .feature-card h3 { font-family: var(--body-font); font-weight: 600; font-size: 18px; margin: 0 0 10px; }
+.own-cal .feature-card p { color: var(--body); margin: 0; }
+
+/* ── product ─────────────────────────────────────────────────────────── */
+.own-cal .product { padding: var(--section) 0; }
+.own-cal .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4cqi, 56px); align-items: center; }
+.own-cal .product-copy .display-lg { max-width: 12ch; margin-bottom: 18px; }
+.own-cal .check-list { list-style: none; margin: 22px 0; padding: 0; display: grid; gap: 12px; }
+.own-cal .check-list li { position: relative; padding-left: 28px; color: var(--body); }
+.own-cal .check-list li::before { content: ""; position: absolute; left: 0; top: 3px; width: 18px; height: 18px; border-radius: 9999px; background: var(--surface-card); border: 1px solid var(--hairline); }
+.own-cal .check-list li::after { content: ""; position: absolute; left: 5px; top: 8px; width: 8px; height: 5px; border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(-45deg); }
+.own-cal .mock-card { background: var(--canvas); border: 1px solid var(--hairline); border-radius: 12px; padding: 24px; }
+.own-cal .mock-rows { display: grid; gap: 12px; }
+.own-cal .mrow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--hairline-soft); }
+.own-cal .mrow:last-child { border-bottom: 0; padding-bottom: 0; }
+.own-cal .mrow b { font-variant-numeric: tabular-nums; font-size: 15px; }
+.own-cal .chip { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 9999px; color: var(--ink); }
+.own-cal .chip-emerald { background: color-mix(in srgb, var(--badge-emerald) 30%, #fff); }
+.own-cal .chip-orange { background: color-mix(in srgb, var(--badge-orange) 30%, #fff); }
+.own-cal .chip-violet { background: color-mix(in srgb, var(--badge-violet) 26%, #fff); }
+.own-cal .chip-pink { background: color-mix(in srgb, var(--badge-pink) 24%, #fff); }
+.own-cal .up { color: #059669; font-size: 13px; font-weight: 600; }
+.own-cal .down { color: var(--error); font-size: 13px; font-weight: 600; }
+.own-cal .mock-bars { display: flex; align-items: flex-end; gap: 8px; height: 90px; margin-top: 20px; }
+.own-cal .mock-bars span { flex: 1; height: var(--h); background: var(--surface-card); border-radius: 6px 6px 0 0; }
+
+/* ── testimonials ────────────────────────────────────────────────────── */
+.own-cal .testimonials { padding: var(--section) 0; background: var(--surface-soft); }
+.own-cal .quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+.own-cal .quote-card { background: var(--canvas); border-radius: 12px; padding: 24px; border: 1px solid var(--hairline-soft); }
+.own-cal .quote-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.own-cal .quote-top > div { display: flex; flex-direction: column; }
+.own-cal .quote-top b { font-size: 14px; }
+.own-cal .quote-top .muted { font-size: 12px; }
+.own-cal .avatar { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 9999px; font-size: 13px; font-weight: 500; color: var(--ink); flex: none; }
+.own-cal .av-1 { background: color-mix(in srgb, var(--badge-orange) 34%, #fff); }
+.own-cal .av-2 { background: color-mix(in srgb, var(--badge-violet) 28%, #fff); }
+.own-cal .av-3 { background: color-mix(in srgb, var(--badge-emerald) 32%, #fff); }
+.own-cal .stars { margin-left: auto; color: var(--badge-orange); font-size: 13px; letter-spacing: 1px; }
+.own-cal .quote-card p { color: var(--body); margin: 0; }
+
+/* ── pricing ─────────────────────────────────────────────────────────── */
+.own-cal .pricing { padding: var(--section) 0; }
+.own-cal .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 44px; }
+.own-cal .tier { background: var(--canvas); border: 1px solid var(--hairline); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; }
+.own-cal .tier-featured { background: var(--surface-dark); border-color: var(--surface-dark); color: var(--on-dark); }
+.own-cal .tier-name { font-family: var(--body-font); font-weight: 600; font-size: 22px; letter-spacing: -.02em; margin: 0 0 14px; }
+.own-cal .tier-price { font-family: var(--display); font-weight: 600; font-size: 28px; letter-spacing: -.02em; margin: 0 0 8px; }
+.own-cal .tier .check-list li { color: var(--body); }
+.own-cal .tier-featured .check-list li { color: var(--on-dark-soft); }
+.own-cal .tier-featured .check-list li::before { background: var(--surface-dark-elevated); border-color: var(--on-dark-soft); }
+.own-cal .tier-featured .check-list li::after { border-color: var(--on-dark); }
+.own-cal .tier .btn { margin-top: 22px; }
+.own-cal .tier-featured .btn-secondary { background: transparent; color: var(--on-dark); border-color: var(--on-dark-soft); }
+
+/* ── CTA band ────────────────────────────────────────────────────────── */
+.own-cal .cta-band { padding: clamp(40px, 6cqi, 72px) 0; }
+.own-cal .cta-inner { background: var(--surface-card); border-radius: 12px; padding: clamp(36px, 5cqi, 48px); text-align: center; display: grid; justify-items: center; gap: 12px; }
+.own-cal .cta-inner .btn { margin-top: 8px; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-cal .foot { background: var(--surface-dark); color: var(--on-dark-soft); padding: clamp(48px, 6cqi, 64px) 0 28px; }
+.own-cal .foot-grid { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 24px; padding-bottom: 40px; }
+.own-cal .foot-word { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: -.03em; color: var(--on-dark); margin: 0 0 10px; }
+.own-cal .foot-tag { font-size: 14px; color: var(--on-dark-soft); margin: 0; }
+.own-cal .foot-col { display: flex; flex-direction: column; gap: 10px; }
+.own-cal .foot-h { font-size: 13px; font-weight: 600; color: var(--on-dark); margin: 0 0 4px; }
+.own-cal .foot-col a { font-size: 14px; color: var(--on-dark-soft); }
+.own-cal .foot-col a:hover { color: var(--on-dark); }
+.own-cal .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-cal .hero-grid, .own-cal .product-grid { grid-template-columns: 1fr; }
+  .own-cal .feature-grid, .own-cal .quote-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-cal .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-cal .foot-grid { grid-template-columns: 1.4fr repeat(2, 1fr); }
+}
+@container frame (max-width: 760px) {
+  .own-cal .nav-links { display: none; }
+  .own-cal .nav-signin { display: none; }
+  .own-cal .feature-grid, .own-cal .quote-grid, .own-cal .pricing-grid, .own-cal .mock-body { grid-template-columns: 1fr; }
+  .own-cal .foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@container frame (max-width: 430px) {
+  .own-cal .foot-grid { grid-template-columns: 1fr; }
+  .own-cal .hero-tabs { width: 100%; justify-content: space-between; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-cal *, .own-cal *::before, .own-cal *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}

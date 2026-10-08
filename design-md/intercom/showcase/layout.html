@@ -1,0 +1,251 @@
+<div class="own-intercom">
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="nav" id="intercomNav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#intercomTop" aria-label="Northwind home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="3.2" height="12" rx="1.6"/><rect x="8.4" y="2.5" width="3.2" height="15" rx="1.6"/><rect x="13.8" y="4" width="3.2" height="12" rx="1.6"/><rect x="19.2" y="6.5" width="2.6" height="7" rx="1.3"/><circle cx="4.6" cy="19.5" r="1.7"/><circle cx="19.4" cy="19.5" r="1.7"/></svg>
+        </span>
+        <span class="brand-name">Northwind</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#intercomProduct">Product</a>
+        <a href="#intercomPlatform">Platform</a>
+        <a href="#intercomCustomers">Customers</a>
+        <a href="#intercomPricing">Pricing</a>
+        <a href="#intercomFaq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-tertiary" href="#">Log in</a>
+        <a class="btn btn-primary" href="#intercomPricing">Sign up</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-drawer" hidden data-nav-drawer>
+      <a href="#intercomProduct">Product</a>
+      <a href="#intercomPlatform">Platform</a>
+      <a href="#intercomCustomers">Customers</a>
+      <a href="#intercomPricing">Pricing</a>
+      <a href="#intercomFaq">FAQ</a>
+      <a class="drawer-cta" href="#intercomPricing">Sign up free</a>
+    </div>
+  </header>
+
+  <main id="intercomTop">
+    <!-- ── HERO ──────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-in">
+        <div class="hero-copy reveal" data-reveal>
+          <p class="eyebrow">Operations support, answered</p>
+          <h1 class="display-xl">The inbox that runs your operation.</h1>
+        <p class="hero-lead">Northwind brings every ticket, shipment, and revenue signal into one calm workspace — so your team resolves the day instead of chasing it.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#intercomPricing">Start free</a>
+            <a class="btn btn-secondary btn-lg" href="#intercomProduct">Book a demo</a>
+          </div>
+          <p class="hero-note">Free for 14 days · No card required</p>
+        </div>
+        <div class="hero-mock reveal" data-reveal aria-label="Northwind inbox preview">
+          <div class="mock">
+            <div class="mock-side" aria-hidden="true">
+              <span class="ms on">Inbox</span><span class="ms">Assigned</span><span class="ms">Reports</span><span class="ms">Settings</span>
+            </div>
+            <div class="mock-main">
+              <div class="mock-top">
+                <span class="mock-title">My inbox</span>
+                <span class="mock-badge">6 open</span>
+              </div>
+              <ul class="mock-list" id="intercomList"></ul>
+            </div>
+          </div>
+          <div class="mock-float" aria-hidden="true">
+            <span class="mf-dot"></span>Fin resolved 62% without a human
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LOGO STRIP ────────────────────────────────────────────────── -->
+    <section class="logos" aria-label="Customers">
+      <div class="wrap logos-in" id="intercomLogos"></div>
+    </section>
+
+    <!-- ── PRODUCT: SIGNATURE MOCKUP ─────────────────────────────────── -->
+    <section class="section" id="intercomProduct">
+      <div class="wrap">
+        <div class="sec-head center reveal" data-reveal>
+          <p class="eyebrow">The workspace</p>
+          <h2 class="display-lg">Everything your team needs, in the order it happens.</h2>
+          <p class="lead">Ticket queues, customer context, and the metrics behind them — one surface, no tab-switching.</p>
+        </div>
+        <div class="mock-wide reveal" data-reveal>
+          <div class="mw-bar">
+            <span class="mw-crumb">Support &nbsp;/&nbsp; <b>Today</b></span>
+            <span class="mw-seg"><span class="on">Queue</span><span>Analytics</span><span>Routing</span></span>
+          </div>
+          <div class="mw-grid">
+            <div class="mw-panel">
+              <div class="mw-panel-head"><span>Volume this week</span><span class="ok">+8.4%</span></div>
+              <div class="mw-chart">
+                <svg viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
+                  <g fill="#ff5600" opacity=".16">
+                    <rect x="8" y="66" width="28" height="54"/><rect x="46" y="50" width="28" height="70"/><rect x="84" y="72" width="28" height="48"/><rect x="122" y="38" width="28" height="82"/><rect x="160" y="58" width="28" height="62"/><rect x="198" y="28" width="28" height="92"/><rect x="236" y="46" width="28" height="74"/><rect x="274" y="20" width="28" height="100"/>
+                  </g>
+                  <polyline points="22,58 60,42 98,64 136,30 174,50 212,20 250,38 288,12" fill="none" stroke="#ff5600" stroke-width="2.5"/>
+                </svg>
+              </div>
+            </div>
+            <div class="mw-panel">
+              <div class="mw-panel-head"><span>Resolution by channel</span></div>
+              <ul class="mw-rows" id="intercomChannels"></ul>
+            </div>
+            <div class="mw-panel">
+              <div class="mw-panel-head"><span>CSAT</span><span class="ok">4.8 / 5</span></div>
+              <div class="mw-big" data-count="4820" data-suffix="">0</div>
+              <p class="mw-sub">responses this month</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURE CARDS ─────────────────────────────────────────────── -->
+    <section class="section tight" id="intercomPlatform">
+      <div class="wrap">
+        <div class="grid3">
+          <article class="fcard reveal" data-reveal>
+            <span class="fcard-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+            <h3>A shared inbox</h3>
+            <p>Route every conversation to the right owner with rules your team can read and change.</p>
+          </article>
+          <article class="fcard reveal" data-reveal>
+            <span class="fcard-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20V8M9 20V4M15 20v-9M21 20v-13"/></svg></span>
+            <h3>Operational analytics</h3>
+            <p>Throughput, backlog, and SLA in one board — trace any spike to the tickets behind it.</p>
+          </article>
+          <article class="fcard reveal" data-reveal>
+            <span class="fcard-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></span>
+            <h3>Fin, your AI agent</h3>
+            <p>Deflect the repeat questions, escalate the hard ones, and hand off with full context.</p>
+            <span class="fin-badge">Fin</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ──────────────────────────────────────────────── -->
+    <section class="section" id="intercomCustomers">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">Customers</p>
+          <h2 class="display-lg">Teams that stopped dreading Monday.</h2>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“Our first-response time halved in three weeks. Fin takes the repetitive 60% and the team handles what matters.”</blockquote>
+            <figcaption><span class="av">MK</span><span><b>Mira Kessler</b>Head of Support, Vector Freight</span></figcaption>
+          </figure>
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“The reporting finally matches reality. Finance and support look at the same number now.”</blockquote>
+            <figcaption><span class="av">DO</span><span><b>Daniel Okafor</b>Ops Director, Kestrel Bank</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BLACK QUOTE STRIP ─────────────────────────────────────────── -->
+    <section class="blackstrip">
+      <div class="wrap">
+        <blockquote>“Northwind is the first tool our floor actually likes using.”</blockquote>
+        <p>Lena Sørensen — Director of Operations, Aperture Foods</p>
+      </div>
+    </section>
+
+    <!-- ── PRICING ───────────────────────────────────────────────────── -->
+    <section class="section" id="intercomPricing">
+      <div class="wrap">
+        <div class="sec-head center reveal" data-reveal>
+          <p class="eyebrow">Pricing</p>
+          <h2 class="display-lg">Simple plans, no surprises.</h2>
+          <div class="tabs" role="tablist" aria-label="Billing cadence">
+            <button class="tab on" type="button" role="tab" aria-selected="true" data-cycle="monthly">Monthly</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-cycle="annual">Annual <em>save 17%</em></button>
+          </div>
+        </div>
+        <div class="grid3 tiers">
+          <article class="tier reveal" data-reveal>
+            <h3>Essential</h3>
+            <p class="tier-note">For a small team getting organised.</p>
+            <p class="price"><span data-price="29">$29</span><small>/seat/mo</small></p>
+            <ul><li>Shared inbox</li><li>Basic reporting</li><li>Email support</li></ul>
+            <a class="btn btn-secondary btn-block" href="#">Start free</a>
+          </article>
+          <article class="tier tier-feat reveal" data-reveal>
+            <span class="tier-badge">Most popular</span>
+            <h3>Advanced</h3>
+            <p class="tier-note">For operations running every day.</p>
+            <p class="price"><span data-price="85">$85</span><small>/seat/mo</small></p>
+            <ul><li>Everything in Essential</li><li>Automation rules</li><li>Fin AI agent</li><li>SSO</li></ul>
+            <a class="btn btn-fin btn-block" href="#">Get Advanced</a>
+          </article>
+          <article class="tier reveal" data-reveal>
+            <h3>Expert</h3>
+            <p class="tier-note">For enterprise operations at scale.</p>
+            <p class="price"><span data-price="132">$132</span><small>/seat/mo</small></p>
+            <ul><li>Everything in Advanced</li><li>Audit log &amp; retention</li><li>Data residency</li><li>Dedicated CSM</li></ul>
+            <a class="btn btn-secondary btn-block" href="#">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ───────────────────────────────────────────────────────── -->
+    <section class="section tight" id="intercomFaq">
+      <div class="wrap wrap-narrow">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">FAQ</p>
+          <h2 class="display-lg">Questions, answered.</h2>
+        </div>
+        <div class="faq" id="intercomFaqList"></div>
+      </div>
+    </section>
+
+    <!-- ── CTA BANNER ────────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="wrap">
+        <div class="cta reveal" data-reveal>
+          <div>
+            <h2>Bring the whole operation into one inbox.</h2>
+            <p>Set up Northwind for your team in an afternoon. Import your queues and keep working.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-lg" href="#">Sign up free</a>
+            <a class="btn btn-secondary btn-lg" href="#intercomProduct">Book a demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <span class="brand-name">Northwind</span>
+        <p>Operations support and analytics, in one calm workspace.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div><h4>Product</h4><a href="#intercomProduct">Overview</a><a href="#intercomPlatform">Platform</a><a href="#intercomPricing">Pricing</a></div>
+        <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#intercomCustomers">Customers</a></div>
+        <div><h4>Resources</h4><a href="#">Docs</a><a href="#">API</a><a href="#">Status</a></div>
+        <div><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div>
+      </nav>
+    </div>
+    <div class="wrap foot-base">
+      <span>© 2026 Northwind Analytics, Inc.</span>
+      <span>Sample content — showcase only</span>
+    </div>
+  </footer>
+</div>

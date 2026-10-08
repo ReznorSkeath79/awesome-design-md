@@ -1,0 +1,218 @@
+/* ══ NORTHWIND — own layout in the ClickHouse design language ════════════
+   Scoped under .own-clickhouse. Tokens from design-md/clickhouse/DESIGN.md.
+   Near-pure black canvas with electric-yellow brand voltage, white Inter at
+   weight 700 for display (tight negative tracking), dark surface cards barely
+   lighter than canvas, SQL code windows, and yellow stat callouts. */
+
+.own-clickhouse {
+  --canvas: #0a0a0a;
+  --surface-soft: #121212;
+  --surface-card: #1a1a1a;
+  --surface-elevated: #242424;
+  --hairline: #2a2a2a;
+  --hairline-strong: #3a3a3a;
+  --ink: #ffffff;
+  --body: #cccccc;
+  --body-strong: #e6e6e6;
+  --muted: #888888;
+  --muted-soft: #5a5a5a;
+  --primary: #faff69;
+  --primary-active: #e6eb52;
+  --on-primary: #0a0a0a;
+  --on-dark: #ffffff;
+  --accent-emerald: #22c55e;
+  --accent-rose: #ef4444;
+  --accent-blue: #3b82f6;
+
+  --display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --body-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --gut: clamp(20px, 4.4cqi, 32px);
+  --section: clamp(56px, 8cqi, 96px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+.own-clickhouse *,
+.own-clickhouse *::before,
+.own-clickhouse *::after { box-sizing: border-box; }
+.own-clickhouse :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+.own-clickhouse a { color: inherit; text-decoration: none; }
+.own-clickhouse .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--gut); }
+.own-clickhouse .center { text-align: center; }
+.own-clickhouse .lead { color: var(--body); font-size: 17px; line-height: 1.55; }
+
+/* ── type ─────────────────────────────────────────────────────────────── */
+.own-clickhouse .display-lg {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(32px, 4.6cqi, 56px); line-height: 1.1; letter-spacing: -.035em; margin: 0;
+}
+.own-clickhouse .display-md {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(24px, 3cqi, 40px); line-height: 1.15; letter-spacing: -.025em; margin: 0;
+}
+.own-clickhouse .caption-upper {
+  font-family: var(--body-font); font-weight: 600; font-size: 12px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 14px;
+}
+
+/* ── buttons / links ─────────────────────────────────────────────────── */
+.own-clickhouse .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 20px; border-radius: 8px;
+  font-family: var(--body-font); font-weight: 600; font-size: 14px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease, filter .15s ease;
+}
+.own-clickhouse .btn-primary { background: var(--primary); color: var(--on-primary); }
+.own-clickhouse .btn-primary:hover { background: var(--primary-active); }
+.own-clickhouse .btn-secondary { background: var(--surface-card); color: var(--on-dark); }
+.own-clickhouse .btn-secondary:hover { background: var(--surface-elevated); }
+.own-clickhouse .btn-on-yellow { background: var(--canvas); color: var(--ink); }
+.own-clickhouse .btn-lg { height: 44px; padding: 0 26px; font-size: 15px; }
+.own-clickhouse .tlink { color: var(--primary); font-weight: 600; font-size: 14px; }
+.own-clickhouse .tlink:hover { text-decoration: underline; }
+.own-clickhouse .badge-yellow {
+  display: inline-block; background: var(--primary); color: var(--on-primary);
+  font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 9999px; margin-bottom: 20px;
+}
+
+/* ── nav ──────────────────────────────────────────────────────────────── */
+.own-clickhouse .nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 32px;
+  height: 64px; padding: 0 var(--gut);
+  background: rgba(10,10,10,.9); border-bottom: 1px solid var(--hairline);
+  backdrop-filter: blur(8px);
+}
+.own-clickhouse .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -.02em; }
+.own-clickhouse .brand-mark { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; background: var(--primary); }
+.own-clickhouse .brand-mark svg { width: 18px; height: 18px; fill: var(--on-primary); }
+.own-clickhouse .nav-links { display: flex; align-items: center; gap: 26px; }
+.own-clickhouse .nav-links a { font-size: 14px; font-weight: 500; color: var(--body); }
+.own-clickhouse .nav-links a:hover { color: var(--on-dark); }
+.own-clickhouse .nav-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.own-clickhouse .nav-signin { font-size: 14px; font-weight: 500; color: var(--body); }
+
+/* ── hero ─────────────────────────────────────────────────────────────── */
+.own-clickhouse .hero { padding: var(--section) 0; }
+.own-clickhouse .hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(24px, 4cqi, 56px); align-items: center; }
+.own-clickhouse .hero h1 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(38px, 5.6cqi, 72px); line-height: 1.05; letter-spacing: -.04em; margin: 0 0 22px;
+}
+.own-clickhouse .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.own-clickhouse .hero-stats { display: flex; gap: clamp(24px, 4cqi, 48px); margin-top: 40px; }
+.own-clickhouse .hstat b { display: block; font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.4cqi, 56px); line-height: 1; letter-spacing: -.03em; color: var(--primary); }
+.own-clickhouse .hstat span { display: block; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+
+/* ── code window ─────────────────────────────────────────────────────── */
+.own-clickhouse .code-window { background: var(--surface-card); border: 1px solid var(--hairline); border-radius: 12px; padding: 24px; overflow: hidden; }
+.own-clickhouse .code-bar { display: flex; align-items: center; gap: 7px; margin-bottom: 18px; }
+.own-clickhouse .cdot { width: 11px; height: 11px; border-radius: 9999px; }
+.own-clickhouse .cdot.r { background: var(--accent-rose); } .own-clickhouse .cdot.y { background: var(--primary); } .own-clickhouse .cdot.g { background: var(--accent-emerald); }
+.own-clickhouse .code-file { margin-left: 12px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.own-clickhouse .code-body { margin: 0; font-family: var(--mono); font-size: 14px; line-height: 1.55; color: var(--on-dark); white-space: pre; overflow-x: auto; }
+.own-clickhouse .code-body .ln { display: inline-block; width: 22px; color: var(--muted-soft); user-select: none; }
+.own-clickhouse .code-body .kw { color: var(--primary); } .own-clickhouse .code-body .fn { color: #7db3ff; } .own-clickhouse .code-body .st { color: #e8b94a; }
+.own-clickhouse .code-status { display: flex; align-items: center; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--surface-elevated); font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.own-clickhouse .ok-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--accent-emerald); }
+
+/* ── challenges ──────────────────────────────────────────────────────── */
+.own-clickhouse .challenges { padding: var(--section) 0; }
+.own-clickhouse .challenges .display-lg { max-width: 700px; margin-bottom: 44px; }
+.own-clickhouse .challenge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-clickhouse .challenge { background: var(--surface-card); border-radius: 12px; padding: 32px; }
+.own-clickhouse .cicon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: var(--primary); margin-bottom: 20px; }
+.own-clickhouse .cicon svg { width: 22px; height: 22px; fill: none; stroke: var(--on-primary); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-clickhouse .challenge h3 { font-family: var(--body-font); font-weight: 600; font-size: 18px; margin: 0 0 10px; }
+.own-clickhouse .challenge p { color: var(--body); margin: 0; }
+
+/* ── use cases ───────────────────────────────────────────────────────── */
+.own-clickhouse .usecases { padding: var(--section) 0; }
+.own-clickhouse .use-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4cqi, 56px); align-items: center; }
+.own-clickhouse .use-copy .display-lg { max-width: 13ch; margin-bottom: 18px; }
+.own-clickhouse .check-list { list-style: none; margin: 22px 0; padding: 0; display: grid; gap: 12px; }
+.own-clickhouse .check-list li { position: relative; padding-left: 28px; color: var(--body); }
+.own-clickhouse .check-list li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 9px; border-left: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: rotate(-45deg); }
+.own-clickhouse .mock-card { background: var(--surface-card); border-radius: 12px; padding: 24px; }
+.own-clickhouse .mock-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; font-size: 13px; color: var(--muted); font-weight: 500; }
+.own-clickhouse .mock-head b { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: -.03em; color: var(--primary); }
+.own-clickhouse .bars { display: flex; align-items: flex-end; gap: 10px; height: 110px; }
+.own-clickhouse .bars span { flex: 1; height: var(--h); background: var(--surface-elevated); border-radius: 4px 4px 0 0; }
+.own-clickhouse .bars span:nth-child(4), .own-clickhouse .bars span:nth-child(8) { background: var(--primary); }
+.own-clickhouse .mock-foot { display: flex; justify-content: space-between; margin-top: 14px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* ── customers ───────────────────────────────────────────────────────── */
+.own-clickhouse .customers { padding: calc(var(--section) / 1.6) 0; }
+.own-clickhouse .logo-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(28px, 6cqi, 72px); margin-top: 24px; }
+.own-clickhouse .logo-strip span { font-family: var(--display); font-weight: 700; font-size: clamp(18px, 2cqi, 24px); letter-spacing: -.02em; color: var(--muted); transition: color .2s ease; }
+.own-clickhouse .logo-strip span:hover { color: var(--body-strong); }
+
+/* ── events ──────────────────────────────────────────────────────────── */
+.own-clickhouse .events { padding: var(--section) 0; }
+.own-clickhouse .head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+.own-clickhouse .event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-clickhouse .event-card { background: var(--surface-card); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 6px; }
+.own-clickhouse .event-title { font-family: var(--body-font); font-weight: 600; font-size: 18px; line-height: 1.3; margin: 4px 0 0; }
+.own-clickhouse .event-meta { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.own-clickhouse .event-card .tlink { margin-top: auto; }
+
+/* ── pricing ─────────────────────────────────────────────────────────── */
+.own-clickhouse .pricing { padding: var(--section) 0; }
+.own-clickhouse .pricing .display-lg { margin-bottom: 44px; }
+.own-clickhouse .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-clickhouse .tier { background: var(--surface-card); border: 1px solid var(--hairline); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; }
+.own-clickhouse .tier-featured { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.own-clickhouse .tier-featured .badge-yellow { background: var(--on-primary); color: var(--primary); }
+.own-clickhouse .tier-name { font-family: var(--body-font); font-weight: 700; font-size: 24px; letter-spacing: -.02em; margin: 0 0 14px; }
+.own-clickhouse .tier-price { font-family: var(--display); font-weight: 700; font-size: 40px; letter-spacing: -.03em; margin: 0 0 20px; }
+.own-clickhouse .tier-featured .check-list li { color: var(--on-primary); }
+.own-clickhouse .tier-featured .check-list li::before { border-color: var(--on-primary); }
+.own-clickhouse .tier .btn { margin-top: auto; }
+.own-clickhouse .tier .check-list { margin-bottom: 24px; }
+
+/* ── CTA band ────────────────────────────────────────────────────────── */
+.own-clickhouse .cta-band { padding: 0 0 var(--section); }
+.own-clickhouse .cta-inner { background: var(--primary); color: var(--on-primary); border-radius: 12px; padding: clamp(40px, 5.5cqi, 64px); text-align: center; display: grid; justify-items: center; gap: 14px; }
+.own-clickhouse .cta-inner p { margin: 0; color: rgba(10,10,10,.78); }
+.own-clickhouse .cta-inner .btn { margin-top: 8px; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-clickhouse .foot { padding: clamp(48px, 6cqi, 64px) 0 28px; border-top: 1px solid var(--hairline); }
+.own-clickhouse .foot-grid { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 24px; padding-bottom: 40px; }
+.own-clickhouse .foot-word { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -.03em; margin: 0 0 10px; }
+.own-clickhouse .foot-tag { font-size: 14px; color: var(--muted); margin: 0; }
+.own-clickhouse .foot-col { display: flex; flex-direction: column; gap: 10px; }
+.own-clickhouse .foot-h { font-size: 13px; font-weight: 600; color: var(--on-dark); margin: 0 0 4px; }
+.own-clickhouse .foot-col a { font-size: 14px; color: var(--muted); }
+.own-clickhouse .foot-col a:hover { color: var(--primary); }
+.own-clickhouse .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--muted); }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-clickhouse .hero-grid, .own-clickhouse .use-grid { grid-template-columns: 1fr; }
+  .own-clickhouse .challenge-grid, .own-clickhouse .event-grid, .own-clickhouse .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-clickhouse .foot-grid { grid-template-columns: 1.4fr repeat(2, 1fr); }
+}
+@container frame (max-width: 760px) {
+  .own-clickhouse .nav-links, .own-clickhouse .nav-signin { display: none; }
+  .own-clickhouse .challenge-grid, .own-clickhouse .event-grid, .own-clickhouse .pricing-grid { grid-template-columns: 1fr; }
+  .own-clickhouse .hero-stats { flex-wrap: wrap; gap: 20px 32px; }
+  .own-clickhouse .foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@container frame (max-width: 430px) {
+  .own-clickhouse .foot-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-clickhouse *, .own-clickhouse *::before, .own-clickhouse *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}

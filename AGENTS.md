@@ -20,17 +20,26 @@ no CI pipeline. The repository is almost entirely Markdown plus one Python build
   - `README.md` — a short stub pointing readers to `https://getdesign.md/<slug>/design-md`.
     A few folders (`ai-navigator`, `aurora`, `autoalchemy`, `palawan`, `slack`) have only
     `DESIGN.md`; `futura/` additionally has a `mockup.html`.
-  - `showcase/` — optional; a design may ship `layout.html` (+ optional `layout.css`, `layout.js`)
-    to show its **real** layout in `showcase.html` instead of the generic Northwind site. When
-    `showcase/layout.html` exists the design has an "own layout": `build_showcase.py` inlines the
-    markup as `<template id="own-<folder>">…</template>`, inlines `layout.css`/`layout.js`, and
-    rewrites every `./assets/` reference to `design-md/<folder>/showcase/assets/` (images stay
-    files). The theme JSON gets `ownLayout: true`; the toolbar shows an "Own layout | Generic"
-    switch (shown only then, default Own, remembered in localStorage); when Own is active the
-    generic `#site` is hidden and a clone is mounted into `#own` (which mirrors the frame with
-    `container-type: inline-size; container-name: frame`), calling
-    `window.OWN_LAYOUTS['<folder>'].init(root)` and using its returned cleanup function on exit.
-    Only `the-drop` ships one today.
+  - `showcase/` — optional; a design may ship `layout.html` (+ optional `layout.css`, `layout.js`,
+    `assets/`) to show its **real** layout in `showcase.html` instead of the generic Northwind site.
+    When `showcase/layout.html` exists the design has an "own layout": `build_showcase.py` generates
+    a committed `showcase/bundle.js` next to it (regenerate with the build; same build writes
+    `showcase.html`). The bundle seeds `window.OWN_BUNDLES['<folder>'] = {html, css}` then appends
+    `layout.js` verbatim (which registers `window.OWN_LAYOUTS['<folder>']`); every `./assets/`
+    reference is rewritten to `design-md/<folder>/showcase/assets/` (images stay files). Output is
+    deterministic, so re-running with unchanged layouts produces byte-identical bundles.
+    `showcase.html` inlines **no** layout markup/style/script — the theme JSON carries only
+    `ownLayout: true`. The toolbar shows an "Own layout | Generic" switch (shown only then, default
+    Own, remembered in localStorage); when Own is active the generic `#site` is hidden, a
+    "Loading layout…" state shows in `#own` while `design-md/<folder>/showcase/bundle.js` is loaded
+    on demand (`<script src>`, works on `file://`), its CSS is injected once as
+    `<style data-own="<folder>">`, its html is mounted into `#own` (which mirrors the frame with
+    `container-type: inline-size; container-name: frame`), then
+    `window.OWN_LAYOUTS['<folder>'].init(root)` runs and its returned cleanup is used on exit. If the
+    script fails to load it falls back to the Generic view with a one-line notice in the info strip;
+    rapid switching never mounts a stale layout. `scripts/check_own_layout.py <folder>` /
+    `--all` validates layouts (scoping, units, registration, size budget); it is advisory — the build
+    never depends on it and simply warns for a folder missing `layout.js`.
 - `scripts/build_catalog.py` — the primary build script. Generates `catalog.html`.
 - `catalog.html` — generated, single-file visual index of all entries (committed to git).
   Regenerate it after adding or changing any `DESIGN.md`; do not hand-edit it.

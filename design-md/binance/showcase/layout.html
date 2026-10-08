@@ -1,0 +1,129 @@
+<div class="own-binance">
+  <header class="bn-nav">
+    <a class="bn-brand" href="#bn-top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 5 5.5 8.5 9 12 5.5 15.5 9 19 5.5 12 2Z"/><path d="M8.5 12 12 8.5 15.5 12 12 15.5 8.5 12Z"/><path d="M12 18.5 5 22l3.5-3.5L12 22l3.5-3.5L19 22l-7-3.5Z"/></svg>
+      <span>Northwind</span>
+    </a>
+    <nav class="bn-menu" aria-label="Primary">
+      <a href="#bn-trust">Overview</a>
+      <a href="#bn-markets">Markets</a>
+      <a href="#bn-table">Regions</a>
+      <a href="#bn-safe">Guardrails</a>
+      <a href="#bn-steps">Pricing</a>
+    </nav>
+    <div class="bn-nav-right">
+      <button class="bn-icon" type="button" aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h16M12 4c2.5 3 2.5 13 0 16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <a class="bn-navlink" href="#">Log in</a>
+      <a class="bn-btn bn-btn-primary" href="#">Start free trial</a>
+    </div>
+  </header>
+
+  <main id="bn-top">
+    <section class="bn-hero" aria-labelledby="bn-h1">
+      <div class="bn-hero-copy">
+        <h1 id="bn-h1" class="bn-h1">316,258 operations rows resolved daily</h1>
+        <p class="bn-hero-sub">One governed model for every region, line, and shift. Throughput, yield, and cost settle against the same source — read at a glance, acted on in the same hour.</p>
+        <form class="bn-search" role="search" onsubmit="return false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search regions and boards" aria-label="Search regions and boards" autocomplete="off">
+        </form>
+      </div>
+      <aside class="bn-markets" aria-label="Markets snapshot">
+        <div class="bn-markets-tabs" id="bnMarketTabs" role="tablist" aria-label="Market filter">
+          <button class="bn-mtab on" type="button" role="tab" data-m="popular" aria-selected="true">Popular</button>
+          <button class="bn-mtab" type="button" role="tab" data-m="gainers" aria-selected="false">Top gainers</button>
+          <button class="bn-mtab" type="button" role="tab" data-m="new" aria-selected="false">New listing</button>
+        </div>
+        <div class="bn-markets-head"><span>Region</span><span>Throughput</span><span>24h</span><span></span></div>
+        <div class="bn-markets-body" id="bnMarkets"></div>
+      </aside>
+    </section>
+
+    <section class="bn-trust" aria-label="Trust badges">
+      <div class="bn-badge"><b>No.1</b><span>Ops model uptime</span></div>
+      <div class="bn-badge"><b>No.1</b><span>Region coverage</span></div>
+      <div class="bn-badge"><b>24/7</b><span>Ops desk support</span></div>
+      <div class="bn-badge"><b>99.98%</b><span>Refresh reliability</span></div>
+    </section>
+
+    <section id="bn-markets" class="bn-band" aria-labelledby="bn-band-h">
+      <div class="bn-band-head">
+        <p class="bn-eyebrow">Live now</p>
+        <h2 id="bn-band-h" class="bn-h2">Every region's real number, ticking</h2>
+      </div>
+      <div class="bn-cards">
+        <article class="bn-card bn-card-2x">
+          <p class="bn-card-label">Network throughput</p>
+          <p class="bn-num" id="bnThroughput">412,908</p>
+          <p class="bn-up">▲ 2.1% vs yesterday</p>
+          <div class="bn-bars" id="bnBars" aria-hidden="true"></div>
+        </article>
+        <article class="bn-card">
+          <p class="bn-card-label">Line yield</p>
+          <p class="bn-num bn-num-sm">94.6%</p>
+          <div class="bn-gauge"><span style="width:94.6%"></span></div>
+        </article>
+        <article class="bn-card">
+          <p class="bn-card-label">Cost / unit</p>
+          <p class="bn-num bn-num-sm">$2.41</p>
+          <p class="bn-down">▼ 8.3% this quarter</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="bn-table" class="bn-band" aria-labelledby="bn-table-h">
+      <div class="bn-band-head">
+        <p class="bn-eyebrow">Markets</p>
+        <h2 id="bn-table-h" class="bn-h2">Regional performance table</h2>
+      </div>
+      <div class="bn-table" role="table" aria-label="Regional performance">
+        <div class="bn-tr bn-th" role="row"><span>Region</span><span>Throughput</span><span>24h change</span><span>Volume</span><span></span></div>
+        <div id="bnTableBody"></div>
+      </div>
+    </section>
+
+    <section id="bn-safe" class="bn-safe" aria-labelledby="bn-safe-h">
+      <h2 id="bn-safe-h" class="bn-safe-h">Guardrails are always on</h2>
+      <div class="bn-safe-stats">
+        <div class="bn-safe-stat"><b>429,423</b><span>units recovered</span></div>
+        <div class="bn-safe-stat"><b>15,000</b><span>lines monitored</span></div>
+        <div class="bn-safe-stat"><b>7,488</b><span>shifts assisted</span></div>
+      </div>
+    </section>
+
+    <section id="bn-steps" class="bn-band" aria-labelledby="bn-steps-h">
+      <div class="bn-band-head">
+        <p class="bn-eyebrow">Onboarding</p>
+        <h2 id="bn-steps-h" class="bn-h2">Start in three steps</h2>
+      </div>
+      <div class="bn-steps">
+        <article class="bn-step"><span class="bn-step-n">1</span><h3>Connect a region</h3><p>Point Northwind at one site and it resolves the first board in under an hour.</p></article>
+        <article class="bn-step"><span class="bn-step-n">2</span><h3>Set the goal</h3><p>Name the throughput or yield goal; the guardrail marks the 100%-of-goal line.</p></article>
+        <article class="bn-step"><span class="bn-step-n">3</span><h3>Share the digest</h3><p>Every shift handover gets the same number in the ops desk inbox.</p></article>
+      </div>
+    </section>
+
+    <section class="bn-faq" aria-labelledby="bn-faq-h">
+      <h2 id="bn-faq-h" class="bn-h2">Questions from the floor</h2>
+      <div class="bn-faq-list" id="bnFaq"></div>
+    </section>
+
+    <section class="bn-cta" aria-labelledby="bn-cta-h">
+      <h2 id="bn-cta-h" class="bn-cta-h">Secure, governed operations on Northwind</h2>
+      <a class="bn-btn bn-btn-primary bn-btn-pill" href="#">Get started</a>
+    </section>
+  </main>
+
+  <footer class="bn-footer">
+    <div class="bn-foot-cols">
+      <div class="bn-foot-col"><h3>Community</h3><a href="#">Ops forum</a><a href="#">Changelog</a><a href="#">Status</a></div>
+      <div class="bn-foot-col"><h3>Products</h3><a href="#">Boards</a><a href="#">Guardrails</a><a href="#">Digest</a></div>
+      <div class="bn-foot-col"><h3>Service</h3><a href="#">Ops desk</a><a href="#">Onboarding</a><a href="#">Contact</a></div>
+      <div class="bn-foot-col"><h3>Learn</h3><a href="#">Guides</a><a href="#">API docs</a><a href="#">Security</a></div>
+    </div>
+    <div class="bn-legal">
+      <span>© 2026 Northwind Analytics — sample data, showcase only</span>
+      <span class="bn-legal-links"><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Cookies</a></span>
+    </div>
+  </footer>
+</div>

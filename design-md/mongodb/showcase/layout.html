@@ -1,0 +1,250 @@
+<div class="own-mongodb">
+  <a class="skip" href="#mongoMain">Skip to content</a>
+
+  <!-- ── PROMO + NAV ─────────────────────────────────────────────────── -->
+  <div class="promo">
+    Northwind Atlas 8.0 is here — vector search, streaming, and a faster query planner.
+    <a href="#mongoPricing">See what's new</a>
+  </div>
+  <header class="nav" id="mongoNav">
+    <div class="nav-in">
+      <a class="brand" href="#mongoMain" aria-label="Northwind home">
+        <span class="brand-leaf" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2c3.5 4.2 6 8 6 12.2 0 3.2-2.3 5.8-5.4 6.6v1.2h-1.2v-1.2C8.3 20 6 17.4 6 14.2 6 10 8.5 6.2 12 2zm0 3.2v15c2-.7 3.4-2.6 3.4-5 0-3.2-1.7-6.4-3.4-10z"/></svg>
+        </span>
+        <span class="brand-name">Northwind</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#mongoProduct">Products</a>
+        <a href="#mongoSolutions">Solutions</a>
+        <a href="#mongoLearn">Learn</a>
+        <a href="#mongoPricing">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="tlink" href="#">Sign in</a>
+        <a class="btn btn-primary" href="#mongoPricing">Try free</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-drawer" hidden data-nav-drawer>
+      <a href="#mongoProduct">Products</a>
+      <a href="#mongoSolutions">Solutions</a>
+      <a href="#mongoLearn">Learn</a>
+      <a href="#mongoPricing">Pricing</a>
+      <a href="#">Sign in</a>
+    </div>
+  </header>
+
+  <main id="mongoMain">
+    <!-- ── HERO BAND (deep teal) ──────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-in">
+        <div class="hero-copy reveal" data-reveal>
+          <p class="eyebrow">One platform · Every region</p>
+          <h1 class="hero-title">One data platform. Unlimited operational potential.</h1>
+          <p class="hero-lead">Northwind unifies throughput, logistics, and revenue data into one queryable ledger — so every dashboard, forecast, and alert reads from the same source of truth.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#mongoPricing">Start free</a>
+            <a class="btn btn-outline btn-lg" href="#mongoProduct">Explore the platform</a>
+          </div>
+          <p class="hero-note">Free forever tier · No credit card · SOC 2 Type II</p>
+        </div>
+        <div class="hero-code reveal" data-reveal aria-label="Northwind query example">
+          <div class="code-head">
+            <span class="code-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="code-file">northwind/throughput.mjs</span>
+          </div>
+          <pre class="code-body"><code><span class="c-key">import</span> { ops } <span class="c-key">from</span> <span class="c-str">"@northwind/driver"</span>;
+
+<span class="c-key">const</span> db = ops.<span class="c-fn">database</span>(<span class="c-str">"ops"</span>);
+<span class="c-key">const</span> rows = <span class="c-fn">await</span> db.<span class="c-fn">collection</span>(<span class="c-str">"lanes"</span>)
+  .<span class="c-fn">aggregate</span>([
+    { <span class="c-prop">$match</span>: { region: <span class="c-str">"iberia"</span> } },
+    { <span class="c-prop">$group</span>: { _id: <span class="c-str">"$shift"</span>, onTime: { <span class="c-prop">$avg</span>: <span class="c-str">"$onTime"</span> } } }
+  ]).<span class="c-fn">toArray</span>();
+
+<span class="c-com">// → 0.942 on-time, ±0.014</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CUSTOMER LOGOS ─────────────────────────────────────────────── -->
+    <section class="logos" aria-label="Customers">
+      <div class="wrap">
+        <p class="logos-cap">Loved by builders at</p>
+        <ul class="logo-wall">
+          <li>Vector Freight</li><li>Halden Retail</li><li>Miro Labs</li>
+          <li>Aperture Foods</li><li>Kestrel Bank</li><li>Northgate Health</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── PLATFORM FEATURES ──────────────────────────────────────────── -->
+    <section class="section" id="mongoProduct">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">The platform</p>
+          <h2 class="sec-title">Built for operational data at any scale.</h2>
+          <p class="sec-lead">Store the ledger, query it in place, and stream changes out to every dashboard without a single export job.</p>
+        </div>
+        <div class="features">
+          <article class="fcard reveal" data-reveal>
+            <span class="corner" aria-hidden="true"></span>
+            <span class="ficon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            </span>
+            <h3>Flexible operational schema</h3>
+            <p>Model regions, lanes, and SKUs as documents and reshape them the week the business changes.</p>
+          </article>
+          <article class="fcard reveal" data-reveal>
+            <span class="corner" aria-hidden="true"></span>
+            <span class="ficon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+            </span>
+            <h3>Realtime analytics</h3>
+            <p>Aggregate millions of events in place — dashboards stay live without a warehouse round-trip.</p>
+          </article>
+          <article class="fcard reveal" data-reveal>
+            <span class="corner" aria-hidden="true"></span>
+            <span class="ficon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M12 12l8-4M12 12v9M12 12 4 8"/></svg>
+            </span>
+            <h3>Global distribution</h3>
+            <p>Replicate to six regions with read-local latency and automatic failover, audited end to end.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DARK CTA BAND ──────────────────────────────────────────────── -->
+    <section class="band" id="mongoSolutions">
+      <div class="wrap band-in reveal" data-reveal>
+        <div class="band-copy">
+          <p class="eyebrow band-eyebrow">Deployment anywhere</p>
+          <h2 class="band-title">Run Northwind where your data already lives.</h2>
+          <p class="band-lead">Managed cloud, your own VPC, or fully on-prem. Same schema, same drivers, same audit trail.</p>
+          <div class="band-cta">
+            <a class="btn btn-primary btn-lg" href="#mongoPricing">Start free</a>
+            <a class="btn btn-outline-dark btn-lg" href="#">Compare deployments</a>
+          </div>
+        </div>
+        <div class="deploy-grid" aria-hidden="true">
+          <span class="deploy-tile">Cloud</span>
+          <span class="deploy-tile">VPC</span>
+          <span class="deploy-tile">Edge</span>
+          <span class="deploy-tile">On-prem</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COURSE / RESOURCE CATALOG ──────────────────────────────────── -->
+    <section class="section" id="mongoLearn">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">Northwind University</p>
+          <h2 class="sec-title">Learn the platform, at your pace.</h2>
+          <p class="sec-lead">Free, structured, and hands-on. Each path ends with a certificate your team can verify.</p>
+        </div>
+        <div class="courses">
+          <article class="course reveal" data-reveal>
+            <span class="tag tag-purple">Database &amp; Design</span>
+            <h3>Modeling operational ledgers</h3>
+            <p>Documents, indexes, and the trade-offs that keep a busy floor fast.</p>
+            <a class="tlink" href="#">Get started <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="course reveal" data-reveal>
+            <span class="tag tag-orange">Search</span>
+            <h3>Indexing for instant lookups</h3>
+            <p>Compound and text indexes that make a million-lane dataset feel small.</p>
+            <a class="tlink" href="#">Get started <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="course reveal" data-reveal>
+            <span class="tag tag-green">Cloud</span>
+            <h3>Deploying to the edge</h3>
+            <p>Regional clusters, read preference, and the failover drill you should run.</p>
+            <a class="tlink" href="#">Get started <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="course reveal" data-reveal>
+            <span class="tag tag-teal">Operations</span>
+            <h3>Metrics that stay trustworthy</h3>
+            <p>Versioned definitions, lineage, and the review loop that keeps totals honest.</p>
+            <a class="tlink" href="#">Get started <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="course reveal" data-reveal>
+            <span class="tag tag-purple">AI</span>
+            <h3>Vector search for operations</h3>
+            <p>Ground a copilot on the live ledger without leaking across regions.</p>
+            <a class="tlink" href="#">Get started <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="course reveal" data-reveal>
+            <span class="tag tag-orange">Security</span>
+            <h3>Row-level access, audited</h3>
+            <p>Scope every field by region and role, then prove it from the audit log.</p>
+            <a class="tlink" href="#">Get started <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ────────────────────────────────────────────────────── -->
+    <section class="section section-surface" id="mongoPricing">
+      <div class="wrap">
+        <div class="sec-head center reveal" data-reveal>
+          <p class="eyebrow">Pricing</p>
+          <h2 class="sec-title">Three tiers. Clear limits. No surprise bills.</h2>
+          <div class="tabs" role="tablist" aria-label="Deployment">
+            <button class="tab on" type="button" role="tab" aria-selected="true" data-plan="atlas">Northwind Atlas</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-plan="enterprise">Enterprise</button>
+          </div>
+        </div>
+        <div class="tiers">
+          <article class="tier reveal" data-reveal>
+            <h3>Free</h3>
+            <p class="tier-note">For the first prototype.</p>
+            <p class="price"><span data-price="free">$0</span><small>/month</small></p>
+            <ul><li>512 MB shared storage</li><li>1 region</li><li>Community support</li></ul>
+            <a class="btn btn-outline btn-block" href="#">Get started</a>
+          </article>
+          <article class="tier tier-feat reveal" data-reveal>
+            <span class="tier-badge">Most popular</span>
+            <h3>Flex</h3>
+            <p class="tier-note">For teams running live operations.</p>
+            <p class="price"><span data-price="57">$57</span><small>/month</small></p>
+            <ul><li>Unlimited storage</li><li>Six regions</li><li>Realtime analytics</li><li>Email support</li></ul>
+            <a class="btn btn-primary btn-block" href="#">Start free</a>
+          </article>
+          <article class="tier reveal" data-reveal>
+            <h3>Dedicated</h3>
+            <p class="tier-note">For the whole operation, audited.</p>
+            <p class="price"><span data-price="custom">Custom</span><small></small></p>
+            <ul><li>Dedicated clusters</li><li>VPC / on-prem</li><li>Audit log &amp; retention</li><li>Dedicated CSM</li></ul>
+            <a class="btn btn-outline btn-block" href="#">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER (dark teal) ────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <span class="brand-name">Northwind</span>
+        <p>Operations analytics for teams that run on the numbers.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div><h4>Products</h4><a href="#mongoProduct">Platform</a><a href="#mongoSolutions">Deployments</a><a href="#mongoPricing">Pricing</a></div>
+        <div><h4>Solutions</h4><a href="#">Logistics</a><a href="#">Retail</a><a href="#">Banking</a></div>
+        <div><h4>Resources</h4><a href="#mongoLearn">Learn</a><a href="#">Docs</a><a href="#">Community</a></div>
+        <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+        <div><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">DPA</a></div>
+      </nav>
+    </div>
+    <div class="wrap foot-base">
+      <span>© 2026 Northwind Analytics, Inc.</span>
+      <span>Sample content — showcase only</span>
+    </div>
+  </footer>
+</div>

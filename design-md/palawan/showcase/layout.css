@@ -1,0 +1,272 @@
+/* ══ PALAWAN — warm Filipino consumer-finance language for showcase.html ═══
+   Scoped under `.own-palawan`. White canvas, two loud brand blocks (green =
+   trust, gold = action), a single red emphasis word, rounded Poppins display
+   + Lato body, soft floating cards, wave dividers. Production breakpoints
+   become @container frame queries so Tablet (820) and Phone (390) reflow. */
+
+.own-palawan {
+  --green: #39a14a;
+  --green-deep: #007235;
+  --green-ink: #02591f;
+  --green-soft: rgba(57, 161, 74, .12);
+  --yellow: #ffcb01;
+  --yellow-2: #f4c203;
+  --yellow-soft: rgba(255, 203, 1, .16);
+  --red: #ff020d;
+  --canvas: #ffffff;
+  --paper-1: #f7f8f5;
+  --paper-2: #f0f2ed;
+  --ink: #101010;
+  --ink-2: #212121;
+  --ink-3: #414141;
+  --ink-muted: #767b73;
+  --line: #e3e6df;
+
+  --shadow: 0 8px 24px rgba(16, 16, 16, .10);
+  --shadow-soft: 0 4px 14px rgba(16, 16, 16, .07);
+
+  --display: 'Poppins', 'Lato', system-ui, sans-serif;
+  --body: 'Lato', system-ui, -apple-system, sans-serif;
+  --gut: clamp(16px, 3cqi, 52px);
+  --shell: 1180px;
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  overflow-x: clip;
+}
+
+.own-palawan *, .own-palawan *::before, .own-palawan *::after { box-sizing: border-box; }
+.own-palawan a { color: inherit; }
+.own-palawan :focus-visible { outline: 3px solid var(--green-deep); outline-offset: 3px; border-radius: 6px; }
+.own-palawan .pl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ── type ─────────────────────────────────────────────────────────────────── */
+.own-palawan .pl-eyebrow {
+  margin: 0 0 14px; font-family: var(--display); font-size: 12px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--green-deep);
+}
+.own-palawan h1 {
+  margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(32px, 5.2cqi, 46px); line-height: 1.02; letter-spacing: -0.01em; color: var(--ink);
+}
+.own-palawan h2 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 3cqi, 30px); line-height: 1.12; letter-spacing: -0.01em; }
+.own-palawan h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 1.2; }
+.own-palawan p { margin: 0; }
+
+.own-palawan .pl-hero-hl { position: relative; white-space: nowrap; }
+.own-palawan .pl-hero-hl::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -.16em; height: 6px;
+  border-radius: 999px; background: var(--yellow);
+}
+
+/* ── buttons ─────────────────────────────────────────────────────────────── */
+.own-palawan .pl-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--display); font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: .02em;
+  padding: 12px 22px; border-radius: 999px; border: 0; text-decoration: none; cursor: pointer;
+  box-shadow: var(--shadow-soft); transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.own-palawan .pl-btn:active { transform: translateY(1px); }
+.own-palawan .pl-btn-lg { padding: 15px 28px; font-size: 14px; }
+.own-palawan .pl-btn-primary { background: var(--green); color: #fff; }
+.own-palawan .pl-btn-primary:hover { background: var(--green-deep); }
+.own-palawan .pl-btn-gold { background: var(--yellow); color: var(--green-ink); }
+.own-palawan .pl-btn-gold:hover { background: var(--yellow-2); }
+.own-palawan .pl-btn-green { background: var(--green-deep); color: #fff; }
+
+/* ── ribbon ───────────────────────────────────────────────────────────────── */
+.own-palawan .pl-ribbon { background: var(--green-deep); color: #fff; }
+.own-palawan .pl-ribbon-inner {
+  width: 100%; max-width: var(--shell); margin: 0 auto; padding: 9px var(--gut);
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12.5px;
+}
+.own-palawan .pl-ribbon-tag {
+  font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: var(--yellow); color: var(--green-ink);
+}
+.own-palawan .pl-ribbon a { margin-left: auto; color: #fff; font-weight: 700; text-decoration: none; }
+.own-palawan .pl-ribbon a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── nav ──────────────────────────────────────────────────────────────────── */
+.own-palawan .pl-nav {
+  position: sticky; top: 68px; z-index: 40;
+  display: flex; align-items: center; gap: 24px;
+  padding: 12px var(--gut);
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.own-palawan .pl-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.own-palawan .pl-leaf { display: grid; place-items: center; width: 32px; height: 32px; }
+.own-palawan .pl-leaf svg { width: 30px; height: 30px; fill: none; stroke: var(--green); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-palawan .pl-wordmark { font-family: var(--display); font-weight: 800; font-size: 21px; color: var(--green-deep); letter-spacing: -0.02em; }
+.own-palawan .pl-wordmark-red { color: var(--red); }
+.own-palawan .pl-nav-links { display: flex; align-items: center; gap: 22px; margin-left: 8px; }
+.own-palawan .pl-nav-links a { font-family: var(--display); font-weight: 600; font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+.own-palawan .pl-nav-links a:hover { color: var(--green-deep); }
+.own-palawan .pl-nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.own-palawan .pl-burger { display: none; place-items: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); cursor: pointer; }
+.own-palawan .pl-burger svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.own-palawan .pl-drawer { display: none; }
+.own-palawan .pl-drawer:not([hidden]) {
+  display: flex; flex-direction: column; gap: 2px; flex-basis: 100%;
+  margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line);
+}
+.own-palawan .pl-drawer a { font-family: var(--display); font-weight: 600; color: var(--ink-2); text-decoration: none; padding: 11px 6px; border-radius: 8px; }
+.own-palawan .pl-drawer a:hover { background: var(--paper-1); }
+
+/* ── hero ─────────────────────────────────────────────────────────────────── */
+.own-palawan .pl-hero {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 4cqi, 56px); align-items: center;
+  width: 100%; max-width: var(--shell); margin: 0 auto; padding: clamp(40px, 5cqi, 72px) var(--gut) clamp(56px, 6cqi, 88px);
+}
+.own-palawan .pl-hero-sub { margin-top: 18px; font-size: 15px; line-height: 1.55; color: var(--ink-3); max-width: 48ch; }
+.own-palawan .pl-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.own-palawan .pl-hero-stats { list-style: none; display: flex; flex-wrap: wrap; gap: 28px; margin: 34px 0 0; padding: 0; }
+.own-palawan .pl-hero-stats li { display: flex; flex-direction: column; }
+.own-palawan .pl-hero-stats b { font-family: var(--display); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.01em; color: var(--green-deep); }
+.own-palawan .pl-hero-stats span { margin-top: 4px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+
+.own-palawan .pl-hero-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: var(--shadow);
+}
+.own-palawan .pl-mock-bar { display: flex; align-items: center; gap: 6px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.own-palawan .pl-mock-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.own-palawan .pl-mock-title { margin-left: 8px; font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--ink-2); }
+.own-palawan .pl-mock-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.own-palawan .pl-mock-kpi { display: flex; flex-direction: column; gap: 2px; }
+.own-palawan .pl-mock-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.own-palawan .pl-mock-value { font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1; color: var(--ink); }
+.own-palawan .pl-mock-delta { font-size: 12px; font-weight: 700; }
+.own-palawan .pl-mock-delta.up { color: var(--green); }
+.own-palawan .pl-mock-chart { width: 100%; height: 90px; display: block; }
+.own-palawan .pl-mock-chart polyline { fill: none; stroke: var(--green); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.own-palawan .pl-mock-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-2); }
+.own-palawan .pl-mock-pill { font-family: var(--display); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--green-soft); color: var(--green-deep); }
+.own-palawan .pl-mock-pill.warn { background: var(--yellow-soft); color: #8a6a00; }
+
+/* ── wave ─────────────────────────────────────────────────────────────────── */
+.own-palawan .pl-wave { line-height: 0; background: #fff; }
+.own-palawan .pl-wave svg { display: block; width: 100%; height: 70px; }
+.own-palawan .pl-wave path { fill: var(--yellow); }
+
+/* ── services ─────────────────────────────────────────────────────────────── */
+.own-palawan .pl-services { background: var(--yellow); padding: clamp(44px, 5cqi, 76px) 0; }
+.own-palawan .pl-services-head { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gut); text-align: center; }
+.own-palawan .pl-services .pl-eyebrow { color: var(--green-ink); }
+.own-palawan .pl-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; width: 100%; max-width: var(--shell); margin: 34px auto 0; padding: 0 var(--gut); }
+.own-palawan .pl-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); }
+.own-palawan .pl-card h3 { margin-top: 16px; }
+.own-palawan .pl-card p { margin-top: 8px; color: var(--ink-3); }
+.own-palawan .pl-card-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: var(--green-soft); color: var(--green-deep); }
+.own-palawan .pl-card-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── steps ────────────────────────────────────────────────────────────────── */
+.own-palawan .pl-steps { background: #fff; padding: clamp(44px, 5cqi, 80px) 0; }
+.own-palawan .pl-steps-head { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gut); text-align: center; }
+.own-palawan .pl-step-list { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; width: 100%; max-width: var(--shell); margin: 34px auto 0; padding: 0 var(--gut); }
+.own-palawan .pl-step { background: var(--paper-1); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.own-palawan .pl-step-badge { display: inline-grid; place-items: center; min-width: 44px; height: 44px; padding: 0 12px; border-radius: 12px; background: var(--green); color: #fff; font-family: var(--display); font-weight: 800; font-size: 20px; }
+.own-palawan .pl-step h3 { margin-top: 16px; }
+.own-palawan .pl-step p { margin-top: 8px; color: var(--ink-3); }
+
+/* ── CTA band (gold) ──────────────────────────────────────────────────────── */
+.own-palawan .pl-band { background: var(--yellow); padding: clamp(36px, 4cqi, 60px) 0; }
+.own-palawan .pl-band-inner {
+  width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gut);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+}
+.own-palawan .pl-band-eyebrow { font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green-ink); }
+.own-palawan .pl-band h2 { margin-top: 6px; color: var(--green-ink); }
+.own-palawan .pl-band-copy { margin-top: 8px; color: var(--green-ink); opacity: .82; }
+
+/* ── pricing ──────────────────────────────────────────────────────────────── */
+.own-palawan .pl-pricing { background: var(--paper-1); padding: clamp(44px, 5cqi, 80px) 0; }
+.own-palawan .pl-pricing-head { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gut); text-align: center; }
+.own-palawan .pl-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; width: 100%; max-width: var(--shell); margin: 34px auto 0; padding: 0 var(--gut); }
+.own-palawan .pl-tier { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px; box-shadow: var(--shadow-soft); }
+.own-palawan .pl-tier-featured { border: 2px solid var(--green); box-shadow: var(--shadow); }
+.own-palawan .pl-tier-flag { position: absolute; top: -12px; left: 24px; font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; background: var(--green); color: #fff; }
+.own-palawan .pl-tier-price { margin-top: 12px; font-family: var(--display); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
+.own-palawan .pl-tier-price span { font-size: 14px; font-weight: 600; color: var(--ink-muted); }
+.own-palawan .pl-tier-note { margin-top: 8px; color: var(--ink-3); font-size: 13px; }
+.own-palawan .pl-tier ul { list-style: none; margin: 18px 0 22px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.own-palawan .pl-tier li { position: relative; padding-left: 22px; font-size: 13px; color: var(--ink-2); }
+.own-palawan .pl-tier li::before { content: ''; position: absolute; left: 0; top: .35em; width: 10px; height: 6px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(-45deg); }
+.own-palawan .pl-tier-cta { margin-top: auto; }
+
+/* ── branch finder ─────────────────────────────────────────────────────────── */
+.own-palawan .pl-branch { background: #fff; padding: clamp(44px, 5cqi, 80px) 0; }
+.own-palawan .pl-branch-card {
+  width: 100%; max-width: var(--shell); margin: 0 auto;
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 4cqi, 48px); align-items: center;
+  padding: clamp(26px, 3.5cqi, 44px); border-radius: 18px;
+  background: var(--green); color: #fff; box-shadow: var(--shadow);
+}
+.own-palawan .pl-branch .pl-eyebrow { color: rgba(255, 255, 255, .85); }
+.own-palawan .pl-branch h2 { color: #fff; }
+.own-palawan .pl-branch-copy { margin-top: 10px; color: rgba(255, 255, 255, .9); }
+.own-palawan .pl-search { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.own-palawan .pl-search input {
+  flex: 1 1 200px; min-width: 0; padding: 13px 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, .16); color: #fff; font-family: var(--body); font-size: 14px;
+}
+.own-palawan .pl-search input::placeholder { color: rgba(255, 255, 255, .75); }
+.own-palawan .pl-search input:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.own-palawan .pl-branch-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.own-palawan .pl-branch-list li {
+  display: flex; flex-direction: column; padding: 14px 18px; border-radius: 12px;
+  background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .22);
+}
+.own-palawan .pl-branch-list li b { font-family: var(--display); font-weight: 700; font-size: 14px; color: #fff; }
+.own-palawan .pl-branch-list li span { font-size: 12.5px; color: rgba(255, 255, 255, .85); }
+.own-palawan .pl-branch-list li[hidden] { display: none; }
+.own-palawan .pl-branch-empty { margin-top: 12px; font-size: 13px; color: rgba(255, 255, 255, .9); }
+
+/* ── footer ───────────────────────────────────────────────────────────────── */
+.own-palawan .pl-foot { background: var(--green-deep); color: #fff; padding: clamp(40px, 5cqi, 64px) 0 32px; }
+.own-palawan .pl-foot > .pl-foot-top,
+.own-palawan .pl-foot > .pl-foot-note,
+.own-palawan .pl-foot > .pl-copyright { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gut); }
+.own-palawan .pl-foot-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.own-palawan .pl-brand-foot .pl-wordmark { color: #fff; }
+.own-palawan .pl-brand-foot .pl-leaf svg { stroke: var(--yellow); }
+.own-palawan .pl-foot-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.own-palawan .pl-foot-links a { color: rgba(255, 255, 255, .88); font-size: 13px; text-decoration: none; }
+.own-palawan .pl-foot-links a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.own-palawan .pl-foot-note { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .22); font-size: 12.5px; color: rgba(255, 255, 255, .8); }
+.own-palawan .pl-copyright { margin-top: 6px; font-size: 12px; color: rgba(255, 255, 255, .7); }
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-palawan .pl-cards,
+  .own-palawan .pl-step-list,
+  .own-palawan .pl-tiers { grid-template-columns: 1fr; max-width: 520px; }
+  .own-palawan .pl-hero { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 900px) {
+  .own-palawan .pl-nav-links { display: none; }
+  .own-palawan .pl-branch-card { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-palawan .pl-nav { top: 10px; flex-wrap: wrap; gap: 12px; }
+  .own-palawan .pl-burger { display: grid; }
+  .own-palawan .pl-band-inner { flex-direction: column; align-items: flex-start; }
+  .own-palawan .pl-ribbon a { margin-left: 0; }
+}
+@container frame (max-width: 430px) {
+  .own-palawan .pl-hero-cta { width: 100%; }
+  .own-palawan .pl-hero-cta .pl-btn { flex: 1 1 100%; }
+  .own-palawan .pl-mock-kpis { grid-template-columns: 1fr; }
+  .own-palawan .pl-hero-stats { gap: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-palawan *, .own-palawan *::before, .own-palawan *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}

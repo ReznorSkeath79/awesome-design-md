@@ -1,0 +1,195 @@
+<div class="own-wise">
+  <header class="wi-nav">
+    <a class="wi-brand" href="#wi-top">
+      <span class="wi-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M5 6h13l-4 6h5l-3 6h5L13 28H7l5-10H7l4-6H5z" fill="#0e0f0c"/></svg>
+      </span>
+      <span class="wi-brand-name">Northwind</span>
+    </a>
+    <nav class="wi-nav-links" aria-label="Primary">
+      <a href="#wi-product">Product</a>
+      <a href="#wi-regions">Regions</a>
+      <a href="#wi-pricing">Pricing</a>
+    </nav>
+    <div class="wi-nav-actions">
+      <a class="wi-link" href="#">Log in</a>
+      <a class="wi-btn wi-btn-primary wi-btn-sm" href="#wi-cta">Open an account</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wi-hero" id="wi-top" aria-labelledby="wiHeroH">
+      <div class="wi-hero-copy">
+        <p class="wi-eyebrow">Operations analytics</p>
+        <h1 class="wi-hero-title" id="wiHeroH">Move the numbers that move the floor</h1>
+        <p class="wi-hero-lead">Northwind gives operations teams one live board for throughput, regions and shifts — modelled, governed and ready before the next stand-up.</p>
+        <div class="wi-hero-cta">
+          <a class="wi-btn wi-btn-primary" href="#wi-cta">Get started free</a>
+          <a class="wi-btn wi-btn-tertiary" href="#wi-pricing">See pricing</a>
+        </div>
+        <ul class="wi-trust">
+          <li><b>5</b> regions live</li>
+          <li><b>97%</b> on-time</li>
+          <li><b>2 min</b> to a board</li>
+        </ul>
+      </div>
+
+      <div class="wi-converter" role="group" aria-label="Throughput estimator">
+        <div class="wi-conv-head">
+          <span class="wi-conv-title">Throughput estimator</span>
+          <span class="wi-badge wi-badge-live">Live</span>
+        </div>
+        <div class="wi-conv-field">
+          <label class="wi-conv-label" for="wiFrom">Regions</label>
+          <div class="wi-conv-input">
+            <input id="wiFrom" type="number" min="1" max="12" step="1" value="3" inputmode="numeric" data-wi-regions>
+            <span class="wi-conv-unit">regions</span>
+          </div>
+        </div>
+        <span class="wi-conv-swap" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 4v14M7 4L3 8m4-4 4 4M17 20V6m0 14 4-4m-4 4-4-4"/></svg>
+        </span>
+        <div class="wi-conv-field">
+          <span class="wi-conv-label">Estimated throughput</span>
+          <span class="wi-conv-out" data-wi-out>18,420</span>
+        </div>
+        <div class="wi-conv-foot">
+          <span class="wi-conv-rate" data-wi-rate>= 0.97 on-time</span>
+          <a class="wi-btn wi-btn-primary wi-btn-sm" href="#wi-cta">Start free</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wi-cards-sec" id="wi-product" aria-labelledby="wiProdH">
+      <div class="wi-sec-head">
+        <p class="wi-eyebrow">The platform</p>
+        <h2 class="wi-sec-title" id="wiProdH">Everything the floor runs on</h2>
+      </div>
+      <div class="wi-card-grid">
+        <article class="wi-card wi-card-green">
+          <span class="wi-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 18V8m5 10V4m5 14v-7m5 7V6"/></svg>
+          </span>
+          <h3>Live throughput</h3>
+          <p>A single governed metric — no reconciliation, no re-keyed totals, no overnight surprises.</p>
+        </article>
+        <article class="wi-card wi-card-sage">
+          <span class="wi-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v8l6 3"/></svg>
+          </span>
+          <h3>Shift-aware alerts</h3>
+          <p>Thresholds respect the roster, so the right supervisor is paged at the right hour.</p>
+        </article>
+        <article class="wi-card wi-card-dark">
+          <span class="wi-ico wi-ico-dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h13"/></svg>
+          </span>
+          <h3>Regional roll-ups</h3>
+          <p>Five regions, one true total. Every roll-up traces back to its source stream.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wi-band" id="wi-regions" aria-labelledby="wiRegH">
+      <div class="wi-sec-head">
+        <p class="wi-eyebrow">By region</p>
+        <h2 class="wi-sec-title" id="wiRegH">Where the volume sits</h2>
+      </div>
+      <div class="wi-band-cards">
+        <div class="wi-stat">
+          <span class="wi-stat-label">Northwest</span>
+          <span class="wi-stat-num" data-wi-count="18420">18,420</span>
+          <span class="wi-badge wi-badge-positive">On track</span>
+        </div>
+        <div class="wi-stat">
+          <span class="wi-stat-label">Eastern Seaboard</span>
+          <span class="wi-stat-num" data-wi-count="15870">15,870</span>
+          <span class="wi-badge wi-badge-positive">On track</span>
+        </div>
+        <div class="wi-stat">
+          <span class="wi-stat-label">Gulf Coast</span>
+          <span class="wi-stat-num" data-wi-count="12240">12,240</span>
+          <span class="wi-badge wi-badge-soft">Watch</span>
+        </div>
+        <div class="wi-stat">
+          <span class="wi-stat-label">Pacific</span>
+          <span class="wi-stat-num" data-wi-count="14030">14,030</span>
+          <span class="wi-badge wi-badge-positive">On track</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wi-pricing" id="wi-pricing" aria-labelledby="wiPriceH">
+      <div class="wi-sec-head">
+        <p class="wi-eyebrow">Pricing</p>
+        <h2 class="wi-sec-title" id="wiPriceH">Plans that grow with the floor</h2>
+      </div>
+      <div class="wi-price-grid">
+        <article class="wi-price-card">
+          <h3>Starter</h3>
+          <p class="wi-price"><span>$0</span> / mo</p>
+          <p class="wi-price-lead">One board, one region.</p>
+          <ul class="wi-feats"><li>1 live board</li><li>3 streams</li><li>7-day history</li></ul>
+          <a class="wi-btn wi-btn-secondary wi-btn-block" href="#">Get started</a>
+        </article>
+        <article class="wi-price-card wi-price-feat">
+          <span class="wi-chip">Most popular</span>
+          <h3>Growth</h3>
+          <p class="wi-price"><span>$240</span> / mo</p>
+          <p class="wi-price-lead">For multi-region teams.</p>
+          <ul class="wi-feats"><li>Unlimited boards</li><li>40 streams</li><li>Shift-aware alerts</li><li>Versioned history</li></ul>
+          <a class="wi-btn wi-btn-primary wi-btn-block" href="#">Start free trial</a>
+        </article>
+        <article class="wi-price-card">
+          <h3>Scale</h3>
+          <p class="wi-price"><span>Talk to us</span></p>
+          <p class="wi-price-lead">For global networks.</p>
+          <ul class="wi-feats"><li>Everything in Growth</li><li>SSO and audit log</li><li>Dedicated modeler</li></ul>
+          <a class="wi-btn wi-btn-tertiary wi-btn-block" href="#">Contact sales</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="wi-cta" id="wi-cta" aria-labelledby="wiCtaH">
+      <div class="wi-cta-inner">
+        <h2 class="wi-cta-title" id="wiCtaH">Ready when the next shift starts</h2>
+        <p class="wi-cta-lead">Free while you build. No card, no sales call.</p>
+        <div class="wi-hero-cta">
+          <a class="wi-btn wi-btn-primary" href="#">Open an account</a>
+          <a class="wi-btn wi-btn-outline-inv" href="#">Book a demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wi-footer">
+    <div class="wi-foot-grid">
+      <div class="wi-foot-brand">
+        <span class="wi-brand-name wi-brand-foot">Northwind</span>
+        <p>Operations analytics for the people running the floor.</p>
+      </div>
+      <nav class="wi-foot-col" aria-label="Product">
+        <h4>Product</h4>
+        <a href="#wi-product">Platform</a>
+        <a href="#wi-regions">Regions</a>
+        <a href="#wi-pricing">Pricing</a>
+      </nav>
+      <nav class="wi-foot-col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </nav>
+      <nav class="wi-foot-col" aria-label="Resources">
+        <h4>Resources</h4>
+        <a href="#">Docs</a>
+        <a href="#">Status</a>
+        <a href="#">Changelog</a>
+      </nav>
+    </div>
+    <div class="wi-foot-base">
+      <span>Sample data — showcase only</span>
+      <span>&copy; 2026 Northwind</span>
+    </div>
+  </footer>
+</div>

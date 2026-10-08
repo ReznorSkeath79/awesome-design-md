@@ -1,0 +1,249 @@
+/* ══ VERCEL — Northwind operations analytics, built in Vercel's real page grammar ══
+   Near-white canvas ladder, ink-near-black primary, multi-color mesh gradient as the
+   whole decoration system, Geist + Geist Mono, 100px pill CTAs, stacked shadows.
+   Scoped under `.own-vercel`. */
+
+.own-vercel {
+  --primary: #171717;
+  --on-primary: #ffffff;
+  --ink: #171717;
+  --body: #4d4d4d;
+  --mute: #888888;
+  --hairline: #ebebeb;
+  --hairline-strong: #a1a1a1;
+  --canvas: #ffffff;
+  --canvas-soft: #fafafa;
+  --canvas-soft-2: #f5f5f5;
+  --link: #0070f3;
+
+  --f-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  --f-mono: 'Geist Mono', ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 100px;
+  --gut: clamp(16px, 4.6cqi, 24px);
+  --sec: clamp(48px, 8cqi, 96px);
+
+  --shadow-2: 0px 1px 1px #00000005, 0px 2px 2px #0000000a, 0 0 0 1px #00000014;
+  --shadow-4: 0px 2px 2px #0000000a, 0px 8px 16px -4px #0000000a, 0 0 0 1px #00000014;
+  --shadow-5: 0px 1px 1px #00000005, 0px 8px 16px -4px #0000000a, 0px 24px 32px -8px #0000000f, 0 0 0 1px #00000014;
+
+  position: relative;
+  background: var(--canvas-soft);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.own-vercel *, .own-vercel *::before, .own-vercel *::after { box-sizing: border-box; }
+.own-vercel p { margin: 0; }
+.own-vercel h1, .own-vercel h2, .own-vercel h3 { margin: 0; }
+.own-vercel a { color: inherit; text-decoration: none; }
+.own-vercel img, .own-vercel svg { display: block; }
+.own-vercel button { font: inherit; }
+.own-vercel :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+.own-vercel .vc-band-dark :focus-visible, .own-vercel .vc-foot :focus-visible { outline-color: #fff; }
+
+.own-vercel .vc-wrap { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 var(--gut); }
+
+.own-vercel .vc-skip {
+  position: absolute; left: 12px; top: -60px; z-index: 60;
+  padding: 10px 16px; border-radius: var(--r-sm); background: var(--ink); color: var(--on-primary);
+  font-weight: 500; transition: top .2s;
+}
+.own-vercel .vc-skip:focus { top: 12px; }
+
+/* ── type — sentence-case, aggressive negative tracking ──────────────── */
+.own-vercel .vc-display-xl { font-size: clamp(32px, 5.4cqi, 48px); font-weight: 600; line-height: 1.05; letter-spacing: -2.4px; }
+.own-vercel .vc-display-lg { font-size: clamp(26px, 3.6cqi, 32px); font-weight: 600; line-height: 1.25; letter-spacing: -1.28px; }
+.own-vercel .vc-display-md { font-size: 24px; font-weight: 600; line-height: 1.33; letter-spacing: -.96px; }
+.own-vercel .vc-lead { font-size: clamp(16px, 1.4cqi, 18px); line-height: 1.55; color: var(--body); }
+.own-vercel .vc-body { font-size: 16px; line-height: 1.5; color: var(--body); }
+.own-vercel .vc-body-on-dark { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.72); }
+.own-vercel .vc-eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .02em; text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+.own-vercel .vc-mono-badge {
+  display: inline-block; font-family: var(--f-mono); font-size: 12px; color: var(--ink);
+  background: var(--canvas); padding: 4px 10px; border-radius: 9999px;
+  box-shadow: 0 0 0 1px var(--hairline); margin-bottom: 22px;
+}
+.own-vercel .vc-sec-head { max-width: 720px; margin-bottom: clamp(24px, 4cqi, 40px); }
+.own-vercel .vc-sec-center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ── buttons ─────────────────────────────────────────────────────────── */
+.own-vercel .vc-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 48px; padding: 0 12px; border-radius: var(--r-pill);
+  font-size: 16px; font-weight: 500; line-height: 1; white-space: nowrap;
+  transition: background-color .15s, transform .15s, opacity .15s;
+}
+.own-vercel .vc-btn-primary { background: var(--primary); color: var(--on-primary); }
+.own-vercel .vc-btn-primary:hover { opacity: .85; }
+.own-vercel .vc-btn-primary:active { transform: scale(.98); }
+.own-vercel .vc-btn-secondary { background: var(--canvas); color: var(--ink); box-shadow: 0 0 0 1px var(--hairline); }
+.own-vercel .vc-btn-secondary:hover { background: var(--canvas-soft-2); }
+
+/* ── nav ─────────────────────────────────────────────────────────────── */
+.own-vercel .vc-nav { position: sticky; top: 68px; z-index: 40; background: rgba(255,255,255,.85); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid var(--hairline); }
+.own-vercel .vc-nav-in { display: flex; align-items: center; gap: 20px; height: 64px; max-width: 1400px; margin: 0 auto; padding: 12px var(--gut); }
+.own-vercel .vc-brand { display: flex; align-items: center; gap: 8px; flex: none; }
+.own-vercel .vc-brand-mark { width: 22px; height: 22px; }
+.own-vercel .vc-brand-name { font-size: 16px; font-weight: 600; letter-spacing: -.4px; }
+.own-vercel .vc-nav-links { display: flex; gap: 2px; flex: 1 1 auto; }
+.own-vercel .vc-nav-links a { font-size: 14px; font-weight: 500; letter-spacing: -.28px; color: var(--body); padding: 8px 12px; border-radius: 9999px; }
+.own-vercel .vc-nav-links a:hover { color: var(--ink); background: var(--canvas-soft-2); }
+.own-vercel .vc-nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.own-vercel .vc-cta {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: var(--r-sm);
+  font-size: 14px; font-weight: 500; letter-spacing: -.28px;
+}
+.own-vercel .vc-cta-ghost { background: var(--canvas); color: var(--ink); box-shadow: 0 0 0 1px var(--hairline); }
+.own-vercel .vc-cta-login { background: var(--canvas); color: var(--ink); }
+.own-vercel .vc-cta-login:hover { background: var(--canvas-soft-2); }
+.own-vercel .vc-cta-signup { background: var(--primary); color: var(--on-primary); }
+.own-vercel .vc-burger { display: none; place-items: center; width: 40px; height: 40px; border: 0; border-radius: var(--r-sm); background: var(--canvas); box-shadow: 0 0 0 1px var(--hairline); cursor: pointer; }
+.own-vercel .vc-burger svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.own-vercel .vc-drawer { display: grid; gap: 2px; padding: 12px var(--gut) 16px; border-bottom: 1px solid var(--hairline); background: var(--canvas); }
+.own-vercel .vc-drawer a { font-size: 15px; font-weight: 500; padding: 10px 12px; border-radius: var(--r-md); }
+.own-vercel .vc-drawer a:hover { background: var(--canvas-soft-2); }
+
+/* ── mesh gradient ───────────────────────────────────────────────────── */
+.own-vercel .vc-hero { position: relative; overflow: hidden; padding-top: clamp(48px, 7cqi, 96px); }
+.own-vercel .vc-mesh { position: absolute; inset: -10% -5% auto; height: 640px; filter: blur(70px); opacity: .6; pointer-events: none; }
+.own-vercel .vc-blob { position: absolute; border-radius: 50%; }
+.own-vercel .vc-blob-a { width: 46%; height: 320px; left: 2%; top: 8%; background: radial-gradient(circle, #007cf0, #00dfd8 70%); }
+.own-vercel .vc-blob-b { width: 42%; height: 300px; left: 30%; top: 0; background: radial-gradient(circle, #7928ca, #ff0080 70%); }
+.own-vercel .vc-blob-c { width: 40%; height: 280px; right: 2%; top: 14%; background: radial-gradient(circle, #ff4d4d, #f9cb28 70%); }
+.own-vercel .vc-hero-in { position: relative; z-index: 2; text-align: center; max-width: 820px; }
+.own-vercel .vc-hero .vc-lead { max-width: 60ch; margin: 20px auto 28px; }
+.own-vercel .vc-hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.own-vercel .vc-hero-note { font-size: 14px; color: var(--mute); margin-top: 16px; }
+
+.own-vercel .vc-strip-wrap { position: relative; z-index: 2; max-width: 1400px; margin: clamp(40px, 6cqi, 72px) auto 0; padding: 0 var(--gut); }
+.own-vercel .vc-strip-cap { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--mute); text-align: center; margin-bottom: 18px; }
+.own-vercel .vc-strip { display: flex; justify-content: center; align-items: center; gap: clamp(24px, 5cqi, 64px); flex-wrap: wrap; padding: 24px 0 clamp(40px, 6cqi, 72px); }
+.own-vercel .vc-strip span { font-size: 16px; font-weight: 600; letter-spacing: -.4px; color: var(--body); opacity: .8; }
+
+/* ── bands ───────────────────────────────────────────────────────────── */
+.own-vercel .vc-band { padding: var(--sec) 0; }
+.own-vercel .vc-band-soft { background: var(--canvas-soft); }
+.own-vercel .vc-band-mesh { position: relative; overflow: hidden; background: var(--canvas-soft); }
+.own-vercel .vc-band-mesh::before {
+  content: ''; position: absolute; top: -30%; left: 0; right: 0; height: 520px; filter: blur(80px); opacity: .35;
+  background: linear-gradient(90deg, #007cf0, #00dfd8 30%, #7928ca 55%, #ff0080 75%, #f9cb28 100%); pointer-events: none;
+}
+.own-vercel .vc-band-mesh .vc-wrap { position: relative; z-index: 2; }
+.own-vercel .vc-band-dark { background: var(--primary); color: var(--on-primary); }
+
+/* ── feature 3-up ────────────────────────────────────────────────────── */
+.own-vercel .vc-feature3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+.own-vercel .vc-feature {
+  background: var(--canvas); border-radius: var(--r-md); padding: 24px; box-shadow: var(--shadow-4);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.own-vercel .vc-feature-icon { width: 40px; height: 40px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--canvas-soft-2); }
+.own-vercel .vc-feature-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-vercel .vc-feature h3 { font-size: 20px; font-weight: 600; letter-spacing: -.6px; }
+.own-vercel .vc-feature p { font-size: 14px; line-height: 1.5; letter-spacing: -.28px; color: var(--body); }
+.own-vercel .vc-feature .vc-link { margin-top: auto; }
+
+/* ── showcase / code editor ──────────────────────────────────────────── */
+.own-vercel .vc-show-in { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 5cqi, 72px); align-items: center; }
+.own-vercel .vc-show-copy .vc-body { max-width: 46ch; margin: 18px 0 22px; }
+.own-vercel .vc-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--link); }
+.own-vercel .vc-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.own-vercel .vc-editor { background: var(--primary); border-radius: var(--r-md); overflow: hidden; box-shadow: var(--shadow-5); }
+.own-vercel .vc-editor-top { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.own-vercel .vc-edot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.24); }
+.own-vercel .vc-editor-file { margin-left: 10px; font-family: var(--f-mono); font-size: 12px; color: rgba(255,255,255,.55); }
+.own-vercel .vc-editor-body { margin: 0; padding: 20px; overflow-x: auto; font-family: var(--f-mono); font-size: 13px; line-height: 1.55; color: #f2f2f2; }
+.own-vercel .vc-editor-body code { font-family: inherit; }
+.own-vercel .vc-c-kw { color: #ff0080; }
+.own-vercel .vc-c-str { color: #50e3c2; }
+.own-vercel .vc-c-num { color: #f9cb28; }
+
+/* ── template grid ───────────────────────────────────────────────────── */
+.own-vercel .vc-tpl-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.own-vercel .vc-tpl {
+  background: var(--canvas); border-radius: var(--r-md); padding: 16px; box-shadow: var(--shadow-2);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.own-vercel .vc-tpl-thumb { aspect-ratio: 16 / 9; border-radius: var(--r-sm); background: linear-gradient(140deg, var(--c, #007cf0), var(--c2, #00dfd8)); }
+.own-vercel .vc-tpl-name { font-size: 14px; font-weight: 500; letter-spacing: -.28px; }
+.own-vercel .vc-tpl-meta { font-family: var(--f-mono); font-size: 12px; color: var(--mute); }
+
+/* ── dark band stats ─────────────────────────────────────────────────── */
+.own-vercel .vc-dark-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5cqi, 72px); align-items: center; }
+.own-vercel .vc-dark-copy .vc-body-on-dark { max-width: 46ch; margin-top: 18px; }
+.own-vercel .vc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,.12); border-radius: var(--r-md); overflow: hidden; }
+.own-vercel .vc-stat { background: var(--primary); padding: 28px 24px; }
+.own-vercel .vc-stat-num { font-size: clamp(30px, 3.4cqi, 40px); font-weight: 600; letter-spacing: -1.4px; line-height: 1; }
+.own-vercel .vc-stat-lab { font-family: var(--f-mono); font-size: 12px; color: rgba(255,255,255,.6); margin-top: 8px; }
+
+/* ── pricing ─────────────────────────────────────────────────────────── */
+.own-vercel .vc-pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.own-vercel .vc-tier {
+  background: var(--canvas); border-radius: var(--r-lg); padding: 32px; box-shadow: var(--shadow-4);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.own-vercel .vc-tier-featured { background: var(--primary); color: var(--on-primary); }
+.own-vercel .vc-tier-name { font-size: 24px; font-weight: 600; letter-spacing: -.96px; }
+.own-vercel .vc-tier-price { font-size: clamp(30px, 3.6cqi, 40px); font-weight: 600; letter-spacing: -1.4px; line-height: 1; }
+.own-vercel .vc-tier-price small { font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--mute); }
+.own-vercel .vc-tier-featured .vc-tier-price small { color: rgba(255,255,255,.7); }
+.own-vercel .vc-tier ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.own-vercel .vc-tier li { display: flex; gap: 10px; font-size: 15px; line-height: 1.5; color: var(--body); }
+.own-vercel .vc-tier-featured li { color: rgba(255,255,255,.82); }
+.own-vercel .vc-tier li svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--link); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+.own-vercel .vc-tier-featured li svg { stroke: #50e3c2; }
+.own-vercel .vc-tier .vc-btn { margin-top: auto; }
+.own-vercel .vc-tier-featured .vc-btn-primary { background: var(--canvas); color: var(--ink); }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-vercel .vc-foot { background: var(--canvas); border-top: 1px solid var(--hairline); padding: 64px 0 48px; }
+.own-vercel .vc-foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-vercel .vc-foot-grid > div { display: flex; flex-direction: column; gap: 10px; }
+.own-vercel .vc-foot-head { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--mute); margin-bottom: 4px; }
+.own-vercel .vc-foot-grid a { font-size: 14px; letter-spacing: -.28px; color: var(--body); }
+.own-vercel .vc-foot-grid a:hover { color: var(--ink); }
+.own-vercel .vc-foot-bottom {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--mute);
+}
+.own-vercel .vc-foot-brand { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; letter-spacing: -.4px; color: var(--ink); }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-vercel .vc-nav-links { display: none; }
+  .own-vercel .vc-burger { display: grid; }
+  .own-vercel .vc-tpl-grid { grid-template-columns: repeat(3, 1fr); }
+  .own-vercel .vc-feature3 { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 760px) {
+  .own-vercel .vc-feature3 { grid-template-columns: 1fr; }
+  .own-vercel .vc-show-in, .own-vercel .vc-dark-in { grid-template-columns: 1fr; }
+  .own-vercel .vc-pricing { grid-template-columns: 1fr; }
+  .own-vercel .vc-tpl-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-vercel .vc-foot-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-vercel .vc-nav-actions .vc-cta-login { display: none; }
+}
+@container frame (max-width: 430px) {
+  .own-vercel .vc-hero-cta { flex-direction: column; }
+  .own-vercel .vc-hero-cta .vc-btn { width: 100%; }
+  .own-vercel .vc-tpl-grid { grid-template-columns: 1fr; }
+  .own-vercel .vc-stats { grid-template-columns: 1fr; }
+  .own-vercel .vc-foot-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-vercel *, .own-vercel *::before, .own-vercel *::after {
+    animation-duration: .001ms !important; transition-duration: .001ms !important;
+  }
+}

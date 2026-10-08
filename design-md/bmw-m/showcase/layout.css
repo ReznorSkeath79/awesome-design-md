@@ -1,0 +1,261 @@
+/* ══ NORTHWIND M — own layout in the BMW M design language ═══════════════
+   Scoped under .own-bmw-m. Tokens from design-md/bmw-m/DESIGN.md. Near-pure
+   black canvas, white UPPERCASE display (700) vs light body (300), M tricolor
+   stripe as the only decorative element, 0px radius everywhere, photography
+   (SVG/CSS) as the depth. Container queries drive Tablet/Phone reflow. */
+
+.own-bmw-m {
+  --canvas: #000000;
+  --surface-soft: #0d0d0d;
+  --surface-card: #1a1a1a;
+  --surface-elevated: #262626;
+  --carbon: #2b2b2b;
+  --hairline: #3c3c3c;
+  --hairline-strong: #262626;
+  --ink: #ffffff;
+  --body: #bbbbbb;
+  --body-strong: #e6e6e6;
+  --muted: #7e7e7e;
+  --m-blue-light: #0066b1;
+  --m-blue-dark: #1c69d4;
+  --m-red: #e22718;
+  --warning: #f4b400;
+
+  --display: "BMWTypeNextLatin", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --body-font: "BMWTypeNextLatin Light", "BMWTypeNextLatin", "Inter", sans-serif;
+
+  --gut: clamp(20px, 4.6cqi, 60px);
+  --section: clamp(56px, 8cqi, 96px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+.own-bmw-m *,
+.own-bmw-m *::before,
+.own-bmw-m *::after { box-sizing: border-box; }
+.own-bmw-m :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.own-bmw-m a { color: inherit; text-decoration: none; }
+
+.own-bmw-m .band-inner { max-width: 1440px; margin: 0 auto; padding: 0 var(--gut); }
+
+/* ── type ─────────────────────────────────────────────────────────────── */
+.own-bmw-m .display-lg {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(34px, 5.4cqi, 56px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+.own-bmw-m .display-md {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(26px, 3.4cqi, 40px);
+  line-height: 1.1;
+}
+.own-bmw-m .eyebrow {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--body);
+  margin-bottom: 16px;
+}
+.own-bmw-m .tag {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.own-bmw-m .hero-sub { color: var(--body); font-weight: 300; font-size: 16px; max-width: 52ch; }
+
+/* ── buttons / links ─────────────────────────────────────────────────── */
+.own-bmw-m .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 48px; padding: 0 32px; border-radius: 0;
+  font-family: var(--display); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.own-bmw-m .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.own-bmw-m .btn-outline:hover { background: var(--ink); color: var(--canvas); }
+.own-bmw-m .link-arrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 700; font-size: 13px;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink);
+}
+.own-bmw-m .link-arrow span { transition: transform .25s ease; }
+.own-bmw-m .link-arrow:hover span { transform: translateX(5px); }
+
+/* ── nav ──────────────────────────────────────────────────────────────── */
+.own-bmw-m .nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 28px;
+  height: 64px; padding: 0 var(--gut);
+  background: rgba(0, 0, 0, .92);
+  border-bottom: 1px solid var(--hairline-strong);
+  backdrop-filter: blur(8px);
+}
+.own-bmw-m .nav-logo { display: inline-flex; align-items: center; gap: 12px; }
+.own-bmw-m .roundel { width: 34px; height: 34px; display: block; flex: none; }
+.own-bmw-m .roundel svg { width: 100%; height: 100%; display: block; }
+.own-bmw-m .nav-word { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: 1.5px; white-space: nowrap; }
+.own-bmw-m .nav-word sup { font-size: 9px; letter-spacing: 1px; margin-left: 2px; color: var(--m-blue-dark); }
+.own-bmw-m .nav-links { display: flex; align-items: center; gap: 26px; margin-left: 14px; }
+.own-bmw-m .nav-links a {
+  font-family: var(--display); font-weight: 400; font-size: 14px; letter-spacing: .5px;
+  color: var(--body); padding: 6px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+}
+.own-bmw-m .nav-links a:hover { color: var(--ink); border-color: var(--m-blue-dark); }
+.own-bmw-m .nav-tools { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.own-bmw-m .nav-icon { display: grid; place-items: center; width: 48px; height: 48px; color: var(--ink); }
+.own-bmw-m .nav-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.own-bmw-m .nav-icon:hover { background: var(--surface-card); }
+.own-bmw-m .nav-lang { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 1.5px; padding: 0 12px; color: var(--body); }
+.own-bmw-m .nav-burger { display: none; width: 48px; height: 48px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: none; border: 0; cursor: pointer; }
+.own-bmw-m .nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform .25s, opacity .25s; }
+.own-bmw-m .nav-burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.own-bmw-m .nav-burger[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+/* ── hero ─────────────────────────────────────────────────────────────── */
+.own-bmw-m .hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: min(760px, 88cqi);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: clamp(72px, 14cqi, 120px) var(--gut) clamp(40px, 6cqi, 64px);
+}
+.own-bmw-m .hero-photo { position: absolute; inset: 0; z-index: -2; background: radial-gradient(120% 80% at 50% 12%, #1c1c1c 0%, #060606 62%, #000 100%); }
+.own-bmw-m .hero-car { position: absolute; left: 50%; bottom: 0; width: min(900px, 92%); transform: translateX(-50%); opacity: .96; }
+.own-bmw-m .hero-streak { position: absolute; left: -10%; right: -10%; height: 2px; top: 42%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); opacity: .5; }
+.own-bmw-m .hero-streak.b { top: 58%; height: 1px; opacity: .35; }
+.own-bmw-m .hero-streak.c { position: absolute; top: 50%; }
+.own-bmw-m .hero-grain { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 34%, transparent 62%); }
+.own-bmw-m .hero-copy { position: relative; z-index: 1; }
+.own-bmw-m .hero-kicker {
+  font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--body); margin: 0 0 14px;
+}
+.own-bmw-m .hero h1 {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(46px, 8.4cqi, 80px); line-height: 1; letter-spacing: 0; margin: 0;
+}
+.own-bmw-m .hero-sub { margin: 22px 0 30px; color: var(--body-strong); }
+.own-bmw-m .hero-cta { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.own-bmw-m .hero-stats {
+  position: absolute; top: 50%; right: var(--gut); transform: translateY(-50%);
+  z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; text-align: right;
+}
+.own-bmw-m .hero-stats b { display: block; font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3.2cqi, 44px); line-height: 1; }
+.own-bmw-m .hero-stats span { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+
+/* ── M tricolor stripe ───────────────────────────────────────────────── */
+.own-bmw-m .mstripe {
+  height: 4px; margin: 0; background: linear-gradient(90deg, var(--m-blue-light) 0 33.33%, var(--m-blue-dark) 33.33% 66.66%, var(--m-red) 66.66% 100%);
+}
+
+/* ── topics / spec ───────────────────────────────────────────────────── */
+.own-bmw-m .topics { padding: var(--section) 0; background: var(--canvas); }
+.own-bmw-m .band-head { max-width: 720px; margin-bottom: 44px; }
+.own-bmw-m .spec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); }
+.own-bmw-m .spec { background: var(--surface-soft); padding: 32px 24px; }
+.own-bmw-m .spec b { display: block; font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3cqi, 40px); line-height: 1; margin-bottom: 12px; }
+.own-bmw-m .spec span { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+
+/* ── magazine cards ──────────────────────────────────────────────────── */
+.own-bmw-m .magazine { padding: var(--section) 0; background: var(--canvas); }
+.own-bmw-m .cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.own-bmw-m .mcard { background: var(--surface-card); padding: 24px; display: flex; flex-direction: column; }
+.own-bmw-m .mcard-img { height: 0; padding-bottom: 56.25%; margin: -24px -24px 20px; background-size: cover; position: relative; overflow: hidden; }
+.own-bmw-m .mcard-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,.06), transparent 50%), repeating-linear-gradient(115deg, rgba(0,0,0,.35) 0 3px, transparent 3px 9px); }
+.own-bmw-m .ph-1 { background-image: radial-gradient(120% 90% at 70% 20%, #2b2b2b, #0a0a0a), linear-gradient(90deg, #161616, #2b2b2b); }
+.own-bmw-m .ph-2 { background-image: radial-gradient(90% 80% at 30% 70%, #16365a, #050505); }
+.own-bmw-m .ph-3 { background-image: radial-gradient(110% 90% at 50% 30%, #4a1410, #070707); }
+.own-bmw-m .ph-4 { background-image: radial-gradient(100% 90% at 60% 25%, #242424, #060606); }
+.own-bmw-m .ph-5 { background-image: radial-gradient(100% 90% at 40% 30%, #123152, #060606); }
+.own-bmw-m .ph-6 { background-image: radial-gradient(100% 90% at 55% 30%, #3d100c, #060606); }
+.own-bmw-m .mcard h3 { font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 1.4; margin: 0 0 10px; }
+.own-bmw-m .mcard-body { color: var(--body); font-size: 15px; margin: 0 0 18px; }
+.own-bmw-m .mcard .link-arrow { margin-top: auto; }
+
+/* ── models ──────────────────────────────────────────────────────────── */
+.own-bmw-m .models { padding: var(--section) 0; background: var(--canvas); }
+.own-bmw-m .model { display: flex; flex-direction: column; }
+.own-bmw-m .model-img { height: 0; padding-bottom: 62%; background-size: cover; margin-bottom: 22px; }
+.own-bmw-m .model h3 { margin: 0 0 8px; }
+.own-bmw-m .model-spec { font-weight: 300; font-size: 14px; color: var(--body); margin: 0 0 16px; }
+.own-bmw-m .model .link-arrow { margin-top: auto; }
+
+/* ── configurator ────────────────────────────────────────────────────── */
+.own-bmw-m .config { padding: var(--section) 0; background: var(--surface-soft); }
+.own-bmw-m .config-inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 4cqi, 64px); align-items: center; }
+.own-bmw-m .config-tabs { display: flex; gap: 0; margin: 28px 0 24px; border-bottom: 1px solid var(--hairline); }
+.own-bmw-m .config .tab {
+  background: none; border: 0; cursor: pointer; padding: 12px 22px 12px 0; margin-right: 22px;
+  font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--body); border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+}
+.own-bmw-m .config .tab[aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
+.own-bmw-m .config-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 26px; }
+.own-bmw-m .price-num { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 5cqi, 64px); line-height: 1; font-variant-numeric: tabular-nums; }
+.own-bmw-m .price-unit { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.own-bmw-m .config-panel { background: var(--surface-card); padding: 32px; }
+.own-bmw-m .config-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--hairline); }
+.own-bmw-m .config-row span { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.own-bmw-m .config-row b { font-family: var(--display); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.own-bmw-m .config-meter { margin-top: 22px; height: 4px; background: var(--hairline); overflow: hidden; }
+.own-bmw-m .config-meter span { display: block; height: 100%; width: 30%; background: linear-gradient(90deg, var(--m-blue-light), var(--m-blue-dark) 60%, var(--m-red)); transition: width .5s cubic-bezier(.16,1,.3,1); }
+
+/* ── CTA band ────────────────────────────────────────────────────────── */
+.own-bmw-m .cta { position: relative; isolation: isolate; overflow: hidden; padding: clamp(64px, 8cqi, 80px) var(--gut); text-align: center; }
+.own-bmw-m .cta-photo { position: absolute; inset: 0; z-index: -2; background: radial-gradient(120% 120% at 50% 120%, #241010 0%, #0a0a0a 55%, #000 100%); }
+.own-bmw-m .cta-inner { max-width: 640px; margin: 0 auto; }
+.own-bmw-m .cta .hero-sub { margin: 18px auto 28px; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-bmw-m .foot { background: var(--canvas); padding: clamp(48px, 6cqi, 64px) 0 32px; border-top: 1px solid var(--hairline-strong); }
+.own-bmw-m .foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-bmw-m .foot-col { display: flex; flex-direction: column; gap: 10px; }
+.own-bmw-m .foot-h { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 6px; }
+.own-bmw-m .foot-col a { color: var(--muted); font-size: 14px; font-weight: 300; }
+.own-bmw-m .foot-col a:hover { color: var(--ink); }
+.own-bmw-m .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--hairline); }
+.own-bmw-m .foot-bottom p { font-size: 12px; letter-spacing: .5px; color: var(--muted); margin: 0; }
+.own-bmw-m .foot-lang { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 1.5px; color: var(--muted); }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-bmw-m .hero-stats { display: none; }
+  .own-bmw-m .spec-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-bmw-m .cards3, .own-bmw-m .models-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-bmw-m .config-inner { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-bmw-m .nav { gap: 12px; }
+  .own-bmw-m .nav-links { display: none; }
+  .own-bmw-m .nav-burger { display: flex; }
+  .own-bmw-m .nav-lang, .own-bmw-m .nav-icon-search { display: none; }
+  .own-bmw-m .hero { min-height: 78cqi; }
+  .own-bmw-m .hero-stats { position: static; transform: none; display: grid; grid-template-columns: repeat(3, 1fr); text-align: left; gap: 12px; margin-top: 32px; }
+  .own-bmw-m .hero-stats span { font-size: 9.5px; }
+  .own-bmw-m .cards3, .own-bmw-m .models-grid, .own-bmw-m .spec-grid { grid-template-columns: 1fr; }
+  .own-bmw-m .foot-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 430px) {
+  .own-bmw-m .foot-cols { grid-template-columns: 1fr; }
+  .own-bmw-m .config-panel { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-bmw-m *, .own-bmw-m *::before, .own-bmw-m *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}

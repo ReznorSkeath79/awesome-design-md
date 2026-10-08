@@ -1,0 +1,229 @@
+<div class="own-stripe">
+  <header class="st-bar">
+    <a class="st-brand" href="#st-top">
+      <span class="st-mark" aria-hidden="true"></span>
+      <span class="st-wordmark">Northwind</span>
+    </a>
+    <nav class="st-nav" aria-label="Primary">
+      <a href="#st-product">Product</a>
+      <a href="#st-developers">Developers</a>
+      <a href="#st-pricing">Pricing</a>
+      <a href="#st-customers">Customers</a>
+    </nav>
+    <div class="st-bar-right">
+      <a class="st-signin" href="#">Sign in</a>
+      <a class="st-btn st-btn-primary" href="#">Start now</a>
+    </div>
+  </header>
+
+  <section class="st-hero" id="st-top" aria-labelledby="st-hero-h">
+    <svg class="st-mesh" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <filter id="st-blur"><feGaussianBlur stdDeviation="70"/></filter>
+        <linearGradient id="st-wash" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f5e9d4"/>
+          <stop offset="1" stop-color="#ffffff"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="520" fill="url(#st-wash)"/>
+      <g filter="url(#st-blur)">
+        <circle cx="180" cy="140" r="200" fill="#f5e9d4"/>
+        <circle cx="430" cy="90" r="190" fill="#9b6829" opacity=".55"/>
+        <circle cx="700" cy="150" r="210" fill="#665efd" opacity=".68"/>
+        <circle cx="980" cy="90" r="200" fill="#533afd" opacity=".62"/>
+        <circle cx="1130" cy="210" r="180" fill="#f96bee" opacity=".6"/>
+        <circle cx="900" cy="330" r="170" fill="#ea2261" opacity=".5"/>
+      </g>
+    </svg>
+    <div class="st-hero-inner">
+      <div class="st-hero-copy">
+        <span class="st-pill-tag">New &mdash; regional throughput API</span>
+        <h1 id="st-hero-h">Operations analytics for every region you run</h1>
+        <p class="st-hero-lead">Northwind turns orders, refunds, and delivery times into one live dashboard. Launch an integration in an afternoon and watch throughput move.</p>
+        <div class="st-hero-cta">
+          <a class="st-btn st-btn-primary" href="#">Start now</a>
+          <a class="st-btn st-btn-secondary" href="#st-developers">Contact sales &rarr;</a>
+        </div>
+        <p class="st-hero-fine">No card required &middot; free in test mode</p>
+      </div>
+      <div class="st-composite" aria-hidden="true">
+        <div class="st-panel st-panel-code">
+          <div class="st-dotrow"><i></i><i></i><i></i></div>
+          <pre><span class="st-c-key">const</span> nw = <span class="st-c-fn">stripe</span>(<span class="st-c-str">'sk_live'</span>);
+nw.regions.<span class="st-c-fn">watch</span>({
+  metric: <span class="st-c-str">'throughput'</span>,
+  window: <span class="st-c-str">'7d'</span>
+});</pre>
+        </div>
+        <div class="st-panel st-panel-table">
+          <div class="st-pt-head"><span>Region</span><span class="num">Orders</span><span class="num">Uptime</span></div>
+          <div class="st-pt-row"><span>North</span><span class="num">48,210</span><span class="num ok">99.98%</span></div>
+          <div class="st-pt-row"><span>South</span><span class="num">36,904</span><span class="num ok">99.94%</span></div>
+          <div class="st-pt-row"><span>East</span><span class="num">61,553</span><span class="num warn">99.71%</span></div>
+          <div class="st-pt-row"><span>West</span><span class="num">29,108</span><span class="num ok">99.99%</span></div>
+        </div>
+        <div class="st-panel st-panel-chart">
+          <span class="st-pc-cap">Throughput &mdash; 24h</span>
+          <svg viewBox="0 0 200 90" class="st-spark" preserveAspectRatio="none">
+            <polyline points="0,72 25,64 50,68 75,44 100,50 125,28 150,34 175,16 200,22"/>
+          </svg>
+          <span class="st-pc-big">1.4&times;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="st-logos" aria-label="Customers">
+    <p class="st-logos-cap">Powering operations at</p>
+    <div class="st-logos-row">
+      <span>Halcyon</span><span>Northbeam</span><span>Arcadia</span><span>Vertica</span><span>Foundry</span><span>Lumen</span>
+    </div>
+  </section>
+
+  <section class="st-feature" id="st-product" aria-labelledby="st-feat-h">
+    <div class="st-feature-copy">
+      <span class="st-eyebrow">Analytics engine</span>
+      <h2 id="st-feat-h">Every metric, tabular by default</h2>
+      <p>Query orders, refunds, and latency across regions with a single SDK. Numbers render in tabular figures so columns line up, whether you're reading a dashboard or a log line.</p>
+      <ul class="st-feature-list">
+        <li><b>One SDK</b> &mdash; typed clients for every region and metric.</li>
+        <li><b>Live tables</b> &mdash; throughput updates as orders settle.</li>
+        <li><b>Audit trail</b> &mdash; every export is signed and timestamped.</li>
+      </ul>
+      <a class="st-tlink" href="#st-developers">Read the docs &rarr;</a>
+    </div>
+    <div class="st-mockup" aria-hidden="true">
+      <div class="st-panel st-panel-dash">
+        <div class="st-dash-top">
+          <span class="st-dash-title">Regional throughput</span>
+          <span class="st-dash-live">Live</span>
+        </div>
+        <div class="st-dash-kpis">
+          <div class="st-kpi"><span class="lab">Volume</span><b>184,904</b><span class="delta up">+4.2%</span></div>
+          <div class="st-kpi"><span class="lab">Refunds</span><b>1,204</b><span class="delta down">-0.8%</span></div>
+          <div class="st-kpi"><span class="lab">Latency</span><b>82 ms</b><span class="delta up">-12%</span></div>
+        </div>
+        <table>
+          <thead><tr><th>Store</th><th class="num">Orders</th><th class="num">Avg</th><th class="num">Refund</th></tr></thead>
+          <tbody>
+            <tr><td>Store 042</td><td class="num">12,884</td><td class="num">2:14</td><td class="num">0.4%</td></tr>
+            <tr><td>Store 118</td><td class="num">10,201</td><td class="num">2:31</td><td class="num">0.9%</td></tr>
+            <tr><td>Store 207</td><td class="num">9,776</td><td class="num">2:08</td><td class="num">0.2%</td></tr>
+            <tr><td>Store 331</td><td class="num">8,540</td><td class="num">2:47</td><td class="num">1.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="st-cream" aria-labelledby="st-cream-h">
+    <div class="st-cream-head">
+      <span class="st-eyebrow">Built for operators</span>
+      <h2 id="st-cream-h">A warm interlude between deployments</h2>
+    </div>
+    <div class="st-cream-grid">
+      <article class="st-ccard">
+        <h3>Dashboards</h3>
+        <p>Compose regional views without writing a query. Drag a metric, ship a board.</p>
+      </article>
+      <article class="st-ccard">
+        <h3>Alerts</h3>
+        <p>Route threshold breaches to the right channel, with the exact window attached.</p>
+      </article>
+      <article class="st-ccard">
+        <h3>Exports</h3>
+        <p>Signed CSV and Parquet exports, ready for the warehouse you already run.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="st-pricing" id="st-pricing" aria-labelledby="st-price-h">
+    <div class="st-price-head">
+      <span class="st-eyebrow">Pricing</span>
+      <h2 id="st-price-h">Start free, scale by region</h2>
+      <p>Every tier ships the same SDK and the same tabular tables. Pay for the volume you actually run.</p>
+    </div>
+    <div class="st-price-grid">
+      <article class="st-pcard">
+        <h3>Test</h3>
+        <p class="st-price"><span>$0</span>/mo</p>
+        <p class="st-pcard-sub">For building the first integration.</p>
+        <ul><li>1 region</li><li>7-day history</li><li>Community support</li></ul>
+        <a class="st-btn st-btn-secondary st-btn-block" href="#">Start free</a>
+      </article>
+      <article class="st-pcard">
+        <h3>Standard</h3>
+        <p class="st-price"><span>$249</span>/mo</p>
+        <p class="st-pcard-sub">For a growing operations team.</p>
+        <ul><li>5 regions</li><li>12-month history</li><li>Email support</li></ul>
+        <a class="st-btn st-btn-secondary st-btn-block" href="#">Choose Standard</a>
+      </article>
+      <article class="st-pcard st-pcard-featured">
+        <span class="st-pcard-flag">Most popular</span>
+        <h3>Scale</h3>
+        <p class="st-price"><span>$899</span>/mo</p>
+        <p class="st-pcard-sub">For multi-region operators.</p>
+        <ul><li>Unlimited regions</li><li>Unlimited history</li><li>Priority support</li></ul>
+        <a class="st-btn st-btn-on-dark st-btn-block" href="#">Choose Scale</a>
+      </article>
+      <article class="st-pcard">
+        <h3>Enterprise</h3>
+        <p class="st-price"><span>Custom</span></p>
+        <p class="st-pcard-sub">For regulated deployments.</p>
+        <ul><li>Custom SLAs</li><li>Dedicated region</li><li>Solutions architect</li></ul>
+        <a class="st-btn st-btn-secondary st-btn-block" href="#">Contact sales</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="st-dev" id="st-developers" aria-labelledby="st-dev-h">
+    <div class="st-dev-copy">
+      <span class="st-eyebrow st-eyebrow-dark">Developers</span>
+      <h2 id="st-dev-h">Ship an integration in an afternoon</h2>
+      <p>Install the SDK, point it at a key, and read your first regional metric in minutes.</p>
+      <div class="st-dev-cta">
+        <a class="st-btn st-btn-on-dark" href="#">Read the docs</a>
+        <a class="st-btn st-btn-outline-dark" href="#">Get API keys</a>
+      </div>
+    </div>
+    <pre class="st-code" aria-hidden="true"><span class="st-c-key">import</span> northwind
+
+nw = northwind.<span class="stw">Client</span>()
+report = nw.reports.<span class="stw">create</span>(
+    metric=<span class="st-c-str">"throughput"</span>,
+    regions=[<span class="st-c-str">"north"</span>, <span class="st-c-str">"west"</span>],
+)
+<span class="st-c-key">for</span> row <span class="st-c-key">in</span> report.rows:
+    print(row.region, row.orders)</pre>
+  </section>
+
+  <section class="st-cta" id="st-customers" aria-labelledby="st-cta-h">
+    <div class="st-cta-inner">
+      <h2 id="st-cta-h">Ready to see your regions move?</h2>
+      <p>Spin up a test integration today and watch throughput for one store, then five, then all of them.</p>
+      <div class="st-cta-row">
+        <a class="st-btn st-btn-primary" href="#">Start now</a>
+        <a class="st-btn st-btn-secondary" href="#">Talk to sales</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="st-foot">
+    <div class="st-foot-grid">
+      <div class="st-foot-brand">
+        <span class="st-wordmark">Northwind</span>
+        <p>Operations analytics for every region. Sample data, showcase only.</p>
+      </div>
+      <nav class="st-foot-col" aria-label="Product"><h4>Product</h4><a href="#">Dashboard</a><a href="#">Alerts</a><a href="#">Exports</a></nav>
+      <nav class="st-foot-col" aria-label="Developers"><h4>Developers</h4><a href="#">Docs</a><a href="#">API reference</a><a href="#">Status</a></nav>
+      <nav class="st-foot-col" aria-label="Company"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Newsroom</a></nav>
+      <nav class="st-foot-col" aria-label="Legal"><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></nav>
+    </div>
+    <div class="st-foot-row">
+      <span>&copy; 2026 Northwind &mdash; fictional brand</span>
+      <span class="st-foot-social" aria-label="Social">
+        <a href="#" aria-label="X">X</a><a href="#" aria-label="GitHub">GH</a><a href="#" aria-label="LinkedIn">in</a>
+      </span>
+    </div>
+  </footer>
+</div>

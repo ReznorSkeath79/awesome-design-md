@@ -1,0 +1,232 @@
+<div class="own-kraken">
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="nav" id="krakenNav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#krakenTop" aria-label="Northwind home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5 7 10.2v4.6l5 2.7 5-2.7v-4.6z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-name">Northwind</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#krakenProduct">Product</a>
+        <a href="#krakenRegions">Regions</a>
+        <a href="#krakenPricing">Pricing</a>
+        <a href="#krakenCustomers">Customers</a>
+        <a href="#krakenFaq">Support</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-white" href="#">Sign in</a>
+        <a class="btn btn-primary" href="#krakenPricing">Get started</a>
+        <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" data-burger>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-drawer" hidden data-drawer>
+      <a href="#krakenProduct">Product</a>
+      <a href="#krakenRegions">Regions</a>
+      <a href="#krakenPricing">Pricing</a>
+      <a href="#krakenCustomers">Customers</a>
+      <a href="#krakenFaq">Support</a>
+    </div>
+  </header>
+
+  <main id="krakenTop">
+    <!-- ── HERO ──────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-in">
+        <div class="hero-copy reveal" data-reveal>
+          <p class="eyebrow">Trusted operations analytics</p>
+          <h1 class="display-hero">Know your operation, to the last shipment.</h1>
+          <p class="hero-lead">Northwind puts throughput, regions, and revenue on one governed ledger — accurate, auditable, and fast enough to run the floor in real time.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#krakenPricing">Start free</a>
+            <a class="btn btn-outline btn-lg" href="#krakenProduct">See how it works</a>
+          </div>
+          <p class="hero-note">No card required · Free for 3 seats</p>
+        </div>
+        <div class="hero-panel reveal" data-reveal aria-label="Northwind ledger preview">
+          <div class="hp-head">
+            <span class="hp-title">Operations ledger</span>
+            <span class="badge badge-success">Live</span>
+          </div>
+          <div class="hp-amount">
+            <span class="hp-label">Net throughput</span>
+            <b class="hp-big" data-count="48200" data-suffix="">0</b>
+          </div>
+          <svg class="hp-spark" viewBox="0 0 320 90" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="kgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7132f5" stop-opacity=".28"/><stop offset="1" stop-color="#7132f5" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 70 L40 62 L80 68 L120 44 L160 52 L200 30 L240 38 L280 18 L320 26 L320 90 L0 90 Z" fill="url(#kgrad)"/>
+            <path class="hp-line" d="M0 70 L40 62 L80 68 L120 44 L160 52 L200 30 L240 38 L280 18 L320 26" fill="none"/>
+          </svg>
+          <ul class="hp-rows" id="krakenRows"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STATS BAR ─────────────────────────────────────────────────── -->
+    <section class="stats">
+      <div class="wrap stats-in">
+        <div class="stat reveal" data-reveal><b data-count="48.2" data-suffix="K" data-decimals="1">0</b><span>shipments tracked</span></div>
+        <div class="stat reveal" data-reveal><b data-count="6">0</b><span>regions, one ledger</span></div>
+        <div class="stat reveal" data-reveal><b data-count="99" data-suffix="%">0</b><span>on-time accuracy</span></div>
+        <div class="stat reveal" data-reveal><b>$4.9M</b><span>weekly volume</span></div>
+      </div>
+    </section>
+
+    <!-- ── FEATURE CARDS ─────────────────────────────────────────────── -->
+    <section class="section" id="krakenProduct">
+      <div class="wrap">
+        <div class="sec-head center reveal" data-reveal>
+          <p class="eyebrow">Why Northwind</p>
+          <h2 class="display-section">Built for accuracy you can show.</h2>
+          <p class="lead">Every number is reconciled, timestamped, and traceable — the way you'd expect from a system of record.</p>
+        </div>
+        <div class="grid3">
+          <article class="card reveal" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20V8M9 20V4M15 20v-9M21 20v-13"/></svg></span>
+            <h3>One governed ledger</h3>
+            <p>Logistics, revenue, and support share a single model — no conflicting totals, ever.</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h3>Audit-ready by default</h3>
+            <p>Immutable history and role-based access ship with every plan, not as an add-on.</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <h3>Real-time, not overnight</h3>
+            <p>Updates land the moment a shipment moves or an order closes — no batch window.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REGIONS / FEATURE ROW ─────────────────────────────────────── -->
+    <section class="section cloud" id="krakenRegions">
+      <div class="wrap feature">
+        <div class="feature-frame reveal" data-reveal aria-hidden="true">
+          <div class="ff-head"><span>Region roll-up</span><span class="badge badge-neutral">6 regions</span></div>
+          <ul class="ff-rows" id="krakenRegions"></ul>
+        </div>
+        <div class="feature-copy reveal" data-reveal>
+          <p class="eyebrow">Across every region</p>
+          <h2 class="display-section">Compare like-for-like, wherever you operate.</h2>
+          <p class="lead">Currencies, time zones, and local carriers are normalised automatically, so a lane in APAC reads on the same scale as one in Europe.</p>
+          <ul class="ticks">
+            <li><b>Roll-ups &amp; drill-downs</b> from region to individual shipment.</li>
+            <li><b>Variance alerts</b> that page the right owner.</li>
+            <li><b>Scenario planning</b> before you move a hub.</li>
+          </ul>
+          <a class="btn btn-outline" href="#krakenPricing">Explore the platform</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ──────────────────────────────────────────────── -->
+    <section class="section" id="krakenCustomers">
+      <div class="wrap">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">Customers</p>
+          <h2 class="display-section">Teams that run on the numbers.</h2>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“We stopped reconciling spreadsheets. The ledger is the truth, and month-end is a single day.”</blockquote>
+            <figcaption><span class="av">PN</span><span><b>Priya Nadar</b>VP Operations, Aperture Foods</span></figcaption>
+          </figure>
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“The audit trail alone justified the move. Every number answers to its source.”</blockquote>
+            <figcaption><span class="av">DO</span><span><b>Daniel Okafor</b>Planning Director, Kestrel Bank</span></figcaption>
+          </figure>
+          <figure class="quote reveal" data-reveal>
+            <blockquote>“Variance alerts caught a lane slip two days before it would have hit the SLA.”</blockquote>
+            <figcaption><span class="av">MK</span><span><b>Mira Kessler</b>Head of Logistics, Vector Freight</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ───────────────────────────────────────────────────── -->
+    <section class="section cloud" id="krakenPricing">
+      <div class="wrap">
+        <div class="sec-head center reveal" data-reveal>
+          <p class="eyebrow">Pricing</p>
+          <h2 class="display-section">Straightforward plans.</h2>
+        </div>
+        <div class="tiers">
+          <article class="tier reveal" data-reveal>
+            <h3>Starter</h3>
+            <p class="tier-note">One team, one region.</p>
+            <p class="price"><span>$0</span><small>/month</small></p>
+            <ul><li>3 seats</li><li>Core dashboards</li><li>Community support</li></ul>
+            <a class="btn btn-outline btn-block" href="#">Start free</a>
+          </article>
+          <article class="tier tier-feat reveal" data-reveal>
+            <span class="tier-badge">Popular</span>
+            <h3>Growth</h3>
+            <p class="tier-note">Multi-region operations.</p>
+            <p class="price"><span>$49</span><small>/seat/month</small></p>
+            <ul><li>Everything in Starter</li><li>Unlimited regions</li><li>Variance alerts</li><li>SSO + audit log</li></ul>
+            <a class="btn btn-primary btn-block" href="#">Choose Growth</a>
+          </article>
+          <article class="tier reveal" data-reveal>
+            <h3>Enterprise</h3>
+            <p class="tier-note">Governed at scale.</p>
+            <p class="price"><span>Custom</span></p>
+            <ul><li>Data residency</li><li>Dedicated CSM</li><li>On-site onboarding</li></ul>
+            <a class="btn btn-outline btn-block" href="#">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ───────────────────────────────────────────────────────── -->
+    <section class="section" id="krakenFaq">
+      <div class="wrap wrap-narrow">
+        <div class="sec-head reveal" data-reveal>
+          <p class="eyebrow">Support</p>
+          <h2 class="display-section">Common questions.</h2>
+        </div>
+        <div class="faq" id="krakenFaqList"></div>
+      </div>
+    </section>
+
+    <!-- ── CTA ───────────────────────────────────────────────────────── -->
+    <section class="section tight">
+      <div class="wrap">
+        <div class="cta reveal" data-reveal>
+          <div>
+            <h2 class="display-section">Put your operation on one ledger.</h2>
+            <p>Set up Northwind in an afternoon and bring every region with you.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-lg" href="#">Get started</a>
+            <a class="btn btn-white btn-lg" href="#krakenPricing">Talk to sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <span class="brand-name">Northwind</span>
+        <p>Operations analytics for teams that run on the numbers.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div><h4>Product</h4><a href="#krakenProduct">Overview</a><a href="#krakenRegions">Regions</a><a href="#krakenPricing">Pricing</a><a href="#">Security</a></div>
+        <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#krakenCustomers">Customers</a><a href="#">Contact</a></div>
+        <div><h4>Resources</h4><a href="#">Docs</a><a href="#">API</a><a href="#">Status</a><a href="#">Changelog</a></div>
+        <div><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclosures</a></div>
+      </nav>
+    </div>
+    <div class="wrap foot-base">
+      <span>© 2026 Northwind Analytics, Inc.</span>
+      <span>Sample content — showcase only</span>
+    </div>
+  </footer>
+</div>

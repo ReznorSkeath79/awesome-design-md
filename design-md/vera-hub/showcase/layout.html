@@ -1,0 +1,176 @@
+<div class="own-vera-hub">
+  <div class="vh-shell" id="vhShell">
+    <!-- ── TOP BAR — brand tile, primary links, search, bell, avatar ─────── -->
+    <header class="vh-topnav">
+      <a class="vh-logo" href="#" aria-label="AutoAlchemy Hub home">
+        <span class="vh-logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <rect x="4" y="6" width="3.4" height="12" rx="1.4" fill="#7FD4FF"></rect>
+            <rect x="10.3" y="4" width="3.4" height="16" rx="1.4" fill="#7FD4FF"></rect>
+            <rect x="16.6" y="8" width="3.4" height="8" rx="1.4" fill="#E8434A"></rect>
+          </svg>
+        </span>
+        <span class="vh-logo-word">AutoAlchemy Hub</span>
+        <span class="vh-logo-short">Hub</span>
+      </a>
+
+      <nav class="vh-app-links" aria-label="Primary">
+        <a class="vh-app-link on" href="#" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M9 21v-6h6v6"></path></svg>
+          Home
+        </a>
+        <a class="vh-app-link" href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5a1 1 0 0 1 1-1h6l2 2h6a1 1 0 0 1 1 1v13z"></path></svg>
+          Projects
+        </a>
+        <a class="vh-app-link" href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 8-16 8 3-8z"></path></svg>
+          Requests
+        </a>
+        <a class="vh-app-link" href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          Review
+        </a>
+        <button class="vh-app-link vh-app-link--learn" type="button" aria-haspopup="menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V6l8-3 8 3v13"></path><path d="M9 19v-4h6v4"></path></svg>
+          Learn
+          <svg class="vh-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+      </nav>
+
+      <div class="vh-topnav-right">
+        <button class="vh-searchbar" type="button" aria-label="Search the Hub">
+          <span class="vh-searchbar-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          </span>
+          <span class="vh-searchbar-place">Search the Hub</span>
+          <kbd class="vh-searchbar-kbd" aria-hidden="true">⌘K</kbd>
+        </button>
+        <button class="vh-icon-btn vh-search-icon-btn" type="button" aria-label="Search the Hub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        </button>
+        <button class="vh-icon-btn vh-bell" type="button" aria-label="Notifications, 3 unread">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"></path><path d="M10 19a2 2 0 0 0 4 0"></path></svg>
+          <span class="vh-badge">3</span>
+          <span class="vh-needdot" aria-hidden="true"></span>
+        </button>
+        <button class="vh-avatar" type="button" title="Mika Navarro">MN</button>
+      </div>
+    </header>
+
+    <!-- ── LEFT RAIL — grouped sections, active marker, collapse ─────────── -->
+    <nav class="vh-rail" id="vhRail" aria-label="Sections">
+      <div class="vh-rail-scroll">
+        <span class="vh-rail-marker" id="vhMarker" aria-hidden="true"></span>
+        <div id="vhRailGroups"></div>
+      </div>
+      <div class="vh-rail-foot">
+        <div class="vh-rail-foot-nav">
+          <a class="vh-rail-item vh-rail-item--foot" href="#">
+            <span class="vh-rail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 5a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 0 3 3 0 0 0 2-5 3 3 0 0 0-2-5 3 3 0 0 0-3-3z"></path></svg>
+            </span>
+            <span class="vh-rail-label">Brain</span>
+          </a>
+          <a class="vh-rail-item vh-rail-item--foot" href="#">
+            <span class="vh-rail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.2L4 21l1.8-5.4A8 8 0 1 1 21 12z"></path></svg>
+            </span>
+            <span class="vh-rail-label">Feedback</span>
+          </a>
+        </div>
+        <button class="vh-rail-toggle" id="vhRailToggle" type="button" aria-expanded="true" aria-controls="vhRail">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path><path d="m16 10-2 2 2 2"></path></svg>
+          <span class="vh-rail-toggle-word">Collapse</span>
+        </button>
+        <span class="vh-rail-version">Hub · 0.5</span>
+      </div>
+    </nav>
+
+    <!-- ── MAIN — the Dashboard page ──────────────────────────────────────── -->
+    <main class="vh-main">
+      <button class="vh-sections-btn" id="vhSections" type="button" aria-controls="vhRail" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg>
+        Sections
+      </button>
+
+      <div class="vh-page">
+        <!-- hero well: greeting, clock, actions, header core, KPI rail, ticker -->
+        <header class="vh-hero">
+          <div class="vh-hero-top">
+            <div class="vh-hero-left">
+              <span class="vh-eyebrow">Home · Today</span>
+              <h1 id="vhGreeting">Good afternoon, <span class="vh-grad">Mika</span></h1>
+              <p class="vh-hero-date">2026-10-08 · Manila
+                <span class="vh-hero-clock" id="vhClock">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+                  17:42 PHT
+                </span>
+              </p>
+              <div class="vh-hero-actions">
+                <a class="vh-btn vh-btn--secondary" href="#">New request</a>
+                <button class="vh-btn vh-btn--primary" type="button">New task</button>
+              </div>
+            </div>
+            <div class="vh-hero-right" id="vhCore"></div>
+          </div>
+
+          <div class="vh-kpi-rail" id="vhKpi"></div>
+
+          <div class="vh-fact" aria-hidden="true"><div class="vh-fact-track" id="vhFact"></div></div>
+        </header>
+
+        <!-- the one 12-column Home grid -->
+        <div class="vh-grid">
+          <section class="vh-sec vh-focus" aria-labelledby="vhFocusH">
+            <div class="vh-sh" data-rv>
+              <span class="vh-sh-num" aria-hidden="true"></span>
+              <div class="vh-sh-txt">
+                <div class="vh-sh-eyebrow">Today</div>
+                <h2 class="vh-sh-title" id="vhFocusH">Your <span class="vh-grad">focus</span></h2>
+              </div>
+              <div class="vh-sh-aside"><a class="vh-morelink" href="#">See all <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+            </div>
+            <div class="vh-card" id="vhFocus"></div>
+          </section>
+
+          <section class="vh-sec vh-needs" aria-labelledby="vhNeedsH">
+            <div class="vh-sh" data-rv>
+              <span class="vh-sh-num" aria-hidden="true"></span>
+              <div class="vh-sh-txt">
+                <div class="vh-sh-eyebrow">Waiting</div>
+                <h2 class="vh-sh-title" id="vhNeedsH">Needs <span class="vh-grad">you</span></h2>
+              </div>
+              <div class="vh-sh-aside"><a class="vh-morelink" href="#">See all <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+            </div>
+            <div class="vh-card" id="vhNeeds"></div>
+          </section>
+
+          <section class="vh-sec vh-projects" aria-labelledby="vhProjH">
+            <div class="vh-sh" data-rv>
+              <span class="vh-sh-num" aria-hidden="true"></span>
+              <div class="vh-sh-txt">
+                <div class="vh-sh-eyebrow">In flight</div>
+                <h2 class="vh-sh-title" id="vhProjH">Your <span class="vh-grad">projects</span></h2>
+              </div>
+              <div class="vh-sh-aside"><a class="vh-morelink" href="#">All projects <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+            </div>
+            <div class="vh-card vh-card--flat" id="vhProjects"></div>
+          </section>
+
+          <section class="vh-sec vh-activity" aria-labelledby="vhActH">
+            <div class="vh-sh" data-rv>
+              <span class="vh-sh-num" aria-hidden="true"></span>
+              <div class="vh-sh-txt">
+                <div class="vh-sh-eyebrow">Latest</div>
+                <h2 class="vh-sh-title" id="vhActH">Recent <span class="vh-grad">activity</span></h2>
+              </div>
+              <div class="vh-sh-aside"><span class="vh-note" id="vhActCount"></span></div>
+            </div>
+            <div class="vh-card vh-card--flat" id="vhActivity"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

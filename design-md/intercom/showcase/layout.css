@@ -1,0 +1,267 @@
+/* ══ INTERCOM — Northwind operations support in Intercom's editorial language ═
+   Warm cream canvas (#f5f1ec), charcoal type, floating white cards with thin
+   hairlines, product mockups as the protagonist, Fin Orange (#ff5600) reserved
+   for the Fin agent. Scoped under `.own-intercom`. */
+
+.own-intercom {
+  --canvas: #f5f1ec;
+  --surface-1: #ffffff;
+  --surface-2: #ebe7e1;
+  --ink: #111111;
+  --ink-muted: #626260;
+  --ink-subtle: #6a6a67;
+  --ink-tertiary: #6c6c69;
+  --inverse-canvas: #000000;
+  --hairline: #d3cec6;
+  --hairline-soft: #ebe7e1;
+  --fin-orange: #ff5600;
+  --report-blue: #65b5ff;
+  --report-green: #0bdf50;
+  --report-pink: #ff2067;
+  --report-lime: #b3e01c;
+  --report-cyan: #03b2cb;
+
+  --f-sans: 'Saans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --f-mono: 'SaansMono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --gut: clamp(18px, 4.5cqi, 32px);
+  --sec: clamp(56px, 8cqi, 96px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+.own-intercom *, .own-intercom *::before, .own-intercom *::after { box-sizing: border-box; }
+.own-intercom p { margin: 0; }
+.own-intercom a { color: inherit; text-decoration: none; }
+.own-intercom img, .own-intercom svg { display: block; }
+.own-intercom button, .own-intercom input { font: inherit; }
+.own-intercom :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+
+.own-intercom .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--gut); }
+.own-intercom .wrap-narrow { max-width: 820px; }
+
+/* ── type ────────────────────────────────────────────────────────────── */
+.own-intercom .eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0.2px; color: var(--fin-orange); margin-bottom: 16px; }
+.own-intercom .display-xl { font-family: var(--f-sans); font-weight: 500; font-size: clamp(40px, 6.2cqi, 72px); line-height: 1.05; letter-spacing: -2px; max-width: 15ch; text-wrap: balance; }
+.own-intercom .display-lg { font-family: var(--f-sans); font-weight: 500; font-size: clamp(30px, 4.4cqi, 56px); line-height: 1.1; letter-spacing: -1.4px; max-width: 20ch; }
+.own-intercom .lead { color: var(--ink-muted); margin-top: 16px; max-width: 60ch; font-size: 18px; line-height: 1.5; }
+
+/* ── buttons ─────────────────────────────────────────────────────────── */
+.own-intercom .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 18px; border: 1px solid transparent; border-radius: 8px;
+  font-family: var(--f-sans); font-size: 15px; font-weight: 500;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color .15s, border-color .15s, color .15s, transform .15s;
+}
+.own-intercom .btn-primary { background: var(--ink); color: #fff; }
+.own-intercom .btn-primary:hover { background: #000; }
+.own-intercom .btn-secondary { background: var(--surface-1); color: var(--ink); border-color: var(--hairline); }
+.own-intercom .btn-secondary:hover { border-color: var(--ink); }
+.own-intercom .btn-tertiary { background: transparent; color: var(--ink); }
+.own-intercom .btn-tertiary:hover { background: var(--surface-1); }
+.own-intercom .btn-fin { background: var(--fin-orange); color: #fff; }
+.own-intercom .btn-fin:hover { background: #e64d00; }
+.own-intercom .btn-lg { padding: 13px 22px; font-size: 16px; }
+.own-intercom .btn-block { display: flex; width: 100%; }
+
+/* ── nav ─────────────────────────────────────────────────────────────── */
+.own-intercom .nav { position: sticky; top: 68px; z-index: 40; background: var(--canvas); border-bottom: 1px solid transparent; transition: border-color .2s, background-color .2s; }
+.own-intercom .nav.is-stuck { border-bottom-color: var(--hairline); background: color-mix(in srgb, var(--canvas) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.own-intercom .nav-in { display: flex; align-items: center; gap: 28px; height: 56px; }
+.own-intercom .brand { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 18px; letter-spacing: -0.3px; }
+.own-intercom .brand-mark { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; color: #fff; background: var(--ink); }
+.own-intercom .brand-mark svg { width: 17px; height: 17px; fill: currentColor; }
+.own-intercom .nav-links { display: flex; align-items: center; gap: 4px; margin: 0 auto; }
+.own-intercom .nav-links a { padding: 7px 12px; border-radius: 8px; font-size: 15px; color: var(--ink-muted); transition: color .15s, background-color .15s; }
+.own-intercom .nav-links a:hover { color: var(--ink); background: var(--surface-1); }
+.own-intercom .nav-actions { display: flex; align-items: center; gap: 8px; }
+.own-intercom .nav-toggle { display: none; place-items: center; width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--hairline); background: var(--surface-1); color: var(--ink); cursor: pointer; }
+.own-intercom .nav-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.own-intercom .nav-drawer { display: none; }
+.own-intercom .nav-drawer[hidden] { display: none; }
+
+/* ── hero ────────────────────────────────────────────────────────────── */
+.own-intercom .hero { padding: clamp(48px, 7cqi, 96px) 0 clamp(32px, 5cqi, 56px); }
+.own-intercom .hero-in { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(32px, 5cqi, 64px); align-items: center; }
+.own-intercom .hero-lead { color: var(--ink-muted); margin: 22px 0 28px; max-width: 48ch; font-size: 18px; line-height: 1.5; }
+.own-intercom .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.own-intercom .hero-note { margin-top: 18px; font-size: 13px; color: var(--ink-subtle); }
+
+/* ── product mockups ─────────────────────────────────────────────────── */
+.own-intercom .hero-mock { position: relative; }
+.own-intercom .mock { display: grid; grid-template-columns: 150px 1fr; border-radius: 16px; background: var(--surface-1); border: 1px solid var(--hairline); overflow: hidden; box-shadow: 0 24px 60px -34px rgba(17, 17, 17, .35); }
+.own-intercom .mock-side { display: flex; flex-direction: column; gap: 2px; padding: 18px 14px; border-right: 1px solid var(--hairline-soft); background: var(--surface-2); }
+.own-intercom .ms { padding: 8px 10px; border-radius: 8px; font-size: 13px; color: var(--ink-muted); }
+.own-intercom .ms.on { background: var(--surface-1); color: var(--ink); font-weight: 500; }
+.own-intercom .mock-main { padding: 18px; }
+.own-intercom .mock-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--hairline-soft); }
+.own-intercom .mock-title { font-size: 15px; font-weight: 500; }
+.own-intercom .mock-badge { font-size: 12px; color: var(--fin-orange); background: color-mix(in srgb, var(--fin-orange) 12%, transparent); padding: 3px 9px; border-radius: 999px; }
+.own-intercom .mock-list { list-style: none; margin: 0; padding: 0; }
+.own-intercom .mi { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: center; padding: 12px 2px; border-bottom: 1px solid var(--hairline-soft); }
+.own-intercom .mi:last-child { border-bottom: 0; }
+.own-intercom .mi-av { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 600; color: #fff; }
+.own-intercom .mi-body { min-width: 0; }
+.own-intercom .mi-body b { display: block; font-size: 13.5px; font-weight: 500; }
+.own-intercom .mi-body span { display: block; font-size: 12.5px; color: var(--ink-subtle); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.own-intercom .mi-time { font-size: 12px; color: var(--ink-tertiary); }
+.own-intercom .mock-float { position: absolute; left: -16px; bottom: -18px; display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--inverse-canvas); color: #fff; font-size: 13px; box-shadow: 0 16px 40px -20px rgba(0,0,0,.6); }
+.own-intercom .mf-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--fin-orange); }
+
+/* ── logos ───────────────────────────────────────────────────────────── */
+.own-intercom .logos { padding: clamp(28px, 4cqi, 44px) 0; }
+.own-intercom .logos-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 44px; }
+.own-intercom .logos-cap { width: 100%; text-align: center; font-size: 13px; color: var(--ink-subtle); }
+.own-intercom .lg { font-weight: 600; font-size: 17px; letter-spacing: -0.2px; color: var(--ink-muted); opacity: .8; }
+
+/* ── sections ────────────────────────────────────────────────────────── */
+.own-intercom .section { padding: var(--sec) 0; }
+.own-intercom .section.tight { padding-top: clamp(32px, 5cqi, 56px); }
+.own-intercom .sec-head { margin-bottom: clamp(32px, 5cqi, 52px); }
+.own-intercom .sec-head.center { text-align: center; }
+.own-intercom .sec-head.center .display-lg,
+.own-intercom .sec-head.center .lead { margin-left: auto; margin-right: auto; }
+
+/* ── wide product mockup ─────────────────────────────────────────────── */
+.own-intercom .mock-wide { border-radius: 16px; background: var(--surface-1); border: 1px solid var(--hairline); overflow: hidden; box-shadow: 0 30px 70px -40px rgba(17, 17, 17, .35); }
+.own-intercom .mw-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid var(--hairline-soft); background: var(--surface-2); }
+.own-intercom .mw-crumb { font-size: 13px; color: var(--ink-muted); }
+.own-intercom .mw-crumb b { color: var(--ink); font-weight: 500; }
+.own-intercom .mw-seg { display: flex; gap: 2px; padding: 3px; border-radius: 8px; background: var(--canvas); }
+.own-intercom .mw-seg span { padding: 5px 12px; border-radius: 6px; font-size: 12.5px; color: var(--ink-subtle); }
+.own-intercom .mw-seg span.on { background: var(--surface-1); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.own-intercom .mw-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1px; background: var(--hairline-soft); }
+.own-intercom .mw-panel { background: var(--surface-1); padding: 22px; }
+.own-intercom .mw-panel-head { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--ink-muted); margin-bottom: 16px; }
+.own-intercom .mw-panel-head .ok { color: var(--report-green); font-weight: 500; }
+.own-intercom .mw-chart { height: 130px; }
+.own-intercom .mw-chart svg { width: 100%; height: 100%; }
+.own-intercom .mw-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.own-intercom .mw-rows li { display: grid; gap: 7px; }
+.own-intercom .mw-rows .mr-top { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-muted); }
+.own-intercom .mw-rows .mr-top b { color: var(--ink); font-weight: 500; }
+.own-intercom .mw-rows .mr-bar { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+.own-intercom .mw-rows .mr-bar i { display: block; height: 100%; width: var(--w); border-radius: 3px; background: var(--c, var(--report-blue)); }
+.own-intercom .mw-big { font-family: var(--f-sans); font-size: 40px; font-weight: 500; letter-spacing: -1.5px; }
+.own-intercom .mw-sub { font-size: 13px; color: var(--ink-subtle); margin-top: 6px; }
+
+/* ── feature cards ───────────────────────────────────────────────────── */
+.own-intercom .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-intercom .fcard { position: relative; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.own-intercom .fcard-icon { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--surface-2); color: var(--ink); }
+.own-intercom .fcard-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-intercom .fcard h3 { font-size: 22px; font-weight: 500; letter-spacing: -0.3px; margin: 8px 0 0; }
+.own-intercom .fcard p { color: var(--ink-muted); font-size: 15px; line-height: 1.5; }
+.own-intercom .fin-badge { position: absolute; top: 22px; right: 22px; font-size: 12px; font-weight: 500; color: #fff; background: var(--fin-orange); padding: 3px 10px; border-radius: 999px; }
+
+/* ── quotes ──────────────────────────────────────────────────────────── */
+.own-intercom .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.own-intercom .quote { margin: 0; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 22px; }
+.own-intercom .quote blockquote { margin: 0; font-size: 18px; line-height: 1.5; letter-spacing: -0.1px; }
+.own-intercom .quote figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.own-intercom .av { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-size: 13px; font-weight: 500; flex: none; }
+.own-intercom .quote figcaption span:last-child { display: grid; font-size: 12.5px; color: var(--ink-subtle); }
+.own-intercom .quote figcaption b { color: var(--ink); font-weight: 500; font-size: 14px; }
+
+/* ── black strip ─────────────────────────────────────────────────────── */
+.own-intercom .blackstrip { background: var(--inverse-canvas); color: #fff; padding: clamp(56px, 8cqi, 96px) 0; }
+.own-intercom .blackstrip blockquote { margin: 0; font-size: clamp(26px, 3.8cqi, 44px); font-weight: 500; line-height: 1.15; letter-spacing: -1px; max-width: 22ch; }
+.own-intercom .blackstrip p { margin-top: 22px; color: #9c9fa5; font-size: 14px; }
+
+/* ── pricing ─────────────────────────────────────────────────────────── */
+.own-intercom .tabs { display: inline-flex; gap: 4px; margin-top: 24px; padding: 4px; border-radius: 999px; background: var(--surface-1); border: 1px solid var(--hairline); }
+.own-intercom .tab { padding: 8px 16px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-muted); font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color .18s, color .18s; }
+.own-intercom .tab em { font-style: normal; font-size: 12px; color: var(--fin-orange); }
+.own-intercom .tab.on { background: var(--canvas); color: var(--ink); }
+.own-intercom .tiers { align-items: stretch; }
+.own-intercom .tier { position: relative; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; }
+.own-intercom .tier-feat { background: var(--canvas); border-color: var(--ink); }
+.own-intercom .tier-badge { position: absolute; top: -12px; left: 24px; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 999px; background: var(--ink); color: #fff; }
+.own-intercom .tier h3 { font-size: 20px; font-weight: 500; margin: 6px 0 4px; }
+.own-intercom .tier-note { color: var(--ink-muted); font-size: 14px; min-height: 42px; }
+.own-intercom .price { display: flex; align-items: baseline; gap: 4px; margin: 18px 0; }
+.own-intercom .price span { font-size: 40px; font-weight: 500; letter-spacing: -1.5px; }
+.own-intercom .price small { color: var(--ink-subtle); font-size: 13px; }
+.own-intercom .tier ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 11px; flex: 1; }
+.own-intercom .tier li { position: relative; padding-left: 24px; font-size: 14.5px; color: var(--ink-muted); }
+.own-intercom .tier li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 11px; height: 6px; border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(-45deg); }
+
+/* ── faq ─────────────────────────────────────────────────────────────── */
+.own-intercom .faq { border-top: 1px solid var(--hairline-soft); }
+.own-intercom .faq-item { border-bottom: 1px solid var(--hairline-soft); }
+.own-intercom .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 4px; background: none; border: 0; text-align: left; font-size: 17px; font-weight: 500; color: var(--ink); cursor: pointer; }
+.own-intercom .faq-q svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; transition: transform .25s; }
+.own-intercom .faq-item.open .faq-q svg { transform: rotate(180deg); }
+.own-intercom .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.own-intercom .faq-item.open .faq-a { grid-template-rows: 1fr; }
+.own-intercom .faq-a > div { overflow: hidden; }
+.own-intercom .faq-a p { padding: 0 4px 24px; color: var(--ink-muted); font-size: 15px; line-height: 1.6; max-width: 68ch; }
+
+/* ── cta ─────────────────────────────────────────────────────────────── */
+.own-intercom .cta { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding: clamp(32px, 5cqi, 48px); border-radius: 12px; background: var(--surface-1); border: 1px solid var(--hairline); }
+.own-intercom .cta h2 { font-size: clamp(24px, 3cqi, 40px); font-weight: 500; letter-spacing: -0.8px; margin: 0 0 10px; max-width: 20ch; }
+.own-intercom .cta p { color: var(--ink-muted); max-width: 48ch; }
+.own-intercom .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-intercom .foot { padding: clamp(48px, 6cqi, 64px) 0 32px; border-top: 1px solid var(--hairline); }
+.own-intercom .foot-in { display: grid; grid-template-columns: 1.2fr 2.6fr; gap: 40px; }
+.own-intercom .foot-brand .brand-name { font-weight: 600; font-size: 18px; }
+.own-intercom .foot-brand p { color: var(--ink-subtle); font-size: 14px; margin-top: 10px; max-width: 30ch; }
+.own-intercom .foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-intercom .foot-cols h4 { font-size: 13px; font-weight: 500; color: var(--ink); margin: 0 0 14px; }
+.own-intercom .foot-cols a { display: block; font-size: 14px; color: var(--ink-subtle); padding: 5px 0; transition: color .15s; }
+.own-intercom .foot-cols a:hover { color: var(--ink); }
+.own-intercom .foot-base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--hairline-soft); font-size: 12.5px; color: var(--ink-subtle); }
+
+/* ── reveal ──────────────────────────────────────────────────────────── */
+.own-intercom .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+.own-intercom .reveal.in { opacity: 1; transform: none; }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-intercom .nav-links { display: none; }
+  .own-intercom .nav-toggle { display: grid; }
+  .own-intercom .nav-drawer:not([hidden]) { display: grid; gap: 2px; padding: 8px var(--gut) 16px; border-top: 1px solid var(--hairline); background: var(--canvas); }
+  .own-intercom .nav-drawer a { padding: 12px 8px; border-radius: 8px; font-size: 16px; color: var(--ink-muted); }
+  .own-intercom .nav-drawer a:hover { background: var(--surface-1); color: var(--ink); }
+  .own-intercom .nav-drawer .drawer-cta { color: var(--ink); font-weight: 500; }
+  .own-intercom .hero-in { grid-template-columns: 1fr; }
+  .own-intercom .grid3 { grid-template-columns: repeat(2, 1fr); }
+  .own-intercom .mw-grid { grid-template-columns: 1fr 1fr; }
+  .own-intercom .mw-panel:first-child { grid-column: 1 / -1; }
+  .own-intercom .quotes { grid-template-columns: 1fr; }
+  .own-intercom .foot-in { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-intercom .nav-actions .btn-tertiary { display: none; }
+  .own-intercom .grid3 { grid-template-columns: 1fr; }
+  .own-intercom .mock { grid-template-columns: 1fr; }
+  .own-intercom .mock-side { flex-direction: row; border-right: 0; border-bottom: 1px solid var(--hairline-soft); overflow-x: auto; }
+  .own-intercom .mock-float { left: 12px; }
+  .own-intercom .mw-grid { grid-template-columns: 1fr; }
+  .own-intercom .mw-panel:first-child { grid-column: auto; }
+  .own-intercom .foot-cols { grid-template-columns: repeat(2, 1fr); }
+  .own-intercom .cta { flex-direction: column; align-items: flex-start; }
+}
+@container frame (max-width: 430px) {
+  .own-intercom .hero-cta .btn { width: 100%; }
+  .own-intercom .foot-cols { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-intercom *, .own-intercom *::before, .own-intercom *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .own-intercom .reveal { opacity: 1; transform: none; }
+  .own-intercom .faq-a { transition: none; }
+}

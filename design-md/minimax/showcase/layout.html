@@ -1,0 +1,232 @@
+<div class="own-minimax">
+  <div class="mm-promo">
+    <span>Invite and earn &mdash; rewards for both</span>
+    <a href="#pricing">Claim yours &rarr;</a>
+  </div>
+
+  <header class="mm-nav">
+    <a class="mm-logo" href="#" aria-label="Northwind home"><span class="mm-logo-mark" aria-hidden="true"></span>Northwind</a>
+    <nav class="mm-nav-links" aria-label="Primary">
+      <a href="#matrix">Models</a>
+      <a href="#product">Product</a>
+      <a href="#docs">API</a>
+      <a href="#pricing">Company</a>
+    </nav>
+    <div class="mm-nav-right">
+      <a class="mm-btn mm-btn-ghost" href="#">Log in</a>
+      <a class="mm-btn mm-btn-primary" href="#pricing">Contact us</a>
+      <button class="mm-hamburger" type="button" aria-label="Menu" data-mm-menu>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="mm-hero" aria-labelledby="mmHeroH">
+    <span class="mm-badge mm-badge-new">New</span>
+    <h1 id="mmHeroH" class="mm-h1">Operations with<br>everyone.</h1>
+    <p class="mm-hero-sub">Northwind models your warehouses, regions and pricing in one stack &mdash;
+      fast, legible and ready to ship to the whole team.</p>
+    <div class="mm-hero-cta">
+      <a class="mm-btn mm-btn-primary mm-btn-lg" href="#matrix">Start building</a>
+      <a class="mm-btn mm-btn-secondary mm-btn-lg" href="#docs">Read the docs</a>
+    </div>
+    <div class="mm-terminal" aria-hidden="true">
+      <div class="mm-term-head"><span class="mm-term-dot"></span><span class="mm-term-dot"></span><span class="mm-term-dot"></span><span class="mm-term-name">northwind &middot; board.py</span></div>
+      <pre class="mm-term-body"><span class="mm-c"># build a throughput board</span>
+<span class="mm-k">from</span> northwind <span class="mm-k">import</span> Board
+
+board = Board(<span class="mm-s">"north-loop"</span>)
+board.add_regions(<span class="mm-s">"nordics"</span>, <span class="mm-s">"apac"</span>)
+board.metric(<span class="mm-s">"cycle_time"</span>, window=<span class="mm-s">"7d"</span>)
+board.publish()</pre>
+      <div class="mm-term-foot"><span class="mm-dot"></span> 4 regions &middot; 1 board &middot; 0.8s</div>
+    </div>
+  </section>
+
+  <section id="matrix" class="mm-sec" aria-labelledby="mmMatrixH">
+    <div class="mm-sec-head">
+      <h2 id="mmMatrixH" class="mm-h2">The full-stack matrix.</h2>
+      <p class="mm-lead">Each surface gets its own identity. Colour is the fastest way to know
+        where you are.</p>
+    </div>
+    <div class="mm-cards">
+      <article class="mm-pcard mm-pcard-coral">
+        <span class="mm-badge mm-badge-new">Live</span>
+        <p class="mm-pcard-name">Throughput</p>
+        <p class="mm-pcard-tag">Dock, line and cycle time in one board.</p>
+      </article>
+      <article class="mm-pcard mm-pcard-magenta">
+        <p class="mm-pcard-name">Regions</p>
+        <p class="mm-pcard-tag">Every territory, one comparison table.</p>
+      </article>
+      <article class="mm-pcard mm-pcard-blue">
+        <p class="mm-pcard-name">Pricing</p>
+        <p class="mm-pcard-tag">Margin and tier mix, by channel.</p>
+      </article>
+      <article class="mm-pcard mm-pcard-purple">
+        <p class="mm-pcard-name">Forecast</p>
+        <p class="mm-pcard-tag">Demand signals before the doors open.</p>
+      </article>
+    </div>
+    <div class="mm-ai-grid">
+      <a class="mm-tile" href="#product">
+        <span class="mm-tile-art mm-art-a" aria-hidden="true"></span>
+        <h3 class="mm-tile-title">Agent</h3>
+        <p class="mm-tile-desc">Ask the board a question in plain language.</p>
+      </a>
+      <a class="mm-tile" href="#product">
+        <span class="mm-tile-art mm-art-b" aria-hidden="true"></span>
+        <h3 class="mm-tile-title">Digest</h3>
+        <p class="mm-tile-desc">A weekly summary written for leadership.</p>
+      </a>
+      <a class="mm-tile" href="#product">
+        <span class="mm-tile-art mm-art-c" aria-hidden="true"></span>
+        <h3 class="mm-tile-title">Alerts</h3>
+        <p class="mm-tile-desc">Route a threshold to the right person.</p>
+      </a>
+      <a class="mm-tile" href="#product">
+        <span class="mm-tile-art mm-art-d" aria-hidden="true"></span>
+        <h3 class="mm-tile-title">Exports</h3>
+        <p class="mm-tile-desc">Screenshots, PDFs and scheduled email.</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="product" class="mm-sec" aria-labelledby="mmProdH">
+    <div class="mm-sec-head">
+      <h2 id="mmProdH" class="mm-h2">Built for the operations desk.</h2>
+    </div>
+    <div class="mm-feature-grid">
+      <article class="mm-card">
+        <span class="mm-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></span>
+        <h3 class="mm-card-title">One metric language</h3>
+        <p class="mm-card-desc">Define throughput once and every board reads it the same way.</p>
+      </article>
+      <article class="mm-card">
+        <span class="mm-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16M10 10v10"/></svg></span>
+        <h3 class="mm-card-title">Composable regions</h3>
+        <p class="mm-card-desc">Slice by territory, channel or week without rebuilding.</p>
+      </article>
+      <article class="mm-card">
+        <span class="mm-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+        <h3 class="mm-card-title">Scheduled</h3>
+        <p class="mm-card-desc">Boards refresh before the standup and land in inboxes.</p>
+      </article>
+      <article class="mm-card">
+        <span class="mm-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.4-3 8-8 9-5-1-8-4.6-8-9V7z"/></svg></span>
+        <h3 class="mm-card-title">Governed</h3>
+        <p class="mm-card-desc">Row-level access keeps every region visible to the right desk.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mm-stats" aria-labelledby="mmStatsH">
+    <h2 id="mmStatsH" class="mm-sr">Northwind by the numbers</h2>
+    <div class="mm-stat-row">
+      <div class="mm-stat"><b>214,000+</b><span>Teams and developers</span></div>
+      <div class="mm-stat"><b>190</b><span>Countries served</span></div>
+      <div class="mm-stat"><b>99.98%</b><span>Board uptime</span></div>
+      <div class="mm-stat"><b>41 ms</b><span>Median query time</span></div>
+    </div>
+  </section>
+
+  <section id="docs" class="mm-sec mm-docs" aria-labelledby="mmDocsH">
+    <div class="mm-docs-grid">
+      <nav class="mm-docs-side" aria-label="Docs">
+        <p class="mm-side-head">Primitives</p>
+        <a href="#" class="mm-side-link is-active">Boards</a>
+        <a href="#" class="mm-side-link">Metrics</a>
+        <a href="#" class="mm-side-link">Regions</a>
+        <p class="mm-side-head">Reference</p>
+        <a href="#" class="mm-side-link">API keys</a>
+        <a href="#" class="mm-side-link">Webhooks</a>
+      </nav>
+      <div class="mm-docs-body">
+        <h2 id="mmDocsH" class="mm-h3">Boards</h2>
+        <p class="mm-prose">A board is the unit of work in Northwind. It owns a set of metrics, a set of
+          regions and a schedule. Create one, add regions, publish it &mdash; the API is built so the
+          happy path takes four lines.</p>
+        <div class="mm-code">
+          <div class="mm-code-head"><span>Python</span><button type="button" class="mm-copy">Copy code</button></div>
+          <pre class="mm-code-body"><span class="mm-k">import</span> northwind <span class="mm-k">as</span> nw
+
+board = nw.Board(<span class="mm-s">"cycle-time"</span>)
+board.metric(<span class="mm-s">"cycle_time"</span>, window=<span class="mm-s">"7d"</span>)
+board.publish()</pre>
+        </div>
+        <table class="mm-table">
+          <caption class="mm-sr">Board properties</caption>
+          <thead><tr><th scope="col">Property</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>name</code></td><td><span class="mm-badge-code">string</span></td><td>Human-readable board name.</td></tr>
+            <tr><td><code>regions</code></td><td><span class="mm-badge-code">string[]</span></td><td>Territory keys to include.</td></tr>
+            <tr><td><code>schedule</code></td><td><span class="mm-badge-code">cron</span></td><td>Refresh cadence. Defaults to daily.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="mm-docs-toc" aria-label="On this page">
+        <p class="mm-side-head">On this page</p>
+        <a href="#docs" class="mm-toc-link is-active">Overview</a>
+        <a href="#docs" class="mm-toc-link">Creating a board</a>
+        <a href="#docs" class="mm-toc-link">Properties</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="pricing" class="mm-sec" aria-labelledby="mmPriceH">
+    <div class="mm-sec-head mm-center">
+      <h2 id="mmPriceH" class="mm-h2">Token plans.</h2>
+      <p class="mm-lead">Start free. Scale when the board room asks for more.</p>
+    </div>
+    <div class="mm-tabs" role="tablist" aria-label="Plans">
+      <button class="mm-pill is-active" role="tab" aria-selected="true" type="button" data-mm-tab>Token plan</button>
+      <button class="mm-pill" role="tab" aria-selected="false" type="button" data-mm-tab>Annual</button>
+    </div>
+    <div class="mm-price-grid">
+      <article class="mm-price-card">
+        <h3 class="mm-card-title">Starter</h3>
+        <p class="mm-price">$0<span>/mo</span></p>
+        <ul class="mm-price-list"><li>1 board</li><li>2 regions</li><li>Community support</li></ul>
+        <a class="mm-btn mm-btn-tertiary mm-btn-block" href="#">Start free</a>
+      </article>
+      <article class="mm-price-card mm-price-featured">
+        <span class="mm-badge mm-badge-beta">Most popular</span>
+        <h3 class="mm-card-title">Team</h3>
+        <p class="mm-price">$49<span>/mo</span></p>
+        <ul class="mm-price-list"><li>20 boards</li><li>Unlimited regions</li><li>Scheduled digests</li></ul>
+        <a class="mm-btn mm-btn-primary mm-btn-block" href="#">Choose Team</a>
+      </article>
+      <article class="mm-price-card">
+        <h3 class="mm-card-title">Scale</h3>
+        <p class="mm-price">Custom</p>
+        <ul class="mm-price-list"><li>Unlimited boards</li><li>Governed access</li><li>Priority support</li></ul>
+        <a class="mm-btn mm-btn-tertiary mm-btn-block" href="#">Talk to us</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="mm-cta" aria-labelledby="mmCtaH">
+    <h2 id="mmCtaH" class="mm-h2">Ship your first board today.</h2>
+    <a class="mm-btn mm-btn-tertiary mm-btn-lg" href="#">Join now</a>
+  </section>
+
+  <footer class="mm-foot">
+    <div class="mm-foot-top">
+      <div class="mm-foot-brand">
+        <span class="mm-logo-mark" aria-hidden="true"></span>
+        <span>Northwind</span>
+        <p class="mm-foot-tag">Intelligence with everyone.</p>
+      </div>
+      <div class="mm-foot-grid">
+        <div class="mm-foot-col"><h3>Research</h3><a href="#">Overview</a><a href="#">Papers</a></div>
+        <div class="mm-foot-col"><h3>Product</h3><a href="#">Boards</a><a href="#">Agent</a></div>
+        <div class="mm-foot-col"><h3>API</h3><a href="#">Reference</a><a href="#">Status</a></div>
+        <div class="mm-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">News</a></div>
+      </div>
+    </div>
+    <div class="mm-foot-bottom">
+      <span>&copy; 2026 Northwind Analytics</span>
+      <span class="mm-foot-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></span>
+    </div>
+  </footer>
+</div>

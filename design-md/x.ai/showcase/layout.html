@@ -1,0 +1,157 @@
+<div class="own-x-ai">
+  <header class="xa-nav">
+    <a class="xa-brand" href="#xa-top">NORTHWIND</a>
+    <nav class="xa-nav-links" aria-label="Primary">
+      <a href="#xa-products">Products</a>
+      <a href="#xa-metrics">Scale</a>
+      <a href="#xa-pricing">Pricing</a>
+    </nav>
+    <div class="xa-nav-actions">
+      <a class="xa-pill xa-pill-sm" href="#xa-products">Read</a>
+      <a class="xa-pill xa-pill-fill xa-pill-sm" href="#xa-cta">Sign up</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="xa-hero" id="xa-top" aria-labelledby="xaHeroH">
+      <p class="xa-eyebrow">NORTHWIND / OPERATIONS ANALYTICS</p>
+      <h1 class="xa-hero-title" id="xaHeroH">One board for the entire operation.</h1>
+      <p class="xa-hero-lead">Modelled throughput, governed regions, shift-aware alerts. Built for the teams that run the floor, not the ones that report on it.</p>
+      <div class="xa-hero-cta">
+        <a class="xa-pill" href="#xa-products">Explore the platform</a>
+        <a class="xa-pill xa-pill-fill" href="#xa-cta">Try Northwind</a>
+      </div>
+    </section>
+
+    <section class="xa-metrics" id="xa-metrics" aria-labelledby="xaMetricsH">
+      <h2 class="xa-sr" id="xaMetricsH">At a glance</h2>
+      <div class="xa-metric-row">
+        <div class="xa-metric"><span class="xa-metric-num" data-xa-count="18420">18,420</span><span class="xa-metric-cap">UNIT / HR PEAK</span></div>
+        <div class="xa-metric"><span class="xa-metric-num" data-xa-count="97">97</span><span class="xa-metric-cap">% ON-TIME</span></div>
+        <div class="xa-metric"><span class="xa-metric-num" data-xa-count="5">5</span><span class="xa-metric-cap">REGIONS LIVE</span></div>
+        <div class="xa-metric"><span class="xa-metric-num" data-xa-count="120">120</span><span class="xa-metric-cap">MS LATENCY</span></div>
+      </div>
+    </section>
+
+    <section class="xa-products" id="xa-products" aria-labelledby="xaProdH">
+      <p class="xa-eyebrow">WHAT WE BUILD</p>
+      <h2 class="xa-sec-title" id="xaProdH">Engineered for the floor.</h2>
+      <div class="xa-product-grid">
+        <article class="xa-card">
+          <span class="xa-card-ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M6 40V20M14 40V8M22 40V26M30 40V14M38 40V24" stroke="#ff7a17"/></svg>
+          </span>
+          <p class="xa-card-tag">THROUGHPUT</p>
+          <h3 class="xa-card-title">A live, governed metric</h3>
+          <p class="xa-card-body">Every number resolves to a source model. No reconciliation, no re-keyed totals.</p>
+          <a class="xa-pill xa-pill-sm" href="#">Read</a>
+        </article>
+        <article class="xa-card">
+          <span class="xa-card-ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="none" stroke="#7c3aed" stroke-width="2"/><path d="M24 12v12l9 5" fill="none" stroke="#c4b5fd" stroke-width="2"/></svg>
+          </span>
+          <p class="xa-card-tag">ALERTS</p>
+          <h3 class="xa-card-title">Shift-aware thresholds</h3>
+          <p class="xa-card-body">The right supervisor is paged at the right hour — rules respect the roster.</p>
+          <a class="xa-pill xa-pill-sm" href="#">Read</a>
+        </article>
+        <article class="xa-card">
+          <span class="xa-card-ico" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M8 16h32M8 24h20M8 32h26" stroke="#a0c3ec" stroke-width="2"/></svg>
+          </span>
+          <p class="xa-card-tag">REGIONS</p>
+          <h3 class="xa-card-title">Roll-ups you can trace</h3>
+          <p class="xa-card-body">Five regions, one true total. Every roll-up points back to its stream.</p>
+          <a class="xa-pill xa-pill-sm" href="#">Read</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="xa-console" aria-labelledby="xaConsoleH">
+      <div class="xa-console-head">
+        <p class="xa-eyebrow">LIVE CONSOLE</p>
+        <h2 class="xa-sec-title" id="xaConsoleH">The operation, streamed.</h2>
+      </div>
+      <div class="xa-term" role="img" aria-label="Northwind live throughput console, mock interface">
+        <div class="xa-term-bar">
+          <span class="xa-term-dot"></span><span class="xa-term-dot"></span><span class="xa-term-dot"></span>
+          <span class="xa-term-title">northwind --live --region northwest</span>
+        </div>
+        <pre class="xa-term-body" aria-hidden="true"><span class="xa-c-dim">14:02:11</span> stream connected        <span class="xa-c-ok">ok</span>
+<span class="xa-c-dim">14:02:11</span> model throughput_v4       <span class="xa-c-ok">ok</span>
+<span class="xa-c-dim">14:02:12</span> region northwest          <span class="xa-c-hot">18420</span> units/hr
+<span class="xa-c-dim">14:02:12</span> region eastern            <span class="xa-c-hot">15870</span> units/hr
+<span class="xa-c-dim">14:02:13</span> region gulf               <span class="xa-c-warn">12240</span> units/hr
+<span class="xa-c-dim">14:02:13</span> on-time rate                <span class="xa-c-ok">0.97</span>
+<span class="xa-c-dim">14:02:14</span> incidents open                   <span class="xa-c-ok">3</span>
+<span class="xa-c-dim">14:02:14</span> <span class="xa-c-cursor">_</span></pre>
+      </div>
+    </section>
+
+    <section class="xa-pricing" id="xa-pricing" aria-labelledby="xaPriceH">
+      <p class="xa-eyebrow">ACCESS</p>
+      <h2 class="xa-sec-title" id="xaPriceH">Choose your access.</h2>
+      <div class="xa-price-grid">
+        <article class="xa-price-card">
+          <h3>Starter</h3>
+          <p class="xa-price"><span>$0</span> / month</p>
+          <ul class="xa-feats"><li>1 live board</li><li>3 streams</li><li>7-day history</li></ul>
+          <a class="xa-pill xa-pill-block" href="#">Get started</a>
+        </article>
+        <article class="xa-price-card xa-price-feat">
+          <p class="xa-card-tag">MOST POPULAR</p>
+          <h3>Growth</h3>
+          <p class="xa-price"><span>$240</span> / month</p>
+          <ul class="xa-feats"><li>Unlimited boards</li><li>40 streams</li><li>Shift-aware alerts</li><li>Versioned history</li></ul>
+          <a class="xa-pill xa-pill-fill xa-pill-block" href="#">Start free trial</a>
+        </article>
+        <article class="xa-price-card">
+          <h3>Scale</h3>
+          <p class="xa-price"><span>Contact us</span></p>
+          <ul class="xa-feats"><li>Everything in Growth</li><li>SSO and audit log</li><li>Dedicated modeler</li></ul>
+          <a class="xa-pill xa-pill-block" href="#">Talk to us</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="xa-cta" id="xa-cta" aria-labelledby="xaCtaH">
+      <p class="xa-eyebrow">GET STARTED</p>
+      <h2 class="xa-cta-title" id="xaCtaH">Run the floor on one board.</h2>
+      <div class="xa-hero-cta">
+        <a class="xa-pill xa-pill-fill" href="#">Sign up now</a>
+        <a class="xa-pill" href="#">Book a demo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="xa-footer">
+    <div class="xa-foot-grid">
+      <div class="xa-foot-brand">
+        <span class="xa-brand">NORTHWIND</span>
+        <p>Operations analytics for the people running the floor.</p>
+      </div>
+      <nav class="xa-foot-col" aria-label="Product">
+        <h4>PRODUCT</h4>
+        <a href="#xa-products">Platform</a>
+        <a href="#xa-metrics">Scale</a>
+        <a href="#xa-pricing">Pricing</a>
+      </nav>
+      <nav class="xa-foot-col" aria-label="Company">
+        <h4>COMPANY</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </nav>
+      <nav class="xa-foot-col" aria-label="Resources">
+        <h4>RESOURCES</h4>
+        <a href="#">Docs</a>
+        <a href="#">API</a>
+        <a href="#">Status</a>
+      </nav>
+    </div>
+    <div class="xa-foot-base">
+      <span>Sample data — showcase only</span>
+      <span>&copy; 2026 Northwind</span>
+    </div>
+  </footer>
+</div>

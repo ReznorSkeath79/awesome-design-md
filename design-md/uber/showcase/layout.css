@@ -1,0 +1,239 @@
+/* ══ UBER — Northwind operations analytics, built in Uber's real page grammar ══
+   Black-and-white duet, pill (999px) on every interactive element, 16px cards,
+   UberMove display + UberMoveText body, editorial 4:3 illustration frames. Scoped
+   under `.own-uber`. */
+
+.own-uber {
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --ink: #000000;
+  --body: #5e5e5e;
+  --mute: #afafaf;
+  --hairline-mid: #4b4b4b;
+  --canvas: #ffffff;
+  --canvas-soft: #efefef;
+  --canvas-softer: #f3f3f3;
+  --surface-pressed: #e2e2e2;
+  --link: #0000ee;
+  --on-dark: #ffffff;
+  --black-elevated: #282828;
+
+  --f-display: 'UberMove', 'Inter', 'Geist', system-ui, 'Helvetica Neue', Arial, sans-serif;
+  --f-text: 'UberMoveText', 'Inter', 'Geist', system-ui, 'Helvetica Neue', Arial, sans-serif;
+
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+  --r-pill-tab: 36px;
+  --gut: clamp(16px, 4.6cqi, 32px);
+  --sec: clamp(40px, 6cqi, 64px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--f-text);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.own-uber *, .own-uber *::before, .own-uber *::after { box-sizing: border-box; }
+.own-uber p { margin: 0; }
+.own-uber h1, .own-uber h2, .own-uber h3 { margin: 0; }
+.own-uber a { color: inherit; text-decoration: none; }
+.own-uber img, .own-uber svg { display: block; }
+.own-uber button { font: inherit; }
+.own-uber :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.own-uber .ub-dark-band :focus-visible, .own-uber .ub-foot :focus-visible, .own-uber .ub-showcase :focus-visible { outline-color: #fff; }
+
+.own-uber .ub-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
+
+.own-uber .ub-skip {
+  position: absolute; left: 12px; top: -60px; z-index: 60;
+  padding: 10px 16px; border-radius: var(--r-md); background: var(--ink); color: var(--on-dark);
+  font-weight: 500; transition: top .2s;
+}
+.own-uber .ub-skip:focus { top: 12px; }
+
+/* ── type — sentence-case, weight 700 display ────────────────────────── */
+.own-uber .ub-display-xxl { font-family: var(--f-display); font-size: clamp(34px, 5.4cqi, 52px); font-weight: 700; line-height: 1.23; letter-spacing: -.5px; }
+.own-uber .ub-display-xl { font-family: var(--f-display); font-size: clamp(28px, 3.8cqi, 36px); font-weight: 700; line-height: 1.22; }
+.own-uber .ub-display-lg { font-family: var(--f-display); font-size: clamp(24px, 3.2cqi, 32px); font-weight: 700; line-height: 1.25; }
+.own-uber .ub-display-md { font-family: var(--f-display); font-size: clamp(20px, 2.4cqi, 24px); font-weight: 700; line-height: 1.33; }
+.own-uber .ub-lead { font-size: clamp(16px, 1.5cqi, 18px); font-weight: 500; line-height: 1.5; color: var(--body); }
+.own-uber .ub-body { font-size: 16px; line-height: 1.6; color: var(--body); }
+.own-uber .ub-body-on-dark { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.72); }
+.own-uber .ub-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--body); margin-bottom: 12px; }
+.own-uber .ub-eyebrow-on-dark { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 12px; }
+.own-uber .ub-sec-head { max-width: 640px; margin-bottom: clamp(24px, 4cqi, 40px); }
+
+/* ── buttons ─────────────────────────────────────────────────────────── */
+.own-uber .ub-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding: 12px 20px; border-radius: var(--r-pill);
+  font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap;
+  transition: background-color .15s, transform .15s, box-shadow .15s;
+}
+.own-uber .ub-btn-sm { height: 40px; padding: 10px 16px; font-size: 16px; }
+.own-uber .ub-btn-wide { width: 100%; }
+.own-uber .ub-btn-primary { background: var(--primary); color: var(--on-primary); }
+.own-uber .ub-btn-primary:hover { background: var(--black-elevated); }
+.own-uber .ub-btn-primary:active { transform: scale(.98); }
+.own-uber .ub-btn-secondary { background: var(--canvas); color: var(--ink); }
+.own-uber .ub-btn-secondary:hover { background: var(--canvas-soft); }
+.own-uber .ub-btn-subtle { background: var(--canvas-soft); color: var(--ink); }
+.own-uber .ub-btn-subtle:hover { background: var(--surface-pressed); }
+.own-uber .ub-btn-ghost-on-dark { background: transparent; color: var(--on-dark); box-shadow: inset 0 0 0 1px rgba(255,255,255,.4); }
+.own-uber .ub-btn-ghost-on-dark:hover { background: rgba(255,255,255,.12); }
+
+/* ── nav ─────────────────────────────────────────────────────────────── */
+.own-uber .ub-nav { position: sticky; top: 68px; z-index: 40; background: var(--canvas); border-bottom: 1px solid var(--canvas-soft); }
+.own-uber .ub-nav-in { display: flex; align-items: center; gap: 24px; height: 64px; max-width: 1200px; margin: 0 auto; padding: 16px var(--gut); }
+.own-uber .ub-brand { font-family: var(--f-display); font-size: 26px; font-weight: 700; letter-spacing: -.6px; flex: none; }
+.own-uber .ub-nav-links { display: flex; gap: 6px; flex: 1 1 auto; }
+.own-uber .ub-nav-links a { font-size: 16px; font-weight: 500; padding: 8px 12px; border-radius: var(--r-pill); }
+.own-uber .ub-nav-links a:hover { background: var(--canvas-soft); }
+.own-uber .ub-nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.own-uber .ub-burger { display: none; place-items: center; width: 40px; height: 40px; border: 0; border-radius: var(--r-pill); background: var(--canvas-soft); cursor: pointer; }
+.own-uber .ub-burger svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.own-uber .ub-drawer { display: grid; gap: 4px; padding: 12px var(--gut) 16px; border-bottom: 1px solid var(--canvas-soft); background: var(--canvas); }
+.own-uber .ub-drawer a { font-size: 16px; font-weight: 500; padding: 10px 12px; border-radius: var(--r-lg); }
+.own-uber .ub-drawer a:hover { background: var(--canvas-soft); }
+
+/* ── hero ────────────────────────────────────────────────────────────── */
+.own-uber .ub-hero { padding: var(--sec) 0 clamp(28px, 4cqi, 48px); }
+.own-uber .ub-hero-in { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 4cqi, 56px); align-items: center; }
+.own-uber .ub-hero .ub-lead { max-width: 48ch; margin: 20px 0 26px; }
+.own-uber .ub-tabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: var(--r-pill-tab); background: var(--canvas-soft); }
+.own-uber .ub-tab {
+  height: 36px; padding: 0 20px; border: 0; border-radius: var(--r-pill-tab); background: transparent;
+  color: var(--ink); font-size: 16px; font-weight: 500; cursor: pointer;
+}
+.own-uber .ub-tab.on { background: var(--canvas); box-shadow: 0 2px 8px rgba(0,0,0,.16); }
+
+.own-uber .ub-request-card {
+  background: var(--canvas); border-radius: var(--r-xl); padding: 16px;
+  box-shadow: rgba(0,0,0,.16) 0px 4px 16px 0px; display: grid; gap: 10px;
+}
+.own-uber .ub-req-row { display: flex; align-items: center; gap: 12px; background: var(--canvas-soft); border-radius: var(--r-md); padding: 14px 16px; }
+.own-uber .ub-req-ic { display: grid; place-items: center; width: 24px; height: 24px; flex: none; }
+.own-uber .ub-req-ic svg { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-uber .ub-req-lab { display: block; font-size: 12px; color: var(--body); }
+.own-uber .ub-req-val { display: block; font-size: 16px; font-weight: 500; color: var(--ink); }
+.own-uber .ub-request-card .ub-btn-primary { margin-top: 4px; }
+
+.own-uber .ub-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.own-uber .ub-chip {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--r-pill);
+  background: var(--canvas-soft); color: var(--ink); font-size: 14px; font-weight: 500;
+}
+.own-uber .ub-chip svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── sections / promos ───────────────────────────────────────────────── */
+.own-uber .ub-section { padding: var(--sec) 0; }
+.own-uber .ub-promo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4cqi, 48px); align-items: center; margin-bottom: clamp(28px, 4cqi, 48px); }
+.own-uber .ub-promo-rev .ub-promo-art { order: 2; }
+.own-uber .ub-promo-art {
+  border-radius: var(--r-xl); overflow: hidden; min-height: 300px; aspect-ratio: 4 / 3;
+  display: grid; place-items: center; padding: 28px;
+}
+.own-uber .ub-art-riders { background: linear-gradient(140deg, #e6e6e6 0%, #f7f7f7 100%); }
+.own-uber .ub-art-drivers { background: linear-gradient(140deg, #ececec 0%, #f5f5f5 100%); }
+.own-uber .ub-art-tile { width: 100%; max-width: 340px; background: var(--canvas); border-radius: var(--r-xl); padding: 22px; box-shadow: 0 16px 40px -28px rgba(0,0,0,.5); }
+.own-uber .ub-art-tile.ub-art-dark { background: var(--ink); color: var(--on-dark); }
+.own-uber .ub-art-tile svg { width: 100%; height: 74px; }
+.own-uber .ub-art-num { display: block; font-family: var(--f-display); font-size: 40px; font-weight: 700; line-height: 1.1; }
+.own-uber .ub-art-lab { display: block; font-size: 13px; color: var(--body); margin: 2px 0 14px; }
+.own-uber .ub-art-dark .ub-art-lab, .own-uber .ub-art-onblack .ub-art-lab { color: rgba(255,255,255,.7); }
+.own-uber .ub-bars { display: flex; align-items: flex-end; gap: 8px; height: 74px; }
+.own-uber .ub-bars i { flex: 1; border-radius: 6px; background: #fff; }
+.own-uber .ub-promo-copy h3 { margin-bottom: 12px; }
+.own-uber .ub-promo-copy .ub-body { max-width: 44ch; margin-bottom: 22px; }
+
+/* ── black mid-page band ─────────────────────────────────────────────── */
+.own-uber .ub-dark-band { background: var(--ink); color: var(--on-dark); padding: var(--sec) 0; }
+.own-uber .ub-dark-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4cqi, 56px); align-items: center; }
+.own-uber .ub-art-dark-illus { border-radius: var(--r-xl); background: rgba(255,255,255,.06); aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 28px; }
+.own-uber .ub-art-onblack { background: var(--black-elevated); color: var(--on-dark); }
+.own-uber .ub-map { position: relative; height: 90px; margin-top: 16px; border-radius: var(--r-md); background: radial-gradient(circle at 40% 50%, rgba(255,255,255,.14), transparent 60%); }
+.own-uber .ub-map-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.25); }
+.own-uber .ub-dark-copy .ub-body-on-dark { max-width: 46ch; margin: 18px 0 26px; }
+.own-uber .ub-dark-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── showcase ────────────────────────────────────────────────────────── */
+.own-uber .ub-showcase {
+  position: relative; border-radius: var(--r-xl); overflow: hidden; background: var(--ink); color: var(--on-dark);
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 340px;
+}
+.own-uber .ub-showcase-art {
+  position: absolute; inset: 0; background: linear-gradient(120deg, #1c1c1c 0%, #000 60%);
+  display: grid; place-items: center;
+}
+.own-uber .ub-showcase-year { font-family: var(--f-display); font-size: clamp(90px, 20cqi, 220px); font-weight: 700; color: rgba(255,255,255,.07); line-height: 1; }
+.own-uber .ub-showcase-copy { position: relative; z-index: 2; padding: clamp(28px, 4cqi, 48px); grid-column: 1 / -1; max-width: 560px; }
+.own-uber .ub-display-lg { color: inherit; }
+
+/* ── FAQ ─────────────────────────────────────────────────────────────── */
+.own-uber .ub-faq-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(24px, 4cqi, 56px); align-items: start; }
+.own-uber .ub-faq-head .ub-btn { margin-top: 18px; }
+.own-uber .ub-faq { border-top: 1px solid var(--canvas-soft); }
+.own-uber .ub-faq-item { border-bottom: 1px solid var(--canvas-soft); }
+.own-uber .ub-faq-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 0; border: 0; background: none; cursor: pointer; text-align: left;
+  font-size: 16px; font-weight: 500; color: var(--ink);
+}
+.own-uber .ub-faq-q svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; transition: transform .2s; }
+.own-uber .ub-faq-item.open .ub-faq-q svg { transform: rotate(45deg); }
+.own-uber .ub-faq-a { display: none; padding: 0 0 22px; font-size: 16px; line-height: 1.6; color: var(--body); max-width: 60ch; }
+.own-uber .ub-faq-item.open .ub-faq-a { display: block; }
+
+/* ── downloads ───────────────────────────────────────────────────────── */
+.own-uber .ub-downloads { padding: 0 0 var(--sec); }
+.own-uber .ub-dl-in { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.own-uber .ub-dl-in > div { background: var(--canvas-soft); border-radius: var(--r-xl); padding: 28px; }
+.own-uber .ub-dl-in .ub-display-md { margin-bottom: 16px; }
+.own-uber .ub-app-pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--r-pill);
+  background: var(--ink); color: var(--on-dark); font-size: 16px; font-weight: 500;
+}
+.own-uber .ub-showcase .ub-app-pill { background: #fff; color: var(--ink); }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-uber .ub-foot { background: var(--primary); color: var(--on-dark); padding: clamp(32px, 5cqi, 48px) 0; }
+.own-uber .ub-foot-word { font-family: var(--f-display); font-size: 30px; font-weight: 700; letter-spacing: -.6px; margin-bottom: 26px; }
+.own-uber .ub-foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-uber .ub-foot-grid > div { display: flex; flex-direction: column; gap: 10px; }
+.own-uber .ub-foot-head { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.own-uber .ub-foot-grid a { font-size: 14px; color: var(--hairline-mid); }
+.own-uber .ub-foot-grid a:hover { color: var(--on-dark); }
+.own-uber .ub-foot-link { color: var(--link); }
+.own-uber .ub-foot-fine { margin-top: 28px; font-size: 12px; color: var(--mute); }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-uber .ub-nav-links { display: none; }
+  .own-uber .ub-burger { display: grid; }
+}
+@container frame (max-width: 760px) {
+  .own-uber .ub-hero-in, .own-uber .ub-promo, .own-uber .ub-dark-in,
+  .own-uber .ub-faq-wrap, .own-uber .ub-dl-in, .own-uber .ub-showcase { grid-template-columns: 1fr; }
+  .own-uber .ub-promo-rev .ub-promo-art { order: 0; }
+  .own-uber .ub-foot-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-uber .ub-showcase { min-height: 0; }
+}
+@container frame (max-width: 430px) {
+  .own-uber .ub-nav-actions .ub-btn-secondary { display: none; }
+  .own-uber .ub-dark-actions { flex-direction: column; }
+  .own-uber .ub-dark-actions .ub-btn { width: 100%; }
+  .own-uber .ub-foot-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-uber *, .own-uber *::before, .own-uber *::after {
+    animation-duration: .001ms !important; transition-duration: .001ms !important;
+  }
+}

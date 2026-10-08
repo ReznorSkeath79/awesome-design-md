@@ -1,0 +1,315 @@
+/* ══ STARBUCKS — own layout for showcase.html ═══════════════════════════════
+   A warm café-flagship sample page built on the four-tier green system and the
+   cream canvas from the DESIGN.md. Colour-block banding (cream → white → House
+   Green → cream → House Green) does the depth work; no gradients anywhere.
+   Everything scoped under `.own-starbucks`; responsive rules are container
+   queries so the Tablet (820) and Phone (390) frames reflow. */
+
+.own-starbucks {
+  --sb-green: #006241;
+  --sb-accent: #00754a;
+  --sb-house: #1e3932;
+  --sb-uplift: #2b5148;
+  --sb-green-light: #d4e9e2;
+  --sb-gold: #cba258;
+  --sb-gold-light: #dfc49d;
+  --sb-gold-lightest: #faf6ee;
+  --sb-white: #ffffff;
+  --sb-neutral-cool: #f9f9f9;
+  --sb-neutral-warm: #f2f0eb;
+  --sb-ceramic: #edebe9;
+  --sb-black: #000000;
+  --sb-ink: rgba(0, 0, 0, .87);
+  --sb-ink-soft: rgba(0, 0, 0, .58);
+  --sb-on-dark: rgba(255, 255, 255, 1);
+  --sb-on-dark-soft: rgba(255, 255, 255, .70);
+  --sb-rewards-green: #33433d;
+  --sb-input-border: #d6dbde;
+  --sb-hairline: #e7e7e7;
+
+  --sb-sans: 'SoDoSans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sb-serif: "Lander Tall", "Iowan Old Style", Georgia, serif;
+  --sb-script: "Kalam", "Comic Sans MS", cursive;
+
+  --sb-space-1: 4px;
+  --sb-space-2: 8px;
+  --sb-space-3: 16px;
+  --sb-space-4: 24px;
+  --sb-space-5: 32px;
+  --sb-space-6: 40px;
+  --sb-space-7: 48px;
+  --sb-space-8: 56px;
+  --sb-space-9: 64px;
+
+  --sb-card-shadow: 0 0 .5px 0 rgba(0, 0, 0, .14), 0 1px 1px 0 rgba(0, 0, 0, .24);
+  --sb-btn-shadow: 0 1px 3px rgba(0, 0, 0, .1), 0 2px 2px rgba(0, 0, 0, .06), 0 0 2px rgba(0, 0, 0, .07);
+  --sb-frap-shadow: 0 0 6px rgba(0, 0, 0, .24), 0 8px 12px rgba(0, 0, 0, .14);
+
+  position: relative;
+  background: var(--sb-neutral-warm);
+  color: var(--sb-ink);
+  font-family: var(--sb-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -.01em;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  border-radius: 13px;
+  overflow: clip;
+}
+
+.own-starbucks *,
+.own-starbucks *::before,
+.own-starbucks *::after { box-sizing: border-box; }
+
+.own-starbucks :focus-visible {
+  outline: 3px solid var(--sb-green);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.own-starbucks h1,
+.own-starbucks h2,
+.own-starbucks h3,
+.own-starbucks h4 { margin: 0; font-weight: 600; line-height: 1.2; letter-spacing: -.16px; }
+.own-starbucks p { margin: 0; }
+.own-starbucks ul { margin: 0; padding: 0; list-style: none; }
+.own-starbucks a { color: inherit; text-decoration: none; }
+
+/* ── buttons — universal 50px pill, scale(.95) press ──────────────────────── */
+.own-starbucks .sb-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--sb-sans); font-weight: 600; font-size: 16px;
+  padding: 7px 16px; border-radius: 50px; border: 1px solid transparent;
+  cursor: pointer; white-space: nowrap; letter-spacing: -.01em;
+  transition: all .2s ease;
+}
+.own-starbucks .sb-btn:active { transform: scale(.95); }
+.own-starbucks .sb-btn-sm { font-size: 14px; }
+.own-starbucks .sb-btn-fill { background: var(--sb-accent); color: #fff; border-color: var(--sb-accent); }
+.own-starbucks .sb-btn-fill:hover { background: #006a43; border-color: #006a43; }
+.own-starbucks .sb-btn-outline { background: transparent; color: var(--sb-accent); border-color: var(--sb-accent); }
+.own-starbucks .sb-btn-outline:hover { background: rgba(0, 117, 74, .08); }
+.own-starbucks .sb-btn-black { background: var(--sb-black); color: #fff; border-color: var(--sb-black); }
+.own-starbucks .sb-btn-black:hover { background: #1a1a1a; }
+.own-starbucks .sb-btn-outline-dark { background: transparent; color: var(--sb-ink); border-color: var(--sb-ink); }
+.own-starbucks .sb-btn-outline-dark:hover { background: rgba(0, 0, 0, .06); }
+.own-starbucks .sb-btn-on-dark { background: #fff; color: var(--sb-accent); border-color: #fff; }
+.own-starbucks .sb-btn-on-dark:hover { background: #f0f0f0; }
+.own-starbucks .sb-btn-outline-light { background: transparent; color: #fff; border-color: #fff; }
+.own-starbucks .sb-btn-outline-light:hover { background: rgba(255, 255, 255, .12); }
+
+.own-starbucks .sb-tlink { color: var(--sb-accent); font-weight: 600; font-size: 15px; }
+.own-starbucks .sb-tlink:hover { text-decoration: underline; }
+
+/* ── text helpers ─────────────────────────────────────────────────────────── */
+.own-starbucks .sb-eyebrow {
+  font-size: 13px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--sb-accent); margin-bottom: 12px;
+}
+.own-starbucks .sb-eyebrow-light { color: var(--sb-gold-light); }
+.own-starbucks .sb-script { font-family: var(--sb-script); font-size: 30px; line-height: 1; color: var(--sb-gold); margin-bottom: 6px; }
+.own-starbucks .sb-lead { font-size: 19px; line-height: 1.75; color: var(--sb-ink-soft); margin: 18px 0 26px; max-width: 44ch; }
+.own-starbucks .sb-fine { font-size: 13px; color: var(--sb-ink-soft); margin-top: 18px; }
+.own-starbucks .sb-fine a { color: var(--sb-accent); text-decoration: underline; }
+
+/* ── top bar ──────────────────────────────────────────────────────────────── */
+.own-starbucks .sb-bar {
+  position: sticky; top: 68px; z-index: 40; /* clears the 56px showcase toolbar */
+  display: flex; align-items: center; gap: 24px;
+  height: 64px; padding: 0 24px; margin: 0;
+  background: #fff; border-bottom: 1px solid rgba(0, 0, 0, .06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1), 0 2px 2px rgba(0, 0, 0, .06), 0 0 2px rgba(0, 0, 0, .07);
+}
+.own-starbucks .sb-brand { display: inline-flex; align-items: center; gap: 10px; }
+.own-starbucks .sb-mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--sb-green); }
+.own-starbucks .sb-mark svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; }
+.own-starbucks .sb-wordmark { font-size: 22px; font-weight: 600; letter-spacing: -.16px; color: var(--sb-green); }
+.own-starbucks .sb-wordmark-light { color: #fff; }
+.own-starbucks .sb-nav { display: flex; align-items: center; gap: 24px; margin-left: 8px; }
+.own-starbucks .sb-nav a { font-size: 14px; font-weight: 600; color: var(--sb-ink); letter-spacing: -.01em; }
+.own-starbucks .sb-nav a:hover { color: var(--sb-green); }
+.own-starbucks .sb-nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.own-starbucks .sb-store { font-size: 14px; font-weight: 600; color: var(--sb-ink); }
+.own-starbucks .sb-store:hover { color: var(--sb-green); }
+
+/* ── hero — cream, split 40/60 ────────────────────────────────────────────── */
+.own-starbucks .sb-hero {
+  display: grid; grid-template-columns: 1fr .82fr; align-items: center; gap: 40px;
+  padding: 72px 40px 80px; background: var(--sb-neutral-warm);
+}
+.own-starbucks .sb-hero h1 { font-size: clamp(38px, 4.6cqi, 58px); font-weight: 600; color: var(--sb-green); letter-spacing: -.16px; max-width: 15ch; }
+.own-starbucks .sb-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.own-starbucks .sb-hero-art { position: relative; display: grid; place-items: center; min-height: 340px; }
+.own-starbucks .sb-mesh {
+  position: absolute; inset: 0; border-radius: 12px;
+  background:
+    radial-gradient(60% 60% at 35% 30%, rgba(0, 117, 74, .22), transparent 70%),
+    radial-gradient(70% 70% at 70% 75%, rgba(203, 162, 88, .28), transparent 72%),
+    var(--sb-ceramic);
+}
+.own-starbucks .sb-cup { position: relative; z-index: 2; display: grid; justify-items: center; }
+.own-starbucks .sb-cup-lid { width: 148px; height: 20px; border-radius: 8px 8px 4px 4px; background: #cfd3d0; }
+.own-starbucks .sb-cup-body {
+  width: 132px; height: 176px; margin-top: 2px;
+  background: #fff; border-radius: 6px 6px 16px 16px;
+  display: grid; place-items: center;
+  box-shadow: inset 0 -26px 0 rgba(0, 117, 74, .12);
+}
+.own-starbucks .sb-cup-label {
+  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--sb-green); color: #fff; font-weight: 700; font-size: 18px; letter-spacing: .06em;
+}
+.own-starbucks .sb-cup-shadow { width: 180px; height: 18px; margin-top: 8px; border-radius: 50%; background: rgba(30, 57, 50, .16); filter: blur(3px); }
+.own-starbucks .sb-ring { position: absolute; border: 2px solid rgba(255, 255, 255, .6); border-radius: 50%; z-index: 1; }
+.own-starbucks .sb-ring-a { width: 300px; height: 300px; }
+.own-starbucks .sb-ring-b { width: 220px; height: 220px; border-color: rgba(0, 98, 65, .18); }
+
+/* ── House Green feature band ─────────────────────────────────────────────── */
+.own-starbucks .sb-band {
+  display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 48px;
+  padding: 64px 40px; background: var(--sb-house); color: #fff;
+}
+.own-starbucks .sb-band h2 { font-size: clamp(28px, 3.2cqi, 40px); font-weight: 600; color: #fff; max-width: 18ch; }
+.own-starbucks .sb-band p { color: var(--sb-on-dark-soft); font-size: 18px; line-height: 1.6; margin: 16px 0 24px; max-width: 48ch; }
+.own-starbucks .sb-band-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.own-starbucks .sb-band-art { display: grid; justify-items: center; gap: 12px; }
+.own-starbucks .sb-stars { display: flex; gap: 10px; }
+.own-starbucks .sb-stars svg { width: 34px; height: 34px; fill: var(--sb-gold); }
+.own-starbucks .sb-band-stars { font-size: 15px; color: var(--sb-on-dark-soft); }
+.own-starbucks .sb-band-stars b { font-size: 30px; color: var(--sb-gold); font-weight: 600; }
+.own-starbucks .sb-band :focus-visible { outline-color: var(--sb-gold-light); }
+
+/* ── menu cards — warm cream → white cards ────────────────────────────────── */
+.own-starbucks .sb-cards { padding: 64px 40px; background: var(--sb-ceramic); }
+.own-starbucks .sb-sec-head { max-width: 60ch; margin-bottom: 32px; }
+.own-starbucks .sb-sec-head h2 { font-size: clamp(26px, 3cqi, 34px); font-weight: 600; color: var(--sb-green); }
+.own-starbucks .sb-sec-lead { color: var(--sb-ink-soft); margin-top: 12px; }
+.own-starbucks .sb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.own-starbucks .sb-card {
+  background: #fff; border-radius: 12px; padding: 16px 16px 20px;
+  box-shadow: var(--sb-card-shadow); display: flex; flex-direction: column;
+}
+.own-starbucks .sb-card-thumb { position: relative; height: 132px; border-radius: 12px; overflow: hidden; margin-bottom: 14px; display: grid; place-items: center; }
+.own-starbucks .sb-thumb-a { background: linear-gradient(160deg, #d4e9e2, #a9d8ca); }
+.own-starbucks .sb-thumb-b { background: linear-gradient(160deg, #f5e3c8, #e6cb95); }
+.own-starbucks .sb-thumb-c { background: linear-gradient(160deg, #e9e2f4, #cbbfe4); }
+.own-starbucks .sb-thumb-d { background: linear-gradient(160deg, #f7d9cf, #eab5a1); }
+.own-starbucks .sb-thumb-cup { width: 52px; height: 66px; border-radius: 4px 4px 12px 12px; background: rgba(255, 255, 255, .9); box-shadow: inset 0 -14px 0 rgba(0, 98, 65, .18); }
+.own-starbucks .sb-card h3 { font-size: 20px; font-weight: 600; color: var(--sb-ink); margin-bottom: 6px; }
+.own-starbucks .sb-card p { font-size: 14px; color: var(--sb-ink-soft); line-height: 1.5; }
+.own-starbucks .sb-tag {
+  align-self: flex-start; margin-top: 14px; padding: 4px 12px; border-radius: 50px;
+  font-size: 13px; font-weight: 700; letter-spacing: .02em;
+}
+.own-starbucks .sb-tag-gold { color: var(--sb-gold); border: 1px solid var(--sb-gold); }
+
+/* ── rewards status ───────────────────────────────────────────────────────── */
+.own-starbucks .sb-status { padding: 64px 40px; background: var(--sb-neutral-warm); }
+.own-starbucks .sb-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-starbucks .sb-tier {
+  border-radius: 12px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;
+  box-shadow: var(--sb-card-shadow);
+}
+.own-starbucks .sb-tier-white { background: #fff; }
+.own-starbucks .sb-tier-house { background: var(--sb-house); color: #fff; }
+.own-starbucks .sb-tier-bar { height: 8px; border-radius: 50px; margin-bottom: 12px; }
+.own-starbucks .sb-tier-bar-bronze { background: #b07a4a; }
+.own-starbucks .sb-tier-bar-gold { background: var(--sb-gold); }
+.own-starbucks .sb-tier-bar-house { background: var(--sb-green-light); }
+.own-starbucks .sb-tier-badge {
+  align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--sb-gold); background: rgba(203, 162, 88, .14); padding: 3px 10px; border-radius: 50px;
+}
+.own-starbucks .sb-tier-house .sb-tier-badge { background: rgba(255, 255, 255, .12); color: var(--sb-gold-light); }
+.own-starbucks .sb-tier h3 { font-size: 24px; font-weight: 600; }
+.own-starbucks .sb-tier-house h3 { color: #fff; }
+.own-starbucks .sb-tier ul { display: grid; gap: 8px; margin-top: 6px; }
+.own-starbucks .sb-tier li { font-size: 15px; color: var(--sb-ink-soft); padding-left: 18px; position: relative; }
+.own-starbucks .sb-tier li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--sb-accent); }
+.own-starbucks .sb-tier-house li { color: var(--sb-on-dark-soft); }
+.own-starbucks .sb-tier-house li::before { background: var(--sb-gold); }
+.own-starbucks .sb-tier-note { font-size: 13px; color: var(--sb-ink-soft); margin-top: auto; padding-top: 14px; }
+.own-starbucks .sb-tier-note-dark { color: var(--sb-on-dark-soft); }
+.own-starbucks .sb-tier-gold { border: 1px solid var(--sb-gold-light); background: var(--sb-gold-lightest); }
+
+/* ── partner band ─────────────────────────────────────────────────────────── */
+.own-starbucks .sb-partner {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px;
+  padding: 44px 40px; background: var(--sb-gold-lightest);
+}
+.own-starbucks .sb-partner h2 { font-size: clamp(24px, 2.6cqi, 30px); font-weight: 600; color: var(--sb-rewards-green); }
+.own-starbucks .sb-partner p { color: var(--sb-ink-soft); margin: 10px 0 12px; max-width: 52ch; }
+.own-starbucks .sb-partner-logos { display: flex; gap: 14px; flex-wrap: wrap; }
+.own-starbucks .sb-plogo {
+  display: grid; place-items: center; padding: 16px 22px; border-radius: 12px; background: #fff;
+  box-shadow: var(--sb-card-shadow); font-weight: 700; letter-spacing: .04em; color: var(--sb-rewards-green);
+  font-size: 15px;
+}
+
+/* ── dark House Green footer ──────────────────────────────────────────────── */
+.own-starbucks .sb-foot { background: var(--sb-house); color: #fff; padding: 56px 40px 40px; }
+.own-starbucks .sb-foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+.own-starbucks .sb-foot-brand p { color: var(--sb-on-dark-soft); font-size: 14px; margin-top: 12px; max-width: 34ch; }
+.own-starbucks .sb-foot-col { display: grid; gap: 10px; align-content: start; }
+.own-starbucks .sb-foot-col h4 { font-size: 14px; font-weight: 600; color: var(--sb-gold-light); letter-spacing: .02em; }
+.own-starbucks .sb-foot-col a { font-size: 14px; color: var(--sb-on-dark-soft); }
+.own-starbucks .sb-foot-col a:hover { color: #fff; }
+.own-starbucks .sb-foot-row {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .14);
+  font-size: 13px; color: var(--sb-on-dark-soft);
+}
+.own-starbucks .sb-foot-links { display: flex; gap: 18px; }
+.own-starbucks .sb-foot :focus-visible { outline-color: var(--sb-gold-light); }
+
+/* ── Frap floating order button ───────────────────────────────────────────── */
+.own-starbucks .sb-frap-dock {
+  position: sticky; bottom: 18px; z-index: 35;
+  display: flex; justify-content: flex-end; padding: 0 18px;
+  margin-top: -56px; height: 0; pointer-events: none;
+}
+.own-starbucks .sb-frap {
+  display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  pointer-events: auto;
+  border: 0; background: var(--sb-accent); color: #fff; cursor: pointer; z-index: 35;
+  box-shadow: var(--sb-frap-shadow); transition: box-shadow .2s ease, transform .2s ease;
+}
+.own-starbucks .sb-frap:hover { transform: scale(1.04); }
+.own-starbucks .sb-frap:active { transform: scale(.95); box-shadow: 0 8px 12px rgba(0, 0, 0, 0); }
+.own-starbucks .sb-frap svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-starbucks .sb-nav { display: none; }
+  .own-starbucks .sb-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-starbucks .sb-foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@container frame (max-width: 760px) {
+  .own-starbucks .sb-bar { top: 10px; height: 56px; padding: 0 14px; gap: 12px; }
+  .own-starbucks .sb-store { display: none; }
+  .own-starbucks .sb-hero { grid-template-columns: 1fr; padding: 40px 20px 48px; gap: 28px; text-align: left; }
+  .own-starbucks .sb-hero-art { min-height: 260px; order: -1; }
+  .own-starbucks .sb-band { grid-template-columns: 1fr; padding: 44px 20px; gap: 28px; }
+  .own-starbucks .sb-cards,
+  .own-starbucks .sb-status { padding: 44px 20px; }
+  .own-starbucks .sb-partner { grid-template-columns: 1fr; padding: 36px 20px; }
+  .own-starbucks .sb-foot { padding: 44px 20px 32px; }
+  .own-starbucks .sb-tiers { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 430px) {
+  .own-starbucks .sb-grid { grid-template-columns: 1fr; }
+  .own-starbucks .sb-hero h1 { font-size: 34px; }
+  .own-starbucks .sb-nav-right { gap: 8px; }
+  .own-starbucks .sb-btn-black { display: none; }
+  .own-starbucks .sb-foot-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-starbucks *,
+  .own-starbucks *::before,
+  .own-starbucks *::after {
+    transition-duration: .001ms !important;
+    animation-duration: .001ms !important;
+  }
+}

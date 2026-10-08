@@ -1,0 +1,252 @@
+/* ══ WISE — own layout for showcase.html ═══════════════════════════════════
+   Ported from the Wise design language in DESIGN.md: vivid lime-green #9fe870
+   CTA on a sage-tinted canvas #e8ebe6, near-black olive ink #0e0f0c, Wise Sans
+   weight 900 hero (Inter 900 substitute) paired with Inter 600, 24px pill
+   radius on every card + button, surface contrast as the only elevation.
+   Production `vw` → `cqi`, media → `@container frame`, scoped `.own-wise`. */
+
+.own-wise {
+  --wi-green: #9fe870;
+  --wi-green-active: #cdffad;
+  --wi-green-neutral: #c5edab;
+  --wi-green-pale: #e2f6d5;
+  --wi-ink: #0e0f0c;
+  --wi-ink-deep: #163300;
+  --wi-body: #454745;
+  --wi-mute: #868685;
+  --wi-canvas: #ffffff;
+  --wi-canvas-soft: #e8ebe6;
+  --wi-positive: #2ead4b;
+  --wi-positive-deep: #054d28;
+  --wi-warning: #ffd11a;
+  --wi-negative: #d03238;
+  --wi-display: 'Wise Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --wi-gut: clamp(20px, 4cqi, 48px);
+
+  position: relative;
+  background: var(--wi-canvas-soft);
+  color: var(--wi-ink);
+  font-family: var(--wi-display);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  border-radius: 13px;
+}
+
+.own-wise *, .own-wise *::before, .own-wise *::after { box-sizing: border-box; }
+.own-wise p { margin: 0; }
+.own-wise a { color: inherit; text-decoration: none; }
+.own-wise :focus-visible { outline: 3px solid var(--wi-ink); outline-offset: 2px; border-radius: 6px; }
+.own-wise .wi-eyebrow {
+  font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--wi-body); margin-bottom: 14px;
+}
+.own-wise .wi-sec-title {
+  font-family: var(--wi-display); font-size: clamp(32px, 5cqi, 47px); font-weight: 900;
+  line-height: .96; letter-spacing: -.02em; max-width: 20ch;
+}
+.own-wise .wi-sec-head { max-width: 1200px; margin: 0 auto 36px; }
+
+/* ── buttons ─────────────────────────────────────────────────────────────── */
+.own-wise .wi-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--wi-display); font-size: 16px; font-weight: 600;
+  padding: 12px 24px; border-radius: 24px; border: 1px solid transparent;
+  cursor: pointer; transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.own-wise .wi-btn:active { transform: translateY(1px); }
+.own-wise .wi-btn-sm { padding: 8px 16px; font-size: 14px; }
+.own-wise .wi-btn-primary { background: var(--wi-green); color: var(--wi-ink); }
+.own-wise .wi-btn-primary:hover { background: var(--wi-green-active); }
+.own-wise .wi-btn-secondary { background: var(--wi-canvas-soft); color: var(--wi-ink); }
+.own-wise .wi-btn-secondary:hover { background: var(--wi-green-neutral); }
+.own-wise .wi-btn-tertiary { background: var(--wi-canvas); color: var(--wi-ink); border-color: var(--wi-ink); }
+.own-wise .wi-btn-tertiary:hover { background: var(--wi-green-pale); }
+.own-wise .wi-btn-block { width: 100%; margin-top: auto; }
+.own-wise .wi-btn-outline-inv { background: transparent; color: var(--wi-green); border-color: var(--wi-green); }
+.own-wise .wi-btn-outline-inv:hover { background: rgba(159,232,112,.12); }
+.own-wise .wi-link { font-size: 14px; font-weight: 600; }
+
+/* ── nav ─────────────────────────────────────────────────────────────────── */
+.own-wise .wi-nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 32px; height: 64px; padding: 0 var(--wi-gut);
+  background: rgba(232,235,230,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(14,15,12,.08);
+}
+.own-wise .wi-brand { display: inline-flex; align-items: center; gap: 9px; }
+.own-wise .wi-mark { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--wi-green); }
+.own-wise .wi-mark svg { width: 20px; height: 20px; }
+.own-wise .wi-brand-name { font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.own-wise .wi-nav-links { display: flex; align-items: center; gap: 24px; }
+.own-wise .wi-nav-links a { font-size: 14px; font-weight: 600; color: var(--wi-body); }
+.own-wise .wi-nav-links a:hover { color: var(--wi-ink); }
+.own-wise .wi-nav-actions { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+
+/* ── hero ────────────────────────────────────────────────────────────────── */
+.own-wise .wi-hero {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+  max-width: 1200px; margin: 0 auto; padding: 72px var(--wi-gut) 56px;
+}
+.own-wise .wi-hero-title {
+  font-family: var(--wi-display); font-size: clamp(44px, 8cqi, 96px); font-weight: 900;
+  line-height: .9; letter-spacing: -.03em; max-width: 14ch;
+}
+.own-wise .wi-hero-lead { font-size: clamp(18px, 2cqi, 20px); line-height: 1.5; color: var(--wi-body); max-width: 46ch; margin-top: 22px; }
+.own-wise .wi-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.own-wise .wi-trust { list-style: none; display: flex; gap: 28px; margin: 36px 0 0; padding: 0; }
+.own-wise .wi-trust li { font-size: 14px; color: var(--wi-body); }
+.own-wise .wi-trust b { display: block; font-size: 24px; font-weight: 900; color: var(--wi-ink); letter-spacing: -.02em; }
+
+/* ── converter card (signature) ──────────────────────────────────────────── */
+.own-wise .wi-converter {
+  position: relative; background: var(--wi-canvas); border: 1px solid var(--wi-ink);
+  border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px;
+}
+.own-wise .wi-conv-head { display: flex; align-items: center; justify-content: space-between; }
+.own-wise .wi-conv-title { font-size: 18px; font-weight: 600; }
+.own-wise .wi-badge { display: inline-flex; align-items: center; padding: 2px 12px; border-radius: 9999px; font-size: 14px; font-weight: 600; }
+.own-wise .wi-badge-live { background: var(--wi-green-pale); color: var(--wi-positive-deep); }
+.own-wise .wi-badge-positive { background: var(--wi-green-pale); color: var(--wi-positive-deep); }
+.own-wise .wi-badge-soft { background: #fff3cc; color: #6b4a00; }
+.own-wise .wi-conv-field { display: flex; flex-direction: column; gap: 6px; }
+.own-wise .wi-conv-label { font-size: 14px; font-weight: 600; color: var(--wi-body); }
+.own-wise .wi-conv-input {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+  border: 1px solid rgba(14,15,12,.18); border-radius: 12px; background: var(--wi-canvas);
+}
+.own-wise .wi-conv-input input {
+  width: 100%; border: 0; background: none; font-family: var(--wi-display);
+  font-size: 32px; font-weight: 600; letter-spacing: -.02em; color: var(--wi-ink);
+}
+.own-wise .wi-conv-input input:focus { outline: none; }
+.own-wise .wi-conv-unit { font-size: 14px; font-weight: 600; color: var(--wi-mute); white-space: nowrap; }
+.own-wise .wi-conv-swap {
+  align-self: center; display: grid; place-items: center; width: 40px; height: 40px;
+  border-radius: 9999px; background: var(--wi-green); margin: -6px 0;
+}
+.own-wise .wi-conv-swap svg { width: 20px; height: 20px; fill: none; stroke: var(--wi-ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-wise .wi-conv-out { font-size: 40px; font-weight: 900; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.own-wise .wi-conv-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-top: 16px; border-top: 1px solid rgba(14,15,12,.1);
+}
+.own-wise .wi-conv-rate { font-size: 14px; color: var(--wi-body); font-weight: 600; }
+
+/* ── feature cards ───────────────────────────────────────────────────────── */
+.own-wise .wi-cards-sec { max-width: 1200px; margin: 0 auto; padding: 56px var(--wi-gut) 16px; }
+.own-wise .wi-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-wise .wi-card {
+  display: flex; flex-direction: column; gap: 14px; padding: 24px;
+  border-radius: 24px; min-height: 220px;
+}
+.own-wise .wi-card-green { background: var(--wi-green-pale); }
+.own-wise .wi-card-sage { background: var(--wi-canvas); border: 1px solid rgba(14,15,12,.1); }
+.own-wise .wi-card-dark { background: var(--wi-ink); color: var(--wi-green); }
+.own-wise .wi-ico { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 9999px; background: var(--wi-canvas); }
+.own-wise .wi-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--wi-ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-wise .wi-ico-dark { background: rgba(159,232,112,.15); }
+.own-wise .wi-ico-dark svg { stroke: var(--wi-green); }
+.own-wise .wi-card h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+.own-wise .wi-card p { font-size: 16px; line-height: 1.5; }
+.own-wise .wi-card-green p, .own-wise .wi-card-sage p { color: var(--wi-body); }
+.own-wise .wi-card-dark p { color: #cfe9c0; }
+
+/* ── regional band ───────────────────────────────────────────────────────── */
+.own-wise .wi-band { max-width: 1200px; margin: 0 auto; padding: 56px var(--wi-gut); }
+.own-wise .wi-band-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.own-wise .wi-stat {
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+  padding: 24px; border-radius: 24px; background: var(--wi-canvas);
+  border: 1px solid rgba(14,15,12,.08);
+}
+.own-wise .wi-stat-label { font-size: 14px; font-weight: 600; color: var(--wi-body); }
+.own-wise .wi-stat-num { font-size: 32px; font-weight: 900; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+
+/* ── pricing ─────────────────────────────────────────────────────────────── */
+.own-wise .wi-pricing { max-width: 1200px; margin: 0 auto; padding: 56px var(--wi-gut) 24px; }
+.own-wise .wi-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.own-wise .wi-price-card {
+  position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px;
+  border-radius: 24px; background: var(--wi-canvas); border: 1px solid rgba(14,15,12,.1);
+}
+.own-wise .wi-price-feat { background: var(--wi-ink); color: var(--wi-green); border-color: var(--wi-ink); }
+.own-wise .wi-chip {
+  position: absolute; top: 20px; right: 20px; padding: 3px 12px; border-radius: 9999px;
+  font-size: 14px; font-weight: 600; background: var(--wi-green); color: var(--wi-ink);
+}
+.own-wise .wi-price-card h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+.own-wise .wi-price { font-size: 15px; color: var(--wi-body); }
+.own-wise .wi-price span { font-size: 40px; font-weight: 900; letter-spacing: -.03em; color: var(--wi-ink); }
+.own-wise .wi-price-feat .wi-price { color: #b9d9a6; }
+.own-wise .wi-price-feat .wi-price span { color: var(--wi-green); }
+.own-wise .wi-price-lead { font-size: 14px; color: var(--wi-body); }
+.own-wise .wi-price-feat .wi-price-lead { color: #b9d9a6; }
+.own-wise .wi-feats { list-style: none; margin: 4px 0 8px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.own-wise .wi-feats li { position: relative; padding-left: 26px; font-size: 16px; color: var(--wi-body); }
+.own-wise .wi-price-feat .wi-feats li { color: #d8ecd0; }
+.own-wise .wi-feats li::before {
+  content: ''; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; border-radius: 9999px;
+  background: var(--wi-green);
+}
+.own-wise .wi-price-feat .wi-btn-primary { color: var(--wi-ink); }
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.own-wise .wi-cta { padding: 24px var(--wi-gut) 64px; }
+.own-wise .wi-cta-inner {
+  max-width: 1200px; margin: 0 auto; text-align: center; padding: 72px 40px;
+  border-radius: 24px; background: var(--wi-ink); color: var(--wi-canvas);
+}
+.own-wise .wi-cta-title { font-size: clamp(32px, 5cqi, 64px); font-weight: 900; line-height: .95; letter-spacing: -.03em; color: var(--wi-green); }
+.own-wise .wi-cta-lead { font-size: 20px; color: #cfe9c0; margin-top: 16px; }
+.own-wise .wi-cta .wi-hero-cta { justify-content: center; }
+.own-wise .wi-cta .wi-btn-primary { background: var(--wi-green); color: var(--wi-ink); }
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.own-wise .wi-footer { background: var(--wi-ink); color: var(--wi-canvas-soft); padding: 48px var(--wi-gut) 32px; }
+.own-wise .wi-foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+.own-wise .wi-brand-foot { color: var(--wi-canvas); }
+.own-wise .wi-foot-brand p { font-size: 14px; line-height: 1.6; color: #b7beb2; margin-top: 12px; max-width: 32ch; }
+.own-wise .wi-foot-col { display: flex; flex-direction: column; gap: 10px; }
+.own-wise .wi-foot-col h4 { font-size: 14px; font-weight: 600; color: var(--wi-green); margin-bottom: 4px; }
+.own-wise .wi-foot-col a { font-size: 14px; color: #b7beb2; }
+.own-wise .wi-foot-col a:hover { color: var(--wi-canvas); }
+.own-wise .wi-foot-base {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  max-width: 1200px; margin: 40px auto 0; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; color: #8a917f;
+}
+
+/* ── responsive — @container frame ───────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-wise .wi-hero { grid-template-columns: 1fr; gap: 32px; }
+  .own-wise .wi-card-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-wise .wi-band-cards { grid-template-columns: repeat(2, 1fr); }
+  .own-wise .wi-price-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-wise .wi-price-feat { grid-column: span 2; }
+  .own-wise .wi-foot-grid { grid-template-columns: 1fr 1fr; }
+  .own-wise .wi-foot-brand { grid-column: span 2; }
+}
+@container frame (max-width: 760px) {
+  .own-wise .wi-nav-links { display: none; }
+  .own-wise .wi-card-grid { grid-template-columns: 1fr; }
+  .own-wise .wi-band-cards { grid-template-columns: 1fr; }
+  .own-wise .wi-price-grid { grid-template-columns: 1fr; }
+  .own-wise .wi-price-feat { grid-column: span 1; }
+  .own-wise .wi-hero { padding-top: 48px; }
+  .own-wise .wi-trust { flex-wrap: wrap; gap: 20px; }
+  .own-wise .wi-cta-inner { padding: 48px 24px; }
+}
+@container frame (max-width: 430px) {
+  .own-wise .wi-hero-cta { flex-direction: column; }
+  .own-wise .wi-hero-cta .wi-btn { width: 100%; }
+  .own-wise .wi-conv-foot { flex-direction: column; align-items: stretch; }
+  .own-wise .wi-conv-foot .wi-btn { width: 100%; }
+  .own-wise .wi-foot-grid { grid-template-columns: 1fr; }
+  .own-wise .wi-foot-brand { grid-column: span 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-wise .wi-btn { transition: none; }
+}

@@ -1,0 +1,266 @@
+<div class="own-autoalchemy" id="aa-app">
+  <!-- ── TOPBAR ─────────────────────────────────────────────────────── -->
+  <header class="aa-topbar">
+    <div class="aa-brand">
+      <span class="aa-brand-mark" aria-hidden="true">NW</span>
+      Northwind — Operations Review
+    </div>
+    <div class="aa-topbar-right">
+      <span class="aa-status-pill"><span class="aa-status-dot" aria-hidden="true"></span>Reporting live</span>
+      <div class="aa-theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-aa-theme="light" class="on">Light</button>
+        <button type="button" data-aa-theme="dark">Dark</button>
+      </div>
+      <button type="button" class="aa-print-btn" data-aa-print>Export PDF</button>
+    </div>
+  </header>
+
+  <div class="aa-shell">
+    <!-- ── SIDEBAR ─────────────────────────────────────────────────── -->
+    <nav class="aa-sidebar" aria-label="Report sections">
+      <a class="aa-nav-item on" href="#aa-s01" data-aa-nav="aa-s01"><span class="aa-nav-num">01</span>TL;DR</a>
+      <a class="aa-nav-item" href="#aa-s02" data-aa-nav="aa-s02"><span class="aa-nav-num">02</span>What shipped</a>
+      <a class="aa-nav-item" href="#aa-s03" data-aa-nav="aa-s03"><span class="aa-nav-num">03</span>Regions</a>
+      <a class="aa-nav-item" href="#aa-s04" data-aa-nav="aa-s04"><span class="aa-nav-num">04</span>Architecture</a>
+      <a class="aa-nav-item" href="#aa-s05" data-aa-nav="aa-s05"><span class="aa-nav-num">05</span>Decisions</a>
+      <a class="aa-nav-item" href="#aa-s06" data-aa-nav="aa-s06"><span class="aa-nav-num">06</span>Defects + next</a>
+      <a class="aa-nav-item" href="#aa-s07" data-aa-nav="aa-s07"><span class="aa-nav-num">07</span>Design</a>
+      <a class="aa-nav-item" href="#aa-s08" data-aa-nav="aa-s08"><span class="aa-nav-num">08</span>Process log</a>
+      <a class="aa-nav-item" href="#aa-s09" data-aa-nav="aa-s09"><span class="aa-nav-num">09</span>Runbook</a>
+      <div class="aa-sidebar-foot">
+        <p>Northwind<br>Operations analytics<br>Quarterly review · Q3 2026</p>
+      </div>
+    </nav>
+
+    <!-- ── CONTENT ─────────────────────────────────────────────────── -->
+    <main class="aa-content">
+      <!-- 01 TL;DR -->
+      <section id="aa-s01" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">01</span>TL;DR</div>
+        <div class="aa-hero aa-hero-pop">
+          <div class="aa-hero-status">
+            <span class="aa-pill aa-pill-live">● Healthy</span>
+            <span class="aa-pill aa-pill-hot">Northwind 4.0 cutover</span>
+            <span class="aa-pill">Run 2026-Q3</span>
+          </div>
+          <h1>Regional throughput up <span class="aa-url">12.4%</span> after the 4.0 roll-out</h1>
+          <p class="aa-lede">All six regions are reporting against the same operations model for the first time. Dashboards rebuilt on the shared metric layer; the nightly roll-up now lands before 06:00 local in every region.</p>
+          <div class="aa-first-step">
+            <b>Do this first:</b> open the <span class="aa-mono">Regional throughput</span> board, set the range to <b>Last 90 days</b>, and compare APAC against the plan — it is the region that moved most.
+          </div>
+        </div>
+
+        <div class="aa-kpi-rail">
+          <div class="aa-kpi aa-kpi--hero">
+            <div class="aa-kpi-label">Units / day</div>
+            <div class="aa-kpi-value">184<span class="aa-kpi-unit">K</span></div>
+            <div class="aa-kpi-sub">network total · 12.4% over Q2</div>
+          </div>
+          <div class="aa-kpi">
+            <div class="aa-kpi-label">Regions live</div>
+            <div class="aa-kpi-value">6<span class="aa-kpi-unit">/6</span></div>
+            <div class="aa-kpi-sub">single metric layer</div>
+          </div>
+          <div class="aa-kpi">
+            <div class="aa-kpi-label">Dashboards</div>
+            <div class="aa-kpi-value">41</div>
+            <div class="aa-kpi-sub">migrated off legacy</div>
+          </div>
+          <div class="aa-kpi">
+            <div class="aa-kpi-label">On-time roll-up</div>
+            <div class="aa-kpi-value">99.2<span class="aa-kpi-unit">%</span></div>
+            <div class="aa-kpi-sub">before 06:00 local</div>
+          </div>
+          <div class="aa-kpi">
+            <div class="aa-kpi-label">Cost / seat</div>
+            <div class="aa-kpi-value aa-kpi-tight">$4.10</div>
+            <div class="aa-kpi-sub">down from $5.60</div>
+          </div>
+          <div class="aa-kpi">
+            <div class="aa-kpi-label">Query p95</div>
+            <div class="aa-kpi-value">840<span class="aa-kpi-unit">ms</span></div>
+            <div class="aa-kpi-sub">was 2.9s pre-4.0</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 What shipped -->
+      <section id="aa-s02" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">02</span>What shipped</div>
+        <h2 class="aa-t-section">Operations surface vs. the original ask</h2>
+        <div class="aa-table-wrap">
+          <table>
+            <thead><tr><th>Area</th><th>Ask (scope IN)</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>Metric layer</b></td><td>One governed definition per operations metric, region-agnostic</td><td><span class="aa-chip aa-chip-ok">✓ shipped</span></td></tr>
+              <tr><td><b>Regional throughput</b></td><td>Live board, 6 regions, plan vs. actual, drill to site</td><td><span class="aa-chip aa-chip-ok">✓ shipped</span> — reconciled to ±0.3%</td></tr>
+              <tr><td><b>Pricing tiers</b></td><td>Tier editor, margin guardrails, effective-date history</td><td><span class="aa-chip aa-chip-ok">✓ shipped</span> — 4 tiers published</td></tr>
+              <tr><td><b>Inventory aging</b></td><td>Buckets 0-30 / 31-90 / 90+, site roll-up</td><td><span class="aa-chip aa-chip-partial">◐ partial</span> — 2 regions pending source fix</td></tr>
+              <tr><td><b>Nightly roll-up</b></td><td>Shared orchestration, per-region SLA 06:00 local</td><td><span class="aa-chip aa-chip-ok">✓ shipped</span> — 99.2% on time</td></tr>
+              <tr><td><b>Alerting</b></td><td>Threshold + anomaly alerts into the ops channel</td><td><span class="aa-chip aa-chip-ok">✓ shipped</span></td></tr>
+              <tr><td><b>Forecasting</b></td><td>13-week horizon per region</td><td><span class="aa-chip aa-chip-info">v4.1</span> — scope-out this cut</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 03 Regions -->
+      <section id="aa-s03" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">03</span>Regional throughput</div>
+        <h2 class="aa-t-section">Where the volume actually is</h2>
+        <p class="aa-lede">Every row below is computed from the same nightly snapshot — plan, actual, and variance use one definition of a "unit".</p>
+        <div class="aa-table-wrap">
+          <table>
+            <thead><tr><th>Region</th><th class="aa-num-col">Plan</th><th class="aa-num-col">Actual</th><th class="aa-num-col">Var</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>APAC</b></td><td class="aa-td-num">42.0K</td><td class="aa-td-num">48.6K</td><td class="aa-td-num aa-td-accent">+15.7%</td><td><span class="aa-chip aa-chip-ok">ahead</span></td></tr>
+              <tr><td><b>North America</b></td><td class="aa-td-num">56.0K</td><td class="aa-td-num">59.2K</td><td class="aa-td-num aa-td-accent">+5.7%</td><td><span class="aa-chip aa-chip-ok">ahead</span></td></tr>
+              <tr><td><b>EMEA</b></td><td class="aa-td-num">38.0K</td><td class="aa-td-num">36.1K</td><td class="aa-td-num">−5.0%</td><td><span class="aa-chip aa-chip-warn">watch</span></td></tr>
+              <tr><td><b>LATAM</b></td><td class="aa-td-num">21.0K</td><td class="aa-td-num">22.4K</td><td class="aa-td-num aa-td-accent">+6.7%</td><td><span class="aa-chip aa-chip-ok">ahead</span></td></tr>
+              <tr><td><b>MEA</b></td><td class="aa-td-num">12.0K</td><td class="aa-td-num">10.8K</td><td class="aa-td-num">−10.0%</td><td><span class="aa-chip aa-chip-crit">behind</span></td></tr>
+              <tr><td><b>India</b></td><td class="aa-td-num">15.0K</td><td class="aa-td-num">16.9K</td><td class="aa-td-num aa-td-accent">+12.7%</td><td><span class="aa-chip aa-chip-ok">ahead</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 04 Architecture -->
+      <section id="aa-s04" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">04</span>Architecture as built</div>
+        <h2 class="aa-t-section">The nightly pipeline</h2>
+        <div class="aa-pipeline">
+          <div class="aa-pipe-step"><div class="aa-pipe-num">1</div><h4>Source systems</h4><p>Regional WMS + POS exports land in the staging area by 01:00 local.</p><span class="aa-pipe-arrow" aria-hidden="true">→</span></div>
+          <div class="aa-pipe-step"><div class="aa-pipe-num">2</div><h4>Ingest + validate</h4><p>Schema checks, dedupe, and a per-region reject report on every run.</p><span class="aa-pipe-arrow" aria-hidden="true">→</span></div>
+          <div class="aa-pipe-step"><div class="aa-pipe-num">3</div><h4>Metric layer</h4><p>Governed definitions compute throughput, aging, and margin once.</p><span class="aa-pipe-arrow" aria-hidden="true">→</span></div>
+          <div class="aa-pipe-step"><div class="aa-pipe-num">4</div><h4>Roll-up</h4><p>Site → region → network, published to the serving store before 06:00.</p></div>
+        </div>
+
+        <h3 class="aa-sub-h">Where v4.0 diverged from the plan — and why</h3>
+        <ul class="aa-delta-list">
+          <li><b>Orchestration:</b> moved to a single shared scheduler instead of one per region; per-region SLAs are now enforced by a single dependency graph, which is what made the 99.2% on-time figure possible.</li>
+          <li><b>Inventory aging:</b> kept the manual source patch for two regions rather than blocking the cut-over — tracked as D-2 below.</li>
+          <li><b>Metric storage:</b> a governed view layer rather than a physical warehouse table; query p95 fell more than projected as a result.</li>
+          <li><b>Alerting:</b> shipped to the ops channel directly, not email — email batching hid the first 20 minutes of incidents.</li>
+        </ul>
+      </section>
+
+      <!-- 05 Decisions -->
+      <section id="aa-s05" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">05</span>Decisions still open</div>
+        <h2 class="aa-t-section">What needs a call</h2>
+        <div class="aa-alert aa-alert-crit">
+          <div class="aa-alert-title">⚠ Forecasting horizon — blocked</div>
+          <p>The 13-week forecast needs a seasonal model per region, but two regions (MEA, EMEA) have fewer than 15 months of clean history. <b>Fix:</b> either ship a 6-week horizon for those two, or backfill from the legacy monthly extracts. A decision is needed before the v4.1 scope freeze.</p>
+        </div>
+        <div class="aa-table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Decision</th><th>Built as</th></tr></thead>
+            <tbody>
+              <tr><td class="aa-td-accent">OD1</td><td>Metric ownership</td><td>Governed layer, definitions versioned with the model — not per-dashboard.</td></tr>
+              <tr><td class="aa-td-accent">OD2</td><td>Roll-up trigger</td><td>Event on ingest completion, with a 05:30 local hard deadline.</td></tr>
+              <tr><td class="aa-td-accent">OD3</td><td>Aging buckets</td><td>0-30 / 31-90 / 90+ as specified; no regional custom buckets.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 06 Defects -->
+      <section id="aa-s06" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">06</span>Known defects + next five</div>
+        <h2 class="aa-t-section">What's left</h2>
+        <div class="aa-table-wrap">
+          <table>
+            <thead><tr><th class="aa-num-col">#</th><th>Defect</th><th>Where</th><th>Severity</th></tr></thead>
+            <tbody>
+              <tr><td class="aa-td-num">1</td><td>Inventory aging shows zero for sites missing a source timestamp</td><td>aging roll-up</td><td><span class="aa-chip aa-chip-warn">data gap</span></td></tr>
+              <tr><td class="aa-td-num">2</td><td>Two regions still on the manual source patch</td><td>ingest / EMEA, MEA</td><td><span class="aa-chip aa-chip-crit">blocking v4.1</span></td></tr>
+              <tr><td class="aa-td-num">3</td><td>Pricing tier history omits the superseded tier name</td><td>tier editor</td><td><span class="aa-chip aa-chip-info">cosmetic</span></td></tr>
+              <tr><td class="aa-td-num">4</td><td>Alert test button sends a live notification with no sample flag</td><td>alerting</td><td><span class="aa-chip aa-chip-warn">noisy</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 class="aa-sub-h">Next five things</h3>
+        <ol class="aa-next-list">
+          <li>Land the two-region source fix (D-2) — it gates the only defect marked blocking.</li>
+          <li>Resolve the forecasting-horizon decision (OD, §05) before the v4.1 freeze.</li>
+          <li>Backfill the missing aging timestamps and re-run the D-1 reconciliation.</li>
+          <li>Flag alert-test notifications as samples so they can't page the on-call.</li>
+          <li>Publish the metric-definition changelog alongside the release notes.</li>
+        </ol>
+      </section>
+
+      <!-- 07 Design -->
+      <section id="aa-s07" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">07</span>Design</div>
+        <h2 class="aa-t-section">One grammar, two surfaces</h2>
+        <p class="aa-lede">The review document and the operations dashboard share a single token set: warm paper, hard offset shadows, one orange accent, and numbers set apart in a mono display face.</p>
+        <div class="aa-two-col">
+          <div class="aa-card-flat">
+            <div class="aa-card-head">Document surface</div>
+            <p>Reading is calm: warm paper, a faint dot grid, and orange reserved for the one thing that needs attention. Numbers run in a pixel/mono face so a dense page still scans.</p>
+          </div>
+          <div class="aa-card-flat">
+            <div class="aa-card-head">Dashboard surface</div>
+            <p>Same tokens, denser grid. KPI tiles lift with a hard shadow, status colors stay strictly semantic — green / amber / red for ok / warn / crit and nothing else.</p>
+          </div>
+        </div>
+        <h3 class="aa-sub-h">Two themes, one grammar</h3>
+        <div class="aa-theme-swatch-row">
+          <div class="aa-theme-swatch">
+            <div class="aa-theme-swatch-bar"><span class="aa-sw-paper" aria-hidden="true"></span><span class="aa-sw-accent" aria-hidden="true"></span><span class="aa-sw-ink" aria-hidden="true"></span></div>
+            <div class="aa-theme-swatch-label">Light<small>default · paper</small></div>
+          </div>
+          <div class="aa-theme-swatch">
+            <div class="aa-theme-swatch-bar"><span class="aa-sw-dark" aria-hidden="true"></span><span class="aa-sw-accent" aria-hidden="true"></span><span class="aa-sw-black" aria-hidden="true"></span></div>
+            <div class="aa-theme-swatch-label">Dark<small>ink shadows go black</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 Process log -->
+      <section id="aa-s08" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">08</span>Process log</div>
+        <h2 class="aa-t-section">How the quarter ran</h2>
+        <ul class="aa-delta-list">
+          <li><b>Weeks 1-3:</b> metric-definition workshops with each region; the definitional disagreements surfaced here, not in the build.</li>
+          <li><b>Weeks 4-8:</b> shared pipeline built and shadow-run alongside the legacy roll-up for four weeks.</li>
+          <li><b>Week 9:</b> dashboards migrated region by region, each reconciled to ±0.3% before the next started.</li>
+          <li><b>Week 10:</b> cut-over, legacy roll-up retired; the first all-region morning report published.</li>
+        </ul>
+        <div class="aa-alert aa-alert-warn">
+          <div class="aa-alert-title">⚠ A silent zero passed every validation check</div>
+          <p>One region reported a source extract with an empty inventory file. The schema was valid and the row count non-zero, so it passed; only the aging board's zero-total caught it. A per-region volume floor is now part of the ingest gate.</p>
+        </div>
+      </section>
+
+      <!-- 09 Runbook -->
+      <section id="aa-s09" class="aa-sec">
+        <div class="aa-eyebrow"><span class="aa-eyebrow-num">09</span>Runbook pointers</div>
+        <h2 class="aa-t-section">Where to look</h2>
+        <div class="aa-table-wrap">
+          <table>
+            <thead><tr><th>Topic</th><th>File</th></tr></thead>
+            <tbody>
+              <tr><td>Metric definitions + version history</td><td><code>docs/metrics/DEFINITIONS.md</code></td></tr>
+              <tr><td>Per-region ingest config and volume floors</td><td><code>pipelines/regions/*.yaml</code></td></tr>
+              <tr><td>Roll-up SLA + on-call escalation path</td><td><code>docs/runbook/ROLLUP.md</code> §4</td></tr>
+              <tr><td>Pricing tier change procedure</td><td><code>docs/runbook/PRICING.md</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <div class="aa-footer">
+        <div class="aa-eyebrow" style="margin-bottom:14px">Files index</div>
+        <ul class="aa-file-index">
+          <li><code>docs/reviews/2026-Q3-ops-review.md</code> — this document</li>
+          <li><code>docs/metrics/DEFINITIONS.md</code> — governed metric layer</li>
+          <li><code>docs/runbook/ROLLUP.md</code> — nightly pipeline runbook</li>
+          <li><code>pipelines/regions/*.yaml</code> — ingest config</li>
+          <li><code>docs/runbook/PRICING.md</code> — tier change procedure</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</div>

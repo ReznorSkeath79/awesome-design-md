@@ -1,0 +1,175 @@
+<div class="own-playstation">
+  <a class="ps-skip" href="#psMain">Skip to content</a>
+
+  <!-- ── PRIMARY NAV ─────────────────────────────────────────────────── -->
+  <header class="ps-nav" id="psNav">
+    <div class="ps-nav-in">
+      <a class="ps-brand" href="#psMain" aria-label="Northwind home">
+        <span class="ps-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#0070d1"/><path d="M12 5v11.4M9.4 12.2l2.6 1.9 2.6-1.9M8 19h8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="ps-brand-name">Northwind</span>
+      </a>
+      <nav class="ps-nav-links" aria-label="Primary">
+        <a href="#psModules">Modules</a>
+        <a href="#psHardware">Hardware</a>
+        <a href="#psPlus">Plus</a>
+        <a href="#psAnniv">Analytics</a>
+        <a href="#psNews">News</a>
+        <a href="#psStore">Store</a>
+      </nav>
+      <div class="ps-nav-actions">
+        <a class="ps-icon" href="#" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
+        <a class="ps-icon" href="#psStore" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M4 5h2l2 11h10l2-8H7"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></a>
+        <a class="ps-avatar" href="#" aria-label="Account">NW</a>
+        <button class="ps-burger" type="button" aria-label="Menu" data-ps-menu aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="ps-subnav" hidden data-ps-drawer>
+      <a href="#psModules">Modules</a><a href="#psHardware">Hardware</a><a href="#psPlus">Plus</a>
+      <a href="#psAnniv">Analytics</a><a href="#psNews">News</a><a href="#psStore">Store</a>
+    </div>
+  </header>
+
+  <main id="psMain">
+    <!-- ── HERO — DARK BAND ───────────────────────────────────────────── -->
+    <section class="ps-band ps-band-dark ps-hero">
+      <div class="ps-band-in ps-hero-in">
+        <div class="ps-hero-copy">
+          <span class="ps-badge">New · 2026 release</span>
+          <h1 class="ps-display-xl">Northwind for every console of your operation.</h1>
+          <p class="ps-lead">One analytics surface for regions, throughput, and revenue. Bring the whole operations stack online — then read it at a glance.</p>
+          <div class="ps-hero-cta">
+            <a class="ps-btn ps-btn-primary" href="#psPlus">Learn more</a>
+            <a class="ps-btn ps-btn-secondary-dark" href="#psModules">Watch the tour</a>
+          </div>
+        </div>
+        <div class="ps-console" aria-label="Northwind analytics console">
+          <div class="ps-console-frame">
+            <div class="ps-console-top">
+              <span class="ps-dot"></span><span class="ps-dot"></span><span class="ps-dot"></span>
+              <span class="ps-console-title">Northwind · Operations</span>
+            </div>
+            <div class="ps-console-body">
+              <div class="ps-console-kpi">
+                <span class="ps-console-num">$48.2k</span>
+                <span class="ps-console-lab">Revenue · weekly</span>
+              </div>
+              <svg class="ps-console-chart" viewBox="0 0 320 80" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 62 L45 54 L90 60 L135 36 L180 42 L225 20 L270 26 L320 10" fill="none" stroke="#0070d1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="ps-console-rows">
+                <div class="ps-console-row"><span>Logistics</span><b>98.4%</b></div>
+                <div class="ps-console-row"><span>Revenue ops</span><b>$48.2k</b></div>
+                <div class="ps-console-row"><span>Support</span><b>4.9★</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MODULES — DARK RAIL ────────────────────────────────────────── -->
+    <section class="ps-band ps-band-dark ps-modules" id="psModules">
+      <div class="ps-band-in">
+        <div class="ps-band-head">
+          <h2 class="ps-display-lg">Great modules out now — or coming soon</h2>
+          <div class="ps-paddles">
+            <button class="ps-paddle" type="button" data-ps-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="ps-paddle" type="button" data-ps-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="ps-rail" data-ps-rail tabindex="0" aria-label="Modules carousel">
+          <div class="ps-rail-track" data-ps-track></div>
+        </div>
+        <div class="ps-dots" data-ps-dots role="group" aria-label="Slide position"></div>
+      </div>
+    </section>
+
+    <!-- ── HARDWARE — LIGHT CONSOLE SHOWCASE ──────────────────────────── -->
+    <section class="ps-band ps-band-light ps-hardware" id="psHardware">
+      <div class="ps-band-in ps-hardware-in">
+        <div class="ps-hardware-copy">
+          <h2 class="ps-display-lg">Discover all Northwind hardware and accessories.</h2>
+          <p class="ps-body">Deploy on the dashboard console, the field tablet, or the warehouse terminal. Same data everywhere — the surface changes with the shift.</p>
+          <a class="ps-btn ps-btn-primary" href="#psStore">Shop consoles</a>
+        </div>
+        <div class="ps-hardware-strip" id="psHardwareStrip"></div>
+      </div>
+    </section>
+
+    <!-- ── PLUS BANNER ────────────────────────────────────────────────── -->
+    <section class="ps-band ps-band-light ps-plus" id="psPlus">
+      <div class="ps-band-in">
+        <div class="ps-plus-banner">
+          <span class="ps-plus-gold" aria-hidden="true"></span>
+          <div class="ps-plus-head">
+            <h2 class="ps-display-md">Discover Northwind Plus</h2>
+            <p class="ps-body-dark">Three tiers of operations intelligence. Pick the one your team's throughput deserves.</p>
+          </div>
+          <div class="ps-tiers" id="psTiers"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ANNIVERSARY CALLOUT ────────────────────────────────────────── -->
+    <section class="ps-band ps-band-light ps-anniv" id="psAnniv">
+      <div class="ps-band-in ps-anniv-in">
+        <p class="ps-eyebrow">Milestone</p>
+        <h2 class="ps-heading-xl">10 Years of Northwind</h2>
+        <p class="ps-body">A decade of operations teams shipping on the same ledger. The anniversary analytics pack is free for every Plus member this quarter.</p>
+        <a class="ps-btn ps-btn-secondary-light" href="#psNews">Read the retrospective</a>
+      </div>
+    </section>
+
+    <!-- ── ON NORTHWIND — GRADIENT DARK BAND ──────────────────────────── -->
+    <section class="ps-band ps-band-on">
+      <div class="ps-band-in ps-on-in">
+        <h2 class="ps-display-xl">ON NORTHWIND</h2>
+        <p class="ps-lead">Live this week: regional throughput benchmarks, a new forecasting module, and the warehouse terminal beta.</p>
+        <a class="ps-btn ps-btn-primary" href="#psNews">See what's live</a>
+      </div>
+    </section>
+
+    <!-- ── NEWS STRIP — LIGHT ─────────────────────────────────────────── -->
+    <section class="ps-band ps-band-light ps-news" id="psNews">
+      <div class="ps-band-in">
+        <div class="ps-band-head ps-band-head-light">
+          <h2 class="ps-display-lg">From the Northwind blog</h2>
+          <a class="ps-link" href="#">All posts <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="ps-news-grid" id="psNewsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── STORE CTA — BLUE BAND ──────────────────────────────────────── -->
+    <section class="ps-band ps-band-blue ps-store" id="psStore">
+      <div class="ps-band-in ps-store-in">
+        <div>
+          <p class="ps-store-eyebrow">Northwind Store</p>
+          <h2 class="ps-display-md">Ready to bring your operations online?</h2>
+        </div>
+        <div class="ps-store-actions">
+          <a class="ps-btn ps-btn-commerce" href="#">Buy now</a>
+          <a class="ps-btn ps-btn-secondary-dark" href="#psPlus">Compare tiers</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER — BLUE ───────────────────────────────────────────────── -->
+  <footer class="ps-foot">
+    <div class="ps-band-in">
+      <p class="ps-foot-word">Northwind</p>
+      <div class="ps-foot-grid">
+        <div><p class="ps-foot-head">Store</p><a href="#">Consoles</a><a href="#">Accessories</a><a href="#">Deals</a></div>
+        <div><p class="ps-foot-head">Account</p><a href="#">Sign in</a><a href="#">Plus membership</a></div>
+        <div><p class="ps-foot-head">Support</p><a href="#">Help center</a><a href="#">Status</a></div>
+        <div><p class="ps-foot-head">Company</p><a href="#">About</a><a href="#">Careers</a></div>
+      </div>
+      <p class="ps-foot-fine">© 2026 · Sample data — showcase only</p>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,172 @@
+<div class="own-cursor">
+  <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
+  <header class="cu-nav" id="cuNav">
+    <a class="cu-wordmark" href="#cu-top" aria-label="Northwind home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5 20 12 4 20.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Northwind</a>
+    <nav class="cu-menu" aria-label="Primary">
+      <a href="#cu-pricing">Pricing</a>
+      <a href="#cu-features">Features</a>
+      <a href="#cu-timeline">Enterprise</a>
+      <a href="#cu-blog">Blog</a>
+      <a href="#cu-foot">Careers</a>
+    </nav>
+    <div class="cu-nav-right">
+      <a class="cu-nav-link" href="#">Sign in</a>
+      <a class="cu-btn cu-btn-ink" href="#cu-pricing">Download</a>
+      <button class="cu-burger" type="button" id="cuBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="cu-top">
+    <!-- ── HERO + IDE MOCKUP ──────────────────────────────────────────────── -->
+    <section class="cu-hero" aria-labelledby="cuHeroH">
+      <h1 id="cuHeroH" class="cu-hero-title">The operations editor<br>that thinks in your model</h1>
+      <p class="cu-hero-sub">Northwind is where the analyst and the line lead meet — one warm, quiet surface for querying, editing, and reconciling the operation.</p>
+      <div class="cu-hero-cta">
+        <a class="cu-btn cu-btn-ink cu-btn-lg" href="#cu-pricing">Download for macOS</a>
+        <a class="cu-link" href="#cu-features">See the features <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="cu-ide" aria-label="Northwind editor mockup">
+        <div class="cu-ide-bar">
+          <span class="cu-ide-tab cu-ide-tab-on">reconcile.ts</span>
+          <span class="cu-ide-tab">week-41.json</span>
+          <span class="cu-ide-tab">yield.sql</span>
+          <span class="cu-ide-spacer"></span>
+          <span class="cu-ide-chip">Ops model</span>
+        </div>
+        <div class="cu-ide-body">
+          <div class="cu-ide-side">
+            <span class="cu-ide-h">Explorer</span>
+            <span class="cu-ide-file cu-ide-file-on">reconcile.ts</span>
+            <span class="cu-ide-file">yield.sql</span>
+            <span class="cu-ide-file">week-41.json</span>
+            <span class="cu-ide-file">digest.md</span>
+          </div>
+          <div class="cu-ide-main">
+            <pre class="cu-ide-pre"><code><span class="cu-ln">1</span><span class="cu-k">const</span> report = <span class="cu-k">await</span> nw.<span class="cu-fn">reconcile</span>({
+<span class="cu-ln">2</span>  region: <span class="cu-s">"luzon"</span>,
+<span class="cu-ln">3</span>  week: <span class="cu-n">41</span>,
+<span class="cu-ln">4</span>});
+<span class="cu-ln">5</span><span class="cu-c">// 14 lines scanned &mdash; 3 flagged in Busan</span>
+<span class="cu-ln">6</span>console.<span class="cu-fn">log</span>(report.flagged);</code></pre>
+          </div>
+          <div class="cu-ide-chat">
+            <span class="cu-ide-h">Agent</span>
+            <div class="cu-ide-msg cu-ide-msg-user">Reconcile week 41 across all regions.</div>
+            <div class="cu-ide-msg cu-ide-msg-ai">Scanned 14 lines. Busan drifted 2.7% on lines 07 and 09. Drafting the shift digest now.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI TIMELINE (signature pastel pills) ────────────────────────────── -->
+    <section id="cu-timeline" class="cu-timeline" aria-labelledby="cuTimelineH">
+      <div class="cu-timeline-head">
+        <h2 id="cuTimelineH" class="cu-h2">Watch the agent work</h2>
+        <p class="cu-lead">Every step of a run, named and time-stamped &mdash; so you can trust the number it hands back.</p>
+      </div>
+      <ol class="cu-steps" id="cuSteps"></ol>
+    </section>
+
+    <!-- ── FEATURES (3-up hairline cards) ──────────────────────────────────── -->
+    <section id="cu-features" class="cu-features" aria-labelledby="cuFeaturesH">
+      <div class="cu-features-head">
+        <h2 id="cuFeaturesH" class="cu-h2">Built for the whole desk</h2>
+        <p class="cu-lead">One editor, from the SQL the analyst writes to the digest the floor reads.</p>
+      </div>
+      <div class="cu-feature-grid" id="cuFeatureGrid"></div>
+    </section>
+
+    <!-- ── COMPARISON ──────────────────────────────────────────────────────── -->
+    <section class="cu-compare" aria-labelledby="cuCompareH">
+      <div class="cu-compare-card">
+        <div class="cu-compare-col">
+          <h3>Northwind</h3>
+          <ul>
+            <li>Governed ops model built in</li>
+            <li>Reconciliation with lineage</li>
+            <li>Agent runs are replayable</li>
+            <li>Digests the floor actually reads</li>
+          </ul>
+        </div>
+        <div class="cu-compare-col cu-compare-other">
+          <h3 id="cuCompareH">Spreadsheets + dashboards</h3>
+          <ul>
+            <li>Definitions drift per team</li>
+            <li>Totals that don't agree</li>
+            <li>No trace behind a number</li>
+            <li>Every shift rebuilds the board</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CODE BLOCK ──────────────────────────────────────────────────────── -->
+    <section id="cu-blog" class="cu-code-sec" aria-labelledby="cuCodeH">
+      <div class="cu-code-copy">
+        <span class="cu-eyebrow">Docs</span>
+        <h2 id="cuCodeH" class="cu-h2">One call to reconcile</h2>
+        <p class="cu-lead">The ops model is a first-class citizen. Query it in SQL, or let the agent do it for you.</p>
+      </div>
+      <div class="cu-code-block" role="group" aria-label="SQL example">
+        <div class="cu-code-bar"><span>yield.sql</span><button class="cu-copy" type="button" id="cuCopy">Copy</button></div>
+        <pre class="cu-pre"><code id="cuCode"><span class="cu-k">select</span>
+  line_id,
+  <span class="cu-fn">avg</span>(yield) <span class="cu-k">as</span> yield_pct,
+  <span class="cu-fn">count</span>(*) <span class="cu-k">as</span> units
+<span class="cu-k">from</span> ops.line_shift
+<span class="cu-k">where</span> week = <span class="cu-n">41</span>
+<span class="cu-k">group by</span> line_id
+<span class="cu-k">order by</span> yield_pct <span class="cu-k">desc</span>;</code></pre>
+      </div>
+    </section>
+
+    <!-- ── PRICING ──────────────────────────────────────────────────────────── -->
+    <section id="cu-pricing" class="cu-pricing" aria-labelledby="cuPricingH">
+      <div class="cu-pricing-head">
+        <h2 id="cuPricingH" class="cu-h2">Pricing that reads like a magazine</h2>
+        <p class="cu-lead">Start free. Add regions and seats when the operation grows.</p>
+      </div>
+      <div class="cu-tier-grid">
+        <article class="cu-tier">
+          <span class="cu-tier-name">Hobby</span>
+          <span class="cu-tier-price">Free</span>
+          <ul><li>1 region</li><li>1 seat</li><li>Community support</li></ul>
+          <a class="cu-btn cu-btn-secondary" href="#">Get started</a>
+        </article>
+        <article class="cu-tier cu-tier-featured">
+          <span class="cu-tier-name">Pro</span>
+          <span class="cu-tier-price">$40<span>/seat/mo</span></span>
+          <ul><li>Unlimited regions</li><li>Agent timeline</li><li>Digests &amp; exports</li></ul>
+          <a class="cu-btn cu-btn-primary" href="#">Start free trial</a>
+        </article>
+        <article class="cu-tier">
+          <span class="cu-tier-name">Enterprise</span>
+          <span class="cu-tier-price">Custom</span>
+          <ul><li>SSO &amp; audit</li><li>Private model</li><li>Dedicated support</li></ul>
+          <a class="cu-btn cu-btn-secondary" href="#">Contact sales</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── CTA BAND ──────────────────────────────────────────────────────────── -->
+  <section class="cu-cta" aria-labelledby="cuCtaH">
+    <h2 id="cuCtaH" class="cu-cta-title">Try Northwind now</h2>
+    <a class="cu-btn cu-btn-primary cu-btn-lg" href="#">Download for macOS</a>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
+  <footer id="cu-foot" class="cu-foot">
+    <div class="cu-foot-cols">
+      <div class="cu-foot-col"><h3>Product</h3><a href="#">Editor</a><a href="#">Agent</a><a href="#">Ops model</a><a href="#">Pricing</a></div>
+      <div class="cu-foot-col"><h3>Resources</h3><a href="#">Docs</a><a href="#">Blog</a><a href="#">Forum</a><a href="#">Changelog</a></div>
+      <div class="cu-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Security</a><a href="#">Contact</a></div>
+      <div class="cu-foot-col"><h3>Legal</h3><a href="#">Privacy</a><a href="#">Terms</a><a href="#">DPA</a><a href="#">Status</a></div>
+    </div>
+    <div class="cu-legal">
+      <span>&copy; 2026 Northwind Analytics — a fictional product. Sample data, showcase only.</span>
+      <span class="cu-legal-right">Made for the operations desk</span>
+    </div>
+  </footer>
+</div>

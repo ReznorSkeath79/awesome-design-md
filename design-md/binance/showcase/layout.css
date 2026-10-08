@@ -1,0 +1,209 @@
+/* ══ NORTHWIND — in the Binance design language, for showcase.html ══════════
+   Deep near-black canvas, one Binance-Yellow voltage, BinanceNova/Plex type
+   (JetBrains Mono for numbers as the Plex substitute), flat color-block cards,
+   trading green/red as text-only signals, and the deliberate light footer that
+   closes a dark page. */
+
+.own-binance {
+  --primary: #fcd535;
+  --primary-active: #f0b90b;
+  --primary-disabled: #3a3a1f;
+  --ink: #181a20;
+  --body: #eaecef;
+  --body-on-light: #181a20;
+  --muted: #707a8a;
+  --muted-strong: #929aa5;
+  --hairline-on-light: #eaecef;
+  --hairline-on-dark: #2b3139;
+  --border-strong: #cdd1d6;
+  --canvas-light: #ffffff;
+  --canvas-dark: #0b0e11;
+  --surface-card-dark: #1e2329;
+  --surface-elevated-dark: #2b3139;
+  --on-primary: #181a20;
+  --on-dark: #ffffff;
+  --trading-up: #0ecb81;
+  --trading-down: #f6465d;
+  --accent-turquoise: #2dbdb6;
+  --info: #3b82f6;
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 8px;
+  --r-xl: 12px;
+  --r-pill: 9999px;
+  --font: 'Inter', 'BinanceNova', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-num: 'JetBrains Mono', 'IBM Plex Sans', 'BinancePlex', sans-serif;
+  --gut: clamp(20px, 4.5cqi, 72px);
+  --section: clamp(52px, 6.4cqi, 80px);
+
+  position: relative;
+  background: var(--canvas-dark);
+  color: var(--body);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  border-radius: 13px;
+  overflow-x: clip;
+}
+.own-binance *, .own-binance *::before, .own-binance *::after { box-sizing: border-box; }
+.own-binance a { color: inherit; text-decoration: none; }
+.own-binance button { font: inherit; cursor: pointer; }
+.own-binance :focus-visible { outline: 2px solid var(--info); outline-offset: 2px; border-radius: 4px; }
+
+/* ── nav (64px) ───────────────────────────────────────────────────────────── */
+.own-binance .bn-nav { position: sticky; top: 68px; z-index: 30; display: flex; align-items: center; gap: 26px; height: 64px; padding: 0 var(--gut); background: var(--canvas-dark); border-bottom: 1px solid var(--hairline-on-dark); }
+.own-binance .bn-brand { display: flex; align-items: center; gap: 8px; color: var(--primary); font-family: var(--font); font-size: 20px; font-weight: 700; letter-spacing: -.5px; }
+.own-binance .bn-brand svg { width: 24px; height: 24px; fill: var(--primary); }
+.own-binance .bn-menu { display: flex; gap: 22px; font-size: 14px; font-weight: 500; color: var(--body); }
+.own-binance .bn-menu a:hover { color: var(--primary); }
+.own-binance .bn-nav-right { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+.own-binance .bn-icon { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--body); }
+.own-binance .bn-icon:hover { background: var(--surface-card-dark); }
+.own-binance .bn-icon svg { width: 18px; height: 18px; }
+.own-binance .bn-navlink { font-size: 14px; font-weight: 500; }
+.own-binance .bn-navlink:hover { color: var(--primary); }
+
+/* ── buttons ──────────────────────────────────────────────────────────────── */
+.own-binance .bn-btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 24px; border: 1px solid transparent; border-radius: var(--r-md); font-size: 14px; font-weight: 600; }
+.own-binance .bn-btn-primary { background: var(--primary); color: var(--on-primary); }
+.own-binance .bn-btn-primary:hover { background: var(--primary-active); }
+.own-binance .bn-btn-pill { border-radius: var(--r-pill); height: 48px; padding: 0 32px; }
+
+/* ── hero (dark band) ─────────────────────────────────────────────────────── */
+.own-binance .bn-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; max-width: 1280px; margin: 0 auto; padding: var(--section) var(--gut); }
+.own-binance .bn-h1 { font-family: var(--font); font-size: clamp(36px, 5.6cqi, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; color: var(--on-dark); }
+.own-binance .bn-hero-sub { font-size: 14px; color: var(--body); max-width: 52ch; margin: 20px 0 26px; }
+.own-binance .bn-search { display: flex; align-items: center; gap: 10px; max-width: 420px; height: 40px; padding: 0 16px; border-radius: var(--r-lg); background: var(--surface-card-dark); }
+.own-binance .bn-search svg { width: 17px; height: 17px; color: var(--muted); flex: none; }
+.own-binance .bn-search input { width: 100%; border: 0; background: none; color: var(--on-dark); font: inherit; font-size: 14px; }
+.own-binance .bn-search input::placeholder { color: var(--muted); }
+.own-binance .bn-search input:focus { outline: none; }
+.own-binance .bn-search:focus-within { box-shadow: 0 0 0 2px rgba(59, 130, 246, .5); }
+
+/* markets snapshot card */
+.own-binance .bn-markets { border-radius: var(--r-xl); background: var(--surface-card-dark); padding: 24px; }
+.own-binance .bn-markets-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.own-binance .bn-mtab { padding: 6px 12px; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--muted); font-size: 13px; font-weight: 500; }
+.own-binance .bn-mtab:hover { color: var(--body); }
+.own-binance .bn-mtab.on { background: var(--primary); color: var(--on-primary); font-weight: 600; }
+.own-binance .bn-markets-head, .own-binance .bn-mrow { display: grid; grid-template-columns: 1.2fr 1fr .8fr 20px; gap: 12px; align-items: center; }
+.own-binance .bn-markets-head { padding: 6px 0 10px; font-size: 12px; font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--hairline-on-dark); }
+.own-binance .bn-mrow { padding: 12px 0; border-bottom: 1px solid var(--hairline-on-dark); }
+.own-binance .bn-mrow:last-child { border-bottom: 0; }
+.own-binance .bn-mcoin { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--on-dark); }
+.own-binance .bn-mcoin i { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--surface-elevated-dark); font-style: normal; font-family: var(--font-num); font-size: 11px; color: var(--primary); }
+.own-binance .bn-mprice { font-family: var(--font-num); font-size: 16px; font-weight: 500; color: var(--on-dark); }
+.own-binance .bn-mchg { font-family: var(--font-num); font-size: 14px; font-weight: 500; }
+.own-binance .bn-up-t { color: var(--trading-up); }
+.own-binance .bn-down-t { color: var(--trading-down); }
+.own-binance .bn-mgo { color: var(--muted); text-align: right; }
+
+/* ── trust badges ─────────────────────────────────────────────────────────── */
+.own-binance .bn-trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1280px; margin: 0 auto; padding: 0 var(--gut) var(--section); }
+.own-binance .bn-badge { display: grid; gap: 4px; padding: 16px 20px; border-radius: var(--r-lg); background: var(--surface-card-dark); }
+.own-binance .bn-badge b { font-family: var(--font-num); font-size: 20px; font-weight: 700; color: var(--primary); }
+.own-binance .bn-badge span { font-size: 14px; font-weight: 600; color: var(--on-dark); }
+
+/* ── band ─────────────────────────────────────────────────────────────────── */
+.own-binance .bn-band { max-width: 1280px; margin: 0 auto; padding: 0 var(--gut) var(--section); }
+.own-binance .bn-band-head { margin-bottom: 28px; }
+.own-binance .bn-eyebrow { font-size: 12px; font-weight: 500; color: var(--primary); margin-bottom: 8px; }
+.own-binance .bn-h2 { font-family: var(--font); font-size: clamp(28px, 3.6cqi, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -.3px; color: var(--on-dark); }
+.own-binance .bn-cards { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; align-items: stretch; }
+.own-binance .bn-card { display: grid; gap: 8px; align-content: start; padding: 24px; border-radius: var(--r-xl); background: var(--surface-card-dark); }
+.own-binance .bn-card-label { font-size: 12px; font-weight: 500; color: var(--muted); }
+.own-binance .bn-num { font-family: var(--font-num); font-size: clamp(30px, 4cqi, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -.3px; color: var(--primary); }
+.own-binance .bn-num-sm { font-size: 28px; }
+.own-binance .bn-up { font-family: var(--font-num); font-size: 14px; font-weight: 500; color: var(--trading-up); }
+.own-binance .bn-down { font-family: var(--font-num); font-size: 14px; font-weight: 500; color: var(--trading-down); }
+.own-binance .bn-bars { display: flex; align-items: flex-end; gap: 5px; height: 86px; margin-top: 8px; }
+.own-binance .bn-bars span { flex: 1; border-radius: 3px 3px 0 0; background: var(--trading-up); opacity: .55; }
+.own-binance .bn-bars span.dn { background: var(--trading-down); }
+.own-binance .bn-gauge { height: 8px; border-radius: 4px; background: var(--surface-elevated-dark); overflow: hidden; margin-top: 10px; }
+.own-binance .bn-gauge span { display: block; height: 100%; background: var(--trading-up); border-radius: 4px; }
+
+/* ── markets table ────────────────────────────────────────────────────────── */
+.own-binance .bn-table { border-radius: var(--r-xl); background: var(--surface-card-dark); padding: 24px; }
+.own-binance .bn-tr { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr 90px; gap: 12px; align-items: center; }
+.own-binance .bn-th { padding-bottom: 12px; border-bottom: 1px solid var(--hairline-on-dark); font-size: 12px; font-weight: 500; color: var(--muted); }
+.own-binance .bn-trow { padding: 12px 0; border-bottom: 1px solid var(--hairline-on-dark); }
+.own-binance .bn-trow:last-child { border-bottom: 0; }
+.own-binance .bn-trow .bn-td { font-family: var(--font-num); font-size: 16px; font-weight: 500; color: var(--on-dark); }
+.own-binance .bn-trow .bn-td-name { display: flex; align-items: center; gap: 10px; font-family: var(--font); font-size: 14px; font-weight: 500; color: var(--on-dark); }
+.own-binance .bn-trow .bn-td-name i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--surface-elevated-dark); font-style: normal; font-family: var(--font-num); font-size: 11px; color: var(--primary); }
+.own-binance .bn-sub { display: inline-flex; align-items: center; justify-content: center; height: 28px; padding: 0 16px; border: 0; border-radius: var(--r-sm); background: var(--primary); color: var(--on-primary); font-size: 13px; font-weight: 600; }
+
+/* ── funds-are-safe band ──────────────────────────────────────────────────── */
+.own-binance .bn-safe { max-width: 1280px; margin: 0 auto; padding: 0 var(--gut) var(--section); }
+.own-binance .bn-safe-h { font-family: var(--font); font-size: clamp(30px, 4.4cqi, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -.5px; color: var(--primary); }
+.own-binance .bn-safe-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 26px; }
+.own-binance .bn-safe-stat { display: grid; gap: 4px; }
+.own-binance .bn-safe-stat b { font-family: var(--font-num); font-size: clamp(28px, 4cqi, 40px); font-weight: 700; line-height: 1.1; color: var(--primary); }
+.own-binance .bn-safe-stat span { font-size: 14px; color: var(--body); }
+
+/* ── steps ────────────────────────────────────────────────────────────────── */
+.own-binance .bn-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.own-binance .bn-step { display: grid; gap: 10px; padding: 24px; border-radius: var(--r-lg); background: var(--canvas-light); color: var(--ink); }
+.own-binance .bn-step-n { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-family: var(--font-num); font-size: 15px; font-weight: 700; }
+.own-binance .bn-step h3 { font-size: 16px; font-weight: 600; }
+.own-binance .bn-step p { font-size: 14px; color: #5e6673; }
+
+/* ── faq ──────────────────────────────────────────────────────────────────── */
+.own-binance .bn-faq { max-width: 900px; margin: 0 auto; padding: 0 var(--gut) var(--section); }
+.own-binance .bn-faq-list { margin-top: 20px; border-top: 1px solid var(--hairline-on-dark); }
+.own-binance .bn-faq-row { border-bottom: 1px solid var(--hairline-on-dark); }
+.own-binance .bn-faq-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 20px 0; border: 0; background: transparent; color: var(--on-dark); font-size: 16px; font-weight: 600; text-align: left; }
+.own-binance .bn-faq-q svg { width: 18px; height: 18px; color: var(--primary); transition: transform .25s ease; flex: none; }
+.own-binance .bn-faq-row.open .bn-faq-q svg { transform: rotate(180deg); }
+.own-binance .bn-faq-a { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+.own-binance .bn-faq-row.open .bn-faq-a { max-height: 240px; }
+.own-binance .bn-faq-a p { padding: 0 0 20px; font-size: 14px; color: var(--body); max-width: 74ch; }
+
+/* ── CTA band ─────────────────────────────────────────────────────────────── */
+.own-binance .bn-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto var(--section); padding: 48px; border-radius: var(--r-xl); background: var(--surface-card-dark); }
+.own-binance .bn-cta-h { font-family: var(--font); font-size: clamp(24px, 3.2cqi, 32px); font-weight: 600; line-height: 1.2; color: var(--on-dark); max-width: 24ch; }
+
+/* ── footer (light, closes the dark page) ─────────────────────────────────── */
+.own-binance .bn-footer { background: #fafafa; color: var(--body-on-light); padding: 64px var(--gut) 32px; }
+.own-binance .bn-foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+.own-binance .bn-foot-col { display: grid; gap: 10px; align-content: start; }
+.own-binance .bn-foot-col h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.own-binance .bn-foot-col a { font-size: 14px; color: #5e6673; }
+.own-binance .bn-foot-col a:hover { color: var(--primary-active); }
+.own-binance .bn-legal { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; max-width: 1280px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid var(--hairline-on-light); font-size: 13px; color: #5e6673; }
+.own-binance .bn-legal-links { display: inline-flex; gap: 18px; }
+.own-binance .bn-legal-links a:hover { color: var(--primary-active); }
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-binance .bn-menu { display: none; }
+  .own-binance .bn-hero { grid-template-columns: 1fr; gap: 28px; }
+  .own-binance .bn-trust { grid-template-columns: repeat(2, 1fr); }
+  .own-binance .bn-cards { grid-template-columns: 1fr 1fr; }
+  .own-binance .bn-card-2x { grid-column: span 2; }
+  .own-binance .bn-steps { grid-template-columns: 1fr; }
+  .own-binance .bn-foot-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 760px) {
+  .own-binance .bn-nav { top: 0; height: 60px; padding: 0 16px; gap: 12px; }
+  .own-binance .bn-nav-right .bn-navlink, .own-binance .bn-icon { display: none; }
+  .own-binance .bn-hero { padding: 44px 16px; }
+  .own-binance .bn-trust { padding: 0 16px 48px; }
+  .own-binance .bn-band, .own-binance .bn-safe, .own-binance .bn-faq { padding: 0 16px 48px; }
+  .own-binance .bn-cards { grid-template-columns: 1fr; }
+  .own-binance .bn-card-2x { grid-column: auto; }
+  .own-binance .bn-tr { grid-template-columns: 1.4fr 1fr 1fr; }
+  .own-binance .bn-tr > *:nth-child(4), .own-binance .bn-tr > *:nth-child(5) { display: none; }
+  .own-binance .bn-safe-stats { grid-template-columns: 1fr; }
+  .own-binance .bn-cta { margin: 0 16px 48px; padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  .own-binance .bn-footer { padding: 48px 16px 24px; }
+}
+@container frame (max-width: 430px) {
+  .own-binance .bn-foot-cols { grid-template-columns: 1fr; }
+  .own-binance .bn-cards { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-binance *, .own-binance *::before, .own-binance *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}

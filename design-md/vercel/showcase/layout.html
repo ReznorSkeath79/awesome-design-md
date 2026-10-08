@@ -1,0 +1,141 @@
+<div class="own-vercel">
+  <a class="vc-skip" href="#vcMain">Skip to content</a>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="vc-nav" id="vcNav">
+    <div class="vc-nav-in">
+      <a class="vc-brand" href="#vcMain" aria-label="Northwind home">
+        <span class="vc-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3 22 20H2z" fill="#171717"/></svg>
+        </span>
+        <span class="vc-brand-name">Northwind</span>
+      </a>
+      <nav class="vc-nav-links" aria-label="Primary">
+        <a href="#vcProduct">Product</a>
+        <a href="#vcMesh">Platform</a>
+        <a href="#vcTemplates">Templates</a>
+        <a href="#vcPricing">Pricing</a>
+        <a href="#vcDocs">Docs</a>
+      </nav>
+      <div class="vc-nav-actions">
+        <a class="vc-cta vc-cta-ghost" href="#">Ask AI</a>
+        <a class="vc-cta vc-cta-login" href="#">Log in</a>
+        <a class="vc-cta vc-cta-signup" href="#vcPricing">Sign up</a>
+        <button class="vc-burger" type="button" aria-label="Menu" data-vc-menu aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="vc-drawer" hidden data-vc-drawer>
+      <a href="#vcProduct">Product</a><a href="#vcMesh">Platform</a><a href="#vcTemplates">Templates</a>
+      <a href="#vcPricing">Pricing</a><a href="#vcDocs">Docs</a>
+    </div>
+  </header>
+
+  <main id="vcMain">
+    <!-- ── HERO — mesh gradient ───────────────────────────────────────── -->
+    <section class="vc-hero">
+      <div class="vc-mesh" aria-hidden="true">
+        <span class="vc-blob vc-blob-a"></span>
+        <span class="vc-blob vc-blob-b"></span>
+        <span class="vc-blob vc-blob-c"></span>
+      </div>
+      <div class="vc-wrap vc-hero-in">
+        <p class="vc-mono-badge">Northwind · operations analytics</p>
+        <h1 class="vc-display-xl">Build and deploy on the operations cloud.</h1>
+        <p class="vc-lead">Northwind gives ops teams the fastest path from raw shipment data to a live dashboard. Push a metric, watch it render, ship the report — in seconds.</p>
+        <div class="vc-hero-cta">
+          <a class="vc-btn vc-btn-primary" href="#vcPricing">Start deploying</a>
+          <a class="vc-btn vc-btn-secondary" href="#vcDocs">Read the docs</a>
+        </div>
+        <p class="vc-hero-note">Free for 3 seats · No credit card · SOC 2 Type II</p>
+      </div>
+      <div class="vc-strip-wrap">
+        <p class="vc-strip-cap">Trusted by operations teams at</p>
+        <div class="vc-strip">
+          <span>Vector Freight</span><span>Halden Retail</span><span>Miro Labs</span><span>Aperture Foods</span><span>Kestrel Bank</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THREE FEATURES — mesh band ─────────────────────────────────── -->
+    <section class="vc-band vc-band-mesh" id="vcProduct">
+      <div class="vc-wrap">
+        <p class="vc-eyebrow">Deploy your first dashboard in seconds</p>
+        <h2 class="vc-display-lg">A compute model for all workloads.</h2>
+        <div class="vc-feature3" id="vcFeature3"></div>
+      </div>
+    </section>
+
+    <!-- ── SHOWCASE LIGHT — code editor mockup ────────────────────────── -->
+    <section class="vc-band vc-band-soft" id="vcDocs">
+      <div class="vc-wrap vc-show-in">
+        <div class="vc-show-copy">
+          <p class="vc-eyebrow">Developer first</p>
+          <h2 class="vc-display-lg">Your ops pipeline, delivered.</h2>
+          <p class="vc-body">Northwind is a deployment target for your data, not a black box. Query it from code, version your dashboards, and roll back any board like a commit.</p>
+          <a class="vc-link" href="#">Explore the SDK <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="vc-editor" aria-label="Northwind code editor">
+          <div class="vc-editor-top"><span class="vc-edot"></span><span class="vc-edot"></span><span class="vc-edot"></span><span class="vc-editor-file">northwind.config.ts</span></div>
+          <pre class="vc-editor-body"><code><span class="vc-c-kw">import</span> { defineDashboard } <span class="vc-c-kw">from</span> <span class="vc-c-str">'@northwind/core'</span>
+
+<span class="vc-c-kw">export default</span> defineDashboard({
+  region: <span class="vc-c-str">'metro-manila'</span>,
+  panels: [<span class="vc-c-str">'throughput'</span>, <span class="vc-c-str">'revenue'</span>],
+  refresh: <span class="vc-c-num">60</span>
+})</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TEMPLATE GRID ──────────────────────────────────────────────── -->
+    <section class="vc-band" id="vcTemplates">
+      <div class="vc-wrap">
+        <div class="vc-sec-head">
+          <p class="vc-eyebrow">Templates</p>
+          <h2 class="vc-display-lg">Deploy your first board</h2>
+        </div>
+        <div class="vc-tpl-grid" id="vcTplGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── DARK BAND — compute ────────────────────────────────────────── -->
+    <section class="vc-band vc-band-dark" id="vcMesh">
+      <div class="vc-wrap vc-dark-in">
+        <div class="vc-dark-copy">
+          <h2 class="vc-display-lg">Every workload, one ledger.</h2>
+          <p class="vc-body-on-dark">From a single region's throughput to a global revenue forecast, Northwind runs the full range of operations compute on the same platform.</p>
+        </div>
+        <div class="vc-stats" id="vcStats"></div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ────────────────────────────────────────────────────── -->
+    <section class="vc-band vc-band-soft" id="vcPricing">
+      <div class="vc-wrap">
+        <div class="vc-sec-head vc-sec-center">
+          <p class="vc-eyebrow">Pricing</p>
+          <h2 class="vc-display-lg">Usage-based, from the first event.</h2>
+        </div>
+        <div class="vc-pricing" id="vcPricingGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="vc-foot">
+    <div class="vc-wrap">
+      <div class="vc-foot-grid">
+        <div><p class="vc-foot-head">Product</p><a href="#vcProduct">Platform</a><a href="#vcTemplates">Templates</a><a href="#vcPricing">Pricing</a></div>
+        <div><p class="vc-foot-head">Resources</p><a href="#vcDocs">Docs</a><a href="#">Guides</a><a href="#">Changelog</a></div>
+        <div><p class="vc-foot-head">Company</p><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a></div>
+        <div><p class="vc-foot-head">Legal</p><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+      <div class="vc-foot-bottom">
+        <span class="vc-foot-brand"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 3 22 20H2z" fill="currentColor"/></svg> Northwind</span>
+        <span>© 2026 · Sample data — showcase only</span>
+      </div>
+    </div>
+  </footer>
+</div>

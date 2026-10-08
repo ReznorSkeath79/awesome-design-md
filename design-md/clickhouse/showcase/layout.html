@@ -1,0 +1,183 @@
+<div class="own-clickhouse">
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Northwind home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="14" width="4" height="6" rx="1"/><rect x="10" y="9" width="4" height="11" rx="1"/><rect x="16" y="4" width="4" height="16" rx="1"/></svg></span>
+      Northwind
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#product">Product</a>
+      <a href="#usecases">Use cases</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#resources">Resources</a>
+      <a href="#customers">Customers</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-signin" href="#">Sign in</a>
+      <a class="btn btn-primary" href="#">Get Started</a>
+    </div>
+  </header>
+
+  <section class="hero" id="top" aria-labelledby="heroH">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="badge-yellow">New · Vectorized ingest v3</span>
+        <h1 id="heroH">The leading operations database for realtime teams</h1>
+        <p class="lead">Sub-second analytics over billions of events. Northwind keeps your whole operations grid queryable in the blink of an eye.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#">Get started free</a>
+          <a class="btn btn-secondary" href="#product">View the docs</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><b>779+</b><span>contributors</span></div>
+          <div class="hstat"><b>2.8k+</b><span>deployments</span></div>
+          <div class="hstat"><b>47k+</b><span>stars</span></div>
+        </div>
+      </div>
+      <div class="code-window" aria-hidden="true">
+        <div class="code-bar"><span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span><span class="code-file">throughput.sql</span></div>
+        <pre class="code-body"><span class="ln">1</span><span class="kw">SELECT</span> region,
+<span class="ln">2</span>       <span class="fn">round</span>(<span class="fn">avg</span>(events_per_min)) <span class="kw">AS</span> avg_throughput
+<span class="ln">3</span><span class="kw">FROM</span> ops.telemetry
+<span class="ln">4</span><span class="kw">WHERE</span> ts &gt;= now() - <span class="kw">INTERVAL</span> <span class="st">1</span> <span class="kw">HOUR</span>
+<span class="ln">5</span><span class="kw">GROUP BY</span> region
+<span class="ln">6</span><span class="kw">ORDER BY</span> avg_throughput <span class="kw">DESC</span>
+<span class="ln">7</span><span class="kw">FORMAT</span> PrettyCompact;</pre>
+        <div class="code-status"><span class="ok-dot"></span>6 rows in set. Elapsed: 0.042 sec.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="challenges" id="product" aria-labelledby="chalH">
+    <div class="wrap">
+      <h2 id="chalH" class="display-lg">Built for every modern operations challenge</h2>
+      <div class="challenge-grid">
+        <article class="challenge">
+          <span class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span>
+          <h3>Realtime streaming</h3>
+          <p>Millions of events per second, queryable the instant they land.</p>
+        </article>
+        <article class="challenge">
+          <span class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <h3>Sub-second queries</h3>
+          <p>Columnar, vectorized execution that answers before you blink.</p>
+        </article>
+        <article class="challenge">
+          <span class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></span>
+          <h3>SQL-native</h3>
+          <p>Full SQL with window, join and approximate functions out of the box.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="usecases" id="usecases" aria-labelledby="useH">
+    <div class="wrap use-grid">
+      <div class="use-copy">
+        <p class="caption-upper">Use cases</p>
+        <h2 id="useH" class="display-lg">Show the query, not an illustration of it</h2>
+        <p class="lead">Northwind is a database — so the marketing shows real queries, real plans, real latency. Paste a query, get a dashboard back.</p>
+        <ul class="check-list">
+          <li>Observability over every region</li>
+          <li>Realtime operations dashboards</li>
+          <li>Anomaly detection at ingest scale</li>
+        </ul>
+        <a class="btn btn-secondary" href="#">Explore use cases</a>
+      </div>
+      <div class="mock-card" aria-hidden="true">
+        <div class="mock-head"><span>Query latency · p50</span><b>0.42s</b></div>
+        <div class="bars"><span style="--h:44%"></span><span style="--h:62%"></span><span style="--h:38%"></span><span style="--h:78%"></span><span style="--h:52%"></span><span style="--h:88%"></span><span style="--h:66%"></span><span style="--h:96%"></span></div>
+        <div class="mock-foot"><span>APAC</span><span>EMEA</span><span>AMER</span><span>LATAM</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="customers" id="customers" aria-label="Customers">
+    <div class="wrap">
+      <p class="caption-upper center">Trusted by operations teams everywhere</p>
+      <div class="logo-strip" aria-label="Customer logos (fictional)">
+        <span>Northline</span><span>Gridwise</span><span>Fathom</span><span>Meridian</span><span>Lumen</span><span>Orbit</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="events" aria-labelledby="eventsH">
+    <div class="wrap">
+      <div class="head-row">
+        <h2 id="eventsH" class="display-md">Upcoming events</h2>
+        <a class="tlink" href="#">All events &rarr;</a>
+      </div>
+      <div class="event-grid">
+        <article class="event-card">
+          <p class="caption-upper">19 NOVEMBER 2026</p>
+          <h3 class="event-title">Realtime ops meetup · Singapore</h3>
+          <p class="event-meta">In person · Free</p>
+          <a class="tlink" href="#">Register &rarr;</a>
+        </article>
+        <article class="event-card">
+          <p class="caption-upper">02 DECEMBER 2026</p>
+          <h3 class="event-title">Webinar: Taming 2M events/min</h3>
+          <p class="event-meta">Online · Free</p>
+          <a class="tlink" href="#">Register &rarr;</a>
+        </article>
+        <article class="event-card">
+          <p class="caption-upper">14 JANUARY 2027</p>
+          <h3 class="event-title">Northwind user conference</h3>
+          <p class="event-meta">In person · Ticketed</p>
+          <a class="tlink" href="#">Register &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing" aria-labelledby="priceH">
+    <div class="wrap">
+      <h2 id="priceH" class="display-lg center">Pricing that scales with your grid</h2>
+      <div class="pricing-grid">
+        <article class="tier">
+          <h3 class="tier-name">Free</h3>
+          <p class="tier-price">$0</p>
+          <ul class="check-list"><li>1 region</li><li>7-day retention</li><li>Community support</li></ul>
+          <a class="btn btn-secondary" href="#">Get started</a>
+        </article>
+        <article class="tier tier-featured">
+          <span class="badge-yellow">Featured</span>
+          <h3 class="tier-name">Cloud</h3>
+          <p class="tier-price">$49</p>
+          <ul class="check-list"><li>18 regions</li><li>13-month retention</li><li>Alert routing</li></ul>
+          <a class="btn btn-on-yellow" href="#">Start free</a>
+        </article>
+        <article class="tier">
+          <h3 class="tier-name">Dedicated</h3>
+          <p class="tier-price">Custom</p>
+          <ul class="check-list"><li>41 regions</li><li>36-month retention</li><li>Dedicated crew</li></ul>
+          <a class="btn btn-secondary" href="#">Contact sales</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <h2 class="display-md">Deploy your way</h2>
+      <p>Run open source, cloud, or dedicated — sub-second analytics everywhere.</p>
+      <a class="btn btn-on-yellow btn-lg" href="#">Get started free</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <p class="foot-word">Northwind</p>
+        <p class="foot-tag">Realtime operations analytics.</p>
+      </div>
+      <div class="foot-col"><p class="foot-h">Product</p><a href="#">Streaming</a><a href="#">Queries</a><a href="#">Alerts</a><a href="#">Integrations</a></div>
+      <div class="foot-col"><p class="foot-h">Use cases</p><a href="#">Observability</a><a href="#">Dashboards</a><a href="#">Anomalies</a></div>
+      <div class="foot-col"><p class="foot-h">Resources</p><a href="#">Docs</a><a href="#">Events</a><a href="#">Status</a></div>
+      <div class="foot-col"><p class="foot-h">Company</p><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+    </div>
+    <div class="wrap foot-bottom">
+      <p>Northwind is a fictional product. Sample data — showcase only.</p>
+      <span>© 2026 Northwind</span>
+    </div>
+  </footer>
+</div>

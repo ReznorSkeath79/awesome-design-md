@@ -1,0 +1,284 @@
+/* ══ VODAFONE — editorial telecom brand language, ported for showcase.html ══
+   Scoped under `.own-vodafone`. Tokens declared on the root; production
+   breakpoints become @container frame queries so Tablet (820) and Phone (390)
+   reflow like the real site. Massive uppercase display weight 800, one red
+   accent, 60px CTA pills, ink/white band rhythm. */
+
+.own-vodafone {
+  --primary: #e60000;
+  --on-primary: #ffffff;
+  --ink: #25282b;
+  --body: #7e7e7e;
+  --mute: #bebebe;
+  --canvas: #ffffff;
+  --canvas-soft: #f2f2f2;
+  --on-dark: #ffffff;
+
+  --display: 'Vodafone', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --gut: clamp(20px, 3cqi, 52px);
+  --shell: 1400px;
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  overflow-x: clip;
+}
+
+.own-vodafone *,
+.own-vodafone *::before,
+.own-vodafone *::after { box-sizing: border-box; }
+
+.own-vodafone a { color: inherit; }
+.own-vodafone :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+.own-vodafone .vf-shell { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gut); }
+
+/* ── type ─────────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-display-hero {
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(56px, 11.5cqi, 144px);
+  line-height: .9;
+  letter-spacing: -1px;
+  color: var(--on-dark);
+}
+.own-vodafone .vf-display-xl {
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(40px, 7cqi, 90px);
+  line-height: .96;
+  letter-spacing: -0.5px;
+}
+.own-vodafone .vf-display-md {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(28px, 3.5cqi, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.2px;
+}
+.own-vodafone .vf-display-sm { margin: 0; font-weight: 700; font-size: clamp(22px, 2.4cqi, 32px); line-height: 1.2; }
+.own-vodafone .vf-display-xs { margin: 0; font-weight: 700; font-size: 24px; line-height: 1.1; }
+.own-vodafone .vf-dot { color: var(--primary); }
+
+.own-vodafone .vf-eyebrow {
+  margin: 0 0 16px;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--on-dark);
+}
+.own-vodafone .vf-eyebrow-ink { color: var(--primary); }
+.own-vodafone .vf-lead {
+  margin: 20px 0 0;
+  font-size: clamp(18px, 1.5cqi, 22px);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 62ch;
+}
+.own-vodafone .vf-body { margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: var(--ink); }
+.own-vodafone .vf-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 32px;
+  background: var(--canvas-soft);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+.own-vodafone .vf-tlink { display: inline-block; margin-top: 14px; color: var(--primary); font-weight: 700; font-size: 16px; text-decoration: none; }
+.own-vodafone .vf-tlink:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── buttons (60px pills) ────────────────────────────────────────────────── */
+.own-vodafone .vf-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--display); font-size: 18px; font-weight: 400; line-height: 28px;
+  padding: 12px 24px; border-radius: 60px; border: 1px solid transparent;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.own-vodafone .vf-btn:active { transform: scale(.97); }
+.own-vodafone .vf-btn-sm { font-size: 16px; line-height: 20px; padding: 8px 18px; }
+.own-vodafone .vf-btn-lg { padding: 14px 30px; }
+.own-vodafone .vf-btn-red { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.own-vodafone .vf-btn-red:hover { background: #c40000; border-color: #c40000; }
+.own-vodafone .vf-btn-outline-red { background: var(--canvas); color: var(--primary); border-color: var(--primary); }
+.own-vodafone .vf-btn-outline-red:hover { background: #fff0f0; }
+.own-vodafone .vf-btn-outline-dark { background: var(--canvas); color: var(--ink); border-color: var(--ink); }
+.own-vodafone .vf-btn-outline-dark:hover { background: var(--canvas-soft); }
+.own-vodafone .vf-btn-white { background: var(--canvas); color: var(--ink); border-color: var(--canvas); }
+.own-vodafone .vf-btn-outline-white { background: transparent; color: var(--on-dark); border-color: var(--on-dark); }
+.own-vodafone .vf-btn-outline-white:hover { background: rgba(255, 255, 255, .14); }
+
+/* ── nav ──────────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-nav {
+  position: sticky; top: 68px; z-index: 40;
+  display: flex; align-items: center; gap: 28px;
+  padding: 16px var(--gut);
+  background: var(--ink); color: var(--on-dark);
+}
+.own-vodafone .vf-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--on-dark); }
+.own-vodafone .vf-wordmark { font-weight: 800; font-size: 22px; letter-spacing: -0.3px; }
+.own-vodafone .vf-orb {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 6px;
+  background: var(--primary); color: var(--on-primary);
+}
+.own-vodafone .vf-orb svg { width: 22px; height: 22px; fill: currentColor; }
+.own-vodafone .vf-nav-links { display: flex; align-items: center; gap: 22px; }
+.own-vodafone .vf-nav-links a { color: var(--on-dark); font-size: 16px; text-decoration: none; padding: 4px 0; }
+.own-vodafone .vf-nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.own-vodafone .vf-nav-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.own-vodafone .vf-nav-link-ghost { color: var(--on-dark); font-size: 16px; text-decoration: none; }
+.own-vodafone .vf-nav-link-ghost:hover { text-decoration: underline; text-underline-offset: 4px; }
+.own-vodafone .vf-burger {
+  display: none; place-items: center; width: 44px; height: 44px;
+  border: 1px solid rgba(255, 255, 255, .4); border-radius: 8px;
+  background: transparent; color: var(--on-dark); cursor: pointer;
+}
+.own-vodafone .vf-burger svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.own-vodafone .vf-drawer { display: none; }
+.own-vodafone .vf-drawer:not([hidden]) {
+  display: flex; flex-direction: column; gap: 4px;
+  flex-basis: 100%; margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, .25);
+}
+.own-vodafone .vf-drawer a { color: var(--on-dark); text-decoration: none; padding: 10px 2px; font-size: 17px; }
+
+/* ── hero ─────────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-hero {
+  position: relative;
+  min-height: 620px;
+  display: flex; align-items: flex-end;
+  background: var(--ink);
+  overflow: hidden;
+}
+.own-vodafone .vf-hero-photo { position: absolute; inset: 0; }
+.own-vodafone .vf-hero-photo svg { width: 100%; height: 100%; display: block; }
+.own-vodafone .vf-hero-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(20, 22, 24, .92) 0%, rgba(20, 22, 24, .72) 45%, rgba(20, 22, 24, .35) 100%);
+}
+.own-vodafone .vf-hero-inner {
+  position: relative; z-index: 1;
+  width: 100%; max-width: var(--shell); margin: 0 auto;
+  padding: clamp(56px, 8cqi, 128px) var(--gut);
+}
+.own-vodafone .vf-hero-sub {
+  margin: 24px 0 0;
+  max-width: 46ch;
+  font-size: clamp(18px, 1.6cqi, 22px);
+  line-height: 1.35;
+  color: #ececec;
+}
+.own-vodafone .vf-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+/* ── bands ────────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-band { padding: clamp(48px, 6cqi, 96px) 0; }
+.own-vodafone .vf-band-light { background: var(--canvas); }
+.own-vodafone .vf-band-soft { background: var(--canvas-soft); }
+.own-vodafone .vf-band-red { background: var(--primary); color: var(--on-primary); }
+
+.own-vodafone .vf-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+.own-vodafone .vf-card {
+  background: var(--canvas);
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  padding: 24px;
+}
+.own-vodafone .vf-band-soft .vf-card { background: var(--canvas); }
+.own-vodafone .vf-card-icon {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 6px;
+  background: #fdecec; color: var(--primary); margin-bottom: 18px;
+}
+.own-vodafone .vf-card-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.own-vodafone .vf-story-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+.own-vodafone .vf-story { background: var(--canvas); border-radius: 6px; overflow: hidden; }
+.own-vodafone .vf-story-art { aspect-ratio: 16 / 9; }
+.own-vodafone .vf-story-art svg { width: 100%; height: 100%; display: block; }
+.own-vodafone .vf-story-body { padding: 24px; }
+
+/* ── orb divider ──────────────────────────────────────────────────────────── */
+.own-vodafone .vf-orb-band { display: flex; justify-content: center; padding: 8px 0 0; background: var(--canvas); }
+.own-vodafone .vf-orb-lg { width: 64px; height: 64px; border-radius: 8px; transform: translateY(-50%); box-shadow: 0 0 0 12px var(--canvas); }
+.own-vodafone .vf-orb-lg svg { width: 40px; height: 40px; }
+
+/* ── pricing ──────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+.own-vodafone .vf-tier {
+  display: flex; flex-direction: column;
+  background: var(--canvas-soft);
+  border: 1px solid var(--mute);
+  border-radius: 6px;
+  padding: 24px;
+}
+.own-vodafone .vf-tier-featured { background: var(--ink); color: var(--on-primary); border-color: var(--ink); }
+.own-vodafone .vf-tier-featured .vf-body { color: #d6d6d6; }
+.own-vodafone .vf-price { margin: 14px 0 0; font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -1px; }
+.own-vodafone .vf-price span { font-size: 16px; font-weight: 400; color: var(--body); margin-left: 4px; }
+.own-vodafone .vf-tier-featured .vf-price span { color: var(--mute); }
+.own-vodafone .vf-list { list-style: none; margin: 20px 0 24px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.own-vodafone .vf-list li { position: relative; padding-left: 24px; font-size: 16px; line-height: 1.4; }
+.own-vodafone .vf-list li::before {
+  content: ''; position: absolute; left: 0; top: .32em;
+  width: 12px; height: 7px; border-left: 2px solid var(--primary); border-bottom: 2px solid var(--primary);
+  transform: rotate(-45deg);
+}
+.own-vodafone .vf-tier .vf-btn { margin-top: auto; align-self: flex-start; }
+
+/* ── CTA band ─────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-cta-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.own-vodafone .vf-display-xl { max-width: 16ch; }
+.own-vodafone .vf-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ── footer ───────────────────────────────────────────────────────────────── */
+.own-vodafone .vf-foot { background: var(--ink); color: var(--on-dark); padding: clamp(48px, 6cqi, 96px) 0 40px; }
+.own-vodafone .vf-foot-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.own-vodafone .vf-foot-links { display: flex; flex-wrap: wrap; gap: 20px; }
+.own-vodafone .vf-foot-links a { color: #cfcfcf; font-size: 16px; text-decoration: none; }
+.own-vodafone .vf-foot-links a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 4px; }
+.own-vodafone .vf-foot-note { margin: 32px 0 0; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .2); font-size: 14px; color: var(--mute); }
+.own-vodafone .vf-copyright { margin: 8px 0 0; font-size: 12px; letter-spacing: .57px; text-transform: uppercase; color: #8b8b8b; }
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-vodafone .vf-features,
+  .own-vodafone .vf-tiers { grid-template-columns: repeat(2, 1fr); }
+  .own-vodafone .vf-story-grid { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 900px) {
+  .own-vodafone .vf-nav-links { display: none; }
+}
+@container frame (max-width: 760px) {
+  .own-vodafone .vf-nav { top: 10px; flex-wrap: wrap; gap: 12px; }
+  .own-vodafone .vf-nav-right { gap: 10px; }
+  .own-vodafone .vf-nav-link-ghost { display: none; }
+  .own-vodafone .vf-burger { display: grid; }
+  .own-vodafone .vf-hero { min-height: 520px; }
+  .own-vodafone .vf-features,
+  .own-vodafone .vf-tiers { grid-template-columns: 1fr; }
+  .own-vodafone .vf-cta-inner { flex-direction: column; align-items: flex-start; }
+}
+@container frame (max-width: 430px) {
+  .own-vodafone { font-size: 16px; }
+  .own-vodafone .vf-wordmark { font-size: 19px; }
+  .own-vodafone .vf-btn { font-size: 16px; padding: 11px 20px; }
+  .own-vodafone .vf-hero-cta { width: 100%; }
+  .own-vodafone .vf-hero-cta .vf-btn { flex: 1 1 100%; }
+  .own-vodafone .vf-orb-lg { width: 52px; height: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-vodafone *, .own-vodafone *::before, .own-vodafone *::after {
+    animation-duration: .001ms !important; transition-duration: .001ms !important;
+  }
+}

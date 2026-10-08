@@ -1,0 +1,98 @@
+<div class="own-spotify">
+  <!-- ── TOP BAR ─────────────────────────────────────────────────────── -->
+  <header class="sp-top">
+    <a class="sp-brand" href="#sp-top" aria-label="Northwind home">
+      <span class="sp-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M6.5 9.6c3.6-1 7.6-.6 10.8 1.2M7.2 12.8c3-.8 6.2-.4 8.8 1.1M8 15.8c2.4-.6 4.9-.3 7 .9" fill="none" stroke="#121212" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      Northwind
+    </a>
+    <div class="sp-top-actions">
+      <a class="sp-pill sp-pill-outline" href="#">Upgrade</a>
+      <button class="sp-circle" type="button" aria-label="Account"><span class="sp-avatar">FL</span></button>
+    </div>
+  </header>
+
+  <div class="sp-shell">
+    <!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+    <aside class="sp-side" aria-label="Navigation">
+      <nav class="sp-side-group">
+        <a class="sp-nav on" href="#sp-dash"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7M6 10v9h12v-9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Dashboards</a>
+        <a class="sp-nav" href="#sp-regions"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 12h16M12 4c2.5 3 2.5 13 0 16" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Regions</a>
+        <a class="sp-nav" href="#sp-alerts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10a6 6 0 0 1 12 0v4l2 3H4l2-3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Alerts</a>
+      </nav>
+      <div class="sp-side-group">
+        <span class="sp-side-title">Your floor</span>
+        <a class="sp-nav sp-nav-sm" href="#"><span class="sp-dot" style="--c:#1ed760"></span>Luzon</a>
+        <a class="sp-nav sp-nav-sm" href="#"><span class="sp-dot" style="--c:#539df5"></span>Visayas</a>
+        <a class="sp-nav sp-nav-sm" href="#"><span class="sp-dot" style="--c:#ffa42b"></span>Mindanao</a>
+        <a class="sp-nav sp-nav-sm" href="#"><span class="sp-dot" style="--c:#f3727f"></span>Singapore</a>
+      </div>
+    </aside>
+
+    <!-- ── MAIN ──────────────────────────────────────────────────────── -->
+    <main id="sp-top" class="sp-main">
+      <!-- hero -->
+      <section id="sp-dash" class="sp-hero" aria-labelledby="sp-h1">
+        <div class="sp-hero-copy">
+          <p class="sp-eyebrow">Operations analytics</p>
+          <h1 id="sp-h1" class="sp-title">Good evening</h1>
+          <p class="sp-sub">Your regions are live. Pick up where the floor left off.</p>
+          <div class="sp-hero-cta">
+            <a class="sp-pill sp-pill-green" href="#sp-regions"><span class="sp-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Open dashboards</a>
+            <a class="sp-pill sp-pill-dark" href="#sp-alerts">View alerts</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- recent tiles -->
+      <section class="sp-sec" aria-labelledby="sp-recent-h">
+        <div class="sp-sec-head"><h2 id="sp-recent-h" class="sp-sec-title">Jump back in</h2><a class="sp-see" href="#">Show all</a></div>
+        <div class="sp-tiles" id="spTileGrid"></div>
+      </section>
+
+      <!-- region cards -->
+      <section id="sp-regions" class="sp-sec" aria-labelledby="sp-regions-h">
+        <div class="sp-sec-head"><h2 id="sp-regions-h" class="sp-sec-title">Regions on the floor</h2><a class="sp-see" href="#">All 42</a></div>
+        <div class="sp-cards" id="spRegionGrid"></div>
+      </section>
+
+      <!-- alerts -->
+      <section id="sp-alerts" class="sp-sec" aria-labelledby="sp-alerts-h">
+        <div class="sp-sec-head"><h2 id="sp-alerts-h" class="sp-sec-title">Today's alerts</h2></div>
+        <div class="sp-alert-list" id="spAlertList"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ── NOW PLAYING BAR ────────────────────────────────────────────── -->
+  <div class="sp-now" aria-label="Current region">
+    <div class="sp-now-left">
+      <span class="sp-now-art" aria-hidden="true"></span>
+      <span class="sp-now-meta"><b id="spNowName">Luzon</b><span id="spNowSub">throughput · live</span></span>
+    </div>
+    <div class="sp-now-mid">
+      <div class="sp-now-controls">
+        <button class="sp-ctrl" type="button" aria-label="Previous">&#9198;</button>
+        <button class="sp-ctrl sp-ctrl-play" type="button" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        <button class="sp-ctrl" type="button" aria-label="Next">&#9197;</button>
+      </div>
+      <div class="sp-now-bar"><span class="sp-now-progress" id="spNowProgress"></span></div>
+    </div>
+    <div class="sp-now-right" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 12h3l2-6 3 12 3-9 2 3h3" fill="none" stroke="#1ed760" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="sp-now-val" id="spNowVal">3,987/hr</span>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="sp-footer">
+    <div class="sp-foot-grid">
+      <div class="sp-foot-brand"><span class="sp-foot-logo">Northwind</span><p class="sp-caption">Sample data — showcase only</p></div>
+      <div class="sp-foot-col"><h3>Product</h3><a href="#">Dashboards</a><a href="#">Regions</a><a href="#">Alerts</a></div>
+      <div class="sp-foot-col"><h3>Developers</h3><a href="#">API</a><a href="#">Docs</a><a href="#">Status</a></div>
+      <div class="sp-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+    </div>
+    <div class="sp-foot-row"><span>© 2026 Northwind</span><span>Made for operations teams</span></div>
+  </footer>
+</div>

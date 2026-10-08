@@ -1,0 +1,188 @@
+<div class="own-composio">
+  <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
+  <header class="cp-nav" id="cpNav">
+    <a class="cp-wordmark" href="#cp-top" aria-label="Northwind home"><span class="cp-mark" aria-hidden="true"></span>Northwind</a>
+    <nav class="cp-menu" aria-label="Primary">
+      <a href="#cp-hero">Product</a>
+      <a href="#cp-toolkits">Toolkits</a>
+      <a href="#cp-code">Docs</a>
+      <a href="#cp-pricing">Pricing</a>
+      <a href="#cp-customers">Customers</a>
+    </nav>
+    <div class="cp-nav-right">
+      <span class="cp-stars" aria-label="GitHub stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.5 6.8 19.2l1-5.8L3.6 9.3l5.8-.8z" fill="currentColor"/></svg>4.2k</span>
+      <a class="cp-nav-link" href="#">Sign in</a>
+      <a class="cp-btn cp-btn-primary" href="#cp-pricing">Get started</a>
+      <button class="cp-burger" type="button" id="cpBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="cp-top">
+    <!-- ── HERO with spotlight glow + 2x2 terminal grid ───────────────────── -->
+    <section id="cp-hero" class="cp-hero" aria-labelledby="cpHeroH">
+      <div class="cp-glow" aria-hidden="true"></div>
+      <div class="cp-hero-copy">
+        <span class="cp-badge">Now in general availability</span>
+        <h1 id="cpHeroH" class="cp-hero-title">Give your ops agents<br>every tool they need</h1>
+        <p class="cp-hero-sub">Northwind connects your agents to the systems of record, then reconciles what they return. One integration layer for the whole operation.</p>
+        <div class="cp-hero-cta">
+          <a class="cp-btn cp-btn-primary cp-btn-lg" href="#cp-pricing">Start building</a>
+          <a class="cp-btn cp-btn-outline" href="#cp-code">Read the docs</a>
+        </div>
+      </div>
+
+      <div class="cp-terminal" aria-label="Northwind terminal mockup">
+        <div class="cp-terminal-bar">
+          <span class="cp-dot"></span><span class="cp-dot"></span><span class="cp-dot"></span>
+          <span class="cp-terminal-name">northwind &mdash; ops-reconciler</span>
+        </div>
+        <div class="cp-grid">
+          <div class="cp-pane">
+            <span class="cp-pane-h">$ nw tools list</span>
+            <span class="cp-code"><b class="cp-c-blue">dataverse</b> query_records</span>
+            <span class="cp-code"><b class="cp-c-cyan">snowflake</b> run_sql</span>
+            <span class="cp-code"><b class="cp-c-violet">sap</b> read_orders</span>
+          </div>
+          <div class="cp-pane">
+            <span class="cp-pane-h">$ nw run reconcile</span>
+            <span class="cp-code cp-out">&#10003; 14 lines scanned</span>
+            <span class="cp-code cp-out">&#10003; 3 anomalies flagged</span>
+            <span class="cp-code cp-out cp-c-green">&#10003; done in 1.8s</span>
+          </div>
+          <div class="cp-pane">
+            <span class="cp-pane-h">output / week-41.json</span>
+            <span class="cp-code">{</span>
+            <span class="cp-code">&nbsp;&nbsp;"yield": <b class="cp-c-cyan">94.6</b>,</span>
+            <span class="cp-code">&nbsp;&nbsp;"lines": <b class="cp-c-cyan">14</b></span>
+            <span class="cp-code">}</span>
+          </div>
+          <div class="cp-pane">
+            <span class="cp-pane-h">agent / digest-writer</span>
+            <span class="cp-code">&gt; summarise for the night shift</span>
+            <span class="cp-code cp-c-dim">Busan flagged on 3 lines...</span>
+            <span class="cp-code cp-c-dim">draft ready &#8594; send</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TOOLKITS ────────────────────────────────────────────────────────── -->
+    <section id="cp-toolkits" class="cp-toolkits" aria-labelledby="cpToolkitsH">
+      <div class="cp-sec-head">
+        <span class="cp-eyebrow">Toolkits</span>
+        <h2 id="cpToolkitsH" class="cp-h2">400+ tools, one contract</h2>
+        <p class="cp-lead">Connect the systems your operation already runs on &mdash; no bespoke adapters.</p>
+      </div>
+      <div class="cp-toolkit-grid" id="cpToolkitGrid"></div>
+    </section>
+
+    <!-- ── FEATURE CARDS ────────────────────────────────────────────────────── -->
+    <section class="cp-features" aria-labelledby="cpFeaturesH">
+      <div class="cp-feature-grid">
+        <article class="cp-feature">
+          <span class="cp-feature-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>One integration layer</h3>
+          <p>Authenticate once. Every agent gets the scoped tools it needs, nothing more.</p>
+        </article>
+        <article class="cp-feature">
+          <span class="cp-feature-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v6M12 15v6M3 12h6M15 12h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Deterministic runs</h3>
+          <p>Replayable traces for every agent action. Same input, same reconciliation.</p>
+        </article>
+        <article class="cp-feature">
+          <span class="cp-feature-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Audit by default</h3>
+          <p>Every tool call signed and logged. The lineage your audit desk asks for.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── CODE ──────────────────────────────────────────────────────────────── -->
+    <section id="cp-code" class="cp-code-sec" aria-labelledby="cpCodeH">
+      <div class="cp-code-copy">
+        <span class="cp-eyebrow">For developers</span>
+        <h2 id="cpCodeH" class="cp-h2">Ship in an afternoon</h2>
+        <p class="cp-lead">A typed SDK, a CLI, and a hosted runner. Point it at Northwind and your agents reconcile.</p>
+        <ul class="cp-code-list">
+          <li><b>TypeScript &amp; Python</b> SDKs, fully typed</li>
+          <li><b>Northwind CLI</b> for local runs and replays</li>
+          <li><b>Webhooks</b> when a digest lands</li>
+        </ul>
+      </div>
+      <div class="cp-code-block" role="group" aria-label="Code example">
+        <div class="cp-code-bar"><span>reconcile.ts</span><button class="cp-copy" type="button" id="cpCopy">Copy</button></div>
+        <pre class="cp-pre"><code id="cpCode"><span class="cp-k">import</span> { Northwind } <span class="cp-k">from</span> <span class="cp-s">"@northwind/sdk"</span>;
+
+<span class="cp-k">const</span> nw = <span class="cp-k">new</span> Northwind({ region: <span class="cp-s">"luzon"</span> });
+
+<span class="cp-k">const</span> report = <span class="cp-k">await</span> nw.agents.reconcile({
+  lines: <span class="cp-s">"all"</span>,
+  week: <span class="cp-n">41</span>,
+});
+
+<span class="cp-c">// 14 lines scanned, flagged where yield drifted</span>
+console.log(report.flagged);</code></pre>
+      </div>
+    </section>
+
+    <!-- ── SPOTLIGHT CTA ─────────────────────────────────────────────────────── -->
+    <section id="cp-customers" class="cp-spot" aria-labelledby="cpSpotH">
+      <div class="cp-spot-glow" aria-hidden="true"></div>
+      <blockquote class="cp-quote">
+        <p>&ldquo;We replaced three reconciliation spreadsheets and a nightly batch with one Northwind board. The night shift sees the same number the analysts do.&rdquo;</p>
+        <footer class="cp-quote-by"><span class="cp-quote-av" aria-hidden="true">RM</span><span><b>Rhea Mercado</b> · Head of Operations, Caldera</span></footer>
+      </blockquote>
+      <div class="cp-spot-cta">
+        <h2 id="cpSpotH" class="cp-spot-title">Reconcile your first week for free</h2>
+        <a class="cp-btn cp-btn-primary cp-btn-lg" href="#cp-pricing">Get started</a>
+      </div>
+    </section>
+
+    <!-- ── PRICING ──────────────────────────────────────────────────────────── -->
+    <section id="cp-pricing" class="cp-pricing" aria-labelledby="cpPricingH">
+      <div class="cp-sec-head">
+        <span class="cp-eyebrow">Pricing</span>
+        <h2 id="cpPricingH" class="cp-h2">Start free. Scale per region.</h2>
+        <p class="cp-lead">No card required. Add regions as the operation grows.</p>
+      </div>
+      <div class="cp-tier-grid">
+        <article class="cp-tier">
+          <span class="cp-tier-name">Hobby</span>
+          <span class="cp-tier-price">$0<span>/mo</span></span>
+          <ul><li>1 region</li><li>5k agent calls</li><li>Community support</li></ul>
+          <a class="cp-btn cp-btn-secondary" href="#">Start free</a>
+        </article>
+        <article class="cp-tier cp-tier-featured">
+          <span class="cp-tier-name">Team</span>
+          <span class="cp-tier-price">$390<span>/mo</span></span>
+          <ul><li>Up to 6 regions</li><li>1M agent calls</li><li>Reconciliation engine</li></ul>
+          <a class="cp-btn cp-btn-primary" href="#">Start building</a>
+        </article>
+        <article class="cp-tier">
+          <span class="cp-tier-name">Enterprise</span>
+          <span class="cp-tier-price">Custom</span>
+          <ul><li>Unlimited regions</li><li>SSO &amp; audit</li><li>Dedicated support</li></ul>
+          <a class="cp-btn cp-btn-secondary" href="#">Talk to us</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
+  <footer class="cp-foot">
+    <div class="cp-foot-top">
+      <a class="cp-wordmark" href="#cp-top"><span class="cp-mark" aria-hidden="true"></span>Northwind</a>
+      <p class="cp-foot-note">Operations analytics for teams that need the numbers to agree.</p>
+    </div>
+    <div class="cp-foot-cols">
+      <div class="cp-foot-col"><h3>Product</h3><a href="#">Toolkits</a><a href="#">Agents</a><a href="#">Reconciliation</a><a href="#">Integrations</a></div>
+      <div class="cp-foot-col"><h3>Developers</h3><a href="#">Docs</a><a href="#">CLI</a><a href="#">API</a><a href="#">Status</a></div>
+      <div class="cp-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Contact</a></div>
+      <div class="cp-foot-col"><h3>Legal</h3><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">DPA</a></div>
+    </div>
+    <div class="cp-legal">
+      <span>&copy; 2026 Northwind Analytics — a fictional product. Sample data, showcase only.</span>
+      <span class="cp-status"><i aria-hidden="true"></i>All systems normal</span>
+    </div>
+  </footer>
+</div>

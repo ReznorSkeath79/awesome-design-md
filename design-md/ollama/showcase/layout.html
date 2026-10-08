@@ -1,0 +1,199 @@
+<div class="own-ollama">
+  <svg class="oll-sprite" aria-hidden="true" width="0" height="0">
+    <symbol id="oll-llama" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 52c-9 0-15 6-15 14 0 6 5 11 13 12"/>
+        <path d="M78 30c-7 0-12 4-13 11-1 6 1 11 5 15-8 3-13 10-14 20"/>
+        <path d="M78 30c3-7 10-10 15-7"/>
+        <path d="M92 23c6-1 10 3 9 9-1 6-7 9-14 8"/>
+        <path d="M85 42c-6 1-11 4-14 9"/>
+        <path d="M63 57c-10 2-16 3-23 4-10 2-16 9-15 19 1 9 9 15 20 15h30c12 0 20-6 20-16 0-8-5-13-14-15-7-1-13-4-18-7"/>
+        <path d="M44 95v13M60 95v13M82 95v13M96 95v13"/>
+        <path d="M104 78c8-1 11 6 5 11"/>
+        <circle cx="88" cy="34" r="1.7" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="oll-nav">
+    <a class="oll-brand" href="#oll-top" aria-label="Northwind home">
+      <svg class="oll-llama oll-llama-sm" aria-hidden="true"><use href="#oll-llama"/></svg>
+      <span>Northwind</span>
+    </a>
+    <nav class="oll-nav-links" aria-label="Primary">
+      <a href="#oll-models">Regions</a>
+      <a href="#oll-docs">Docs</a>
+      <a href="#oll-pricing">Pricing</a>
+    </nav>
+    <label class="oll-search">
+      <span class="oll-sr">Search models</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input type="search" placeholder="Search dashboards, metrics" autocomplete="off">
+    </label>
+    <div class="oll-nav-right">
+      <a class="oll-btn oll-btn-secondary oll-nav-signin" href="#">Sign in</a>
+      <a class="oll-btn oll-btn-primary" href="#oll-top">Download</a>
+      <button class="oll-burger" type="button" aria-label="Menu" data-oll-burger>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="oll-drawer" aria-label="Mobile" data-oll-drawer hidden>
+      <a href="#oll-models">Regions</a>
+      <a href="#oll-docs">Docs</a>
+      <a href="#oll-pricing">Pricing</a>
+      <a href="#">Sign in</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <section class="oll-hero" id="oll-top" aria-labelledby="ollHeroH">
+    <svg class="oll-llama oll-llama-lg" aria-hidden="true"><use href="#oll-llama"/></svg>
+    <h1 id="ollHeroH">The easiest way to run your operations analytics</h1>
+    <p class="oll-hero-sub">Power Northwind with models that stay on your machines</p>
+    <div class="oll-install" role="group" aria-label="Install command">
+      <code>curl -fsSL get.northwind.dev/install.sh | sh</code>
+      <button class="oll-copy" type="button" aria-label="Copy install command" data-oll-copy>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        <span data-oll-copy-label>Copy</span>
+      </button>
+    </div>
+    <div class="oll-hero-cta">
+      <a class="oll-btn oll-btn-primary oll-btn-lg" href="#oll-top">Download Northwind</a>
+      <a class="oll-btn oll-btn-secondary oll-btn-lg" href="#oll-docs">Read the docs</a>
+    </div>
+  </section>
+
+  <!-- ── AUTOMATE ─────────────────────────────────────────────────────── -->
+  <section class="oll-split" id="oll-docs" aria-labelledby="ollAutoH">
+    <div class="oll-split-copy">
+      <h2 id="ollAutoH">Automate your work</h2>
+      <p>Ask a question in plain language and Northwind writes the query, runs it across your warehouse, and pins the answer to the board your team already watches.</p>
+      <ul class="oll-chips" aria-label="Example commands">
+        <li><code class="oll-tag">northwind ask "why did throughput drop?"</code></li>
+        <li><code class="oll-tag">northwind sync --region ap-southeast</code></li>
+      </ul>
+    </div>
+    <div class="oll-terminal" role="img" aria-label="Terminal running Northwind">
+      <div class="oll-terminal-bar">
+        <span class="oll-dot oll-dot-r"></span>
+        <span class="oll-dot oll-dot-y"></span>
+        <span class="oll-dot oll-dot-g"></span>
+      </div>
+      <pre class="oll-terminal-body"><span class="oll-cmt">$ northwind ask "why did throughput drop?"</span>
+<span class="oll-ok">✔</span> Connected · 3 regions · 42k events/min
+<span class="oll-ok">✔</span> Wrote query against <span class="oll-key">ops.daily_throughput</span>
+<span class="oll-ok">✔</span> Pinned answer to dashboard <span class="oll-key">Ops Daily</span>
+<span class="oll-cmt">→ Region ap-southeast ran 12.4% below target.</span>
+<span class="oll-cmt">→ Root cause: night-shift handoff gap, 02:00–04:00.</span>
+<span class="oll-cmt">$ <span class="oll-cursor"></span></span></pre>
+    </div>
+  </section>
+
+  <!-- ── PRIVACY ──────────────────────────────────────────────────────── -->
+  <section class="oll-privacy" aria-labelledby="ollPrivH">
+    <svg class="oll-lock" viewBox="0 0 48 48" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="11" y="21" width="26" height="19" rx="3"/>
+        <path d="M16 21v-5a8 8 0 0 1 16 0v5"/>
+        <circle cx="24" cy="30" r="2.4"/>
+        <path d="M24 32.5V36"/>
+      </g>
+    </svg>
+    <h2 id="ollPrivH">Your data stays yours</h2>
+    <p class="oll-privacy-copy">Northwind runs the models locally by default — your numbers never leave the building unless you point it at a region you control. No training on your data, no silent uploads.</p>
+    <ul class="oll-bullets">
+      <li>Local-first inference on hardware you own</li>
+      <li>Bring your own warehouse credentials</li>
+      <li>Full audit log for every query and export</li>
+    </ul>
+  </section>
+
+  <!-- ── PRICING ──────────────────────────────────────────────────────── -->
+  <section class="oll-pricing" id="oll-pricing" aria-labelledby="ollPriceH">
+    <h2 class="oll-center" id="ollPriceH">Start local. Scale cloud.</h2>
+    <div class="oll-tiers">
+      <article class="oll-tier">
+        <svg class="oll-llama oll-llama-xs" aria-hidden="true"><use href="#oll-llama"/></svg>
+        <h3>Free</h3>
+        <p class="oll-tier-note">Run the whole board on one machine.</p>
+        <p class="oll-price">$0</p>
+        <a class="oll-btn oll-btn-primary oll-tier-cta" href="#oll-top">Download</a>
+        <hr class="oll-tier-rule">
+        <p class="oll-tier-eyebrow">Everything you need to start</p>
+        <ul class="oll-features">
+          <li><span aria-hidden="true">✓</span> Local models on your hardware</li>
+          <li><span aria-hidden="true">✓</span> Up to 5 dashboards</li>
+          <li><span aria-hidden="true">✓</span> CSV and warehouse connectors</li>
+        </ul>
+      </article>
+      <article class="oll-tier">
+        <svg class="oll-llama oll-llama-xs" aria-hidden="true"><use href="#oll-llama"/></svg>
+        <h3>Pro</h3>
+        <p class="oll-tier-note">For analysts who ship daily.</p>
+        <p class="oll-price">$20</p>
+        <a class="oll-btn oll-btn-primary oll-tier-cta" href="#oll-top">Get Pro</a>
+        <hr class="oll-tier-rule">
+        <p class="oll-tier-eyebrow">Everything in Free, plus:</p>
+        <ul class="oll-features">
+          <li><span aria-hidden="true">✓</span> Unlimited dashboards</li>
+          <li><span aria-hidden="true">✓</span> Scheduled refreshes</li>
+          <li><span aria-hidden="true">✓</span> Anomaly alerts</li>
+          <li><span aria-hidden="true">✓</span> Larger local models</li>
+        </ul>
+      </article>
+      <article class="oll-tier oll-tier-dark">
+        <svg class="oll-llama oll-llama-xs" aria-hidden="true"><use href="#oll-llama"/></svg>
+        <h3>Max</h3>
+        <p class="oll-tier-note">Data-center grade, when you need it.</p>
+        <p class="oll-price">$40</p>
+        <a class="oll-btn oll-btn-light oll-tier-cta" href="#oll-top">Get Max</a>
+        <hr class="oll-tier-rule">
+        <p class="oll-tier-eyebrow">Everything in Pro, plus:</p>
+        <ul class="oll-features">
+          <li><span aria-hidden="true">✓</span> Access larger models on data-center hardware</li>
+          <li><span aria-hidden="true">✓</span> 50k events per minute per region</li>
+          <li><span aria-hidden="true">✓</span> Priority support</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+  <section class="oll-faq" aria-labelledby="ollFaqH">
+    <h2 class="oll-center" id="ollFaqH">Frequently asked questions</h2>
+    <div class="oll-faq-list">
+      <div class="oll-faq-row">
+        <h3>Where does Northwind store my data?</h3>
+        <p>On your own machines and in the warehouse you connect. Nothing is copied to us by default — the cloud tier is opt-in per region.</p>
+      </div>
+      <div class="oll-faq-row">
+        <h3>Do I need a GPU to run it?</h3>
+        <p>A laptop with 16&nbsp;GB of memory runs the Free tier comfortably. Heavier models in the Max tier want a workstation or a data-center node.</p>
+      </div>
+      <div class="oll-faq-row">
+        <h3>Can I bring my own metrics?</h3>
+        <p>Yes. Point Northwind at a warehouse, a CSV drop, or a webhook and it will model the table on the next sync.</p>
+      </div>
+      <div class="oll-faq-row">
+        <h3>Is there a free trial of Max?</h3>
+        <p>Every plan starts with 14 days of Max, no card required. Downgrade or cancel any time from the account page.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="oll-foot">
+    <nav class="oll-foot-links" aria-label="Footer">
+      <a href="#oll-top">Download</a>
+      <a href="#">Blog</a>
+      <a href="#oll-docs">Docs</a>
+      <a href="#">GitHub</a>
+      <a href="#">Discord</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </nav>
+    <span class="oll-copyright">© 2026 Northwind</span>
+  </footer>
+</div>

@@ -1,0 +1,357 @@
+<div class="own-expo" id="expo-top">
+  <!-- ── TOP NAV ──────────────────────────────────────────────────────── -->
+  <header class="nav" id="expoNav">
+    <div class="nav-in">
+      <a class="wordmark" href="#expo-top" aria-label="Northwind home">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 16.5 9 9l4 4.5L21 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".35"/></svg>
+        </span>
+        Northwind
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#expo-tools">Tools</a>
+        <a href="#expo-workflows">Workflows</a>
+        <a href="#expo-eas">EAS</a>
+        <a href="#expo-pricing">Pricing</a>
+        <a href="#expo-integrations">Docs</a>
+        <a href="#expo-customers">Showcase</a>
+      </nav>
+      <div class="nav-right">
+        <a class="nav-signin" href="#">Sign in</a>
+        <a class="btn btn-primary" href="#expo-cta">Get started</a>
+        <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" data-burger>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="clip">
+    <!-- ── HERO + DEVICE MOCKUP ───────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="expoHeroH">
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="wrap hero-in">
+        <span class="badge">Operations analytics · multi-region</span>
+        <h1 id="expoHeroH" class="hero-title">Run every region from one operations dashboard.</h1>
+        <p class="hero-sub">Northwind turns throughput, latency, and cost telemetry from every site into live dashboards your operators can act on — no spreadsheets, no overnight exports.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#expo-cta">Start free</a>
+          <a class="btn btn-secondary" href="#expo-tools">See how it works</a>
+        </div>
+        <p class="hero-foot">Free for one site · No credit card · <a class="tlink" href="#expo-pricing">Compare plans</a></p>
+
+        <div class="mock-stage" aria-hidden="true">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="dash">
+                <div class="dash-bar">
+                  <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+                  <span class="dash-name">Northwind · Operations</span>
+                  <span class="dash-live"><i></i>Live</span>
+                </div>
+                <div class="dash-body">
+                  <aside class="dash-side">
+                    <span class="ds on">Overview</span>
+                    <span class="ds">Regions</span>
+                    <span class="ds">Throughput</span>
+                    <span class="ds">Alerts</span>
+                    <span class="ds">Cost</span>
+                  </aside>
+                  <div class="dash-main">
+                    <div class="kpis">
+                      <div class="kpi"><b class="kpi-num" data-count="18400" data-fmt="k">0</b><span>units / min</span></div>
+                      <div class="kpi"><b class="kpi-num" data-count="99" data-suffix=".2%">0</b><span>on-time</span></div>
+                      <div class="kpi"><b class="kpi-num" data-count="7">0</b><span>regions live</span></div>
+                    </div>
+                    <svg class="dash-chart" viewBox="0 0 320 90" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="expoChartFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" stop-color="#a8c8e8" stop-opacity=".6"/>
+                          <stop offset="1" stop-color="#a8c8e8" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <path fill="url(#expoChartFill)" d="M0,64 L0,42 C30,32 50,54 80,46 C110,38 130,22 160,30 C190,38 210,16 240,24 C270,32 300,14 320,20 L320,90 L0,90 Z"/>
+                      <path fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" d="M0,42 C30,32 50,54 80,46 C110,38 130,22 160,30 C190,38 210,16 240,24 C270,32 300,14 320,20"/>
+                    </svg>
+                    <div class="dash-log" id="expoLog"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"><span class="laptop-notch"></span></div>
+          </div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <span class="ph-brand">Northwind</span>
+              <b class="ph-num">18.4k</b>
+              <span class="ph-cap">units / min</span>
+              <div class="ph-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <span class="ph-note">APAC ahead of plan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WORKFLOW STEPS ─────────────────────────────────────────────── -->
+    <section class="sec" id="expo-workflows" aria-labelledby="expoWfH">
+      <div class="wrap">
+        <p class="eyebrow">Workflows</p>
+        <h2 id="expoWfH" class="sec-title">Get every region on one dashboard</h2>
+        <p class="sec-lead">Four steps from raw telemetry to an operations view your whole team trusts.</p>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7V4m6 3V4M7 7h10v5a5 5 0 0 1-5 5 5 5 0 0 1-5-5zM12 17v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="step-n">01</span>
+            <h3 class="step-t">Connect</h3>
+            <p class="step-d">Point Northwind at your warehouses, queues, and APIs. Read-only, scoped, and live within minutes.</p>
+          </li>
+          <li class="step">
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="18" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <span class="step-n">02</span>
+            <h3 class="step-t">Model</h3>
+            <p class="step-d">Map regions, sites, and throughput metrics once. Northwind keeps the definitions consistent everywhere.</p>
+          </li>
+          <li class="step">
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h4l2.5-6 4 12 3-8 2 2h4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="step-n">03</span>
+            <h3 class="step-t">Monitor</h3>
+            <p class="step-d">Live dashboards, alert thresholds, and anomaly flags that surface a slipping region before the SLA does.</p>
+          </li>
+          <li class="step">
+            <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="18" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 11 15.8 7M8.2 13l7.6 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <span class="step-n">04</span>
+            <h3 class="step-t">Share</h3>
+            <p class="step-d">Scheduled digests to Slack and email, plus read-only exec views that stay in sync automatically.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── DARK FEATURE CARDS + CODE ──────────────────────────────────── -->
+    <section class="sec dark-band" id="expo-tools" aria-labelledby="expoToolsH">
+      <div class="wrap">
+        <p class="eyebrow on-dark">Tools</p>
+        <h2 id="expoToolsH" class="sec-title on-dark">Instrument the whole operation</h2>
+        <p class="sec-lead on-dark-soft">Query every metric with SQL you already know, then pin the answer to a dashboard.</p>
+        <div class="tools-grid">
+          <div class="code-block">
+            <div class="code-bar"><span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span><span class="code-file">throughput.sql</span></div>
+            <pre class="code"><code><span class="c-key">select</span> region, avg(throughput) <span class="c-key">as</span> units_per_min
+<span class="c-key">from</span> northwind.metrics
+<span class="c-key">where</span> ts &gt; now() - <span class="c-key">interval</span> <span class="c-str">'24 hours'</span>
+<span class="c-key">group by</span> region
+<span class="c-key">order by</span> units_per_min <span class="c-key">desc</span>;</code></pre>
+          </div>
+          <div class="tool-cards">
+            <article class="card-dark">
+              <h3 class="card-dark-t">Live regional rollups</h3>
+              <p class="card-dark-p">Every site reports into one model, so a region total is never a spreadsheet away.</p>
+            </article>
+            <article class="card-dark">
+              <h3 class="card-dark-t">Anomalies before SLAs slip</h3>
+              <p class="card-dark-p">Thresholds learn each region's rhythm and page you on the deviation, not the symptom.</p>
+            </article>
+            <article class="card-dark">
+              <h3 class="card-dark-t">Cost per unit, always in view</h3>
+              <p class="card-dark-p">Blend spend with throughput to see the true unit economics of every region.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IDE MOCKUP ─────────────────────────────────────────────────── -->
+    <section class="sec" id="expo-eas" aria-labelledby="expoEasH">
+      <div class="wrap eas-in">
+        <div class="eas-copy">
+          <p class="eyebrow">EAS · Studio</p>
+          <h2 id="expoEasH" class="sec-title">Model it once, reuse it everywhere</h2>
+          <p class="sec-lead">Northwind Studio is a full workspace for definitions, pipelines, and saved views. Write the query, version the model, ship the dashboard.</p>
+          <a class="tlink tlink-lg" href="#expo-integrations">Explore the workspace →</a>
+        </div>
+        <div class="ide" aria-hidden="true">
+          <div class="ide-bar">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="ide-tab on">model.sql</span>
+            <span class="ide-tab">views.yaml</span>
+          </div>
+          <div class="ide-panes">
+            <div class="ide-tree">
+              <span class="it on">▸ definitions</span>
+              <span class="it">▸ pipelines</span>
+              <span class="it">▸ alerts</span>
+              <span class="it">▸ views</span>
+            </div>
+            <div class="ide-editor">
+              <pre class="code small"><code><span class="c-com">-- region throughput, trailing 24h</span>
+<span class="c-key">create view</span> region_rollup <span class="c-key">as</span>
+<span class="c-key">select</span>
+  region,
+  count(*) <span class="c-key">as</span> events,
+  avg(throughput) <span class="c-key">as</span> units_per_min
+<span class="c-key">from</span> northwind.metrics
+<span class="c-key">group by</span> region;</code></pre>
+            </div>
+          </div>
+          <div class="ide-term">
+            <span class="term-line"><span class="c-key">nw</span> deploy region_rollup</span>
+            <span class="term-line ok">✓ view deployed · 7 regions · 0.4s</span>
+            <span class="term-line"><span class="c-key">nw</span> <span class="caret"></span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ECOSYSTEM TILE GRID ────────────────────────────────────────── -->
+    <section class="sec soft" id="expo-integrations" aria-labelledby="expoEcoH">
+      <div class="wrap">
+        <p class="eyebrow">Docs · Integrations</p>
+        <h2 id="expoEcoH" class="sec-title">Works with the stack you already run</h2>
+        <p class="sec-lead">Connectors for the warehouses, streams, and alerting tools operations teams rely on.</p>
+        <ul class="eco">
+          <li class="tile"><span class="tile-glyph">ST</span><span class="tile-name">Streams</span></li>
+          <li class="tile"><span class="tile-glyph">WH</span><span class="tile-name">Warehouse</span></li>
+          <li class="tile"><span class="tile-glyph">QU</span><span class="tile-name">Queues</span></li>
+          <li class="tile"><span class="tile-glyph">AL</span><span class="tile-name">Alerts</span></li>
+          <li class="tile"><span class="tile-glyph">NB</span><span class="tile-name">Notebooks</span></li>
+          <li class="tile"><span class="tile-glyph">BI</span><span class="tile-name">BI Sync</span></li>
+          <li class="tile"><span class="tile-glyph">EX</span><span class="tile-name">Exports</span></li>
+          <li class="tile"><span class="tile-glyph">HK</span><span class="tile-name">Webhooks</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── PRICING ────────────────────────────────────────────────────── -->
+    <section class="sec" id="expo-pricing" aria-labelledby="expoPriceH">
+      <div class="wrap">
+        <p class="eyebrow">Pricing</p>
+        <h2 id="expoPriceH" class="sec-title">Plans that scale with your regions</h2>
+        <p class="sec-lead">Start free for one site. Move to Growth when you add a second region.</p>
+        <div class="tiers">
+          <article class="tier">
+            <h3 class="tier-name">Starter</h3>
+            <p class="tier-price"><b>$0</b><span>/ month</span></p>
+            <p class="tier-desc">For a single site getting its first live view.</p>
+            <ul class="tier-list">
+              <li>1 region · 3 dashboards</li>
+              <li>Daily refresh</li>
+              <li>Community support</li>
+            </ul>
+            <a class="btn btn-secondary tier-btn" href="#expo-cta">Start free</a>
+          </article>
+          <article class="tier featured">
+            <span class="tier-flag">Most popular</span>
+            <h3 class="tier-name">Growth</h3>
+            <p class="tier-price"><b>$49</b><span>/ month</span></p>
+            <p class="tier-desc">For multi-region teams watching throughput live.</p>
+            <ul class="tier-list">
+              <li>Unlimited regions · dashboards</li>
+              <li>5-minute refresh · alerts</li>
+              <li>Slack + email digests</li>
+            </ul>
+            <a class="btn btn-inverse tier-btn" href="#expo-cta">Start 14-day trial</a>
+          </article>
+          <article class="tier">
+            <h3 class="tier-name">Scale</h3>
+            <p class="tier-price"><b>Custom</b></p>
+            <p class="tier-desc">For global operations with strict controls.</p>
+            <ul class="tier-list">
+              <li>SSO · audit log · RBAC</li>
+              <li>Private link · 99.99% SLA</li>
+              <li>Dedicated support engineer</li>
+            </ul>
+            <a class="btn btn-secondary tier-btn" href="#expo-cta">Talk to sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIAL ────────────────────────────────────────────────── -->
+    <section class="sec soft" id="expo-customers" aria-labelledby="expoQuoteH">
+      <div class="wrap">
+        <p class="eyebrow">Showcase</p>
+        <h2 id="expoQuoteH" class="visually-hidden">Customer stories</h2>
+        <figure class="quote">
+          <blockquote class="quote-body">“We went from seven regional spreadsheets to a single live view in a week. The first anomaly alert paid for the year — it caught a stalled line two hours before anyone noticed.”</blockquote>
+          <figcaption class="quote-foot">
+            <span class="quote-avatar" aria-hidden="true">DO</span>
+            <span class="quote-meta"><b>Dana Okafor</b><span>VP Operations · Meridian Freight (fictional)</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── CTA BAND ───────────────────────────────────────────────────── -->
+    <section class="cta-band" id="expo-cta" aria-labelledby="expoCtaH">
+      <div class="wrap cta-in">
+        <h2 id="expoCtaH" class="cta-title">Bring every region into view.</h2>
+        <p class="cta-sub">Set up your first dashboard in an afternoon.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#expo-top">Get started</a>
+          <a class="tlink tlink-lg" href="#expo-pricing">Book a demo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+    <footer class="foot">
+      <div class="wrap">
+        <div class="foot-top">
+          <a class="wordmark foot-mark" href="#expo-top">
+            <span class="mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 16.5 9 9l4 4.5L21 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".35"/></svg>
+            </span>
+            Northwind
+          </a>
+          <p class="foot-tag">Operations analytics for multi-region teams.</p>
+        </div>
+        <nav class="foot-cols" aria-label="Footer">
+          <div class="foot-col">
+            <h3 class="foot-h">Product</h3>
+            <a href="#expo-tools">Tools</a>
+            <a href="#expo-workflows">Workflows</a>
+            <a href="#expo-eas">EAS</a>
+            <a href="#expo-pricing">Pricing</a>
+          </div>
+          <div class="foot-col">
+            <h3 class="foot-h">Solutions</h3>
+            <a href="#expo-integrations">Integrations</a>
+            <a href="#expo-workflows">Operations</a>
+            <a href="#expo-customers">Customers</a>
+            <a href="#expo-pricing">Plans</a>
+          </div>
+          <div class="foot-col">
+            <h3 class="foot-h">Resources</h3>
+            <a href="#expo-integrations">Docs</a>
+            <a href="#expo-tools">Query library</a>
+            <a href="#expo-eas">Studio guide</a>
+            <a href="#expo-cta">Status</a>
+          </div>
+          <div class="foot-col">
+            <h3 class="foot-h">Company</h3>
+            <a href="#expo-customers">About</a>
+            <a href="#expo-cta">Careers</a>
+            <a href="#expo-cta">Blog</a>
+            <a href="#expo-cta">Contact</a>
+          </div>
+          <div class="foot-col">
+            <h3 class="foot-h">Legal</h3>
+            <a href="#expo-cta">Privacy</a>
+            <a href="#expo-cta">Terms</a>
+            <a href="#expo-cta">Security</a>
+            <a href="#expo-cta">DPA</a>
+          </div>
+        </nav>
+        <div class="foot-bar">
+          <span>© 2026 Northwind Analytics — fictional sample for showcase.</span>
+          <span class="foot-bar-links">
+            <a class="tlink tlink-sm" href="#expo-cta">Privacy</a>
+            <a class="tlink tlink-sm" href="#expo-cta">Terms</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

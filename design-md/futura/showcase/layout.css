@@ -1,0 +1,323 @@
+/* ══ FUTURA — Swiss-brutalist "future data" poster language ═════════════════
+   Own layout for showcase.html, ported from design-md/futura/mockup.html and
+   the futura DESIGN.md token system. Root scope: .own-futura.
+   Production `vw` display units become container units (`cqi`); the mockup's
+   width media queries become `@container frame (max-width: …)` so the Tablet
+   (820) and Phone (390) frames reflow like the poster does at those widths. */
+
+.own-futura {
+  --volt: #dcfc52;
+  --volt-dim: #b8d944;
+  --canvas: #e6e8e9;
+  --ink: #000000;
+  --ink-inverse: #e6e8e9;
+  --white: #ffffff;
+  --black: #000000;
+  --hairline: #000000;
+  --hairline-soft: #9aa19a;
+  --ramp-3: #b0b8b0;
+  --ramp-4: #9aa19a;
+  --ramp-6: #6e736e;
+  --ramp-8: #424542;
+  --ramp-10: #161716;
+  --on-volt: #000000;
+  --panel-text: #e6e8e9;
+  --grot: 'Futura Grotesk Display', 'Futura Grotesk Text', 'Inter Tight', Helvetica, Arial, sans-serif;
+  --mono: 'Futura Mono', 'Space Mono', ui-monospace, Menlo, monospace;
+
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--grot);
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  overflow-x: clip;
+  border-radius: 13px;
+}
+
+.own-futura *,
+.own-futura *::before,
+.own-futura *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+.own-futura a { color: inherit; text-decoration: none; }
+.own-futura ul { list-style: none; }
+.own-futura button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.own-futura ::selection { background: var(--volt); color: var(--on-volt); }
+.own-futura :focus-visible { outline: 2px solid var(--volt); outline-offset: 2px; }
+
+/* ── TYPE UTILITIES ─────────────────────────────────────────────── */
+.own-futura .owf-mono { font-family: var(--mono); }
+.own-futura .owf-data { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; line-height: 1.5; }
+.own-futura .owf-eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.own-futura .owf-micro { font-size: 9px; letter-spacing: .2px; line-height: 1.35; }
+.own-futura .owf-caption { font-size: 11px; letter-spacing: .3px; line-height: 1.4; }
+.own-futura .owf-phonetic { font-size: 18px; letter-spacing: 0; }
+.own-futura .owf-rule { height: 1px; background: var(--hairline); border: 0; }
+
+/* ── NAV ─────────────────────────────────────────────────────────── */
+.own-futura .owf-nav {
+  height: 48px; display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 0 32px; border-bottom: 1px solid var(--hairline);
+  position: sticky; top: 68px; background: var(--canvas); z-index: 30;
+}
+.own-futura .owf-nav-logo { font-family: var(--grot); font-weight: 700; font-size: 20px; letter-spacing: -.4px; white-space: nowrap; }
+.own-futura .owf-nav-logo sup { font-family: var(--mono); font-size: 9px; font-weight: 400; letter-spacing: 1px; }
+.own-futura .owf-nav-links { display: flex; gap: 32px; }
+.own-futura .owf-nav-links a { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; text-transform: uppercase; padding: 2px 0; }
+.own-futura .owf-nav-links a:hover { background: var(--volt); color: var(--on-volt); padding: 2px 4px; margin: 0 -4px; }
+.own-futura .owf-nav-right { font-family: var(--mono); font-size: 11px; letter-spacing: .5px; display: flex; gap: 24px; align-items: center; white-space: nowrap; }
+
+/* ── HERO ────────────────────────────────────────────────────────── */
+.own-futura .owf-hero {
+  position: relative; padding: 48px 32px 0; min-height: min(78vh, 900px);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; overflow: hidden;
+}
+.own-futura .owf-hero-left { position: relative; z-index: 2; }
+.own-futura .owf-hero-ids { display: flex; gap: 12px 32px; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; }
+.own-futura .owf-bracket-id { font-weight: 700; font-size: 28px; letter-spacing: -.4px; }
+.own-futura .owf-hero h1 {
+  font-weight: 700; text-transform: uppercase;
+  font-size: clamp(72px, 11cqi, 168px); line-height: .9; letter-spacing: -.02em;
+}
+.own-futura .owf-hero h1 .owf-volt-band {
+  display: inline; background: var(--volt); color: var(--on-volt); padding: 0 24px 4px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.own-futura .owf-hero h1 .owf-outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
+.own-futura .owf-phonetic-row { display: flex; align-items: center; gap: 16px; margin: 28px 0 12px; }
+.own-futura .owf-phonetic-row .owf-circled {
+  width: 20px; height: 20px; border: 1.5px solid var(--ink); border-radius: 9999px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex: none;
+}
+.own-futura .owf-dict-def { max-width: 420px; }
+.own-futura .owf-dict-def .owf-micro { display: block; hyphens: auto; }
+.own-futura .owf-hero-datastrip {
+  margin-top: 40px; padding-top: 8px; border-top: 1px solid var(--hairline);
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.own-futura .owf-hero-right { position: relative; }
+.own-futura .owf-mega-glyph {
+  position: absolute; top: -90px; right: -70px; z-index: 1;
+  font-weight: 700; font-size: clamp(300px, 34cqi, 560px); line-height: .8;
+  color: var(--volt); pointer-events: none; user-select: none;
+}
+.own-futura .owf-hero-panel {
+  position: relative; z-index: 2; background: var(--black); color: var(--volt);
+  padding: 32px; margin-top: 190px; max-width: 420px; justify-self: end;
+}
+.own-futura .owf-hero-panel .owf-eyebrow { color: var(--volt); }
+.own-futura .owf-hero-panel p { color: var(--panel-text); font-size: 16px; line-height: 1.45; margin: 16px 0 24px; }
+.own-futura .owf-btn {
+  display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 13px;
+  letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 24px;
+  background: var(--black); color: var(--volt); border: 1px solid var(--black);
+}
+.own-futura .owf-btn:hover { background: var(--volt); color: var(--on-volt); }
+.own-futura .owf-hero-panel .owf-btn { background: var(--volt); color: var(--on-volt); border-color: var(--volt); }
+.own-futura .owf-hero-panel .owf-btn:hover { background: var(--black); color: var(--volt); }
+.own-futura .owf-wireframe { position: absolute; z-index: 1; pointer-events: none; color: var(--ink); }
+.own-futura .owf-arrow-volt { position: absolute; z-index: 3; }
+.own-futura .owf-crop { position: absolute; width: 18px; height: 18px; z-index: 5; pointer-events: none; }
+.own-futura .owf-crop::before,
+.own-futura .owf-crop::after { content: ""; position: absolute; background: var(--ink); }
+.own-futura .owf-crop::before { width: 100%; height: 1.5px; }
+.own-futura .owf-crop::after { width: 1.5px; height: 100%; }
+.own-futura .owf-tl { top: 60px; left: 12px; }
+.own-futura .owf-tr { top: 60px; right: 12px; transform: scaleX(-1); }
+.own-futura .owf-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.own-futura .owf-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+/* ── TICKER ──────────────────────────────────────────────────────── */
+.own-futura .owf-ticker {
+  background: var(--black); color: var(--volt); overflow: hidden; white-space: nowrap;
+  border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+  padding: 10px 0;
+}
+.own-futura .owf-ticker span {
+  display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: .5px;
+  padding-right: 64px; animation: owf-tick 28s linear infinite;
+}
+@keyframes owf-tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTION SHARED ───────────────────────────────────────────────── */
+.own-futura section { padding: 96px 32px; position: relative; }
+.own-futura .owf-section-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  margin-bottom: 48px; border-bottom: 1px solid var(--hairline); padding-bottom: 16px;
+}
+.own-futura .owf-section-head h2 { font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 5cqi, 64px); letter-spacing: -.03em; line-height: 1; }
+.own-futura .owf-section-head .owf-eyebrow { color: var(--ramp-8); }
+
+/* ── SIGNALS (black panel) ────────────────────────────────────────── */
+.own-futura .owf-trending { background: var(--black); color: var(--panel-text); }
+.own-futura .owf-trending .owf-section-head { border-color: var(--ramp-8); }
+.own-futura .owf-trending .owf-section-head h2 { color: var(--volt); }
+.own-futura .owf-trending .owf-section-head .owf-eyebrow { color: var(--volt); }
+.own-futura .owf-trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ramp-8); }
+.own-futura .owf-trend-card { background: var(--black); padding: 32px; position: relative; transition: background .15s; }
+.own-futura .owf-trend-card:hover { background: var(--ramp-10); }
+.own-futura .owf-trend-card:hover .owf-trend-title { background: var(--volt); color: var(--on-volt); }
+.own-futura .owf-trend-rank { font-weight: 700; font-size: 64px; letter-spacing: -.03em; color: transparent; -webkit-text-stroke: 1.5px var(--volt); line-height: 1; }
+.own-futura .owf-trend-card:hover .owf-trend-rank { color: var(--volt); -webkit-text-stroke: 0; }
+.own-futura .owf-trend-title { font-weight: 700; font-size: 28px; letter-spacing: -.4px; color: var(--panel-text); margin: 16px 0 4px; display: inline-block; }
+.own-futura .owf-trend-genre { color: var(--ramp-4); }
+.own-futura .owf-trend-meta { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--ramp-8); display: flex; justify-content: space-between; gap: 8px; color: var(--ramp-4); flex-wrap: wrap; }
+.own-futura .owf-trend-meta b { color: var(--volt); font-weight: 400; }
+.own-futura .owf-barcode {
+  height: 34px; margin-top: 20px;
+  background: repeating-linear-gradient(90deg,
+    var(--volt) 0 2px, transparent 2px 5px,
+    var(--volt) 5px 9px, transparent 9px 11px,
+    var(--volt) 11px 12px, transparent 12px 17px,
+    var(--volt) 17px 21px, transparent 21px 23px,
+    var(--volt) 23px 24px, transparent 24px 29px,
+    var(--volt) 29px 33px, transparent 33px 36px);
+}
+
+/* ── LATEST (white blocks on canvas + dot field) ───────────────────── */
+.own-futura .owf-latest { background-image: radial-gradient(var(--ramp-3) 1px, transparent 1px); background-size: 22px 22px; }
+.own-futura .owf-latest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-futura .owf-ep-card {
+  background: var(--white); border: 1px solid var(--hairline); padding: 24px; position: relative;
+  display: flex; flex-direction: column; gap: 12px; transition: transform .15s, box-shadow .15s;
+}
+.own-futura .owf-ep-card:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0 var(--volt); }
+.own-futura .owf-ep-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.own-futura .owf-ep-cover { aspect-ratio: 3 / 4; border: 1px solid var(--hairline); position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 12px; }
+.own-futura .owf-ep-cover .owf-cover-glyph {
+  position: absolute; top: -14%; right: -22%; font-weight: 700; font-size: 190px; line-height: .8;
+  color: transparent; -webkit-text-stroke: 1.5px var(--ink); opacity: .9; user-select: none;
+}
+.own-futura .owf-ep-cover.owf-volt .owf-cover-glyph { color: var(--volt); -webkit-text-stroke: 0; }
+.own-futura .owf-ep-cover.owf-black { background: var(--black); }
+.own-futura .owf-ep-cover.owf-black .owf-cover-glyph { -webkit-text-stroke: 1.5px var(--volt); }
+.own-futura .owf-ep-cover .owf-cover-title { position: relative; font-weight: 700; text-transform: uppercase; font-size: 20px; line-height: 1.05; letter-spacing: -.3px; }
+.own-futura .owf-ep-cover.owf-black .owf-cover-title { color: var(--volt); }
+.own-futura .owf-ep-cover.owf-volt { background: var(--volt); }
+.own-futura .owf-ep-cover.owf-volt .owf-cover-title { color: var(--on-volt); }
+.own-futura .owf-checker {
+  width: 22px; height: 22px; flex: none;
+  background: conic-gradient(var(--black) 25%, var(--white) 0 50%, var(--black) 0 75%, var(--white) 0);
+  background-size: 11px 11px; border: 1px solid var(--black);
+}
+.own-futura .owf-ep-title { font-weight: 700; font-size: 18px; letter-spacing: -.3px; }
+.own-futura .owf-ep-ch { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; }
+.own-futura .owf-ep-ch b { background: var(--volt); color: var(--on-volt); padding: 1px 6px; font-weight: 400; }
+.own-futura .owf-ep-summary { color: var(--ramp-6); }
+.own-futura .owf-ep-foot { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; gap: 8px; }
+
+/* ── DICTIONARY BAND ─────────────────────────────────────────────── */
+.own-futura .owf-dict-band { background: var(--volt); color: var(--on-volt); padding: 64px 32px; position: relative; overflow: hidden; }
+.own-futura .owf-dict-band .owf-band-word { font-weight: 700; text-transform: uppercase; font-size: clamp(48px, 9cqi, 128px); letter-spacing: -.03em; line-height: .9; color: var(--on-volt); overflow-wrap: anywhere; }
+.own-futura .owf-dict-band .owf-rule { background: var(--on-volt); }
+.own-futura .owf-dict-band .owf-band-word .owf-inv { background: var(--black); color: var(--volt); padding: 0 20px 4px; }
+.own-futura .owf-dict-band .owf-band-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; align-items: end; }
+.own-futura .owf-dict-band .owf-phonetic { font-size: 22px; }
+.own-futura .owf-dict-band .owf-micro { max-width: 380px; display: block; }
+.own-futura .owf-vertical-note {
+  position: absolute; top: 32px; right: 32px; writing-mode: vertical-rl;
+  font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+}
+.own-futura .owf-band-data { padding-right: 56px; text-align: right; }
+.own-futura .owf-dict-band .owf-rule { margin: 16px 0; }
+
+/* ── STATS ────────────────────────────────────────────────────────── */
+.own-futura .owf-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); }
+.own-futura .owf-stat { background: var(--canvas); padding: 32px; position: relative; }
+.own-futura .owf-stat:hover { background: var(--white); }
+.own-futura .owf-stat-num { font-weight: 700; font-size: 64px; letter-spacing: -.03em; line-height: 1; }
+.own-futura .owf-stat-num sup { font-size: 20px; letter-spacing: 0; }
+.own-futura .owf-stat-label { margin-top: 12px; color: var(--ramp-8); }
+.own-futura .owf-stat .owf-waveform { position: absolute; top: 24px; right: 24px; color: var(--ink); }
+
+/* ── REGION INDEX ─────────────────────────────────────────────────── */
+.own-futura .owf-index { padding-top: 0; }
+.own-futura .owf-genre-rows { border-top: 1px solid var(--hairline); }
+.own-futura .owf-genre-row {
+  display: grid; grid-template-columns: 80px 1fr auto auto; gap: 32px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--hairline);
+}
+.own-futura .owf-genre-row:hover { background: var(--volt); color: var(--on-volt); }
+.own-futura .owf-genre-row:hover .owf-genre-name { padding-left: 12px; }
+.own-futura .owf-genre-idx { font-family: var(--mono); font-size: 13px; letter-spacing: .5px; color: var(--ramp-8); }
+.own-futura .owf-genre-row:hover .owf-genre-idx { color: var(--on-volt); }
+.own-futura .owf-genre-name { font-weight: 700; text-transform: uppercase; font-size: 40px; letter-spacing: -.02em; transition: padding .15s; }
+.own-futura .owf-genre-count { font-family: var(--mono); font-size: 13px; }
+
+/* ── CTA ───────────────────────────────────────────────────────────── */
+.own-futura .owf-cta { background: var(--black); color: var(--panel-text); text-align: left; position: relative; overflow: hidden; }
+.own-futura .owf-cta h2 { font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 7cqi, 110px); letter-spacing: -.03em; line-height: .92; color: var(--volt); max-width: 900px; position: relative; z-index: 2; }
+.own-futura .owf-cta h2 .owf-w { color: var(--white); }
+.own-futura .owf-cta p { max-width: 440px; margin: 32px 0; color: var(--ramp-4); position: relative; z-index: 2; }
+.own-futura .owf-cta .owf-mega-x { position: absolute; bottom: -18%; right: -4%; font-weight: 700; font-size: 520px; line-height: .8; color: transparent; -webkit-text-stroke: 1.5px var(--ramp-8); user-select: none; z-index: 1; }
+.own-futura .owf-cta-form { display: flex; gap: 0; max-width: 560px; position: relative; z-index: 2; }
+.own-futura .owf-cta-form input {
+  flex: 1; min-width: 0; background: var(--ramp-10); border: 1px solid var(--ramp-8); border-right: 0;
+  color: var(--volt); font-family: var(--mono); font-size: 13px; letter-spacing: .5px; padding: 14px 16px; outline: none;
+}
+.own-futura .owf-cta-form input::placeholder { color: var(--ramp-4); }
+.own-futura .owf-cta-form input:focus { border-color: var(--volt); }
+.own-futura .owf-cta .owf-eyebrow { color: var(--volt); }
+
+/* ── FOOTER ────────────────────────────────────────────────────────── */
+.own-futura .owf-foot { background: var(--black); color: var(--volt); padding: 48px 32px 24px; border-top: 1px solid var(--ramp-8); }
+.own-futura .owf-foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.own-futura .owf-foot-grid h4 { color: var(--panel-text); margin-bottom: 16px; }
+.own-futura .owf-foot-grid li { margin-bottom: 8px; }
+.own-futura .owf-foot-grid a:hover { background: var(--volt); color: var(--on-volt); }
+.own-futura .owf-foot-bottom { border-top: 1px solid var(--ramp-8); padding-top: 16px; display: flex; justify-content: space-between; color: var(--ramp-4); flex-wrap: wrap; gap: 16px; }
+.own-futura .owf-foot-logo { color: var(--volt); margin-bottom: 16px; }
+.own-futura .owf-foot-blurb { color: var(--ramp-4); max-width: 280px; display: block; }
+.own-futura .owf-foot-globe { margin-top: 24px; opacity: .9; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-futura .owf-nav-right { display: none; }
+  .own-futura .owf-nav-links { gap: 20px; }
+  .own-futura .owf-hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 64px; }
+  .own-futura .owf-mega-glyph { top: -40px; right: -30px; font-size: 300px; }
+  .own-futura .owf-hero-panel { margin-top: 80px; justify-self: start; }
+  .own-futura .owf-trend-grid { grid-template-columns: 1fr 1fr; }
+  .own-futura .owf-latest-grid { grid-template-columns: 1fr 1fr; }
+  .own-futura .owf-stats-grid { grid-template-columns: 1fr 1fr; }
+  .own-futura .owf-dict-band .owf-band-grid { grid-template-columns: 1fr; align-items: start; }
+  .own-futura .owf-vertical-note { writing-mode: horizontal-tb; position: static; display: block; margin-top: 24px; }
+  .own-futura .owf-band-data { padding-right: 0; text-align: left; }
+  .own-futura .owf-arrow-volt { display: none; }
+  .own-futura .owf-foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-futura .owf-nav { padding: 0 16px; gap: 12px; }
+  .own-futura .owf-nav-links { display: none; }
+  .own-futura .owf-nav-right { display: none; }
+  .own-futura section { padding: 64px 16px; }
+  .own-futura .owf-index { padding-top: 0; }
+  .own-futura .owf-hero { padding: 32px 16px 48px; }
+  .own-futura .owf-hero h1 { font-size: clamp(56px, 14cqi, 120px); }
+  .own-futura .owf-trend-grid,
+  .own-futura .owf-latest-grid,
+  .own-futura .owf-stats-grid { grid-template-columns: 1fr; }
+  .own-futura .owf-genre-row { grid-template-columns: 48px 1fr auto; }
+  .own-futura .owf-genre-count { display: none; }
+  .own-futura .owf-genre-name { font-size: 26px; }
+  .own-futura .owf-cta-form { flex-direction: column; }
+  .own-futura .owf-cta-form input { border-right: 1px solid var(--ramp-8); }
+  .own-futura .owf-cta-form .owf-btn { text-align: center; }
+  .own-futura .owf-dict-band { padding: 48px 16px; }
+  .own-futura .owf-foot { padding: 40px 16px 20px; }
+}
+@container frame (max-width: 430px) {
+  .own-futura .owf-hero h1 { font-size: clamp(48px, 13cqi, 86px); }
+  .own-futura .owf-mega-glyph { font-size: 48cqi; }
+  .own-futura .owf-bracket-id { font-size: 22px; }
+  .own-futura .owf-foot-grid { grid-template-columns: 1fr; gap: 32px; }
+  .own-futura .owf-section-head h2 { font-size: clamp(32px, 9cqi, 44px); }
+  .own-futura .owf-hero-panel { padding: 24px; }
+  .own-futura .owf-trend-card { padding: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-futura *,
+  .own-futura *::before,
+  .own-futura *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .own-futura .owf-ticker span { animation: none; }
+}

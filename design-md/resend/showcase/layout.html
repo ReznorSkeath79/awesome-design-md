@@ -1,0 +1,196 @@
+<div class="own-resend">
+  <header class="rs-nav" id="rsTop">
+    <a class="rs-brand" href="#rs-top" aria-label="Northwind home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5 12 13l9-6.5M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <span>Northwind</span>
+    </a>
+    <nav class="rs-menu" aria-label="Primary">
+      <a href="#rs-features">Features</a>
+      <a href="#rs-integrate">Integrate</a>
+      <a href="#rs-pricing">Pricing</a>
+      <a href="#rs-customers">Customers</a>
+    </nav>
+    <div class="rs-nav-right">
+      <a class="rs-link" href="#">Sign in</a>
+      <a class="rs-btn rs-btn-primary" href="#rs-pricing">Get started</a>
+      <button class="rs-burger" type="button" aria-label="Menu" data-rs-burger><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="rs-top">
+    <section class="rs-hero" aria-labelledby="rs-h1">
+      <div class="rs-glow rs-glow-orange" aria-hidden="true"></div>
+      <div class="rs-hero-inner">
+        <span class="rs-badge">Now in general availability</span>
+        <h1 id="rs-h1" class="rs-h1">Operations,<br>reimagined</h1>
+        <p class="rs-hero-sub">A single place for throughput, yield, and cost &#8212; built for the teams that keep the floor moving.</p>
+        <div class="rs-hero-cta">
+          <a class="rs-btn rs-btn-primary rs-btn-lg" href="#rs-pricing">Start for free</a>
+          <a class="rs-btn rs-btn-outline rs-btn-lg" href="#rs-integrate">Read the docs</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="rs-features" class="rs-section" aria-labelledby="rs-features-h">
+      <div class="rs-glow rs-glow-blue rs-glow-top" aria-hidden="true"></div>
+      <div class="rs-sec-inner">
+        <h2 id="rs-features-h" class="rs-h2">Everything in your context</h2>
+        <p class="rs-sec-sub">Three primitives, one operating picture. Every board, metric, and alert shares the same model.</p>
+        <div class="rs-grid">
+          <article class="rs-card rs-card-bordered">
+            <span class="rs-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18V9m5 9V5m5 13v-7m5 7V7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <h3 class="rs-h3">Metrics you can trust</h3>
+            <p class="rs-card-copy">Define a metric once. Northwind reconciles every definition and shows its lineage.</p>
+          </article>
+          <article class="rs-card rs-card-bordered">
+            <span class="rs-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 12h16M12 4c2.5 3 2.5 13 0 16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <h3 class="rs-h3">Every region live</h3>
+            <p class="rs-card-copy">Plants, ports, and hubs stream in as they report. No batch window, no overnight lag.</p>
+          </article>
+          <article class="rs-card rs-card-bordered">
+            <span class="rs-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5L16 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <h3 class="rs-h3">Alerts with evidence</h3>
+            <p class="rs-card-copy">Anomaly detection flags drift and attaches the exact comparison behind the call.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="rs-integrate" class="rs-section rs-section-tight" aria-labelledby="rs-integrate-h">
+      <div class="rs-glow rs-glow-green rs-glow-top" aria-hidden="true"></div>
+      <div class="rs-sec-inner rs-split">
+        <div class="rs-split-copy">
+          <p class="rs-eyebrow">Integrate this weekend</p>
+          <h2 id="rs-integrate-h" class="rs-h2 rs-h2-tight">First-class developer experience</h2>
+          <p class="rs-sec-sub">One SDK, every source. Query a board, stream updates, or wire an alert into your own pipeline.</p>
+          <ul class="rs-bullets">
+            <li>Typed SDKs for Python and TypeScript</li>
+            <li>Webhooks on any metric threshold</li>
+            <li>Full API to every board and alert</li>
+          </ul>
+        </div>
+        <div class="rs-code" role="img" aria-label="Northwind SDK example">
+          <div class="rs-code-top">
+            <span class="rs-lights" aria-hidden="true"><i class="rs-l-red"></i><i class="rs-l-yellow"></i><i class="rs-l-green"></i></span>
+            <span class="rs-code-name">pipeline.py</span>
+          </div>
+          <div class="rs-code-tabs">
+            <span class="rs-tab on">Python</span>
+            <span class="rs-tab">TypeScript</span>
+            <span class="rs-tab">cURL</span>
+          </div>
+          <pre class="rs-code-body"><code><span class="rs-c-kw">from</span> northwind <span class="rs-c-kw">import</span> Client
+
+client = Client()
+board = client.boards.<span class="rs-c-fn">get</span>(<span class="rs-c-str">"regional-throughput"</span>)
+<span class="rs-c-kw">for</span> point <span class="rs-c-kw">in</span> board.<span class="rs-c-fn">stream</span>():
+    <span class="rs-c-fn">print</span>(point.region, point.yield_pct)
+<span class="rs-c-com"># luzon 94.6  busan 98.1  sydney 91.3</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="rs-email" aria-labelledby="rs-email-h">
+      <div class="rs-sec-inner">
+        <h2 id="rs-email-h" class="rs-h2 rs-center">Beyond the dashboard</h2>
+        <p class="rs-sec-sub rs-center">Schedule a summary and Northwind renders it as a clean brief, ready for the morning review.</p>
+        <div class="rs-mail">
+          <div class="rs-mail-head">
+            <span class="rs-mail-dot" aria-hidden="true"></span>
+            <div>
+              <p class="rs-mail-sub">Daily operations brief</p>
+              <p class="rs-mail-to">to ops-leads@northwind.example</p>
+            </div>
+          </div>
+          <div class="rs-mail-body">
+            <p class="rs-mail-hi">Good morning &#8212; here is yesterday at a glance.</p>
+            <div class="rs-mail-stats">
+              <div><b>94.6%</b><span>Avg yield</span></div>
+              <div><b>98.1%</b><span>On-time</span></div>
+              <div><b>$12.4M</b><span>Throughput</span></div>
+            </div>
+            <p class="rs-mail-note">Two lines flagged for drift in Luzon &#183; one alert in Busan cleared.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rs-pricing" class="rs-section" aria-labelledby="rs-pricing-h">
+      <div class="rs-sec-inner">
+        <h2 id="rs-pricing-h" class="rs-h2">Pricing</h2>
+        <p class="rs-sec-sub">Start free, upgrade when the floor depends on it.</p>
+        <div class="rs-price-grid">
+          <article class="rs-tier">
+            <h3 class="rs-tier-name">Hobby</h3>
+            <p class="rs-tier-price">$0</p>
+            <p class="rs-tier-desc">For one analyst exploring the numbers.</p>
+            <ul class="rs-checks">
+              <li>3 boards</li>
+              <li>1 source</li>
+              <li>Community support</li>
+            </ul>
+            <a class="rs-btn rs-btn-outline rs-btn-block" href="#">Start free</a>
+          </article>
+          <article class="rs-tier rs-tier-featured">
+            <h3 class="rs-tier-name">Scale</h3>
+            <p class="rs-tier-price">$40<span>/mo</span></p>
+            <p class="rs-tier-desc">For teams running the daily review.</p>
+            <ul class="rs-checks">
+              <li>Unlimited boards</li>
+              <li>10 sources</li>
+              <li>Alerting &amp; webhooks</li>
+            </ul>
+            <a class="rs-btn rs-btn-primary rs-btn-block" href="#">Choose Scale</a>
+          </article>
+          <article class="rs-tier">
+            <h3 class="rs-tier-name">Enterprise</h3>
+            <p class="rs-tier-price">Custom</p>
+            <p class="rs-tier-desc">For the org on one source of truth.</p>
+            <ul class="rs-checks">
+              <li>SSO &amp; audit</li>
+              <li>Unlimited sources</li>
+              <li>Dedicated support</li>
+            </ul>
+            <a class="rs-btn rs-btn-ghost rs-btn-block" href="#">Contact us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="rs-customers" class="rs-section rs-section-tight" aria-labelledby="rs-customers-h">
+      <div class="rs-glow rs-glow-red rs-glow-top" aria-hidden="true"></div>
+      <div class="rs-sec-inner">
+        <h2 id="rs-customers-h" class="rs-h2 rs-center">Trusted on the floor</h2>
+        <blockquote class="rs-quote">
+          <p>&ldquo;One number the whole shift trusts. That changed how we run the review.&rdquo;</p>
+          <footer class="rs-quote-by">
+            <span class="rs-avatar" aria-hidden="true">MR</span>
+            <span><b>Mara Reyes</b><em>Operations Lead, fictional manufacturer</em></span>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rs-foot">
+    <div class="rs-foot-inner">
+      <div class="rs-foot-brand">
+        <span>Northwind</span>
+        <p class="rs-foot-status"><i aria-hidden="true"></i>All systems operational</p>
+      </div>
+      <div class="rs-foot-cols">
+        <h3>Product</h3><a href="#">Features</a><a href="#">Pricing</a><a href="#">Docs</a><a href="#">Changelog</a>
+      </div>
+      <div class="rs-foot-cols">
+        <h3>Company</h3><a href="#">About</a><a href="#">Customers</a><a href="#">Careers</a><a href="#">Blog</a>
+      </div>
+      <div class="rs-foot-cols">
+        <h3>Legal</h3><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">Status</a>
+      </div>
+    </div>
+    <div class="rs-foot-bottom">
+      <span>&copy; 2026 Northwind Analytics</span>
+      <span>Sample data &#8212; showcase only</span>
+    </div>
+  </footer>
+</div>

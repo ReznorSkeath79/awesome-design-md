@@ -1,0 +1,164 @@
+<div class="own-uber">
+  <a class="ub-skip" href="#ubMain">Skip to content</a>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="ub-nav" id="ubNav">
+    <div class="ub-nav-in">
+      <a class="ub-brand" href="#ubMain" aria-label="Northwind home">Northwind</a>
+      <nav class="ub-nav-links" aria-label="Primary">
+        <a href="#ubProducts">Products</a>
+        <a href="#ubWhy">Why Northwind</a>
+        <a href="#ubPricing">Pricing</a>
+        <a href="#ubFaq">Support</a>
+      </nav>
+      <div class="ub-nav-actions">
+        <a class="ub-btn ub-btn-secondary ub-btn-sm" href="#">Log in</a>
+        <a class="ub-btn ub-btn-primary ub-btn-sm" href="#ubPricing">Sign up</a>
+        <button class="ub-burger" type="button" aria-label="Menu" data-ub-menu aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="ub-drawer" hidden data-ub-drawer>
+      <a href="#ubProducts">Products</a><a href="#ubWhy">Why Northwind</a><a href="#ubPricing">Pricing</a><a href="#ubFaq">Support</a>
+    </div>
+  </header>
+
+  <main id="ubMain">
+    <!-- ── HERO — white band with request form ────────────────────────── -->
+    <section class="ub-hero">
+      <div class="ub-wrap ub-hero-in">
+        <div class="ub-hero-copy">
+          <h1 class="ub-display-xxl">Go anywhere with your operations data.</h1>
+          <p class="ub-lead">Northwind is the operations analytics layer for ride, delivery, and freight teams. One black-and-white surface for regions, throughput, and the numbers that move the city.</p>
+          <div class="ub-tabs" role="tablist" aria-label="Workspace">
+            <button class="ub-tab on" type="button" role="tab" aria-selected="true">Operations</button>
+            <button class="ub-tab" type="button" role="tab" aria-selected="false">Revenue</button>
+          </div>
+        </div>
+        <div class="ub-request-card" aria-label="Northwind request form">
+          <div class="ub-req-row">
+            <span class="ub-req-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/></svg></span>
+            <span><span class="ub-req-lab">Region</span><span class="ub-req-val">Metro Manila</span></span>
+          </div>
+          <div class="ub-req-row">
+            <span class="ub-req-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>
+            <span><span class="ub-req-lab">Metric</span><span class="ub-req-val">On-time throughput</span></span>
+          </div>
+          <div class="ub-req-row ub-req-when">
+            <span class="ub-req-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M9 3v4M15 3v4"/></svg></span>
+            <span><span class="ub-req-lab">Window</span><span class="ub-req-val">This quarter</span></span>
+          </div>
+          <button class="ub-btn ub-btn-primary ub-btn-wide" type="button">See prices</button>
+        </div>
+      </div>
+      <div class="ub-wrap ub-chips" id="ubChips" aria-label="Quick starts"></div>
+    </section>
+
+    <!-- ── PROMO CARDS — alternating, illustrated ─────────────────────── -->
+    <section class="ub-section" id="ubProducts">
+      <div class="ub-wrap">
+        <div class="ub-sec-head">
+          <p class="ub-eyebrow">Products</p>
+          <h2 class="ub-display-xl">Plan for the whole operation</h2>
+        </div>
+
+        <article class="ub-promo">
+          <div class="ub-promo-art ub-art-riders" aria-hidden="true">
+            <div class="ub-art-tile"><span class="ub-art-num">98.4%</span><span class="ub-art-lab">On-time throughput · six regions</span>
+              <svg viewBox="0 0 300 90" preserveAspectRatio="none"><path d="M0 72 L43 64 L86 68 L129 44 L172 50 L215 26 L258 32 L300 14" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="ub-promo-copy">
+            <h3 class="ub-display-md">Every region on one ledger</h3>
+            <p class="ub-body">Compare throughput and revenue across six regions at a glance. A change in one shows up in the others instantly — no reconciliation call.</p>
+            <a class="ub-btn ub-btn-primary" href="#ubPricing">Get started</a>
+          </div>
+        </article>
+
+        <article class="ub-promo ub-promo-rev">
+          <div class="ub-promo-art ub-art-drivers" aria-hidden="true">
+            <div class="ub-art-tile ub-art-dark"><span class="ub-art-num">$48.2k</span><span class="ub-art-lab">Revenue · this week</span>
+              <div class="ub-bars" aria-hidden="true"><i style="height:38%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:66%"></i><i style="height:92%"></i></div>
+            </div>
+          </div>
+          <div class="ub-promo-copy">
+            <h3 class="ub-display-md">Revenue and throughput, one board</h3>
+            <p class="ub-body">Keep delivery economics next to the work itself. Northwind pins revenue to the same ledger as the shipments that produced it.</p>
+            <a class="ub-btn ub-btn-subtle" href="#ubWhy">Learn more</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── BLACK MID-PAGE PROMO BAND ──────────────────────────────────── -->
+    <section class="ub-dark-band" id="ubWhy">
+      <div class="ub-wrap ub-dark-in">
+        <div class="ub-promo-art ub-art-dark-illus" aria-hidden="true">
+          <div class="ub-art-tile ub-art-onblack"><span class="ub-art-num">6</span><span class="ub-art-lab">regions, live right now</span>
+            <div class="ub-map" aria-hidden="true"><span class="ub-map-dot" style="left:24%;top:38%"></span><span class="ub-map-dot" style="left:52%;top:60%"></span><span class="ub-map-dot" style="left:74%;top:30%"></span></div>
+          </div>
+        </div>
+        <div class="ub-dark-copy">
+          <h2 class="ub-display-xxl">Drive decisions when you want.</h2>
+          <p class="ub-body-on-dark">Northwind runs your dashboards, alerts, and forecasts on one schedule you set. Bring the whole operation online and read it from anywhere.</p>
+          <div class="ub-dark-actions">
+            <a class="ub-btn ub-btn-secondary" href="#ubPricing">Start free</a>
+            <a class="ub-btn ub-btn-ghost-on-dark" href="#ubProducts">See the product</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ANNUAL SHOWCASE CARD ───────────────────────────────────────── -->
+    <section class="ub-section">
+      <div class="ub-wrap">
+        <div class="ub-showcase" aria-label="Northwind operations review">
+          <div class="ub-showcase-art" aria-hidden="true">
+            <span class="ub-showcase-year">2026</span>
+          </div>
+          <div class="ub-showcase-copy">
+            <p class="ub-eyebrow-on-dark">Annual review</p>
+            <h2 class="ub-display-lg">The operations report, all in one place.</h2>
+            <p class="ub-body-on-dark">Every region, every quarter, every dollar — published as a living board instead of a PDF.</p>
+            <a class="ub-app-pill" href="#">Open the review</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ────────────────────────────────────────────────────────── -->
+    <section class="ub-section" id="ubPricing">
+      <div class="ub-wrap ub-faq-wrap">
+        <div class="ub-faq-head">
+          <p class="ub-eyebrow">Questions</p>
+          <h2 class="ub-display-xl">Everything you asked</h2>
+          <a class="ub-btn ub-btn-subtle" href="#ubFaq">Visit support</a>
+        </div>
+        <div class="ub-faq" id="ubFaq"></div>
+      </div>
+    </section>
+
+    <!-- ── APP DOWNLOAD PILLS ─────────────────────────────────────────── -->
+    <section class="ub-downloads">
+      <div class="ub-wrap ub-dl-in">
+        <div><p class="ub-display-md">Download the Operations app</p><a class="ub-app-pill" href="#">Get it on iOS & Android</a></div>
+        <div><p class="ub-display-md">Download the Field app</p><a class="ub-app-pill" href="#">Get it on iOS & Android</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER — black ─────────────────────────────────────────────── -->
+  <footer class="ub-foot">
+    <div class="ub-wrap">
+      <p class="ub-foot-word">Northwind</p>
+      <div class="ub-foot-grid">
+        <div><p class="ub-foot-head">Product</p><a href="#ubProducts">Dashboards</a><a href="#ubWhy">Alerts</a><a href="#ubPricing">Pricing</a></div>
+        <div><p class="ub-foot-head">Company</p><a href="#">About</a><a href="#">Newsroom</a><a href="#">Careers</a></div>
+        <div><p class="ub-foot-head">Support</p><a href="#ubFaq">Help center</a><a href="#">Status</a></div>
+        <div><p class="ub-foot-head">Legal</p><a class="ub-foot-link" href="#">Privacy</a><a class="ub-foot-link" href="#">Terms</a></div>
+      </div>
+      <p class="ub-foot-fine">© 2026 · Sample data — showcase only</p>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,197 @@
+/* ══ NORTHWIND — in the Airtable design language, for showcase.html ══════════
+   White canvas, near-black pill primary, editorial Haas-weight type (Inter
+   substitute), full-bleed signature coral/forest/dark cards, uneven demo grid,
+   cream callouts, and a pricing sub-system in Inter Display + pill buttons. */
+
+.own-airtable {
+  --primary: #181d26;
+  --primary-active: #0d1218;
+  --ink: #181d26;
+  --body: #333840;
+  --muted: #41454d;
+  --hairline: #dddddd;
+  --border-strong: #9297a0;
+  --canvas: #ffffff;
+  --surface-soft: #f8fafc;
+  --surface-strong: #e0e2e6;
+  --surface-dark: #181d26;
+  --signature-coral: #aa2d00;
+  --signature-forest: #0a2e0e;
+  --signature-cream: #f5e9d4;
+  --signature-peach: #fcab79;
+  --signature-mint: #a8d8c4;
+  --signature-yellow: #f4d35e;
+  --link: #1b61c9;
+  --info-border: #458fff;
+  --success: #006400;
+  --r-xs: 2px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-pill: 9999px;
+  --font: 'Inter', 'Haas Groot Disp', Haas, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Inter Display', 'Inter', system-ui, sans-serif;
+  --gut: clamp(24px, 5cqi, 80px);
+  --section: clamp(56px, 7cqi, 96px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.35;
+  text-align: left;
+  border-radius: 13px;
+  overflow-x: clip;
+}
+.own-airtable *, .own-airtable *::before, .own-airtable *::after { box-sizing: border-box; }
+.own-airtable a { color: inherit; text-decoration: none; }
+.own-airtable button { font: inherit; cursor: pointer; }
+.own-airtable :focus-visible { outline: 2px solid var(--info-border); outline-offset: 2px; border-radius: 4px; }
+
+/* ── buttons ──────────────────────────────────────────────────────────────── */
+.own-airtable .at-btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 24px; border: 1px solid transparent; border-radius: var(--r-lg); font-size: 16px; font-weight: 500; line-height: 1.4; }
+.own-airtable .at-btn-sm { padding: 10px 16px; font-size: 14px; }
+.own-airtable .at-btn-primary { background: var(--primary); color: #fff; }
+.own-airtable .at-btn-primary:hover { background: var(--primary-active); }
+.own-airtable .at-btn-secondary { background: var(--canvas); color: var(--ink); border-color: var(--hairline); }
+.own-airtable .at-btn-secondary:hover { border-color: var(--border-strong); }
+.own-airtable .at-btn-pill { background: var(--canvas); color: #1d1f25; border-color: var(--border-strong); border-radius: var(--r-pill); padding: 12px 24px; }
+.own-airtable .at-btn-pill:hover { border-color: var(--ink); }
+
+/* ── top nav (64px) ───────────────────────────────────────────────────────── */
+.own-airtable .at-nav { position: sticky; top: 68px; z-index: 30; display: flex; align-items: center; gap: 28px; height: 64px; padding: 0 var(--gut); background: var(--canvas); border-bottom: 1px solid var(--hairline); }
+.own-airtable .at-brand { font-size: 22px; font-weight: 500; letter-spacing: -.01em; }
+.own-airtable .at-menu { display: flex; gap: 22px; font-size: 14px; color: var(--body); }
+.own-airtable .at-menu a:hover { color: var(--ink); }
+.own-airtable .at-nav-right { display: flex; align-items: center; gap: 18px; margin-left: auto; }
+.own-airtable .at-navlink { font-size: 14px; color: var(--body); }
+.own-airtable .at-navlink:hover { color: var(--ink); }
+
+/* ── hero (calm white canvas, no gradient) ────────────────────────────────── */
+.own-airtable .at-hero { max-width: 1280px; margin: 0 auto; padding: var(--section) var(--gut) calc(var(--section) * .6); text-align: center; }
+.own-airtable .at-h1 { font-family: var(--font); font-size: clamp(34px, 5.2cqi, 40px); font-weight: 400; line-height: 1.2; max-width: 20ch; margin: 0 auto; }
+.own-airtable .at-hero-sub { font-size: 16px; color: var(--body); line-height: 1.5; max-width: 60ch; margin: 22px auto 32px; }
+.own-airtable .at-hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ── logo strip ───────────────────────────────────────────────────────────── */
+.own-airtable .at-logos { padding: 40px var(--gut); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+.own-airtable .at-logos-label { text-align: center; font-size: 14px; font-weight: 500; letter-spacing: .16px; color: var(--muted); margin-bottom: 22px; }
+.own-airtable .at-logo-row { display: flex; align-items: center; justify-content: center; gap: clamp(24px, 4cqi, 56px); flex-wrap: wrap; }
+.own-airtable .at-logo { font-size: 18px; font-weight: 500; color: var(--muted); letter-spacing: .02em; }
+
+/* ── signature coral card ─────────────────────────────────────────────────── */
+.own-airtable .at-signature {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+  margin: var(--section) var(--gut) 0; padding: 48px; border-radius: var(--r-lg);
+  background: var(--signature-coral); color: #fff;
+}
+.own-airtable .at-sig-title { font-size: clamp(26px, 3.4cqi, 32px); font-weight: 400; line-height: 1.2; }
+.own-airtable .at-sig-body { font-size: 14px; line-height: 1.6; margin: 18px 0 28px; max-width: 46ch; color: rgba(255, 255, 255, .9); }
+.own-airtable .at-sig-figure { display: grid; gap: 20px; }
+.own-airtable .at-sig-frame { display: flex; align-items: flex-end; gap: 12px; height: 180px; padding: 20px; border-radius: var(--r-md); background: rgba(0, 0, 0, .22); }
+.own-airtable .at-sig-bar { flex: 1; border-radius: 4px 4px 0 0; background: rgba(255, 255, 255, .85); }
+.own-airtable .at-sig-stat { display: grid; }
+.own-airtable .at-sig-stat b { font-size: 40px; font-weight: 700; line-height: 1; }
+.own-airtable .at-sig-stat span { font-size: 14px; color: rgba(255, 255, 255, .85); margin-top: 4px; }
+
+/* ── demo band ────────────────────────────────────────────────────────────── */
+.own-airtable .at-band { max-width: 1280px; margin: 0 auto; padding: var(--section) var(--gut) 0; }
+.own-airtable .at-band-head { margin-bottom: 36px; max-width: 60ch; }
+.own-airtable .at-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: .16px; color: var(--muted); margin-bottom: 10px; }
+.own-airtable .at-h2 { font-size: clamp(28px, 3.8cqi, 32px); font-weight: 400; line-height: 1.2; }
+.own-airtable .at-band-sub { font-size: 14px; color: var(--body); line-height: 1.6; margin-top: 14px; }
+.own-airtable .at-demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.own-airtable .at-demo { display: grid; gap: 10px; padding: 24px; border-radius: var(--r-md); background: var(--fill, var(--canvas)); color: var(--ink, var(--ink)); align-content: start; min-height: 160px; }
+.own-airtable .at-demo[style*="--ink:#ffffff"] { color: #fff; }
+.own-airtable .at-span2 { grid-column: span 2; }
+.own-airtable .at-tall { min-height: 240px; }
+.own-airtable .at-demo-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .16px; text-transform: uppercase; opacity: .7; }
+.own-airtable .at-demo-title { font-size: 20px; font-weight: 400; line-height: 1.4; }
+.own-airtable .at-demo-title2 { font-size: 18px; font-weight: 500; line-height: 1.4; }
+.own-airtable .at-demo-num { font-size: 40px; font-weight: 700; line-height: 1; }
+.own-airtable .at-demo-big { font-size: 44px; font-weight: 700; line-height: 1; }
+.own-airtable .at-demo-label { font-size: 14px; font-weight: 500; opacity: .8; }
+.own-airtable .at-spark { width: 100%; height: 90px; margin-top: auto; }
+.own-airtable .at-mini-rows { display: grid; gap: 8px; }
+.own-airtable .at-mini-rows span { display: flex; justify-content: space-between; font-size: 14px; border-top: 1px solid rgba(0, 0, 0, .12); padding-top: 8px; }
+.own-airtable .at-mini-rows span:first-child { border-top: 0; padding-top: 0; }
+.own-airtable .at-mini-rows em { font-style: normal; font-weight: 500; }
+.own-airtable .at-num-dark { color: var(--ink); }
+.own-airtable .at-label-dark { color: var(--body); opacity: 1; }
+.own-airtable .at-meter { height: 8px; border-radius: 4px; background: rgba(0, 0, 0, .12); overflow: hidden; }
+.own-airtable .at-meter span { display: block; height: 100%; background: var(--ink); border-radius: 4px; }
+.own-airtable .at-table { display: grid; grid-template-columns: 1.2fr 1fr .7fr; gap: 8px 16px; font-size: 14px; }
+.own-airtable .at-table .at-th { font-size: 12px; font-weight: 600; letter-spacing: .16px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--hairline); padding-bottom: 6px; }
+.own-airtable .at-up { color: var(--success); }
+.own-airtable .at-down { color: var(--signature-coral); }
+
+/* ── feature row ──────────────────────────────────────────────────────────── */
+.own-airtable .at-feature { max-width: 1280px; margin: 0 auto; padding: var(--section) var(--gut) 0; display: grid; grid-template-columns: 1.3fr .7fr; gap: 48px; align-items: center; }
+.own-airtable .at-checklist { list-style: none; display: grid; gap: 16px; margin-top: 22px; }
+.own-airtable .at-checklist li { position: relative; padding-left: 30px; font-size: 14px; color: var(--body); line-height: 1.6; }
+.own-airtable .at-checklist li::before { content: ''; position: absolute; left: 0; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--signature-mint); }
+.own-airtable .at-checklist li::after { content: ''; position: absolute; left: 6px; top: 7px; width: 5px; height: 9px; border: solid var(--signature-forest); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.own-airtable .at-cream { padding: 32px 28px; border-radius: var(--r-md); background: var(--signature-cream); display: grid; gap: 6px; }
+.own-airtable .at-cream-kicker { font-size: 12px; font-weight: 600; letter-spacing: .16px; text-transform: uppercase; color: #6b5a36; }
+.own-airtable .at-cream-num { font-family: var(--font-display); font-size: clamp(34px, 5cqi, 44.8px); font-weight: 475; line-height: 1.1; color: #1d1f25; }
+.own-airtable .at-cream-label { font-size: 14px; color: #5c4e2f; }
+
+/* ── pricing sub-system ───────────────────────────────────────────────────── */
+.own-airtable .at-pricing { max-width: 1280px; margin: 0 auto; padding: var(--section) var(--gut) 0; }
+.own-airtable .at-price-h { font-family: var(--font-display); font-size: clamp(26px, 3.6cqi, 28px); font-weight: 475; line-height: 1.2; text-align: center; margin-bottom: 40px; }
+.own-airtable .at-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.own-airtable .at-tier { display: grid; gap: 16px; padding: 32px; border-radius: var(--r-md); border: 1px solid var(--hairline); background: var(--canvas); align-content: start; }
+.own-airtable .at-tier-featured { background: var(--surface-soft); border-color: transparent; }
+.own-airtable .at-tier-name { font-family: var(--font-display); font-size: 20px; font-weight: 475; line-height: 1.3; }
+.own-airtable .at-tier-price { font-family: var(--font-display); font-size: clamp(34px, 5cqi, 44.8px); font-weight: 475; line-height: 1.1; }
+.own-airtable .at-tier-price small { font-size: 14px; font-weight: 400; color: var(--muted); }
+.own-airtable .at-tier-note { font-size: 14px; color: var(--body); margin-top: -6px; }
+.own-airtable .at-tier-list { list-style: none; display: grid; gap: 10px; font-size: 14px; color: var(--body); }
+.own-airtable .at-tier-list li { padding-left: 22px; position: relative; }
+.own-airtable .at-tier-list li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+
+/* ── CTA bands ────────────────────────────────────────────────────────────── */
+.own-airtable .at-cta-dark { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin: var(--section) var(--gut) 0; padding: 48px; border-radius: var(--r-lg); background: var(--surface-dark); color: #fff; }
+.own-airtable .at-cta-h { font-size: clamp(24px, 3.4cqi, 32px); font-weight: 400; line-height: 1.2; max-width: 22ch; }
+.own-airtable .at-cta-light { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin: 24px var(--gut) 0; padding: 48px; border-radius: var(--r-lg); background: var(--surface-strong); }
+.own-airtable .at-cta2-h { font-size: clamp(24px, 3.4cqi, 32px); font-weight: 400; line-height: 1.2; }
+
+/* ── footer ───────────────────────────────────────────────────────────────── */
+.own-airtable .at-footer { margin-top: var(--section); border-top: 1px solid var(--hairline); padding: 64px var(--gut) 32px; }
+.own-airtable .at-foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+.own-airtable .at-foot-col { display: grid; gap: 10px; align-content: start; }
+.own-airtable .at-foot-col h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.own-airtable .at-foot-col a { font-size: 14px; color: var(--muted); }
+.own-airtable .at-foot-col a:hover { color: var(--link); }
+.own-airtable .at-legal { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; max-width: 1280px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--muted); }
+.own-airtable .at-legal-links { display: inline-flex; gap: 18px; }
+.own-airtable .at-legal-links a:hover { color: var(--link); }
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-airtable .at-menu { display: none; }
+  .own-airtable .at-signature { grid-template-columns: 1fr; gap: 32px; }
+  .own-airtable .at-demo-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-airtable .at-feature { grid-template-columns: 1fr; gap: 32px; }
+  .own-airtable .at-tiers { grid-template-columns: 1fr; }
+  .own-airtable .at-foot-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 760px) {
+  .own-airtable .at-nav { top: 0; height: auto; padding: 12px 16px; gap: 12px; }
+  .own-airtable .at-nav-right .at-navlink { display: none; }
+  .own-airtable .at-hero { padding: 48px 16px 32px; }
+  .own-airtable .at-band, .own-airtable .at-feature, .own-airtable .at-pricing { padding: 48px 16px 0; }
+  .own-airtable .at-signature { margin: 48px 16px 0; padding: 28px 20px; }
+  .own-airtable .at-demo-grid { grid-template-columns: 1fr; }
+  .own-airtable .at-span2 { grid-column: auto; }
+  .own-airtable .at-cta-dark, .own-airtable .at-cta-light { margin: 48px 16px 0; padding: 28px 20px; }
+  .own-airtable .at-footer { padding: 48px 16px 24px; }
+}
+@container frame (max-width: 430px) {
+  .own-airtable .at-foot-cols { grid-template-columns: 1fr; }
+  .own-airtable .at-hero-cta .at-btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-airtable *, .own-airtable *::before, .own-airtable *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}

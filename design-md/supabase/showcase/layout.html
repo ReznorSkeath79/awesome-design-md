@@ -1,0 +1,195 @@
+<div class="own-supabase">
+  <header class="sp-bar">
+    <a class="sp-brand" href="#sp-top">
+      <span class="sp-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M13 2 4 13h6l-1 9 9-11h-6z"/></svg>
+      </span>
+      <span class="sp-wordmark">Northwind</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a href="#sp-product">Product</a>
+      <a href="#sp-developers">Developers</a>
+      <a href="#sp-pricing">Pricing</a>
+      <a href="#sp-docs">Docs</a>
+    </nav>
+    <div class="sp-bar-right">
+      <a class="sp-signin" href="#">Sign in</a>
+      <a class="sp-btn sp-btn-primary" href="#">Start your project</a>
+    </div>
+  </header>
+
+  <section class="sp-hero" id="sp-top" aria-labelledby="sp-hero-h">
+    <div class="sp-hero-copy">
+      <span class="sp-pill">Now in general availability</span>
+      <h1 id="sp-hero-h">The open operations backend for every region</h1>
+      <p class="sp-hero-lead">Northwind is a Postgres-grade analytics platform. Query throughput, build dashboards, and stream regional events from one API &mdash; with SQL you already know.</p>
+      <div class="sp-hero-cta">
+        <a class="sp-btn sp-btn-primary" href="#">Start your project</a>
+        <a class="sp-btn sp-btn-outline" href="#sp-docs">Documentation</a>
+      </div>
+      <p class="sp-hero-fine">Free tier &middot; no credit card &middot; self-hostable</p>
+    </div>
+    <div class="sp-stack" aria-hidden="true">
+      <div class="sp-pane sp-pane-back">
+        <div class="sp-pane-bar"><i></i><i></i><i></i></div>
+        <div class="sp-pane-row"><span>north</span><span class="num">48,210</span></div>
+        <div class="sp-pane-row"><span>south</span><span class="num">36,904</span></div>
+      </div>
+      <div class="sp-pane sp-pane-front">
+        <div class="sp-pane-bar"><i></i><i></i><i></i><span class="sp-pane-title">SQL editor</span></div>
+        <pre><span class="sp-c-key">select</span> region, <span class="sp-c-fn">sum</span>(orders) <span class="sp-c-key">as</span> volume
+<span class="sp-c-key">from</span> throughput
+<span class="sp-c-key">group by</span> region
+<span class="sp-c-key">order by</span> volume <span class="sp-c-key">desc</span>;</pre>
+        <div class="sp-pane-result">
+          <div class="sp-pane-row sp-pane-head"><span>region</span><span class="num">volume</span></div>
+          <div class="sp-pane-row"><span>east</span><span class="num">61,553</span></div>
+          <div class="sp-pane-row"><span>north</span><span class="num">48,210</span></div>
+          <div class="sp-pane-row"><span>west</span><span class="num">29,108</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp-logos" aria-label="Customers">
+    <p>Trusted in production by teams at</p>
+    <div class="sp-logos-row">
+      <span>Halcyon</span><span>Northbeam</span><span>Arcadia</span><span>Vertica</span><span>Foundry</span><span>Lumen</span>
+    </div>
+  </section>
+
+  <section class="sp-feature" id="sp-product" aria-labelledby="sp-feat-h">
+    <div class="sp-feature-copy">
+      <span class="sp-eyebrow">The platform</span>
+      <h2 id="sp-feat-h">Ship the dashboard, not the plumbing</h2>
+      <p>Point Northwind at your order stream and query it like any table. Auth, row-level rules, and realtime updates come standard, so regional dashboards take hours instead of quarters.</p>
+      <div class="sp-tabs" role="tablist" aria-label="Capabilities">
+        <button type="button" class="sp-tab on" role="tab" aria-selected="true">Database</button>
+        <button type="button" class="sp-tab" role="tab" aria-selected="false">Analytics</button>
+        <button type="button" class="sp-tab" role="tab" aria-selected="false">Realtime</button>
+      </div>
+      <ul class="sp-check">
+        <li>Row-level rules per region and store</li>
+        <li>Materialised views refreshed on schedule</li>
+        <li>Realtime subscriptions over websockets</li>
+      </ul>
+      <a class="sp-tlink" href="#">Explore the platform &rarr;</a>
+    </div>
+    <div class="sp-dash" aria-hidden="true">
+      <div class="sp-pane sp-pane-dark">
+        <div class="sp-pane-bar"><i></i><i></i><i></i><span class="sp-pane-title">throughput.sql</span></div>
+        <pre><span class="sp-c-key">create</span> materialized view ops.daily <span class="sp-c-key">as</span>
+<span class="sp-c-key">select</span> date_trunc(<span class="sp-c-str">'day'</span>, at),
+       region, <span class="sp-c-fn">count</span>(*) <span class="sp-c-key">as</span> orders
+<span class="sp-c-key">from</span> ops.events
+<span class="sp-c-key">group by</span> <span class="sp-c-num">1</span>, <span class="sp-c-num">2</span>;</pre>
+      </div>
+      <div class="sp-pane sp-pane-table">
+        <div class="sp-pane-row sp-pane-head"><span>Region</span><span class="num">Orders</span><span class="num">Refund</span></div>
+        <div class="sp-pane-row"><span>East</span><span class="num">61,553</span><span class="num">0.4%</span></div>
+        <div class="sp-pane-row"><span>North</span><span class="num">48,210</span><span class="num">0.9%</span></div>
+        <div class="sp-pane-row"><span>South</span><span class="num">36,904</span><span class="num">0.2%</span></div>
+        <div class="sp-pane-row"><span>West</span><span class="num">29,108</span><span class="num">0.6%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp-dark" aria-labelledby="sp-dark-h">
+    <div class="sp-dark-copy">
+      <span class="sp-eyebrow sp-eyebrow-dark">Builders</span>
+      <h2 id="sp-dark-h">Start from a real ops schema</h2>
+      <p>Every new project ships with an events table, a regions table, and a set of analytics views already wired. Replace the seed rows, keep the shape.</p>
+      <a class="sp-btn sp-btn-on-green" href="#">Open the starter</a>
+    </div>
+    <pre class="sp-code" aria-hidden="true"><span class="sp-c-key">insert into</span> ops.regions
+  (code, name, timezone)
+<span class="sp-c-key">values</span>
+  (<span class="sp-c-str">'north'</span>, <span class="sp-c-str">'North'</span>, <span class="sp-c-str">'UTC-5'</span>),
+  (<span class="sp-c-str">'south'</span>, <span class="sp-c-str">'South'</span>, <span class="sp-c-str">'UTC-3'</span>);</pre>
+  </section>
+
+  <section class="sp-pricing" id="sp-pricing" aria-labelledby="sp-price-h">
+    <div class="sp-price-head">
+      <span class="sp-eyebrow">Pricing</span>
+      <h2 id="sp-price-h">Free to start. Predictable at scale.</h2>
+      <p>Every project gets the full platform. Pick a tier based on the regions and retention you need.</p>
+    </div>
+    <div class="sp-price-grid">
+      <article class="sp-pcard">
+        <h3>Free</h3>
+        <p class="sp-price"><span>$0</span><small>/mo</small></p>
+        <p class="sp-pcard-sub">For prototypes and side projects.</p>
+        <ul><li>1 project</li><li>2 regions</li><li>7-day retention</li></ul>
+        <a class="sp-btn sp-btn-primary sp-btn-block" href="#">Start free</a>
+      </article>
+      <article class="sp-pcard">
+        <h3>Pro</h3>
+        <p class="sp-price"><span>$25</span><small>/mo</small></p>
+        <p class="sp-pcard-sub">For teams in production.</p>
+        <ul><li>Unlimited projects</li><li>10 regions</li><li>90-day retention</li></ul>
+        <a class="sp-btn sp-btn-primary sp-btn-block" href="#">Choose Pro</a>
+      </article>
+      <article class="sp-pcard sp-pcard-featured">
+        <span class="sp-pcard-flag">Most popular</span>
+        <h3>Team</h3>
+        <p class="sp-price"><span>$599</span><small>/mo</small></p>
+        <p class="sp-pcard-sub">For multi-region operators.</p>
+        <ul><li>Unlimited regions</li><li>SSO &amp; audit logs</li><li>Priority support</li></ul>
+        <a class="sp-btn sp-btn-on-green sp-btn-block" href="#">Choose Team</a>
+      </article>
+      <article class="sp-pcard">
+        <h3>Enterprise</h3>
+        <p class="sp-price"><span>Custom</span></p>
+        <p class="sp-pcard-sub">For regulated deployments.</p>
+        <ul><li>Self-hosted</li><li>Dedicated region</li><li>Solutions architect</li></ul>
+        <a class="sp-btn sp-btn-outline sp-btn-block" href="#">Contact us</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="sp-dev" id="sp-developers" aria-labelledby="sp-dev-h">
+    <div class="sp-dev-copy">
+      <span class="sp-eyebrow">Developers</span>
+      <h2 id="sp-dev-h">One command to a live backend</h2>
+      <p>Initialise a project, generate typed clients for every language, and push schema changes with a migration file.</p>
+      <div class="sp-dev-cta">
+        <a class="sp-btn sp-btn-primary" href="#">Read the docs</a>
+        <a class="sp-btn sp-btn-outline" href="#">Get API keys</a>
+      </div>
+    </div>
+    <div class="sp-codeblock" aria-hidden="true">
+      <div class="sp-codeblock-bar"><i></i><i></i><i></i></div>
+      <pre>npx northwind init
+npx northwind regions add north
+<span class="sp-c-key"># &rarr;</span> linked north &middot; ready in 4s</pre>
+    </div>
+  </section>
+
+  <section class="sp-cta" id="sp-docs" aria-labelledby="sp-cta-h">
+    <div class="sp-cta-inner">
+      <h2 id="sp-cta-h">Build the operations view your team deserves</h2>
+      <p>Start free today. Bring every region onto one backend and watch throughput update in real time.</p>
+      <div class="sp-cta-row">
+        <a class="sp-btn sp-btn-primary" href="#">Start your project</a>
+        <a class="sp-btn sp-btn-outline" href="#">Talk to sales</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sp-foot">
+    <div class="sp-foot-grid">
+      <div class="sp-foot-brand">
+        <span class="sp-wordmark">Northwind</span>
+        <p>Operations analytics for every region. Sample data, showcase only.</p>
+      </div>
+      <nav class="sp-foot-col" aria-label="Product"><h4>Product</h4><a href="#">Database</a><a href="#">Analytics</a><a href="#">Realtime</a></nav>
+      <nav class="sp-foot-col" aria-label="Developers"><h4>Developers</h4><a href="#">Docs</a><a href="#">API</a><a href="#">Status</a></nav>
+      <nav class="sp-foot-col" aria-label="Company"><h4>Company</h4><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a></nav>
+      <nav class="sp-foot-col" aria-label="Legal"><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></nav>
+    </div>
+    <div class="sp-foot-row">
+      <span>&copy; 2026 Northwind &mdash; fictional brand</span>
+      <span class="sp-foot-social" aria-label="Social"><a href="#" aria-label="GitHub">GH</a><a href="#" aria-label="X">X</a><a href="#" aria-label="Discord">DC</a></span>
+    </div>
+  </footer>
+</div>

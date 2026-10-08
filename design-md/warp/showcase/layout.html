@@ -1,0 +1,209 @@
+<div class="own-warp">
+  <!-- ── NAV (warm dark, tight radii) ─────────────────────────────────────── -->
+  <header class="wp-nav">
+    <a class="wp-logo" href="#wp-top" aria-label="Northwind home">
+      <span class="wp-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg>
+      </span>
+      <span class="wp-wordmark">Northwind</span>
+    </a>
+    <nav class="wp-nav-links" aria-label="Sections">
+      <a href="#wp-product">Product</a>
+      <a href="#wp-customers">Customers</a>
+      <a href="#wp-download">Download</a>
+      <a href="#wp-press">Press</a>
+    </nav>
+    <div class="wp-nav-right">
+      <a class="wp-nav-ghost" href="#wp-download">Sign in</a>
+      <a class="wp-btn wp-btn-primary" href="#wp-download">Download</a>
+      <button class="wp-burger" type="button" aria-label="Menu" data-wp-burger>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="wp-drawer" aria-label="Mobile" data-wp-drawer hidden>
+      <a href="#wp-product">Product</a>
+      <a href="#wp-customers">Customers</a>
+      <a href="#wp-download">Download</a>
+      <a href="#wp-press">Press</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO (warm dark, split terminal mockups) ─────────────────────────── -->
+  <section class="wp-hero" id="wp-top" aria-labelledby="wpHeroH">
+    <div class="wp-shell">
+      <p class="wp-eyebrow">The agentic operations environment</p>
+      <h1 id="wpHeroH" class="wp-display-xl">Northwind is the operations<br>environment <span class="wp-em">for every region</span>.</h1>
+      <p class="wp-lead">One warm, quiet surface for the dashboards, rollups and agents your teams run all day — with an agent that reads your warehouse so you don&rsquo;t have to.</p>
+      <div class="wp-hero-cta">
+        <a class="wp-btn wp-btn-primary" href="#wp-download">Download for Mac</a>
+        <a class="wp-btn wp-btn-ghost" href="#wp-product">See how it works &rarr;</a>
+      </div>
+
+      <div class="wp-terminal-split">
+        <div class="wp-term" aria-label="Agent terminal mockup">
+          <div class="wp-term-head">
+            <span class="wp-term-title">Northwind Agent</span>
+            <span class="wp-term-chip">Agent</span>
+          </div>
+          <pre class="wp-term-body"><code><span class="wp-p">northwind&gt;</span> <span class="wp-cmd">summarize</span> apac-region --since monday
+<span class="wp-dim">reading 12 dashboards...</span>
+<span class="wp-ok">✓</span> Throughput up <span class="wp-num">4.1×</span> vs last week
+<span class="wp-ok">✓</span> Exceptions flagged: <span class="wp-num">3</span> region(s)
+<span class="wp-ok">✓</span> Draft board pack ready</code></pre>
+        </div>
+        <div class="wp-term" aria-label="Terminal session mockup">
+          <div class="wp-term-head">
+            <span class="wp-term-title">Northwind Terminal</span>
+            <span class="wp-term-chip">Terminal</span>
+          </div>
+          <pre class="wp-term-body"><code><span class="wp-p">~/ops</span> <span class="wp-cmd">nw</span> run nightly-rollup
+<span class="wp-dim">▸ pulling warehouse... done</span>
+<span class="wp-dim">▸ aggregating 48 regions...</span>
+<span class="wp-ok">✓</span> rollup complete in <span class="wp-num">6m 12s</span>
+<span class="wp-p">~/ops</span> <span class="wp-cursor">▍</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNER LOGO STRIP ────────────────────────────────────────────────── -->
+  <section class="wp-logos" aria-label="Partners">
+    <div class="wp-shell">
+      <p class="wp-eyebrow wp-eyebrow-sm">Operations teams building on Northwind</p>
+      <div class="wp-logo-row">
+        <span class="wp-logo-tile">Meridian</span>
+        <span class="wp-logo-tile">Northgate</span>
+        <span class="wp-logo-tile">Lattice</span>
+        <span class="wp-logo-tile">Corbin</span>
+        <span class="wp-logo-tile">Halcyon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ──────────────────────────────────────────────────────────── -->
+  <section class="wp-band" id="wp-product" aria-labelledby="wpProductH">
+    <div class="wp-shell">
+      <p class="wp-eyebrow">Built for the desk</p>
+      <h2 id="wpProductH" class="wp-display-lg">Everything the quiet way.</h2>
+      <div class="wp-feature-grid">
+        <article class="wp-card">
+          <span class="wp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8"/></svg></span>
+          <h3 class="wp-display-sm">Dashboards that behave</h3>
+          <p class="wp-body">Build a board once and it stays legible as data grows — no reflow, no clipping, no last-minute fixes before the review.</p>
+        </article>
+        <article class="wp-card">
+          <span class="wp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><circle cx="12" cy="12" r="4"/></svg></span>
+          <h3 class="wp-display-sm">An agent that reads</h3>
+          <p class="wp-body">Ask in plain language; the agent queries the warehouse, cites the rows, and drafts the summary you were going to write.</p>
+        </article>
+        <article class="wp-card">
+          <span class="wp-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+          <h3 class="wp-display-sm">Governed by default</h3>
+          <p class="wp-body">Row-level policy and per-team quotas, evaluated at query time, so every region sees exactly its own numbers.</p>
+        </article>
+      </div>
+
+      <!-- terminal mockup feature row -->
+      <div class="wp-feature-row">
+        <div class="wp-feature-copy">
+          <h3 class="wp-display-md">Your workflow, already in the terminal.</h3>
+          <p class="wp-body">Northwind ships as an environment, not a portal. Pipe rollups, schedule agents, and keep your shell prompt exactly where it belongs.</p>
+          <ul class="wp-check-list">
+            <li>Native Mac, Linux and Windows builds</li>
+            <li>Offline-first — sync when the region reconnects</li>
+            <li>Bring your own model provider</li>
+          </ul>
+        </div>
+        <div class="wp-term wp-term-lg" aria-label="Workflow mockup">
+          <div class="wp-term-head"><span class="wp-term-title">ops.config</span></div>
+          <pre class="wp-term-body"><code><span class="wp-key">region</span>   = <span class="wp-str">"apac"</span>
+<span class="wp-key">schedule</span> = <span class="wp-str">"0 6 * * *"</span>
+<span class="wp-key">agent</span>    = <span class="wp-str">"regional-rollup"</span>
+
+<span class="wp-com"># every board, refreshed before the standup</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIAL ───────────────────────────────────────────────────────── -->
+  <section class="wp-band wp-band-tight" id="wp-customers" aria-labelledby="wpQuoteH">
+    <div class="wp-shell">
+      <h2 id="wpQuoteH" class="wp-display-lg wp-sr-only">What operators say</h2>
+      <figure class="wp-quote">
+        <div class="wp-portrait" aria-hidden="true">
+          <svg viewBox="0 0 96 96"><rect width="96" height="96" fill="#413a35"/><circle cx="48" cy="38" r="18" fill="#c9c0ad"/><path d="M18 96c4-20 16-30 30-30s26 10 30 30z" fill="#c9c0ad"/></svg>
+        </div>
+        <blockquote class="wp-quote-text">The warmth is not cosmetic. Northwind is the first operations tool my team opens on purpose — and the first one the regional managers actually keep open.</blockquote>
+        <figcaption>
+          <span class="wp-quote-name">Priya Raghunathan</span>
+          <span class="wp-quote-role">VP OPERATIONS &middot; NORTHGATE FREIGHT</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── PRESS ──────────────────────────────────────────────────────────────── -->
+  <section class="wp-band wp-band-tight" id="wp-press" aria-labelledby="wpPressH">
+    <div class="wp-shell">
+      <p class="wp-eyebrow">In the news</p>
+      <h2 id="wpPressH" class="wp-display-md">Press coverage</h2>
+      <ul class="wp-press">
+        <li class="wp-press-row"><span class="wp-press-source">The Operator</span><span class="wp-press-title">Northwind wants to make operations dashboards quiet again</span><span class="wp-press-date">Mar 2026</span></li>
+        <li class="wp-press-row"><span class="wp-press-source">Terminal Weekly</span><span class="wp-press-title">Why an agentic environment beats another web portal</span><span class="wp-press-date">Feb 2026</span></li>
+        <li class="wp-press-row"><span class="wp-press-source">Scale Review</span><span class="wp-press-title">The warm-dark canvas, and other lessons in restraint</span><span class="wp-press-date">Jan 2026</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── DOWNLOAD ──────────────────────────────────────────────────────────── -->
+  <section class="wp-band" id="wp-download" aria-labelledby="wpDownloadH">
+    <div class="wp-shell">
+      <p class="wp-eyebrow">Get started</p>
+      <h2 id="wpDownloadH" class="wp-display-lg">Download Northwind.</h2>
+      <div class="wp-download-grid">
+        <a class="wp-dl-tile" href="#wp-top">
+          <span class="wp-dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 4c-3 0-5 2-5 5.5C13.5 9.5 15.5 8 16 4z"/><path d="M16 4c-4.5.5-8 3.5-8 8 0 3.5 2 6 5 6 1.5 0 2-.6 3-.6s1.5.6 3 .6c3 0 5-2.5 5-6 0-4.5-3.5-7.5-8-8z"/></svg></span>
+          <span class="wp-dl-name">macOS</span>
+          <span class="wp-dl-meta">Apple silicon &amp; Intel &middot; 48 MB</span>
+        </a>
+        <a class="wp-dl-tile" href="#wp-top">
+          <span class="wp-dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 3 7 3 11 0 4-1.5 6-3 7-1.5-1-3-3-3-7 0-4 1-8 3-11z"/><path d="M12 12c3 1 5 3 6 6-3 .5-5-.5-6-2"/><path d="M12 12c-3 1-5 3-6 6 3 .5 5-.5 6-2"/></svg></span>
+          <span class="wp-dl-name">Linux</span>
+          <span class="wp-dl-meta">.deb &amp; .rpm &middot; 42 MB</span>
+        </a>
+        <a class="wp-dl-tile" href="#wp-top">
+          <span class="wp-dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h8v8H3zM13 4h8v8h-8zM3 14h8v6H3zM13 14h8v6h-8z"/></svg></span>
+          <span class="wp-dl-name">Windows</span>
+          <span class="wp-dl-meta">x64 &amp; ARM64 &middot; 51 MB</span>
+        </a>
+        <a class="wp-dl-tile wp-dl-ghost" href="#wp-product">
+          <span class="wp-dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+          <span class="wp-dl-name">Command line</span>
+          <span class="wp-dl-meta">brew install northwind</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+  <footer class="wp-foot">
+    <div class="wp-shell">
+      <div class="wp-foot-top">
+        <div class="wp-foot-brand">
+          <span class="wp-wordmark">Northwind</span>
+          <p class="wp-foot-tag">The operations environment for every region.</p>
+        </div>
+        <nav class="wp-foot-links" aria-label="Footer">
+          <a href="#wp-product">Product</a>
+          <a href="#wp-customers">Customers</a>
+          <a href="#wp-press">Press</a>
+          <a href="#wp-download">Download</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </nav>
+      </div>
+      <p class="wp-foot-note">Sample data &mdash; showcase only. Northwind is a fictional product.</p>
+    </div>
+  </footer>
+</div>

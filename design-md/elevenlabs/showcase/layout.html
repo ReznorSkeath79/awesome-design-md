@@ -1,0 +1,143 @@
+<div class="own-elevenlabs">
+  <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
+  <header class="el-nav" id="elNav">
+    <a class="el-wordmark" href="#el-top" aria-label="Northwind home">Northwind</a>
+    <nav class="el-menu" aria-label="Primary">
+      <a href="#el-hero">Product</a>
+      <a href="#el-library">Operations</a>
+      <a href="#el-wave">Platform</a>
+      <a href="#el-pricing">Pricing</a>
+      <a href="#el-voices">Customers</a>
+    </nav>
+    <div class="el-nav-right">
+      <a class="el-nav-link" href="#">Sign in</a>
+      <a class="el-btn el-btn-primary" href="#el-pricing">Try free</a>
+      <button class="el-burger" type="button" id="elBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="el-top">
+    <!-- ── HERO with atmospheric gradient orb ─────────────────────────────── -->
+    <section id="el-hero" class="el-hero" aria-labelledby="elHeroH">
+      <div class="el-orb el-orb-mint" aria-hidden="true"></div>
+      <div class="el-orb el-orb-peach" aria-hidden="true"></div>
+      <div class="el-orb el-orb-lavender" aria-hidden="true"></div>
+      <p class="el-eyebrow">Operations intelligence</p>
+      <h1 id="elHeroH" class="el-hero-title">The operations story,<br>told in one clear voice</h1>
+      <p class="el-hero-sub">Northwind turns the noise of the floor into a single reconciled narrative &mdash; read the same way by the analyst, the line lead, and the night shift.</p>
+      <div class="el-hero-cta">
+        <a class="el-btn el-btn-primary el-btn-lg" href="#el-pricing">Try Northwind free</a>
+        <a class="el-btn el-btn-outline el-btn-lg" href="#el-wave">Hear a digest</a>
+      </div>
+
+      <!-- audio waveform card -->
+      <div id="el-wave" class="el-wave" aria-label="Shift digest playback">
+        <button class="el-wave-play" type="button" id="elPlay" aria-label="Play shift digest">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </button>
+        <div class="el-wave-mid">
+          <span class="el-wave-title">Shift digest &mdash; Line 04, week 41</span>
+          <div class="el-bars" id="elBars" aria-hidden="true"></div>
+        </div>
+        <span class="el-wave-time" id="elTime">0:18</span>
+      </div>
+    </section>
+
+    <!-- ── GRADIENT ORB FEATURE CARDS ──────────────────────────────────────── -->
+    <section class="el-orbcards" aria-labelledby="elOrbH">
+      <div class="el-orbcards-head">
+        <h2 id="elOrbH" class="el-h2">One governed model, every surface</h2>
+        <p class="el-lead">Calm, editorial, and consistent &mdash; from the board on the wall to the digest in a pocket.</p>
+      </div>
+      <div class="el-orb-grid" id="elOrbGrid"></div>
+    </section>
+
+    <!-- ── VOICE LIBRARY (rule-separated rows) ─────────────────────────────── -->
+    <section id="el-library" class="el-library" aria-labelledby="elLibH">
+      <div class="el-library-head">
+        <div>
+          <h2 id="elLibH" class="el-h2">The board library</h2>
+          <p class="el-lead">Every governed surface, ready to read, share, or schedule.</p>
+        </div>
+        <label class="el-search">
+          <span class="el-sr">Search boards</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search boards" autocomplete="off">
+        </label>
+      </div>
+      <ul class="el-voice-list" id="elVoiceList"></ul>
+    </section>
+
+    <!-- ── PRODUCT STACK ───────────────────────────────────────────────────── -->
+    <section class="el-stack-sec" aria-labelledby="elStackH">
+      <div class="el-stack-copy">
+        <p class="el-eyebrow">The platform</p>
+        <h2 id="elStackH" class="el-h2">Editorial pacing for operational data</h2>
+        <p class="el-lead">A semantic layer that reads like a magazine and audits like a ledger. Definitions held once, surfaced everywhere.</p>
+        <a class="el-link" href="#el-pricing">Explore the platform <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="el-stack" aria-hidden="true">
+        <div class="el-stack-card el-stack-a"><span class="el-stack-k">Line 04</span><span class="el-stack-v">98.4%</span></div>
+        <div class="el-stack-card el-stack-b"><span class="el-stack-k">Line 09</span><span class="el-stack-v">94.6%</span></div>
+        <div class="el-stack-card el-stack-c"><span class="el-stack-k">Line 07</span><span class="el-stack-v">92.8%</span></div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ────────────────────────────────────────────────────── -->
+    <section id="el-voices" class="el-quotes" aria-labelledby="elQuotesH">
+      <div class="el-quotes-head">
+        <h2 id="elQuotesH" class="el-h2">Trusted on the floor</h2>
+      </div>
+      <div class="el-quote-grid" id="elQuoteGrid"></div>
+    </section>
+
+    <!-- ── PRICING ──────────────────────────────────────────────────────────── -->
+    <section id="el-pricing" class="el-pricing" aria-labelledby="elPricingH">
+      <div class="el-pricing-head">
+        <h2 id="elPricingH" class="el-h2">Simple pricing, calmly stated</h2>
+        <p class="el-lead">Start free. Add regions and seats when the operation grows.</p>
+      </div>
+      <div class="el-tier-grid">
+        <article class="el-tier">
+          <span class="el-tier-name">Reader</span>
+          <span class="el-tier-price">Free</span>
+          <ul><li>1 board</li><li>1 seat</li><li>Community support</li></ul>
+          <a class="el-btn el-btn-outline" href="#">Get started</a>
+        </article>
+        <article class="el-tier el-tier-featured">
+          <span class="el-tier-name">Operations</span>
+          <span class="el-tier-price">$90<span>/seat/mo</span></span>
+          <ul><li>Unlimited boards</li><li>Scheduled digests</li><li>Reconciliation engine</li></ul>
+          <a class="el-btn el-btn-primary" href="#">Start free trial</a>
+        </article>
+        <article class="el-tier">
+          <span class="el-tier-name">Enterprise</span>
+          <span class="el-tier-price">Custom</span>
+          <ul><li>SSO &amp; audit</li><li>Private model</li><li>Dedicated support</li></ul>
+          <a class="el-btn el-btn-outline" href="#">Contact sales</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── CTA BAND ──────────────────────────────────────────────────────────── -->
+  <section class="el-cta" aria-labelledby="elCtaH">
+    <div class="el-orb el-orb-sky el-orb-cta" aria-hidden="true"></div>
+    <h2 id="elCtaH" class="el-cta-title">Bring the whole operation into one story</h2>
+    <a class="el-btn el-btn-primary el-btn-lg" href="#">Try Northwind free</a>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
+  <footer class="el-foot">
+    <div class="el-foot-cols">
+      <div class="el-foot-col"><h3>Product</h3><a href="#">Boards</a><a href="#">Metric model</a><a href="#">Digests</a><a href="#">Integrations</a></div>
+      <div class="el-foot-col"><h3>Solutions</h3><a href="#">Manufacturing</a><a href="#">Logistics</a><a href="#">Financial ops</a><a href="#">Public sector</a></div>
+      <div class="el-foot-col"><h3>Resources</h3><a href="#">Docs</a><a href="#">Blog</a><a href="#">Security</a><a href="#">Changelog</a></div>
+      <div class="el-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Newsroom</a><a href="#">Contact</a></div>
+    </div>
+    <div class="el-legal">
+      <span>&copy; 2026 Northwind Analytics — a fictional product. Sample data, showcase only.</span>
+      <span class="el-legal-right">Philippines</span>
+    </div>
+  </footer>
+</div>

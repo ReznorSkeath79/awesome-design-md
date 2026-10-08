@@ -1,0 +1,290 @@
+/* ══ NIKE — Northwind operations analytics in Nike's real page grammar ══════
+   Photography-first commerce chrome: towering uppercase Futura campaign lockup
+   over a full-bleed editorial field, then a dense neutral retail grid of
+   0-radius product cards on soft-cloud, pill-shaped black CTAs, a horizontal
+   region rail, an icon strip and disclosure rows. All selectors scoped under
+   `.own-nike`; `vw` becomes `cqi`. */
+
+.own-nike {
+  --ink: #111111;
+  --on-primary: #ffffff;
+  --canvas: #ffffff;
+  --soft-cloud: #f5f5f5;
+  --charcoal: #39393b;
+  --ash: #4b4b4d;
+  --mute: #707072;
+  --stone: #9e9ea0;
+  --hairline: #cacacb;
+  --hairline-soft: #e5e5e5;
+  --sale: #d30005;
+  --success: #007d48;
+  --info: #1151ff;
+  --accent-pink: #ed1aa0;
+  --accent-purple-soft: #beaffd;
+  --accent-teal: #0a7281;
+
+  --f-display: 'Nike Futura ND', 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  --f-ui: 'Helvetica Now Text', 'Helvetica Now Text Medium', 'Helvetica Now Display Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --gut: clamp(16px, 4.4cqi, 48px);
+  --sec: clamp(32px, 5cqi, 48px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+.own-nike *, .own-nike *::before, .own-nike *::after { box-sizing: border-box; }
+.own-nike p { margin: 0; }
+.own-nike a { color: inherit; text-decoration: none; }
+.own-nike img, .own-nike svg { display: block; }
+.own-nike button { font: inherit; }
+.own-nike :focus-visible { outline: 3px solid var(--info); outline-offset: 2px; }
+.own-nike .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.own-nike .skip {
+  position: absolute; left: 12px; top: -60px; z-index: 60;
+  padding: 10px 16px; border-radius: 999px; background: var(--ink); color: #fff;
+  font-weight: 500; transition: top .2s;
+}
+.own-nike .skip:focus { top: 12px; }
+
+/* ── shared type ─────────────────────────────────────────────────────── */
+.own-nike .row-title {
+  font-family: var(--f-ui); font-size: clamp(22px, 2.4cqi, 32px); font-weight: 500;
+  line-height: 1.2; letter-spacing: -0.2px; margin: 0;
+}
+.own-nike .link-md { font-size: 16px; font-weight: 500; text-decoration: underline; color: var(--ink); }
+
+/* ── buttons (pill geometry) ─────────────────────────────────────────── */
+.own-nike .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 30px; border-radius: 30px; border: 1px solid transparent; min-height: 48px;
+  font-size: 16px; font-weight: 500; line-height: 1.2; cursor: pointer; white-space: nowrap;
+  transition: background-color .15s, color .15s, opacity .15s;
+}
+.own-nike .btn-primary { background: var(--ink); color: var(--on-primary); }
+.own-nike .btn-primary:hover { opacity: .88; }
+.own-nike .btn-primary:active { transform: scale(.97); }
+.own-nike .btn-secondary { background: var(--soft-cloud); color: var(--ink); }
+.own-nike .btn-secondary:hover { background: #ececec; }
+.own-nike .btn-white { background: var(--canvas); color: var(--ink); }
+.own-nike .btn-white:hover { opacity: .9; }
+.own-nike .btn-ghost-light { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .6); }
+.own-nike .btn-ghost-light:hover { background: rgba(255, 255, 255, .12); }
+.own-nike .btn.sm { padding: 10px 20px; min-height: 40px; font-size: 14px; }
+.own-nike .icon-btn {
+  display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 999px;
+  border: 0; background: var(--soft-cloud); color: var(--ink); cursor: pointer;
+  transition: background-color .15s;
+}
+.own-nike .icon-btn:hover { background: #ececec; }
+.own-nike .icon-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.own-nike .icon-btn.round { width: 44px; height: 44px; }
+
+/* ── utility + nav ────────────────────────────────────────────────────── */
+.own-nike .utility { background: var(--soft-cloud); }
+.own-nike .utility-in { max-width: 1440px; margin: 0 auto; padding: 0 var(--gut); height: 36px; display: flex; align-items: center; }
+.own-nike .utility-spacer { flex: 1; }
+.own-nike .utility-links { display: flex; align-items: center; gap: 20px; }
+.own-nike .utility-links a { font-size: 12px; font-weight: 500; color: var(--ink); }
+.own-nike .utility-links a:hover { color: var(--mute); }
+.own-nike .nav {
+  position: sticky; top: 68px; z-index: 40;
+  background: color-mix(in srgb, var(--canvas) 92%, transparent);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+  backdrop-filter: saturate(150%) blur(12px);
+  border-bottom: 1px solid transparent;
+}
+.own-nike .nav.is-stuck { border-bottom-color: var(--hairline-soft); }
+.own-nike .nav-in {
+  max-width: 1440px; margin: 0 auto; padding: 0 var(--gut); height: 60px;
+  display: flex; align-items: center; gap: 26px;
+}
+.own-nike .brand { display: flex; align-items: center; gap: 10px; }
+.own-nike .swoosh { display: grid; place-items: center; width: 46px; color: var(--ink); }
+.own-nike .swoosh svg { width: 46px; height: 18px; fill: currentColor; }
+.own-nike .brand-name { font-size: 16px; font-weight: 500; letter-spacing: .2px; text-transform: uppercase; }
+.own-nike .nav-links { display: flex; align-items: center; gap: 22px; margin: 0 auto; }
+.own-nike .nav-links a { font-size: 16px; font-weight: 500; color: var(--ink); padding: 6px 0; border-bottom: 2px solid transparent; }
+.own-nike .nav-links a:hover { border-bottom-color: var(--ink); }
+.own-nike .nav-actions { display: flex; align-items: center; gap: 10px; }
+.own-nike .search { display: flex; align-items: center; gap: 8px; height: 40px; width: 190px; padding: 0 16px; border-radius: 24px; background: var(--soft-cloud); }
+.own-nike .search svg { flex: none; width: 17px; height: 17px; fill: none; stroke: var(--ink); stroke-width: 2; }
+.own-nike .search input { width: 100%; border: 0; background: none; color: var(--ink); font: inherit; font-size: 15px; }
+.own-nike .search input::placeholder { color: var(--mute); }
+.own-nike .search input:focus { outline: none; }
+.own-nike .search:focus-within { box-shadow: 0 0 0 3px rgba(17, 17, 17, .1), inset 0 0 0 2px var(--ink); background: var(--canvas); }
+.own-nike .nav-drawer { display: none; }
+
+/* ── campaign hero ────────────────────────────────────────────────────── */
+.own-nike .campaign {
+  position: relative; min-height: min(640px, 78vh); overflow: clip;
+  background: #111; color: #fff; isolation: isolate;
+}
+.own-nike .campaign-art { position: absolute; inset: 0; z-index: -1; }
+.own-nike .field { position: absolute; inset: 0; }
+.own-nike .f-1 { background: linear-gradient(115deg, #0a1f4d 0%, #1151ff 42%, #0a7281 100%); }
+.own-nike .f-2 { background: radial-gradient(60% 70% at 78% 30%, rgba(237, 26, 160, .55), rgba(237, 26, 160, 0) 62%); mix-blend-mode: screen; }
+.own-nike .f-3 { background: linear-gradient(0deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .12) 46%, rgba(0, 0, 0, 0) 70%); }
+.own-nike .campaign-copy { max-width: 1440px; margin: 0 auto; padding: clamp(56px, 9cqi, 104px) var(--gut) clamp(48px, 7cqi, 80px); }
+.own-nike .campaign-kicker { font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.own-nike .campaign-title {
+  font-family: var(--f-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(64px, 12cqi, 132px); line-height: .9; margin: 0 0 24px;
+}
+.own-nike .campaign-sub { max-width: 46ch; font-size: clamp(16px, 1.4cqi, 18px); color: rgba(255, 255, 255, .92); margin-bottom: 30px; }
+.own-nike .campaign-stats {
+  list-style: none; margin: 0; padding: 26px var(--gut); max-width: 1440px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: clamp(28px, 6cqi, 88px); border-top: 1px solid rgba(255, 255, 255, .2);
+  position: relative;
+}
+.own-nike .campaign-stats li { display: grid; gap: 2px; }
+.own-nike .campaign-stats b { font-family: var(--f-display); font-size: clamp(34px, 4cqi, 52px); font-weight: 400; line-height: .9; }
+.own-nike .campaign-stats span { font-size: 13px; color: rgba(255, 255, 255, .82); }
+
+/* ── sections ────────────────────────────────────────────────────────── */
+.own-nike .section { max-width: 1440px; margin: 0 auto; padding: var(--sec) var(--gut); }
+.own-nike .section-flush { padding-left: 0; padding-right: 0; }
+.own-nike .section-flush .section-head { padding: 0 var(--gut); }
+.own-nike .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+.own-nike .rail-controls { display: flex; gap: 8px; }
+
+/* ── product grid ────────────────────────────────────────────────────── */
+.own-nike .grid { display: grid; gap: 8px; }
+.own-nike .grid-3 { grid-template-columns: repeat(3, 1fr); }
+.own-nike .product { display: flex; flex-direction: column; }
+.own-nike .product-shot {
+  position: relative; aspect-ratio: 1 / 1; background: var(--tint, var(--soft-cloud));
+  display: grid; place-items: center; overflow: hidden;
+}
+.own-nike .product-shot:hover .mini-dash { transform: scale(1.03); }
+.own-nike .mini-dash {
+  width: 78%; aspect-ratio: 4 / 3; background: #fff; border-radius: 2px; padding: 14px;
+  display: flex; flex-direction: column; gap: 8px; transition: transform .4s cubic-bezier(.16, 1, .3, 1);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .4);
+}
+.own-nike .mini-head { height: 8px; width: 44%; background: var(--ink); border-radius: 2px; }
+.own-nike .mini-line { height: 6px; width: 100%; background: #eee; border-radius: 2px; }
+.own-nike .mini-line.short { width: 62%; }
+.own-nike .mini-bars { display: flex; align-items: flex-end; gap: 6px; height: 46px; margin-top: auto; }
+.own-nike .mini-bars i { flex: 1; height: var(--h); background: var(--ink); border-radius: 2px 2px 0 0; }
+.own-nike .mini-spark { width: 100%; height: 46px; margin-top: auto; }
+.own-nike .mini-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin: auto 0; }
+.own-nike .mini-map i { height: 20px; border-radius: 2px; background: var(--soft-cloud); }
+.own-nike .mini-map i:nth-child(2), .own-nike .mini-map i:nth-child(4) { background: var(--accent-teal); }
+.own-nike .badge-promo {
+  position: absolute; top: 14px; left: 14px; padding: 4px 12px; border-radius: 30px;
+  background: var(--canvas); border: 1px solid var(--hairline); font-size: 12px; font-weight: 500; color: var(--ink);
+}
+.own-nike .swatches { display: flex; gap: 6px; margin: 12px 0 10px; }
+.own-nike .swatches i { width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 0 1px var(--hairline); }
+.own-nike .product-name { font-size: 16px; font-weight: 500; }
+.own-nike .product-sub { font-size: 14px; font-weight: 500; color: var(--mute); margin-top: 2px; }
+.own-nike .price-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.own-nike .price { font-size: 16px; font-weight: 500; }
+.own-nike .price.sale { color: var(--sale); }
+
+/* ── region rail ─────────────────────────────────────────────────────── */
+.own-nike .rail { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.own-nike .rail::-webkit-scrollbar { display: none; }
+.own-nike .rail-track { display: flex; gap: 8px; padding: 0 var(--gut) 4px; width: max-content; scroll-behavior: smooth; }
+.own-nike .tile {
+  position: relative; flex: none; width: clamp(220px, 24cqi, 320px); aspect-ratio: 4 / 5;
+  border-radius: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 18px; background: var(--tint); isolation: isolate;
+}
+.own-nike .tile::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, 0) 55%); }
+.own-nike .tile-name { font-family: var(--f-display); font-size: clamp(34px, 3.4cqi, 48px); line-height: .9; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
+.own-nike .tile .btn { align-self: flex-start; }
+
+/* ── membership benefit band ─────────────────────────────────────────── */
+.own-nike .benefit {
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5cqi, 64px); align-items: center;
+  background: var(--ink); color: #fff; padding: clamp(36px, 6cqi, 72px); border-radius: 0;
+}
+.own-nike .benefit .row-title { color: #fff; }
+.own-nike .benefit-lead { color: rgba(255, 255, 255, .82); max-width: 46ch; margin: 14px 0 26px; }
+.own-nike .benefit-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.own-nike .benefit-tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.own-nike .benefit-tiles li { border-top: 1px solid rgba(255, 255, 255, .22); padding-top: 14px; display: grid; gap: 4px; }
+.own-nike .benefit-tiles b { font-family: var(--f-display); font-size: 30px; font-weight: 400; line-height: .9; text-transform: uppercase; }
+.own-nike .benefit-tiles span { color: rgba(255, 255, 255, .78); font-size: 14px; }
+
+/* ── icon strip ──────────────────────────────────────────────────────── */
+.own-nike .icon-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.own-nike .icon-card { text-align: center; }
+.own-nike .icon-art { display: grid; place-items: center; aspect-ratio: 1 / 1; background: var(--soft-cloud); border-radius: 0; }
+.own-nike .icon-art svg { width: 40%; height: 40%; fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.own-nike .icon-label { margin-top: 12px; font-size: 14px; font-weight: 500; }
+
+/* ── disclosures ─────────────────────────────────────────────────────── */
+.own-nike .disclosures { margin-top: 40px; border-top: 1px solid var(--hairline); }
+.own-nike .disc { border-bottom: 1px solid var(--hairline); }
+.own-nike .disc summary {
+  list-style: none; cursor: pointer; padding: 24px 0; display: flex; align-items: center; justify-content: space-between;
+  font-size: 16px; font-weight: 500;
+}
+.own-nike .disc summary::-webkit-details-marker { display: none; }
+.own-nike .chev { width: 11px; height: 11px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(45deg); transition: transform .2s; }
+.own-nike .disc[open] .chev { transform: rotate(-135deg); }
+.own-nike .disc p { padding: 0 0 24px; color: var(--charcoal); font-size: 15px; max-width: 72ch; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-nike .foot { border-top: 1px solid var(--hairline); margin-top: var(--sec); padding: clamp(40px, 6cqi, 64px) var(--gut) 28px; }
+.own-nike .foot-cols { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.own-nike .foot-cols h4 { font-size: 16px; font-weight: 500; margin: 0 0 14px; }
+.own-nike .foot-cols a { display: block; color: var(--mute); font-size: 14px; font-weight: 500; padding: 5px 0; }
+.own-nike .foot-cols a:hover { color: var(--ink); }
+.own-nike .foot-base {
+  max-width: 1440px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid var(--hairline);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-size: 12px; color: var(--mute);
+}
+.own-nike .foot-legal { display: flex; gap: 18px; }
+.own-nike .foot-legal a:hover { color: var(--ink); }
+
+/* ── reveal ──────────────────────────────────────────────────────────── */
+.own-nike [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .7s cubic-bezier(.16, 1, .3, 1); }
+.own-nike [data-reveal].in { opacity: 1; transform: none; }
+
+/* ── responsive (container queries) ──────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-nike .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .own-nike .icon-strip { grid-template-columns: repeat(4, 1fr); }
+  .own-nike .benefit { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 960px) {
+  .own-nike .nav-links { display: none; }
+  .own-nike .search { width: 150px; }
+}
+@container frame (max-width: 760px) {
+  .own-nike .utility-links a:nth-child(-n+2) { display: none; }
+  .own-nike .nav-drawer {
+    display: grid; gap: 2px; padding: 12px var(--gut) 16px;
+    background: var(--canvas); border-bottom: 1px solid var(--hairline-soft);
+  }
+  .own-nike .nav-drawer a { padding: 12px 8px; font-size: 17px; font-weight: 500; border-bottom: 1px solid var(--hairline-soft); }
+  .own-nike .search { display: none; }
+  .own-nike .grid-3 { grid-template-columns: 1fr; }
+  .own-nike .icon-strip { grid-template-columns: repeat(3, 1fr); }
+  .own-nike .campaign-title { font-size: clamp(56px, 20cqi, 92px); }
+  .own-nike .foot-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 520px) {
+  .own-nike .foot-cols { grid-template-columns: 1fr; }
+  .own-nike .campaign-stats { gap: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-nike *, .own-nike *::before, .own-nike *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important;
+  }
+  .own-nike [data-reveal] { opacity: 1; transform: none; }
+  .own-nike .rail-track { scroll-behavior: auto; }
+}

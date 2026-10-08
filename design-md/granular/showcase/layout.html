@@ -1,0 +1,259 @@
+<div class="own-granular">
+  <!-- ── TOP BAR ─────────────────────────────────────────────────────────── -->
+  <header class="gn-bar" id="gnBar">
+    <a class="gn-wordmark" href="#gnTop">Northwind</a>
+    <span class="gn-bar-sep" aria-hidden="true"></span>
+    <nav class="gn-crumbs" aria-label="Location">
+      <span class="gn-path">~/ops/northwind</span>
+      <span class="gn-live"><span class="gn-dot gn-dot-ok gn-live-dot" aria-hidden="true"></span>live</span>
+    </nav>
+    <div class="gn-bar-tools">
+      <span class="gn-mono-data gn-region">region&nbsp;eu-west-1</span>
+      <a class="gn-btn gn-btn-ghost" href="#">Docs</a>
+      <a class="gn-user" href="#" aria-label="Account — Ada Reyes">AR</a>
+    </div>
+  </header>
+
+  <div class="gn-page">
+    <!-- ── WORKSTATION ─────────────────────────────────────────────────── -->
+    <main class="gn-work" id="gnTop" aria-label="Northwind workstation">
+      <!-- workspace rail -->
+      <nav class="gn-rail" aria-label="Workspaces">
+        <a class="gn-ws is-active" href="#" aria-label="Northwind Ops" aria-current="true" style="--ws:#6A4A34">N</a>
+        <a class="gn-ws" href="#" aria-label="Edge" style="--ws:#3E4A44">E</a>
+        <a class="gn-ws" href="#" aria-label="Atlas" style="--ws:#4A4658">A</a>
+        <a class="gn-ws" href="#" aria-label="Signal" style="--ws:#584A3A">S</a>
+        <button class="gn-ws gn-ws-add" type="button" aria-label="Add workspace">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <span class="gn-rail-gap" aria-hidden="true"></span>
+        <button class="gn-ws gn-ws-quiet" type="button" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+        </button>
+        <button class="gn-ws gn-ws-quiet" type="button" aria-label="Help">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.6 2.3c-.7.4-1.2.9-1.2 1.7M12 16.6h.01"/></svg>
+        </button>
+      </nav>
+
+      <!-- session list -->
+      <section class="gn-sessions" aria-label="Sessions">
+        <div class="gn-sess-head">
+          <span class="gn-label">northwind ops</span>
+          <span class="gn-path gn-path-2">~/ops/northwind</span>
+        </div>
+        <button class="gn-new" type="button">
+          <span class="gn-new-plus" aria-hidden="true">+</span> New session
+          <kbd class="gn-kbd">⌘T</kbd>
+        </button>
+        <ul class="gn-sess-list" id="gnSessionList"></ul>
+        <div class="gn-sess-foot">
+          <span class="gn-mono-data gn-git">MAIN <span class="gn-dirty" aria-hidden="true"></span> +3 ↓0</span>
+          <span class="gn-mono-data gn-prev">PREVIOUS 50</span>
+          <span class="gn-mono-data gn-switch">⌘1-8 switch · Σ 22.6m</span>
+        </div>
+      </section>
+
+      <!-- work surface -->
+      <section class="gn-surface" aria-label="Work surface">
+        <div class="gn-tabs">
+          <button class="gn-sess-pick" type="button" aria-label="Switch session">
+            <span class="gn-dot gn-dot-ok" aria-hidden="true"></span>
+            <span class="gn-sess-pick-title">Nightly rollup repair</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="gn-tablist" role="tablist" aria-label="Views">
+          <button class="gn-tab is-active" id="gnTabChat" role="tab" aria-selected="true" aria-controls="gnPaneChat" data-tab="chat">Chat<kbd class="gn-kbd">⌘J</kbd></button>
+          <button class="gn-tab" id="gnTabTerminal" role="tab" aria-selected="false" aria-controls="gnPaneTerminal" data-tab="terminal">Terminal<span class="gn-unread" aria-hidden="true"></span></button>
+          <button class="gn-tab" id="gnTabPreview" role="tab" aria-selected="false" aria-controls="gnPanePreview" data-tab="preview">Preview</button>
+          <button class="gn-tab" id="gnTabDeploys" role="tab" aria-selected="false" aria-controls="gnPaneDeploys" data-tab="deploys">Deploys</button>
+          </div>
+        </div>
+
+        <div class="gn-panes">
+          <div class="gn-pane" id="gnPaneChat" role="tabpanel" aria-labelledby="gnTabChat" data-pane="chat">
+            <ol class="gn-thread" id="gnThread" aria-live="polite"></ol>
+          </div>
+
+          <div class="gn-pane is-hidden" id="gnPaneTerminal" role="tabpanel" aria-labelledby="gnTabTerminal" data-pane="terminal">
+            <div class="gn-term" role="log" aria-label="Terminal output">
+              <p><span class="gn-term-prompt">~ $</span> northwind rollup --region eu-west-1 --window 24h</p>
+              <p><span class="gn-t-dim">·</span> loading session ledger <span class="gn-t-dim">(18,204 rows)</span></p>
+              <p><span class="gn-t-ok">✓</span> eu-west-1 &nbsp; 94.2k &nbsp; <span class="gn-t-ok">+6.1%</span> &nbsp; on target</p>
+              <p><span class="gn-t-warn">!</span> ap-south-1 &nbsp; 48.3k &nbsp; <span class="gn-t-warn">-3.2%</span> &nbsp; below target</p>
+              <p><span class="gn-t-err">✕</span> sa-east-1 &nbsp; 22.6k &nbsp; <span class="gn-t-err">-8.9%</span> &nbsp; regressed</p>
+              <p><span class="gn-t-dim">·</span> staged repair session <span class="gn-t-dim">sess-8841</span></p>
+              <p class="gn-term-cur"><span class="gn-term-prompt">~ $</span> <span class="gn-caret" aria-hidden="true"></span></p>
+            </div>
+          </div>
+
+          <div class="gn-pane is-hidden" id="gnPanePreview" role="tabpanel" aria-labelledby="gnTabPreview" data-pane="preview">
+            <figure class="gn-preview" aria-label="Throughput preview chart">
+              <svg viewBox="0 0 400 170" preserveAspectRatio="none" aria-hidden="true">
+                <line class="gn-grid" x1="0" y1="42" x2="400" y2="42"/>
+                <line class="gn-grid" x1="0" y1="84" x2="400" y2="84"/>
+                <line class="gn-grid" x1="0" y1="126" x2="400" y2="126"/>
+                <line class="gn-target" x1="0" y1="58" x2="400" y2="58"/>
+                <rect class="gn-bar" x="16"  y="118" width="34" height="42" rx="4"/>
+                <rect class="gn-bar" x="66"  y="96"  width="34" height="64" rx="4"/>
+                <rect class="gn-bar" x="116" y="104" width="34" height="56" rx="4"/>
+                <rect class="gn-bar" x="166" y="72"  width="34" height="88" rx="4"/>
+                <rect class="gn-bar" x="216" y="66"  width="34" height="94" rx="4"/>
+                <rect class="gn-bar" x="266" y="86"  width="34" height="74" rx="4"/>
+                <rect class="gn-bar" x="316" y="60"  width="34" height="100" rx="4"/>
+                <polyline class="gn-spark-line" points="33,118 83,96 133,104 183,72 233,66 283,86 333,60"/>
+              </svg>
+              <figcaption class="gn-preview-cap"><span class="gn-mono-data">eu-west-1 · rolling 24h · sessions/min</span><span class="gn-mono-data">target 4.2k</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="gn-pane is-hidden" id="gnPaneDeploys" role="tabpanel" aria-labelledby="gnTabDeploys" data-pane="deploys">
+            <ul class="gn-deploys">
+              <li class="gn-deploy"><span class="gn-dot gn-dot-ok" aria-hidden="true"></span><span class="gn-deploy-name">rollup-repair · eu-west-1</span><span class="gn-mono-data gn-deploy-meta">live · 09:14</span></li>
+              <li class="gn-deploy"><span class="gn-dot gn-dot-info" aria-hidden="true"></span><span class="gn-deploy-name">ledger-backfill · us-east-2</span><span class="gn-mono-data gn-deploy-meta">queued · 08:47</span></li>
+              <li class="gn-deploy"><span class="gn-dot gn-dot-ok" aria-hidden="true"></span><span class="gn-deploy-name">edge-cache · eu-west-1</span><span class="gn-mono-data gn-deploy-meta">done · 07:02</span></li>
+              <li class="gn-deploy"><span class="gn-dot gn-dot-err" aria-hidden="true"></span><span class="gn-deploy-name">failover-drill · ap-south-1</span><span class="gn-mono-data gn-deploy-meta">failed · 06:31</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="gn-composer" id="gnComposer" aria-label="Composer">
+          <label class="gn-sr" for="gnInput">Ask for anything</label>
+          <input class="gn-input" id="gnInput" type="text" placeholder="Ask for anything…" autocomplete="off">
+          <div class="gn-toolbar">
+            <button class="gn-chip gn-chip-folder" type="button" data-folder>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h4l2 2h7A1.5 1.5 0 0 1 20 8.5v9A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5z"/></svg>
+              /ops/northwind
+            </button>
+            <button class="gn-chip" type="button">northwind-core <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <button class="gn-chip" type="button">mode: review <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <button class="gn-chip" type="button">effort: high <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <span class="gn-toolbar-gap" aria-hidden="true"></span>
+            <span class="gn-ctx gn-ctx-inline">
+              <span class="gn-meter"><span class="gn-meter-fill" data-fill="68"></span></span>
+              <span class="gn-ctx-val">68%</span>
+            </span>
+            <button class="gn-btn gn-btn-primary" type="submit" id="gnSend" disabled>Send</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- ── OPERATIONS OVERVIEW ─────────────────────────────────────────── -->
+    <section class="gn-section" id="gnOverview" aria-labelledby="gnOverviewH">
+      <div class="gn-sec-head">
+        <span class="gn-label">operations dashboard</span>
+        <h2 id="gnOverviewH" class="gn-display">Region throughput</h2>
+        <p class="gn-sub">Rolling 24-hour session throughput by region. Targets are set per workspace and re-evaluated every fifteen minutes; anything under target opens a repair session automatically.</p>
+        <div class="gn-sec-actions">
+          <a class="gn-btn gn-btn-primary" href="#">Open dashboard</a>
+          <button class="gn-btn gn-btn-secondary" type="button">Export CSV</button>
+        </div>
+      </div>
+      <div class="gn-cards" id="gnRegionCards"></div>
+    </section>
+
+    <!-- ── SESSION LEDGER ──────────────────────────────────────────────── -->
+    <section class="gn-section" id="gnSessions" aria-labelledby="gnSessionsH">
+      <div class="gn-sec-head">
+        <span class="gn-label">session ledger</span>
+        <h2 id="gnSessionsH" class="gn-display">Recent sessions</h2>
+        <p class="gn-sub">Every agent turn runs inside a session. The ledger is append-only — a session never disappears, it just changes status.</p>
+      </div>
+      <div class="gn-table-wrap">
+        <table class="gn-table">
+          <thead>
+            <tr>
+              <th scope="col">Session</th>
+              <th scope="col">Status</th>
+              <th scope="col">Region</th>
+              <th scope="col">Throughput</th>
+              <th scope="col">Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="is-active">
+              <td><span class="gn-mono-data">sess-8841</span><span class="gn-row-title">Nightly rollup repair</span></td>
+              <td><span class="gn-dot gn-dot-ok" aria-hidden="true"></span>running</td>
+              <td><span class="gn-mono-data">eu-west-1</span></td>
+              <td class="gn-mono-data">94.2k</td>
+              <td class="gn-mono-data">22.6m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8836</span><span class="gn-row-title">EU latency regression</span></td>
+              <td><span class="gn-dot gn-dot-warn" aria-hidden="true"></span>waiting</td>
+              <td><span class="gn-mono-data">eu-west-1</span></td>
+              <td class="gn-mono-data">88.0k</td>
+              <td class="gn-mono-data">17.2m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8829</span><span class="gn-row-title">Session ledger backfill</span></td>
+              <td><span class="gn-dot gn-dot-ok" aria-hidden="true"></span>done</td>
+              <td><span class="gn-mono-data">us-east-2</span></td>
+              <td class="gn-mono-data">71.8k</td>
+              <td class="gn-mono-data">41.0m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8822</span><span class="gn-row-title">APAC failover drill</span></td>
+              <td><span class="gn-dot gn-dot-err" aria-hidden="true"></span>failed</td>
+              <td><span class="gn-mono-data">ap-south-1</span></td>
+              <td class="gn-mono-data">48.3k</td>
+              <td class="gn-mono-data">09.5m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8810</span><span class="gn-row-title">Throughput target review</span></td>
+              <td><span class="gn-dot gn-dot-info" aria-hidden="true"></span>syncing</td>
+              <td><span class="gn-mono-data">sa-east-1</span></td>
+              <td class="gn-mono-data">22.6k</td>
+              <td class="gn-mono-data">12.4m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8802</span><span class="gn-row-title">Deploy window planner</span></td>
+              <td><span class="gn-dot gn-dot-ok" aria-hidden="true"></span>idle</td>
+              <td><span class="gn-mono-data">us-east-2</span></td>
+              <td class="gn-mono-data">64.1k</td>
+              <td class="gn-mono-data">03.8m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8798</span><span class="gn-row-title">Quota reconciliation</span></td>
+              <td><span class="gn-dot gn-dot-warn" aria-hidden="true"></span>waiting</td>
+              <td><span class="gn-mono-data">eu-west-1</span></td>
+              <td class="gn-mono-data">90.5k</td>
+              <td class="gn-mono-data">28.3m</td>
+            </tr>
+            <tr>
+              <td><span class="gn-mono-data">sess-8790</span><span class="gn-row-title">Edge cache warmup</span></td>
+              <td><span class="gn-dot gn-dot-info" aria-hidden="true"></span>syncing</td>
+              <td><span class="gn-mono-data">us-east-2</span></td>
+              <td class="gn-mono-data">66.8k</td>
+              <td class="gn-mono-data">07.1m</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── AGENT CONSOLE ───────────────────────────────────────────────── -->
+    <section class="gn-section" id="gnConsole" aria-labelledby="gnConsoleH">
+      <div class="gn-sec-head">
+        <span class="gn-label">agent console</span>
+        <h2 id="gnConsoleH" class="gn-display">Dispatcher log</h2>
+        <p class="gn-sub">Every agent turn is written here with a timestamp, a status, and a token count. The log is the source of truth for what the workspace actually did.</p>
+      </div>
+      <div class="gn-console" role="log" aria-label="Dispatcher log">
+        <p class="gn-log"><span class="gn-log-t">09:14:02</span><span class="gn-log-s gn-s-ok">ok</span>dispatched agent · sess-8841 · 1240 tok</p>
+        <p class="gn-log"><span class="gn-log-t">09:13:48</span><span class="gn-log-s gn-s-info">info</span>opened repair session for ap-south-1</p>
+        <p class="gn-log"><span class="gn-log-t">09:12:31</span><span class="gn-log-s gn-s-ok">ok</span>rollup refresh · eu-west-1 · 18,204 rows</p>
+        <p class="gn-log"><span class="gn-log-t">09:09:10</span><span class="gn-log-s gn-s-warn">warn</span>ap-south-1 below target by 3.2%</p>
+        <p class="gn-log"><span class="gn-log-t">09:06:55</span><span class="gn-log-s gn-s-err">err</span>sa-east-1 regression · failover-drill exited 1</p>
+        <p class="gn-log"><span class="gn-log-t">09:04:02</span><span class="gn-log-s gn-s-ok">ok</span>session ledger flush complete · Σ 22.6m</p>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+    <footer class="gn-foot">
+      <span class="gn-mono-data">Northwind — sample data, showcase only</span>
+      <a class="gn-foot-link" href="#gnTop">Back to top</a>
+      <span class="gn-mono-data">build 4.18.2 · region eu-west-1</span>
+    </footer>
+  </div>
+</div>

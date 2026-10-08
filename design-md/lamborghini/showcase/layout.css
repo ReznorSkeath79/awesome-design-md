@@ -1,0 +1,221 @@
+/* ══ LAMBORGHINI — Northwind operations analytics in Lamborghini's nocturnal language ══
+   True black (#000000) canvas, uppercase LamboType display at tight line-heights,
+   Lamborghini Gold (#FFC000) reserved exclusively for primary CTAs, zero radius on
+   buttons and cards, hexagonal motifs, and the transparent ghost secondary. */
+
+.own-lamborghini {
+  --black: #000000;
+  --charcoal: #202020;
+  --dark-iron: #181818;
+  --gold: #ffc000;
+  --gold-dark: #917300;
+  --gold-text: #ffce3e;
+  --cyan: #29abe2;
+  --link: #3860be;
+  --white: #ffffff;
+  --smoke: #f5f5f5;
+  --graphite: #494949;
+  --ash: #8f8f8f;
+  --steel: #969696;
+  --iron: #555555;
+
+  --f-lambo: 'LamboType', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --f-fallback: 'Open Sans', Roboto, Arial, sans-serif;
+
+  --gut: clamp(20px, 3.5cqi, 40px);
+
+  position: relative;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--f-lambo);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+.own-lamborghini *, .own-lamborghini *::before, .own-lamborghini *::after { box-sizing: border-box; }
+.own-lamborghini p { margin: 0; }
+.own-lamborghini a { color: inherit; text-decoration: none; }
+.own-lamborghini img, .own-lamborghini svg { display: block; }
+.own-lamborghini button { font: inherit; }
+.own-lamborghini :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.own-lamborghini .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
+
+/* ── type ────────────────────────────────────────────────────────────── */
+.own-lamborghini .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.96px; text-transform: uppercase; color: var(--gold-text); margin-bottom: 20px; }
+.own-lamborghini .display-hero { font-weight: 400; text-transform: uppercase; font-size: clamp(52px, 10cqi, 120px); line-height: 0.92; letter-spacing: 0; }
+.own-lamborghini .display-2 { font-weight: 400; text-transform: uppercase; font-size: clamp(34px, 5.4cqi, 80px); line-height: 1.13; letter-spacing: 0; max-width: 16ch; }
+.own-lamborghini .model-name { font-weight: 400; text-transform: uppercase; font-size: 27px; line-height: 1.37; letter-spacing: 0.3px; }
+.own-lamborghini .lead { color: var(--ash); margin-top: 20px; max-width: 52ch; font-size: 18px; line-height: 1.56; }
+
+/* ── buttons (zero radius) ───────────────────────────────────────────── */
+.own-lamborghini .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 24px; border: 1px solid transparent; border-radius: 0;
+  font-family: var(--f-lambo); font-size: 16px; font-weight: 400; line-height: 1.5;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color .15s, color .15s, opacity .15s;
+}
+.own-lamborghini .btn-gold { background: var(--gold); color: var(--black); }
+.own-lamborghini .btn-gold:hover { background: var(--gold-dark); color: #fff; }
+.own-lamborghini .btn-gold.btn-large { padding: 24px; }
+.own-lamborghini .btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,.5); font-size: 14.4px; font-weight: 300; letter-spacing: 0.2px; text-transform: uppercase; padding: 16px 22px; }
+.own-lamborghini .btn-ghost:hover { background: var(--cyan); color: #fff; border-color: transparent; }
+.own-lamborghini .btn-block { display: flex; width: 100%; }
+.own-lamborghini .light .btn-ghost { color: var(--black); border-color: rgba(0,0,0,.4); }
+.own-lamborghini .light .btn-ghost:hover { background: var(--cyan); color: #fff; }
+.own-lamborghini .link { display: inline-block; font-size: 14px; letter-spacing: 0.2px; text-transform: uppercase; color: var(--white); border-bottom: 1px solid var(--white); padding-bottom: 3px; transition: color .15s, border-color .15s; }
+.own-lamborghini .link:hover { color: var(--link); border-color: var(--link); }
+.own-lamborghini .light .link { color: var(--black); border-color: var(--black); }
+
+/* ── nav (transparent, floating) ─────────────────────────────────────── */
+.own-lamborghini .nav { position: sticky; top: 68px; z-index: 40; background: rgba(0,0,0,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background-color .3s; }
+.own-lamborghini .nav.is-stuck { background: rgba(0,0,0,.86); }
+.own-lamborghini .nav-in { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; height: 68px; padding: 0 var(--gut); }
+.own-lamborghini .brand { display: flex; align-items: center; gap: 10px; justify-self: center; }
+.own-lamborghini .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; color: var(--white); }
+.own-lamborghini .brand-mark svg { width: 28px; height: 28px; }
+.own-lamborghini .brand-name { font-size: 16px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+.own-lamborghini .menu-btn { display: flex; align-items: center; gap: 12px; background: none; border: 0; color: var(--white); cursor: pointer; justify-self: start; padding: 8px 0; }
+.own-lamborghini .menu-lines { display: grid; gap: 4px; width: 22px; }
+.own-lamborghini .menu-lines i { display: block; height: 2px; background: var(--white); transition: transform .2s, opacity .2s; }
+.own-lamborghini .menu-label { font-size: 14px; letter-spacing: 0.2px; text-transform: uppercase; }
+.own-lamborghini .nav-right { display: flex; align-items: center; gap: 8px; justify-self: end; }
+.own-lamborghini .nav-icon { display: grid; place-items: center; width: 44px; height: 44px; color: var(--white); }
+.own-lamborghini .nav-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.own-lamborghini .nav-drawer { display: none; }
+.own-lamborghini .nav-drawer:not([hidden]) { display: block; padding: 8px var(--gut) 20px; border-top: 1px solid #202020; }
+.own-lamborghini .nav-drawer a { display: block; padding: 16px 0; font-size: 20px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #202020; }
+.own-lamborghini .nav-drawer a:hover { color: var(--gold); }
+
+/* ── hero ────────────────────────────────────────────────────────────── */
+.own-lamborghini .hero { position: relative; min-height: clamp(560px, 78vh, 760px); display: grid; align-items: center; overflow: clip; }
+.own-lamborghini .hero-bg { position: absolute; inset: 0; z-index: 0; }
+.own-lamborghini .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 60% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(120% 90% at 60% 40%, #000 20%, transparent 75%); }
+.own-lamborghini .hero-glow { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%); width: min(900px, 96%); height: 560px; background: radial-gradient(closest-side, rgba(255,192,0,.14), rgba(255,192,0,.04) 55%, rgba(255,192,0,0) 78%); filter: blur(6px); }
+.own-lamborghini .hero-in { position: relative; z-index: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: clamp(64px, 10cqi, 120px) var(--gut); }
+.own-lamborghini .hero-lead { color: rgba(255,255,255,.78); margin: 26px 0 34px; max-width: 44ch; font-size: 18px; line-height: 1.56; }
+.own-lamborghini .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+.own-lamborghini .hero-controls { position: absolute; right: var(--gut); bottom: 40px; z-index: 2; }
+.own-lamborghini .hex-pause { display: grid; place-items: center; width: 52px; height: 52px; background: none; border: 1.5px solid rgba(255,255,255,.7); color: var(--white); cursor: pointer; clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
+.own-lamborghini .hex-pause svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.own-lamborghini .hero-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255,255,255,.14); }
+.own-lamborghini .hero-progress i { display: block; height: 100%; width: 38%; background: var(--white); animation: lambo-progress 9s linear infinite; }
+@keyframes lambo-progress { from { width: 0; } to { width: 100%; } }
+
+/* ── sections ────────────────────────────────────────────────────────── */
+.own-lamborghini .section { padding: clamp(56px, 8cqi, 96px) 0; }
+.own-lamborghini .section.tight { padding-top: clamp(32px, 5cqi, 56px); }
+.own-lamborghini .sec-head { margin-bottom: clamp(32px, 5cqi, 56px); }
+.own-lamborghini .light { background: var(--smoke); color: var(--black); }
+.own-lamborghini .light .lead { color: var(--graphite); }
+.own-lamborghini .light .eyebrow { color: var(--gold-dark); }
+
+/* ── feature row ─────────────────────────────────────────────────────── */
+.own-lamborghini .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5cqi, 72px); align-items: center; }
+.own-lamborghini .specs { list-style: none; margin: 26px 0 30px; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--charcoal); }
+.own-lamborghini .specs li { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--charcoal); }
+.own-lamborghini .spec-k { font-size: 12px; letter-spacing: 0.96px; text-transform: uppercase; color: var(--ash); }
+.own-lamborghini .spec-v { font-size: 15px; text-transform: uppercase; letter-spacing: 0.2px; }
+.own-lamborghini .feature-visual { background: var(--charcoal); padding: 28px; }
+.own-lamborghini .visual-head { display: flex; align-items: center; justify-content: space-between; font-size: 12px; letter-spacing: 0.96px; text-transform: uppercase; color: var(--ash); padding-bottom: 18px; border-bottom: 1px solid #313131; }
+.own-lamborghini .tag-live { color: var(--gold-text); }
+.own-lamborghini .visual-chart { height: 150px; margin: 20px 0; }
+.own-lamborghini .visual-chart svg { width: 100%; height: 100%; }
+.own-lamborghini .visual-rows { list-style: none; margin: 0; padding: 0; }
+.own-lamborghini .vr { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-top: 1px solid #313131; font-size: 14px; }
+.own-lamborghini .vr span:first-child { color: var(--ash); text-transform: uppercase; letter-spacing: 0.2px; font-size: 12px; }
+.own-lamborghini .vr .vr-val { color: var(--white); }
+
+/* ── models (cards) ──────────────────────────────────────────────────── */
+.own-lamborghini .models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-lamborghini .model { background: var(--charcoal); display: flex; flex-direction: column; }
+.own-lamborghini .model-photo { position: relative; height: 220px; overflow: hidden; }
+.own-lamborghini .model-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,0) 60%); }
+.own-lamborghini .photo-1 { background: linear-gradient(135deg, #1b1b1b, #000 60%), radial-gradient(circle at 70% 30%, rgba(255,192,0,.22), transparent 50%); }
+.own-lamborghini .photo-2 { background: linear-gradient(135deg, #161616, #000 60%), radial-gradient(circle at 30% 70%, rgba(41,171,226,.2), transparent 50%); }
+.own-lamborghini .photo-3 { background: linear-gradient(135deg, #1b1b1b, #000 60%), radial-gradient(circle at 60% 60%, rgba(255,192,0,.16), transparent 55%); }
+.own-lamborghini .hex { position: absolute; right: 22px; bottom: 22px; width: 44px; height: 44px; border: 1.5px solid rgba(255,255,255,.55); clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
+.own-lamborghini .model-body { padding: 26px 24px 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.own-lamborghini .model-body p { color: var(--ash); font-size: 16px; line-height: 1.5; flex: 1; }
+
+/* ── stats ───────────────────────────────────────────────────────────── */
+.own-lamborghini .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-lamborghini .stat { padding: 24px 0; border-top: 2px solid var(--black); }
+.own-lamborghini .light .stat { border-top-color: var(--gold); }
+.own-lamborghini .stat b { display: block; font-size: clamp(40px, 5cqi, 64px); font-weight: 400; line-height: 1; text-transform: uppercase; }
+.own-lamborghini .stat span { display: block; margin-top: 10px; font-size: 12px; letter-spacing: 0.96px; text-transform: uppercase; color: var(--graphite); }
+.own-lamborghini .light .stat b { color: var(--black); }
+
+/* ── pricing ─────────────────────────────────────────────────────────── */
+.own-lamborghini .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.own-lamborghini .tier { position: relative; display: flex; flex-direction: column; padding: 28px 24px; background: var(--charcoal); border-top: 2px solid #313131; }
+.own-lamborghini .tier-feat { border-top-color: var(--gold); background: #262626; }
+.own-lamborghini .tier-flag { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold-text); margin-bottom: 14px; }
+.own-lamborghini .tier-note { color: var(--ash); font-size: 16px; min-height: 44px; }
+.own-lamborghini .price { margin: 20px 0; }
+.own-lamborghini .price span { font-size: 44px; font-weight: 400; line-height: 1; }
+.own-lamborghini .tier-feat .price span { color: var(--gold); }
+.own-lamborghini .price small { display: block; margin-top: 6px; color: var(--ash); font-size: 13px; }
+.own-lamborghini .tier ul { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 12px; flex: 1; }
+.own-lamborghini .tier li { position: relative; padding-left: 24px; font-size: 15px; color: #d8d8d8; }
+.own-lamborghini .tier li::before { content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 8px; border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg); }
+
+/* ── news ────────────────────────────────────────────────────────────── */
+.own-lamborghini .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-lamborghini .news-card { display: flex; flex-direction: column; gap: 14px; padding: 28px 24px; background: var(--charcoal); border-top: 2px solid #313131; transition: border-color .2s; }
+.own-lamborghini .news-card:hover { border-top-color: var(--gold); }
+.own-lamborghini .news-date { font-size: 12px; letter-spacing: 0.96px; text-transform: uppercase; color: var(--ash); }
+.own-lamborghini .news-title { font-size: 27px; font-weight: 400; line-height: 1.37; text-transform: uppercase; margin: 0; }
+.own-lamborghini .news-card p { color: var(--ash); font-size: 16px; line-height: 1.5; flex: 1; }
+
+/* ── cta ─────────────────────────────────────────────────────────────── */
+.own-lamborghini .cta { display: grid; gap: 22px; justify-items: center; text-align: center; padding: clamp(48px, 7cqi, 88px) var(--gut); background: var(--charcoal); border-top: 2px solid var(--gold); }
+.own-lamborghini .cta .display-2 { margin: 0; }
+.own-lamborghini .cta p { color: var(--ash); max-width: 48ch; font-size: 18px; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-lamborghini .foot { background: var(--dark-iron); padding: clamp(48px, 6cqi, 64px) 0 32px; }
+.own-lamborghini .foot-in { display: grid; grid-template-columns: 1.2fr 2.6fr; gap: 40px; }
+.own-lamborghini .foot-brand .brand-name { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; }
+.own-lamborghini .foot-brand p { color: var(--ash); font-size: 14px; margin-top: 14px; max-width: 30ch; }
+.own-lamborghini .foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-lamborghini .foot-cols h4 { font-size: 12px; letter-spacing: 0.96px; text-transform: uppercase; color: var(--white); margin: 0 0 14px; font-weight: 400; }
+.own-lamborghini .foot-cols a { display: block; font-size: 14px; color: var(--ash); padding: 5px 0; transition: color .15s; }
+.own-lamborghini .foot-cols a:hover { color: var(--gold); }
+.own-lamborghini .foot-base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 44px; padding-top: 22px; border-top: 1px solid #202020; font-size: 10px; letter-spacing: 0.225px; text-transform: uppercase; color: var(--steel); }
+
+/* ── reveal ──────────────────────────────────────────────────────────── */
+.own-lamborghini .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.own-lamborghini .reveal.in { opacity: 1; transform: none; }
+
+/* ── responsive ──────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-lamborghini .feature { grid-template-columns: 1fr; }
+  .own-lamborghini .models, .own-lamborghini .news { grid-template-columns: repeat(2, 1fr); }
+  .own-lamborghini .stats { grid-template-columns: repeat(2, 1fr); }
+  .own-lamborghini .tiers { grid-template-columns: 1fr; }
+  .own-lamborghini .foot-in { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-lamborghini .display-2 { font-size: clamp(30px, 9cqi, 54px); }
+  .own-lamborghini .models, .own-lamborghini .news { grid-template-columns: 1fr; }
+  .own-lamborghini .foot-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 430px) {
+  .own-lamborghini .hero-cta { flex-direction: column; align-items: stretch; }
+  .own-lamborghini .hero-cta .btn { width: 100%; }
+  .own-lamborghini .stats { grid-template-columns: 1fr; }
+  .own-lamborghini .foot-cols { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-lamborghini *, .own-lamborghini *::before, .own-lamborghini *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .own-lamborghini .reveal { opacity: 1; transform: none; }
+  .own-lamborghini .hero-progress i { animation: none; width: 38%; }
+}

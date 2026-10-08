@@ -1,0 +1,130 @@
+<div class="own-airbnb">
+  <header class="ab-nav">
+    <a class="ab-brand" href="#ab-top" aria-label="Northwind home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.2 0 4 1.8 4 4 0 3-2.4 5.8-3.4 9.9L12 18l-.6-2.1C10.4 11.8 8 9 8 6c0-2.2 1.8-4 4-4Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="6.2" r="1.5" fill="currentColor"/></svg>
+      <span>Northwind</span>
+    </a>
+    <nav class="ab-tabs" aria-label="Products">
+      <a href="#ab-cards" class="ab-tab on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 10v9h12v-9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Dashboards</a>
+      <a href="#ab-regions" class="ab-tab"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h16M12 4c2.5 3 2.5 13 0 16" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Regions<span class="ab-new">New</span></a>
+      <a href="#ab-plan" class="ab-tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V9m5 9V5m5 13v-7m5 7V7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Forecast<span class="ab-new">New</span></a>
+    </nav>
+    <div class="ab-utils">
+      <a class="ab-util" href="#">Host a board</a>
+      <button class="ab-globe" type="button" aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h16M12 4c2.5 3 2.5 13 0 16" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <button class="ab-account" type="button" aria-label="Account menu"><span class="ab-account-lines"><i></i><i></i><i></i></span><span class="ab-avatar">FL</span></button>
+    </div>
+  </header>
+
+  <main id="ab-top">
+    <section class="ab-hero" aria-labelledby="ab-h1">
+      <h1 id="ab-h1" class="ab-h1">Inspiration for sharper operations</h1>
+      <form class="ab-search" role="search" onsubmit="return false">
+        <div class="ab-seg"><span class="ab-seg-label">Region</span><span class="ab-seg-value">All regions</span></div>
+        <span class="ab-seg-div" aria-hidden="true"></span>
+        <div class="ab-seg"><span class="ab-seg-label">Period</span><span class="ab-seg-value">This quarter</span></div>
+        <span class="ab-seg-div" aria-hidden="true"></span>
+        <div class="ab-seg ab-seg-wide"><span class="ab-seg-label">Metric</span><span class="ab-seg-value ab-seg-muted">Throughput, yield, cost…</span></div>
+        <button class="ab-orb" type="submit" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-4.2-4.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+      </form>
+    </section>
+
+    <section id="ab-regions" class="ab-band" aria-labelledby="ab-regions-h">
+      <h2 id="ab-regions-h" class="ab-h2">Explore by region</h2>
+      <div class="ab-city-grid">
+        <a class="ab-city" href="#"><span class="ab-city-name">Luzon</span><span class="ab-city-sub">Manufacturing</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Visayas</span><span class="ab-city-sub">Logistics</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Mindanao</span><span class="ab-city-sub">Agri ops</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Singapore</span><span class="ab-city-sub">Distribution</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Sydney</span><span class="ab-city-sub">Fulfilment</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Auckland</span><span class="ab-city-sub">Support</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Osaka</span><span class="ab-city-sub">Assembly</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Busan</span><span class="ab-city-sub">Port ops</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Jakarta</span><span class="ab-city-sub">Sourcing</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Mumbai</span><span class="ab-city-sub">Analytics</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Dubai</span><span class="ab-city-sub">Trade desk</span></a>
+        <a class="ab-city" href="#"><span class="ab-city-name">Rotterdam</span><span class="ab-city-sub">Recycling</span></a>
+      </div>
+    </section>
+
+    <section id="ab-cards" class="ab-band" aria-labelledby="ab-cards-h">
+      <div class="ab-band-head">
+        <h2 id="ab-cards-h" class="ab-h2">Boards our teams keep open</h2>
+        <a class="ab-link" href="#">Show all 48 boards</a>
+      </div>
+      <div class="ab-card-grid" id="abCardGrid"></div>
+    </section>
+
+    <section class="ab-split" aria-labelledby="ab-split-h">
+      <div class="ab-split-body">
+        <h2 id="ab-split-h" class="ab-h2">Built for the whole floor</h2>
+        <p class="ab-lead">Every board carries the same numbers the night shift sees. Region splits, line yield, and cost per unit resolve against one governed model — no exports, no stale mirrors.</p>
+        <ul class="ab-amenities">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7 10 17l-6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Live throughput rows</b><em>Refreshed every fifteen minutes across regions.</em></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7 10 17l-6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Yield guardrails</b><em>Flags a line the moment it drifts below grade.</em></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7 10 17l-6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>One shared export</b><em>CSV, PDF, or a scheduled digest to your inbox.</em></span></li>
+        </ul>
+      </div>
+      <aside class="ab-reserve" aria-label="Plan summary">
+        <span class="ab-reserve-price">$4,900 <small>/ month</small></span>
+        <span class="ab-reserve-meta">Operations tier · up to 40 seats</span>
+        <div class="ab-reserve-row ab-reserve-dates">
+          <span><em>Start</em><b>Today</b></span>
+          <span><em>Renews</em><b>Monthly</b></span>
+        </div>
+        <div class="ab-reserve-guests">
+          <span>Regions</span>
+          <span class="ab-stepper"><button type="button" aria-label="Fewer regions">−</button><b>12</b><button type="button" aria-label="More regions">+</button></span>
+        </div>
+        <button class="ab-btn ab-btn-primary ab-btn-block" type="button">Start free trial</button>
+        <dl class="ab-fees">
+          <div><dt>Data seats</dt><dd>$4,900</dd></div>
+          <div><dt>Extra region</dt><dd>$180</dd></div>
+          <div class="ab-fees-total"><dt>Billed monthly</dt><dd>$4,900</dd></div>
+        </dl>
+        <p class="ab-reserve-note">No card required for the first 30 days.</p>
+      </aside>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-reviews-h">
+      <h2 id="ab-reviews-h" class="ab-h2">What operators say</h2>
+      <div class="ab-reviews">
+        <article class="ab-review">
+          <div class="ab-review-head"><span class="ab-review-av">RS</span><span><b>Rhea Santos</b><em>Plant lead · Visayas</em></span></div>
+          <p>We cut the morning stand-up from an hour to twelve minutes. The yield row is the single number everyone trusts now.</p>
+          <a class="ab-link" href="#">Show more</a>
+        </article>
+        <article class="ab-review">
+          <div class="ab-review-head"><span class="ab-review-av">DO</span><span><b>Dane Ocampo</b><em>Ops manager · Luzon</em></span></div>
+          <p>The region board caught a drift two shifts before it would have hit a customer. That paid for the year on its own.</p>
+          <a class="ab-link" href="#">Show more</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="ab-cta" aria-labelledby="ab-cta-h">
+      <div class="ab-cta-copy">
+        <p class="ab-cta-kicker">Northwind for operations</p>
+        <h2 id="ab-cta-h" class="ab-cta-h">Bring every region onto one board</h2>
+      </div>
+      <a class="ab-btn ab-btn-primary" href="#">Get started</a>
+    </section>
+  </main>
+
+  <footer class="ab-footer">
+    <div class="ab-foot-cols">
+      <div class="ab-foot-col"><h3>Support</h3><a href="#">Help centre</a><a href="#">Status</a><a href="#">Contact ops desk</a></div>
+      <div class="ab-foot-col"><h3>Hosting</h3><a href="#">Share a board</a><a href="#">Coverage map</a><a href="#">Resource library</a></div>
+      <div class="ab-foot-col"><h3>Northwind</h3><a href="#">Newsroom</a><a href="#">Careers</a><a href="#">Investors</a></div>
+    </div>
+    <div class="ab-legal">
+      <span>© 2026 Northwind Analytics — sample data, showcase only</span>
+      <span class="ab-legal-right">
+        <button class="ab-legal-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h16M12 4c2.5 3 2.5 13 0 16" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>English (US)</button>
+        <button class="ab-legal-btn" type="button">USD</button>
+        <a class="ab-social" href="#" aria-label="Community">f</a>
+        <a class="ab-social" href="#" aria-label="Updates">X</a>
+      </span>
+    </div>
+  </footer>
+</div>

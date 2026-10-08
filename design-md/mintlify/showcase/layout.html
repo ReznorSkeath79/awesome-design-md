@@ -1,0 +1,225 @@
+<div class="own-mintlify">
+  <div class="ml-promo">
+    <span>Docs as good as your product &mdash; Northwind is live</span>
+    <a href="#pricing">Read the launch note &rarr;</a>
+  </div>
+
+  <header class="ml-nav">
+    <a class="ml-logo" href="#" aria-label="Northwind home"><span class="ml-logo-mark" aria-hidden="true">N</span>Northwind</a>
+    <nav class="ml-nav-links" aria-label="Primary">
+      <a href="#features">Solutions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#stories">Customers</a>
+      <a href="#docs">Documentation</a>
+      <a href="#">Changelog</a>
+    </nav>
+    <div class="ml-nav-right">
+      <a class="ml-btn ml-btn-secondary" href="#">Talk to sales</a>
+      <a class="ml-btn ml-btn-primary" href="#pricing">Get started</a>
+      <button class="ml-menu" type="button" aria-label="Menu" data-ml-menu>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="ml-hero" aria-labelledby="mlHeroH">
+    <div class="ml-clouds" aria-hidden="true">
+      <span class="ml-cloud ml-cloud-1"></span>
+      <span class="ml-cloud ml-cloud-2"></span>
+      <span class="ml-cloud ml-cloud-3"></span>
+      <span class="ml-cloud ml-cloud-4"></span>
+    </div>
+    <div class="ml-hero-inner">
+      <h1 id="mlHeroH" class="ml-h1">The intelligent operations platform.</h1>
+      <p class="ml-hero-sub">Turn warehouses, regions and pricing into living documentation every
+        team can read &mdash; modelled from your data, published in seconds.</p>
+      <div class="ml-hero-cta">
+        <a class="ml-btn ml-btn-green ml-btn-lg" href="#pricing">Get started</a>
+        <a class="ml-btn ml-btn-secondary ml-btn-lg" href="#docs">Talk to us</a>
+      </div>
+      <div class="ml-mockup" aria-hidden="true">
+        <div class="ml-mock-top"><span></span><span></span><span></span><i>northwind.app / boards</i></div>
+        <div class="ml-mock-body">
+          <div class="ml-mock-side"><b class="is-on"></b><b></b><b></b><b></b><b></b></div>
+          <div class="ml-mock-main">
+            <div class="ml-mock-head"></div>
+            <div class="ml-mock-chart"><i style="--h:40%"></i><i style="--h:68%"></i><i style="--h:52%"></i><i style="--h:84%"></i><i style="--h:64%"></i><i style="--h:92%"></i><i style="--h:74%"></i></div>
+            <div class="ml-mock-lines"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ml-logos" aria-label="Customers">
+    <div class="ml-logos-row">
+      <span>Anthropic</span><span>Cognition</span><span>Vercel</span><span>Lovable</span><span>Stripe</span><span>Block</span>
+    </div>
+  </section>
+
+  <section id="features" class="ml-sec" aria-labelledby="mlFeatH">
+    <h2 id="mlFeatH" class="ml-h2">Built for the intelligence age.</h2>
+    <p class="ml-lead">Three surfaces, one source of truth. Everything is authored in plain markdown
+      and rendered into the board your team reads.</p>
+    <div class="ml-feats">
+      <article class="ml-feat">
+        <span class="ml-fi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></svg></span>
+        <h3 class="ml-h3">Living docs</h3>
+        <p class="ml-feat-desc">Boards read from the same source as your docs, so nothing drifts.</p>
+      </article>
+      <article class="ml-feat">
+        <span class="ml-fi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg></span>
+        <h3 class="ml-h3">Code-native</h3>
+        <p class="ml-feat-desc">Author boards in a small API or in markdown; both render the same.</p>
+      </article>
+      <article class="ml-feat">
+        <span class="ml-fi" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 12l3 3 5-6"/></svg></span>
+        <h3 class="ml-h3">Always accurate</h3>
+        <p class="ml-feat-desc">Every number traces back to its query. Reviews are part of the doc.</p>
+      </article>
+    </div>
+
+    <div class="ml-split">
+      <div class="ml-split-copy">
+        <span class="ml-eyebrow-chip">Developer experience</span>
+        <h3 class="ml-h2">Write a board in four lines.</h3>
+        <p class="ml-lead">The Northwind API is small on purpose. Define your metric, list your
+          regions, call publish &mdash; that is the whole happy path.</p>
+        <ul class="ml-checks">
+          <li>Typed SDKs for TypeScript and Python</li>
+          <li>Preview environments on every branch</li>
+          <li>Row-level access out of the box</li>
+        </ul>
+      </div>
+      <div class="ml-code">
+        <div class="ml-code-head"><span>board.ts</span><button type="button" class="ml-copy" data-ml-copy>Copy code</button></div>
+        <pre class="ml-code-body"><span class="ml-k">import</span> { Board } <span class="ml-k">from</span> <span class="ml-s">"@northwind/sdk"</span>;
+
+<span class="ml-k">const</span> board = <span class="ml-k">new</span> Board(<span class="ml-s">"cycle-time"</span>);
+board.regions([<span class="ml-s">"nordics"</span>, <span class="ml-s">"apac"</span>]);
+board.metric(<span class="ml-s">"cycle_time"</span>, { window: <span class="ml-s">"7d"</span> });
+<span class="ml-k">await</span> board.publish();</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories" class="ml-sec" aria-labelledby="mlStorH">
+    <h2 id="mlStorH" class="ml-h2">Teams that ship with Northwind.</h2>
+    <div class="ml-quote-grid">
+      <figure class="ml-quote-feature">
+        <blockquote><p>&ldquo;Every batch we consistently see the top-performing operations teams
+          reading their numbers from Northwind.&rdquo;</p></blockquote>
+        <figcaption><b>Priya Raman</b><span>Partner, Northwind Ventures</span></figcaption>
+      </figure>
+      <figure class="ml-quote">
+        <blockquote><p>&ldquo;We replaced four spreadsheets and a weekly email chain with one
+          board. The Monday call is now fifteen minutes.&rdquo;</p></blockquote>
+        <figcaption><b>Cole Andersen</b><span>COO, Harborline</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="pricing" class="ml-sec" aria-labelledby="mlPriceH">
+    <div class="ml-price-head">
+      <h2 id="mlPriceH" class="ml-h2">Pricing on your terms.</h2>
+      <div class="ml-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="ml-toggle-btn is-active" data-ml-bill="mo" aria-pressed="true">Monthly</button>
+        <button type="button" class="ml-toggle-btn" data-ml-bill="yr" aria-pressed="false">Annual <span class="ml-badge-discount">&minus;20%</span></button>
+      </div>
+    </div>
+    <div class="ml-price-grid">
+      <article class="ml-price-card">
+        <h3 class="ml-h3">Free</h3>
+        <p class="ml-price"><b data-ml-price data-mo="$0" data-yr="$0">$0</b><span>/mo</span></p>
+        <ul class="ml-price-list"><li>1 board</li><li>3 regions</li><li>Community support</li></ul>
+        <a class="ml-btn ml-btn-secondary ml-btn-block" href="#">Start free</a>
+      </article>
+      <article class="ml-price-card ml-price-featured">
+        <span class="ml-badge-featured">Featured</span>
+        <h3 class="ml-h3">Lift Off</h3>
+        <p class="ml-price"><b data-ml-price data-mo="$49" data-yr="$39">$49</b><span>/mo</span></p>
+        <ul class="ml-price-list"><li>20 boards</li><li>Unlimited regions</li><li>Scheduled digests</li></ul>
+        <a class="ml-btn ml-btn-green ml-btn-block" href="#">Choose Lift Off</a>
+      </article>
+      <article class="ml-price-card">
+        <h3 class="ml-h3">Custom</h3>
+        <p class="ml-price"><b data-ml-price data-mo="Let's talk" data-yr="Let's talk">Let's talk</b></p>
+        <ul class="ml-price-list"><li>Unlimited boards</li><li>SSO &amp; governance</li><li>Priority support</li></ul>
+        <a class="ml-btn ml-btn-secondary ml-btn-block" href="#">Contact sales</a>
+      </article>
+    </div>
+
+    <div class="ml-compare">
+      <table class="ml-table">
+        <caption class="ml-sr">Feature comparison</caption>
+        <thead><tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col">Lift Off</th><th scope="col">Custom</th></tr></thead>
+        <tbody>
+          <tr class="ml-table-group"><th scope="colgroup" colspan="4">Boards</th></tr>
+          <tr><td>Boards</td><td>1</td><td>20</td><td>Unlimited</td></tr>
+          <tr><td>Regions per board</td><td>3</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr class="ml-table-group"><th scope="colgroup" colspan="4">Governance</th></tr>
+          <tr><td>Single sign-on</td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
+          <tr><td>Row-level access</td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="docs" class="ml-sec ml-docs" aria-labelledby="mlDocsH">
+    <div class="ml-docs-grid">
+      <nav class="ml-side" aria-label="Documentation">
+        <p class="ml-side-head">Components</p>
+        <a href="#" class="ml-side-link is-active">Boards</a>
+        <a href="#" class="ml-side-link">Metrics</a>
+        <a href="#" class="ml-side-link">Regions</a>
+        <p class="ml-side-head">Primitives</p>
+        <a href="#" class="ml-side-link">Schedules</a>
+        <a href="#" class="ml-side-link">Exports</a>
+      </nav>
+      <div class="ml-docs-body">
+        <h2 id="mlDocsH" class="ml-h3">Boards</h2>
+        <p class="ml-prose">A board is a published view of one or more metrics across a set of regions.
+          Boards are rendered from the same markdown source as your documentation, so a change in
+          the source is a change on the board.</p>
+        <div class="ml-property">
+          <div class="ml-property-head">
+            <code class="ml-code-inline">defaultIndex</code>
+            <span class="ml-badge-type">number</span>
+            <span class="ml-badge-required">Required</span>
+          </div>
+          <p class="ml-property-desc">The index of the tab selected when the board first renders.</p>
+        </div>
+        <div class="ml-property">
+          <div class="ml-property-head">
+            <code class="ml-code-inline">regions</code>
+            <span class="ml-badge-type">string[]</span>
+          </div>
+          <p class="ml-property-desc">A list of territory keys to include in every metric view.</p>
+        </div>
+      </div>
+      <aside class="ml-toc" aria-label="On this page">
+        <p class="ml-side-head">On this page</p>
+        <a href="#docs" class="ml-toc-link is-active">Overview</a>
+        <a href="#docs" class="ml-toc-link">Properties</a>
+        <a href="#docs" class="ml-toc-link">Examples</a>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="ml-foot">
+    <div class="ml-foot-top">
+      <div class="ml-foot-brand">
+        <span class="ml-logo-mark" aria-hidden="true">N</span>
+        <span>Northwind</span>
+        <p>Operations docs that stay true.</p>
+      </div>
+      <div class="ml-foot-grid">
+        <div class="ml-foot-col"><h3>Explore</h3><a href="#">Solutions</a><a href="#">Pricing</a><a href="#">Customers</a></div>
+        <div class="ml-foot-col"><h3>Resources</h3><a href="#">Docs</a><a href="#">Guides</a><a href="#">Changelog</a></div>
+        <div class="ml-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a></div>
+        <div class="ml-foot-col"><h3>Legal</h3><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div>
+      </div>
+    </div>
+    <div class="ml-foot-bottom"><span>&copy; 2026 Northwind Analytics</span><span class="ml-foot-links"><a href="#">Status</a><a href="#">Contact</a></span></div>
+  </footer>
+</div>

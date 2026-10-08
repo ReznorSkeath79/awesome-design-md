@@ -1,0 +1,322 @@
+/* ══ MONGODB — Northwind operations analytics in MongoDB's real page grammar ══
+   Deep navy-teal hero band with a bright green pill CTA, stark-white surfaces,
+   terminal-aesthetic code mockup, 3-tier pricing with a mint featured tier and
+   colored course category tags. Euclid Circular A over Source Code Pro.
+   All selectors scoped under `.own-mongodb`; `vw` becomes `cqi`. */
+
+.own-mongodb {
+  --brand-green: #00ed64;
+  --brand-green-dark: #00684a;
+  --brand-green-mid: #00a35c;
+  --brand-green-soft: #c3f0d2;
+  --brand-teal-deep: #001e2b;
+  --brand-teal: #003d4f;
+  --brand-teal-mid: #00684a;
+  --accent-purple: #7b3ff2;
+  --accent-orange: #fa6e39;
+  --accent-pink: #f06bb8;
+  --accent-blue: #3d4f9f;
+  --on-primary: #001e2b;
+  --canvas: #ffffff;
+  --canvas-dark: #001e2b;
+  --surface: #f9fbfa;
+  --surface-soft: #f4f7f6;
+  --surface-feature: #e3fcef;
+  --hairline: #e1e5e8;
+  --hairline-soft: #eceff1;
+  --hairline-strong: #c1ccd6;
+  --hairline-dark: #1c2d38;
+  --ink: #001e2b;
+  --charcoal: #1c2d38;
+  --slate: #3d4f5b;
+  --steel: #5c6c7a;
+  --stone: #7c8c9a;
+  --muted: #a8b3bc;
+  --on-dark: #ffffff;
+  --on-dark-muted: #a8b3bc;
+
+  --f-ui: 'Euclid Circular A', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --f-mono: 'Source Code Pro', 'SF Mono', Menlo, Consolas, monospace;
+
+  --gut: clamp(20px, 4.6cqi, 32px);
+  --sec: clamp(56px, 8cqi, 96px);
+
+  position: relative;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-size: 16px;
+  line-height: 1.55;
+  text-align: left;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+.own-mongodb *, .own-mongodb *::before, .own-mongodb *::after { box-sizing: border-box; }
+.own-mongodb p { margin: 0; }
+.own-mongodb a { color: inherit; text-decoration: none; }
+.own-mongodb img, .own-mongodb svg { display: block; }
+.own-mongodb button { font: inherit; }
+.own-mongodb :focus-visible { outline: 3px solid var(--brand-green); outline-offset: 2px; }
+
+.own-mongodb .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--gut); }
+
+.own-mongodb .skip {
+  position: absolute; left: 16px; top: -60px; z-index: 60;
+  padding: 10px 16px; border-radius: 8px; background: var(--brand-teal-deep); color: #fff;
+  font-weight: 600; transition: top .2s;
+}
+.own-mongodb .skip:focus { top: 12px; }
+
+/* ── shared type ─────────────────────────────────────────────────────── */
+.own-mongodb .eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--brand-green-dark); margin-bottom: 16px;
+}
+.own-mongodb .hero-title {
+  font-family: var(--f-ui); font-weight: 500;
+  font-size: clamp(38px, 5.6cqi, 72px); line-height: 1.1; letter-spacing: -1.5px;
+  max-width: 17ch; text-wrap: balance; color: var(--on-dark);
+}
+.own-mongodb .sec-title {
+  font-family: var(--f-ui); font-weight: 500;
+  font-size: clamp(30px, 3.8cqi, 48px); line-height: 1.2; letter-spacing: -0.5px;
+  max-width: 24ch; text-wrap: balance;
+}
+.own-mongodb .sec-lead { color: var(--slate); max-width: 62ch; margin-top: 16px; }
+.own-mongodb .sec-head { margin-bottom: clamp(32px, 5cqi, 56px); }
+.own-mongodb .sec-head.center { text-align: center; }
+.own-mongodb .sec-head.center .sec-title,
+.own-mongodb .sec-head.center .sec-lead { margin-left: auto; margin-right: auto; }
+
+/* ── buttons (pill geometry) ─────────────────────────────────────────── */
+.own-mongodb .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 22px; border-radius: 9999px; border: 1px solid transparent;
+  font-size: 14px; font-weight: 600; line-height: 1.3; cursor: pointer; white-space: nowrap;
+  transition: background-color .18s, border-color .18s, color .18s, filter .18s;
+}
+.own-mongodb .btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.own-mongodb .btn-primary { background: var(--brand-green); color: var(--on-primary); }
+.own-mongodb .btn-primary:hover { filter: brightness(1.05); }
+.own-mongodb .btn-outline { background: transparent; color: var(--ink); border-color: var(--hairline-strong); }
+.own-mongodb .btn-outline:hover { border-color: var(--brand-green-dark); color: var(--brand-green-dark); }
+.own-mongodb .btn-outline-dark { background: transparent; color: var(--on-dark); border-color: var(--hairline-dark); }
+.own-mongodb .btn-outline-dark:hover { border-color: var(--brand-green); color: var(--brand-green); }
+.own-mongodb .btn-lg { padding: 12px 26px; font-size: 15px; }
+.own-mongodb .btn-block { display: flex; width: 100%; }
+.own-mongodb .tlink {
+  display: inline-flex; align-items: center; gap: 7px; color: var(--brand-green-dark);
+  font-size: 14px; font-weight: 500;
+}
+.own-mongodb .tlink svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.own-mongodb .tlink:hover { text-decoration: underline; }
+
+/* ── promo + nav ──────────────────────────────────────────────────────── */
+.own-mongodb .promo {
+  display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+  padding: 12px 16px; background: var(--brand-teal-deep); color: var(--on-dark);
+  font-size: 14px; font-weight: 500; text-align: center;
+}
+.own-mongodb .promo a { color: var(--brand-green); }
+.own-mongodb .promo a:hover { text-decoration: underline; }
+.own-mongodb .nav {
+  position: sticky; top: 68px; z-index: 40;
+  background: color-mix(in srgb, var(--canvas) 88%, transparent);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+  backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid var(--hairline);
+}
+.own-mongodb .nav-in {
+  height: 64px; max-width: 1280px; margin: 0 auto; padding: 0 var(--gut);
+  display: flex; align-items: center; gap: 28px;
+}
+.own-mongodb .brand { display: flex; align-items: center; gap: 10px; }
+.own-mongodb .brand-leaf { display: grid; place-items: center; width: 26px; height: 26px; color: var(--brand-green-dark); }
+.own-mongodb .brand-leaf svg { width: 24px; height: 24px; fill: currentColor; }
+.own-mongodb .brand-name { font-weight: 600; font-size: 18px; letter-spacing: -0.3px; }
+.own-mongodb .nav-links { display: flex; align-items: center; gap: 4px; margin: 0 auto; }
+.own-mongodb .nav-links a { padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--steel); transition: color .15s, background-color .15s; }
+.own-mongodb .nav-links a:hover { color: var(--ink); background: var(--surface-soft); }
+.own-mongodb .nav-actions { display: flex; align-items: center; gap: 14px; }
+.own-mongodb .nav-toggle {
+  display: none; place-items: center; width: 38px; height: 38px; border-radius: 8px;
+  border: 1px solid var(--hairline-strong); background: var(--canvas); color: var(--ink); cursor: pointer;
+}
+.own-mongodb .nav-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.own-mongodb .nav-drawer { display: none; }
+
+/* ── hero band ───────────────────────────────────────────────────────── */
+.own-mongodb .hero {
+  position: relative;
+  background:
+    radial-gradient(80% 90% at 85% 10%, rgba(0, 104, 74, .45), rgba(0, 30, 43, 0) 60%),
+    linear-gradient(180deg, #001e2b 0%, #00303f 100%);
+  color: var(--on-dark);
+}
+.own-mongodb .hero-in {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5cqi, 64px);
+  align-items: center; padding: clamp(56px, 9cqi, 112px) var(--gut); max-width: 1280px; margin: 0 auto;
+}
+.own-mongodb .hero-copy .eyebrow { color: var(--brand-green); }
+.own-mongodb .hero-title { margin-bottom: 20px; }
+.own-mongodb .hero-lead { color: var(--on-dark-muted); max-width: 50ch; font-size: clamp(16px, 1.4cqi, 18px); }
+.own-mongodb .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 16px; }
+.own-mongodb .hero-note { color: var(--on-dark-muted); font-size: 13px; }
+.own-mongodb .hero-code { background: var(--canvas-dark); border-radius: 12px; border: 1px solid var(--hairline-dark); overflow: hidden; box-shadow: rgba(0, 30, 43, .5) 0px 12px 24px -4px; }
+.own-mongodb .code-head { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.own-mongodb .code-dots { display: inline-flex; gap: 6px; }
+.own-mongodb .code-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, .22); }
+.own-mongodb .code-file { color: var(--on-dark-muted); font-size: 13px; font-family: var(--f-mono); }
+.own-mongodb .code-body { margin: 0; padding: 20px; overflow-x: auto; color: #d7f5e4; font-family: var(--f-mono); font-size: 13px; line-height: 1.6; }
+.own-mongodb .code-body code { font-family: inherit; }
+.own-mongodb .c-key { color: #7be0a4; }
+.own-mongodb .c-str { color: var(--brand-green); }
+.own-mongodb .c-fn { color: #6fb3ff; }
+.own-mongodb .c-prop { color: #ffb98a; }
+.own-mongodb .c-com { color: #5c6c7a; }
+
+/* ── logos ────────────────────────────────────────────────────────────── */
+.own-mongodb .logos { padding: clamp(36px, 5cqi, 56px) 0; border-bottom: 1px solid var(--hairline-soft); }
+.own-mongodb .logos-cap { text-align: center; font-size: 13px; color: var(--stone); letter-spacing: .3px; margin-bottom: 24px; }
+.own-mongodb .logo-wall { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(20px, 4cqi, 56px); }
+.own-mongodb .logo-wall li { font-size: 17px; font-weight: 500; color: var(--steel); white-space: nowrap; }
+
+/* ── sections ────────────────────────────────────────────────────────── */
+.own-mongodb .section { padding: var(--sec) 0; }
+.own-mongodb .section-surface { background: var(--surface); }
+
+/* feature grid */
+.own-mongodb .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-mongodb .fcard {
+  position: relative; background: var(--canvas); border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 32px; display: flex; flex-direction: column;
+  transition: box-shadow .2s, border-color .2s;
+}
+.own-mongodb .fcard:hover { box-shadow: rgba(0, 30, 43, .08) 0px 4px 12px; }
+.own-mongodb .corner {
+  position: absolute; top: -1px; left: -1px; width: 12px; height: 12px;
+  background: var(--brand-green); border-top-left-radius: 12px;
+}
+.own-mongodb .ficon {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 10px;
+  background: var(--surface-feature); color: var(--brand-green-dark); margin-bottom: 22px;
+}
+.own-mongodb .ficon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.own-mongodb .fcard h3 { font-size: 22px; font-weight: 500; line-height: 1.35; margin: 0 0 10px; }
+.own-mongodb .fcard p { color: var(--slate); font-size: 15px; }
+
+/* ── dark CTA band ───────────────────────────────────────────────────── */
+.own-mongodb .band { background: var(--brand-teal-deep); color: var(--on-dark); }
+.own-mongodb .band-in {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5cqi, 64px); align-items: center;
+  padding: clamp(48px, 7cqi, 88px) var(--gut); max-width: 1280px; margin: 0 auto;
+}
+.own-mongodb .band-eyebrow { color: var(--brand-green); }
+.own-mongodb .band-title { font-size: clamp(28px, 3.6cqi, 48px); font-weight: 500; line-height: 1.2; letter-spacing: -0.5px; margin: 0 0 14px; max-width: 20ch; }
+.own-mongodb .band-lead { color: var(--on-dark-muted); max-width: 48ch; }
+.own-mongodb .band-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.own-mongodb .deploy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.own-mongodb .deploy-tile {
+  display: grid; place-items: center; min-height: 84px; border-radius: 16px;
+  background: color-mix(in srgb, var(--brand-teal-mid) 55%, transparent);
+  border: 1px solid var(--hairline-dark); color: var(--on-dark); font-size: 15px; font-weight: 600;
+}
+
+/* ── course catalog ──────────────────────────────────────────────────── */
+.own-mongodb .courses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-mongodb .course {
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 24px; display: flex; flex-direction: column;
+  transition: box-shadow .2s;
+}
+.own-mongodb .course:hover { box-shadow: rgba(0, 30, 43, .08) 0px 4px 12px; }
+.own-mongodb .tag {
+  align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 6px; margin-bottom: 16px; color: #fff;
+}
+.own-mongodb .tag-purple { background: var(--accent-purple); }
+.own-mongodb .tag-orange { background: var(--accent-orange); }
+.own-mongodb .tag-green { background: var(--brand-green-dark); }
+.own-mongodb .tag-teal { background: var(--brand-teal); }
+.own-mongodb .course h3 { font-size: 18px; font-weight: 600; line-height: 1.4; margin: 0 0 8px; }
+.own-mongodb .course p { color: var(--slate); font-size: 14px; margin-bottom: 18px; flex: 1; }
+
+/* ── pricing ─────────────────────────────────────────────────────────── */
+.own-mongodb .tabs { display: inline-flex; gap: 4px; margin-top: 26px; padding: 4px; border-radius: 999px; background: var(--canvas); border: 1px solid var(--hairline); }
+.own-mongodb .tab { padding: 7px 18px; border: 0; border-radius: 999px; background: transparent; color: var(--steel); font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color .18s, color .18s; }
+.own-mongodb .tab.on { background: var(--ink); color: var(--on-dark); }
+.own-mongodb .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.own-mongodb .tier {
+  position: relative; background: var(--canvas); border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 32px; display: flex; flex-direction: column;
+}
+.own-mongodb .tier-feat { background: var(--surface-feature); border: 2px solid var(--brand-green); }
+.own-mongodb .tier-badge {
+  position: absolute; top: -12px; left: 32px; font-size: 11px; font-weight: 600; letter-spacing: .5px;
+  padding: 4px 12px; border-radius: 999px; background: var(--brand-teal-deep); color: var(--brand-green);
+}
+.own-mongodb .tier h3 { font-size: 20px; font-weight: 600; margin: 4px 0 6px; }
+.own-mongodb .tier-note { color: var(--steel); font-size: 14px; min-height: 40px; }
+.own-mongodb .price { display: flex; align-items: baseline; gap: 5px; margin: 18px 0 22px; }
+.own-mongodb .price span { font-size: 40px; font-weight: 500; letter-spacing: -1px; }
+.own-mongodb .price small { color: var(--steel); font-size: 14px; }
+.own-mongodb .tier ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 11px; flex: 1; }
+.own-mongodb .tier li { position: relative; padding-left: 26px; font-size: 14px; color: var(--slate); }
+.own-mongodb .tier li::before { content: '\2713'; position: absolute; left: 2px; top: 0; color: var(--brand-green-dark); font-weight: 700; }
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.own-mongodb .foot { background: var(--brand-teal-deep); color: var(--on-dark); padding: clamp(48px, 6cqi, 72px) 0 32px; }
+.own-mongodb .foot-in { display: grid; grid-template-columns: 1.4fr 3fr; gap: clamp(28px, 4cqi, 56px); }
+.own-mongodb .foot-brand { display: grid; gap: 10px; align-content: start; }
+.own-mongodb .foot-brand .brand-name { font-size: 18px; font-weight: 600; }
+.own-mongodb .foot-brand p { color: var(--on-dark-muted); font-size: 14px; max-width: 28ch; }
+.own-mongodb .foot-cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.own-mongodb .foot-cols h4 { font-size: 14px; font-weight: 600; margin: 0 0 12px; color: var(--on-dark); }
+.own-mongodb .foot-cols a { display: block; color: var(--on-dark-muted); font-size: 14px; padding: 4px 0; }
+.own-mongodb .foot-cols a:hover { color: var(--on-dark); }
+.own-mongodb .foot-base {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--hairline-dark);
+  font-size: 13px; color: var(--on-dark-muted);
+}
+
+/* ── reveal ──────────────────────────────────────────────────────────── */
+.own-mongodb .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .8s cubic-bezier(.16, 1, .3, 1); }
+.own-mongodb .reveal.in { opacity: 1; transform: none; }
+
+/* ── responsive (container queries) ──────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-mongodb .hero-in { grid-template-columns: 1fr; }
+  .own-mongodb .band-in { grid-template-columns: 1fr; }
+  .own-mongodb .features { grid-template-columns: repeat(2, 1fr); }
+  .own-mongodb .courses { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 900px) {
+  .own-mongodb .nav-links { display: none; }
+  .own-mongodb .nav-toggle { display: grid; }
+  .own-mongodb .nav-actions .tlink { display: none; }
+  .own-mongodb .foot-in { grid-template-columns: 1fr; }
+  .own-mongodb .foot-cols { grid-template-columns: repeat(3, 1fr); }
+}
+@container frame (max-width: 760px) {
+  .own-mongodb .nav-drawer {
+    display: grid; gap: 2px; padding: 12px var(--gut) 16px;
+    background: var(--canvas); border-bottom: 1px solid var(--hairline);
+  }
+  .own-mongodb .nav-drawer a { padding: 10px 8px; border-radius: 8px; font-size: 15px; font-weight: 500; color: var(--ink); }
+  .own-mongodb .nav-drawer a:hover { background: var(--surface-soft); }
+  .own-mongodb .features { grid-template-columns: 1fr; }
+  .own-mongodb .courses { grid-template-columns: 1fr; }
+  .own-mongodb .tiers { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 560px) {
+  .own-mongodb .foot-cols { grid-template-columns: repeat(2, 1fr); }
+  .own-mongodb .deploy-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-mongodb *, .own-mongodb *::before, .own-mongodb *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important;
+  }
+  .own-mongodb .reveal { opacity: 1; transform: none; }
+}

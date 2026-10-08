@@ -1,0 +1,114 @@
+<div class="own-sentry">
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="sy-nav">
+    <a class="sy-brand" href="#sy-top"><span class="sy-brand-mark" aria-hidden="true"></span>Northwind</a>
+    <nav class="sy-nav-links" aria-label="Primary">
+      <a href="#sy-features">Product</a>
+      <a href="#sy-code">Developers</a>
+      <a href="#sy-pricing">Pricing</a>
+      <a href="#sy-customers">Customers</a>
+    </nav>
+    <div class="sy-nav-right">
+      <a class="sy-ghost" href="#">Get demo</a>
+      <a class="sy-btn sy-btn-invert" href="#sy-pricing">Get started</a>
+    </div>
+  </header>
+
+  <main id="sy-top">
+    <!-- ── HERO (dark canvas) ────────────────────────────────────────── -->
+    <section class="sy-hero">
+      <div class="sy-stars" aria-hidden="true"></div>
+      <span class="sy-mascot sy-mascot-a" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="44" r="26" fill="#fa7faa"/><circle cx="50" cy="44" r="26" fill="none" stroke="#150f23" stroke-width="3"/><circle cx="41" cy="40" r="4" fill="#150f23"/><circle cx="59" cy="40" r="4" fill="#150f23"/><path d="M40 54c6 6 14 6 20 0" stroke="#150f23" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M28 24l8 10M72 24l-8 10" stroke="#150f23" stroke-width="3" stroke-linecap="round"/></svg></span>
+      <span class="sy-mascot sy-mascot-b" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M50 12 60 40l30 2-24 18 9 30-25-17-25 17 9-30-24-18 30-2z" fill="#c2ef4e" stroke="#150f23" stroke-width="3" stroke-linejoin="round"/></svg></span>
+      <div class="sy-hero-inner">
+        <p class="sy-eyebrow">Operations observability</p>
+        <h1 class="sy-display">Ship reliable operations <span class="sy-lime">without guesswork.</span></h1>
+        <p class="sy-lead">Northwind traces every dashboard, pipeline, and region in one place, so you can find the slow query <span class="sy-link">before it pages you</span> at 3am.</p>
+        <div class="sy-hero-cta">
+          <a class="sy-btn sy-btn-invert" href="#sy-pricing">Start for free</a>
+          <a class="sy-ghost sy-ghost-dark" href="#sy-code">Read the docs</a>
+        </div>
+        <p class="sy-hero-note">No credit card required</p>
+      </div>
+    </section>
+
+    <!-- ── FEATURE BAND (dark) ───────────────────────────────────────── -->
+    <section id="sy-features" class="sy-band">
+      <p class="sy-eyebrow">What you get</p>
+      <h2 class="sy-display-lg">Everything, <span class="sy-lime">in one console.</span></h2>
+      <div class="sy-grid" id="syFeatureGrid"></div>
+    </section>
+
+    <!-- ── CODE BLOCK (dark) ─────────────────────────────────────────── -->
+    <section id="sy-code" class="sy-split">
+      <div class="sy-split-copy">
+        <p class="sy-eyebrow">Instrument in minutes</p>
+        <h2 class="sy-display-lg">Add the SDK.<br>See the whole floor.</h2>
+        <p class="sy-body">Drop the client into your pipeline, point it at a project, and Northwind starts grouping throughput regressions the moment they appear.</p>
+        <a class="sy-link sy-body" href="#">Read the quickstart &rarr;</a>
+      </div>
+      <div class="sy-codeblock">
+        <div class="sy-codebar"><span class="sy-cd"></span><span class="sy-cd"></span><span class="sy-cd"></span><span class="sy-codetab">pipeline.js</span></div>
+        <pre class="sy-code"><span class="sy-c-key">import</span> * <span class="sy-c-key">as</span> NW <span class="sy-c-key">from</span> <span class="sy-c-str">'@northwind/node'</span>;
+
+NW.<span class="sy-c-name">init</span>({
+  <span class="sy-c-key">project</span>: <span class="sy-c-str">'ops-analytics'</span>,
+  <span class="sy-c-key">region</span>: <span class="sy-c-str">'luzon'</span>,
+  <span class="sy-c-key">tracesSampleRate</span>: <span class="sy-c-num">0.25</span>
+});
+
+<span class="sy-c-com">// group regressions by region</span>
+NW.<span class="sy-c-name">captureIssue</span>(<span class="sy-c-str">'throughput-drop'</span>);</pre>
+      </div>
+    </section>
+
+    <!-- ── SPOTLIGHT (deep violet card) ──────────────────────────────── -->
+    <section class="sy-band">
+      <div class="sy-spotlight">
+        <div class="sy-spotlight-copy">
+          <span class="sy-chip">Northwind only</span>
+          <h2 class="sy-display-lg">Forecast where the floor will slow down.</h2>
+          <p class="sy-body">Northwind correlates throughput trend lines with deploy history and flags the regions most likely to miss target — before the number lands.</p>
+        </div>
+        <div class="sy-spotlight-art" aria-hidden="true">
+          <div class="sy-spark"><span style="--h:40%"></span><span style="--h:58%"></span><span style="--h:36%"></span><span style="--h:72%"></span><span style="--h:52%"></span><span style="--h:88%"></span></div>
+          <span class="sy-spark-label">forecast · +14% variance</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING (light canvas) ────────────────────────────────────── -->
+    <section id="sy-pricing" class="sy-pricing">
+      <p class="sy-eyebrow sy-on-light">Pricing</p>
+      <h2 class="sy-display-lg sy-on-light">Plans for dev teams of every size.</h2>
+      <div class="sy-tiers" id="syTierGrid"></div>
+      <p class="sy-fine sy-on-light">All plans include the query API, 30-day retention, and unlimited projects.</p>
+    </section>
+
+    <!-- ── CUSTOMERS ─────────────────────────────────────────────────── -->
+    <section id="sy-customers" class="sy-band sy-quote-band">
+      <div class="sy-quote">
+        <p class="sy-quote-text">“We went from firefighting throughput alerts to shipping a fix before the standup. Northwind is the first console our analysts actually open.”</p>
+        <p class="sy-quote-by">Dane Ocampo &middot; Head of Operations, Northfork</p>
+      </div>
+      <div class="sy-logo-wall" aria-label="Customers">
+        <span>ATLAS</span><span>KESTREL</span><span>HELIOS</span><span>MERIDIAN</span><span>BLUEPRINT</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="sy-footer">
+    <svg class="sy-squiggle" viewBox="0 0 1200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0 8c60-12 120 12 180 0s120-12 180 0 120 12 180 0 120-12 180 0 120 12 180 0 120-12 180 0" fill="none" stroke="#c2ef4e" stroke-width="3"/></svg>
+    <div class="sy-foot-grid">
+      <div class="sy-foot-brand">
+        <span class="sy-brand sy-on-light"><span class="sy-brand-mark" aria-hidden="true"></span>Northwind</span>
+        <p class="sy-body sy-on-light-mute">Observability for operations teams that live in the terminal.</p>
+      </div>
+      <div class="sy-foot-col"><h3>Product</h3><a href="#">Overview</a><a href="#">Forecasting</a><a href="#">Query API</a></div>
+      <div class="sy-foot-col"><h3>Developers</h3><a href="#">Docs</a><a href="#">SDK</a><a href="#">Changelog</a></div>
+      <div class="sy-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+    </div>
+    <div class="sy-foot-row"><span>Sample data — showcase only</span><span>© 2026 Northwind</span></div>
+  </footer>
+</div>

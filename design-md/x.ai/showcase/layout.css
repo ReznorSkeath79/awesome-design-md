@@ -1,0 +1,212 @@
+/* ══ X.AI — own layout for showcase.html ═══════════════════════════════════
+   Ported from the xAI design language in DESIGN.md: near-black #0a0a0a canvas,
+   white outline pills as the entire interactive vocabulary, Universal Sans
+   weight 400 with aggressive negative tracking (Inter substitute) paired with
+   GeistMono uppercase tracked eyebrows, 8px charcoal cards with hairline
+   #212327 borders, no shadows, restrained sunset / dusk / breeze accents in
+   illustrations. Scoped under `.own-x-ai`. */
+
+.own-x-ai {
+  --xa-canvas: #0a0a0a;
+  --xa-canvas-soft: #1a1c20;
+  --xa-canvas-card: #191919;
+  --xa-hairline: #212327;
+  --xa-ink: #ffffff;
+  --xa-body: #dadbdf;
+  --xa-body-mid: #7d8187;
+  --xa-sunset: #ff7a17;
+  --xa-sunset-soft: #ffc285;
+  --xa-dusk: #7c3aed;
+  --xa-twilight: #c4b5fd;
+  --xa-breeze: #a0c3ec;
+  --xa-display: 'universalSans', 'Inter', system-ui, -apple-system, sans-serif;
+  --xa-mono: 'GeistMono', 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --xa-gut: clamp(20px, 5cqi, 64px);
+
+  position: relative;
+  background: var(--xa-canvas);
+  color: var(--xa-ink);
+  font-family: var(--xa-display);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+  border-radius: 13px;
+}
+
+.own-x-ai *, .own-x-ai *::before, .own-x-ai *::after { box-sizing: border-box; }
+.own-x-ai p { margin: 0; }
+.own-x-ai a { color: inherit; text-decoration: none; }
+.own-x-ai :focus-visible { outline: 2px solid var(--xa-ink); outline-offset: 3px; border-radius: 9999px; }
+.own-x-ai .xa-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.own-x-ai .xa-eyebrow {
+  font-family: var(--xa-mono); font-size: 14px; font-weight: 400; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--xa-body-mid); margin-bottom: 18px;
+}
+.own-x-ai .xa-hero-title {
+  font-size: clamp(44px, 8cqi, 96px); font-weight: 400; line-height: 1; letter-spacing: -.025em;
+  max-width: 16ch;
+}
+.own-x-ai .xa-sec-title {
+  font-size: clamp(32px, 5cqi, 72px); font-weight: 400; line-height: 1; letter-spacing: -.025em;
+  max-width: 18ch; margin-bottom: 40px;
+}
+
+/* ── pills (the entire shape system) ─────────────────────────────────────── */
+.own-x-ai .xa-pill {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--xa-display); font-size: 14px; font-weight: 400;
+  padding: 12px 20px; border-radius: 9999px; border: 1px solid rgba(255,255,255,.25);
+  color: var(--xa-ink); background: transparent; cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+.own-x-ai .xa-pill:hover { border-color: rgba(255,255,255,.55); background: rgba(255,255,255,.06); }
+.own-x-ai .xa-pill-sm { padding: 6px 14px; font-size: 14px; }
+.own-x-ai .xa-pill-fill { background: var(--xa-ink); color: var(--xa-canvas); border-color: var(--xa-ink); }
+.own-x-ai .xa-pill-fill:hover { background: #e6e6e6; border-color: #e6e6e6; }
+.own-x-ai .xa-pill-block { width: 100%; }
+
+/* ── nav ─────────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-nav {
+  position: sticky; top: 68px; z-index: 30;
+  display: flex; align-items: center; gap: 32px; height: 64px; padding: 0 var(--xa-gut);
+  background: rgba(10,10,10,.86); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--xa-hairline);
+}
+.own-x-ai .xa-brand { font-size: 16px; font-weight: 400; letter-spacing: .28em; white-space: nowrap; }
+.own-x-ai .xa-nav-links { display: flex; align-items: center; gap: 26px; }
+.own-x-ai .xa-nav-links a { font-size: 14px; color: var(--xa-body); transition: color .18s ease; }
+.own-x-ai .xa-nav-links a:hover { color: var(--xa-ink); }
+.own-x-ai .xa-nav-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+/* ── hero ────────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-hero { padding: 104px var(--xa-gut) 72px; max-width: 1200px; margin: 0 auto; }
+.own-x-ai .xa-hero-lead {
+  font-size: clamp(16px, 1.8cqi, 18px); line-height: 1.55; color: var(--xa-body);
+  max-width: 52ch; margin-top: 26px;
+}
+.own-x-ai .xa-hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+/* ── metrics ─────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-metrics { border-top: 1px solid var(--xa-hairline); border-bottom: 1px solid var(--xa-hairline); }
+.own-x-ai .xa-metric-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: 1200px; margin: 0 auto; padding: 0 var(--xa-gut);
+}
+.own-x-ai .xa-metric {
+  display: flex; flex-direction: column; gap: 10px; padding: 40px 0;
+  border-right: 1px solid var(--xa-hairline);
+}
+.own-x-ai .xa-metric:last-child { border-right: 0; }
+.own-x-ai .xa-metric + .xa-metric { padding-left: 32px; }
+.own-x-ai .xa-metric-num { font-size: clamp(32px, 4cqi, 48px); font-weight: 400; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.own-x-ai .xa-metric-cap { font-family: var(--xa-mono); font-size: 12px; letter-spacing: 1.2px; color: var(--xa-body-mid); }
+
+/* ── products ────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-products { padding: 104px var(--xa-gut) 0; max-width: 1200px; margin: 0 auto; }
+.own-x-ai .xa-product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.own-x-ai .xa-card {
+  display: flex; flex-direction: column; gap: 14px; padding: 24px;
+  background: var(--xa-canvas-card); border: 1px solid var(--xa-hairline); border-radius: 8px;
+}
+.own-x-ai .xa-card-ico { display: inline-grid; place-items: center; width: 48px; height: 48px; margin-bottom: 6px; background: var(--xa-canvas-soft); border-radius: 8px; }
+.own-x-ai .xa-card-ico svg { width: 32px; height: 32px; fill: none; }
+.own-x-ai .xa-card-tag { font-family: var(--xa-mono); font-size: 12px; letter-spacing: 1.2px; color: var(--xa-body-mid); }
+.own-x-ai .xa-card-title { font-size: 24px; font-weight: 400; letter-spacing: -.015em; line-height: 1.15; }
+.own-x-ai .xa-card-body { font-size: 16px; line-height: 1.55; color: var(--xa-body); margin-bottom: 6px; }
+.own-x-ai .xa-card .xa-pill { align-self: flex-start; margin-top: auto; }
+
+/* ── console ─────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-console { padding: 104px var(--xa-gut) 0; max-width: 1200px; margin: 0 auto; }
+.own-x-ai .xa-console-head { margin-bottom: 32px; }
+.own-x-ai .xa-console-head .xa-sec-title { margin-bottom: 0; }
+.own-x-ai .xa-term { border: 1px solid var(--xa-hairline); border-radius: 8px; overflow: hidden; background: var(--xa-canvas-card); }
+.own-x-ai .xa-term-bar {
+  display: flex; align-items: center; gap: 7px; height: 40px; padding: 0 16px;
+  background: var(--xa-canvas-soft); border-bottom: 1px solid var(--xa-hairline);
+}
+.own-x-ai .xa-term-dot { width: 10px; height: 10px; border-radius: 50%; background: #3a3d42; }
+.own-x-ai .xa-term-title { margin-left: 12px; font-family: var(--xa-mono); font-size: 12px; letter-spacing: .4px; color: var(--xa-body-mid); }
+.own-x-ai .xa-term-body {
+  margin: 0; padding: 24px; font-family: var(--xa-mono); font-size: 14px; line-height: 1.9;
+  letter-spacing: .2px; color: var(--xa-body); overflow-x: auto; white-space: pre;
+}
+.own-x-ai .xa-c-dim { color: #565a60; }
+.own-x-ai .xa-c-ok { color: #6fe08a; }
+.own-x-ai .xa-c-warn { color: var(--xa-sunset-soft); }
+.own-x-ai .xa-c-hot { color: var(--xa-ink); }
+.own-x-ai .xa-c-cursor { color: var(--xa-sunset); animation: xaBlink 1.1s step-end infinite; }
+@keyframes xaBlink { 50% { opacity: 0; } }
+
+/* ── pricing ─────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-pricing { padding: 104px var(--xa-gut) 0; max-width: 1200px; margin: 0 auto; }
+.own-x-ai .xa-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+.own-x-ai .xa-price-card {
+  display: flex; flex-direction: column; gap: 16px; padding: 24px;
+  background: var(--xa-canvas-soft); border: 1px solid var(--xa-hairline); border-radius: 8px;
+}
+.own-x-ai .xa-price-feat { background: var(--xa-canvas-card); }
+.own-x-ai .xa-price-card h3 { font-size: 24px; font-weight: 400; letter-spacing: -.015em; }
+.own-x-ai .xa-price { font-size: 14px; color: var(--xa-body-mid); }
+.own-x-ai .xa-price span { font-size: 40px; font-weight: 400; letter-spacing: -.02em; color: var(--xa-ink); }
+.own-x-ai .xa-feats { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.own-x-ai .xa-feats li { position: relative; padding-left: 22px; font-size: 16px; color: var(--xa-body); }
+.own-x-ai .xa-feats li::before {
+  content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid var(--xa-body-mid);
+}
+.own-x-ai .xa-price-card .xa-pill { margin-top: auto; }
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-cta { padding: 128px var(--xa-gut) 104px; max-width: 1200px; margin: 0 auto; }
+.own-x-ai .xa-cta-title { font-size: clamp(36px, 6cqi, 96px); font-weight: 400; line-height: 1; letter-spacing: -.025em; max-width: 14ch; margin-bottom: 36px; }
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.own-x-ai .xa-footer { border-top: 1px solid var(--xa-hairline); padding: 64px var(--xa-gut) 40px; }
+.own-x-ai .xa-foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+.own-x-ai .xa-foot-brand p { font-size: 14px; line-height: 1.6; color: var(--xa-body-mid); margin-top: 14px; max-width: 30ch; }
+.own-x-ai .xa-foot-col { display: flex; flex-direction: column; gap: 10px; }
+.own-x-ai .xa-foot-col h4 { font-family: var(--xa-mono); font-size: 12px; letter-spacing: 1.2px; font-weight: 400; color: var(--xa-body-mid); margin-bottom: 4px; }
+.own-x-ai .xa-foot-col a { font-size: 14px; color: var(--xa-body); }
+.own-x-ai .xa-foot-col a:hover { color: var(--xa-ink); }
+.own-x-ai .xa-foot-base {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  max-width: 1200px; margin: 48px auto 0; padding-top: 24px;
+  border-top: 1px solid var(--xa-hairline);
+  font-family: var(--xa-mono); font-size: 12px; letter-spacing: .4px; color: var(--xa-body-mid);
+}
+
+/* ── responsive — @container frame ───────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-x-ai .xa-hero { padding-top: 80px; }
+  .own-x-ai .xa-product-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-x-ai .xa-price-grid { grid-template-columns: repeat(2, 1fr); }
+  .own-x-ai .xa-price-feat { grid-column: span 2; }
+  .own-x-ai .xa-foot-grid { grid-template-columns: 1fr 1fr; }
+  .own-x-ai .xa-foot-brand { grid-column: span 2; }
+}
+@container frame (max-width: 760px) {
+  .own-x-ai .xa-nav-links { display: none; }
+  .own-x-ai .xa-metric-row { grid-template-columns: repeat(2, 1fr); }
+  .own-x-ai .xa-metric { padding: 28px 0; }
+  .own-x-ai .xa-metric:nth-child(2) { border-right: 0; }
+  .own-x-ai .xa-metric + .xa-metric { padding-left: 24px; }
+  .own-x-ai .xa-metric:nth-child(3) { padding-left: 0; }
+  .own-x-ai .xa-product-grid { grid-template-columns: 1fr; }
+  .own-x-ai .xa-price-grid { grid-template-columns: 1fr; }
+  .own-x-ai .xa-price-feat { grid-column: span 1; }
+  .own-x-ai .xa-products, .own-x-ai .xa-console, .own-x-ai .xa-pricing { padding-top: 72px; }
+  .own-x-ai .xa-cta { padding-top: 80px; }
+}
+@container frame (max-width: 430px) {
+  .own-x-ai .xa-hero-cta { flex-direction: column; }
+  .own-x-ai .xa-hero-cta .xa-pill { width: 100%; }
+  .own-x-ai .xa-foot-grid { grid-template-columns: 1fr; }
+  .own-x-ai .xa-foot-brand { grid-column: span 1; }
+  .own-x-ai .xa-term-body { font-size: 12px; padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .own-x-ai .xa-pill { transition: none; }
+  .own-x-ai .xa-c-cursor { animation: none; }
+}

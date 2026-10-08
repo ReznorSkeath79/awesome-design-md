@@ -1,0 +1,145 @@
+<div class="own-sanity">
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="sn-nav">
+    <a class="sn-brand" href="#sn-top">Northwind</a>
+    <nav class="sn-nav-links" aria-label="Primary">
+      <a href="#sn-product">Product</a>
+      <a href="#sn-platform">Platform</a>
+      <a href="#sn-pricing">Pricing</a>
+      <a href="#sn-docs">Docs</a>
+    </nav>
+    <div class="sn-nav-right">
+      <span class="sn-version">v3.2</span>
+      <a class="sn-signin" href="#">Sign in</a>
+      <a class="sn-btn sn-btn-red" href="#sn-pricing">Start free</a>
+    </div>
+  </header>
+
+  <main id="sn-top">
+    <!-- ── HERO ───────────────────────────────────────────────────────── -->
+    <section class="sn-hero" aria-labelledby="sn-h1">
+      <div class="sn-hero-copy">
+        <p class="sn-eyebrow">Operations platform</p>
+        <h1 id="sn-h1" class="sn-display">Structured operations,<br>end to end.</h1>
+        <p class="sn-lead">Model every dashboard, region, and pipeline as structured content. Northwind keeps your operations data queryable, versioned, and consistent across the floor.</p>
+        <div class="sn-hero-cta">
+          <a class="sn-btn sn-btn-red" href="#sn-pricing">Start building</a>
+          <a class="sn-btn sn-btn-dark" href="#sn-product">See the docs</a>
+        </div>
+        <p class="sn-hero-note"><span class="sn-mono">$</span> npm create northwind@latest</p>
+      </div>
+      <div class="sn-hero-frame" aria-label="Sample operations schema">
+        <div class="sn-frame-bar">
+          <span class="sn-dot"></span><span class="sn-dot"></span><span class="sn-dot"></span>
+          <span class="sn-frame-title sn-mono">metrics.schema</span>
+        </div>
+        <pre class="sn-code"><span class="sn-c-key">type</span> <span class="sn-c-name">Throughput</span> = {
+  <span class="sn-c-key">region</span>: <span class="sn-c-str">'luzon'</span> | <span class="sn-c-str">'visayas'</span> | <span class="sn-c-str">'mindanao'</span>
+  <span class="sn-c-key">units</span>: <span class="sn-c-str">'cases/hr'</span>
+  <span class="sn-c-key">target</span>: <span class="sn-c-num">4200</span>
+  <span class="sn-c-key">actual</span>: <span class="sn-c-num">3987</span>
+}
+
+<span class="sn-c-com">// query the live dataset</span>
+<span class="sn-c-name">client</span>.fetch(<span class="sn-c-str">'*[_type=="throughput"]'</span>)</pre>
+      </div>
+    </section>
+
+    <div class="sn-ticker" aria-hidden="true">
+      <div class="sn-ticker-track">
+        <span>SCHEMA-FIRST</span><i></i><span>REAL-TIME APIs</span><i></i><span>VERSIONED CONTENT</span><i></i><span>GLOBAL CDN</span><i></i>
+        <span>SCHEMA-FIRST</span><i></i><span>REAL-TIME APIs</span><i></i><span>VERSIONED CONTENT</span><i></i><span>GLOBAL CDN</span><i></i>
+      </div>
+    </div>
+
+    <!-- ── PLATFORM FEATURES ──────────────────────────────────────────── -->
+    <section id="sn-platform" class="sn-section" aria-labelledby="sn-platform-h">
+      <p class="sn-eyebrow">The platform</p>
+      <h2 id="sn-platform-h" class="sn-h2">One content graph for<br>every operations surface.</h2>
+      <div class="sn-grid sn-grid-3" id="snFeatureGrid"></div>
+    </section>
+
+    <!-- ── PRODUCT FRAME ──────────────────────────────────────────────── -->
+    <section id="sn-product" class="sn-section sn-product" aria-labelledby="sn-product-h">
+      <div class="sn-product-head">
+        <p class="sn-eyebrow">Studio</p>
+        <h2 id="sn-product-h" class="sn-h2">Edit structured data,<br>see it everywhere.</h2>
+        <p class="sn-body">The same fields that power your regional dashboards render as editable content in the Studio. Change the schema, and every consumer updates.</p>
+      </div>
+      <div class="sn-product-frame" aria-label="Northwind Studio preview">
+        <div class="sn-studio-side">
+          <span class="sn-studio-logo sn-mono">NW</span>
+          <ul class="sn-studio-nav">
+            <li class="on"><span class="sn-mono">01</span>Throughput</li>
+            <li><span class="sn-mono">02</span>Regions</li>
+            <li><span class="sn-mono">03</span>Forecast</li>
+            <li><span class="sn-mono">04</span>Alerts</li>
+          </ul>
+        </div>
+        <div class="sn-studio-main">
+          <div class="sn-studio-toolbar">
+            <span class="sn-pill">Published</span>
+            <span class="sn-mono sn-faint">updated 2m ago</span>
+          </div>
+          <div class="sn-chart" aria-hidden="true">
+            <span style="--h:62%"></span><span style="--h:78%"></span><span style="--h:54%"></span><span style="--h:88%"></span><span style="--h:71%"></span><span style="--h:96%"></span><span style="--h:83%"></span>
+          </div>
+          <div class="sn-table">
+            <div class="sn-tr sn-tr-head"><span>Region</span><span>Target</span><span>Actual</span><span>Delta</span></div>
+            <div class="sn-tr"><span>Luzon</span><span>4,200</span><span>3,987</span><span class="sn-neg">-5.1%</span></div>
+            <div class="sn-tr"><span>Visayas</span><span>2,100</span><span>2,244</span><span class="sn-pos">+6.9%</span></div>
+            <div class="sn-tr"><span>Mindanao</span><span>1,650</span><span>1,602</span><span class="sn-neg">-2.9%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LOGO WALL ──────────────────────────────────────────────────── -->
+    <section class="sn-section sn-logos" aria-labelledby="sn-logos-h">
+      <p id="sn-logos-h" class="sn-eyebrow sn-center">Trusted on the floor at</p>
+      <div class="sn-logo-wall">
+        <span>ATLAS</span><span>MERIDIAN</span><span>KESTREL</span><span>NORTHFORK</span><span>BLUEPRINT</span><span>HELIOS</span>
+      </div>
+    </section>
+
+    <!-- ── STATS ──────────────────────────────────────────────────────── -->
+    <section class="sn-section sn-stats" aria-label="Platform numbers">
+      <div class="sn-stat"><b>10M+</b><span class="sn-mono">documents served / day</span></div>
+      <div class="sn-stat"><b>42</b><span class="sn-mono">regions live</span></div>
+      <div class="sn-stat"><b>99.99%</b><span class="sn-mono">api uptime</span></div>
+      <div class="sn-stat"><b>&lt;40ms</b><span class="sn-mono">p95 query latency</span></div>
+    </section>
+
+    <!-- ── CTA ────────────────────────────────────────────────────────── -->
+    <section id="sn-pricing" class="sn-cta" aria-labelledby="sn-cta-h">
+      <div class="sn-cta-inner">
+        <div>
+          <p class="sn-eyebrow">Get started</p>
+          <h2 id="sn-cta-h" class="sn-h2">Bring structure<br>to your operations.</h2>
+        </div>
+        <div class="sn-cta-actions">
+          <a class="sn-btn sn-btn-red" href="#">Start free</a>
+          <a class="sn-btn sn-btn-dark" href="#sn-docs">Talk to sales</a>
+          <p class="sn-mono sn-faint">Free while you build &middot; no card required</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+    <footer id="sn-docs" class="sn-footer">
+      <div class="sn-foot-brand">
+        <span class="sn-brand">Northwind</span>
+        <p class="sn-body sn-faint">Structured operations content for teams that live in the terminal.</p>
+      </div>
+      <div class="sn-foot-cols">
+        <div class="sn-foot-col"><h3 class="sn-mono">Product</h3><a href="#">Studio</a><a href="#">Content Lake</a><a href="#">APIs</a></div>
+        <div class="sn-foot-col"><h3 class="sn-mono">Developers</h3><a href="#">Docs</a><a href="#">Reference</a><a href="#">Changelog</a></div>
+        <div class="sn-foot-col"><h3 class="sn-mono">Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+      </div>
+      <div class="sn-foot-row">
+        <span>Sample data — showcase only</span>
+        <span class="sn-mono">© 2026 Northwind</span>
+      </div>
+    </footer>
+  </main>
+</div>

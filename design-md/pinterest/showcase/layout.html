@@ -1,0 +1,147 @@
+<div class="own-pinterest">
+  <a class="pt-skip" href="#ptTop">Skip to content</a>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="pt-nav" id="ptNav">
+    <div class="pt-nav-in">
+      <a class="pt-brand" href="#ptTop" aria-label="Northwind home">
+        <span class="pt-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e60023"/><path d="M12 5.4a6.6 6.6 0 0 0-2.4 12.75c-.04-.55-.01-1.2.13-1.79l.85-3.6s-.21-.43-.21-1.07c0-1 .58-1.75 1.3-1.75.62 0 .92.46.92 1.02 0 .62-.4 1.55-.6 2.41-.17.72.36 1.3 1.07 1.3 1.29 0 2.28-1.36 2.28-3.32 0-1.73-1.24-2.95-3.02-2.95-2.06 0-3.27 1.55-3.27 3.15 0 .62.24 1.29.54 1.65a.22.22 0 0 1 .05.21l-.2.8c-.03.13-.1.16-.24.1-.9-.42-1.46-1.73-1.46-2.78 0-2.27 1.65-4.35 4.75-4.35 2.5 0 4.44 1.78 4.44 4.15 0 2.48-1.56 4.47-3.73 4.47-.73 0-1.41-.38-1.65-.82l-.45 1.7c-.16.62-.6 1.4-.9 1.87A6.6 6.6 0 1 0 12 5.4Z" fill="#fff"/></svg>
+        </span>
+        <span class="pt-brand-name">Northwind</span>
+      </a>
+      <nav class="pt-nav-links" aria-label="Primary">
+        <a href="#ptProduct">Explore</a>
+        <a href="#ptBoard">Boards</a>
+        <a href="#ptPricing">Pricing</a>
+        <a href="#ptStories">Customers</a>
+      </nav>
+      <form class="pt-search" role="search" onsubmit="return false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input type="search" placeholder="Search for ideas, dashboards, teams" aria-label="Search">
+      </form>
+      <div class="pt-nav-actions">
+        <a class="pt-btn pt-btn-tertiary" href="#">Log in</a>
+        <a class="pt-btn pt-btn-primary" href="#ptPricing">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="ptTop">
+    <!-- ── HERO ───────────────────────────────────────────────────────── -->
+    <section class="pt-hero">
+      <div class="pt-wrap pt-hero-in">
+        <p class="pt-eyebrow">Northwind · operations analytics</p>
+        <h1 class="pt-hero-title">Create the ops picture<br>you'll act on every day.</h1>
+        <p class="pt-hero-lead">Northwind turns regions, throughput, and revenue into one warm, quiet canvas. Pin the dashboards that matter and let the numbers get out of the way.</p>
+        <div class="pt-hero-cta">
+          <a class="pt-btn pt-btn-primary pt-btn-lg" href="#ptPricing">Get started — free</a>
+          <a class="pt-btn pt-btn-secondary pt-btn-lg" href="#ptProduct">See how it works</a>
+        </div>
+        <p class="pt-hero-note">Free for 3 seats · No credit card · SOC 2 Type II</p>
+      </div>
+
+      <!-- masonry showcase -->
+      <div class="pt-masonry" id="ptMasonry" aria-label="Northwind dashboard pins"></div>
+    </section>
+
+    <!-- ── FEATURE ROW (alternating) ──────────────────────────────────── -->
+    <section class="pt-section" id="ptProduct">
+      <div class="pt-wrap">
+        <div class="pt-sec-head">
+          <p class="pt-eyebrow">What teams build</p>
+          <h2 class="pt-sec-title">Bring your favorite metrics to life</h2>
+        </div>
+
+        <article class="pt-feature">
+          <div class="pt-feature-art pt-art-a" aria-hidden="true">
+            <div class="pt-art-tile"><span class="pt-metric">$48.2k</span><span class="pt-metric-lab">Revenue · weekly</span>
+              <svg viewBox="0 0 320 90" preserveAspectRatio="none"><path d="M0 70 L45 62 L90 68 L135 44 L180 50 L225 26 L270 32 L320 14" fill="none" stroke="#e60023" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="pt-overlay-pill">Revenue pulse</span>
+          </div>
+          <div class="pt-feature-copy">
+            <h3 class="pt-feature-title">Pins that update with the work</h3>
+            <p class="pt-feature-body">Every shipment, ticket, and revenue line is a pin on a board. Move the work and the metric moves with it — no separate spreadsheet to reconcile.</p>
+            <a class="pt-btn pt-btn-primary" href="#ptBoard">Explore the boards</a>
+          </div>
+        </article>
+
+        <article class="pt-feature pt-feature-rev">
+          <div class="pt-feature-art pt-art-b" aria-hidden="true">
+            <div class="pt-art-tile pt-art-dark"><span class="pt-metric">98.4%</span><span class="pt-metric-lab">On-time throughput</span>
+              <div class="pt-bars"><i style="height:40%"></i><i style="height:64%"></i><i style="height:52%"></i><i style="height:80%"></i><i style="height:68%"></i><i style="height:94%"></i></div>
+            </div>
+            <span class="pt-overlay-pill">Throughput</span>
+          </div>
+          <div class="pt-feature-copy">
+            <h3 class="pt-feature-title">Six regions, one calm board</h3>
+            <p class="pt-feature-body">Compare throughput across regions at a glance. Northwind keeps every region on the same ledger so a change in one shows up in the others instantly.</p>
+            <a class="pt-btn pt-btn-secondary" href="#ptStories">Read the story</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── CATEGORY TILES ─────────────────────────────────────────────── -->
+    <section class="pt-section" id="ptBoard">
+      <div class="pt-wrap">
+        <div class="pt-sec-head">
+          <p class="pt-eyebrow">Start from a board</p>
+          <h2 class="pt-sec-title">The pins every ops team needs</h2>
+        </div>
+        <div class="pt-cat-grid" id="ptCatGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── DARK CTA STRIP ─────────────────────────────────────────────── -->
+    <section class="pt-cta" id="ptPricing">
+      <div class="pt-wrap pt-cta-in">
+        <div>
+          <p class="pt-cta-eyebrow">Northwind for your team</p>
+          <h2 class="pt-cta-title">Put the whole operation on one board.</h2>
+        </div>
+        <a class="pt-btn pt-btn-primary pt-btn-lg" href="#">Start free</a>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIAL / STORIES ──────────────────────────────────────── -->
+    <section class="pt-section" id="ptStories">
+      <div class="pt-wrap">
+        <div class="pt-sec-head">
+          <p class="pt-eyebrow">From the floor</p>
+          <h2 class="pt-sec-title">Teams pinning with Northwind</h2>
+        </div>
+        <div class="pt-quotes" id="ptQuotes"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="pt-foot">
+    <div class="pt-wrap">
+      <div class="pt-foot-grid">
+        <div>
+          <p class="pt-foot-head">Get the app</p>
+          <a href="#">iOS</a><a href="#">Android</a>
+        </div>
+        <div>
+          <p class="pt-foot-head">Quick links</p>
+          <a href="#ptProduct">Explore</a><a href="#ptBoard">Boards</a><a href="#ptPricing">Pricing</a>
+        </div>
+        <div>
+          <p class="pt-foot-head">Northwind for</p>
+          <a href="#">Logistics teams</a><a href="#">Revenue ops</a><a href="#">Support</a>
+        </div>
+        <div>
+          <p class="pt-foot-head">About</p>
+          <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Help center</a>
+        </div>
+      </div>
+      <div class="pt-foot-bottom">
+        <span class="pt-foot-brand">Northwind</span>
+        <span>© 2026 · Sample data — showcase only</span>
+      </div>
+    </div>
+  </footer>
+</div>

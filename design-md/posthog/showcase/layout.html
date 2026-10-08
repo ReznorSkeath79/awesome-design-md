@@ -1,0 +1,136 @@
+<div class="own-posthog">
+  <a class="ph-skip" href="#phMain">Skip to content</a>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────────── -->
+  <header class="ph-nav" id="phNav">
+    <div class="ph-nav-in">
+      <a class="ph-brand" href="#phMain" aria-label="Northwind home">
+        <span class="ph-hedge" data-ph-hedge aria-hidden="true"></span>
+        <span class="ph-brand-name">Northwind</span>
+      </a>
+      <nav class="ph-nav-links" aria-label="Primary">
+        <a href="#phProduct">Product</a>
+        <a href="#phDocs">Docs</a>
+        <a href="#phPricing">Pricing</a>
+        <a href="#phWorkflows">Workflows</a>
+        <a href="#phCommunity">Community</a>
+      </nav>
+      <div class="ph-nav-actions">
+        <a class="ph-login" href="#">Log in</a>
+        <a class="ph-btn ph-btn-primary" href="#phPricing">Get started — free</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="phMain">
+    <!-- ── HERO ───────────────────────────────────────────────────────── -->
+    <section class="ph-hero">
+      <div class="ph-wrap ph-hero-in">
+        <div class="ph-hero-copy">
+          <p class="ph-eyebrow">Open-source operations analytics</p>
+          <h1 class="ph-display-xl">The new way to see your operations.</h1>
+          <p class="ph-lead">Northwind is the operations analytics platform your data team will actually enjoy. Track regions, throughput, and revenue on one warm, quiet sheet — with the mascots doing the heavy lifting.</p>
+          <div class="ph-hero-cta">
+            <a class="ph-btn ph-btn-primary" href="#phPricing">Get started — free</a>
+            <a class="ph-btn ph-btn-secondary" href="#phDocs">Read the docs</a>
+          </div>
+          <p class="ph-hero-note">Free self-host · No credit card · SOC 2 Type II</p>
+        </div>
+        <div class="ph-hero-art" aria-hidden="true">
+          <span class="ph-hedge ph-hedge-lg" data-ph-hedge aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURE TILES ──────────────────────────────────────────────── -->
+    <section class="ph-section" id="phProduct">
+      <div class="ph-wrap">
+        <div class="ph-sec-head">
+          <p class="ph-eyebrow">Product</p>
+          <h2 class="ph-display-lg">Everything an ops team needs</h2>
+          <p class="ph-sec-lead">Start with dashboards, go as deep as the ledger. Northwind keeps every surface on the same cream canvas.</p>
+        </div>
+        <div class="ph-tiles" id="phTiles"></div>
+      </div>
+    </section>
+
+    <!-- ── WORKFLOWS — code block inside cream card ───────────────────── -->
+    <section class="ph-section ph-section-soft" id="phWorkflows">
+      <div class="ph-wrap">
+        <div class="ph-sec-head">
+          <p class="ph-eyebrow">Workflows</p>
+          <h2 class="ph-display-lg">Automate the reports you hate</h2>
+        </div>
+        <div class="ph-work-grid">
+          <article class="ph-work-card">
+            <span class="ph-hedge ph-hedge-sm" data-ph-hedge aria-hidden="true"></span>
+            <h3 class="ph-heading-sm-mixed">Set an alert in seconds</h3>
+            <p class="ph-body-sm">Define a threshold once. Northwind watches every region and pages the on-call before the SLA slips.</p>
+            <pre class="ph-code"><code><span class="ph-c-kw">northwind</span>.alert({
+  metric: <span class="ph-c-str">'throughput.on_time'</span>,
+  below:  <span class="ph-c-num">0.95</span>,
+  notify: <span class="ph-c-str">'#ops-oncall'</span>
+})</code></pre>
+          </article>
+          <div class="ph-work-side">
+            <p class="ph-banner ph-banner-blue"><b>Tip.</b> Pipe any threshold to Slack, PagerDuty, or a webhook — no glue code.</p>
+            <p class="ph-banner ph-banner-green"><b>Success.</b> Alerts resolve themselves when the metric recovers, so the channel stays quiet.</p>
+            <p class="ph-banner ph-banner-red"><b>Warning.</b> A region with no data at all counts as a miss — wire your sources first.</p>
+            <p class="ph-banner ph-banner-purple"><b>Note.</b> Every alert keeps a history you can query with <code class="ph-inline-code">northwind.query()</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ────────────────────────────────────────────────────── -->
+    <section class="ph-section" id="phPricing">
+      <div class="ph-wrap">
+        <div class="ph-sec-head">
+          <p class="ph-eyebrow">Pricing</p>
+          <h2 class="ph-display-lg">Simple, usage-based pricing</h2>
+        </div>
+        <div class="ph-pricing" id="phPricingGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── DOC LAYOUT — sidebar + article ─────────────────────────────── -->
+    <section class="ph-section" id="phDocs">
+      <div class="ph-wrap ph-docs">
+        <aside class="ph-doc-side" aria-label="Docs sections">
+          <form class="ph-doc-search" role="search" onsubmit="return false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input type="search" placeholder="Ask Northwind AI" aria-label="Ask Northwind AI">
+          </form>
+          <nav class="ph-doc-nav" id="phDocNav"></nav>
+        </aside>
+        <article class="ph-doc-card">
+          <p class="ph-eyebrow">Getting started</p>
+          <h2 class="ph-heading-lg">Build your first operations dashboard</h2>
+          <p class="ph-body-sm">A Northwind dashboard is a set of panels on one ledger. Connect a source, pin a metric, and share the board with the whole operations team.</p>
+          <p class="ph-banner ph-banner-blue"><b>Tip.</b> Start from a template board if you'd rather not build panels by hand.</p>
+          <h3 class="ph-heading-sm-mixed">Connect a data source</h3>
+          <pre class="ph-code"><code><span class="ph-c-kw">import</span> { Northwind } <span class="ph-c-kw">from</span> <span class="ph-c-str">'@northwind/sdk'</span>
+<span class="ph-c-kw">const</span> nw = <span class="ph-c-kw">new</span> Northwind({ key: process.env.<span class="ph-c-kw">NW_KEY</span> })</code></pre>
+          <h3 class="ph-heading-sm-mixed">Pin a metric</h3>
+          <p class="ph-body-sm">Every panel is a query. Pin quarterly throughput and Northwind recomputes the board as the work lands.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="ph-foot" id="phCommunity">
+    <div class="ph-wrap">
+      <div class="ph-foot-grid">
+        <div><p class="ph-foot-head">Product</p><a href="#phProduct">Dashboards</a><a href="#phWorkflows">Workflows</a><a href="#phPricing">Pricing</a></div>
+        <div><p class="ph-foot-head">Resources</p><a href="#phDocs">Docs</a><a href="#">Blog</a><a href="#">Changelog</a></div>
+        <div><p class="ph-foot-head">Company</p><a href="#">About</a><a href="#">Careers</a></div>
+        <div><p class="ph-foot-head">Legal</p><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+      <div class="ph-foot-bottom">
+        <span class="ph-foot-brand"><span class="ph-hedge ph-hedge-xs" data-ph-hedge aria-hidden="true"></span> Northwind</span>
+        <span>© 2026 · Sample data — showcase only</span>
+      </div>
+    </div>
+  </footer>
+</div>

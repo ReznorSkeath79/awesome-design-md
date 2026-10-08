@@ -1,0 +1,295 @@
+<div class="own-ai-navigator">
+  <!-- ── TOPBAR ──────────────────────────────────────────────────────── -->
+  <header class="an-topbar">
+    <a class="an-brand" href="#an-overview" aria-label="Northwind home">
+      <span class="an-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+          <path d="M3 20 12 3l9 17" stroke="var(--an-lime)" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M7.5 14h9" stroke="#E8434A" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="an-brand-text">
+        <span class="an-brand-name">Northwind</span>
+        <span class="an-brand-sub">OPS · CONSOLE</span>
+      </span>
+    </a>
+
+    <nav class="an-topnav" aria-label="Primary">
+      <a href="#an-overview" class="an-topnav-link on">Home</a>
+      <a href="#an-overview" class="an-topnav-link">My Dashboard</a>
+      <a href="#an-throughput" class="an-topnav-link">Cockpit</a>
+      <a href="#an-regions" class="an-topnav-link">Reports</a>
+    </nav>
+
+    <div class="an-tools">
+      <label class="an-search">
+        <span class="an-sr">Search regions, metrics, sites</span>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m20 20-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input type="search" placeholder="Search regions, metrics, sites" autocomplete="off">
+        <kbd class="an-kbd">⌘K</kbd>
+      </label>
+      <div class="an-icon-tray" role="group" aria-label="Tools">
+        <button type="button" class="an-icon" aria-label="Alerts" data-an-tip="Alerts">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path d="M6 16.5V11a6 6 0 1 1 12 0v5.5l1.5 1.5H4.5L6 16.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M10 20.5a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span class="an-dot" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="an-icon" aria-label="Schedules" data-an-tip="Schedules">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <span class="an-tray-div" aria-hidden="true"></span>
+        <button type="button" class="an-icon" aria-label="Toggle theme" data-an-theme>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <button type="button" class="an-user" aria-label="Account">
+        <span class="an-avatar" aria-hidden="true">RK</span>
+        <span class="an-user-info">
+          <span class="an-user-name">Rina Kalaw</span>
+          <span class="an-user-role">Operations Lead</span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <div class="an-shell">
+    <!-- ── PAGE ───────────────────────────────────────────────────────── -->
+    <main class="an-main">
+      <!-- Greeting -->
+      <div class="an-pagehead">
+        <div>
+          <div class="an-greeting-sub">Q3 2026<span class="an-sep">|</span>All regions reporting</div>
+          <h1 class="an-greeting">Operations Console</h1>
+        </div>
+        <div class="an-pagehead-actions">
+          <span class="an-pill an-pill-hot">Live data</span>
+          <button type="button" class="an-btn an-btn-primary">Export board</button>
+        </div>
+      </div>
+
+      <!-- Section nav (the app's segmented control, driving in-page scroll) -->
+      <nav class="an-tabs" aria-label="Console sections">
+        <a class="an-tab on" href="#an-overview" data-an-tab="an-overview" aria-current="true">Overview</a>
+        <a class="an-tab" href="#an-throughput" data-an-tab="an-throughput">Throughput</a>
+        <a class="an-tab" href="#an-regions" data-an-tab="an-regions">Regions</a>
+        <a class="an-tab" href="#an-pricing" data-an-tab="an-pricing">Pricing</a>
+      </nav>
+
+      <!-- Overview -->
+      <section class="an-panel" id="an-overview" data-an-panel="an-overview" aria-label="Overview">
+        <div class="an-section-head">
+          <span class="an-eyebrow">01 · Network</span>
+          <h2 class="an-section-title">Today at a glance</h2>
+        </div>
+        <div class="an-kpi-rail">
+          <div class="an-kpi-compact">
+            <div class="an-kpi-label">Units / day</div>
+            <div class="an-kpi-value" data-an-count="184000" data-an-fmt="k">0</div>
+            <div class="an-kpi-sub"><span class="an-delta up">▲ 12.4%</span> vs Q2</div>
+          </div>
+          <div class="an-kpi-compact">
+            <div class="an-kpi-label">Regions live</div>
+            <div class="an-kpi-value">6<span class="an-kpi-of">/6</span></div>
+            <div class="an-kpi-sub">single metric layer</div>
+          </div>
+          <div class="an-kpi-compact">
+            <div class="an-kpi-label">On-time roll-up</div>
+            <div class="an-kpi-value" data-an-count="99.2" data-an-fmt="pct">0</div>
+            <div class="an-kpi-sub">before 06:00 local</div>
+          </div>
+          <div class="an-kpi-compact an-tone-warn">
+            <div class="an-kpi-label">Open alerts</div>
+            <div class="an-kpi-value">2</div>
+            <div class="an-kpi-sub"><span class="an-status-dot warn" aria-hidden="true"></span>1 warn · 1 crit</div>
+          </div>
+        </div>
+
+        <div class="an-grid-2">
+          <!-- Hero briefing card with crawling lime ring on hover -->
+          <article class="an-focus-card an-briefing-card">
+            <div class="an-brief-head">
+              <span class="an-card-head">Morning brief</span>
+              <span class="an-pill">06:00 local</span>
+            </div>
+            <h3 class="an-brief-title">APAC carried the network — and MEA still lags</h3>
+            <p class="an-brief-body">Network throughput came in at <strong>184K units/day</strong>, <strong>12.4%</strong> ahead of Q2. Five of six regions beat plan; <em>MEA remains 10% behind</em> and needs the source fix tracked under D-2 before the v4.1 freeze.</p>
+            <div class="an-brief-actions">
+              <button type="button" class="an-chip">Open APAC board</button>
+              <button type="button" class="an-chip">Review MEA</button>
+              <button type="button" class="an-chip">Draft the brief</button>
+            </div>
+          </article>
+
+          <div class="an-stack">
+            <div class="an-focus-card">
+              <div class="an-card-head-row"><span class="an-card-head">Last roll-up</span><span class="an-mono an-muted">05:41 local</span></div>
+              <div class="an-session-row">
+                <span class="an-session-name">Network snapshot · 6 regions</span>
+                <span class="an-pill an-pill-ok">reconciled</span>
+              </div>
+              <div class="an-mono an-muted an-small">All six regions landed before the 06:00 SLA.</div>
+            </div>
+            <div class="an-focus-card">
+              <div class="an-card-head-row"><span class="an-card-head">Parked regions</span><span class="an-mono an-muted">2 flagged</span></div>
+              <div class="an-parked-row"><span>MEA — source timestamps</span><button type="button" class="an-resume">RESUME →</button></div>
+              <div class="an-parked-row"><span>EMEA — seasonal history</span><button type="button" class="an-resume">RESUME →</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="an-alert-grid">
+          <div class="an-alert-card warn">
+            <span class="an-alert-title"><span class="an-status-dot warn" aria-hidden="true"></span>Watch — EMEA</span>
+            <p>Throughput 5.0% behind plan. No source issue; seasonal dip is within tolerance.</p>
+          </div>
+          <div class="an-alert-card crit">
+            <span class="an-alert-title"><span class="an-status-dot crit" aria-hidden="true"></span>Critical — MEA</span>
+            <p>Two sites report zero inventory aging: missing source timestamp. Blocks the v4.1 aging board.</p>
+          </div>
+          <div class="an-alert-card ok">
+            <span class="an-alert-title"><span class="an-status-dot ok" aria-hidden="true"></span>Healthy — APAC</span>
+            <p>Best region this quarter, +15.7% to plan. No action needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Throughput -->
+      <section class="an-panel" id="an-throughput" data-an-panel="an-throughput" aria-label="Throughput">
+        <div class="an-section-head">
+          <span class="an-eyebrow">02 · Throughput</span>
+          <h2 class="an-section-title">Plan vs. actual by region</h2>
+        </div>
+        <div class="an-focus-card">
+          <div class="an-card-head-row">
+            <span class="an-card-head">Regional throughput</span>
+            <span class="an-mono an-muted">13 weeks · network total 184K/day</span>
+          </div>
+          <div class="an-table-wrap">
+            <table class="an-table">
+              <thead>
+                <tr><th>Region</th><th class="an-num">Plan</th><th class="an-num">Actual</th><th class="an-num">Variance</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>APAC</td><td class="an-num">42.0K</td><td class="an-num">48.6K</td><td class="an-num an-crit-accent">+15.7%</td><td><span class="an-pill an-pill-ok">ahead</span></td></tr>
+                <tr><td>North America</td><td class="an-num">56.0K</td><td class="an-num">59.2K</td><td class="an-num an-crit-accent">+5.7%</td><td><span class="an-pill an-pill-ok">ahead</span></td></tr>
+                <tr><td>EMEA</td><td class="an-num">38.0K</td><td class="an-num">36.1K</td><td class="an-num">−5.0%</td><td><span class="an-pill an-pill-warn">watch</span></td></tr>
+                <tr><td>LATAM</td><td class="an-num">21.0K</td><td class="an-num">22.4K</td><td class="an-num an-crit-accent">+6.7%</td><td><span class="an-pill an-pill-ok">ahead</span></td></tr>
+                <tr><td>MEA</td><td class="an-num">12.0K</td><td class="an-num">10.8K</td><td class="an-num">−10.0%</td><td><span class="an-pill an-pill-crit">behind</span></td></tr>
+                <tr><td>India</td><td class="an-num">15.0K</td><td class="an-num">16.9K</td><td class="an-num an-crit-accent">+12.7%</td><td><span class="an-pill an-pill-ok">ahead</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="an-grid-2">
+          <div class="an-focus-card">
+            <div class="an-card-head">13-week trend</div>
+            <svg class="an-chart" viewBox="0 0 520 160" role="img" aria-label="Network throughput trend, rising over 13 weeks">
+              <defs>
+                <linearGradient id="an-fill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--an-lime)" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="var(--an-lime)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,120 L43,112 L86,116 L130,100 L173,104 L216,88 L260,92 L303,74 L346,78 L390,60 L433,54 L476,44 L520,30 L520,160 L0,160 Z" fill="url(#an-fill)"/>
+              <path d="M0,120 L43,112 L86,116 L130,100 L173,104 L216,88 L260,92 L303,74 L346,78 L390,60 L433,54 L476,44 L520,30" fill="none" stroke="var(--an-lime)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="520" cy="30" r="4" fill="var(--an-lime)"/>
+            </svg>
+            <div class="an-chart-x"><span>W1</span><span>W5</span><span>W9</span><span>W13</span></div>
+          </div>
+          <div class="an-focus-card">
+            <div class="an-card-head">Variance to plan</div>
+            <div class="an-bars">
+              <div class="an-bar-row"><span class="an-bar-name">APAC</span><span class="an-bar"><i class="up" style="width:88%"></i></span><span class="an-bar-val">+15.7%</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">India</span><span class="an-bar"><i class="up" style="width:70%"></i></span><span class="an-bar-val">+12.7%</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">LATAM</span><span class="an-bar"><i class="up" style="width:44%"></i></span><span class="an-bar-val">+6.7%</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">N. America</span><span class="an-bar"><i class="up" style="width:38%"></i></span><span class="an-bar-val">+5.7%</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">EMEA</span><span class="an-bar"><i class="down" style="width:34%"></i></span><span class="an-bar-val">−5.0%</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">MEA</span><span class="an-bar"><i class="down" style="width:56%"></i></span><span class="an-bar-val">−10.0%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Regions -->
+      <section class="an-panel" id="an-regions" data-an-panel="an-regions" aria-label="Regions">
+        <div class="an-section-head">
+          <span class="an-eyebrow">03 · Regions</span>
+          <h2 class="an-section-title">Sites and coverage</h2>
+        </div>
+        <div class="an-grid-2">
+          <div class="an-focus-card">
+            <div class="an-card-head">Sites by region</div>
+            <div class="an-bars">
+              <div class="an-bar-row"><span class="an-bar-name">N. America</span><span class="an-bar"><i style="width:96%"></i></span><span class="an-bar-val">96</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">APAC</span><span class="an-bar"><i style="width:78%"></i></span><span class="an-bar-val">78</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">EMEA</span><span class="an-bar"><i style="width:64%"></i></span><span class="an-bar-val">64</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">LATAM</span><span class="an-bar"><i style="width:41%"></i></span><span class="an-bar-val">41</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">India</span><span class="an-bar"><i style="width:33%"></i></span><span class="an-bar-val">33</span></div>
+              <div class="an-bar-row"><span class="an-bar-name">MEA</span><span class="an-bar"><i style="width:19%"></i></span><span class="an-bar-val">19</span></div>
+            </div>
+          </div>
+          <div class="an-focus-card">
+            <div class="an-card-head">Coverage</div>
+            <div class="an-hero-kpi">
+              <div class="an-kpi-label">Sites reporting</div>
+              <div class="an-kpi-value an-hero-val">331<span class="an-kpi-of">/331</span></div>
+              <div class="an-kpi-sub">every active site in the nightly snapshot</div>
+            </div>
+            <div class="an-mini-list">
+              <div><span class="an-status-dot ok" aria-hidden="true"></span><span>Full coverage</span><span class="an-mono an-muted">100%</span></div>
+              <div><span class="an-status-dot warn" aria-hidden="true"></span><span>Partial aging data</span><span class="an-mono an-muted">2 sites</span></div>
+              <div><span class="an-status-dot mute" aria-hidden="true"></span><span>No throughput history</span><span class="an-mono an-muted">0 sites</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="an-panel" id="an-pricing" data-an-panel="an-pricing" aria-label="Pricing">
+        <div class="an-section-head">
+          <span class="an-eyebrow">04 · Pricing</span>
+          <h2 class="an-section-title">Operations tiers</h2>
+        </div>
+        <div class="an-focus-card">
+          <div class="an-card-head-row">
+            <span class="an-card-head">Pricing tiers</span>
+            <span class="an-mono an-muted">effective 2026-07-01</span>
+          </div>
+          <div class="an-tier-grid">
+            <div class="an-tier">
+              <div class="an-tier-name">Standard</div>
+              <div class="an-tier-price">$4.10<span class="an-tier-unit">/seat</span></div>
+              <ul class="an-tier-list"><li>Core throughput boards</li><li>Nightly roll-up</li><li>Threshold alerts</li></ul>
+            </div>
+            <div class="an-tier an-tier-hot">
+              <span class="an-tier-badge">Current</span>
+              <div class="an-tier-name">Operations</div>
+              <div class="an-tier-price">$7.40<span class="an-tier-unit">/seat</span></div>
+              <ul class="an-tier-list"><li>Everything in Standard</li><li>Anomaly detection</li><li>Region drill-down</li></ul>
+            </div>
+            <div class="an-tier">
+              <div class="an-tier-name">Enterprise</div>
+              <div class="an-tier-price">$11.90<span class="an-tier-unit">/seat</span></div>
+              <ul class="an-tier-list"><li>Everything in Operations</li><li>Forecasting (v4.1)</li><li>Custom metric layer</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="an-footer">
+    <span class="an-mono">NORTHWIND OPS CONSOLE · SAMPLE DATA — SHOWCASE ONLY</span>
+    <span class="an-mono an-muted">Q3 2026 · RUN 2026-09-28</span>
+  </footer>
+</div>

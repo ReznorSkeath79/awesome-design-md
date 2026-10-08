@@ -1,0 +1,221 @@
+/* ══ NORTHWIND — own layout in the Meta design language ═════════════════════
+   Stark white canvas, Optimistic VF with ss01/ss02, pill-shaped buttons everywhere
+   (marketing = black, commerce = cobalt), photographic product cards with 32px
+   corners, a dark promo strip above the nav, and a 58/42 PDP with a sticky rail. */
+
+.own-meta {
+  --primary: #0064e0;
+  --primary-deep: #0457cb;
+  --primary-soft: #0091ff;
+  --ink-button: #000000;
+  --canvas: #ffffff;
+  --surface-soft: #f1f4f7;
+  --ink-deep: #0a1317;
+  --ink: #1c1e21;
+  --charcoal: #444950;
+  --slate: #4b4c4f;
+  --steel: #5d6c7b;
+  --stone: #8595a4;
+  --hairline: #ced0d4;
+  --hairline-soft: #dee3e9;
+  --success: #31a24c;
+  --attention: #f2a918;
+  --warning: #f7b928;
+  --critical: #e41e3f;
+  --radius-full: 100px;
+  --shadow-sticky: rgba(20, 22, 26, .3) 0px 1px 4px 0px;
+  --display: 'Optimistic VF', Montserrat, Helvetica, Arial, 'Noto Sans', sans-serif;
+  --gut: clamp(20px, 5cqi, 48px);
+
+  position: relative;
+  border-radius: 13px;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+.own-meta *,
+.own-meta *::before,
+.own-meta *::after { box-sizing: border-box; }
+.own-meta h1, .own-meta h2, .own-meta h3, .own-meta h4 { font-family: var(--display); font-feature-settings: 'ss01' 1, 'ss02' 1; }
+.own-meta :focus-visible { outline: 2px solid var(--fb-blue, #1876f2); outline-offset: 2px; border-radius: 6px; }
+.own-meta .mt-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ── type ────────────────────────────────────────────────────────────────── */
+.own-meta .mt-h1 { font-weight: 500; font-size: clamp(36px, 5.4cqi, 64px); line-height: 1.16; }
+.own-meta .mt-h2 { font-weight: 500; font-size: clamp(28px, 3.4cqi, 48px); line-height: 1.17; }
+.own-meta .mt-h3 { font-weight: 500; font-size: 24px; line-height: 1.25; }
+.own-meta .mt-h4 { font-weight: 700; font-size: 16px; line-height: 1.5; letter-spacing: -.16px; }
+.own-meta .mt-lead { color: var(--charcoal); font-size: 18px; line-height: 1.44; max-width: 54ch; }
+.own-meta .mt-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--steel); }
+
+/* ── buttons ────────────────────────────────────────────────────────────── */
+.own-meta .mt-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 48px; padding: 0 30px; border: 0; border-radius: var(--radius-full); cursor: pointer;
+  font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: -.14px;
+  text-decoration: none; transition: background-color .15s ease;
+}
+.own-meta .mt-btn-primary { background: var(--ink-button); color: #fff; }
+.own-meta .mt-btn-primary:active { background: var(--charcoal); }
+.own-meta .mt-btn-secondary { background: transparent; color: var(--ink-deep); box-shadow: inset 0 0 0 2px var(--ink-deep); }
+.own-meta .mt-btn-buy { background: var(--primary); color: #fff; width: 100%; }
+.own-meta .mt-btn-buy:active { background: var(--primary-deep); }
+
+/* ── promo + nav ─────────────────────────────────────────────────────────── */
+.own-meta .mt-promo { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; background: var(--ink-deep); color: #fff; padding: 10px 24px; font-size: 14px; font-weight: 700; letter-spacing: -.14px; }
+.own-meta .mt-promo a { color: #fff; text-decoration: underline; }
+.own-meta .mt-nav { position: sticky; top: 68px; z-index: 30; display: flex; align-items: center; gap: 20px; padding: 12px var(--gut); background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hairline-soft); }
+.own-meta .mt-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink-deep); }
+.own-meta .mt-mark { width: 26px; height: 26px; border-radius: 8px; background: var(--primary); display: inline-block; }
+.own-meta .mt-mark::after { content: ''; display: block; width: 100%; height: 100%; border-radius: 8px; background: radial-gradient(60% 60% at 30% 25%, #fff, transparent 60%); opacity: .5; }
+.own-meta .mt-logo-word { font-weight: 700; font-size: 18px; letter-spacing: -.2px; }
+.own-meta .mt-tabs { display: flex; align-items: center; gap: 8px; margin-left: 12px; }
+.own-meta .mt-tab { padding: 8px 16px; border-radius: var(--radius-full); font-size: 14px; font-weight: 700; letter-spacing: -.14px; color: var(--ink); text-decoration: none; border: 1px solid var(--hairline); background: var(--canvas); }
+.own-meta .mt-tab.is-active { background: var(--ink-deep); color: #fff; border-color: var(--ink-deep); }
+.own-meta .mt-nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.own-meta .mt-search { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: var(--radius-full); background: var(--surface-soft); }
+.own-meta .mt-search svg { width: 16px; height: 16px; fill: none; stroke: var(--steel); stroke-width: 2; }
+.own-meta .mt-search input { width: 130px; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px; }
+.own-meta .mt-search input::placeholder { color: var(--steel); }
+.own-meta .mt-search input:focus { outline: none; }
+.own-meta .mt-search:focus-within { box-shadow: 0 0 0 2px #1876f2; }
+.own-meta .mt-icon-btn { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--surface-soft); color: var(--ink); }
+.own-meta .mt-icon-btn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── hero ────────────────────────────────────────────────────────────────── */
+.own-meta .mt-hero { position: relative; margin: var(--gut); margin-bottom: 0; border-radius: 32px; overflow: hidden; min-height: clamp(420px, 62cqi, 600px); display: flex; }
+.own-meta .mt-hero-photo { position: absolute; inset: 0; background: radial-gradient(120% 120% at 75% 20%, #24313f 0%, #0d1a22 55%, #060d12 100%); display: flex; align-items: center; justify-content: center; padding: 40px; }
+.own-meta .mt-hero-panel { width: min(560px, 80%); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 24px; padding: 24px; }
+.own-meta .mt-hero-panel-head { display: flex; justify-content: space-between; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 700; letter-spacing: -.14px; margin-bottom: 20px; }
+.own-meta .mt-hero-bars { display: flex; align-items: flex-end; gap: 12px; height: 200px; }
+.own-meta .mt-hero-bars span { flex: 1; height: var(--h); border-radius: 8px 8px 2px 2px; background: linear-gradient(180deg, var(--primary-soft), var(--primary)); opacity: .92; }
+.own-meta .mt-hero-overlay { position: relative; z-index: 2; align-self: flex-end; width: 100%; padding: clamp(32px, 5cqi, 64px); background: linear-gradient(0deg, rgba(6,13,18,.86) 0%, rgba(6,13,18,.4) 55%, transparent 100%); }
+.own-meta .mt-hero-overlay .mt-h1 { color: #fff; max-width: 18ch; }
+.own-meta .mt-hero-sub { color: rgba(255,255,255,.9); font-size: 18px; line-height: 1.44; max-width: 46ch; margin-top: 16px; }
+.own-meta .mt-hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.own-meta .mt-hero-cta .mt-btn-secondary { color: #fff; box-shadow: inset 0 0 0 2px #fff; }
+
+/* ── sections ───────────────────────────────────────────────────────────── */
+.own-meta .mt-sec { padding: clamp(48px, 6cqi, 80px) var(--gut); }
+.own-meta .mt-sec-head { max-width: 680px; margin-bottom: 40px; }
+.own-meta .mt-sec-head .mt-lead { margin-top: 14px; }
+.own-meta .mt-photo-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; }
+.own-meta .mt-photo-card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 360px; padding: 28px; border-radius: 32px; overflow: hidden; text-decoration: none; color: #fff; }
+.own-meta .mt-photo-a { background: radial-gradient(120% 120% at 25% 15%, #2f7de0 0%, #0457cb 52%, #062b63 100%); }
+.own-meta .mt-photo-b { background: radial-gradient(120% 120% at 70% 20%, #a855f7 0%, #6b2fbf 55%, #2a0f4d 100%); }
+.own-meta .mt-photo-art { position: absolute; inset: 0; display: grid; place-items: center; opacity: .5; pointer-events: none; }
+.own-meta .mt-ring { position: absolute; border: 2px solid rgba(255,255,255,.5); border-radius: 50%; width: 220px; height: 220px; }
+.own-meta .mt-ring:nth-child(2) { width: 320px; height: 320px; border-color: rgba(255,255,255,.28); }
+.own-meta .mt-map { position: relative; width: 380px; height: 220px; }
+.own-meta .mt-map i { position: absolute; width: 58px; height: 58px; border-radius: 50%; background: rgba(255,255,255,.85); }
+.own-meta .mt-map i:nth-child(1) { left: 8%; top: 46%; }
+.own-meta .mt-map i:nth-child(2) { left: 32%; top: 20%; width: 74px; height: 74px; }
+.own-meta .mt-map i:nth-child(3) { left: 56%; top: 52%; }
+.own-meta .mt-map i:nth-child(4) { left: 74%; top: 24%; width: 44px; height: 44px; }
+.own-meta .mt-map i:nth-child(5) { left: 66%; top: 68%; width: 34px; height: 34px; }
+.own-meta .mt-photo-copy { position: relative; z-index: 2; }
+.own-meta .mt-photo-copy p { margin: 6px 0 0; font-size: 14px; color: rgba(255,255,255,.85); }
+.own-meta .mt-badge { position: absolute; top: 24px; left: 24px; z-index: 3; display: inline-flex; padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 700; }
+.own-meta .mt-badge-promo { background: var(--warning); color: var(--ink-deep); }
+.own-meta .mt-badge-attention { position: static; background: var(--attention); color: #fff; margin-bottom: 14px; }
+.own-meta .mt-icon-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+.own-meta .mt-icon-feature { border: 1px solid var(--hairline-soft); border-radius: 16px; padding: 24px; }
+.own-meta .mt-fi { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--surface-soft); margin-bottom: 16px; }
+.own-meta .mt-fi svg { width: 22px; height: 22px; fill: none; stroke: var(--ink-deep); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.own-meta .mt-icon-feature p { margin: 8px 0 0; font-size: 14px; color: var(--steel); }
+
+/* ── PDP ─────────────────────────────────────────────────────────────────── */
+.own-meta .mt-pdp { background: var(--surface-soft); border-radius: 32px; margin: 0 var(--gut); }
+.own-meta .mt-pdp-gallery { display: grid; grid-template-columns: 88px minmax(0, 1fr) minmax(300px, 380px); gap: clamp(18px, 2.4cqi, 32px); align-items: start; }
+.own-meta .mt-thumbs { display: grid; gap: 12px; }
+.own-meta .mt-thumb { width: 80px; height: 80px; padding: 0; border-radius: 8px; border: 1px solid var(--hairline-soft); background: var(--canvas); cursor: pointer; overflow: hidden; }
+.own-meta .mt-thumb.is-active { border: 2px solid var(--ink-deep); }
+.own-meta .mt-thumb-art { display: block; width: 100%; height: 100%; }
+.own-meta .mt-t1 { background: linear-gradient(135deg, #dfe8f2, #b7c8dd); }
+.own-meta .mt-t2 { background: linear-gradient(135deg, #e6e0f2, #c6b8dd); }
+.own-meta .mt-t3 { background: linear-gradient(135deg, #e0f2e6, #b8ddc6); }
+.own-meta .mt-t4 { background: linear-gradient(135deg, #f2ece0, #ddcfb8); }
+.own-meta .mt-pdp-main { background: var(--canvas); border-radius: 16px; padding: 20px; }
+.own-meta .mt-pdp-screen { display: grid; grid-template-columns: 120px 1fr; gap: 16px; min-height: 360px; }
+.own-meta .mt-pdp-side { display: grid; align-content: start; gap: 10px; padding-top: 8px; }
+.own-meta .mt-pdp-side span { display: block; height: 10px; border-radius: 6px; background: var(--surface-soft); }
+.own-meta .mt-pdp-side span.is-on { background: var(--primary); width: 70%; }
+.own-meta .mt-pdp-side span:nth-child(2) { width: 90%; }
+.own-meta .mt-pdp-side span:nth-child(3) { width: 60%; }
+.own-meta .mt-pdp-canvas { background: var(--surface-soft); border-radius: 12px; padding: 22px; display: grid; align-content: space-between; }
+.own-meta .mt-pdp-axis { display: flex; align-items: flex-end; gap: 14px; height: 180px; }
+.own-meta .mt-pdp-axis i { flex: 1; height: var(--h); border-radius: 6px 6px 2px 2px; background: var(--primary); opacity: .85; }
+.own-meta .mt-pdp-rows { display: grid; gap: 10px; margin-top: 20px; }
+.own-meta .mt-pdp-rows span { display: block; height: 12px; border-radius: 6px; background: var(--hairline-soft); }
+.own-meta .mt-pdp-rows span:nth-child(2) { width: 80%; }
+.own-meta .mt-pdp-rows span:nth-child(3) { width: 60%; }
+.own-meta .mt-buy { background: var(--canvas); border: 1px solid var(--hairline-soft); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sticky); }
+.own-meta .mt-price { font-size: 28px; font-weight: 500; margin: 10px 0 20px; }
+.own-meta .mt-price span { font-size: 14px; color: var(--steel); font-weight: 400; }
+.own-meta .mt-fieldset { border: 0; padding: 0; margin: 0 0 20px; }
+.own-meta .mt-legend { padding: 0; margin-bottom: 10px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--steel); }
+.own-meta .mt-radio { display: flex; align-items: center; gap: 10px; padding: 14px; border: 1px solid rgba(10,19,23,.12); border-radius: 8px; margin-bottom: 8px; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: -.14px; }
+.own-meta .mt-radio input { position: absolute; opacity: 0; }
+.own-meta .mt-radio-ui { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--hairline); flex: none; }
+.own-meta .mt-radio input:checked + .mt-radio-ui { border-color: var(--primary); box-shadow: inset 0 0 0 4px var(--primary); }
+.own-meta .mt-radio:has(input:checked) { border: 2px solid #0143b5; }
+.own-meta .mt-swatches { display: flex; gap: 12px; }
+.own-meta .mt-swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--canvas); background: var(--c); cursor: pointer; box-shadow: 0 0 0 1px var(--hairline); }
+.own-meta .mt-swatch.is-on { box-shadow: 0 0 0 2px var(--ink-deep); }
+.own-meta .mt-buy-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 13px; color: var(--steel); }
+.own-meta .mt-dot-ok { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+
+/* ── testimonials ────────────────────────────────────────────────────────── */
+.own-meta .mt-testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.own-meta .mt-testi { margin: 0; border: 1px solid var(--hairline-soft); border-radius: 16px; padding: 32px; }
+.own-meta .mt-testi blockquote { margin: 0; }
+.own-meta .mt-testi blockquote p { font-size: 16px; line-height: 1.5; letter-spacing: -.16px; }
+.own-meta .mt-testi figcaption { display: flex; align-items: center; gap: 12px; margin-top: 22px; font-size: 14px; color: var(--steel); }
+.own-meta .mt-testi figcaption b { color: var(--ink); }
+.own-meta .mt-avatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ink-deep); color: #fff; font-size: 13px; font-weight: 700; flex: none; }
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.own-meta .mt-foot { border-top: 1px solid var(--hairline-soft); padding: clamp(40px, 5cqi, 64px) var(--gut); }
+.own-meta .mt-foot-top { display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+.own-meta .mt-foot-brand { display: flex; align-items: center; gap: 10px; }
+.own-meta .mt-foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.own-meta .mt-foot-col h3 { font-size: 14px; font-weight: 700; letter-spacing: -.14px; margin-bottom: 14px; }
+.own-meta .mt-foot-col a { display: block; color: var(--steel); text-decoration: none; font-size: 14px; margin-bottom: 10px; }
+.own-meta .mt-foot-col a:hover { color: var(--ink); text-decoration: underline; }
+.own-meta .mt-foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--hairline-soft); color: var(--stone); font-size: 12px; }
+.own-meta .mt-foot-links { display: flex; gap: 20px; }
+.own-meta .mt-foot-links a { color: var(--stone); text-decoration: none; }
+.own-meta .mt-foot-links a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ── responsive ──────────────────────────────────────────────────────────── */
+@container frame (max-width: 1100px) {
+  .own-meta .mt-tabs { display: none; }
+  .own-meta .mt-icon-row { grid-template-columns: repeat(2, 1fr); }
+  .own-meta .mt-pdp-gallery { grid-template-columns: 72px minmax(0, 1fr); }
+  .own-meta .mt-buy { grid-column: 1 / -1; }
+  .own-meta .mt-thumb { width: 64px; height: 64px; }
+  .own-meta .mt-testi-grid { grid-template-columns: 1fr; }
+}
+@container frame (max-width: 760px) {
+  .own-meta .mt-nav { top: 10px; gap: 10px; padding: 10px 14px; }
+  .own-meta .mt-search { display: none; }
+  .own-meta .mt-hero, .own-meta .mt-pdp { margin-left: 12px; margin-right: 12px; }
+  .own-meta .mt-hero-overlay { padding: 28px 22px; }
+  .own-meta .mt-photo-grid { grid-template-columns: 1fr; }
+  .own-meta .mt-pdp-gallery { grid-template-columns: 1fr; }
+  .own-meta .mt-thumbs { grid-auto-flow: column; grid-auto-columns: 64px; overflow-x: auto; }
+  .own-meta .mt-foot-top { grid-template-columns: 1fr; gap: 28px; }
+  .own-meta .mt-foot-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@container frame (max-width: 430px) {
+  .own-meta .mt-icon-row, .own-meta .mt-foot-grid { grid-template-columns: 1fr; }
+  .own-meta .mt-pdp-screen { grid-template-columns: 1fr; }
+  .own-meta .mt-pdp-side { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .own-meta *, .own-meta *::before, .own-meta *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}

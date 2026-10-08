@@ -1,0 +1,110 @@
+<div class="own-shopify">
+  <!-- ── NAV (cinematic, over hero) ──────────────────────────────────── -->
+  <header class="sh-nav">
+    <a class="sh-brand" href="#sh-top" aria-label="Northwind home">Northwind</a>
+    <nav class="sh-nav-links" aria-label="Primary">
+      <a href="#sh-features">Product</a>
+      <a href="#sh-regions">Regions</a>
+      <a href="#sh-pricing">Pricing</a>
+      <a href="#sh-customers">Customers</a>
+    </nav>
+    <div class="sh-nav-right">
+      <a class="sh-pill sh-pill-ghost" href="#">Log in</a>
+      <a class="sh-pill sh-pill-ghost" href="#sh-pricing">Start free trial</a>
+    </div>
+  </header>
+
+  <main id="sh-top">
+    <!-- ── CINEMATIC HERO ────────────────────────────────────────────── -->
+    <section class="sh-hero" aria-labelledby="sh-h1">
+      <div class="sh-hero-vis" aria-hidden="true">
+        <div class="sh-hero-glow"></div>
+        <div class="sh-hero-grid"></div>
+        <div class="sh-hero-panel">
+          <div class="sh-hp-head"><span class="sh-hp-title">Regional throughput</span><span class="sh-hp-badge">Live</span></div>
+          <div class="sh-hp-bars"><span style="--h:54%"></span><span style="--h:78%"></span><span style="--h:46%"></span><span style="--h:90%"></span><span style="--h:66%"></span><span style="--h:82%"></span><span style="--h:58%"></span></div>
+          <div class="sh-hp-foot"><span>Luzon</span><span>Visayas</span><span>Mindanao</span></div>
+        </div>
+      </div>
+      <div class="sh-hero-copy">
+        <h1 id="sh-h1" class="sh-display">Run every region<br>on one operating floor.</h1>
+        <p class="sh-hero-sub">Northwind gives operations teams a single control room for throughput, cost, and yield — across every site, in real time.</p>
+        <a class="sh-pill sh-pill-outline" href="#sh-pricing">Start free trial</a>
+      </div>
+    </section>
+
+    <!-- ── STATEMENT BAND ────────────────────────────────────────────── -->
+    <section class="sh-statement">
+      <p class="sh-statement-text">One platform. Every region. <span class="sh-dim">No spreadsheets.</span></p>
+    </section>
+
+    <!-- ── FEATURE ROWS (cinematic dark) ─────────────────────────────── -->
+    <section id="sh-features" class="sh-band">
+      <p class="sh-eyebrow">What operations teams get</p>
+      <h2 class="sh-display-lg">Built for the floor,<br>not the boardroom.</h2>
+      <div class="sh-features" id="shFeatureGrid"></div>
+    </section>
+
+    <!-- ── REGIONS BAND ──────────────────────────────────────────────── -->
+    <section id="sh-regions" class="sh-band">
+      <div class="sh-regions">
+        <div class="sh-regions-copy">
+          <p class="sh-eyebrow">Global by default</p>
+          <h2 class="sh-display-lg">42 regions.<br>One truth.</h2>
+          <p class="sh-body sh-dim">Roll up site-level metrics into a regional view with a single query. Currency, timezone, and unit conversion handled for you.</p>
+        </div>
+        <ul class="sh-region-list" id="shRegionList"></ul>
+      </div>
+    </section>
+
+    <!-- ── LIGHT / TRANSACTIONAL TRACK ───────────────────────────────── -->
+    <section id="sh-pricing" class="sh-light">
+      <div class="sh-light-head">
+        <p class="sh-eyebrow sh-on-light">Pricing</p>
+        <h2 class="sh-display-lg sh-on-light">Plans that scale<br>with your floor.</h2>
+        <p class="sh-body sh-on-light-mute">Start free. Upgrade when your operations outgrow the basics.</p>
+      </div>
+      <div class="sh-tiers" id="shTierGrid"></div>
+
+      <!-- pistachio band -->
+      <div class="sh-band-card">
+        <div>
+          <span class="sh-tag sh-tag-mint">Add-on</span>
+          <h3 class="sh-display-md">Northwind Forecast</h3>
+          <p class="sh-body">Predict next quarter's throughput per region with confidence intervals tuned to your seasonality.</p>
+        </div>
+        <a class="sh-pill sh-pill-dark" href="#">Add to plan</a>
+      </div>
+
+      <!-- comparison table -->
+      <div class="sh-compare" role="table" aria-label="Plan comparison">
+        <div class="sh-cmp-row sh-cmp-head" role="row"><span role="columnheader">Feature</span><span role="columnheader">Team</span><span role="columnheader">Business</span><span role="columnheader">Enterprise</span></div>
+        <div class="sh-cmp-row" role="row"><span role="cell">Live dashboards</span><span role="cell">Unlimited</span><span role="cell">Unlimited</span><span role="cell">Unlimited</span></div>
+        <div class="sh-cmp-row" role="row"><span role="cell">Regions</span><span role="cell">3</span><span role="cell">25</span><span role="cell">Unlimited</span></div>
+        <div class="sh-cmp-row" role="row"><span role="cell">Forecast add-on</span><span role="cell">—</span><span role="cell">Included</span><span role="cell">Included</span></div>
+        <div class="sh-cmp-row" role="row"><span role="cell">SSO &amp; audit log</span><span role="cell">—</span><span role="cell">Yes</span><span role="cell">Yes</span></div>
+      </div>
+    </section>
+
+    <!-- ── LOGO WALL ─────────────────────────────────────────────────── -->
+    <section id="sh-customers" class="sh-band sh-logos">
+      <div class="sh-logo-wall" aria-label="Customers">
+        <span>ATLAS</span><span>KESTREL</span><span>MERIDIAN</span><span>HELIOS</span><span>NORTHFORK</span><span>BLUEPRINT</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER (dark) ───────────────────────────────────────────────── -->
+  <footer class="sh-footer">
+    <div class="sh-foot-grid">
+      <div class="sh-foot-brand">
+        <span class="sh-brand">Northwind</span>
+        <p class="sh-caption">Operations analytics for teams that run the floor.</p>
+      </div>
+      <div class="sh-foot-col"><h3>Product</h3><a href="#">Dashboards</a><a href="#">Forecast</a><a href="#">Regions</a></div>
+      <div class="sh-foot-col"><h3>Developers</h3><a href="#">API</a><a href="#">Docs</a><a href="#">Status</a></div>
+      <div class="sh-foot-col"><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+    </div>
+    <div class="sh-foot-row"><span>Sample data — showcase only</span><span>© 2026 Northwind</span></div>
+  </footer>
+</div>

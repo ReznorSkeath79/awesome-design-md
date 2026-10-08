@@ -555,12 +555,18 @@ a{text-decoration:none;color:inherit}
 .fchip.ok{color:#8ff0b5;border-color:rgba(80,220,140,.35)}
 .fchip.fail{color:#f0a3a3;border-color:rgba(240,120,120,.3)}
 .fchip.pend{color:#e8d38a}
+.info-note{margin-top:8px;font-size:12.5px;color:#e8d38a}
 
 /* ---------- stage ---------- */
 .stage{padding:26px 16px 60px;display:flex;justify-content:center;align-items:flex-start;min-height:calc(100vh - 56px)}
 .frame{width:100%;max-width:100%;border-radius:13px;overflow:visible;outline:1px solid rgba(255,255,255,.09);
   box-shadow:0 24px 70px rgba(0,0,0,.5);background:#fff;transition:width .2s ease}
 #own{display:none;width:100%;container-type:inline-size;container-name:frame;background:#0a0a0f;border-radius:13px}
+#own .own-loading{display:flex;align-items:center;justify-content:center;min-height:340px;gap:10px;
+  color:var(--chrome-dim);font-size:13px}
+#own .own-loading i{width:16px;height:16px;border-radius:50%;border:2px solid var(--chrome-line);
+  border-top-color:var(--volt);animation:ownspin .7s linear infinite}
+@keyframes ownspin{to{transform:rotate(360deg)}}
 
 /* ---------- the sample site ---------- */
 .site{
@@ -786,7 +792,6 @@ a{text-decoration:none;color:inherit}
   .site .footer .cols{grid-template-columns:minmax(0,1fr)}
 }
 </style>
-__OWN_CSS__
 </head>
 <body>
 
@@ -825,9 +830,10 @@ __OWN_CSS__
 
 <div class="infostrip" id="infostrip" hidden>
   <div class="info-inner">
-    <div>
+    <div style="min-width:0">
       <div class="info-name" id="info-name"></div>
       <p class="info-desc" id="info-desc"></p>
+      <p class="info-note" id="info-note" hidden></p>
     </div>
     <div class="chips" id="fontchips"></div>
   </div>
@@ -1138,12 +1144,6 @@ __OWN_CSS__
   </div>
 </main>
 
-__OWN_HTML__
-
-<script>
-__OWN_JS__
-</script>
-
 <script>
 const DESIGNS = __DATA__;
 
@@ -1158,11 +1158,15 @@ const lnkCatalog = document.getElementById('lnk-catalog');
 const infostrip = document.getElementById('infostrip');
 const infoName = document.getElementById('info-name');
 const infoDesc = document.getElementById('info-desc');
+const infoNote = document.getElementById('info-note');
 const fontchips = document.getElementById('fontchips');
 const footFolder = document.getElementById('foot-folder');
 const own = document.getElementById('own');
 const ownSeg = document.getElementById('ownseg');
 let ownFolder = null, ownCleanup = null;
+let ownGen = 0;
+let ownFailed = null;
+const ownScripts = {};
 
 const LS = 'awesome-design-md.showcase.v1';
 let state = { i: 0, filter: 'all', viewport: 'desktop', variant: 0, own: true };
@@ -1368,16 +1372,48 @@ function renderChrome(){
   document.querySelectorAll('#viewport button').forEach(b => b.classList.toggle('on', b.dataset.v === state.viewport));
 }
 
-/* designs that ship their own real layout (design-md/<folder>/showcase/) */
+/* designs that ship their own real layout (design-md/<folder>/showcase/)
+   loaded on demand from a generated bundle.js (own-<folder> CSS injected once) */
 function unmountOwn(){
   if (ownCleanup){ try { ownCleanup(); } catch(e){} ownCleanup = null; }
   ownFolder = null;
   own.innerHTML = '';
 }
+function showNote(msg){
+  if (msg){
+    infoNote.textContent = msg; infoNote.hidden = false;
+    if (infostrip.hidden){ infostrip.hidden = false;
+      document.getElementById('infoBtn').setAttribute('aria-expanded', 'true'); }
+  } else { infoNote.textContent = ''; infoNote.hidden = true; }
+}
+function ensureOwnCss(folder){
+  if (document.querySelector('style[data-own="' + folder + '"]')) return;
+  const bundle = (window.OWN_BUNDLES || {})[folder];
+  if (!bundle || !bundle.css) return;
+  const st = document.createElement('style');
+  st.setAttribute('data-own', folder);
+  st.textContent = bundle.css;
+  document.head.appendChild(st);
+}
+function loadOwnScript(folder){
+  if (ownScripts[folder]) return ownScripts[folder];
+  let resolve;
+  const p = new Promise(r => { resolve = r; });
+  ownScripts[folder] = p;
+  const s = document.createElement('script');
+  s.src = 'design-md/' + folder + '/showcase/bundle.js';
+  s.onload = () => resolve(true);
+  s.onerror = () => resolve(false);
+  document.head.appendChild(s);
+  return p;
+}
 function mountOwn(folder){
   unmountOwn();
-  const tpl = document.getElementById('own-' + folder);
-  if (!tpl) return;
+  const bundle = (window.OWN_BUNDLES || {})[folder];
+  if (!bundle || !bundle.html){ own.innerHTML = ''; return; }
+  const tpl = document.createElement('template');
+  tpl.innerHTML = bundle.html;
+  own.innerHTML = '';
   own.appendChild(tpl.content.cloneNode(true));
   ownFolder = folder;
   const root = own.firstElementChild;
@@ -1388,20 +1424,38 @@ function mountOwn(folder){
 }
 function applyOwn(){
   const t = DESIGNS[state.i];
+  const gen = ++ownGen;
   const hasOwn = !!t.ownLayout;
-  const active = hasOwn && state.own;
+  let active = hasOwn && state.own;
+  if (active && ownFailed === t.folder) active = false;
   ownSeg.hidden = !hasOwn;
   document.documentElement.classList.toggle('own-mode', active);
+
   if (active){
+    showNote(ownFailed === t.folder ? 'Layout failed to load \u2014 showing the generic preview.' : '');
     site.style.display = 'none';
     own.style.display = 'block';
-    if (ownFolder !== t.folder) mountOwn(t.folder);
+    document.getElementById('variant').hidden = true;
+    if (ownFolder !== t.folder){
+      unmountOwn();
+      own.innerHTML = '<div class="own-loading"><i></i>Loading layout\u2026</div>';
+      loadOwnScript(t.folder).then(ok => {
+        if (gen !== ownGen) return;
+        if (!ok){
+          ownFailed = t.folder;
+          applyOwn();
+          return;
+        }
+        ensureOwnCss(t.folder);
+        mountOwn(t.folder);
+      });
+    }
   } else {
+    showNote(ownFailed === t.folder ? 'Layout failed to load \u2014 showing the generic preview.' : '');
     own.style.display = 'none';
     site.style.display = '';
-    if (ownFolder !== null) unmountOwn();
+    if (own.innerHTML){ unmountOwn(); own.innerHTML = ''; }
   }
-  if (active) document.getElementById('variant').hidden = true;
   document.querySelectorAll('#ownseg button').forEach(b => b.classList.toggle('on', (b.dataset.own === '1') === active));
 }
 
@@ -1504,39 +1558,61 @@ if (typeof state.own !== 'boolean') state.own = true;
 state.i = Math.max(0, Math.min(DESIGNS.length - 1, state.i));
 applyViewport();
 selectIndex(state.i);
+// A #d=<folder> link pasted into an open tab switches the design too.
+window.addEventListener('hashchange', () => {
+  const m = (location.hash || '').match(/^#d=(.+)$/);
+  if (!m) return;
+  const idx = DESIGNS.findIndex(d => d.folder === decodeURIComponent(m[1]));
+  if (idx >= 0 && idx !== state.i) selectIndex(idx);
+});
 </script>
 </body>
 </html>
 """
 
 
-def load_own_layout(folder):
-    """Read a design's own storefront (showcase/layout.{html,css,js}), or None.
+def read_text(path):
+    try:
+        with open(path, encoding="utf-8") as fh:
+            return fh.read()
+    except OSError:
+        return ""
 
-    Every ``./assets/`` reference is rewritten to the folder's real asset path
-    (relative to showcase.html); images stay files, never base64."""
+
+def write_own_bundle(folder):
+    """Generate design-md/<folder>/showcase/bundle.js for a design's own layout.
+
+    The bundle seeds window.OWN_BUNDLES['<folder>'] with the rewritten html/css,
+    then appends layout.js verbatim (which registers window.OWN_LAYOUTS['<folder>']).
+    Every ``./assets/`` reference becomes the folder's real asset path relative to
+    showcase.html; images stay files. Deterministic: no timestamps.
+    Returns (ok, warning) where ok is False only when layout.html is absent.
+    """
     base = os.path.join(ROOT, "design-md", folder, "showcase")
-    if not os.path.isfile(os.path.join(base, "layout.html")):
-        return None
-
-    def read(name):
-        try:
-            with open(os.path.join(base, name), encoding="utf-8") as fh:
-                return fh.read()
-        except OSError:
-            return ""
+    html_p = os.path.join(base, "layout.html")
+    if not os.path.isfile(html_p):
+        return False, None
 
     prefix = "design-md/" + folder + "/showcase/assets/"
+    html = read_text(html_p).replace("./assets/", prefix)
+    css = read_text(os.path.join(base, "layout.css")).replace("./assets/", prefix)
+    js = read_text(os.path.join(base, "layout.js")).replace("./assets/", prefix)
 
-    def fix(s):
-        return s.replace("./assets/", prefix)
+    warn = None
+    if not js:
+        warn = f"own layout {folder}: missing layout.js (bundle has no init)"
 
-    return {
-        "folder": folder,
-        "html": fix(read("layout.html")),
-        "css": fix(read("layout.css")),
-        "js": fix(read("layout.js")),
-    }
+    seed = ("window.OWN_BUNDLES=window.OWN_BUNDLES||{};"
+            "window.OWN_BUNDLES[%s]={html:%s,css:%s};\n"
+            % (json.dumps(folder), json.dumps(html, ensure_ascii=False),
+               json.dumps(css, ensure_ascii=False)))
+    with open(os.path.join(base, "bundle.js"), "w", encoding="utf-8") as f:
+        f.write(seed)
+        if js:
+            f.write(js)
+            if not js.endswith("\n"):
+                f.write("\n")
+    return True, warn
 
 
 def main():
@@ -1545,23 +1621,13 @@ def main():
     data = json.dumps(designs, ensure_ascii=False, separators=(",", ":"))
     data = data.replace("</", "<\\/")
 
-    own = []
     for d in designs:
         if d.get("ownLayout"):
-            layout = load_own_layout(d["folder"])
-            if layout:
-                own.append(layout)
+            _ok, warn = write_own_bundle(d["folder"])
+            if warn:
+                print("warning: " + warn)
 
-    own_html = "".join(
-        '<template id="own-%s">%s</template>' % (o["folder"], o["html"]) for o in own)
-    own_css = "".join("<style>\n%s\n</style>" % o["css"] for o in own if o["css"])
-    own_js = "".join(o["js"] for o in own if o["js"])
-
-    html = (TEMPLATE
-            .replace("__OWN_CSS__", own_css)
-            .replace("__OWN_HTML__", own_html)
-            .replace("__OWN_JS__", own_js)
-            .replace("__DATA__", data))
+    html = TEMPLATE.replace("__DATA__", data)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(html)
     n_tok = sum(1 for d in designs if d["format"] == "tokens")

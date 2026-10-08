@@ -1,0 +1,293 @@
+<div class="own-together-ai">
+  <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
+  <header class="ta-nav">
+    <a class="ta-logo" href="#tahome" aria-label="Northwind home">
+      <span class="ta-logo-mark" aria-hidden="true"></span>Northwind
+    </a>
+    <nav class="ta-nav-links" aria-label="Sections">
+      <a href="#taproduct">Platform</a>
+      <a href="#tastack">Models</a>
+      <a href="#tapricing">Pricing</a>
+      <a href="#taresearch">Research</a>
+      <a href="#tadocs">Docs</a>
+    </nav>
+    <div class="ta-nav-right">
+      <a class="ta-nav-link-ghost" href="#tatestimonials">Contact sales</a>
+      <a class="ta-btn ta-btn-primary ta-btn-sm" href="#tapricing">Sign in</a>
+    </div>
+  </header>
+
+  <!-- ── HERO (dark) ─────────────────────────────────────────────────────── -->
+  <section class="ta-hero" id="tahome" aria-labelledby="taHeroH">
+    <div class="ta-shell ta-hero-grid">
+      <div class="ta-hero-copy">
+        <p class="ta-eyebrow">AI native cloud</p>
+        <h1 id="taHeroH" class="ta-display-xxl">Build what&rsquo;s next on the Northwind operations cloud.</h1>
+        <p class="ta-hero-sub">Run every operations dashboard, pipeline, and model on one platform. Deploy regions in seconds, scale throughput on demand, and price it by the hour.</p>
+        <div class="ta-hero-cta">
+          <a class="ta-btn ta-btn-primary" href="#tapricing">Get started now</a>
+          <a class="ta-btn ta-btn-mint" href="#taproduct">Talk to sales</a>
+        </div>
+        <p class="ta-mono-caption ta-hero-note">NO EGRESS FEES &middot; SOC 2 TYPE II &middot; 99.99% UPTIME</p>
+      </div>
+      <div class="ta-ribbon" aria-hidden="true">
+        <svg viewBox="0 0 520 460" role="img">
+          <defs>
+            <linearGradient id="taGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fc4c02"/>
+              <stop offset="48%" stop-color="#ef2cc1"/>
+              <stop offset="100%" stop-color="#bdbbff"/>
+            </linearGradient>
+            <linearGradient id="taGrad2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ef2cc1"/>
+              <stop offset="100%" stop-color="#c8f6f9"/>
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke="url(#taGrad)" stroke-width="7" stroke-linecap="round">
+            <path d="M60 380 C 140 180, 220 320, 300 120 S 470 240, 480 80"/>
+            <path d="M40 300 C 150 260, 180 120, 320 220 S 460 120, 500 200"/>
+          </g>
+          <g fill="none" stroke="url(#taGrad2)" stroke-width="3" stroke-linecap="round" opacity=".8">
+            <path d="M70 150 C 160 210, 250 60, 360 150 S 470 300, 490 320"/>
+          </g>
+          <circle cx="300" cy="120" r="10" fill="#fc4c02"/>
+          <circle cx="480" cy="80" r="7" fill="#ef2cc1"/>
+          <circle cx="60" cy="380" r="8" fill="#bdbbff"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOGO STRIP (light) ──────────────────────────────────────────────── -->
+  <section class="ta-logos" aria-label="Customers">
+    <div class="ta-shell">
+      <p class="ta-mono-eyebrow ta-logos-label">Trusted in production by operations teams at</p>
+      <div class="ta-logo-row">
+        <span class="ta-logo-item">Meridian</span>
+        <span class="ta-logo-item">Northgate Freight</span>
+        <span class="ta-logo-item">Lattice Health</span>
+        <span class="ta-logo-item">Corbin Retail</span>
+        <span class="ta-logo-item">Halcyon Bank</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PLATFORM (light) ────────────────────────────────────────────────── -->
+  <section class="ta-band ta-band-light" id="taproduct" aria-labelledby="taProductH">
+    <div class="ta-shell">
+      <p class="ta-mono-eyebrow">The platform</p>
+      <h2 id="taProductH" class="ta-display-xl">One cloud for every operations workload.</h2>
+      <p class="ta-lead">From the dashboard a region lead opens on Monday to the nightly rollup that feeds the board pack &mdash; Northwind runs it on shared infrastructure, priced per hour and governed by one access model.</p>
+
+      <div class="ta-tabrail" role="group" aria-label="Workloads">
+        <span class="ta-tab on">Inference</span>
+        <span class="ta-tab">Fine-tuning</span>
+        <span class="ta-tab">Clusters</span>
+        <span class="ta-tab">Storage</span>
+      </div>
+
+      <div class="ta-product-grid">
+        <div class="ta-code" aria-label="Example configuration">
+          <div class="ta-code-head">
+            <span class="ta-mono-caption">northwind.toml</span>
+            <span class="ta-code-dot" aria-hidden="true"></span>
+          </div>
+          <pre class="ta-code-body"><code><span class="c-key">service</span> = <span class="c-str">"ops-throughput"</span>
+<span class="c-key">region</span>  = <span class="c-str">"ap-southeast"</span>
+<span class="c-key">scale</span>   = { min = <span class="c-num">2</span>, max = <span class="c-num">48</span> }
+
+<span class="c-com"># roll up every regional dashboard</span>
+[[<span class="c-key">jobs</span>]]
+name    = <span class="c-str">"nightly-rollup"</span>
+schedule = <span class="c-str">"0 2 * * *"</span></code></pre>
+        </div>
+        <div class="ta-product-copy">
+          <h3 class="ta-display-md">Deploy a region in seconds.</h3>
+          <p class="ta-body">Push a config, get a governed endpoint. Northwind provisions clusters, attaches your access policies, and starts serving throughput before your coffee lands.</p>
+          <ul class="ta-check-list">
+            <li>Autoscaling from two to forty-eight nodes</li>
+            <li>Per-team token budgets and audit logs</li>
+            <li>Rollback to any previous dashboard build</li>
+          </ul>
+          <a class="ta-btn ta-btn-primary" href="#tapricing">Start building</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS (light, tinted tiles) ─────────────────────────────────────── -->
+  <section class="ta-band ta-band-light ta-band-tight" aria-label="Platform metrics">
+    <div class="ta-shell">
+      <div class="ta-stats">
+        <div class="ta-stat ta-stat-mint">
+          <span class="ta-stat-num">4.1&times;</span>
+          <span class="ta-mono-eyebrow">Faster rollups</span>
+          <p class="ta-stat-note">versus the previous warehouse at the same load.</p>
+        </div>
+        <div class="ta-stat ta-stat-peri">
+          <span class="ta-stat-num">99.99%</span>
+          <span class="ta-mono-eyebrow">Regional uptime</span>
+          <p class="ta-stat-note">across every dashboard tier in the last quarter.</p>
+        </div>
+        <div class="ta-stat ta-stat-mint">
+          <span class="ta-stat-num">48</span>
+          <span class="ta-mono-eyebrow">Regions live</span>
+          <p class="ta-stat-note">each with its own governance and quotas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESEARCH (dark) ─────────────────────────────────────────────────── -->
+  <section class="ta-band ta-band-dark" id="taresearch" aria-labelledby="taResearchH">
+    <div class="ta-shell">
+      <p class="ta-mono-eyebrow ta-on-dark">Research</p>
+      <h2 id="taResearchH" class="ta-display-xl ta-on-dark">Grounded in cutting-edge operations research.</h2>
+      <div class="ta-research-grid">
+        <article class="ta-research-card">
+          <p class="ta-mono-eyebrow ta-on-dark">Throughput</p>
+          <h3 class="ta-display-md ta-on-dark">A scheduling model for bursty regional demand</h3>
+          <p class="ta-body ta-on-dark-soft">How Northwind predicts Monday-morning spikes and pre-warms capacity without over-provisioning the quiet hours.</p>
+        </article>
+        <article class="ta-research-card">
+          <p class="ta-mono-eyebrow ta-on-dark">Governance</p>
+          <h3 class="ta-display-md ta-on-dark">Row-level policy that scales to a thousand dashboards</h3>
+          <p class="ta-body ta-on-dark-soft">One access model, evaluated at query time, with an immutable audit trail per region.</p>
+        </article>
+        <article class="ta-research-card">
+          <p class="ta-mono-eyebrow ta-on-dark">Data</p>
+          <h3 class="ta-display-md ta-on-dark">Streaming rollups without a warehouse rewrite</h3>
+          <p class="ta-body ta-on-dark-soft">Incremental aggregation that keeps every board pack consistent to the minute.</p>
+        </article>
+        <article class="ta-research-card">
+          <p class="ta-mono-eyebrow ta-on-dark">Reliability</p>
+          <h3 class="ta-display-md ta-on-dark">Graceful degradation for the 3 a.m. incident</h3>
+          <p class="ta-body ta-on-dark-soft">Serving the critical tiles first when a single region loses a node.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING TABLE (light) ───────────────────────────────────────────── -->
+  <section class="ta-band ta-band-light" id="tapricing" aria-labelledby="taPricingH">
+    <div class="ta-shell">
+      <p class="ta-mono-eyebrow">Pricing</p>
+      <h2 id="taPricingH" class="ta-display-xl">On-demand inference, priced by the hour.</h2>
+      <div class="ta-toggle" role="group" aria-label="Billing mode">
+        <span class="ta-toggle-pill on">Standard pricing</span>
+        <span class="ta-toggle-pill">Wholesale pricing</span>
+      </div>
+      <div class="ta-table" role="table" aria-label="Model pricing">
+        <div class="ta-tr ta-th" role="row">
+          <span role="columnheader">Model</span>
+          <span role="columnheader">Context</span>
+          <span role="columnheader">Input / 1M</span>
+          <span role="columnheader">Output / 1M</span>
+        </div>
+        <div class="ta-tr" role="row">
+          <span class="ta-td-name" role="cell">Northwind Ops&nbsp;Large</span>
+          <span role="cell">128k</span>
+          <span role="cell">$0.88</span>
+          <span role="cell">$0.88</span>
+        </div>
+        <div class="ta-tr" role="row">
+          <span class="ta-td-name" role="cell">Northwind Ops&nbsp;Mini</span>
+          <span role="cell">64k</span>
+          <span role="cell">$0.18</span>
+          <span role="cell">$0.22</span>
+        </div>
+        <div class="ta-tr" role="row">
+          <span class="ta-td-name" role="cell">Northwind Vision</span>
+          <span role="cell">32k</span>
+          <span role="cell">$0.34</span>
+          <span role="cell">$0.40</span>
+        </div>
+        <div class="ta-tr" role="row">
+          <span class="ta-td-name" role="cell">Northwind Embed</span>
+          <span role="cell">8k</span>
+          <span role="cell">$0.02</span>
+          <span role="cell">&mdash;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS (light) ────────────────────────────────────────────── -->
+  <section class="ta-band ta-band-light ta-band-tight" id="tatestimonials" aria-labelledby="taQuoteH">
+    <div class="ta-shell">
+      <h2 id="taQuoteH" class="ta-display-lg">Operations natives build on Northwind.</h2>
+      <div class="ta-quote-grid">
+        <figure class="ta-quote">
+          <blockquote class="ta-body">We replaced three warehouses with one Northwind endpoint and our Monday rollup went from forty minutes to six.</blockquote>
+          <figcaption>
+            <span class="ta-quote-name">Dana Okafor</span>
+            <span class="ta-mono-caption">VP DATA &middot; NORTHGATE FREIGHT</span>
+          </figcaption>
+        </figure>
+        <figure class="ta-quote">
+          <blockquote class="ta-body">Governance was the blocker for years. Row-level policy at query time is what finally got us to one dashboard platform.</blockquote>
+          <figcaption>
+            <span class="ta-quote-name">Ravi Menon</span>
+            <span class="ta-mono-caption">HEAD OF ANALYTICS &middot; HALCYON BANK</span>
+          </figcaption>
+        </figure>
+        <figure class="ta-quote">
+          <blockquote class="ta-body">Priced per hour with no egress fees meant we could let every region team self-serve without a budget fight.</blockquote>
+          <figcaption>
+            <span class="ta-quote-name">Sofia Marchetti</span>
+            <span class="ta-mono-caption">DIRECTOR, OPS &middot; CORBIN RETAIL</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA (dark) ──────────────────────────────────────────────────────── -->
+  <section class="ta-band ta-band-dark ta-cta-dark" id="tadocs" aria-labelledby="taCtaH">
+    <div class="ta-shell ta-cta-inner">
+      <div>
+        <p class="ta-mono-eyebrow ta-on-dark">Get started</p>
+        <h2 id="taCtaH" class="ta-display-xl ta-on-dark">Start building on Northwind today.</h2>
+        <p class="ta-lead ta-on-dark-soft">Free tier, no credit card. Scale to a governed production region when you&rsquo;re ready.</p>
+      </div>
+      <div class="ta-cta-actions">
+        <a class="ta-btn ta-btn-mint" href="#tapricing">Get started now</a>
+        <a class="ta-btn ta-btn-ghost" href="#taresearch">Read the docs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER (light, giant wordmark) ──────────────────────────────────── -->
+  <footer class="ta-footer">
+    <div class="ta-shell">
+      <div class="ta-foot-cols">
+        <div class="ta-foot-col">
+          <p class="ta-mono-eyebrow">Product</p>
+          <a href="#taproduct">Platform</a>
+          <a href="#tapricing">Pricing</a>
+          <a href="#tadocs">Docs</a>
+        </div>
+        <div class="ta-foot-col">
+          <p class="ta-mono-eyebrow">Company</p>
+          <a href="#tahome">About</a>
+          <a href="#taresearch">Research</a>
+          <a href="#tatestimonials">Customers</a>
+        </div>
+        <div class="ta-foot-col">
+          <p class="ta-mono-eyebrow">Resources</p>
+          <a href="#tadocs">Guides</a>
+          <a href="#tadocs">Changelog</a>
+          <a href="#tadocs">Status</a>
+        </div>
+        <div class="ta-foot-col">
+          <p class="ta-mono-eyebrow">Legal</p>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+      <p class="ta-foot-banner" aria-hidden="true">Northwind</p>
+      <p class="ta-mono-caption ta-foot-note">Sample data &mdash; showcase only. Not affiliated with any real platform.</p>
+    </div>
+  </footer>
+</div>
