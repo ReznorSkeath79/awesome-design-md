@@ -46,7 +46,9 @@ def strip_markdown(text):
     text = re.sub(r"^\s{0,3}(?:[-*_]\s*){3,}$", "", text, flags=re.M)
     text = re.sub(r"<[^>]+>", " ", text)
     text = text.replace("|", " ")
-    text = re.sub(r"[*_~`]", "", text)
+    text = re.sub(r"[*~`]", "", text)
+    # underscores only as emphasis markers; keep intraword ones (Activity IDs, table names)
+    text = re.sub(r"(?<![A-Za-z0-9])_+|_+(?![A-Za-z0-9])", "", text)
     return text
 
 
