@@ -18,6 +18,7 @@ import glob
 import json
 import os
 import re
+import sys
 
 import yaml
 
@@ -102,7 +103,12 @@ def parse_entry(path):
         return parse_prose_entry(folder, text)
     try:
         fm = yaml.safe_load(text[3:end])
-    except yaml.YAMLError:
+    except yaml.YAMLError as e:
+        # Loud, not silent: a broken header used to demote a token entry to prose guesses unnoticed.
+        mark = getattr(e, "problem_mark", None)
+        where = f" (line {mark.line + 1}, col {mark.column + 1})" if mark else ""
+        print(f"warning: {folder}/DESIGN.md front matter is invalid YAML{where}; falling back to prose parsing",
+              file=sys.stderr)
         return parse_prose_entry(folder, text)
     if not isinstance(fm, dict):
         return parse_prose_entry(folder, text)
