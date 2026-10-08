@@ -113,9 +113,9 @@ def parse_entry(path):
     comps = fm.get("components") if isinstance(fm.get("components"), dict) else {}
 
     # canvas / ink / surface
-    canvas = pick(colors, "canvas", "background", "bg", "page-bg", "body-bg") or "#ffffff"
-    ink = pick(colors, "ink", "text", "foreground", "text-primary", "on-canvas") or contrast_text(canvas)
-    ink_mut = pick(colors, "ink-muted", "text-muted", "text-secondary", "muted") or ink
+    canvas = pick(colors, "canvas", "background", "bg", "bg-0", "page-bg", "body-bg", "paper-0", "paper") or "#ffffff"
+    ink = pick(colors, "ink", "text", "text-0", "foreground", "text-primary", "on-canvas") or contrast_text(canvas)
+    ink_mut = pick(colors, "ink-muted", "text-muted", "text-secondary", "muted", "text-2") or ink
     surface = pick(colors, "surface-1", "surface", "card", "panel", "surface1") or canvas
     hairline = pick(colors, "hairline", "border", "line", "divider") or None
 
@@ -301,6 +301,9 @@ nav{height:48px;display:flex;align-items:center;justify-content:space-between;ga
 }
 .nav-search input:focus{background:var(--volt)}
 .nav-count{font-family:var(--mono);font-size:11px;letter-spacing:.5px;white-space:nowrap}
+.nav-showcase{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  border:1px solid var(--ink);padding:7px 12px;white-space:nowrap;flex:none}
+.nav-showcase:hover{background:var(--volt);color:var(--ink)}
 
 /* hero */
 .hero{padding:40px 32px 32px;border-bottom:1px solid var(--ink);position:relative;overflow:hidden}
@@ -405,6 +408,7 @@ footer .dim{color:var(--ramp-6)}
   <div class="nav-logo">DESIGN INDEX<sup> [CAT-01]</sup></div>
   <div class="nav-search"><input id="q" type="text" placeholder="SEARCH SYSTEMS…  ( / )" aria-label="Search"></div>
   <div class="nav-count" id="count">— SYSTEMS</div>
+  <a class="nav-showcase" href="showcase.html">Showcase →</a>
 </nav>
 
 <header class="hero">
@@ -507,7 +511,10 @@ function siteHTML(d){
   const marker = Math.abs(lum(d.primary)-lum(d.surface)) < 0.35 ? d.ink : d.primary;
   const btn = (b,label,border) => `<span style="${typeStyle(btnT,0.9)}display:inline-block;background:${esc(b.bg||d.primary)};color:${esc(b.fg||d.onPrimary)};border-radius:${rad(b.radius)}px;padding:10px 22px;${border||''}">${label}</span>`;
   return `<div class="d-section" style="grid-column:1/-1">
-    <h3>Sample Site — live preview</h3>
+    <h3 style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+      <span>Sample Site — live preview</span>
+      <a class="data" style="font-size:10px;letter-spacing:1.5px" href="showcase.html#d=${encodeURIComponent(d.folder)}">Open full showcase →</a>
+    </h3>
     <div style="border:1px solid var(--ink);background:var(--white)">
       <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--ink);background:var(--canvas)">
         ${dots.map(c=>`<span style="width:10px;height:10px;background:${esc(c.v)};display:block"></span>`).join('')}

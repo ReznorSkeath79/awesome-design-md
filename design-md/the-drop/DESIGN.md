@@ -4,7 +4,9 @@ name: The-drop-design-analysis
 description: "The Drop is the AutoAlchemy Hub Marketplace's own space (live 2026-10-08, hub main 7defd96 → 4a91b9e): the bounty marketplace dressed as a bold ad campaign, deliberately broken away from the Hub's Vera Hub navy console. Near-black stage #0A0A0F, warm-white text #F6F3EE, flat saturated colour blocks (magenta #E2248F, orange #FF6A1F, yellow #FFC21A, violet #7B2CF0, cobalt #1E5BFF, teal #0FA58C, coral #FF4D5E, deep #2443B8) and ONE magenta→orange gradient spent on headline words, the primary button, the dock pill and the payout amount. Anton heavy condensed caps for every headline, poster name and number; Barlow 400–800 for UI; Caveat Brush for one handwritten aside per section. Generous rounding (28 stages, 18 tiles/posters, 12 controls), round rotated stickers, a tilted yellow marquee. No shadows, no glass, no grid: depth comes from colour blocks and photography. Hero = Mika Navarro (the AI model developer) as an 81-frame sequence the cursor scrubs, feathered into the stage, with a ring of paint powder around her face. Source of truth: autoalchmey_tracker app/src/pages/marketplace/drop.module.css, drop-skin.css, drop-fonts.css, components/MarketplaceShell.module.css; approved mockup docs/mockups/2026-10-07-marketplace-options/d-campaign/."
 
 colors:
-  stage: "#0a0a0f"
+  canvas: "#0a0a0f"
+  primary: "#e2248f"
+  on-primary: "#ffffff"
   hero-stage: "#07060b"
   panel: "#121219"
   panel-2: "#191922"
@@ -12,9 +14,9 @@ colors:
   menu: "#16161d"
   text: "#f6f3ee"
   text-1: "#e4dfe9"
-  text-2: "#b6b2c0"
+  text-muted: "#b6b2c0"
   text-3: "#7c7889"
-  ink: "#121212"
+  ink-dark: "#121212"
   white: "#ffffff"
   line: "rgba(255,255,255,.08)"
   control-fill: "rgba(255,255,255,.07)"
@@ -134,7 +136,7 @@ spacing:
 components:
   nav-bar:
     backgroundColor: "rgba(14,14,20,.98)"
-    textColor: "{colors.text-2}"
+    textColor: "{colors.text-muted}"
     typography: "{typography.nav}"
     rounded: "{rounded.md}"
     padding: 0 12px 0 22px
@@ -147,19 +149,19 @@ components:
     padding: 0 26px
   button-yellow:
     backgroundColor: "{colors.yellow}"
-    textColor: "{colors.ink}"
+    textColor: "{colors.ink-dark}"
     typography: "{typography.button}"
     rounded: "{rounded.sm}"
     padding: 0 26px
   button-white:
     backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
+    textColor: "{colors.ink-dark}"
     typography: "{typography.button}"
     rounded: "{rounded.sm-button}"
     padding: 0 16px
   button-round:
     backgroundColor: "{colors.white}"
-    textColor: "{colors.ink}"
+    textColor: "{colors.ink-dark}"
     rounded: "{rounded.round}"
     padding: 0
   ad-tile:
@@ -175,13 +177,13 @@ components:
     rounded: "{rounded.md}"
     padding: 20px
   sticker:
-    backgroundColor: "{colors.ink}"
+    backgroundColor: "{colors.ink-dark}"
     textColor: "{colors.white}"
     typography: "{typography.stat-number}"
     rounded: "{rounded.round}"
   dock:
     backgroundColor: "{colors.panel}"
-    textColor: "{colors.text-2}"
+    textColor: "{colors.text-muted}"
     typography: "{typography.nav}"
     rounded: "{rounded.dock}"
     padding: 6px
@@ -194,7 +196,7 @@ components:
     padding: 44px
   well:
     backgroundColor: "{colors.well}"
-    textColor: "{colors.text-2}"
+    textColor: "{colors.text-muted}"
     rounded: "{rounded.md}"
     padding: 22px 24px
   kpi-poster:
@@ -211,7 +213,7 @@ components:
     border: "1px solid rgba(255,255,255,.10)"
   ticker:
     backgroundColor: "{colors.yellow}"
-    textColor: "{colors.ink}"
+    textColor: "{colors.ink-dark}"
     typography: "{typography.tile-title}"
 ---
 

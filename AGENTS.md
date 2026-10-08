@@ -20,9 +20,16 @@ no CI pipeline. The repository is almost entirely Markdown plus one Python build
   - `README.md` — a short stub pointing readers to `https://getdesign.md/<slug>/design-md`.
     A few folders (`ai-navigator`, `aurora`, `autoalchemy`, `palawan`, `slack`) have only
     `DESIGN.md`; `futura/` additionally has a `mockup.html`.
-- `scripts/build_catalog.py` — the only code in the repo. Generates `catalog.html`.
+- `scripts/build_catalog.py` — the primary build script. Generates `catalog.html`.
 - `catalog.html` — generated, single-file visual index of all entries (committed to git).
   Regenerate it after adding or changing any `DESIGN.md`; do not hand-edit it.
+- `scripts/build_showcase.py` — imports `build_catalog` and generates `showcase.html`. Derives a
+  richer theme per entry (accents, semantic colors, resolved components, light/dark variant) and
+  renders a realistic B2B product site ("Northwind — operations analytics") in each design,
+  switchable at runtime. Deterministic (sorted by folder, no timestamps).
+- `showcase.html` — generated, single self-contained page (inline CSS + JS + JSON; the only
+  external resource is Google Fonts, loaded per family at runtime). Committed to git. Never
+  hand-edit it; change the `TEMPLATE` in `scripts/build_showcase.py`.
 - `README.md` — human-facing collection index, organized by category (AI & LLM Platforms,
   Developer Tools, Fintech, Automotive, Retro Web, etc.). When an entry is added or removed,
   the category list and the "DESIGN.md count" badge must be updated by hand (note: the badge
@@ -50,19 +57,26 @@ file — the build script falls back to prose parsing if it can't parse the head
 
 ## Build Commands
 
-The only build step is regenerating the catalog. Requires Python 3 and PyYAML (sole dependency):
+There are two build steps, and both must be run after any `DESIGN.md` change. Requires Python 3
+and PyYAML (sole dependency):
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install pyyaml
-.venv/bin/python scripts/build_catalog.py   # writes catalog.html at repo root
+.venv/bin/python scripts/build_catalog.py    # writes catalog.html at repo root
+.venv/bin/python scripts/build_showcase.py   # writes showcase.html at repo root
 ```
 
-Expected output: `catalog.html written: N designs (X token, Y prose), Z KB`. The script globs
-`design-md/*/DESIGN.md`, so new folders are picked up automatically. The output is deterministic —
-a run with no content changes produces a byte-identical `catalog.html`.
+Expected output: `catalog.html written: N designs (X token, Y prose), Z KB` and
+`showcase.html written: N designs (X token, Y prose, V with variants), Z KB`. Both scripts glob
+`design-md/*/DESIGN.md`, so new folders are picked up automatically. Both outputs are
+deterministic — a run with no content changes produces byte-identical files. `build_showcase.py`
+imports `build_catalog` (via a `sys.path` insert of the scripts dir) rather than duplicating the
+parsers.
 
 Open `catalog.html` directly in a browser to visually check an entry's swatches, type scale, and
-component previews; deep-link to an entry with `catalog.html#d=<folder>`.
+component previews; deep-link to an entry with `catalog.html#d=<folder>`. The catalog links to
+`showcase.html` (header "Showcase" link and, in each detail modal, "Open full showcase →"); the
+showcase deep-links with `showcase.html#d=<folder>` and renders the selected site live.
 
 ## Testing
 
@@ -72,6 +86,9 @@ There is no test suite. Verification is:
 2. `catalog.html` renders the changed entry correctly in a browser.
 3. For token-format edits, the YAML front matter still parses (a parse failure silently demotes
    the entry to the prose fallback — check the reported token/prose counts before and after).
+4. `scripts/build_showcase.py` runs without errors; the changed entry renders correctly in
+   `showcase.html` at Desktop/Tablet/Phone (the phone frame must not overflow horizontally) and
+   its Chrome console is error-free.
 
 ## Code Style and Conventions
 
@@ -80,7 +97,8 @@ There is no test suite. Verification is:
 - `build_catalog.py` is stdlib-only except for PyYAML; keep it that way. It is formatted with
   4-space indents, snake_case, and section banner comments.
 - `catalog.html` is generated — never edit it by hand; change the `TEMPLATE` in
-  `scripts/build_catalog.py` instead.
+  `scripts/build_catalog.py` instead. `showcase.html` is likewise generated — change the
+  `TEMPLATE` in `scripts/build_showcase.py` instead.
 - Keep changes minimal and scoped: this repo's value is content accuracy, so a fix to one site's
   tokens should touch only that site's `DESIGN.md` (plus regenerated `catalog.html`).
 
