@@ -307,6 +307,17 @@ def build_theme(path):
         if f and f not in fonts:
             fonts.append(f)
 
+    # a design with its own real layout (design-md/<folder>/showcase/layout.html)
+    # loads every family its typography names, not just display/body/button/mono.
+    own_layout = os.path.isfile(os.path.join(
+        ROOT, "design-md", d["folder"], "showcase", "layout.html"))
+    if own_layout:
+        for t in typo.values():
+            if isinstance(t, dict):
+                fam = clean_family(t.get("fontFamily") or t.get("family"))
+                if fam and fam not in fonts:
+                    fonts.append(fam)
+
     dark = is_dark(d["canvas"], d["dark"])
     theme = {
         "folder": d["folder"],
@@ -338,6 +349,7 @@ def build_theme(path):
         "comps": comps_res,
         "dots": [d["canvas"], d["primary"], d["ink"]],
         "alt": None,
+        "ownLayout": own_layout,
     }
 
     if token:
@@ -490,6 +502,9 @@ TEMPLATE = r"""<!DOCTYPE html>
 *{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:hidden}
 body{background:var(--stage);color:var(--chrome-fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13px;overflow-x:hidden}
+/* own mode: clip (not hidden) so overflow does not turn html/body into scroll containers,
+   which would stop the real layout's in-frame position:sticky bar from sticking */
+html.own-mode,html.own-mode body{overflow-x:clip}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{text-decoration:none;color:inherit}
 
@@ -543,8 +558,9 @@ a{text-decoration:none;color:inherit}
 
 /* ---------- stage ---------- */
 .stage{padding:26px 16px 60px;display:flex;justify-content:center;align-items:flex-start;min-height:calc(100vh - 56px)}
-.frame{width:100%;max-width:100%;border-radius:13px;overflow:hidden;outline:1px solid rgba(255,255,255,.09);
+.frame{width:100%;max-width:100%;border-radius:13px;overflow:visible;outline:1px solid rgba(255,255,255,.09);
   box-shadow:0 24px 70px rgba(0,0,0,.5);background:#fff;transition:width .2s ease}
+#own{display:none;width:100%;container-type:inline-size;container-name:frame;background:#0a0a0f;border-radius:13px}
 
 /* ---------- the sample site ---------- */
 .site{
@@ -770,6 +786,7 @@ a{text-decoration:none;color:inherit}
   .site .footer .cols{grid-template-columns:minmax(0,1fr)}
 }
 </style>
+__OWN_CSS__
 </head>
 <body>
 
@@ -786,6 +803,10 @@ a{text-decoration:none;color:inherit}
       <button data-f="all" class="on">All</button>
       <button data-f="dark">Dark</button>
       <button data-f="light">Light</button>
+    </div>
+    <div class="seg" id="ownseg" role="group" aria-label="Layout" hidden>
+      <button data-own="1">Own layout</button>
+      <button data-own="0">Generic</button>
     </div>
     <div class="seg" id="variant" role="group" aria-label="Variant" hidden></div>
     <div class="seg" id="viewport" role="group" aria-label="Viewport">
@@ -1113,8 +1134,15 @@ a{text-decoration:none;color:inherit}
       </footer>
 
     </div>
+    <div id="own" aria-label="Real storefront layout"></div>
   </div>
 </main>
+
+__OWN_HTML__
+
+<script>
+__OWN_JS__
+</script>
 
 <script>
 const DESIGNS = __DATA__;
@@ -1132,9 +1160,12 @@ const infoName = document.getElementById('info-name');
 const infoDesc = document.getElementById('info-desc');
 const fontchips = document.getElementById('fontchips');
 const footFolder = document.getElementById('foot-folder');
+const own = document.getElementById('own');
+const ownSeg = document.getElementById('ownseg');
+let ownFolder = null, ownCleanup = null;
 
 const LS = 'awesome-design-md.showcase.v1';
-let state = { i: 0, filter: 'all', viewport: 'desktop', variant: 0 };
+let state = { i: 0, filter: 'all', viewport: 'desktop', variant: 0, own: true };
 let ddActive = 0;
 const fontStatus = {};
 const fontsInjected = {};
@@ -1337,6 +1368,43 @@ function renderChrome(){
   document.querySelectorAll('#viewport button').forEach(b => b.classList.toggle('on', b.dataset.v === state.viewport));
 }
 
+/* designs that ship their own real layout (design-md/<folder>/showcase/) */
+function unmountOwn(){
+  if (ownCleanup){ try { ownCleanup(); } catch(e){} ownCleanup = null; }
+  ownFolder = null;
+  own.innerHTML = '';
+}
+function mountOwn(folder){
+  unmountOwn();
+  const tpl = document.getElementById('own-' + folder);
+  if (!tpl) return;
+  own.appendChild(tpl.content.cloneNode(true));
+  ownFolder = folder;
+  const root = own.firstElementChild;
+  const def = (window.OWN_LAYOUTS || {})[folder];
+  if (def && typeof def.init === 'function'){
+    try { ownCleanup = def.init(root); } catch(e){ console.warn('own layout init failed:', e); }
+  }
+}
+function applyOwn(){
+  const t = DESIGNS[state.i];
+  const hasOwn = !!t.ownLayout;
+  const active = hasOwn && state.own;
+  ownSeg.hidden = !hasOwn;
+  document.documentElement.classList.toggle('own-mode', active);
+  if (active){
+    site.style.display = 'none';
+    own.style.display = 'block';
+    if (ownFolder !== t.folder) mountOwn(t.folder);
+  } else {
+    own.style.display = 'none';
+    site.style.display = '';
+    if (ownFolder !== null) unmountOwn();
+  }
+  if (active) document.getElementById('variant').hidden = true;
+  document.querySelectorAll('#ownseg button').forEach(b => b.classList.toggle('on', (b.dataset.own === '1') === active));
+}
+
 function applyViewport(){
   frame.style.width = state.viewport === 'tablet' ? '820px' : (state.viewport === 'phone' ? '390px' : '100%');
 }
@@ -1346,6 +1414,7 @@ function selectIndex(i){
   applyTheme();
   applyViewport();
   renderChrome();
+  applyOwn();
   const t = DESIGNS[state.i];
   (t.fonts || []).forEach(ensureFont);
   updateChips();
@@ -1395,6 +1464,11 @@ document.getElementById('viewport').addEventListener('click', e => {
   state.viewport = b.dataset.v;
   applyViewport(); renderChrome(); saveState();
 });
+document.getElementById('ownseg').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  state.own = b.dataset.own === '1';
+  applyOwn(); saveState();
+});
 document.getElementById('infoBtn').addEventListener('click', () => {
   infostrip.hidden = !infostrip.hidden;
   document.getElementById('infoBtn').setAttribute('aria-expanded', String(!infostrip.hidden));
@@ -1426,6 +1500,7 @@ loadState();
 })();
 if (state.filter !== 'dark' && state.filter !== 'light') state.filter = 'all';
 if (state.viewport !== 'tablet' && state.viewport !== 'phone') state.viewport = 'desktop';
+if (typeof state.own !== 'boolean') state.own = true;
 state.i = Math.max(0, Math.min(DESIGNS.length - 1, state.i));
 applyViewport();
 selectIndex(state.i);
@@ -1435,18 +1510,66 @@ selectIndex(state.i);
 """
 
 
+def load_own_layout(folder):
+    """Read a design's own storefront (showcase/layout.{html,css,js}), or None.
+
+    Every ``./assets/`` reference is rewritten to the folder's real asset path
+    (relative to showcase.html); images stay files, never base64."""
+    base = os.path.join(ROOT, "design-md", folder, "showcase")
+    if not os.path.isfile(os.path.join(base, "layout.html")):
+        return None
+
+    def read(name):
+        try:
+            with open(os.path.join(base, name), encoding="utf-8") as fh:
+                return fh.read()
+        except OSError:
+            return ""
+
+    prefix = "design-md/" + folder + "/showcase/assets/"
+
+    def fix(s):
+        return s.replace("./assets/", prefix)
+
+    return {
+        "folder": folder,
+        "html": fix(read("layout.html")),
+        "css": fix(read("layout.css")),
+        "js": fix(read("layout.js")),
+    }
+
+
 def main():
     paths = sorted(glob.glob(os.path.join(ROOT, "design-md", "*", "DESIGN.md")))
     designs = [build_theme(p) for p in paths]
     data = json.dumps(designs, ensure_ascii=False, separators=(",", ":"))
     data = data.replace("</", "<\\/")
-    html = TEMPLATE.replace("__DATA__", data)
+
+    own = []
+    for d in designs:
+        if d.get("ownLayout"):
+            layout = load_own_layout(d["folder"])
+            if layout:
+                own.append(layout)
+
+    own_html = "".join(
+        '<template id="own-%s">%s</template>' % (o["folder"], o["html"]) for o in own)
+    own_css = "".join("<style>\n%s\n</style>" % o["css"] for o in own if o["css"])
+    own_js = "".join(o["js"] for o in own if o["js"])
+
+    html = (TEMPLATE
+            .replace("__OWN_CSS__", own_css)
+            .replace("__OWN_HTML__", own_html)
+            .replace("__OWN_JS__", own_js)
+            .replace("__DATA__", data))
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(html)
     n_tok = sum(1 for d in designs if d["format"] == "tokens")
     n_alt = sum(1 for d in designs if d["alt"])
+    n_own = sum(1 for d in designs if d.get("ownLayout"))
     print(f"showcase.html written: {len(designs)} designs ({n_tok} token, "
-          f"{len(designs) - n_tok} prose, {n_alt} with variants), {len(html) // 1024} KB")
+          f"{len(designs) - n_tok} prose, {n_alt} with variants, {n_own} own layout), "
+          f"{len(html) // 1024} KB")
 
 
 if __name__ == "__main__":

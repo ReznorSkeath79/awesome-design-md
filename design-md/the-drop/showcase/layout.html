@@ -1,0 +1,171 @@
+<div class="drop">
+  <!-- ── BAR ──────────────────────────────────────────────────────────── -->
+  <header class="drop-bar" id="dropBar">
+    <a class="bar-wordmark" href="#drop" aria-label="Marketplace home">MARKET<span>X</span>PLACE</a>
+    <nav class="bar-links bar-nav-links" aria-label="Sections">
+      <a href="#drop" class="on">The drop</a>
+      <a href="#lineup">Lineup</a>
+      <a href="#payday">Payday</a>
+      <a href="#roster">Who's shipping</a>
+      <a href="#scoreboard">Scoreboard</a>
+    </nav>
+    <span class="bar-sep" aria-hidden="true"></span>
+    <div class="bar-links bar-user-links">
+      <a href="#">My work</a>
+      <a href="#">Earnings</a>
+    </div>
+    <div class="bar-right">
+      <label class="bar-search">
+        <span class="sr">Search jobs</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="dropQ" type="search" placeholder="Search jobs, skills, people" autocomplete="off">
+      </label>
+      <button class="bar-search-toggle" type="button" aria-label="Search" data-search-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      </button>
+      <a class="bar-hub" href="#">&larr; Hub</a>
+      <a class="bar-avatar" href="#" title="MN">MN</a>
+    </div>
+  </header>
+
+  <div class="drop-clip">
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="dropHeroH">
+    <div class="hero-stage" id="heroStage">
+      <img class="hero-img" id="heroImg" src="./assets/hero.jpg" alt="">
+      <canvas class="hero-powder" id="heroPowder" aria-hidden="true"></canvas>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="hero-kicker">We turn your work into</p>
+        <h1 id="dropHeroH" class="hero-title"><span class="grad">Bold</span><span class="grad">Payouts</span></h1>
+        <p class="script hero-note" aria-hidden="true">Ship it on time
+          <svg viewBox="0 0 220 24" class="underline"><path d="M4 16 C 60 6, 120 22, 216 8"/></svg>
+        </p>
+        <p class="hero-sub" id="heroSub"></p>
+        <div class="hero-cta">
+          <a class="btn btn-grad" href="#drop">See the drop</a>
+          <a class="btn btn-round" href="#payday" aria-label="How it pays"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <ul class="hero-stats" id="heroStats" aria-label="Program at a glance"></ul>
+      <a class="hero-play" href="#payday"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span> How it pays</a>
+    </div>
+  </section>
+
+  <!-- ── TICKER ───────────────────────────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+  <!-- ── THE DROP ─────────────────────────────────────────────────────── -->
+  <section id="drop" class="drop-sec" aria-labelledby="dropH">
+    <div class="drop-intro rv" data-rv>
+      <p class="eyebrow">This week</p>
+      <h2 id="dropH" class="drop-title">Jobs that<br>get <span class="yellow">claimed</span><span class="magenta">.</span></h2>
+      <svg viewBox="0 0 300 24" class="brush" aria-hidden="true"><path d="M6 14 C 80 4, 170 20, 294 10"/></svg>
+      <p class="drop-sub">Fresh briefs from the team. Bid, deliver before the deadline, get rated, get paid. Unclaimed always shows first.</p>
+      <a class="btn btn-yellow" href="#lineup">See the full lineup</a>
+    </div>
+    <div class="drop-grid" id="dropGrid"></div>
+  </section>
+
+  <!-- ── LINEUP ───────────────────────────────────────────────────────── -->
+  <section id="lineup" class="lineup" aria-labelledby="lineupH">
+    <div class="lineup-head">
+      <div>
+        <p class="eyebrow">Every job, every status</p>
+        <h2 id="lineupH" class="section-title">The lineup</h2>
+      </div>
+      <div class="dock" id="dock" role="group" aria-label="Filter by status">
+        <span class="dock-pill" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="rail" id="rail" tabindex="0" role="group" aria-label="Job posters, drag or use arrow keys">
+      <div class="rail-track" id="railTrack"></div>
+    </div>
+    <div class="rail-controls">
+      <button class="btn btn-round" id="railPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+      <div class="rail-bar"><span id="railBar"></span></div>
+      <button class="btn btn-round" id="railNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ── PAYDAY ───────────────────────────────────────────────────────── -->
+  <section id="payday" class="payday" aria-labelledby="paydayH">
+    <div class="payday-copy">
+      <p class="eyebrow">Payday calculator</p>
+      <h2 id="paydayH" class="section-title">What's it <span class="grad">worth?</span></h2>
+      <p class="script payday-note">no guessing, no haggling</p>
+      <ol class="rules">
+        <li><b>01</b><span>Bid on a job. Complexity is locked when the Senior Director approves intake.</span></li>
+        <li><b>02</b><span>Deliver on or before the deadline — late work earns nothing.</span></li>
+        <li><b>03</b><span>Your requester rates it. Three stars or fewer needs a written reason.</span></li>
+        <li><b>04</b><span>Senior Director signs off. It's released with the payroll cycle.</span></li>
+      </ol>
+    </div>
+    <div class="calc" aria-label="Payout calculator">
+      <div class="calc-cx" id="calcCx" role="radiogroup" aria-label="Complexity"></div>
+      <div>
+        <span class="calc-label">Requester rating</span>
+        <div class="stars" id="calcStars" role="radiogroup" aria-label="Stars"></div>
+      </div>
+      <div class="calc-toggles">
+        <label class="switch"><input type="checkbox" id="tOnTime" checked><span class="switch-ui"></span>Delivered on time</label>
+        <label class="switch"><input type="checkbox" id="tGrade" checked><span class="switch-ui"></span>Below grade 8A</label>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <span class="calc-peso" id="calcAmt">&#8369;8,500</span>
+        <span class="calc-why" id="calcWhy">Medium &middot; 4&#9733; &middot; on time</span>
+      </div>
+      <div class="matrix" id="matrix" aria-label="Incentive grid"></div>
+    </div>
+  </section>
+
+  <!-- ── WHO'S SHIPPING ───────────────────────────────────────────────── -->
+  <section id="roster" class="roster" aria-labelledby="rosterH">
+    <div class="roster-head">
+      <p class="eyebrow">In flight right now</p>
+      <h2 id="rosterH" class="section-title">Who's <span class="grad">shipping</span></h2>
+    </div>
+    <div class="roster-grid" id="rosterGrid"></div>
+  </section>
+
+  <!-- ── THE SCOREBOARD ───────────────────────────────────────────────── -->
+  <section id="scoreboard" class="scoreboard" aria-labelledby="scoreboardH">
+    <div class="scoreboard-head">
+      <h2 id="scoreboardH" class="scoreboard-title">The <span class="grad">score</span>board</h2>
+      <p class="script">this quarter, live</p>
+    </div>
+    <div class="scoreboard-grid">
+      <div class="billboard">
+        <div class="billboard-row" id="billboardRow"></div>
+        <div class="pool">
+          <div class="pool-top">
+            <span class="pool-amount" id="poolAmount"></span>
+            <span class="pool-caption" id="poolCaption"></span>
+          </div>
+          <div class="pool-meter"><span class="pool-fill" id="poolFill"></span></div>
+          <p class="pool-note">Up to — every job in flight at 5&#9733;. The monthly pool pays each on-time, well-rated drop.</p>
+        </div>
+      </div>
+      <div class="quarter">
+        <span class="quarter-eyebrow">Your quarter</span>
+        <h3 class="quarter-title">In your pocket</h3>
+        <div class="quarter-row"><b class="quarter-num" id="qEarned"></b><span class="quarter-label">Earned</span></div>
+        <div class="quarter-row"><b class="quarter-num" id="qUnpaid"></b><span class="quarter-label">Awaiting payout</span></div>
+        <div class="quarter-row"><b class="quarter-num" id="qPaid"></b><span class="quarter-label">Paid</span></div>
+        <p class="quarter-jobs" id="qJobs"></p>
+        <p class="quarter-note">your first drop is waiting — <a href="#lineup">see what's open</a></p>
+      </div>
+    </div>
+    <div class="score-stickers" id="scoreStickers"></div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <p class="foot-giant" aria-hidden="true">MARKETPLACE</p>
+    <div class="foot-row">
+      <span>Sample data — showcase only</span>
+      <a href="#">&larr; Back to the Hub</a>
+    </div>
+  </footer>
+  </div><!-- /.drop-clip -->
+</div>

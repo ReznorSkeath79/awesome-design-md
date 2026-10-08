@@ -5,3 +5,5 @@ magenta→orange gradient, Anton caps + Barlow + a Caveat Brush aside, round rot
 and Mika Navarro as the cursor-scrubbed hero. Its own space — breaks away from Vera Hub on purpose.
 
 See [DESIGN.md](./DESIGN.md) for tokens, components, motion and rules.
+
+`showcase/` holds the real storefront layout used by `showcase.html`.

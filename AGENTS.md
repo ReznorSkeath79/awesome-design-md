@@ -20,6 +20,17 @@ no CI pipeline. The repository is almost entirely Markdown plus one Python build
   - `README.md` — a short stub pointing readers to `https://getdesign.md/<slug>/design-md`.
     A few folders (`ai-navigator`, `aurora`, `autoalchemy`, `palawan`, `slack`) have only
     `DESIGN.md`; `futura/` additionally has a `mockup.html`.
+  - `showcase/` — optional; a design may ship `layout.html` (+ optional `layout.css`, `layout.js`)
+    to show its **real** layout in `showcase.html` instead of the generic Northwind site. When
+    `showcase/layout.html` exists the design has an "own layout": `build_showcase.py` inlines the
+    markup as `<template id="own-<folder>">…</template>`, inlines `layout.css`/`layout.js`, and
+    rewrites every `./assets/` reference to `design-md/<folder>/showcase/assets/` (images stay
+    files). The theme JSON gets `ownLayout: true`; the toolbar shows an "Own layout | Generic"
+    switch (shown only then, default Own, remembered in localStorage); when Own is active the
+    generic `#site` is hidden and a clone is mounted into `#own` (which mirrors the frame with
+    `container-type: inline-size; container-name: frame`), calling
+    `window.OWN_LAYOUTS['<folder>'].init(root)` and using its returned cleanup function on exit.
+    Only `the-drop` ships one today.
 - `scripts/build_catalog.py` — the primary build script. Generates `catalog.html`.
 - `catalog.html` — generated, single-file visual index of all entries (committed to git).
   Regenerate it after adding or changing any `DESIGN.md`; do not hand-edit it.
@@ -67,7 +78,8 @@ python3 -m venv .venv && .venv/bin/pip install pyyaml
 ```
 
 Expected output: `catalog.html written: N designs (X token, Y prose), Z KB` and
-`showcase.html written: N designs (X token, Y prose, V with variants), Z KB`. Both scripts glob
+`showcase.html written: N designs (X token, Y prose, V with variants, K own layout), Z KB`. Both
+scripts glob
 `design-md/*/DESIGN.md`, so new folders are picked up automatically. Both outputs are
 deterministic — a run with no content changes produces byte-identical files. `build_showcase.py`
 imports `build_catalog` (via a `sys.path` insert of the scripts dir) rather than duplicating the
