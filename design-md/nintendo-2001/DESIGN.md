@@ -96,7 +96,7 @@ components:
     typography: "{typography.nav-link}"
     rounded: "{rounded.none}"
     padding: "{spacing.sm}"
-    height: 28px
+    height: 40px
   subnav-strip:
     backgroundColor: "{colors.canvas-soft}"
     textColor: "{colors.ink}"
@@ -426,9 +426,9 @@ Arial is freely available system-wide and needs no substitute. To recreate the p
 - Panels carry **12px interior padding** (`{spacing.md}`); larger content modules use **16px** (`{spacing.lg}`). Inter-module gaps run 16–24px. The layout is deliberately dense — whitespace is a structural seam between plates, not a luxury.
 
 ### Grid & Container
-- **Fixed-width canvas** ~780–830px wide (a desktop-era fixed table layout, centered). No fluid scaling — the interface is sized to a single target window like an application.
+- **Fixed-width canvas** ~780–820px wide (a desktop-era fixed table layout, centered). No fluid scaling — the interface is sized to a single target window like an application.
 - **Masthead row**: Mario mascot + speech bubble (left) and search module (right) float above the chrome.
-- **Dual nav bars**: a carbon primary bar (logo + 5 section words + Code Bank / Game Finder utility chips) stacked over a periwinkle secondary strip (Parents, Customer Service, Corporate, Global, Privacy, Store, Contact).
+- **Dual nav bars**: a carbon primary bar (logo + 5 section words + Code Bank / Game Finder utility chips) stacked over a periwinkle secondary strip (Parents, Customer Service, Corporate, Global, Privacy, Store, Contact); the two rows pin to the top as one sticky header.
 - **Body**: a full-width hero panel, then a **two-column split** — a ~two-thirds content column of stacked panels (Official News list, Featured Sites 2×2 grid, etc.) beside a ~one-third **right action rail** (Login / Subscribe / Newsletter / Help buttons, an info box, a side promo card).
 - **Left rail**: a thin vertical strip of rotated tabs (Top Ten, Top Rentals, Player's Choice, ESRB Ratings) clipped to the chrome edge.
 
@@ -493,10 +493,10 @@ Hero photography fills beveled rectangles at roughly 4:1 (banner) and 16:9 propo
 ### Navigation
 
 **`nav-bar`** — Primary top navigation
-- `{colors.carbon}` slab with a faint halftone-dot texture, ~28px tall, carrying the `{components.logo-pill}` at left, the five `{colors.nav-gold}` section words in `{typography.nav-link}` uppercase, and the amber Code Bank / Game Finder utility chips at right. Sharp corners (`{rounded.none}`), `{spacing.sm}` padding.
+- `{colors.carbon}` slab with a faint halftone-dot texture, ~40px tall, carrying the `{components.logo-pill}` at left, the five `{colors.nav-gold}` section words in `{typography.nav-link}` uppercase, and the amber Code Bank / Game Finder utility chips at right. Sharp corners (`{rounded.none}`), `{spacing.sm}` padding.
 
 **`subnav-strip`** — Secondary navigation
-- A `{colors.canvas-soft}` pale-sky strip directly beneath the nav bar, carrying utility links (Parents, Customer Service, Corporate, Global, Privacy, Store, Contact) in `{typography.ui-label}` `{colors.ink}`, separated by thin dividers. Sharp, `{spacing.xs}` padding.
+- A `{colors.canvas-soft}` pale-sky strip directly beneath the nav bar, carrying utility links (Parents, Customer Service, Corporate, Global, Privacy, Store, Contact) in `{typography.ui-label}` `{colors.ink}`, separated by thin dividers. Sharp, `{spacing.xs}` padding. Pinned together with the `{components.nav-bar}` as one sticky header (top: 0) so both rows stay visible while the page scrolls.
 
 **`left-rail-tab`** — Rotated section tabs
 - A thin vertical strip of `{colors.carbon}` tabs (Top Ten, Top Rentals, Player's Choice, ESRB Ratings) with vertically-rotated `{typography.ui-label}` text in `{colors.canvas-soft}`, clipped to the left chrome edge. Sharp corners, `{spacing.xs}` padding.

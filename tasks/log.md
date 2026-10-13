@@ -1,5 +1,12 @@
 # awesome-design-md — work log
 
+## 2026-10-13 — `nintendo-2001`: taller nav, pinned dual nav, narrower canvas
+- Ferdz asked for the same header change as the codebench reports (which use this design): nav bar 28→40px
+  (logo pill + nav words scaled up), nav bar + subnav strip wrapped in one `.topbar` (`position: sticky; top: 0`)
+  with `scroll-margin-top` on anchors, console max-width 860→820px. DESIGN.md updated to match (nav-bar
+  `height: 40px`, sticky dual nav, canvas ~780–820px). `showcase.html` + bundle rebuilt; checked live on
+  `#d=nintendo-2001` — header holds at top 0 after scrolling, console 820px.
+
 ## 2026-10-08 — `the-drop` entry, the design showcase, own layouts for all 84
 - **`the-drop` (55aaa4f):** DESIGN.md for the AutoAlchemy Hub Marketplace space ("The Drop", live in the Hub at
   4a91b9e) — tokens from the production CSS (drop.module.css, drop-skin.css, MarketplaceShell), components,
