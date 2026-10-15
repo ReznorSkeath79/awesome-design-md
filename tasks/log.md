@@ -1,5 +1,20 @@
 # awesome-design-md — work log
 
+## 2026-10-15 — `vera-bold`: the OVAI campaign look as a registry entry + plan-page kit
+- Ferdz wanted the OVAI staff page (`/staff/scoring`, "How scoring works") as a reusable design for HTML plans.
+  Named **Vera Bold** (not `vera-ovcc`: "OVCC" already names the Transmutation plan page and Vera Hub's
+  `data-skin="ovcc"` signature layer). Lineage: The Drop's campaign language → OVAI Direction D "Bold campaign" in
+  Concentrix navy/teal/gold → Vera Hub section structure.
+- `design-md/vera-bold/DESIGN.md`: token front matter + prose, every value from the live OVAI CSS
+  (`ovcc/ovai/web/app/src/styles/`); contrast measured (all text pairs AA, lowest 5.8:1).
+- `kit/`: `template.src.html` (CSS ported from production, fictional "Northwind Assist — pilot plan" content),
+  `scripts/build_page.py` (inlines fonts + art as data URIs, fails on leftover placeholders), built
+  `template.html` 956 KB, offline. Sample hero = OVAI's gold-rocket render (object, not the Jude persona).
+- `showcase/` own layout (61 KB), gate 85/85; catalog 85 designs (75 token).
+- Built by DeepSeek via oc-exec (two parallel tracks); fixed on review: hero art showed a hard edge (mask spanned
+  a wider layer than the square image → art layer now `aspect-ratio:1` with its own left fade), two gold pills in
+  one view (header pill → accent), a KPI caption whose maths didn't add up. Checked at 1440 and 390, both themes.
+
 ## 2026-10-13 — `nintendo-2001`: taller nav, pinned dual nav, narrower canvas
 - Ferdz asked for the same header change as the codebench reports (which use this design): nav bar 28→40px
   (logo pill + nav words scaled up), nav bar + subnav strip wrapped in one `.topbar` (`position: sticky; top: 0`)
