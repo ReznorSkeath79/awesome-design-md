@@ -14,6 +14,9 @@
 - Built by DeepSeek via oc-exec (two parallel tracks); fixed on review: hero art showed a hard edge (mask spanned
   a wider layer than the square image → art layer now `aspect-ratio:1` with its own left fade), two gold pills in
   one view (header pill → accent), a KPI caption whose maths didn't add up. Checked at 1440 and 390, both themes.
+- Follow-up (2026-10-16): reveal observers moved from `threshold: 0.15` to `0` (same `-8%` bottom margin) in the
+  kit and the showcase layout — a block taller than ~6 viewports can never reach 15 % visible, so it stayed hidden
+  on phones. DESIGN.md §Motion records the rule; `template.html` and `bundle.js` rebuilt, gate still ok.
 
 ## 2026-10-13 — `nintendo-2001`: taller nav, pinned dual nav, narrower canvas
 - Ferdz asked for the same header change as the codebench reports (which use this design): nav bar 28→40px

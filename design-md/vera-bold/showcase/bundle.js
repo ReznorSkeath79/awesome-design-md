@@ -75,7 +75,7 @@ window.OWN_BUNDLES=window.OWN_BUNDLES||{};window.OWN_BUNDLES["vera-bold"]={html:
             nums.forEach(function (el) { countTo(el, 1100); });
             io.unobserve(en.target);
           });
-        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });  /* 0, not 0.15: a block taller than ~6 viewports can never reach 15% visible and would stay hidden */
         observers.push(io);
         $$('[data-rv]').forEach(function (el) { io.observe(el); });
       } else {

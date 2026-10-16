@@ -497,7 +497,7 @@ filter, clip-path, box-shadow and colours animate.
 |---|---|
 | Route enter | opacity-only fade, 320ms (never a transform on the page wrapper — it breaks `position:fixed` children) |
 | Hero mount (`.hero-enter`, ≤ 1.2s) | rule grows from the left → eyebrow rises (60ms) → each headline line slides up inside its own clip window (`m-line-up`, 720ms, 120/210/300ms) → lede (340ms) → CTA (440ms) with **one** glow ring on the gold pill (640ms) → meta / glass stats (540ms) → badge pops (600ms) → brush art wipes in left-to-right (`m-wipe-in`, 900ms, 240ms) |
-| Scroll reveal | `data-reveal`: fade + rise 14px once when it enters; `fade`, `grow-x`, `grow-y`, `draw` (SVG stroke) variants. Never replays on refresh |
+| Scroll reveal | `data-reveal`: fade + rise 14px once when it enters; `fade`, `grow-x`, `grow-y`, `draw` (SVG stroke) variants. Never replays on refresh. Reveal observers use threshold 0 (with `rootMargin: 0px 0px -8% 0px`): a ratio threshold such as 0.15 can never fire on a block taller than ~6 viewports, which then stays hidden on phones |
 | Stagger | `data-reveal-stagger`: direct children 60ms apart (index capped at 8); bars 40ms (cap 24) |
 | Hover | pills lift 1px + coloured glow; nodes and cards lift 2px + accent border; tile arrow nudges and rotates; TOC chips lift 1px |
 | Count-up | KPI and stat numbers count up on reveal with tabular figures (no width jitter); the final value is in an `.sr-only` twin |

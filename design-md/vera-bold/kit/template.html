@@ -1114,7 +1114,7 @@ body{transition:background-color var(--dur-2) linear, color var(--dur-2) linear}
           e.target.setAttribute('data-rv', 'play');
           ro.unobserve(e.target);
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });  /* 0, not 0.15: a block taller than ~6 viewports can never reach 15% visible and would stay hidden */
       waiting.forEach(function (el) { ro.observe(el); });
     }
   }
