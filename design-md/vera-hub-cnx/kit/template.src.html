@@ -1,0 +1,963 @@
+<!doctype html>
+<!--
+  Vera Hub · CNX plan page kit (vera-hub-cnx/kit/template.src.html).
+  Vera Hub structure, Concentrix palette. Sample content is fictional: "Northwind Ops — rollout plan".
+
+  Build:  python3 kit/scripts/build_page.py kit/template.src.html kit/template.html
+          inlines Inter / JetBrains Mono / Michroma (woff2) and ../theme-cnx.css; the output makes no requests.
+
+  Tokens come ONLY from ../theme-cnx.css, which the build inlines. This file adds layout and components and
+  reads the token names Vera AI and the AutoAlchemy Hub read, so the same CSS works inside those apps.
+
+  Blocks, top to bottom (keep the class names; replace the content):
+    .top          sticky 72px bar: brand tile + crumb + sunken tool tray (theme, print)
+    .rail         240px section rail; active = accent-soft fill + 3px glowing bar; becomes a chip strip <= 1000px
+    .ph           page header: eyebrow, Michroma H1 with one accent phrase in <em>, lede, ring-gauge core
+    #overview     KPI well: raised tiles in a sunken well; ONE .lead tile (gold base bar, gold value in dark)
+    #requests     01 list: distribution bar + numbered rows with a status chip each
+    #workstreams  02 build cards: ask, what ships, stepper, meta, verification, rubric bars, screenshot
+    #timeline     03 gantt: week grid, done / active / planned bars, milestones, today line, sr-only schedule
+    #readiness    04 matrix: filterable table that becomes cards <= 900px, three summary cards
+    #gates        05 gates: hollow numerals, owner avatar, state chip
+    #decide       navy decision panel (data-surface="navy"): the ONE gold action on the page
+  Every number on the page must trace to the content below it: if you change a row, recount the tiles.
+-->
+<html lang="en" data-theme="cnx-dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Northwind Ops — rollout plan</title>
+<meta name="description" content="Handover Desk rollout: 7 requests, 4 workstreams (2 built, 1 live), 3 of 8 readiness areas ready, 2 of 5 gates cleared, go-live week 12. Fictional sample content.">
+<script>(function(){var r=document.documentElement;r.className+=' js';try{var t=localStorage.getItem('vera-hub-cnx-theme');if(t==='cnx-light'||t==='cnx-dark')r.setAttribute('data-theme',t)}catch(e){}})();</script>
+<style>
+__FONTS_CSS__
+__THEME_CNX_CSS__
+
+/* ═════════════ page layer: layout + components, tokens only ═════════════ */
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background-color:var(--bg-0);color:var(--text-1);font:400 15px/1.6 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+/* ambient canvas on its own fixed layer (background-attachment:fixed repaints on every scroll frame) */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--sh-canvas)}
+a{color:var(--accent-ink);text-underline-offset:3px;text-decoration-thickness:1px}
+b,strong{font-weight:600}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.nw{white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;padding:10px 14px;border-radius:10px;background:var(--accent);color:var(--on-accent);font:600 13px 'Inter',sans-serif;text-decoration:none;transition:top .15s var(--ease)}
+.skip:focus{top:12px}
+.lbl{font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2)}
+
+/* ---------- shell + top bar ---------- */
+.shell{max-width:1520px;margin:20px auto;border-radius:28px;border:1px solid var(--border);background:var(--sh-shell);box-shadow:var(--shadow-shell)}
+.top{position:sticky;top:0;z-index:30;height:72px;display:flex;align-items:center;gap:16px;padding:0 24px;border-radius:27px 27px 0 0;background:var(--sh-bar);border-bottom:1px solid var(--border);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}
+.tile{width:40px;height:40px;flex:none;border-radius:12px;background:var(--brand-tile);display:grid;place-items:center;box-shadow:0 0 18px var(--accent-glow),inset 0 0 0 1px rgba(255,255,255,.10)}
+.eq{display:flex;align-items:flex-end;gap:3px;height:18px}
+.eq i{display:block;width:4px;border-radius:2px;background:var(--brand-mark)}
+.brand .name{display:block;font:400 15px/1.2 'Michroma',sans-serif;color:var(--text-0);letter-spacing:.02em;white-space:nowrap}
+.brand .bsub{display:block;margin-top:4px;font:600 10px/1.2 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);white-space:nowrap}
+.crumb{min-width:0;margin-left:14px;padding-left:16px;border-left:1px solid var(--border);font:600 11px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--accent-ink);font-weight:600}
+.sp{flex:1}
+.tray{display:flex;gap:6px;padding:5px;border-radius:14px;background:var(--sh-well);border:1px solid var(--well-line);box-shadow:var(--inset-well);flex:none}
+.btn{height:38px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text-0);font:500 13px/1 'Inter',sans-serif;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .15s var(--ease),border-color .15s var(--ease),transform .15s var(--ease),box-shadow .15s var(--ease)}
+.btn:hover{background:var(--card-hi);border-color:var(--border-hot)}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn.ghost:hover{background:var(--card-hi)}
+.btn.primary{background:var(--sh-accent);color:var(--on-accent);border-color:transparent;font-weight:600;box-shadow:0 0 24px var(--accent-glow)}
+.btn svg{width:16px;height:16px;flex:none}
+/* the ONE gold action per view */
+.btn.gold{height:44px;padding:0 18px;background:var(--sh-gold);color:var(--on-gold);border-color:var(--gold-line);font-weight:600;font-size:14px;box-shadow:0 0 24px var(--gold-glow)}
+.btn.gold:hover{background:var(--sh-gold);border-color:var(--gold-line);transform:translateY(-1px);box-shadow:0 0 32px var(--gold-glow)}
+.btn.gold:focus-visible{outline-color:var(--text-0)}
+
+/* ---------- layout + rail ---------- */
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr)}
+.rail{position:sticky;top:72px;align-self:start;height:calc(100vh - 72px);overflow:auto;padding:22px 14px 28px;background:var(--bg-1);border-right:1px solid var(--border);scrollbar-width:thin}
+.gh{font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);margin:6px 10px 10px}
+.ri{position:relative;display:flex;align-items:center;gap:10px;padding:8px 10px;margin:0 0 2px;border-radius:12px;color:var(--text-1);font:500 13px/1.35 'Inter',sans-serif;text-decoration:none;transition:background .15s var(--ease),transform .15s var(--ease),color .15s var(--ease)}
+.ri:hover{background:var(--card-hi);color:var(--text-0);transform:translateX(4px)}
+.ri .n{flex:none;width:18px;font:600 10px/1 'JetBrains Mono',monospace;color:var(--text-3)}
+.ri .ct{margin-left:auto;padding-left:6px;font:500 10.5px/1 'JetBrains Mono',monospace;color:var(--text-3);font-variant-numeric:tabular-nums}
+.ri[aria-current="true"]{background:var(--accent-soft);color:var(--text-0);font-weight:600}
+.ri[aria-current="true"] .n{color:var(--accent-ink)}
+.ri[aria-current="true"]::before{content:"";position:absolute;left:-14px;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 12px var(--accent-glow)}
+.rail .items{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-2)}
+.ri.sm{font-size:12.5px;padding:7px 10px;align-items:flex-start}
+.ri.sm .tt{min-width:0;line-height:1.35}
+.ri.sm .k{display:block;margin-top:2px;font:600 9.5px/1.2 'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--text-3)}
+.vdot{flex:none;width:9px;height:9px;margin-top:4px;border-radius:999px;border:1.5px solid var(--text-3)}
+.vdot.s-todo{border-style:dashed}
+.vdot.s-building{border-color:var(--accent)}
+.vdot.s-piloting{border-color:var(--accent);background:var(--accent)}
+.vdot.s-live{border-color:var(--ok);background:var(--ok);box-shadow:0 0 0 3px var(--ok-soft)}
+.rail .note{margin:18px 10px 0;color:var(--text-3);font:500 10.5px/1.6 'JetBrains Mono',monospace}
+main{min-width:0;padding:28px 32px 48px}
+
+/* ---------- page header + ring core ---------- */
+.ph{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:28px;align-items:center;margin-bottom:24px}
+.eb{font:600 11px/1.5 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-ink)}
+.ph h1{margin:10px 0 12px;font:400 clamp(25px,3vw,40px)/1.18 'Michroma',sans-serif;letter-spacing:-.02em;color:var(--text-0);overflow-wrap:break-word}
+.ph h1 em{font-style:normal;color:var(--accent-ink);text-shadow:0 0 28px var(--accent-glow)}
+.ph .lede{margin:0;max-width:70ch;font-size:16px;color:var(--text-1)}
+.core{position:relative;width:200px;height:200px}
+.core svg{width:100%;height:100%;overflow:visible;display:block}
+.core .dash{fill:none;stroke:var(--border-hot);stroke-width:1;stroke-dasharray:2 6;opacity:.7}
+.core .dash2{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:1 4}
+.core .odot{fill:var(--accent);filter:drop-shadow(0 0 6px var(--accent-glow))}
+.core .orbit{transform-origin:100px 100px;animation:spin 36s linear infinite}
+.core .trk{fill:none;stroke:var(--line-2);stroke-width:9}
+.core .trk.t2{stroke-width:6}
+.core .g{fill:none;stroke-linecap:round;stroke-dasharray:var(--c);stroke-dashoffset:var(--off);transition:stroke-dashoffset 1.2s var(--ease)}
+.core .g1{stroke:var(--accent);stroke-width:9;filter:drop-shadow(0 0 6px var(--accent-glow))}
+.core .g2{stroke:var(--ok);stroke-width:6}
+.js .core:not(.in) .g{stroke-dashoffset:var(--c)}
+.core .lab{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.core .lab b{font:500 32px/1 'JetBrains Mono',monospace;color:var(--text-0);text-shadow:0 0 22px var(--accent-glow);font-variant-numeric:tabular-nums}
+.core .lab b small{font-size:17px;color:var(--text-3);text-shadow:none}
+.core .lab span{margin-top:6px;font:600 9.5px/1.2 'JetBrains Mono',monospace;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-2)}
+.core .lab i{margin-top:10px;font:600 10.5px/1 'JetBrains Mono',monospace;font-style:normal;color:var(--ok-ink)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- sections ---------- */
+.sec{position:relative;margin-top:44px;padding-top:40px}
+.sec::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent) 20%,var(--accent-2) 60%,transparent);opacity:.5}
+.sec.first{margin-top:0;padding-top:0}
+.sec.first::before{display:none}
+.sh{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:end;margin-bottom:14px}
+.sh .num{font:400 56px/.9 'Michroma',sans-serif;color:transparent;-webkit-text-stroke:1px var(--num-stroke);clip-path:inset(0 0 0 0);transition:clip-path .7s var(--ease) .1s}
+.js .sh.rv:not(.in) .num{clip-path:inset(0 100% 0 0)}
+.seb{font:700 10px/1.4 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-ink)}
+.sh h2{margin:4px 0 0;font:600 clamp(20px,2vw,26px)/1.18 'Inter',sans-serif;letter-spacing:-.01em;color:var(--text-0)}
+.sh h2 em,.fin h2 em{font-style:normal;color:var(--accent-ink)}
+.sh .ctl{align-self:end;padding-bottom:3px;font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--text-3);text-align:right;font-variant-numeric:tabular-nums}
+.sub{margin:0 0 18px;max-width:78ch;color:var(--text-1);font-size:14.5px}
+.src{display:flex;align-items:flex-start;gap:7px;margin:12px 0 0;font:500 11px/1.5 'JetBrains Mono',monospace;color:var(--text-3);overflow-wrap:anywhere}
+.src svg{flex:none;width:13px;height:13px;margin-top:1px}
+
+/* ---------- surfaces ---------- */
+.card{border-radius:14px;border:1px solid var(--border);background:var(--sh-card);box-shadow:var(--shadow);padding:24px;min-width:0}
+.card h3{margin:0 0 12px;font:600 16px/1.35 'Inter',sans-serif;letter-spacing:-.01em;color:var(--text-0)}
+.well{border-radius:14px;padding:14px;background:var(--sh-well);border:1px solid var(--well-line);box-shadow:var(--inset-well);min-width:0}
+.stack{display:grid;gap:16px}
+
+/* KPI well: raised tiles, one lead */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.kpi{position:relative;overflow:hidden;min-width:0;border-radius:12px;padding:16px 16px 18px;background:var(--sh-tile);border:1px solid var(--border);box-shadow:var(--shadow-tile);transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow-tile-hi)}
+.kpi::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent));box-shadow:0 0 10px var(--accent-glow)}
+.kpi.lead::after{background:linear-gradient(90deg,transparent,var(--gold));box-shadow:0 0 12px var(--gold-glow)}
+.kpi .k{font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2)}
+.kpi .v{margin-top:12px;font:500 32px/1 'JetBrains Mono',monospace;color:var(--text-0);text-shadow:0 0 22px var(--accent-glow);font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi .v small{font-size:17px;color:var(--text-3);text-shadow:none;margin-left:2px}
+.kpi.lead .v{color:var(--gold-ink);text-shadow:0 0 22px var(--gold-ink-glow)}
+.kpi .s{margin-top:10px;font:500 11px/1.45 'JetBrains Mono',monospace;color:var(--text-2)}
+
+/* chips + tags */
+.chip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:var(--card);font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-2);white-space:nowrap;text-decoration:none;flex:none}
+a.chip:hover{border-color:var(--border-hot)}
+.chip.acc{color:var(--accent-ink);border-color:var(--border-hot)}
+.chip.accf{color:var(--accent-ink);border-color:var(--border-hot);background:var(--accent-soft);box-shadow:0 0 14px var(--accent-glow)}
+.chip.ok{color:var(--ok-ink);border-color:var(--ok-line);background:var(--ok-soft)}
+.chip.okf{color:var(--on-ok);border-color:transparent;background:var(--ok)}
+.chip.warn{color:var(--warn-ink);border-color:var(--warn-line);background:var(--warn-soft)}
+.chip.crit{color:var(--crit-ink);border-color:var(--crit-line);background:transparent}
+.chip.critf{color:var(--crit-ink);border-color:var(--crit-line);background:var(--crit-soft)}
+.chip.info{color:var(--info-color);border-color:var(--info-border);background:var(--info-bg)}
+.chip.quiet{border-style:dashed;background:transparent;color:var(--text-2)}
+.chip.mute{background:transparent;color:var(--text-3)}
+.tag{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:4px;border:1px solid var(--border);background:var(--card);font:600 9.5px/1 'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--text-2);white-space:nowrap;vertical-align:2px}
+.tag.pri{color:var(--accent-ink);border-color:var(--border-hot);background:var(--accent-soft)}
+
+/* distribution bar + legend */
+.dist{display:grid;gap:10px}
+.dbar{display:flex;gap:3px;height:10px;border-radius:999px;overflow:hidden}
+.dbar i{display:block;height:100%;min-width:6px;border-radius:2px}
+.dbar i:first-child{border-radius:999px 2px 2px 999px}
+.dbar i:last-child{border-radius:2px 999px 999px 2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;padding:0;list-style:none;font:600 10px/1.4 'JetBrains Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-2)}
+.legend li{display:inline-flex;align-items:center;gap:7px}
+.legend b{color:var(--text-0);font-weight:600}
+.legend .sw{width:10px;height:10px;border-radius:3px;flex:none}
+.c-ok{background:var(--ok)}.c-acc{background:var(--accent)}.c-info{background:var(--info-color)}
+.c-warn{background:var(--warn)}.c-crit{background:var(--crit)}
+.c-critf{background:repeating-linear-gradient(45deg,var(--crit) 0 3px,transparent 3px 6px);box-shadow:inset 0 0 0 1.5px var(--crit)}
+.c-plain{background:var(--text-2)}.c-mute{background:var(--text-3);opacity:.55}
+.c-hatch{background:repeating-linear-gradient(45deg,var(--text-3) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1px var(--text-3)}
+.c-quiet{background:transparent;box-shadow:inset 0 0 0 1.5px var(--text-3)}
+
+/* 01 list */
+.klist{padding:4px 0}
+.klist ol{list-style:none;margin:0;padding:0}
+.kl-r{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:4px 16px;align-items:start;padding:14px 22px;border-bottom:1px solid var(--line-2);scroll-margin-top:110px}
+.kl-r:last-child{border-bottom:0}
+.kl-id{padding-top:2px;font:600 12px/1.5 'JetBrains Mono',monospace;color:var(--text-3)}
+.kl-r.is-pri .kl-id{color:var(--accent-ink)}
+.kl-t{margin:0;font-size:14.5px;line-height:1.5;color:var(--text-1)}
+.kl-r.is-pri .kl-t{color:var(--text-0);font-weight:600}
+.kl-t .tag{margin-right:8px}
+.kl-n{margin:5px 0 0;font-size:13px;line-height:1.5;color:var(--text-2)}
+.kl-s{padding-top:1px;justify-self:end}
+
+/* 02 build cards */
+.banner{border-radius:12px;padding:12px 14px;background:var(--info-bg);border:1px solid var(--info-border);font-size:13.5px;line-height:1.5;color:var(--text-1);min-width:0}
+.banner b.bt{display:block;margin-bottom:4px;font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--info-color)}
+.banner.ok{background:var(--ok-soft);border-color:var(--ok-line)}
+.banner.ok b.bt{color:var(--ok-ink)}
+.banner.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+.banner.warn b.bt{color:var(--warn-ink)}
+.builds{display:grid;gap:16px}
+.bc{scroll-margin-top:100px}
+.bc-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.bc-ids{font:600 11.5px/1.3 'JetBrains Mono',monospace;color:var(--accent-ink);letter-spacing:.3px}
+.bc-h .sp{flex:1}
+.bc-t{margin:10px 0 18px;font:600 19px/1.3 'Inter',sans-serif;letter-spacing:-.01em;color:var(--text-0)}
+.bc-grid{display:grid;gap:20px 24px;align-items:start}
+.bc-grid.tall{grid-template-columns:minmax(0,1fr) 300px}
+.bc-main{display:grid;gap:20px 24px;min-width:0}
+.bc-grid.wide .bc-main,.bc-grid.none .bc-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.bc-q,.bc-f{display:grid;gap:16px;align-content:start;min-width:0}
+.bc-q dl{margin:0;display:grid;gap:14px}
+.bc-q dt{font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2)}
+.bc-q dd{margin:5px 0 0;font-size:14px;line-height:1.55;color:var(--text-1)}
+.bc-q dd.ask{font-size:15px;color:var(--text-0)}
+.bc-next ul{list-style:none;margin:6px 0 0;padding:0}
+.bc-next li{position:relative;padding:7px 0 7px 18px;border-top:1px solid var(--line-2);font-size:13.5px;line-height:1.45;color:var(--text-1)}
+.bc-next li::before{content:"";position:absolute;left:1px;top:13px;width:7px;height:7px;border-radius:2px;border:1.5px solid var(--accent)}
+.steps{list-style:none;margin:0;padding:6px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.steps li{min-width:0;padding:9px 10px 8px;border-radius:10px;border:1px dashed var(--border);display:grid;gap:3px}
+.steps li.done{border-style:solid;background:var(--sh-tile);box-shadow:var(--shadow-tile)}
+.steps li.now{border-style:solid;border-color:var(--border-hot)}
+.steps .sl{display:flex;align-items:center;gap:6px;font:600 9.5px/1.2 'JetBrains Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-3)}
+.steps li.done .sl,.steps li.now .sl{color:var(--text-2)}
+.steps .sl i{width:7px;height:7px;border-radius:999px;border:1.5px solid var(--text-3);flex:none}
+.steps li.done .sl i{border-color:var(--accent);background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
+.steps li.done.okst .sl i{border-color:var(--ok);background:var(--ok);box-shadow:none}
+.steps li.now .sl i{border-color:var(--accent);border-style:dashed}
+.steps .st{font:500 12px/1.2 'JetBrains Mono',monospace;color:var(--text-0);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.steps li:not(.done):not(.now) .st{color:var(--text-3);font-size:11px}
+.bc-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin:0}
+.bc-meta>div{min-width:0}
+.bc-meta .full{grid-column:1/-1}
+.bc-meta dt{font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2)}
+.bc-meta dd{margin:4px 0 0;font:500 12px/1.5 'JetBrains Mono',monospace;color:var(--text-0);overflow-wrap:anywhere}
+.bc-meta dd.none{color:var(--text-3)}
+.rub{display:grid;gap:12px}
+.rub-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.sr{display:grid;grid-template-columns:130px minmax(60px,1fr) 72px 92px;gap:6px 12px;align-items:center}
+.sr-l{font:600 10px/1.3 'JetBrains Mono',monospace;letter-spacing:1.3px;text-transform:uppercase;color:var(--text-1)}
+.sr-bar{position:relative;height:8px;border-radius:999px;background:var(--card-hi);box-shadow:var(--sunken-inset)}
+.sr-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 10px var(--accent-glow)}
+.sr-bar i.below{background:var(--crit);box-shadow:none}
+.sr-bar .mk{position:absolute;top:-5px;bottom:-5px;width:2px;margin-left:-1px;border-radius:1px;background:var(--text-0);opacity:.75}
+.sr-bar .mkl{position:absolute;top:-19px;transform:translateX(-50%);font:600 9px/1 'JetBrains Mono',monospace;color:var(--text-2);letter-spacing:.5px}
+.sr-v{font:500 12px/1 'JetBrains Mono',monospace;color:var(--text-2);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sr-v b{font-size:15px;color:var(--text-0);font-weight:500}
+.sr .chip{justify-self:end}
+.sr-n{grid-column:1/-1;margin:0;font-size:12.5px;line-height:1.45;color:var(--text-2)}
+/* screenshot frame: a real <img>, or the themed wireframe below */
+.bc-shot{margin:0;min-width:0}
+.bc-shot .frame{position:relative;border-radius:14px;padding:10px;background:var(--sh-well);border:1px solid var(--well-line);box-shadow:var(--inset-well);overflow:hidden}
+.js .bc-shot.tall .frame{max-height:540px}
+.js .bc-shot.wide .frame{max-height:440px}
+.js .bc-shot.open .frame{max-height:none}
+.bc-shot.clip:not(.open) .frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:88px;background:linear-gradient(180deg,transparent,var(--well-end));pointer-events:none}
+.bc-shot img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;background:#fff}
+.bc-shot figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 12px;margin-top:8px;font:500 11px/1.45 'JetBrains Mono',monospace;color:var(--text-2)}
+.shot-x{height:28px;padding:0 10px;font-size:12px}
+.bc-shot.empty .frame{display:flex;align-items:center;gap:10px;min-height:64px;padding:14px 16px;border-style:dashed;border-color:var(--border);font:500 11.5px/1.4 'JetBrains Mono',monospace;color:var(--text-3)}
+.bc-shot.empty svg{width:18px;height:18px;flex:none}
+.bc-grid.none .bc-shot,.bc-grid.wide .bc-shot{grid-column:1/-1}
+.wf{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}
+.wf .w-bg{fill:var(--bg-1)}.wf .w-bar{fill:var(--card-hi)}.wf .w-card{fill:var(--card);stroke:var(--border)}
+.wf .w-ln{fill:var(--text-3);opacity:.45}.wf .w-ln2{fill:var(--text-2);opacity:.7}.wf .w-acc{fill:var(--accent)}
+.wf .w-soft{fill:var(--accent-soft);stroke:var(--border-hot)}.wf .w-ok{fill:var(--ok)}
+dialog.lb{max-width:min(96vw,1400px);max-height:94vh;padding:12px;border-radius:16px;border:1px solid var(--border);background:var(--card-2);box-shadow:var(--menu-shadow);color:var(--text-1)}
+dialog.lb::backdrop{background:rgba(3,7,13,.72)} /* literal: ::backdrop does not reliably inherit custom properties */
+dialog.lb img{display:block;max-width:100%;max-height:calc(94vh - 80px);margin:0 auto;border-radius:8px;background:#fff}
+dialog.lb .lb-b{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;font:500 11px 'JetBrains Mono',monospace;color:var(--text-2)}
+
+/* 03 gantt: label column + 12-week track per row; bars sit on the track's own grid */
+.gantt{padding:18px 22px 20px;--lab:220px;--weeks:12;--today:4.5}
+.gt-r{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);align-items:stretch;border-bottom:1px solid var(--line-2)}
+.gt-r:last-of-type{border-bottom:0}
+.gt-l{padding:12px 16px 12px 0;min-width:0}
+.gt-l b{display:block;font-size:13.5px;line-height:1.35;color:var(--text-0);font-weight:600}
+.gt-l span{display:block;margin-top:3px;font:600 9.5px/1.3 'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--text-3)}
+.gt-t{position:relative;display:grid;grid-template-columns:repeat(var(--weeks),minmax(0,1fr));align-items:center;padding:10px 0;
+  background:repeating-linear-gradient(90deg,var(--line-2) 0 1px,transparent 1px calc(100% / var(--weeks)))}
+.gt-t::after{content:"";position:absolute;top:0;bottom:0;left:calc(100% * var(--today) / var(--weeks));width:2px;margin-left:-1px;background:var(--accent);box-shadow:0 0 10px var(--accent-glow);opacity:.85}
+.gt-h .gt-l{padding:0 16px 10px 0;display:flex;align-items:flex-end}
+.gt-h .gt-t{padding:30px 0 10px;background:none}
+.gt-h .gt-t::after{display:none}
+.gt-w{font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:1px;color:var(--text-3);text-align:center}
+.gt-w.now{color:var(--accent-ink)}
+.gt-now{position:absolute;top:0;left:calc(100% * var(--today) / var(--weeks));transform:translateX(-50%);padding:3px 8px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:600 9.5px/1.3 'JetBrains Mono',monospace;letter-spacing:1px;white-space:nowrap;box-shadow:0 0 14px var(--accent-glow)}
+.bar{grid-row:1;position:relative;z-index:1;height:24px;margin:0 3px;padding:0 9px;display:flex;align-items:center;min-width:0;overflow:hidden;border-radius:999px;font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.6px;white-space:nowrap;text-overflow:ellipsis}
+.bar.done{background:var(--ok-soft);border:1px solid var(--ok-line);color:var(--ok-ink)}
+.bar.active{background:var(--sh-accent);color:var(--on-accent);box-shadow:0 0 14px var(--accent-glow)}
+.bar.plan{border:1px dashed var(--border-hot);color:var(--text-2);background:transparent}
+.ms{grid-row:1;position:relative;z-index:2;justify-self:start;width:12px;height:12px;margin-left:-6px;transform:rotate(45deg);border-radius:2px;background:var(--accent);box-shadow:0 0 10px var(--accent-glow)}
+.ms.done{background:var(--ok);box-shadow:none}
+.ms.plan{background:var(--card);border:1.5px solid var(--accent);box-shadow:none}
+.ms-l{grid-row:1;position:relative;z-index:2;justify-self:start;margin-left:10px;padding:2px 4px;border-radius:4px;background:var(--card);font:600 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.8px;color:var(--text-2);white-space:nowrap}
+.gt-legend{margin-top:16px}
+.gt-legend .sw.bd{background:var(--ok-soft);box-shadow:inset 0 0 0 1px var(--ok-line)}
+.gt-legend .sw.ba{background:var(--accent)}
+.gt-legend .sw.bp{background:transparent;box-shadow:none;border:1px dashed var(--border-hot)}
+.gt-legend .sw.dm{transform:rotate(45deg) scale(.85);border-radius:2px;background:var(--accent)}
+.gt-legend .sw.tl{width:2px;border-radius:1px;background:var(--accent)}
+
+/* 04 readiness matrix */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:var(--sh-well);border:1px solid var(--well-line);box-shadow:var(--inset-well)}
+.seg button{height:30px;padding:0 12px;border-radius:999px;border:0;background:transparent;color:var(--text-2);font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;transition:background .15s var(--ease),color .15s var(--ease),box-shadow .15s var(--ease)}
+.seg button b{font-weight:600;margin-left:4px;opacity:.8}
+.seg button:hover{color:var(--text-0)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);box-shadow:0 0 14px var(--accent-glow)}
+.mx-tools{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.mx-count{font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--text-3)}
+.tw{border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow);overflow:auto;background:var(--card)}
+table{width:100%;border-collapse:collapse;min-width:960px}
+thead th{position:sticky;top:0;background:var(--card-hi);text-align:left;padding:12px 14px;font:600 10.5px/1.3 'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);border-bottom:1px solid var(--border);white-space:nowrap}
+tbody td{padding:14px;border-bottom:1px solid var(--line-2);vertical-align:top;font-size:13px;line-height:1.5;color:var(--text-1)}
+tbody tr{transition:background .15s var(--ease)}
+tbody tr:hover{background:var(--card-hi)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr[hidden]{display:none!important}
+td.mx-a{width:150px;font-weight:600;color:var(--text-0)}
+td.mx-s{width:110px}
+td.mx-o{width:120px;font:500 11px/1.55 'JetBrains Mono',monospace;color:var(--text-2)}
+.sums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.sums .card{padding:20px 22px}
+.sums .card p{margin:0 0 10px;font-size:13.5px;line-height:1.6}
+.sums .card p:last-child{margin-bottom:0}
+.sums .card b{color:var(--text-0)}
+
+/* 05 gates */
+.gl{list-style:none;margin:0;padding:0}
+.gl-r{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line-2)}
+.gl-r:last-child{border-bottom:0}
+.gl-n{font:400 26px/1 'Michroma',sans-serif;color:transparent;-webkit-text-stroke:1px var(--num-stroke)}
+.gl-b{min-width:0}
+.gl-b b{display:block;font-size:14.5px;line-height:1.45;color:var(--text-0)}
+.gl-o{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font:500 11px/1.2 'JetBrains Mono',monospace;color:var(--text-2)}
+.av{width:22px;height:22px;flex:none;border-radius:999px;display:grid;place-items:center;background:var(--card-hi);border:1px solid var(--border);font:600 10px/1 'JetBrains Mono',monospace;color:var(--text-0)}
+
+/* decision panel: the navy scope re-maps ink, accent and status; this only paints it */
+.fin{position:relative;border-radius:18px;padding:28px;color:var(--text-1);border:1px solid var(--border);background:var(--sh-navy);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.08)}
+.fin-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 28px;align-items:end;margin-bottom:22px}
+.fin h2{margin:8px 0 10px;font:400 clamp(20px,2.3vw,30px)/1.2 'Michroma',sans-serif;letter-spacing:-.01em;color:var(--text-0)}
+.fin .lede{margin:0;max-width:66ch;font-size:14.5px;color:var(--text-1)}
+.fin .lede b{color:var(--text-0)}
+.fin-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
+.fin-cta .btn.ghost{color:var(--text-0)}
+.cp-msg{flex-basis:100%;min-height:16px;text-align:right;font:500 11px/1.4 'JetBrains Mono',monospace;color:var(--accent-ink)}
+.asks{list-style:none;margin:0;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;border-radius:14px;background:var(--sh-well);box-shadow:var(--inset-well);border:1px solid var(--well-line)}
+.asks li{min-width:0;border-radius:12px;padding:16px;background:var(--sh-tile);border:1px solid var(--border);box-shadow:var(--shadow-tile);display:grid;gap:10px;align-content:start}
+.asks .an{font:400 28px/1 'Michroma',sans-serif;color:transparent;-webkit-text-stroke:1px var(--num-stroke)}
+.asks b{font-size:14.5px;line-height:1.45;color:var(--text-0)}
+.asks .chip{justify-self:start}
+.also{margin:16px 0 0;font-size:13.5px;color:var(--text-1)}
+.also b{color:var(--text-0)}
+
+/* footer */
+.foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line-2);display:grid;gap:4px;font:500 11px/1.6 'JetBrains Mono',monospace;color:var(--text-3);overflow-wrap:anywhere}
+
+/* reveal once */
+.rv{transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js .rv:not(.in){opacity:0;transform:translateY(14px)}
+.rv-i{transition:opacity .5s var(--ease) calc(var(--i,0) * 60ms),transform .5s var(--ease) calc(var(--i,0) * 60ms),box-shadow .2s var(--ease)}
+.js .rv:not(.in) .rv-i{opacity:0;transform:translateY(10px)}
+.bar,.ms{transform-origin:left center}
+.js .gantt.rv:not(.in) .bar{transform:scaleX(0)}
+.gantt .bar{transition:transform .6s var(--ease) calc(var(--i,0) * 40ms)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1240px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.sums{grid-template-columns:minmax(0,1fr)}
+  .bc-grid.tall{grid-template-columns:minmax(0,1fr) 260px}}
+@media (max-width:1099px){.ph{grid-template-columns:minmax(0,1fr)}.core{display:none}.gantt{--lab:170px}}
+@media (max-width:1000px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .crumb{display:none}
+  .rail{top:72px;z-index:20;height:auto;display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;padding:10px 0 10px 16px;border-right:0;border-bottom:1px solid var(--border);background:var(--bg-1);scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail::after{content:"";position:sticky;right:0;flex:none;width:36px;margin-left:-14px;background:linear-gradient(90deg,transparent,var(--bg-1) 70%)}
+  .rail .gh,.rail .items,.rail .note{display:none}
+  .rail .ri{flex:none;margin:0;padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-size:12.5px;white-space:nowrap}
+  .rail .ri:hover{transform:none}
+  .rail .ri[aria-current="true"]{border-color:var(--border-hot)}
+  .rail .ri[aria-current="true"]::before{display:none}
+  html{scroll-padding-top:136px}
+  .kl-r,.bc{scroll-margin-top:140px}
+}
+@media (max-width:900px){
+  .bc-grid.tall{grid-template-columns:minmax(0,1fr)}
+  .bc-grid.tall .bc-shot{max-width:420px}
+  .bc-grid.wide .bc-main,.bc-grid.none .bc-main{grid-template-columns:minmax(0,1fr)}
+  .tw{overflow:visible;border:0;box-shadow:none;background:transparent}
+  #mxTable table{min-width:0}
+  #mxTable thead{display:none}
+  #mxTable table,#mxTable tbody{display:block}
+  #mxTable tr{display:grid;gap:10px;margin-bottom:12px;padding:16px;border-radius:14px;border:1px solid var(--border);background:var(--sh-card);box-shadow:var(--shadow)}
+  #mxTable tr:hover{background:var(--sh-card)}
+  #mxTable td{display:block;width:auto;padding:0;border:0}
+  #mxTable td::before{content:attr(data-l);display:block;margin-bottom:3px;font:600 9.5px/1.3 'JetBrains Mono',monospace;letter-spacing:1.3px;text-transform:uppercase;color:var(--text-3)}
+  #mxTable td.mx-a{font-size:15px}
+  #mxTable td.mx-a::before,#mxTable td.mx-s::before{display:none}
+}
+@media (max-width:768px){
+  .shell{margin:0;border:0;border-radius:0;box-shadow:none}
+  .top{height:60px;padding:0 16px;gap:10px;border-radius:0}
+  .rail{top:60px}
+  html{scroll-padding-top:124px}
+  .brand .bsub{display:none}
+  .tray .btn span{display:none}
+  .tray .btn{width:38px;padding:0}
+  main{padding:20px 16px 36px}
+  .sh{grid-template-columns:auto minmax(0,1fr);gap:14px}
+  .sh .num{font-size:40px}
+  .sh .ctl{grid-column:1/-1;text-align:left;padding:0}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpis .kpi:last-child:nth-child(odd){grid-column:1/-1}
+  .card{padding:18px}
+  .klist{padding:2px 0}
+  .kl-r{padding:14px 16px}
+  .gl-r{padding:14px 16px}
+  .gantt{padding:16px}
+  .fin{padding:20px}
+  .fin-h{grid-template-columns:minmax(0,1fr)}
+  .fin-cta{justify-content:flex-start}
+  .cp-msg{text-align:left}
+  .seg{border-radius:18px}
+  .sec{margin-top:36px;padding-top:32px}
+}
+@media (max-width:600px){
+  .kl-r{grid-template-columns:40px minmax(0,1fr)}
+  .kl-s{grid-column:2;justify-self:start;padding-top:6px}
+  .gl-r{grid-template-columns:38px minmax(0,1fr)}
+  .gl-r .chip{grid-column:2;justify-self:start}
+  .gl-n{font-size:22px}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sr{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px}
+  .sr-bar{grid-column:1/-1;grid-row:2;margin-top:14px}
+  .sr-v{grid-column:1;grid-row:3;text-align:left}
+  .sr .chip{grid-column:2;grid-row:1}
+  .sr-n{grid-row:4}
+  .bc-meta{grid-template-columns:minmax(0,1fr)}
+  .kpi .v{font-size:28px}
+  .asks{padding:8px}
+  /* gantt: label above its track; bar text moves to the sr-only schedule and the legend */
+  .gt-r{grid-template-columns:minmax(0,1fr)}
+  .gt-l{padding:12px 0 6px}
+  .gt-t{padding:2px 0 12px}
+  .gt-h .gt-l{display:none}
+  .gt-h .gt-t{padding:28px 0 8px}
+  .gt-w{font-size:8.5px;letter-spacing:0}
+  .bar{height:14px;padding:0;margin:0 1px;font-size:0}
+  .ms-l{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv:not(.in),.js .rv:not(.in) .rv-i{opacity:1;transform:none}
+  .js .sh.rv:not(.in) .num{clip-path:none}
+  .js .core:not(.in) .g{stroke-dashoffset:var(--off)}
+  .js .gantt.rv:not(.in) .bar{transform:none}
+}
+@media print{
+  body::before{display:none}
+  .top,.rail,.skip,.shot-x,.fin-cta{display:none!important}
+  .layout{grid-template-columns:1fr}
+  .shell{margin:0;border:0;box-shadow:none}
+  .js .rv:not(.in),.js .rv:not(.in) .rv-i{opacity:1;transform:none}
+  .js .gantt.rv:not(.in) .bar{transform:none}
+  .js .bc-shot .frame{max-height:none}
+  .bc,.gl-r,.kl-r,.gt-r,tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+<header class="top">
+  <a class="brand" href="#top" aria-label="Northwind Ops, back to top">
+    <span class="tile" aria-hidden="true"><span class="eq"><i style="height:8px"></i><i style="height:16px"></i><i style="height:11px"></i><i style="height:14px"></i></span></span>
+    <span><span class="name">Northwind Ops</span><span class="bsub">Rollout plan</span></span>
+  </a>
+  <div class="crumb">Northwind Ops · <b>Handover Desk</b> · as of week 5</div>
+  <div class="sp"></div>
+  <div class="tray">
+    <button class="btn" id="themeBtn" type="button" aria-label="Switch to light theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span>Light</span></button>
+    <button class="btn ghost" id="printBtn" type="button" aria-label="Print this page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span>Print</span></button>
+  </div>
+</header>
+<div class="layout">
+<nav class="rail" aria-label="Page sections">
+  <div class="gh">Plan</div>
+  <a class="ri" href="#overview"><span class="n">00</span>Overview</a>
+  <a class="ri" href="#requests"><span class="n">01</span>Requests<span class="ct">7</span></a>
+  <a class="ri" href="#workstreams"><span class="n">02</span>Workstreams<span class="ct">2/4</span></a>
+  <a class="ri" href="#timeline"><span class="n">03</span>Timeline<span class="ct">W5/12</span></a>
+  <a class="ri" href="#readiness"><span class="n">04</span>Readiness<span class="ct">3/8</span></a>
+  <a class="ri" href="#gates"><span class="n">05</span>Gates<span class="ct">2/5</span></a>
+  <a class="ri" href="#decide"><span class="n">&rarr;</span>Decision</a>
+  <div class="items">
+    <div class="gh">Workstreams</div>
+    <a class="ri sm" href="#ws-1"><span class="vdot s-live" aria-hidden="true"></span><span class="tt">Shift notes carry-over<span class="k">WS1 · Live</span></span></a>
+    <a class="ri sm" href="#ws-2"><span class="vdot s-piloting" aria-hidden="true"></span><span class="tt">Floor checklist<span class="k">WS2 · Piloting</span></span></a>
+    <a class="ri sm" href="#ws-3"><span class="vdot s-building" aria-hidden="true"></span><span class="tt">Open-issue board<span class="k">WS3 · Building</span></span></a>
+    <a class="ri sm" href="#ws-4"><span class="vdot s-todo" aria-hidden="true"></span><span class="tt">Manager digest<span class="k">WS4 · Not started</span></span></a>
+  </div>
+  <p class="note">As of week 5<br>Fictional sample content</p>
+</nav>
+<main id="main">
+  <header class="ph rv" id="top">
+    <div>
+      <div class="eb">Northwind Ops · Handover Desk · as of week 5</div>
+      <h1>Handover Desk, <em>three sites</em> in twelve weeks.</h1>
+      <p class="lede">Seven requests from the three site leads became four workstreams. As of week 5, two are built and one is live at Harbor; two of the five gates are cleared and go-live is set for week 12.</p>
+    </div>
+    <!-- ring core: outer = built 2/4 (r 76, c 477.52, offset c*(1-.5)); inner = live 1/4 (r 62, c 389.56, offset c*(1-.25)) -->
+    <div class="core rv" role="img" aria-label="2 of 4 workstreams built, 1 of 4 live">
+      <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <circle class="dash" cx="100" cy="100" r="97"/><circle class="dash2" cx="100" cy="100" r="88"/>
+        <g class="orbit"><circle class="odot" cx="100" cy="3" r="3.5"/></g>
+        <circle class="trk" cx="100" cy="100" r="76"/>
+        <circle class="g g1" cx="100" cy="100" r="76" transform="rotate(-90 100 100)" style="--c:477.52;--off:238.76"/>
+        <circle class="trk t2" cx="100" cy="100" r="62"/>
+        <circle class="g g2" cx="100" cy="100" r="62" transform="rotate(-90 100 100)" style="--c:389.56;--off:292.17"/>
+      </svg>
+      <div class="lab" aria-hidden="true"><b>2<small>/4</small></b><span>Built</span><i>1/4 live</i></div>
+    </div>
+  </header>
+
+  <section class="sec first" id="overview" aria-label="Overview figures">
+    <div class="well rv"><div class="kpis">
+      <div class="kpi rv-i" style="--i:0"><div class="k">Requests</div><div class="v"><span data-to="7">7</span></div><div class="s">3 marked priority by the site leads</div></div>
+      <div class="kpi rv-i lead" style="--i:1"><div class="k">Workstreams built</div><div class="v"><span data-to="2">2</span><small>/4</small></div><div class="s">1 live · 1 piloting · 1 building · 1 not started</div></div>
+      <div class="kpi rv-i" style="--i:2"><div class="k">Areas ready</div><div class="v"><span data-to="3">3</span><small>/8</small></div><div class="s">2 partial · 2 missing · 1 blocked</div></div>
+      <div class="kpi rv-i" style="--i:3"><div class="k">Gates cleared</div><div class="v"><span data-to="2">2</span><small>/5</small></div><div class="s">3 open: 1 on IT, 2 on the Ops director</div></div>
+      <div class="kpi rv-i" style="--i:4"><div class="k">Go-live</div><div class="v">W<span data-to="12">12</span></div><div class="s">7 weeks after the week-5 as-of</div></div>
+    </div></div>
+  </section>
+
+  <section class="sec" id="requests" aria-labelledby="requests-h">
+    <div class="sh rv"><span class="num" aria-hidden="true">01</span><div><div class="seb">Requests</div><h2 id="requests-h">Seven requests, <em>three marked priority.</em></h2></div><div class="ctl">7 lines · 3 priority · 1 live</div></div>
+    <p class="sub rv">Every request the site leads sent, as sent, with where it stands in week 5. Priority lines link to the workstream that carries them.</p>
+    <div class="stack">
+      <div class="well dist rv">
+        <div class="dbar" aria-hidden="true"><i class="c-ok" style="flex:1"></i><i class="c-acc" style="flex:1"></i><i class="c-quiet" style="flex:2"></i><i class="c-plain" style="flex:1"></i><i class="c-mute" style="flex:1"></i><i class="c-hatch" style="flex:1"></i></div>
+        <ul class="legend" aria-label="Requests by status"><li><span class="sw c-ok" aria-hidden="true"></span>Live <b>1</b></li><li><span class="sw c-acc" aria-hidden="true"></span>Piloting <b>1</b></li><li><span class="sw c-quiet" aria-hidden="true"></span>Building <b>2</b></li><li><span class="sw c-plain" aria-hidden="true"></span>Not started <b>1</b></li><li><span class="sw c-mute" aria-hidden="true"></span>Later <b>1</b></li><li><span class="sw c-hatch" aria-hidden="true"></span>Parked <b>1</b></li></ul>
+      </div>
+      <div class="card klist rv"><ol>
+        <li class="kl-r is-pri" id="line-r1"><span class="kl-id">R1</span><div><p class="kl-t"><span class="tag pri">Priority</span>Shift notes carry over to the next lead without retyping.</p><p class="kl-n">Workstream: <a href="#ws-1">Shift notes carry-over</a> · live at Harbor since week 5</p></div><div class="kl-s"><a class="chip okf" href="#ws-1">Live</a></div></li>
+        <li class="kl-r is-pri" id="line-r2"><span class="kl-id">R2</span><div><p class="kl-t"><span class="tag pri">Priority</span>One-tap handover checklist on the floor tablet.</p><p class="kl-n">Workstream: <a href="#ws-2">Floor checklist</a> · pilot at Harbor, weeks 4–6</p></div><div class="kl-s"><a class="chip accf" href="#ws-2">Piloting</a></div></li>
+        <li class="kl-r is-pri" id="line-r3"><span class="kl-id">R3</span><div><p class="kl-t"><span class="tag pri">Priority</span>Open issues stay visible across the shift change.</p><p class="kl-n">Workstream: <a href="#ws-3">Open-issue board</a> · build runs to week 7</p></div><div class="kl-s"><a class="chip quiet" href="#ws-3">Building</a></div></li>
+        <li class="kl-r" id="line-r4"><span class="kl-id">R4</span><div><p class="kl-t">A weekly digest for site managers.</p><p class="kl-n">Workstream: <a href="#ws-4">Manager digest</a> · design starts week 6</p></div><div class="kl-s"><span class="chip">Not started</span></div></li>
+        <li class="kl-r" id="line-r5"><span class="kl-id">R5</span><div><p class="kl-t">The Ridge roster export works with the tool.</p><p class="kl-n">Rides in <a href="#ws-3">Open-issue board</a>: the column mapping is part of its build</p></div><div class="kl-s"><span class="chip quiet">Building</span></div></li>
+        <li class="kl-r" id="line-r6"><span class="kl-id">R6</span><div><p class="kl-t">Photos attached to a handover note.</p><p class="kl-n">After go-live; needs a storage decision</p></div><div class="kl-s"><span class="chip mute">Later</span></div></li>
+        <li class="kl-r" id="line-r7"><span class="kl-id">R7</span><div><p class="kl-t">Voice notes on the floor.</p><p class="kl-n">Parked: floor noise makes dictation unreliable; revisit after go-live</p></div><div class="kl-s"><span class="chip mute">Parked</span></div></li>
+      </ol></div>
+    </div>
+    <p class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Source: site-lead requests · 7 lines · as of week 5 (sample)</span></p>
+  </section>
+
+  <section class="sec" id="workstreams" aria-labelledby="workstreams-h">
+    <div class="sh rv"><span class="num" aria-hidden="true">02</span><div><div class="seb">Workstreams</div><h2 id="workstreams-h">Four workstreams, <em>two built.</em></h2></div><div class="ctl">2/4 built · 1/4 live · rubric bar 80</div></div>
+    <p class="sub rv">One workstream per priority request, plus the manager digest. Each card carries the ask, what ships, its stage stamps, two rubric scores against the bar of 80 and a screenshot when one exists.</p>
+    <div class="builds">
+
+      <article class="card bc rv" id="ws-1" aria-labelledby="ws-1-h">
+        <div class="bc-h"><span class="bc-ids">WS1 · R1</span><span class="tag pri">Priority</span><span class="sp"></span><span class="chip okf">Live</span></div>
+        <h3 class="bc-t" id="ws-1-h">Shift notes carry-over</h3>
+        <div class="bc-grid wide">
+          <div class="bc-main">
+            <div class="bc-q"><dl>
+              <div><dt>Harbor lead's ask</dt><dd class="ask">“Every shift starts with ten minutes of retyping yesterday's notes.”</dd></div>
+              <div><dt>What ships</dt><dd>Notes written in the last hour of a shift open pre-filled for the next lead, with the author and the time.</dd></div>
+            </dl>
+            <div class="bc-next"><div class="lbl">Next slices</div><ul><li>Carry-over for weekend shifts</li><li>Search across a week of notes</li></ul></div></div>
+            <div class="bc-f">
+              <ol class="steps well" aria-label="Stage stamps"><li class="done"><span class="sl"><i aria-hidden="true"></i>Designed</span><span class="st">W1</span></li><li class="done"><span class="sl"><i aria-hidden="true"></i>Built</span><span class="st">W2</span></li><li class="done okst"><span class="sl"><i aria-hidden="true"></i>Piloted</span><span class="st">W3–W4</span></li><li class="done okst"><span class="sl"><i aria-hidden="true"></i>Live</span><span class="st">W5</span></li></ol>
+              <dl class="bc-meta"><div class="full"><dt>Sites</dt><dd>Harbor live · Ridge and Meadow from week 8</dd></div><div><dt>Owner</dt><dd>Product</dd></div><div><dt>Flag</dt><dd>notes_carryover</dd></div></dl>
+              <div class="banner ok"><b class="bt">Pilot result</b>41 of 44 Harbor handovers in weeks 3–4 used carry-over.</div>
+              <div class="rub well"><div class="rub-h"><span class="lbl">Rubrics · bar 80</span></div>
+                <div class="sr"><span class="sr-l">Design review</span><span class="sr-bar" role="img" aria-label="Design review: 88 of 100, above the 80 bar"><i style="width:88%"></i><span class="mk" style="left:80%"></span><span class="mkl" style="left:80%" aria-hidden="true">80</span></span><span class="sr-v"><b>88</b> / 100</span><span class="chip ok">Pass</span></div>
+                <div class="sr"><span class="sr-l">Pilot score</span><span class="sr-bar" role="img" aria-label="Pilot score: 84 of 100, above the 80 bar"><i style="width:84%"></i><span class="mk" style="left:80%"></span><span class="mkl" style="left:80%" aria-hidden="true">80</span></span><span class="sr-v"><b>84</b> / 100</span><span class="chip ok">Pass</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- Real screenshot: replace the <svg class="wf"> with
+               <img src="IMG_SHOT_WS1" width="1600" height="900" alt="..." data-cap="..."> and wrap IMG_SHOT_WS1 in double
+               underscores; build_page.py then inlines <assets>/shot-ws1.{png,webp,jpg} (pass the assets folder as the
+               3rd argument) and adds a "Show full" button + lightbox for tall images: add
+               <button type="button" class="btn shot-x" aria-expanded="false" hidden>Show full</button> to the figcaption. -->
+          <figure class="bc-shot wide">
+            <div class="frame">
+              <svg class="wf" viewBox="0 0 960 300" role="img" aria-label="Wireframe: the next lead's note opens pre-filled with the previous shift's notes" focusable="false">
+                <rect class="w-bg" width="960" height="300"/><rect class="w-bar" width="960" height="40"/>
+                <rect class="w-acc" x="20" y="13" width="14" height="14" rx="4"/><rect class="w-ln2" x="44" y="16" width="120" height="8" rx="4"/>
+                <rect class="w-card" x="20" y="60" width="600" height="220" rx="10"/>
+                <rect class="w-ln2" x="40" y="80" width="220" height="10" rx="5"/>
+                <rect class="w-soft" x="40" y="104" width="560" height="66" rx="8"/><rect class="w-ln" x="56" y="120" width="420" height="8" rx="4"/><rect class="w-ln" x="56" y="138" width="360" height="8" rx="4"/>
+                <rect class="w-ln" x="40" y="190" width="520" height="8" rx="4"/><rect class="w-ln" x="40" y="208" width="460" height="8" rx="4"/>
+                <rect class="w-acc" x="480" y="240" width="120" height="26" rx="8"/>
+                <rect class="w-card" x="640" y="60" width="300" height="220" rx="10"/>
+                <rect class="w-ln2" x="660" y="80" width="140" height="10" rx="5"/>
+                <circle class="w-ok" cx="668" cy="116" r="6"/><rect class="w-ln" x="684" y="112" width="200" height="8" rx="4"/>
+                <circle class="w-ok" cx="668" cy="146" r="6"/><rect class="w-ln" x="684" y="142" width="170" height="8" rx="4"/>
+                <circle class="w-ok" cx="668" cy="176" r="6"/><rect class="w-ln" x="684" y="172" width="230" height="8" rx="4"/>
+              </svg>
+            </div>
+            <figcaption><span>Wireframe · notes carry-over, as piloted at Harbor</span></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="card bc rv" id="ws-2" aria-labelledby="ws-2-h">
+        <div class="bc-h"><span class="bc-ids">WS2 · R2</span><span class="tag pri">Priority</span><span class="sp"></span><span class="chip accf">Piloting</span></div>
+        <h3 class="bc-t" id="ws-2-h">Floor checklist</h3>
+        <div class="bc-grid tall">
+          <div class="bc-main">
+            <div class="bc-q"><dl>
+              <div><dt>Meadow lead's ask</dt><dd class="ask">“The paper checklist goes missing by the second shift.”</dd></div>
+              <div><dt>What ships</dt><dd>A one-tap checklist on the floor tablet; each tick is stamped with who and when, and the lead sees what is still open before signing off.</dd></div>
+            </dl>
+            <div class="bc-next"><div class="lbl">Next slices</div><ul><li>Site-specific checklist items</li></ul></div></div>
+            <div class="bc-f">
+              <ol class="steps well" aria-label="Stage stamps"><li class="done"><span class="sl"><i aria-hidden="true"></i>Designed</span><span class="st">W1</span></li><li class="done"><span class="sl"><i aria-hidden="true"></i>Built</span><span class="st">W2–W3</span></li><li class="now"><span class="sl"><i aria-hidden="true"></i>Piloted</span><span class="st">W4–W6</span></li><li><span class="sl"><i aria-hidden="true"></i>Live</span><span class="st">not yet</span></li></ol>
+              <dl class="bc-meta"><div class="full"><dt>Sites</dt><dd>Harbor pilot · Ridge and Meadow from week 8</dd></div><div><dt>Owner</dt><dd>Product</dd></div><div><dt>Flag</dt><dd>floor_checklist</dd></div></dl>
+              <div class="banner"><b class="bt">Pilot running</b>At Harbor since week 4; the read-out is due in week 6.</div>
+              <div class="rub well"><div class="rub-h"><span class="lbl">Rubrics · bar 80</span></div>
+                <div class="sr"><span class="sr-l">Design review</span><span class="sr-bar" role="img" aria-label="Design review: 82 of 100, above the 80 bar"><i style="width:82%"></i><span class="mk" style="left:80%"></span><span class="mkl" style="left:80%" aria-hidden="true">80</span></span><span class="sr-v"><b>82</b> / 100</span><span class="chip ok">Pass</span></div>
+                <div class="sr"><span class="sr-l">Pilot score</span><span class="sr-bar" role="img" aria-label="Pilot score: not scored yet; the bar is 80"><i style="width:0%"></i><span class="mk" style="left:80%"></span><span class="mkl" style="left:80%" aria-hidden="true">80</span></span><span class="sr-v"><b>—</b> / 100</span><span class="chip quiet">Pending</span></div>
+              </div>
+            </div>
+          </div>
+          <figure class="bc-shot tall">
+            <div class="frame">
+              <svg class="wf" viewBox="0 0 300 520" role="img" aria-label="Wireframe: the tablet checklist with three ticked items and two open" focusable="false">
+                <rect class="w-bg" width="300" height="520"/><rect class="w-bar" width="300" height="48"/>
+                <rect class="w-ln2" x="20" y="20" width="110" height="9" rx="4"/>
+                <rect class="w-card" x="16" y="68" width="268" height="56" rx="10"/><circle class="w-ok" cx="40" cy="96" r="9"/><rect class="w-ln" x="60" y="92" width="170" height="8" rx="4"/>
+                <rect class="w-card" x="16" y="134" width="268" height="56" rx="10"/><circle class="w-ok" cx="40" cy="162" r="9"/><rect class="w-ln" x="60" y="158" width="140" height="8" rx="4"/>
+                <rect class="w-card" x="16" y="200" width="268" height="56" rx="10"/><circle class="w-ok" cx="40" cy="228" r="9"/><rect class="w-ln" x="60" y="224" width="190" height="8" rx="4"/>
+                <rect class="w-soft" x="16" y="266" width="268" height="56" rx="10"/><circle class="w-card" cx="40" cy="294" r="9"/><rect class="w-ln2" x="60" y="290" width="160" height="8" rx="4"/>
+                <rect class="w-soft" x="16" y="332" width="268" height="56" rx="10"/><circle class="w-card" cx="40" cy="360" r="9"/><rect class="w-ln2" x="60" y="356" width="120" height="8" rx="4"/>
+                <rect class="w-acc" x="16" y="452" width="268" height="44" rx="10"/>
+              </svg>
+            </div>
+            <figcaption><span>Wireframe · floor tablet, pilot build</span></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="card bc rv" id="ws-3" aria-labelledby="ws-3-h">
+        <div class="bc-h"><span class="bc-ids">WS3 · R3 · R5</span><span class="tag pri">Priority</span><span class="sp"></span><span class="chip quiet">Building</span></div>
+        <h3 class="bc-t" id="ws-3-h">Open-issue board</h3>
+        <div class="bc-grid none">
+          <div class="bc-main">
+            <div class="bc-q"><dl>
+              <div><dt>Ridge lead's ask</dt><dd class="ask">“Issues die at shift change because nobody owns them overnight.”</dd></div>
+              <div><dt>What ships</dt><dd>A board of open issues that survives the shift change, each with an owner and an age; it reads the Ridge roster export (R5) so owners resolve at every site.</dd></div>
+            </dl></div>
+            <div class="bc-f">
+              <ol class="steps well" aria-label="Stage stamps"><li class="done"><span class="sl"><i aria-hidden="true"></i>Designed</span><span class="st">W2</span></li><li class="now"><span class="sl"><i aria-hidden="true"></i>Built</span><span class="st">W3–W7</span></li><li><span class="sl"><i aria-hidden="true"></i>Piloted</span><span class="st">not yet</span></li><li><span class="sl"><i aria-hidden="true"></i>Live</span><span class="st">not yet</span></li></ol>
+              <div class="banner warn"><b class="bt">Below the bar</b>The design review scored 76; it is re-reviewed in week 6 with the Ridge roster mapping in place.</div>
+              <div class="rub well"><div class="rub-h"><span class="lbl">Rubrics · bar 80</span></div>
+                <div class="sr"><span class="sr-l">Design review</span><span class="sr-bar" role="img" aria-label="Design review: 76 of 100, below the 80 bar"><i class="below" style="width:76%"></i><span class="mk" style="left:80%"></span><span class="mkl" style="left:80%" aria-hidden="true">80</span></span><span class="sr-v"><b>76</b> / 100</span><span class="chip crit">Below 80</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bc-shot empty"><div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg><span>No screenshot yet: the build runs to week 7</span></div></div>
+        </div>
+      </article>
+
+      <article class="card bc rv" id="ws-4" aria-labelledby="ws-4-h">
+        <div class="bc-h"><span class="bc-ids">WS4 · R4</span><span class="tag">Goes later</span><span class="sp"></span><span class="chip">Not started</span></div>
+        <h3 class="bc-t" id="ws-4-h">Manager digest</h3>
+        <div class="bc-grid none">
+          <div class="bc-main">
+            <div class="bc-q"><dl>
+              <div><dt>Why it goes later</dt><dd>The digest summarises notes, checklists and issues, so it waits for the other three to carry real data.</dd></div>
+              <div><dt>What ships</dt><dd>A Monday email per site: open issues by age, checklist completion and the notes that were flagged.</dd></div>
+            </dl></div>
+            <div class="bc-f">
+              <ol class="steps well" aria-label="Stage stamps"><li><span class="sl"><i aria-hidden="true"></i>Designed</span><span class="st">W6–W7</span></li><li><span class="sl"><i aria-hidden="true"></i>Built</span><span class="st">W8–W10</span></li><li><span class="sl"><i aria-hidden="true"></i>Piloted</span><span class="st">W11–W12</span></li><li><span class="sl"><i aria-hidden="true"></i>Live</span><span class="st">not yet</span></li></ol>
+              <dl class="bc-meta"><div><dt>Owner</dt><dd>Ops</dd></div><div><dt>Flag</dt><dd class="none">None</dd></div></dl>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Source: workstream tracker · 4 workstreams · 2 wireframes · as of week 5 (sample)</span></p>
+  </section>
+
+  <section class="sec" id="timeline" aria-labelledby="timeline-h">
+    <div class="sh rv"><span class="num" aria-hidden="true">03</span><div><div class="seb">Timeline</div><h2 id="timeline-h">Twelve weeks, <em>week 5 today.</em></h2></div><div class="ctl">W1–W12 · go-live W12</div></div>
+    <p class="sub rv">Solid green is done, the glowing bar is in progress, dashed is planned. Diamonds are gates; the line is today.</p>
+    <!-- --today: the as-of position in weeks from the start (4.5 = middle of week 5). Bars use grid-column: firstWeek / lastWeek+1. -->
+    <div class="card gantt rv" style="--today:4.5">
+      <div aria-hidden="true">
+        <div class="gt-r gt-h"><div class="gt-l"><span class="lbl">Workstream</span></div><div class="gt-t">
+          <span class="gt-w">W1</span><span class="gt-w">W2</span><span class="gt-w">W3</span><span class="gt-w">W4</span><span class="gt-w now">W5</span><span class="gt-w">W6</span><span class="gt-w">W7</span><span class="gt-w">W8</span><span class="gt-w">W9</span><span class="gt-w">W10</span><span class="gt-w">W11</span><span class="gt-w">W12</span><span class="gt-now">Today</span></div></div>
+        <div class="gt-r"><div class="gt-l"><b>Shift notes carry-over</b><span>WS1 · Live</span></div><div class="gt-t">
+          <span class="bar done" style="grid-column:1/2;--i:0">Design</span><span class="bar done" style="grid-column:2/3;--i:1">Build</span><span class="bar done" style="grid-column:3/5;--i:2">Pilot · Harbor</span><span class="ms done" style="grid-column:5/6"></span><span class="ms-l" style="grid-column:5/7">Live</span><span class="bar plan" style="grid-column:8/13;--i:3">Rollout · Ridge, Meadow</span></div></div>
+        <div class="gt-r"><div class="gt-l"><b>Floor checklist</b><span>WS2 · Piloting</span></div><div class="gt-t">
+          <span class="bar done" style="grid-column:1/2;--i:0">Design</span><span class="bar done" style="grid-column:2/4;--i:1">Build</span><span class="bar active" style="grid-column:4/7;--i:2">Pilot · Harbor</span><span class="bar plan" style="grid-column:8/13;--i:3">Rollout · Ridge, Meadow</span></div></div>
+        <div class="gt-r"><div class="gt-l"><b>Open-issue board</b><span>WS3 · Building</span></div><div class="gt-t">
+          <span class="bar done" style="grid-column:2/3;--i:0">Design</span><span class="bar active" style="grid-column:3/8;--i:1">Build · roster mapping</span><span class="bar plan" style="grid-column:8/10;--i:2">Pilot · Harbor</span></div></div>
+        <div class="gt-r"><div class="gt-l"><b>Manager digest</b><span>WS4 · Not started</span></div><div class="gt-t">
+          <span class="bar plan" style="grid-column:6/8;--i:0">Design</span><span class="bar plan" style="grid-column:8/11;--i:1">Build</span><span class="bar plan" style="grid-column:11/13;--i:2">Pilot</span></div></div>
+        <div class="gt-r"><div class="gt-l"><b>Gates</b><span>2 of 5 cleared</span></div><div class="gt-t">
+          <span class="ms done" style="grid-column:4/5"></span><span class="ms-l" style="grid-column:4/5">01</span>
+          <span class="ms done" style="grid-column:5/6"></span><span class="ms-l" style="grid-column:5/6">02</span>
+          <span class="ms" style="grid-column:7/8"></span><span class="ms-l" style="grid-column:7/8">03</span>
+          <span class="ms plan" style="grid-column:8/9"></span><span class="ms-l" style="grid-column:8/9">04</span>
+          <span class="ms plan" style="grid-column:10/11"></span><span class="ms-l" style="grid-column:10/11">05</span>
+          <span class="ms plan" style="grid-column:12/13"></span><span class="ms-l" style="grid-column:12/13">Go</span></div></div>
+      </div>
+      <ol class="sr-only" aria-label="Schedule, week by week">
+        <li>Shift notes carry-over: design week 1, build week 2, Harbor pilot weeks 3 to 4, live week 5 (done); rollout to Ridge and Meadow weeks 8 to 12 (planned).</li>
+        <li>Floor checklist: design week 1, build weeks 2 to 3 (done); Harbor pilot weeks 4 to 6 (in progress); rollout weeks 8 to 12 (planned).</li>
+        <li>Open-issue board: design week 2 (done); build with the roster mapping weeks 3 to 7 (in progress); Harbor pilot weeks 8 to 9 (planned).</li>
+        <li>Manager digest: design weeks 6 to 7, build weeks 8 to 10, pilot weeks 11 to 12 (all planned).</li>
+        <li>Gates: 01 at week 4 and 02 at week 5 cleared; 03 at week 7, 04 at week 8 and 05 at week 10 open; go-live at week 12. Today is week 5.</li>
+      </ol>
+      <ul class="legend gt-legend" aria-label="Timeline key"><li><span class="sw bd" aria-hidden="true"></span>Done</li><li><span class="sw ba" aria-hidden="true"></span>In progress</li><li><span class="sw bp" aria-hidden="true"></span>Planned</li><li><span class="sw dm" aria-hidden="true"></span>Gate</li><li><span class="sw tl" aria-hidden="true"></span>Today · W5</li></ul>
+    </div>
+    <p class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Source: workstream stage stamps (02) and gate dates (05) · as of week 5 (sample)</span></p>
+  </section>
+
+  <section class="sec" id="readiness" aria-labelledby="readiness-h">
+    <div class="sh rv"><span class="num" aria-hidden="true">04</span><div><div class="seb">Site readiness</div><h2 id="readiness-h">Eight areas, <em>three ready.</em></h2></div><div class="ctl">8 areas · 1 blocks Meadow</div></div>
+    <p class="sub rv">What go-live needs at Ridge and Meadow, area by area: 2 missing, 2 partial, 1 blocked and 3 ready. The blocked area holds Meadow's go-live until it clears.</p>
+    <div class="well dist rv" style="margin-bottom:16px">
+      <div class="dbar" aria-hidden="true"><i class="c-crit" style="flex:2"></i><i class="c-warn" style="flex:2"></i><i class="c-critf" style="flex:1"></i><i class="c-ok" style="flex:3"></i></div>
+      <ul class="legend" aria-label="Areas by status"><li><span class="sw c-crit" aria-hidden="true"></span>Missing <b>2</b></li><li><span class="sw c-warn" aria-hidden="true"></span>Partial <b>2</b></li><li><span class="sw c-critf" aria-hidden="true"></span>Blocked <b>1</b></li><li><span class="sw c-ok" aria-hidden="true"></span>Ready <b>3</b></li></ul>
+    </div>
+    <div class="mx-tools rv">
+      <div class="seg" id="mxFilter" role="group" aria-label="Filter areas by status"><button type="button" data-f="all" aria-pressed="true">All<b>8</b></button><button type="button" data-f="missing" aria-pressed="false">Missing<b>2</b></button><button type="button" data-f="partial" aria-pressed="false">Partial<b>2</b></button><button type="button" data-f="blocked" aria-pressed="false">Blocked<b>1</b></button><button type="button" data-f="ready" aria-pressed="false">Ready<b>3</b></button></div>
+      <span class="mx-count" id="mxCount" aria-live="polite">Showing 8 of 8</span>
+    </div>
+    <div class="tw rv" id="mxTable">
+      <table>
+        <caption class="sr-only">Site readiness for go-live, area by area</caption>
+        <thead><tr><th scope="col">Area</th><th scope="col">Go-live needs</th><th scope="col">Today</th><th scope="col">Status</th><th scope="col">Change</th><th scope="col">Owner</th></tr></thead>
+        <tbody>
+          <tr data-s="missing"><td class="mx-a" data-l="Area">Floor tablets</td><td data-l="Go-live needs">One tablet per pod, enrolled in device management</td><td data-l="Today">Harbor 12 of 12; none ordered for Ridge or Meadow</td><td class="mx-s" data-l="Status"><span class="chip crit">Missing</span></td><td data-l="Change">Order 24 tablets and enrol them before week 7 (gate 03)</td><td class="mx-o" data-l="Owner">IT lead</td></tr>
+          <tr data-s="ready"><td class="mx-a" data-l="Area">Single sign-on</td><td data-l="Go-live needs">Staff sign in with the company account</td><td data-l="Today">Works at all three sites</td><td class="mx-s" data-l="Status"><span class="chip ok">Ready</span></td><td data-l="Change">None</td><td class="mx-o" data-l="Owner">IT lead</td></tr>
+          <tr data-s="partial"><td class="mx-a" data-l="Area">Shift roster feed</td><td data-l="Go-live needs">The tool reads who is on shift</td><td data-l="Today">Harbor feed live; Ridge exports a different roster layout</td><td class="mx-s" data-l="Status"><span class="chip warn">Partial</span></td><td data-l="Change">Map the Ridge export columns (R5, inside WS3)</td><td class="mx-o" data-l="Owner">Data team</td></tr>
+          <tr data-s="ready"><td class="mx-a" data-l="Area">Data retention</td><td data-l="Go-live needs">Notes kept 90 days, then purged</td><td data-l="Today">Signed off by Compliance (gate 02)</td><td class="mx-s" data-l="Status"><span class="chip ok">Ready</span></td><td data-l="Change">None</td><td class="mx-o" data-l="Owner">Compliance</td></tr>
+          <tr data-s="partial"><td class="mx-a" data-l="Area">Lead training</td><td data-l="Go-live needs">A 45-minute walkthrough for every site lead</td><td data-l="Today">Harbor 8 of 8 trained</td><td class="mx-s" data-l="Status"><span class="chip warn">Partial</span></td><td data-l="Change">Ridge and Meadow sessions in weeks 9 and 10</td><td class="mx-o" data-l="Owner">Ops</td></tr>
+          <tr data-s="blocked"><td class="mx-a" data-l="Area">Meadow floor <span class="nw">Wi-Fi</span></td><td data-l="Go-live needs">Coverage on every pod</td><td data-l="Today">Two pods have no coverage</td><td class="mx-s" data-l="Status"><span class="chip critf">Blocked</span></td><td data-l="Change">Facilities survey; holds Meadow's go-live (gate 05)</td><td class="mx-o" data-l="Owner">Facilities</td></tr>
+          <tr data-s="missing"><td class="mx-a" data-l="Area">Support route</td><td data-l="Go-live needs">Issues reach the service desk under their own category</td><td data-l="Today">The category exists; there is no runbook</td><td class="mx-s" data-l="Status"><span class="chip crit">Missing</span></td><td data-l="Change">Write the runbook (one day)</td><td class="mx-o" data-l="Owner">Ops</td></tr>
+          <tr data-s="ready"><td class="mx-a" data-l="Area">Pilot feedback loop</td><td data-l="Go-live needs">A weekly review of pilot notes</td><td data-l="Today">Runs at Harbor every Friday</td><td class="mx-s" data-l="Status"><span class="chip ok">Ready</span></td><td data-l="Change">None</td><td class="mx-o" data-l="Owner">Ops</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sums">
+      <article class="card rv"><h3>What blocks go-live</h3><p><b>Meadow floor <span class="nw">Wi-Fi</span></b> is the only blocked area; until the survey lands, Meadow cannot pass gate 05.</p><p><b>Tablets</b> for Ridge and Meadow are the gate-03 item.</p></article>
+      <article class="card rv"><h3>What is ready</h3><p>Sign-on, data retention and the pilot feedback loop already hold at every site; nothing there needs work before week 12.</p></article>
+      <article class="card rv"><h3>What is cheap</h3><p>The <b>support runbook</b> is one day of work and the <b>roster mapping</b> already rides in WS3.</p></article>
+    </div>
+    <p class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Source: readiness review with the site leads · 8 areas · as of week 5 (sample)</span></p>
+  </section>
+
+  <section class="sec" id="gates" aria-labelledby="gates-h">
+    <div class="sh rv"><span class="num" aria-hidden="true">05</span><div><div class="seb">Gates</div><h2 id="gates-h">Five gates, <em>two cleared.</em></h2></div><div class="ctl">2/5 cleared</div></div>
+    <p class="sub rv">One waits on IT, two on the Ops director. Nothing reaches Ridge or Meadow until gate 03 clears.</p>
+    <div class="card klist rv"><ol class="gl">
+      <li class="gl-r"><span class="gl-n" aria-hidden="true">01</span><div class="gl-b"><b>Harbor pilot sign-off</b><span class="gl-o"><span class="av" aria-hidden="true">H</span>Owner: Harbor site lead · week 4</span></div><span class="chip ok">Done</span></li>
+      <li class="gl-r"><span class="gl-n" aria-hidden="true">02</span><div class="gl-b"><b>Data-retention review</b><span class="gl-o"><span class="av" aria-hidden="true">C</span>Owner: Compliance · week 5</span></div><span class="chip ok">Done</span></li>
+      <li class="gl-r"><span class="gl-n" aria-hidden="true">03</span><div class="gl-b"><b>Tablets enrolled at Ridge and Meadow</b><span class="gl-o"><span class="av" aria-hidden="true">I</span>Owner: IT lead · week 7</span></div><span class="chip warn">Waiting</span></li>
+      <li class="gl-r"><span class="gl-n" aria-hidden="true">04</span><div class="gl-b"><b>Go / no-go for Ridge</b><span class="gl-o"><span class="av" aria-hidden="true">O</span>Owner: Ops director · week 8</span></div><span class="chip quiet">Open</span></li>
+      <li class="gl-r"><span class="gl-n" aria-hidden="true">05</span><div class="gl-b"><b>Go / no-go for Meadow</b><span class="gl-o"><span class="av" aria-hidden="true">O</span>Owner: Ops director · week 10</span></div><span class="chip quiet">Open</span></li>
+    </ol></div>
+    <p class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Source: rollout gates · 2 of 5 cleared · as of week 5 (sample)</span></p>
+  </section>
+
+  <section class="sec" id="decide" aria-labelledby="decide-h">
+    <div class="fin rv" data-surface="navy">
+      <div class="fin-h">
+        <div>
+          <div class="seb">Decision · week 5</div>
+          <h2 id="decide-h">What the Ops director <em>decides next</em></h2>
+          <p class="lede">Two gates wait on the Ops director, in this order. Both depend on <b>gate 03</b> (tablets, IT) clearing in week 7; Meadow also waits on the <span class="nw">Wi-Fi</span> survey.</p>
+        </div>
+        <div class="fin-cta">
+          <button class="btn gold" id="copyGo" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Copy the decision list</button>
+          <a class="btn ghost" href="#gates">All gates</a>
+          <span class="cp-msg" id="cpMsg" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      <ol class="asks">
+        <li><span class="an" aria-hidden="true">01</span><b>Go / no-go for Ridge</b><span class="chip quiet">Open · week 8</span></li>
+        <li><span class="an" aria-hidden="true">02</span><b>Go / no-go for Meadow</b><span class="chip quiet">Open · week 10</span></li>
+      </ol>
+      <p class="also">Also open: <b>Tablets enrolled at Ridge and Meadow</b> (IT lead, week 7).</p>
+    </div>
+    <pre id="goList" hidden>Northwind Ops — Handover Desk rollout · as of week 5
+Workstreams: 2 of 4 built · 1 of 4 live · go-live week 12
+
+Waiting on the Ops director:
+1. Go / no-go for Ridge (week 8)
+2. Go / no-go for Meadow (week 10)
+
+Also open:
+- Tablets enrolled at Ridge and Meadow (IT lead, week 7)</pre>
+  </section>
+
+  <footer class="foot"><div>As of week 5 · go-live week 12 · owner: Ops director · fictional sample content</div><div>Template: vera-hub-cnx/kit · tokens: theme-cnx.css · fonts: __FONT_SOURCE__</div></footer>
+</main>
+</div>
+</div>
+<dialog class="lb" id="lb" aria-label="Screenshot, full size"><img id="lbImg" alt=""><div class="lb-b"><span id="lbCap"></span><button class="btn" type="button" id="lbClose">Close</button></div></dialog>
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  /* theme: cnx-dark default, remembered */
+  var tb = $('#themeBtn');
+  function syncTheme() {
+    var next = root.getAttribute('data-theme') === 'cnx-light' ? 'Dark' : 'Light';
+    tb.querySelector('span').textContent = next;
+    tb.setAttribute('aria-label', 'Switch to ' + next.toLowerCase() + ' theme');
+  }
+  tb.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'cnx-light' ? 'cnx-dark' : 'cnx-light';
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('vera-hub-cnx-theme', t); } catch (e) {}
+    syncTheme();
+  });
+  syncTheme();
+  $('#printBtn').addEventListener('click', function () { window.print(); });
+
+  /* count-up: a real number every frame; the final value is already in the DOM */
+  function countUp(el) {
+    var to = parseFloat(el.getAttribute('data-to'));
+    if (reduce || !isFinite(to) || to === 0 || typeof requestAnimationFrame !== 'function') return;
+    var t0 = null;
+    el.textContent = '0';
+    function tick(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / 600);
+      el.textContent = String(Math.round(to * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = String(to);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* reveal once, never replays */
+  function show(el) { el.classList.add('in'); $$('[data-to]', el).forEach(countUp); }
+  var rvs = $$('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    rvs.forEach(function (e) { e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+    rvs.forEach(function (e) { io.observe(e); });
+  }
+
+  /* scroll spy on the rail (or the phone chip strip) */
+  var rail = $('.rail');
+  var links = $$('.rail .ri:not(.sm)');
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function setCurrent(id) {
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + id) {
+        a.setAttribute('aria-current', 'true');
+        if (rail.scrollWidth > rail.clientWidth + 4) {
+          var l = a.offsetLeft - 16;
+          if (rail.scrollTo) rail.scrollTo({ left: l, behavior: reduce ? 'auto' : 'smooth' }); else rail.scrollLeft = l;
+        }
+      } else { a.removeAttribute('aria-current'); }
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) setCurrent(e.target.id); });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    secs.forEach(function (s) { if (s) spy.observe(s); });
+  }
+  setCurrent('overview');
+
+  /* matrix filter */
+  var fbs = $$('#mxFilter button'), rows = $$('#mxTable tbody tr'), cnt = $('#mxCount');
+  fbs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f'), n = 0;
+      fbs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      rows.forEach(function (r) { var on = f === 'all' || r.getAttribute('data-s') === f; r.hidden = !on; if (on) n++; });
+      cnt.textContent = 'Showing ' + n + ' of ' + rows.length + (f === 'all' ? '' : ' · ' + b.firstChild.textContent.trim().toLowerCase());
+    });
+  });
+
+  /* screenshots (real <img> only): collapse tall ones, open full size in a dialog */
+  $$('.bc-shot').forEach(function (f) {
+    var img = $('img', f), btn = $('.shot-x', f), fr = $('.frame', f);
+    if (!img || !btn) return;
+    function check() {
+      if (f.classList.contains('open')) return;
+      var over = fr.scrollHeight - fr.clientHeight > 4;
+      f.classList.toggle('clip', over);
+      btn.hidden = !over;
+    }
+    if (img.complete) check(); else img.addEventListener('load', check);
+    window.addEventListener('load', check);
+    window.addEventListener('resize', check);
+    btn.addEventListener('click', function () {
+      var o = f.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(o));
+      btn.textContent = o ? 'Collapse' : 'Show full';
+      if (!o) check();
+    });
+  });
+  var lb = $('#lb');
+  if (lb && typeof lb.showModal === 'function') {
+    $$('.bc-shot img').forEach(function (img) {
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      function open() {
+        $('#lbImg').src = img.src; $('#lbImg').alt = img.alt;
+        $('#lbCap').textContent = img.getAttribute('data-cap') || '';
+        lb.showModal();
+      }
+      img.addEventListener('click', open);
+      img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    $('#lbClose').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+  }
+
+  /* the one gold action: copy the decision list */
+  var cb = $('#copyGo'), msg = $('#cpMsg'), txt = $('#goList').textContent, timer;
+  function said(m) { msg.textContent = m; clearTimeout(timer); timer = setTimeout(function () { msg.textContent = ''; }, 3200); }
+  function fallback() {
+    var ta = document.createElement('textarea');
+    ta.value = txt; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    said(ok ? 'Copied: paste it anywhere' : 'Copy was blocked by the browser');
+  }
+  cb.addEventListener('click', function () {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(txt).then(function () { said('Copied: paste it anywhere'); }, fallback);
+    } else { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>

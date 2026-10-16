@@ -1,0 +1,433 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   VERA HUB · CNX — drop-in token layer (vera-hub-cnx, 2026-10-16)
+   Vera Hub structure, Concentrix colours: navy #003D5B, teal #25E2CC, gold #FBCA18.
+
+   Tokens only. No component styles live here. Every name below is a name the
+   Vera AI app (app/globals.css + app/vera-skin.css) or the AutoAlchemy Hub
+   (app/src/theme-corp.css) already reads, so their components reskin as-is.
+   Hex appears only in the two theme blocks and the navy scope.
+
+   TWO WAYS TO SWITCH IT ON (import this file LAST, after the app's own themes)
+
+   A. Overlay on an existing Vera Hub app (Vera AI, AutoAlchemy Hub):
+        <html data-theme="corp-dark" data-palette="cnx">   (or corp-light)
+      Every selector the app keys on corp-* keeps matching; only the values
+      change. Selectors here are (0,3,0), so they also beat vera-skin.css's
+      html[data-skin="ovcc"][data-theme="corp-*"] blocks (0,2,1).
+
+   B. New app or stand-alone page:
+        <html data-theme="cnx-dark">   (or cnx-light)
+      Do NOT use B inside Vera AI: lib/themes.ts normalizeThemeId() rewrites the
+      legacy ids cnx-dark / cnx-light to corp-*, and ~10 component selectors are
+      keyed to corp-*. Use A there.
+
+   SCOPE: one navy summary / decision panel per view (only while the palette is on)
+        <section data-surface="navy">   re-scopes ink, accent and status so any
+      component inside it stays readable in both themes.
+
+   Measured contrast for every text pair: DESIGN.md § Contrast.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   1 · CNX DARK — night canvas, teal accent
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme="cnx-dark"],
+:root[data-palette="cnx"][data-theme="corp-dark"] {
+  color-scheme: dark;
+
+  /* surfaces */
+  --bg-0:    #060D18;   /* canvas, sunken wells */
+  --bg-1:    #0A1424;   /* top bar, rail, sticky table head */
+  --shell:   #0B1626;   /* shell frame, drawers */
+  --card:    #0D1829;   /* cards, chips, default buttons */
+  --card-2:  #122136;   /* dialogs, second card tone */
+  --card-hi: #15273E;   /* hover rows, table head, ghost hover */
+
+  /* ink */
+  --text-0: #F2F6FA;    /* headings, values           17.9 on bg-0 */
+  --text-1: #BAC7D4;    /* body, table cells          10.4 on card */
+  --text-2: #A1AFBF;    /* eyebrows, labels            6.8 on card-hi */
+  --text-3: #8799AD;    /* faint: axis, table heads    5.2 on card-hi */
+
+  /* accent: teal */
+  --accent:      #25E2CC;                 /* primary, active, focus   10.9 on card */
+  --accent-2:    #7DEDE0;                 /* hover, gradient top stop */
+  --accent-ink:  #25E2CC;                 /* accent used as text */
+  --on-accent:   #022320;                 /* text on a teal fill      10.2 */
+  --accent-soft: rgba(37, 226, 204, 0.12);
+  --accent-glow: rgba(37, 226, 204, 0.30);
+
+  /* lines */
+  --border:     rgba(190, 215, 235, 0.11);
+  --line-2:     rgba(190, 215, 235, 0.07);
+  --strip:      rgba(190, 215, 235, 0.06);
+  --border-hot: rgba(37, 226, 204, 0.42);
+  --well-line:  rgba(0, 0, 0, 0.42);
+  --well-end:   #08111F;                  /* last stop of --sh-well, for fades */
+
+  /* status: ok / warn / crit / info */
+  --ok:        #4CD98A;  --ok-ink:   #4CD98A;  --on-ok: #04210F;
+  --ok-soft:   rgba(76, 217, 138, 0.12);  --ok-line:   rgba(76, 217, 138, 0.45);  --ok-fill:   rgba(76, 217, 138, 0.25);
+  --warn:      #FF9F5A;  --warn-ink: #FF9F5A;
+  --warn-soft: rgba(255, 159, 90, 0.12);  --warn-line: rgba(255, 159, 90, 0.45);  --warn-fill: rgba(255, 159, 90, 0.40);
+  --crit:      #FF6F6F;  --crit-ink: #FF6F6F;
+  --crit-soft: rgba(255, 111, 111, 0.12); --crit-line: rgba(255, 111, 111, 0.45); --crit-fill: rgba(255, 111, 111, 0.45);
+  --info-color:  #9CC3DD;
+  --info-bg:     rgba(156, 195, 221, 0.09);
+  --info-border: rgba(156, 195, 221, 0.36);
+  --na-fill:     rgba(190, 215, 235, 0.05);
+
+  /* gold: the one primary action per view (+ optional headline KPI) */
+  --gold-glow: rgba(251, 202, 24, 0.38);
+  --gold-ink:  #FBCA18;                   /* gold as text: dark only (9.8 on card-hi) */
+  --gold-ink-glow: rgba(251, 202, 24, 0.38); /* halo behind gold-ink text */
+  --gold-line: transparent;               /* edge for the gold fill; needed in light only */
+
+  /* brand mark */
+  --brand-tile: #003D5B;
+  --brand-mark: #25E2CC;
+
+  /* lit surfaces (Vera Hub "shading layer", Concentrix values) */
+  --sh-canvas: radial-gradient(1200px 700px at 12% -10%, rgba(37, 226, 204, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 95% 110%, rgba(0, 61, 91, 0.55), transparent 62%),
+    linear-gradient(180deg, #081120 0%, #04090F 100%);
+  --sh-shell: radial-gradient(900px 420px at 0% 0%, rgba(37, 226, 204, 0.05), transparent 70%),
+    linear-gradient(180deg, #0B1626 0%, #08111F 100%);
+  --sh-bar:    linear-gradient(180deg, #101B2C 0%, #0B1626 100%);
+  --sh-card:   linear-gradient(180deg, #122136 0%, #0F1C2F 55%, #0D1829 100%);
+  --sh-tile:   linear-gradient(180deg, #15273E 0%, #122136 100%);
+  --sh-well:   linear-gradient(180deg, #03070D 0%, #060D18 40%, #08111F 100%);
+  --sh-accent: linear-gradient(180deg, #7DEDE0 0%, #25E2CC 100%);
+  --sh-muted:  linear-gradient(180deg, #4E5F74 0%, #3A4A5E 100%);
+
+  /* signature layer (data-skin="ovcc"): gradient word, hollow numerals, glass, grid */
+  --grad-1: #25E2CC;
+  --grad-3: #7DEDE0;
+  --grad-2: #9CC3DD;
+  --num-stroke:      rgba(37, 226, 204, 0.45);
+  --glass:           rgba(10, 20, 36, 0.55);
+  --glass-line:      rgba(255, 255, 255, 0.08);
+  --sig-grid-line:   rgba(37, 226, 204, 0.08);
+  --sig-shell-glass: radial-gradient(900px 420px at 0% 0%, rgba(37, 226, 204, 0.05), transparent 70%),
+    linear-gradient(180deg, rgba(11, 22, 38, 0.60) 0%, rgba(8, 17, 31, 0.68) 100%);
+
+  /* elevation */
+  --shadow:         0 10px 26px rgba(0, 0, 0, 0.45);                 /* card */
+  --shadow-tile:    0 6px 16px rgba(0, 0, 0, 0.40);
+  --shadow-tile-hi: 0 12px 26px rgba(0, 0, 0, 0.50);
+  --shadow-shell:   0 40px 100px rgba(0, 0, 0, 0.60);
+  --menu-shadow:    0 16px 48px rgba(0, 0, 0, 0.60), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --inset-well:     inset 0 2px 6px rgba(0, 0, 0, 0.55), inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+  --sunken-inset:   inset 0 1px 3px rgba(0, 0, 0, 0.30);
+
+  /* Hub kind chips (fact / dimension / log) */
+  --kind-dim-soft: rgba(156, 195, 221, 0.14);
+  --kind-dim-ink:  #9CC3DD;
+  --kind-log-soft: rgba(255, 159, 90, 0.15);
+
+  /* Hub per-theme --ft-* values (theme-corp.css) */
+  --ft-mesh-1: rgba(37, 226, 204, 0.10);
+  --ft-mesh-2: rgba(0, 61, 91, 0.55);
+  --ft-mesh-3: transparent;
+  --ft-hairline-control: rgba(190, 215, 235, 0.22);
+  --ft-disabled: #5B6B80;
+  --ft-black: #060D18;
+  --ft-white: #F2F6FA;
+  --ft-scrim: rgba(6, 13, 24, 0.55);
+  --ft-ramp-1: #F2F6FA;  --ft-ramp-2: #BAC7D4;  --ft-ramp-3: #A1AFBF;  --ft-ramp-4: #8799AD;
+  --ft-ramp-5: #6B7B8F;  --ft-ramp-6: #4E5E73;  --ft-ramp-7: #34445A;  --ft-ramp-8: #1A2A40;
+  --ft-ramp-9: #122136;  --ft-ramp-10: #0D1829; --ft-ramp-11: #060D18;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   2 · CNX LIGHT — white and paper, navy accent (designed, not inverted)
+   Teal and gold never become text here: 1.6 and 1.5 on white.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme="cnx-light"],
+:root[data-palette="cnx"][data-theme="corp-light"] {
+  color-scheme: light;
+
+  --bg-0:    #F2F5F8;
+  --bg-1:    #FFFFFF;
+  --shell:   #F8FAFC;
+  --card:    #FFFFFF;
+  --card-2:  #F5F7FA;
+  --card-hi: #EEF2F6;
+
+  --text-0: #07192A;    /* 17.8 on white */
+  --text-1: #34495D;    /*  8.3 on card-hi */
+  --text-2: #45586B;    /*  6.5 on card-hi */
+  --text-3: #566779;    /*  5.2 on card-hi */
+
+  /* accent: navy */
+  --accent:      #003D5B;                 /* 11.6 on white */
+  --accent-2:    #0B5A82;
+  --accent-ink:  #003D5B;
+  --on-accent:   #FFFFFF;                 /* 11.6 */
+  --accent-soft: rgba(0, 61, 91, 0.07);
+  --accent-glow: rgba(0, 61, 91, 0.16);
+
+  --border:     rgba(0, 40, 70, 0.12);
+  --line-2:     rgba(0, 40, 70, 0.07);
+  --strip:      rgba(0, 40, 70, 0.10);
+  --border-hot: rgba(0, 61, 91, 0.35);
+  --well-line:  rgba(0, 40, 70, 0.14);
+  --well-end:   #F2F5F8;
+
+  --ok:        #11743A;  --ok-ink:   #11743A;  --on-ok: #FFFFFF;
+  --ok-soft:   rgba(17, 116, 58, 0.08);   --ok-line:   rgba(17, 116, 58, 0.40);   --ok-fill:   rgba(17, 116, 58, 0.26);
+  --warn:      #A34E00;  --warn-ink: #A34E00;
+  --warn-soft: rgba(163, 78, 0, 0.08);    --warn-line: rgba(163, 78, 0, 0.40);    --warn-fill: rgba(163, 78, 0, 0.45);
+  --crit:      #C0262D;  --crit-ink: #C0262D;
+  --crit-soft: rgba(192, 38, 45, 0.07);   --crit-line: rgba(192, 38, 45, 0.40);   --crit-fill: rgba(192, 38, 45, 0.50);
+  --info-color:  #2F5D7C;
+  --info-bg:     rgba(47, 93, 124, 0.07);
+  --info-border: rgba(47, 93, 124, 0.30);
+  --na-fill:     rgba(0, 40, 70, 0.08);
+
+  --gold-glow: rgba(251, 202, 24, 0.45);
+  --gold-ink:  #07192A;                   /* gold text fails on white: falls back to ink */
+  --gold-ink-glow: rgba(0, 61, 91, 0.16);  /* = accent glow, so the lead tile matches its row */
+  --gold-line: rgba(13, 26, 36, 0.22);    /* the gold fill's edge on white is only 1.5:1 */
+
+  --brand-tile: #003D5B;
+  --brand-mark: #25E2CC;
+
+  --sh-canvas: radial-gradient(1200px 700px at 12% -10%, rgba(0, 61, 91, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 95% 110%, rgba(37, 226, 204, 0.16), transparent 60%),
+    linear-gradient(180deg, #F2F5F8 0%, #E8EDF2 100%);
+  --sh-shell: radial-gradient(900px 420px at 0% 0%, rgba(0, 61, 91, 0.05), transparent 70%),
+    linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+  --sh-bar:    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  --sh-card:   linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  --sh-tile:   linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+  --sh-well:   linear-gradient(180deg, #E6ECF1 0%, #EEF2F6 40%, #F2F5F8 100%);
+  --sh-accent: linear-gradient(180deg, #0B5A82 0%, #003D5B 100%);
+  --sh-muted:  linear-gradient(180deg, #C5CFD9 0%, #AAB7C4 100%);
+
+  --grad-1: #003D5B;
+  --grad-3: #0B5A82;
+  --grad-2: #00706A;                      /* deep teal, 6.0 on white */
+  --num-stroke:      rgba(0, 61, 91, 0.40);
+  --glass:           rgba(255, 255, 255, 0.72);
+  --glass-line:      rgba(255, 255, 255, 0.85);
+  --sig-grid-line:   rgba(0, 40, 70, 0.09);
+  --sig-shell-glass: radial-gradient(900px 420px at 0% 0%, rgba(0, 61, 91, 0.05), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(245, 247, 250, 0.68) 100%);
+
+  --shadow:         0 8px 22px rgba(0, 40, 70, 0.10);
+  --shadow-tile:    0 6px 16px rgba(0, 40, 70, 0.12);
+  --shadow-tile-hi: 0 12px 26px rgba(0, 40, 70, 0.18);
+  --shadow-shell:   0 40px 100px rgba(0, 40, 70, 0.16);
+  --menu-shadow:    0 16px 48px rgba(0, 40, 70, 0.22), 0 0 0 1px rgba(0, 40, 70, 0.06);
+  --inset-well:     inset 0 2px 6px rgba(0, 40, 70, 0.14), inset 0 -1px 0 rgba(255, 255, 255, 0.70);
+  --sunken-inset:   inset 0 1px 3px rgba(0, 40, 70, 0.10);
+
+  --kind-dim-soft: rgba(47, 93, 124, 0.09);
+  --kind-dim-ink:  #2F5D7C;
+  --kind-log-soft: rgba(163, 78, 0, 0.10);
+
+  --ft-mesh-1: rgba(0, 61, 91, 0.10);
+  --ft-mesh-2: rgba(37, 226, 204, 0.16);
+  --ft-mesh-3: rgba(0, 61, 91, 0.05);
+  --ft-hairline-control: rgba(0, 40, 70, 0.28);
+  --ft-disabled: #8C9AAB;
+  --ft-black: #07192A;
+  --ft-white: #FFFFFF;
+  --ft-scrim: rgba(6, 13, 24, 0.45);
+  --ft-ramp-1: #FFFFFF;  --ft-ramp-2: #E9EEF3;  --ft-ramp-3: #DCE3EA;  --ft-ramp-4: #C5CFD9;
+  --ft-ramp-5: #AAB7C4;  --ft-ramp-6: #8C9AAB;  --ft-ramp-7: #6B7B8F;  --ft-ramp-8: #566779;
+  --ft-ramp-9: #34495D;  --ft-ramp-10: #07192A; --ft-ramp-11: #060D18;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   3 · NAVY SCOPE — the one summary / decision panel per view, both themes
+   Ink, accent and status re-scoped for the navy ground. Every ink holds AA at
+   the panel's lightest point (the teal glow over #00425F) even under a 6 %
+   glass tile; the lowest pair is crit at 4.6. Status is outline-only here
+   (soft fills transparent). Paint the ground with background: var(--sh-navy).
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme^="cnx-"] [data-surface="navy"],
+:root[data-palette="cnx"] [data-surface="navy"] {
+  color-scheme: dark;
+
+  --card:    rgba(255, 255, 255, 0.06);   /* glass tiles on navy */
+  --card-hi: rgba(255, 255, 255, 0.12);
+
+  --text-0: #F2F6FA;    /* 10.6 on navy · 7.5 worst case */
+  --text-1: #CAD6E1;    /*  7.8 on navy · 5.5 worst case */
+  --text-2: #B8C6D3;    /*  6.6 on navy · 4.7 worst case */
+  --text-3: #B8C6D3;
+
+  --accent:      #25E2CC;   /* 7.1 on navy · 5.0 worst case */
+  --accent-2:    #7DEDE0;
+  --accent-ink:  #25E2CC;
+  --on-accent:   #022320;
+  --accent-soft: rgba(37, 226, 204, 0.14);
+  --accent-glow: rgba(37, 226, 204, 0.30);
+
+  --border:     rgba(255, 255, 255, 0.14);
+  --line-2:     rgba(255, 255, 255, 0.09);
+  --border-hot: rgba(37, 226, 204, 0.50);
+  --well-line:  rgba(0, 0, 0, 0.20);
+  --num-stroke: rgba(37, 226, 204, 0.60);
+
+  --ok:   #5FE39A;  --ok-ink:   #5FE39A;  --ok-soft:   transparent;  --ok-line:   rgba(95, 227, 154, 0.50);
+  --warn: #FFBC80;  --warn-ink: #FFBC80;  --warn-soft: transparent;  --warn-line: rgba(255, 188, 128, 0.50);
+  --crit: #FFADAD;  --crit-ink: #FFADAD;  --crit-soft: transparent;  --crit-line: rgba(255, 173, 173, 0.50);
+  --info-color:  #B6D4E8;
+  --info-bg:     transparent;
+  --info-border: rgba(182, 212, 232, 0.40);
+
+  --gold-ink:  #FBCA18;                    /* 7.5 on navy */
+  --gold-ink-glow: rgba(251, 202, 24, 0.38);
+  --gold-line: transparent;
+
+  /* surfaces inside the panel: glass, never the page's light gradients */
+  --sh-card:   linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+  --sh-tile:   linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.04) 100%);
+  --sh-well:   linear-gradient(180deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.14) 100%);
+  --sh-accent: linear-gradient(180deg, #7DEDE0 0%, #25E2CC 100%);
+  --glass:      rgba(255, 255, 255, 0.06);
+  --glass-line: rgba(255, 255, 255, 0.12);
+  --grad-1: #25E2CC;
+  --grad-3: #7DEDE0;
+  --grad-2: #B6D4E8;
+  --kind-dim-soft: rgba(182, 212, 232, 0.12);
+  --kind-dim-ink:  #B6D4E8;
+  --inset-well:  inset 0 2px 6px rgba(0, 0, 0, 0.30);
+  --shadow-tile: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   4 · BOTH THEMES — brand constants and composed surfaces
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme^="cnx-"],
+:root[data-palette="cnx"][data-theme] {
+  --navy:    #003D5B;
+  --teal:    #25E2CC;
+  --gold:    #FBCA18;
+  --on-gold: #0D1A24;                      /* 11.4 on gold */
+
+  --sh-gold: linear-gradient(180deg, #FDD84D 0%, #FBCA18 100%);
+  --sh-navy: radial-gradient(700px 320px at 100% 0%, rgba(37, 226, 204, 0.06), transparent 70%),
+    linear-gradient(160deg, #00425F 0%, #003D5B 55%, #00344E 100%);
+  --sh-sel:  var(--sh-navy);               /* Vera Hub's inverse / selected panel = the navy panel */
+
+  --ft-panel: #003D5B;
+  --ft-on-panel: #F2F6FA;
+  --ft-on-panel-accent: #25E2CC;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   5 · ALIASES — the names Vera AI and the Hub read, mapped onto the roles above
+   Declared at the root AND on every navy scope: a custom property resolves
+   where it is declared, so an alias set only on <html> would carry the page's
+   accent into the navy panel.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme^="cnx-"],
+:root[data-palette="cnx"][data-theme],
+:root[data-theme^="cnx-"] [data-surface="navy"],
+:root[data-palette="cnx"] [data-surface="navy"] {
+  /* Vera AI (globals.css) — the accent keeps its legacy name */
+  --cnx-lime:      var(--accent);
+  --cnx-lime-2:    var(--accent-2);
+  --cnx-lime-soft: var(--accent-soft);
+  --cnx-lime-glow: var(--accent-glow);
+  --text-dark:     var(--on-accent);
+  --green:         var(--ok);
+  --amber:         var(--warn);
+  --amber-text:    var(--warn-ink);
+  --red:           var(--crit);
+  --md-em-color:   var(--accent-ink);
+  --md-em-bg:      var(--accent-soft);
+  --agent-header-bg:     var(--bg-1);
+  --chat-bg:             var(--bg-0);
+  --context-pane-bg:     var(--bg-1);
+  --assistant-bubble-bg: var(--card-hi);
+  --input-bar-bg:        var(--bg-1);
+
+  /* Vera AI skin (vera-skin.css) */
+  --acc-grad:            var(--sh-accent);
+  --grad:                linear-gradient(120deg, var(--grad-1) 0%, var(--grad-3) 45%, var(--grad-2) 100%);
+  --sig-accent-ink:      var(--accent-ink);
+  --sig-glass:           var(--glass);
+  --sig-glass-line:      var(--glass-line);
+  --sig-card-shadow:     var(--shadow);
+  --sig-tile-shadow:     var(--shadow-tile);
+  --sig-tile-shadow-hi:  var(--shadow-tile-hi);
+  --sig-well-inset:      var(--inset-well);
+
+  /* AutoAlchemy Hub (theme-corp.css) */
+  --kind-fact-soft: var(--accent-soft);
+  --kind-fact-ink:  var(--accent-ink);
+  --kind-log-ink:   var(--warn-ink);
+  --ft-sh-card:     var(--shadow);
+  --ft-sh-tile:     var(--shadow-tile);
+  --ft-sh-tile-hi:  var(--shadow-tile-hi);
+  --ft-sh-menu:     var(--menu-shadow);
+  --ft-sh-accent:   0 0 24px var(--accent-glow);
+  --ft-sh-shell:    var(--shadow-shell);
+  --ft-well-inset:  var(--inset-well);
+  --ft-grid-line:   var(--sig-grid-line);
+  --ft-shell-glass: var(--sig-shell-glass);
+  --ft-edge:        var(--border);
+  --ft-edge-strong: var(--border-hot);
+  --ft-track:       var(--card-hi);
+  --ft-ink:         var(--text-0);
+  --ft-text:        var(--text-1);
+  --ft-text-2:      var(--text-2);
+  --ft-text-3:      var(--text-3);
+  --ft-on-accent:   var(--on-accent);
+  --ft-on-volt:     var(--on-accent);
+  --ft-on-surface:  var(--text-0);
+  --ft-on-card:     var(--text-0);
+  --ft-canvas:      var(--bg-0);
+  --ft-surface:     var(--bg-1);
+  --ft-card-bg:     var(--sh-card);
+  --ft-inset:       var(--card-hi);
+  --ft-field-bg:    var(--sh-well);
+  --ft-field-fg:    var(--text-0);
+  --ft-slab:        var(--shell);
+  --ft-volt:        var(--accent);
+  --ft-volt-dim:    var(--accent-2);
+  --ft-accent:      var(--accent);
+  --ft-accent-dim:  var(--accent-2);
+  --ft-accent-fill: var(--accent-soft);
+  --ft-accent-line: var(--border-hot);
+  --ft-accent-ink:  var(--accent-ink);
+  --ft-slab-accent-ink: var(--accent-ink);
+  --ft-btn-primary-bg: var(--sh-accent);   /* every primary stays accent ... */
+  --ft-btn-primary-fg: var(--on-accent);
+  --ft-btn-cta-bg:  var(--sh-gold);        /* ... gold is opt-in: the ONE action per view */
+  --ft-btn-cta-fg:  var(--on-gold);
+  --ft-focus:       var(--accent);
+  --ft-ok:          var(--ok);
+  --ft-ok-ink:      var(--ok-ink);
+  --ft-ok-fill:     var(--ok-fill);
+  --ft-ok-line:     var(--ok-line);
+  --ft-warn:        var(--warn);
+  --ft-warn-ink:    var(--warn-ink);
+  --ft-warn-fill:   var(--warn-fill);
+  --ft-warn-line:   var(--warn-line);
+  --ft-crit:        var(--crit);
+  --ft-crit-ink:    var(--crit-ink);
+  --ft-crit-fill:   var(--crit-fill);
+  --ft-crit-line:   var(--crit-line);
+  --ft-info:        var(--info-color);
+  --ft-info-fill:   var(--info-bg);
+  --ft-info-line:   var(--info-border);
+  --ft-hairline:      var(--border);
+  --ft-hairline-soft: var(--line-2);
+  --ft-slab-t2:     var(--text-1);
+  --ft-slab-t3:     var(--text-2);
+  --ft-slab-hair:   var(--border);
+  --ft-slab-hair-soft: var(--line-2);
+}

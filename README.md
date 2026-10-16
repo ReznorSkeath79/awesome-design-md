@@ -17,7 +17,7 @@
 <div align="center">
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-85-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-86-10b981?style=classic)
 [![Last Update](https://img.shields.io/github/last-commit/VoltAgent/awesome-design-md?label=Last%20update&style=classic)](https://github.com/VoltAgent/awesome-design-md)
 [![Discord](https://img.shields.io/discord/1361559153780195478.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://s.voltagent.dev/discord)
 
@@ -126,6 +126,7 @@ You can [request a DESIGN.md](https://getdesign.md/request) for specific website
 - [**Vera Hub**](design-md/vera-hub/DESIGN.md) - Vera AI and AutoAlchemy Hub console system. Corporate navy, Corp Dark / Corp Light, rounded radius ladder, raised cards on sunken wells, glowing ice-blue accent
 - [**The Drop**](design-md/the-drop/DESIGN.md) - AutoAlchemy Hub Marketplace space. Bold ad-campaign look: near-black stage, flat saturated colour blocks, magenta→orange gradient, Anton caps, round stickers, cursor-scrubbed hero
 - [**Vera Bold**](design-md/vera-bold/DESIGN.md) - OVAI / OVCC campaign look (Concentrix AI Interviewer). The Drop's bold ad-campaign energy in Concentrix navy / teal / gold on Vera Hub structure: two-tone Anton caps with a teal brush mark, whole colour blocks, gold primary pill, paint-splash photography. Has a `kit/` plan-page template
+- [**Vera Hub CNX**](design-md/vera-hub-cnx/DESIGN.md) - Vera Hub with Concentrix colours. Vera Hub's console structure (shell frame, raised cards on sunken wells, radius ladder) in navy / teal / gold: CNX Dark (night canvas, teal accent) and CNX Light (navy accent), one gold primary action per view, one navy decision panel. Ships `theme-cnx.css` (token names map 1:1 onto Vera AI and the Hub) and a `kit/` plan-page template
 - [**Cal.com**](https://getdesign.md/cal/design-md) - Open-source scheduling. Clean neutral UI, developer-oriented simplicity
 - [**Intercom**](https://getdesign.md/intercom/design-md) - Customer messaging. Friendly blue palette, conversational UI patterns
 - [**Linear**](https://getdesign.md/linear.app/design-md) - Project management for engineers. Ultra-minimal, precise, purple accent
