@@ -1,6 +1,8 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   VERA HUB · CNX — drop-in token layer (vera-hub-cnx, 2026-10-16)
+   VERA HUB · CNX — drop-in token layer (vera-hub-cnx, 2026-10-16; type 2026-10-21)
    Vera Hub structure, Concentrix colours: navy #003D5B, teal #25E2CC, gold #FBCA18.
+   Concentrix type: Montserrat (display, headings, numbers, labels) + Calibri
+   (reading text); Michroma survives only in the hollow outlined numerals. § 6.
 
    Tokens only. No component styles live here. Every name below is a name the
    Vera AI app (app/globals.css + app/vera-skin.css) or the AutoAlchemy Hub
@@ -430,4 +432,66 @@
   --ft-slab-t3:     var(--text-2);
   --ft-slab-hair:   var(--border);
   --ft-slab-hair-soft: var(--line-2);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────────
+   6 · TYPE — both themes (revised 2026-10-21: Concentrix asked for Montserrat /
+   Helvetica / Calibri over the "futuristic" Michroma + JetBrains Mono + Inter)
+
+   Roles (DESIGN.md § Typography has the scale):
+     --font-display  titles, headings, the brand, the decision heading
+     --font-num      every figure: KPI values, counts, stamps, scores (tabular)
+     --font-label    eyebrows, chips, tags, buttons, table heads, nav
+     --font-sans     reading text: body, table cells, captions, source lines
+     --font-hollow   ONLY the hollow outlined numerals (color: transparent +
+                     -webkit-text-stroke): section-head numerals, gate and
+                     decision-card numbers. Never for text that must be read.
+     --font-code     code only (DAX / SQL / paths / flag ids); system faces,
+                     nothing bundled. JetBrains Mono is retired.
+
+   Fonts are NOT loaded here (a url() in a token file breaks inlined builds).
+   Self-host them next to the app, SIL OFL 1.1, licences in kit/fonts/:
+     @font-face  Montserrat  kit/fonts/Montserrat.woff2       weight 100 900 (variable, Latin)
+     @font-face  Carlito     kit/fonts/Carlito-Regular.woff2  weight 400
+     @font-face  Carlito     kit/fonts/Carlito-Bold.woff2     weight 700
+     @font-face  Michroma    Michroma.woff2 (Hub app/public/fonts) weight 400, only if
+                             the page has hollow numerals
+   all with font-style: normal; font-display: swap. Calibri and Helvetica are
+   proprietary system fonts: named in the stacks, never bundled. Calibri comes
+   first so Windows / Office machines never download Carlito (its metric-
+   compatible OFL stand-in); Mac, Android and Linux get Carlito; Helvetica
+   Neue / Helvetica / Arial catch the glyphs the Latin subsets lack (arrows, ₱, ✓).
+
+   Two rules the tokens cannot carry, so the page layer applies them:
+     · tabular figures on every --font-num use (Montserrat's default digits are
+       proportional): font-variant-numeric: tabular-nums. The `font` shorthand
+       resets it, so the kit sets it with !important on *.
+     · font-size-adjust: var(--fsa) wherever --font-sans is set (Calibri's
+       x-height is .466, Carlito's .478; .53 makes them read at the size the
+       layout was drawn for). Only on the sans: Montserrat (.517) and Michroma
+       (.562) stay unadjusted. The `font` shorthand resets it too.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme^="cnx-"],
+:root[data-palette="cnx"][data-theme] {
+  --font-display: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans:    Calibri, "Carlito", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-num:     var(--font-display);
+  --font-label:   var(--font-display);
+  --font-hollow:  "Michroma", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-code:    ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --w-display: 700;          /* page title, brand, decision heading */
+  --w-head:    700;          /* section, card and build-card headings */
+  --w-num:     600;          /* KPI and hero figures */
+  --w-label:   600;          /* eyebrows, chips, table heads */
+  --track-display: -0.015em;
+  --track-label:   0.06em;   /* capital labels (the retired mono labels ran ~.15em) */
+  --track-num:     0;
+  --fsa: 0.53;               /* font-size-adjust for --font-sans only */
+
+  /* AutoAlchemy Hub (theme-corp.css) family names: the overlay switches its type too */
+  --ft-display: var(--font-display);
+  --ft-grot:    var(--font-sans);
+  --ft-mono:    var(--font-label);   /* the Hub's "mono" role is numbers + labels; code moves to --font-code */
 }

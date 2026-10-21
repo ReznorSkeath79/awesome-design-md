@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vera-hub-cnx-design-analysis
-description: "Vera Hub CNX is Vera Hub with Concentrix colours: the same premium console structure (28px shell frame on an ambient dual glow, raised cards on sunken wells, radius ladder 10/12/14/18/28/999, hairlines, one glowing accent, Inter + JetBrains Mono + Michroma) re-coloured from the vera-bold palette. CNX Dark: night #060D18 canvas, #0D1829 cards, teal #25E2CC accent. CNX Light: #F2F5F8 canvas, white cards, navy #003D5B accent. Gold #FBCA18 is the single primary action per view (plus an optional headline KPI); one navy #003D5B panel per view carries the summary or decision. Status is green / orange / red with per-theme inks, all text pairs WCAG AA. Ships theme-cnx.css, a drop-in token layer whose names map 1:1 onto Vera AI and AutoAlchemy Hub tokens, and a kit/ plan-page template. Worked example: the Cluster Cherry plan page, 2026-10-16."
+description: "Vera Hub CNX is Vera Hub with Concentrix colours: the same premium console structure (28px shell frame on an ambient dual glow, raised cards on sunken wells, radius ladder 10/12/14/18/28/999, hairlines, one glowing accent) re-coloured from the vera-bold palette, set in Concentrix type since 2026-10-21: Montserrat for titles, headings, numbers (tabular) and labels, the Calibri stack (Carlito fallback) for reading text, Michroma kept only for the hollow outlined numerals. CNX Dark: night #060D18 canvas, #0D1829 cards, teal #25E2CC accent. CNX Light: #F2F5F8 canvas, white cards, navy #003D5B accent. Gold #FBCA18 is the single primary action per view (plus an optional headline KPI); one navy #003D5B panel per view carries the summary or decision. Status is green / orange / red with per-theme inks, all text pairs WCAG AA. Ships theme-cnx.css, a drop-in token layer (colour and font tokens) whose names map 1:1 onto Vera AI and AutoAlchemy Hub tokens, and a kit/ plan-page template that inlines Montserrat + Carlito (SIL OFL, kit/fonts) and Michroma. Worked example: the Cluster Cherry plan page, 2026-10-16."
 
 colors:
   # Brand (both themes)
@@ -76,83 +76,95 @@ colors:
   panel-crit: "#ffadad"
 
 typography:
+  # Revised 2026-10-21 (Concentrix asked for Montserrat / Helvetica / Calibri). Stacks, roles and rules: § Typography.
+  # Montserrat = "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif (theme-cnx.css --font-display / -num / -label)
+  # Calibri    = Calibri, "Carlito", "Helvetica Neue", Helvetica, Arial, sans-serif, font-size-adjust .53 (--font-sans)
+  # Michroma   = hollow outlined numerals only (--font-hollow, see below); ui-monospace = code only (--font-code, system)
   page-title:
-    fontFamily: Michroma
+    fontFamily: Montserrat
     fontSize: 40px
-    fontWeight: 400
-    lineHeight: 1.18
-    letterSpacing: -0.02em
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: -0.015em
   page-head:
-    fontFamily: Inter
+    fontFamily: Montserrat
     fontSize: 28px
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.25
-    letterSpacing: -0.02em
+    letterSpacing: -0.015em
   section-title:
-    fontFamily: Inter
+    fontFamily: Montserrat
     fontSize: 20px
-    fontWeight: 600
-    lineHeight: 1.30
-    letterSpacing: -0.01em
+    fontWeight: 700
+    lineHeight: 1.20
+    letterSpacing: -0.015em
   card-title:
-    fontFamily: Inter
+    fontFamily: Montserrat
     fontSize: 16px
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.35
-    letterSpacing: -0.01em
+    letterSpacing: -0.015em
   body:
-    fontFamily: Inter
+    fontFamily: Calibri
     fontSize: 15px
     fontWeight: 400
     lineHeight: 1.60
     letterSpacing: 0
   body-sm:
-    fontFamily: Inter
+    fontFamily: Calibri
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.50
     letterSpacing: 0
   button:
-    fontFamily: Inter
+    fontFamily: Montserrat
     fontSize: 13px
     fontWeight: 500
     lineHeight: 1.20
     letterSpacing: 0
   eyebrow:
-    fontFamily: JetBrains Mono
+    fontFamily: Montserrat
     fontSize: 11px
     fontWeight: 600
     lineHeight: 1.30
-    letterSpacing: 1.5px
+    letterSpacing: 0.06em
   label:
-    fontFamily: JetBrains Mono
+    fontFamily: Montserrat
     fontSize: 10px
     fontWeight: 600
     lineHeight: 1.30
-    letterSpacing: 1.5px
+    letterSpacing: 0.06em
   kpi-value:
-    fontFamily: JetBrains Mono
+    fontFamily: Montserrat
     fontSize: 22px
-    fontWeight: 500
+    fontWeight: 600
     lineHeight: 1.00
-    letterSpacing: -0.01em
+    letterSpacing: 0
   table-head:
-    fontFamily: JetBrains Mono
+    fontFamily: Montserrat
     fontSize: 10.5px
     fontWeight: 600
     lineHeight: 1.30
-    letterSpacing: 1px
+    letterSpacing: 0.06em
   data:
-    fontFamily: JetBrains Mono
+    fontFamily: Montserrat
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.45
+    letterSpacing: 0
+  brand:
+    fontFamily: Montserrat
+    fontSize: 15px
+    fontWeight: 700
+    lineHeight: 1.10
+    letterSpacing: -0.015em
+  # The hollow numeral (Michroma 400, 56px / 0.9, outline only: --font-hollow) is deliberately not a token here:
+  # registry tools take the largest fontSize as the display face, and Michroma is not this system's display face.
+  code:
+    fontFamily: ui-monospace
     fontSize: 12px
     fontWeight: 400
     lineHeight: 1.45
-    letterSpacing: 0.02em
-  brand:
-    fontFamily: Michroma
-    fontSize: 15px
-    fontWeight: 400
-    lineHeight: 1.10
     letterSpacing: 0
 
 rounded:
@@ -262,11 +274,17 @@ components:
 ## Overview
 
 **Vera Hub CNX** (registry `vera-hub-cnx`; say "Vera Hub with Concentrix colours", "Vera Hub CNX" or "the
-Cherry look") is [Vera Hub](../vera-hub/DESIGN.md) re-coloured in the Concentrix palette. Everything structural
-is Vera Hub's and stays Vera Hub's: the shell frame on an ambient glow, the 72px bar and 240px rail, raised cards on
-sunken wells, the KPI well, hairline borders, the radius ladder, the elevation scale, the three typefaces, the
-reveal-once motion and the optional signature layer. Only colour changes, and it changes by **role**, so any
-component written against Vera Hub tokens reskins without touching its CSS.
+Cherry look") is [Vera Hub](../vera-hub/DESIGN.md) re-coloured in the Concentrix palette and, since 2026-10-21,
+set in Concentrix type. Everything structural is Vera Hub's and stays Vera Hub's: the shell frame on an ambient glow,
+the 72px bar and 240px rail, raised cards on sunken wells, the KPI well, hairline borders, the radius ladder, the
+elevation scale, the type roles and scale, the reveal-once motion and the optional signature layer. Colour and the
+typefaces change, both by **role** (colour tokens, `--font-*` tokens), so any component written against the tokens
+reskins without touching its CSS.
+
+**Typography revised 2026-10-21.** Concentrix stakeholders (a VP and team, on the Vera AI Pulse dashboard) found
+Vera Hub's faces "futuristic" and asked for Montserrat / Helvetica / Calibri. The owner chose: Montserrat for
+display, headings, KPI numbers and labels; the Calibri stack for reading text; Michroma kept only for the hollow
+outlined numerals; JetBrains Mono and Inter retired. § Typography has the details.
 
 Two palettes: **CNX Dark** (`data-theme="cnx-dark"`, night canvas, teal accent) and **CNX Light**
 (`data-theme="cnx-light"`, white and paper, navy accent). The colours come from the
@@ -302,7 +320,9 @@ here (see the notes under Colors).
   themes and re-scopes its own ink, accent and status.
 - Status is green / orange / red with an ink per theme (a deliberate break from Vera Hub's "OK is the accent": a
   teal OK would merge with the teal accent, and a navy OK reads as plain ink in light).
-- Radius ladder, elevation, type and motion: exactly Vera Hub's.
+- **Type:** Montserrat (titles, headings, numbers, labels) + Calibri / Carlito (reading text); Michroma only in the
+  hollow numerals. Not Vera Hub's Inter + JetBrains Mono + Michroma.
+- Radius ladder, elevation, type scale and motion: exactly Vera Hub's.
 
 ## Colors
 
@@ -430,11 +450,117 @@ repaints the viewport on every scroll frame; Vera AI's skin learned this).
 
 ## Typography
 
-Exactly Vera Hub's ([table](../vera-hub/DESIGN.md#typography)): Inter for prose and buttons, JetBrains Mono for every
-number, label, chip, eyebrow and table head, Michroma for the brand, page titles, hollow section numerals and the
-decision heading. Self-host all three as woff2 (embedded hosts block Google Fonts).
+**Typography revised 2026-10-21: why.** Concentrix stakeholders (a VP and team) disliked the "futuristic" faces on
+the Vera AI Pulse dashboard (Michroma titles, JetBrains Mono numbers and labels, Inter prose) and asked for
+Montserrat / Helvetica / Calibri. The owner chose option A: **Montserrat** for display, headings, KPI numbers and
+labels; the **Calibri** stack for reading text; **Michroma kept only for the hollow outlined numerals**, where it is a
+drawn shape rather than text. JetBrains Mono and Inter are retired. The entry carries the change so every new CNX page
+and app starts from it. The type *scale* and roles are still Vera Hub's
+([table](../vera-hub/DESIGN.md#typography)); the faces, weights and tracking changed.
 
-Colour of type: the page title's key phrase and the section titles' key words take `--accent-ink` (solid teal in
+### Families (`theme-cnx.css` § 6)
+
+| Token | Stack | Used for |
+|---|---|---|
+| `--font-display` | `"Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif` | page title, brand, section / card / build-card headings, the decision heading |
+| `--font-num` | `var(--font-display)`, **tabular figures** | every figure: KPI values, ring core, counts, stage stamps, scores, week labels, row ids |
+| `--font-label` | `var(--font-display)` | eyebrows, chips, tags, legends, table heads, segmented control, buttons, rail items, avatars |
+| `--font-sans` | `Calibri, "Carlito", "Helvetica Neue", Helvetica, Arial, sans-serif`, `font-size-adjust: var(--fsa)` (.53) | body, ledes, list and table text, banners, captions, metadata, source lines, footer |
+| `--font-hollow` | `"Michroma", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif` | **only** the hollow numerals (`color: transparent; -webkit-text-stroke: 1px var(--num-stroke)`): section-head numerals, gate numbers, decision-card numbers |
+| `--font-code` | `ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace` | code only: flag ids, file paths, DAX / SQL. System faces, nothing bundled |
+
+Weight and tracking tokens sit beside them: `--w-display` 700, `--w-head` 700, `--w-num` 600, `--w-label` 600,
+`--track-display` −0.015em, `--track-label` 0.06em, `--track-num` 0, `--fsa` 0.53. They match the Vera AI Pulse
+dashboard's tokens of the same names.
+
+**Why a monospace survives at all.** JetBrains Mono was the number-and-label face; that job is Montserrat's now.
+Code still needs fixed width (identifiers, aligned DAX or SQL), so `--font-code` names the system monospace and
+bundles nothing. It is never used for numbers or labels, and a page with no code uses none (the kit's only uses are
+the two feature-flag ids).
+
+### Scale
+
+| Role | Face | Size / line | Weight | Tracking |
+|---|---|---|---|---|
+| Page title | Montserrat | clamp(26px, 3vw, 40px) / 1.15 | 700 | −0.015em |
+| Page head (apps) | Montserrat | 28 / 1.25 | 700 | −0.015em |
+| Section title | Montserrat | 20–26 / 1.2 | 700 | −0.015em |
+| Card title (build cards 19px) | Montserrat | 16 / 1.35 | 700 | −0.015em |
+| Decision heading | Montserrat | clamp(22px, 2.3vw, 30px) / 1.2 | 700 | −0.015em |
+| Brand | Montserrat | 15 / 1.1 | 700 | −0.015em |
+| KPI value, ring core | Montserrat, tabular | 32 / 1 (kit; 28 under 600px), 22 in app tiles | 600 | 0 |
+| Data figures: stamps, scores, counts, week labels | Montserrat, tabular | 9–12 | 500–600 | 0–0.02em |
+| Eyebrow, label, chip, table head, legend | Montserrat caps | 9.5–11.5 | 600 (section eyebrow 700) | 0.06em |
+| Button | Montserrat | 13 (gold 14) | 500; accent and gold 600 | 0 |
+| Body (lede 16) | Calibri stack | 15 / 1.6 | 400; bold 700 | 0 |
+| Body-sm, metadata, captions | Calibri stack | 12.5–13.5 / 1.45–1.55 | 400 | 0 |
+| Hollow numeral | Michroma, outline only | 56 / 0.9 (40 under 768px); gates 26, decisions 28 | 400 | 0 |
+| Code | system monospace | 0.9em | 400 | 0 |
+
+### Pairing rules
+
+- **Montserrat speaks, Calibri explains.** Titles, figures and labels are Montserrat; sentences are Calibri. A
+  sentence never sits in Montserrat caps, and a KPI never sits in Calibri.
+- **Few weights.** Montserrat 700 for headings, 600 for figures and labels, 500 for buttons and small data.
+  Calibri / Carlito 400 and 700 only (Carlito ships those two; 500–600 on the sans resolve to Bold).
+- **Labels are caps at 0.06em.** Montserrat is wide, and the old mono tracking (about 0.15em) makes labels sprawl.
+  Never track sentence case.
+- **Tabular figures on every number** (`font-variant-numeric: tabular-nums`): Montserrat's default digits are
+  proportional, so a "1" is half the width of a "0" and columns drift. The `font` shorthand resets the property, so
+  the kit sets it with `!important` on `*`, as the Pulse dashboard does.
+- **Size-adjust the sans only.** Calibri's x-height is 0.466 of the em and Carlito's 0.478; `font-size-adjust: .53`
+  makes them read at the size the layout was drawn for, so 15px body reads like the old 15px Inter. Montserrat
+  (0.517) and Michroma (0.562) stay unadjusted. The `font` shorthand resets this too, so in the kit reading text
+  inherits its family from `body` and sets only `font-size` / `line-height`.
+- **Michroma only as an outline.** Never a filled Michroma glyph, never a word, never a heading.
+- **Family names only through the tokens.** No literal family names in component CSS; switching the type again is a
+  change to `theme-cnx.css` § 6.
+
+### Accessibility
+
+- Body text is at least 15px (lede 16), metadata at least 12.5px; caps labels at least 9.5px, weight 600, and only
+  for a few words. The smallest text uses `--text-2` / `--text-3`, which clear AA on every ground (§ Contrast).
+- Hollow numerals are decorative: `aria-hidden="true"`, with the number repeated in text (the heading, the list
+  order or a label). A 1px stroke at 40–60 % alpha does not meet text contrast, so it never carries information alone.
+- Montserrat caps run wide. Labels that must not wrap get `white-space: nowrap` only inside a box with room; the kit
+  is checked for clipped or escaping text at 1440 and 390px in both themes.
+- **Missing glyphs.** The Latin subsets of Montserrat and Carlito (and Michroma) have no → ← ₱ ✓ ≥. Those fall to
+  Helvetica Neue / Helvetica / Arial or the operating system's fallback, so they can look different from machine to
+  machine. Draw arrows and ticks as inline SVG where they matter; ₱ renders from the system font.
+
+### Loading and licensing
+
+- **Montserrat** (one variable file, `wght` 100–900, Latin subset, from `@fontsource-variable/montserrat`) and
+  **Carlito** (400 + 700, Latin, from `@fontsource/carlito`) are SIL OFL 1.1: they may be self-hosted, inlined as
+  base64 and subset, as long as the licence travels with them. The files and licences are in `kit/fonts/`, byte for
+  byte the files the Vera AI Pulse dashboard ships (`src/assets/fonts`, branch `feat/pulse-fonts`).
+- **Michroma** (also SIL OFL) is loaded only by pages that show hollow numerals. The kit inlines the Hub's copy
+  (`app/public/fonts/Michroma.woff2`); its licence text is `kit/fonts/LICENSE-Michroma-OFL.txt`.
+- **Calibri** (Microsoft) and **Helvetica / Helvetica Neue** (Monotype) are proprietary system fonts: they are named in
+  the stacks and **never bundled, inlined, subset or uploaded**. Calibri comes first so Windows / Office machines use
+  their own copy and never fetch Carlito; Mac, Android and Linux get Carlito, which is metric-compatible with
+  Calibri, so line breaks match. Helvetica Neue / Helvetica / Arial close every stack for the glyphs the subsets lack.
+- Never Google Fonts or a CDN: embedded hosts block them and pages must work offline.
+
+```css
+/* app: self-host next to the CSS (the kit inlines the same files as data: URIs) */
+@font-face { font-family: "Montserrat"; src: url("./fonts/Montserrat.woff2") format("woff2");
+             font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Carlito"; src: url("./fonts/Carlito-Regular.woff2") format("woff2");
+             font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Carlito"; src: url("./fonts/Carlito-Bold.woff2") format("woff2");
+             font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Michroma"; src: url("./fonts/Michroma.woff2") format("woff2");   /* hollow numerals only */
+             font-weight: 400; font-style: normal; font-display: swap; }
+
+body { font-family: var(--font-sans); font-size-adjust: var(--fsa); }
+*, *::before, *::after { font-variant-numeric: tabular-nums !important; }
+.section-num { font: 400 56px/.9 var(--font-hollow); color: transparent; -webkit-text-stroke: 1px var(--num-stroke); }
+```
+
+### Colour of type
+
+The page title's key phrase and the section titles' key words take `--accent-ink` (solid teal in
 dark with a soft glow, solid navy in light). The signature layer's `--grad` exists (teal → mint → steel in dark,
 navy → `#0B5A82` → deep teal `#00706A` in light) for apps already using it, but plan pages use the solid accent.
 
@@ -470,8 +596,8 @@ alerts, inputs, segmented control, progress, status, focus, loading. Only these 
 - **Chips:** status chips are status text + 45 % (dark) / 40 % (light) border + soft fill; a solid "live" chip is
   `--ok` with `--on-ok`. Inside the navy panel chips are outline-only.
 - **Navy panel:** radius 18 (hero rung), 28px padding, `--sh-navy`, a hairline `rgba(255,255,255,.14)`, the card
-  shadow plus `inset 0 1px 0 rgba(255,255,255,.08)`. Holds a Michroma heading, a lede, the gold action and a sunken
-  well of glass tiles with hollow numerals.
+  shadow plus `inset 0 1px 0 rgba(255,255,255,.08)`. Holds a Montserrat heading, a lede, the gold action and a sunken
+  well of glass tiles with hollow Michroma numerals.
 - **Brand tile:** navy tile, teal bars. In Vera AI keep the Vera mark itself (`components/vera-mark.tsx`): its
   cyan + red bars are fixed brand colours, deliberately not tokenised.
 - **Focus:** `outline: 2px solid var(--accent)` (teal in dark, navy in light); on the gold button the outline is
@@ -520,7 +646,8 @@ import "./theme-cnx.css";            // copy of design-md/vera-hub-cnx/theme-cnx
 
 // app/layout.tsx  (new app: route B)
 import "./theme-cnx.css";
-<html data-theme="cnx-dark" ...>     // self-host Inter, JetBrains Mono, Michroma via next/font/local
+<html data-theme="cnx-dark" ...>     // self-host Montserrat (variable) + Carlito 400/700, and Michroma only if the
+                                     // app shows hollow numerals (kit/fonts, next/font/local); § Typography
 ```
 
 The navy panel is `<section data-surface="navy" style={{ background: "var(--sh-navy)" }}>` (or a class that
@@ -546,6 +673,7 @@ paints `--sh-navy`); the scope applies only while the palette is on.
 | `--glass --glass-line --sig-grid-line --sig-shell-glass` | `--sig-glass --sig-glass-line` + same | `--glass --glass-line --ft-grid-line --ft-shell-glass` |
 | `--grad-1/2/3 --num-stroke` | same; `--grad` | — |
 | `--sh-navy --sh-gold --gold --on-gold` | new | `--sh-sel --ft-panel --ft-on-panel*`; `--ft-btn-cta-bg/fg` (new, opt-in) |
+| `--font-display --font-num --font-label --font-sans --font-hollow --font-code`, `--w-* --track-* --fsa` | not reached by the overlay: type comes from `next/font/local` + `@theme inline` (checklist). The Pulse dashboard uses these same names | `--ft-display --ft-grot --ft-mono` (§ 6 aliases; `--ft-mono` becomes the label face) |
 
 Aliases are declared on `:root` **and** on every navy scope: a custom property resolves where it is declared, so an
 alias set only on `<html>` would carry the page's accent into the navy panel.
@@ -571,7 +699,18 @@ either app; check these when adopting:
 - [ ] **PDFs, emails, the intro video** carry their own colours (`lib/pdf/brand.ts`, the pre-rendered corp-dark
       MP4 letterbox); decide whether they follow.
 - [ ] **Focus ring** is visible on every surface (teal on night, navy on white, `--text-0` on gold).
-- [ ] Michroma has no `₱` or arrows: keep `'Inter'` in the display stack (the Hub's `--ft-display` already does).
+- [ ] **Type, Vera AI.** `app/globals.css` registers `--font-sans: var(--font-inter)` and
+      `--font-mono: var(--font-jetbrains-mono)` in `@theme inline`, so Tailwind utilities read the `next/font`
+      variables directly and the overlay's `--font-*` tokens never reach them. Swap the `localFont` imports in
+      `app/layout.tsx` (Montserrat, Carlito, Michroma for hollow numerals), point `@theme`'s `--font-sans` at the
+      Calibri stack, move number and label classes off `font-mono` to `--font-num` / `--font-label`, and keep a
+      monospace only where code is shown.
+- [ ] **Type, Hub.** The overlay re-points `--ft-display` (Montserrat), `--ft-grot` (Calibri stack) and `--ft-mono`
+      (Montserrat, the label face). Headings set in `--ft-grot` turn Calibri (move them to `--ft-display`), hollow
+      numerals set in `--ft-display` turn Montserrat (move them to `--font-hollow`), and code set in `--ft-mono` turns
+      Montserrat (move it to `--font-code`). Add Montserrat and Carlito to `app/public/fonts` beside the current subsets.
+- [ ] **Glyphs:** the Montserrat and Carlito Latin subsets have no `₱`, arrows or `✓`; they fall to Helvetica /
+      Arial / the system font (§ Typography). The Hub's own subsets carry them; Montserrat's do not.
 
 ## Pages (use `kit/`)
 
@@ -579,14 +718,17 @@ For stand-alone HTML (plan pages, briefs, status pages, review pages in this pal
 [`kit/`](./kit/README.md): `kit/template.src.html` is a complete plan page with neutral sample content
 ("Northwind Ops — rollout plan") in the section types the reference used (header with rail and ring core, KPI well,
 numbered list, build cards with stepper / rubric bars / screenshot, gantt, filterable matrix table, gates, navy
-decision panel with the one gold action). `kit/scripts/build_page.py` inlines the fonts and `theme-cnx.css`, so the
-output is one offline file. The kit's own CSS reads only `theme-cnx.css` tokens, so it is also a live test of the
+decision panel with the one gold action). `kit/scripts/build_page.py` inlines Montserrat + Carlito (`kit/fonts/`,
+with their OFL licences) and Michroma (hollow numerals only) as woff2, and `theme-cnx.css`, so the output is one
+offline file that makes no request. The kit's own CSS reads only `theme-cnx.css` tokens, so it is also a live test of the
 token layer.
 
 ## Do's and Don'ts
 
 **Do**
 - Keep everything structural exactly Vera Hub: radius ladder, raised-on-sunken, hairlines, type roles, motion.
+- Set every family through the `--font-*` tokens: Montserrat for titles, figures and labels, Calibri for sentences,
+  tabular figures on every number, `font-size-adjust` on the sans.
 - Spend gold once per view; make it the action the page exists for.
 - Put the summary or decision in the one navy panel, with `data-surface="navy"` so its contents re-scope.
 - Use teal as the accent in dark and navy in light; let `--accent-ink` pick.
@@ -597,6 +739,9 @@ token layer.
 - No teal or gold text on white or light surfaces (1.6 and 1.5:1).
 - No second gold element in the same view, and no gold for status.
 - No Vera Bold vocabulary here: no Anton / Barlow caps, no brush marks, no photo heroes, no pill-shaped cards.
+- No Inter, no JetBrains Mono, no techno or "futuristic" display faces. Michroma appears only as the hollow outline
+  numeral; no monospace for numbers or labels.
+- Never bundle, inline or subset Calibri or Helvetica (proprietary); never load fonts from Google Fonts or a CDN.
 - No square cards or hard offset shadows (Futura / AutoAlchemy).
 - No zebra striping, no generic spinners or shimmer.
 - Don't set `data-theme="cnx-*"` inside Vera AI (legacy-id rewrite); use the `data-palette="cnx"` overlay.
@@ -614,8 +759,9 @@ token layer.
 
 ## Relationship to other entries
 
-- [`vera-hub`](../vera-hub/DESIGN.md): the parent. Structure, components, type, motion and the signature layer are
-  defined there; this entry changes colour only. Vera Hub stays the default for HTML deliverables.
+- [`vera-hub`](../vera-hub/DESIGN.md): the parent. Structure, components, the type scale, motion and the signature
+  layer are defined there; this entry changes colour and the typefaces. Vera Hub stays the default for HTML
+  deliverables.
 - [`vera-bold`](../vera-bold/DESIGN.md): source of the Concentrix palette (brand, inks, block-scope rule, contrast).
   Vera Bold is the loud campaign language; Vera Hub CNX is the quiet console in the same colours.
 - [`vera-transmutation`](../vera-transmutation/DESIGN.md): leadership plan pages on Vera Hub Dark with the

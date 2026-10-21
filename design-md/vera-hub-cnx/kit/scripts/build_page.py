@@ -5,17 +5,21 @@ Usage:
     python3 kit/scripts/build_page.py kit/template.src.html kit/template.html [assets_dir]
 
 Replaces, in one pass:
-    __FONTS_CSS__        @font-face rules for Inter, JetBrains Mono and Michroma, woff2 inlined as base64
+    __FONTS_CSS__        @font-face rules, woff2 inlined as base64: Montserrat (variable 100-900), Carlito 400 + 700
+                         and Michroma 400 (hollow numerals only)
     __THEME_CNX_CSS__    the entry's token layer, ../../theme-cnx.css (relative to this script)
     __FONT_SOURCE__      where the fonts came from (for the page footer)
     __IMG_<NAME>__       optional: <assets_dir>/<name lowercased, _ -> ->.{webp,png,jpg,jpeg} as a data URI
 
-Fonts come from the AutoAlchemy Hub's origin/main (app/public/fonts/<Name>.woff2, read with `git show`, so the
-working tree may be on any branch), else from the AI Navigator repo's app/fonts. Override with the environment
-variables VHC_HUB_REPO and VHC_FONT_DIR.
+Montserrat and Carlito come from kit/fonts/ (SIL OFL 1.1, licences beside them; the same files as the Vera AI Pulse
+app). Michroma comes from the AutoAlchemy Hub's origin/main (app/public/fonts/Michroma.woff2, read with `git show`,
+so the working tree may be on any branch), else from the AI Navigator repo's app/fonts. Override with the
+environment variables VHC_KIT_FONTS (Montserrat + Carlito folder), VHC_HUB_REPO and VHC_FONT_DIR (Michroma).
+Calibri and Helvetica are proprietary system fonts: the stacks name them, the build never bundles them.
 
-Exits 1 if the template, the token layer or a font is missing, if a placeholder is left unresolved, or if the
-output references anything over the network. Prints the output size in KB. Python 3 standard library only.
+Exits 1 if the template, the token layer or a font is missing or not woff2, if a placeholder is left unresolved, or
+if the output would make any request: network URLs, @import, or a url() / src= that is not a data: URI or a
+#fragment (CSS and HTML comments are ignored). Prints the output size in KB. Python 3 standard library only.
 """
 import base64
 import os
@@ -27,43 +31,73 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ENTRY = HERE.parents[1]                                    # design-md/vera-hub-cnx
 THEME = ENTRY / "theme-cnx.css"
+KIT_FONTS = Path(os.environ.get("VHC_KIT_FONTS", HERE.parent / "fonts"))
 HUB = Path(os.environ.get("VHC_HUB_REPO", Path.home() / "Work/Concentrix/autoalchmey_tracker"))
 FONT_DIR = Path(os.environ.get("VHC_FONT_DIR", Path.home() / "Work/AINavigatorProject/ai-navigator/app/fonts"))
 
-# (CSS family, file stem, weight range)
-FACES = (("Inter", "Inter", "100 900"), ("JetBrains Mono", "JetBrainsMono", "100 800"), ("Michroma", "Michroma", "400"))
+# (CSS family, file, weight, where it comes from)
+FACES = (("Montserrat", "Montserrat.woff2", "100 900", "kit"),
+         ("Carlito", "Carlito-Regular.woff2", "400", "kit"),
+         ("Carlito", "Carlito-Bold.woff2", "700", "kit"),
+         ("Michroma", "Michroma.woff2", "400", "hub"))
 IMG_MIME = {".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
 PLACEHOLDER = re.compile(r"__([A-Z0-9_]+)__")
+COMMENTS = re.compile(r"<!--.*?-->|/\*.*?\*/", re.S)
 EXTERNAL = (re.compile(r"""(?:src|href)\s*=\s*["'](?:https?:)?//""", re.I),
             re.compile(r"""url\(\s*['"]?(?:https?:)?//""", re.I),
-            re.compile(r"@import\b", re.I))
+            re.compile(r"@import\b", re.I),
+            re.compile(r"""url\(\s*(?!['"]?(?:data:|#))""", re.I),             # relative url(): a file request
+            re.compile(r"""\ssrc\s*=\s*["'](?!data:)""", re.I))                # relative src=: a file request
 
 
-def font_bytes(stem):
-    """(bytes, source label) for one woff2: the Hub's origin/main first, then the local font folder."""
+def tilde(path):
+    """A path for the footer without the home folder in it."""
     try:
-        raw = subprocess.run(["git", "-C", str(HUB), "show", "origin/main:app/public/fonts/%s.woff2" % stem],
+        return "~/" + str(Path(path).resolve().relative_to(Path.home()))
+    except ValueError:
+        return str(path)
+
+
+def woff2(raw, name):
+    if raw[:4] != b"wOF2":
+        raise SystemExit("error: %s is not a woff2 file" % name)
+    return raw
+
+
+def kit_font(name):
+    path = KIT_FONTS / name
+    if path.is_file() and path.stat().st_size:
+        return woff2(path.read_bytes(), path), "kit/fonts"
+    raise SystemExit("error: font %s not found in %s" % (name, KIT_FONTS))
+
+
+def hub_font(name):
+    """(bytes, source label) for Michroma: the Hub's origin/main first, then the local font folder."""
+    try:
+        raw = subprocess.run(["git", "-C", str(HUB), "show", "origin/main:app/public/fonts/%s" % name],
                              check=True, capture_output=True).stdout
         if raw:
-            return raw, "AutoAlchemy Hub origin/main"
+            return woff2(raw, name), "AutoAlchemy Hub origin/main"
     except (subprocess.CalledProcessError, FileNotFoundError):
         pass
-    path = FONT_DIR / ("%s.woff2" % stem)
+    path = FONT_DIR / name
     if path.is_file() and path.stat().st_size:
-        return path.read_bytes(), str(FONT_DIR)
-    raise SystemExit("error: font %s.woff2 not found in %s (origin/main) or %s" % (stem, HUB, FONT_DIR))
+        return woff2(path.read_bytes(), path), tilde(FONT_DIR)
+    raise SystemExit("error: font %s not found in %s (origin/main) or %s" % (name, HUB, FONT_DIR))
 
 
 def fonts_css():
-    rules, sources = [], []
-    for family, stem, weight in FACES:
-        raw, src = font_bytes(stem)
-        if src not in sources:
-            sources.append(src)
+    rules, sources = [], {}
+    for family, name, weight, where in FACES:
+        raw, src = kit_font(name) if where == "kit" else hub_font(name)
+        sources.setdefault(src, [])
+        if family not in sources[src]:
+            sources[src].append(family)
         rules.append("@font-face{font-family:'%s';src:url(data:font/woff2;base64,%s) format('woff2');"
                      "font-weight:%s;font-style:normal;font-display:swap}"
                      % (family, base64.b64encode(raw).decode("ascii"), weight))
-    return "\n".join(rules), " + ".join(sources)
+    label = " · ".join("%s: %s" % (" + ".join(fams), src) for src, fams in sources.items())
+    return "\n".join(rules), label
 
 
 def image_uri(assets, name):
@@ -116,9 +150,10 @@ def main(argv):
     # one pass: replaced text is never scanned again, so inlined data cannot trigger a placeholder
     page = PLACEHOLDER.sub(lambda m: slots[m.group(1)], tpl)
 
-    hits = sum(len(rx.findall(page)) for rx in EXTERNAL)
+    live = COMMENTS.sub("", page)
+    hits = sum(len(rx.findall(live)) for rx in EXTERNAL)
     if hits:
-        print("error: %d external reference(s) in the output; the page must be self-contained" % hits)
+        print("error: %d external or relative reference(s) in the output; the page must be self-contained" % hits)
         return 1
 
     out.parent.mkdir(parents=True, exist_ok=True)

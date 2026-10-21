@@ -2,8 +2,12 @@
 
 A **self-contained, offline HTML page kit** in Vera Hub CNX (Vera Hub structure, Concentrix colours). The worked
 page is **"Northwind Ops — rollout plan"**: fictional sample content for a twelve-week, three-site rollout, in every
-section type the Cluster Cherry plan page used. One `<style>`, one `<script>`, no external requests: the build
+section type the Cluster Cherry plan page used. One `<style>`, one `<script>`, no requests at all: the build
 inlines the fonts and the token layer, so the page opens from `file://` with the network off.
+
+Type (revised 2026-10-21): Montserrat for the title, headings, numbers and labels, the Calibri stack (Carlito
+inlined as the fallback) for reading text, Michroma only for the hollow numerals. See
+[`../DESIGN.md`](../DESIGN.md#typography).
 
 Both themes ship. **CNX Dark is the default**; the tool-tray button flips to CNX Light and remembers the choice
 (`localStorage` key `vera-hub-cnx-theme`).
@@ -21,20 +25,22 @@ Both themes ship. **CNX Dark is the default**; the tool-tray button flips to CNX
    python3 kit/scripts/build_page.py my-page.src.html my-page.html            # fonts + tokens
    python3 kit/scripts/build_page.py my-page.src.html my-page.html shots/     # + screenshots
    ```
-   It prints the output size, exits 1 if a font or placeholder is missing or if the output would reference the
-   network. Open the result in Chrome (`open -a "Google Chrome" my-page.html`).
+   It prints the output size, exits 1 if a font or placeholder is missing or if the output would make a request
+   (a network URL, `@import`, or a `url()` / `src=` that is not a `data:` URI). Open the result in Chrome (`open -a "Google Chrome" my-page.html`).
 
 ## How it is built
 
 | Placeholder | Filled with |
 |---|---|
-| `__FONTS_CSS__` | `@font-face` rules for Inter, JetBrains Mono, Michroma (woff2, base64). Source: `git -C ~/Work/Concentrix/autoalchmey_tracker show origin/main:app/public/fonts/<Name>.woff2`, else `~/Work/AINavigatorProject/ai-navigator/app/fonts/`. Override with `VHC_HUB_REPO` / `VHC_FONT_DIR`. |
+| `__FONTS_CSS__` | `@font-face` rules, woff2 as base64: **Montserrat** (one variable file, 100–900) and **Carlito** 400 + 700 from `kit/fonts/` (override with `VHC_KIT_FONTS`); **Michroma** 400 for the hollow numerals from `git -C ~/Work/Concentrix/autoalchmey_tracker show origin/main:app/public/fonts/Michroma.woff2`, else `~/Work/AINavigatorProject/ai-navigator/app/fonts/` (override with `VHC_HUB_REPO` / `VHC_FONT_DIR`). Calibri and Helvetica are never bundled. |
 | `__THEME_CNX_CSS__` | `../theme-cnx.css` verbatim: the same token layer web apps import |
 | `__FONT_SOURCE__` | where the fonts came from (footer) |
 | `__IMG_<NAME>__` | optional: `<assets>/<name lowercased, _ → ->.{webp,png,jpg}` as a data URI, e.g. `__IMG_SHOT_WS1__` → `shots/shot-ws1.png` |
 
 The template's own CSS reads **only** `theme-cnx.css` tokens (the names Vera AI and the Hub read), so a change to the
-palette is a change to `theme-cnx.css` and a rebuild, nothing else.
+palette or the type is a change to `theme-cnx.css` and a rebuild, nothing else. Families come from `--font-display`,
+`--font-num`, `--font-label`, `--font-sans`, `--font-hollow` and `--font-code`; weights and tracking from `--w-*` and
+`--track-*`.
 
 ## Files
 
@@ -43,6 +49,7 @@ palette is a change to `theme-cnx.css` and a rebuild, nothing else.
 | `kit/template.src.html` | The source page. Edit this. |
 | `kit/template.html` | The built page (fonts + tokens inlined). Generated; do not edit. |
 | `kit/scripts/build_page.py` | The build. Python 3 stdlib only. |
+| `kit/fonts/` | `Montserrat.woff2` (variable, Latin, from `@fontsource-variable/montserrat`), `Carlito-Regular.woff2` and `Carlito-Bold.woff2` (Latin, from `@fontsource/carlito`), and their SIL OFL 1.1 licences, plus `LICENSE-Michroma-OFL.txt` (the build inlines Michroma for the hollow numerals; its font file stays in the Hub repo). Montserrat and Carlito are the same files the Vera AI Pulse dashboard ships. Keep each licence beside its font. |
 | `../theme-cnx.css` | The token layer the build inlines. |
 
 ## Rules
@@ -56,6 +63,10 @@ palette is a change to `theme-cnx.css` and a rebuild, nothing else.
 - **Dashed = not yet, solid = done, glowing accent = in progress**, in chips, steppers and the gantt.
 - **Gantt:** bars use `grid-column: firstWeek / lastWeek+1` on a 12-week track; `--today` on `.gantt` is the
   as-of in weeks (4.5 = middle of week 5); keep the `sr-only` schedule in sync with the bars.
+- **Type through the tokens.** Titles, figures and labels use `--font-display` / `--font-num` / `--font-label`
+  (Montserrat). Reading text inherits `--font-sans` from `body`: give it `font-size` / `line-height` only, never the
+  `font` shorthand, which drops the `font-size-adjust` Calibri / Carlito need. Hollow numerals use `--font-hollow`
+  (Michroma) and nothing else does. `<code>` (system monospace) is for code only.
 - Keep the `.src.html` self-contained: no Google Fonts, no CDN, no frameworks.
 
 See [`../DESIGN.md`](../DESIGN.md) for tokens, contrast, components and the web-app adoption notes.
