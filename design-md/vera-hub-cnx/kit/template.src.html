@@ -4,13 +4,15 @@
   Vera Hub structure, Concentrix palette. Sample content is fictional: "Northwind Ops — rollout plan".
 
   Build:  python3 kit/scripts/build_page.py kit/template.src.html kit/template.html
-          inlines Montserrat + Carlito (kit/fonts) + Michroma (hollow numerals only) as woff2 and ../theme-cnx.css;
+          inlines Montserrat + Pulse Sans (Carlito, behind local Calibri) from kit/fonts + Michroma (hollow numerals
+          only) as woff2, and ../theme-cnx.css;
           the output makes no requests.
 
   Type (2026-10-21): Montserrat for the title, headings, numbers and labels (--font-display / -num / -label),
-  the Calibri stack for reading text (--font-sans, size-adjusted), Michroma ONLY for the hollow numerals
-  (--font-hollow). Reading text inherits its family from body: set font-size / line-height on it, never the
-  `font` shorthand (that would drop the size-adjust).
+  "Pulse Sans" for reading text (--font-sans: the machine's Calibri, else the inlined Carlito, one fixed
+  size-adjust on its @font-face), Michroma ONLY for the hollow numerals (--font-hollow). The scale lives on the
+  @font-face, so the `font` shorthand is fine; never write `font:` with !important (it resets the tabular figures),
+  and never use font-size-adjust (the build fails on both).
 
   Tokens come ONLY from ../theme-cnx.css, which the build inlines. This file adds layout and components and
   reads the token names Vera AI and the AutoAlchemy Hub read, so the same CSS works inside those apps.
@@ -45,14 +47,14 @@ __THEME_CNX_CSS__
 /* ---------- base ---------- */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;background-color:var(--bg-0);color:var(--text-1);font:400 15px/1.6 var(--font-sans);font-size-adjust:var(--fsa);-webkit-font-smoothing:antialiased}
+body{margin:0;min-height:100vh;background-color:var(--bg-0);color:var(--text-1);font:400 15px/1.6 var(--font-sans);-webkit-font-smoothing:antialiased}
 /* tabular figures everywhere: the `font` shorthand resets font-variant-numeric, so only !important on * reaches every rule */
 *,*::before,*::after{font-variant-numeric:tabular-nums!important}
 /* ambient canvas on its own fixed layer (background-attachment:fixed repaints on every scroll frame) */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--sh-canvas)}
 a{color:var(--accent-ink);text-underline-offset:3px;text-decoration-thickness:1px}
-b,strong{font-weight:700} /* Carlito ships 400 + 700 */
-code{font-family:var(--font-code);font-size:.9em;font-size-adjust:none} /* code only: flag ids, paths, DAX / SQL */
+b,strong{font-weight:700} /* Pulse Sans has 400 + 700 */
+code{font-family:var(--font-code);font-size:.9em} /* code only: flag ids, paths, DAX / SQL */
 .nw{white-space:nowrap}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

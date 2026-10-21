@@ -1,5 +1,21 @@
 # awesome-design-md — work log
 
+## 2026-10-21 — `vera-hub-cnx`: reading face aligned with Vera AI Pulse (Pulse Sans, no `font-size-adjust`)
+- Pulse PR #36 (merged `695db4b`) dropped `font-size-adjust: .53` in review: it scaled each font to a target x-height,
+  so Windows Calibri (.466) drew x1.137 against Carlito's x1.110, 2.5% larger on the machines most Concentrix users have.
+  The registry had the same mechanism (`--fsa`, `Calibri, "Carlito", ...`). Mirrored Pulse's fix.
+- `--font-sans` is now `"Pulse Sans", "Helvetica Neue", Helvetica, Arial, sans-serif`. Pulse Sans = two `@font-face`
+  rules: `local("Calibri")` (Bold: `local("Calibri Bold")`, `local("Calibri-Bold")`) then the Carlito file, fixed
+  `size-adjust` 111% / 109.5%, the numbers `font-size-adjust:.53` resolved to on Carlito (x1.110 / x1.093). Montserrat and
+  Michroma take none. `--fsa` removed. Same face name as Pulse so CSS copies either way.
+- `kit/scripts/build_page.py` emits those rules (base64 Carlito as the url() fallback) and now exits 1 on
+  `font-size-adjust` or `font: ... !important` (Pulse's `typography.spec.ts` rules). `theme-cnx.css` § 6, `DESIGN.md`
+  (new "The reading face: Pulse Sans" subsection, scale, pairing, do/don't), both READMEs, `kit/template.src.html` and
+  `kit/template.html`, `catalog.html`, `showcase.html` updated/rebuilt. Hub untouched (it keeps Vera Hub type).
+- Checked headless (Chrome, network off) at 1440 and 390, both themes: no sideways scroll, 0 requests, Carlito + Montserrat
+  + Michroma inlined and used, 0 elements with `font-size-adjust`, tabular "1111" = "0000"; old vs new layout: same
+  element count, max width delta 0.47 px, same set of overflowing elements. Not tested on a real Windows Calibri.
+
 ## 2026-10-15 — `vera-bold`: the OVAI campaign look as a registry entry + plan-page kit
 - Ferdz wanted the OVAI staff page (`/staff/scoring`, "How scoring works") as a reusable design for HTML plans.
   Named **Vera Bold** (not `vera-ovcc`: "OVCC" already names the Transmutation plan page and Vera Hub's

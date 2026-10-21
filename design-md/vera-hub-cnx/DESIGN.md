@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vera-hub-cnx-design-analysis
-description: "Vera Hub CNX is Vera Hub with Concentrix colours: the same premium console structure (28px shell frame on an ambient dual glow, raised cards on sunken wells, radius ladder 10/12/14/18/28/999, hairlines, one glowing accent) re-coloured from the vera-bold palette, set in Concentrix type since 2026-10-21: Montserrat for titles, headings, numbers (tabular) and labels, the Calibri stack (Carlito fallback) for reading text, Michroma kept only for the hollow outlined numerals. CNX Dark: night #060D18 canvas, #0D1829 cards, teal #25E2CC accent. CNX Light: #F2F5F8 canvas, white cards, navy #003D5B accent. Gold #FBCA18 is the single primary action per view (plus an optional headline KPI); one navy #003D5B panel per view carries the summary or decision. Status is green / orange / red with per-theme inks, all text pairs WCAG AA. Ships theme-cnx.css, a drop-in token layer (colour and font tokens) whose names map 1:1 onto Vera AI and AutoAlchemy Hub tokens, and a kit/ plan-page template that inlines Montserrat + Carlito (SIL OFL, kit/fonts) and Michroma. Worked example: the Cluster Cherry plan page, 2026-10-16."
+description: "Vera Hub CNX is Vera Hub with Concentrix colours: the same premium console structure (28px shell frame on an ambient dual glow, raised cards on sunken wells, radius ladder 10/12/14/18/28/999, hairlines, one glowing accent) re-coloured from the vera-bold palette, set in Concentrix type since 2026-10-21: Montserrat for titles, headings, numbers (tabular) and labels, Pulse Sans (the machine's own Calibri, else Carlito, at one fixed size-adjust) for reading text, Michroma kept only for the hollow outlined numerals. CNX Dark: night #060D18 canvas, #0D1829 cards, teal #25E2CC accent. CNX Light: #F2F5F8 canvas, white cards, navy #003D5B accent. Gold #FBCA18 is the single primary action per view (plus an optional headline KPI); one navy #003D5B panel per view carries the summary or decision. Status is green / orange / red with per-theme inks, all text pairs WCAG AA. Ships theme-cnx.css, a drop-in token layer (colour and font tokens) whose names map 1:1 onto Vera AI and AutoAlchemy Hub tokens, and a kit/ plan-page template that inlines Montserrat + Carlito as Pulse Sans (SIL OFL, kit/fonts) and Michroma. Worked example: the Cluster Cherry plan page, 2026-10-16."
 
 colors:
   # Brand (both themes)
@@ -78,7 +78,9 @@ colors:
 typography:
   # Revised 2026-10-21 (Concentrix asked for Montserrat / Helvetica / Calibri). Stacks, roles and rules: § Typography.
   # Montserrat = "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif (theme-cnx.css --font-display / -num / -label)
-  # Calibri    = Calibri, "Carlito", "Helvetica Neue", Helvetica, Arial, sans-serif, font-size-adjust .53 (--font-sans)
+  # Pulse Sans = "Pulse Sans", "Helvetica Neue", Helvetica, Arial, sans-serif (--font-sans). Pulse Sans is one @font-face
+  #              family: local Calibri, else Carlito, fixed size-adjust 111% / 109.5% (§ Typography). Same name Vera AI
+  #              Pulse uses. No font-size-adjust anywhere.
   # Michroma   = hollow outlined numerals only (--font-hollow, see below); ui-monospace = code only (--font-code, system)
   page-title:
     fontFamily: Montserrat
@@ -105,13 +107,13 @@ typography:
     lineHeight: 1.35
     letterSpacing: -0.015em
   body:
-    fontFamily: Calibri
+    fontFamily: Pulse Sans
     fontSize: 15px
     fontWeight: 400
     lineHeight: 1.60
     letterSpacing: 0
   body-sm:
-    fontFamily: Calibri
+    fontFamily: Pulse Sans
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.50
@@ -283,8 +285,10 @@ reskins without touching its CSS.
 
 **Typography revised 2026-10-21.** Concentrix stakeholders (a VP and team, on the Vera AI Pulse dashboard) found
 Vera Hub's faces "futuristic" and asked for Montserrat / Helvetica / Calibri. The owner chose: Montserrat for
-display, headings, KPI numbers and labels; the Calibri stack for reading text; Michroma kept only for the hollow
-outlined numerals; JetBrains Mono and Inter retired. § Typography has the details.
+display, headings, KPI numbers and labels; Pulse Sans (the machine's Calibri, else Carlito) for reading text; Michroma
+kept only for the hollow outlined numerals; JetBrains Mono and Inter retired. The reading face is scaled by a fixed
+`size-adjust` on its `@font-face`, not by `font-size-adjust` (changed after the Pulse PR #36 review). § Typography has
+the details.
 
 Two palettes: **CNX Dark** (`data-theme="cnx-dark"`, night canvas, teal accent) and **CNX Light**
 (`data-theme="cnx-light"`, white and paper, navy accent). The colours come from the
@@ -320,7 +324,7 @@ here (see the notes under Colors).
   themes and re-scopes its own ink, accent and status.
 - Status is green / orange / red with an ink per theme (a deliberate break from Vera Hub's "OK is the accent": a
   teal OK would merge with the teal accent, and a navy OK reads as plain ink in light).
-- **Type:** Montserrat (titles, headings, numbers, labels) + Calibri / Carlito (reading text); Michroma only in the
+- **Type:** Montserrat (titles, headings, numbers, labels) + Pulse Sans = Calibri, else Carlito (reading text); Michroma only in the
   hollow numerals. Not Vera Hub's Inter + JetBrains Mono + Michroma.
 - Radius ladder, elevation, type scale and motion: exactly Vera Hub's.
 
@@ -453,10 +457,16 @@ repaints the viewport on every scroll frame; Vera AI's skin learned this).
 **Typography revised 2026-10-21: why.** Concentrix stakeholders (a VP and team) disliked the "futuristic" faces on
 the Vera AI Pulse dashboard (Michroma titles, JetBrains Mono numbers and labels, Inter prose) and asked for
 Montserrat / Helvetica / Calibri. The owner chose option A: **Montserrat** for display, headings, KPI numbers and
-labels; the **Calibri** stack for reading text; **Michroma kept only for the hollow outlined numerals**, where it is a
-drawn shape rather than text. JetBrains Mono and Inter are retired. The entry carries the change so every new CNX page
-and app starts from it. The type *scale* and roles are still Vera Hub's
+labels; **Pulse Sans** (the machine's own Calibri, else Carlito) for reading text; **Michroma kept only for the hollow
+outlined numerals**, where it is a drawn shape rather than text. JetBrains Mono and Inter are retired. The entry
+carries the change so every new CNX page and app starts from it. The type *scale* and roles are still Vera Hub's
 ([table](../vera-hub/DESIGN.md#typography)); the faces, weights and tracking changed.
+
+**Reading-face mechanism revised 2026-10-21 (Vera AI Pulse PR #36 review, merged `695db4b`).** The first version scaled
+the sans with `font-size-adjust: .53` (`--fsa`). That is gone: it scaled each font to a target x-height, so Windows
+Calibri drew about 2.5% larger than the Carlito the layout was checked on. The reading face is now one family,
+**Pulse Sans**, with a fixed `size-adjust` on its `@font-face` (below). Pulse names it "Pulse Sans" too; this entry uses
+the same name so CSS copied either way is identical.
 
 ### Families (`theme-cnx.css` § 6)
 
@@ -465,13 +475,41 @@ and app starts from it. The type *scale* and roles are still Vera Hub's
 | `--font-display` | `"Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif` | page title, brand, section / card / build-card headings, the decision heading |
 | `--font-num` | `var(--font-display)`, **tabular figures** | every figure: KPI values, ring core, counts, stage stamps, scores, week labels, row ids |
 | `--font-label` | `var(--font-display)` | eyebrows, chips, tags, legends, table heads, segmented control, buttons, rail items, avatars |
-| `--font-sans` | `Calibri, "Carlito", "Helvetica Neue", Helvetica, Arial, sans-serif`, `font-size-adjust: var(--fsa)` (.53) | body, ledes, list and table text, banners, captions, metadata, source lines, footer |
+| `--font-sans` | `"Pulse Sans", "Helvetica Neue", Helvetica, Arial, sans-serif`. Pulse Sans = the machine's own Calibri, else Carlito, at one fixed `size-adjust` ([below](#the-reading-face-pulse-sans)) | body, ledes, list and table text, banners, captions, metadata, source lines, footer |
 | `--font-hollow` | `"Michroma", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif` | **only** the hollow numerals (`color: transparent; -webkit-text-stroke: 1px var(--num-stroke)`): section-head numerals, gate numbers, decision-card numbers |
 | `--font-code` | `ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace` | code only: flag ids, file paths, DAX / SQL. System faces, nothing bundled |
 
 Weight and tracking tokens sit beside them: `--w-display` 700, `--w-head` 700, `--w-num` 600, `--w-label` 600,
-`--track-display` −0.015em, `--track-label` 0.06em, `--track-num` 0, `--fsa` 0.53. They match the Vera AI Pulse
-dashboard's tokens of the same names.
+`--track-display` −0.015em, `--track-label` 0.06em, `--track-num` 0. The names are the Vera AI Pulse dashboard's (no
+`--fsa`: it is gone there too).
+
+### The reading face: Pulse Sans
+
+`--font-sans` names one family, **Pulse Sans**, declared by two `@font-face` rules (Regular, Bold). Each tries the
+machine's own Calibri through `local()` first, falls back to the self-hosted Carlito file, and carries a fixed
+`size-adjust`. The numbers are the ones Vera AI Pulse ships (`src/global.css`):
+
+| Face | `src` | Weight | `size-adjust` |
+|---|---|---|---|
+| Pulse Sans Regular | `local("Calibri")`, then `Carlito-Regular.woff2` | 400 | **111%** |
+| Pulse Sans Bold | `local("Calibri Bold")`, `local("Calibri-Bold")`, then `Carlito-Bold.woff2` | 700 | **109.5%** |
+| Montserrat | `Montserrat.woff2` | 100–900 | none |
+| Michroma | `Michroma.woff2` | 400 | none |
+
+**Why these numbers.** Calibri and Carlito have a small x-height next to Montserrat's 0.517: Carlito's is 0.4775
+(Regular) and 0.4849 (Bold) of the em, Calibri's 0.466. The kit and Pulse were drawn and overflow-checked with
+`font-size-adjust: .53`, which Chrome resolved to ×1.110 on Carlito Regular and ×1.093 on Carlito Bold; on Montserrat it
+resolved to ×0.985–1.009 (its x-height moves with weight), which is neutral, so Montserrat and Michroma take no
+`size-adjust`. The fixed values keep Carlito's checked layout identical, and the **same** number sits on the local
+Calibri face, so a word takes the same box whichever font loaded. Bold is 109.5% as Pulse ships it (measured ×1.093).
+
+**Why not `font-size-adjust`.** It equalises x-height per font, not width. Calibri and Carlito share advance widths, yet
+`.53` made Calibri ×1.137 and Carlito ×1.110: reading text came out 2.5% larger on Windows, where `local("Calibri")` wins
+and most Concentrix users are, than on the Mac everything had been checked on. A fixed `size-adjust` has no such drift.
+It also leaves a `font-size: 0` glyph at zero (Pulse's account-menu chevron regrew under `font-size-adjust`).
+
+**Not verified on a real Windows Calibri** by this entry or by Pulse: widths were checked on Carlito, whose metrics are
+Calibri's, but Calibri's letter shapes differ. Look at one page on a Concentrix laptop before relying on it.
 
 **Why a monospace survives at all.** JetBrains Mono was the number-and-label face; that job is Montserrat's now.
 Code still needs fixed width (identifiers, aligned DAX or SQL), so `--font-code` names the system monospace and
@@ -492,26 +530,28 @@ the two feature-flag ids).
 | Data figures: stamps, scores, counts, week labels | Montserrat, tabular | 9–12 | 500–600 | 0–0.02em |
 | Eyebrow, label, chip, table head, legend | Montserrat caps | 9.5–11.5 | 600 (section eyebrow 700) | 0.06em |
 | Button | Montserrat | 13 (gold 14) | 500; accent and gold 600 | 0 |
-| Body (lede 16) | Calibri stack | 15 / 1.6 | 400; bold 700 | 0 |
-| Body-sm, metadata, captions | Calibri stack | 12.5–13.5 / 1.45–1.55 | 400 | 0 |
+| Body (lede 16) | Pulse Sans | 15 / 1.6 | 400; bold 700 | 0 |
+| Body-sm, metadata, captions | Pulse Sans | 12.5–13.5 / 1.45–1.55 | 400 | 0 |
 | Hollow numeral | Michroma, outline only | 56 / 0.9 (40 under 768px); gates 26, decisions 28 | 400 | 0 |
 | Code | system monospace | 0.9em | 400 | 0 |
 
 ### Pairing rules
 
-- **Montserrat speaks, Calibri explains.** Titles, figures and labels are Montserrat; sentences are Calibri. A
+- **Montserrat speaks, Pulse Sans explains.** Titles, figures and labels are Montserrat; sentences are Calibri. A
   sentence never sits in Montserrat caps, and a KPI never sits in Calibri.
 - **Few weights.** Montserrat 700 for headings, 600 for figures and labels, 500 for buttons and small data.
-  Calibri / Carlito 400 and 700 only (Carlito ships those two; 500–600 on the sans resolve to Bold).
+  Pulse Sans has two weights, 400 and 700 (Carlito ships those two); 500 resolves to 400, and 600 and up to 700.
 - **Labels are caps at 0.06em.** Montserrat is wide, and the old mono tracking (about 0.15em) makes labels sprawl.
   Never track sentence case.
 - **Tabular figures on every number** (`font-variant-numeric: tabular-nums`): Montserrat's default digits are
   proportional, so a "1" is half the width of a "0" and columns drift. The `font` shorthand resets the property, so
-  the kit sets it with `!important` on `*`, as the Pulse dashboard does.
-- **Size-adjust the sans only.** Calibri's x-height is 0.466 of the em and Carlito's 0.478; `font-size-adjust: .53`
-  makes them read at the size the layout was drawn for, so 15px body reads like the old 15px Inter. Montserrat
-  (0.517) and Michroma (0.562) stay unadjusted. The `font` shorthand resets this too, so in the kit reading text
-  inherits its family from `body` and sets only `font-size` / `line-height`.
+  the kit sets it with `!important` on `*`, as the Pulse dashboard does (so no later rule may use `font:` with
+  `!important`, which would reset it again).
+- **Scale the sans on its `@font-face`, never with `font-size-adjust`.** Pulse Sans carries a fixed `size-adjust`
+  (Regular 111%, Bold 109.5%) on both its Calibri and Carlito sources; Montserrat and Michroma carry none. Because the
+  scale lives on the face, the `font` shorthand is safe for reading text. Never write `font:` with `!important`: it
+  resets the tabular figures. The kit build fails on `font-size-adjust` and on `font: … !important`, as Pulse's
+  `typography.spec.ts` does.
 - **Michroma only as an outline.** Never a filled Michroma glyph, never a word, never a heading.
 - **Family names only through the tokens.** No literal family names in component CSS; switching the type again is a
   change to `theme-cnx.css` § 6.
@@ -533,27 +573,30 @@ the two feature-flag ids).
 - **Montserrat** (one variable file, `wght` 100–900, Latin subset, from `@fontsource-variable/montserrat`) and
   **Carlito** (400 + 700, Latin, from `@fontsource/carlito`) are SIL OFL 1.1: they may be self-hosted, inlined as
   base64 and subset, as long as the licence travels with them. The files and licences are in `kit/fonts/`, byte for
-  byte the files the Vera AI Pulse dashboard ships (`src/assets/fonts`, branch `feat/pulse-fonts`).
+  byte the files the Vera AI Pulse dashboard ships on main (`src/assets/fonts`, PR #36).
 - **Michroma** (also SIL OFL) is loaded only by pages that show hollow numerals. The kit inlines the Hub's copy
   (`app/public/fonts/Michroma.woff2`); its licence text is `kit/fonts/LICENSE-Michroma-OFL.txt`.
 - **Calibri** (Microsoft) and **Helvetica / Helvetica Neue** (Monotype) are proprietary system fonts: they are named in
-  the stacks and **never bundled, inlined, subset or uploaded**. Calibri comes first so Windows / Office machines use
-  their own copy and never fetch Carlito; Mac, Android and Linux get Carlito, which is metric-compatible with
-  Calibri, so line breaks match. Helvetica Neue / Helvetica / Arial close every stack for the glyphs the subsets lack.
+  the stacks (Helvetica) or reached through `local()` (Calibri) and **never bundled, inlined, subset or uploaded**.
+  `local("Calibri")` is tried first so Windows / Office machines use their own copy and never fetch Carlito; Mac,
+  Android and Linux get Carlito, which is metric-compatible with Calibri, so line breaks match. Helvetica Neue /
+  Helvetica / Arial close every stack for the glyphs the subsets lack.
 - Never Google Fonts or a CDN: embedded hosts block them and pages must work offline.
 
 ```css
 /* app: self-host next to the CSS (the kit inlines the same files as data: URIs) */
 @font-face { font-family: "Montserrat"; src: url("./fonts/Montserrat.woff2") format("woff2");
              font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Carlito"; src: url("./fonts/Carlito-Regular.woff2") format("woff2");
-             font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Carlito"; src: url("./fonts/Carlito-Bold.woff2") format("woff2");
-             font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Pulse Sans";      /* the machine's Calibri, else Carlito; one fixed scale */
+             src: local("Calibri"), url("./fonts/Carlito-Regular.woff2") format("woff2");
+             font-weight: 400; font-style: normal; font-display: swap; size-adjust: 111%; }
+@font-face { font-family: "Pulse Sans";
+             src: local("Calibri Bold"), local("Calibri-Bold"), url("./fonts/Carlito-Bold.woff2") format("woff2");
+             font-weight: 700; font-style: normal; font-display: swap; size-adjust: 109.5%; }
 @font-face { font-family: "Michroma"; src: url("./fonts/Michroma.woff2") format("woff2");   /* hollow numerals only */
              font-weight: 400; font-style: normal; font-display: swap; }
 
-body { font-family: var(--font-sans); font-size-adjust: var(--fsa); }
+body { font-family: var(--font-sans); }              /* no font-size-adjust: the scale is on the @font-face */
 *, *::before, *::after { font-variant-numeric: tabular-nums !important; }
 .section-num { font: 400 56px/.9 var(--font-hollow); color: transparent; -webkit-text-stroke: 1px var(--num-stroke); }
 ```
@@ -646,8 +689,9 @@ import "./theme-cnx.css";            // copy of design-md/vera-hub-cnx/theme-cnx
 
 // app/layout.tsx  (new app: route B)
 import "./theme-cnx.css";
-<html data-theme="cnx-dark" ...>     // self-host Montserrat (variable) + Carlito 400/700, and Michroma only if the
-                                     // app shows hollow numerals (kit/fonts, next/font/local); § Typography
+<html data-theme="cnx-dark" ...>     // self-host Montserrat (variable) + Pulse Sans (Carlito 400/700 behind local Calibri),
+                                     // and Michroma only if the app shows hollow numerals (kit/fonts); the @font-face
+                                     // block is in § Typography
 ```
 
 The navy panel is `<section data-surface="navy" style={{ background: "var(--sh-navy)" }}>` (or a class that
@@ -673,7 +717,7 @@ paints `--sh-navy`); the scope applies only while the palette is on.
 | `--glass --glass-line --sig-grid-line --sig-shell-glass` | `--sig-glass --sig-glass-line` + same | `--glass --glass-line --ft-grid-line --ft-shell-glass` |
 | `--grad-1/2/3 --num-stroke` | same; `--grad` | — |
 | `--sh-navy --sh-gold --gold --on-gold` | new | `--sh-sel --ft-panel --ft-on-panel*`; `--ft-btn-cta-bg/fg` (new, opt-in) |
-| `--font-display --font-num --font-label --font-sans --font-hollow --font-code`, `--w-* --track-* --fsa` | not reached by the overlay: type comes from `next/font/local` + `@theme inline` (checklist). The Pulse dashboard uses these same names | `--ft-display --ft-grot --ft-mono` (§ 6 aliases; `--ft-mono` becomes the label face) |
+| `--font-display --font-num --font-label --font-sans --font-hollow --font-code`, `--w-* --track-*` | not reached by the overlay: type comes from `next/font/local` + `@theme inline` (checklist). The Pulse dashboard uses these same names | `--ft-display --ft-grot --ft-mono` (§ 6 aliases; `--ft-mono` becomes the label face) |
 
 Aliases are declared on `:root` **and** on every navy scope: a custom property resolves where it is declared, so an
 alias set only on `<html>` would carry the page's accent into the navy panel.
@@ -702,9 +746,10 @@ either app; check these when adopting:
 - [ ] **Type, Vera AI.** `app/globals.css` registers `--font-sans: var(--font-inter)` and
       `--font-mono: var(--font-jetbrains-mono)` in `@theme inline`, so Tailwind utilities read the `next/font`
       variables directly and the overlay's `--font-*` tokens never reach them. Swap the `localFont` imports in
-      `app/layout.tsx` (Montserrat, Carlito, Michroma for hollow numerals), point `@theme`'s `--font-sans` at the
-      Calibri stack, move number and label classes off `font-mono` to `--font-num` / `--font-label`, and keep a
-      monospace only where code is shown.
+      `app/layout.tsx` (Montserrat, Michroma for hollow numerals), declare Pulse Sans with the `@font-face` block in
+      § Typography (it needs `local("Calibri")` and `size-adjust`), point `@theme`'s `--font-sans` at the Pulse Sans
+      stack, move number and label classes off `font-mono` to `--font-num` / `--font-label`, and keep a monospace
+      only where code is shown.
 - [x] **Type, Hub: not applied (owner decision 2026-10-21).** The AutoAlchemy Hub keeps Vera Hub type (its own
       `--ft-display` / `--ft-grot` / `--ft-mono` and font subsets) with the CNX palette; the overlay does not re-point the
       Hub's families. The CNX typography is for Vera AI Pulse and new CNX pages built from this kit.
@@ -717,8 +762,8 @@ For stand-alone HTML (plan pages, briefs, status pages, review pages in this pal
 [`kit/`](./kit/README.md): `kit/template.src.html` is a complete plan page with neutral sample content
 ("Northwind Ops — rollout plan") in the section types the reference used (header with rail and ring core, KPI well,
 numbered list, build cards with stepper / rubric bars / screenshot, gantt, filterable matrix table, gates, navy
-decision panel with the one gold action). `kit/scripts/build_page.py` inlines Montserrat + Carlito (`kit/fonts/`,
-with their OFL licences) and Michroma (hollow numerals only) as woff2, and `theme-cnx.css`, so the output is one
+decision panel with the one gold action). `kit/scripts/build_page.py` inlines Montserrat + Pulse Sans (Carlito, behind
+local Calibri; `kit/fonts/`, with their OFL licences) and Michroma (hollow numerals only) as woff2, and `theme-cnx.css`, so the output is one
 offline file that makes no request. The kit's own CSS reads only `theme-cnx.css` tokens, so it is also a live test of the
 token layer.
 
@@ -726,8 +771,8 @@ token layer.
 
 **Do**
 - Keep everything structural exactly Vera Hub: radius ladder, raised-on-sunken, hairlines, type roles, motion.
-- Set every family through the `--font-*` tokens: Montserrat for titles, figures and labels, Calibri for sentences,
-  tabular figures on every number, `font-size-adjust` on the sans.
+- Set every family through the `--font-*` tokens: Montserrat for titles, figures and labels, Pulse Sans for sentences,
+  tabular figures on every number, the scale as `size-adjust` on the Pulse Sans `@font-face`.
 - Spend gold once per view; make it the action the page exists for.
 - Put the summary or decision in the one navy panel, with `data-surface="navy"` so its contents re-scope.
 - Use teal as the accent in dark and navy in light; let `--accent-ink` pick.
@@ -741,6 +786,8 @@ token layer.
 - No Inter, no JetBrains Mono, no techno or "futuristic" display faces. Michroma appears only as the hollow outline
   numeral; no monospace for numbers or labels.
 - Never bundle, inline or subset Calibri or Helvetica (proprietary); never load fonts from Google Fonts or a CDN.
+- No `font-size-adjust` (it makes Windows Calibri and Mac Carlito differ by 2.5%), no `--fsa`, and no `font:` shorthand
+  with `!important` (it resets the tabular figures). No `size-adjust` on Montserrat.
 - No square cards or hard offset shadows (Futura / AutoAlchemy).
 - No zebra striping, no generic spinners or shimmer.
 - Don't set `data-theme="cnx-*"` inside Vera AI (legacy-id rewrite); use the `data-palette="cnx"` overlay.

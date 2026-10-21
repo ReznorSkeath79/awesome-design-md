@@ -5,21 +5,25 @@ Usage:
     python3 kit/scripts/build_page.py kit/template.src.html kit/template.html [assets_dir]
 
 Replaces, in one pass:
-    __FONTS_CSS__        @font-face rules, woff2 inlined as base64: Montserrat (variable 100-900), Carlito 400 + 700
-                         and Michroma 400 (hollow numerals only)
+    __FONTS_CSS__        @font-face rules, woff2 inlined as base64: Montserrat (variable 100-900), "Pulse Sans" 400 +
+                         700 (local Calibri first, else the inlined Carlito, one fixed size-adjust per weight, the
+                         same as Vera AI Pulse) and Michroma 400 (hollow numerals only)
     __THEME_CNX_CSS__    the entry's token layer, ../../theme-cnx.css (relative to this script)
     __FONT_SOURCE__      where the fonts came from (for the page footer)
     __IMG_<NAME>__       optional: <assets_dir>/<name lowercased, _ -> ->.{webp,png,jpg,jpeg} as a data URI
 
-Montserrat and Carlito come from kit/fonts/ (SIL OFL 1.1, licences beside them; the same files as the Vera AI Pulse
-app). Michroma comes from the AutoAlchemy Hub's origin/main (app/public/fonts/Michroma.woff2, read with `git show`,
+Montserrat and Carlito come from kit/fonts/ (SIL OFL 1.1, licences beside them; byte for byte the files the Vera AI
+Pulse app ships). Michroma comes from the AutoAlchemy Hub's origin/main (app/public/fonts/Michroma.woff2, read with `git show`,
 so the working tree may be on any branch), else from the AI Navigator repo's app/fonts. Override with the
 environment variables VHC_KIT_FONTS (Montserrat + Carlito folder), VHC_HUB_REPO and VHC_FONT_DIR (Michroma).
-Calibri and Helvetica are proprietary system fonts: the stacks name them, the build never bundles them.
+Calibri and Helvetica are proprietary system fonts: Calibri is reached through local() only, Helvetica through the
+stacks only, and the build never bundles either.
 
-Exits 1 if the template, the token layer or a font is missing or not woff2, if a placeholder is left unresolved, or
-if the output would make any request: network URLs, @import, or a url() / src= that is not a data: URI or a
-#fragment (CSS and HTML comments are ignored). Prints the output size in KB. Python 3 standard library only.
+Exits 1 if the template, the token layer or a font is missing or not woff2, if a placeholder is left unresolved, if
+the output would make any request (network URLs, @import, or a url() / src= that is not a data: URI or a #fragment),
+or if it uses font-size-adjust or a `font:` shorthand with !important (the first rescales each face to a target
+x-height, so Windows Calibri and Mac Carlito end up 2.5% apart; the second resets the tabular figures). CSS and HTML
+comments are ignored. Prints the output size in KB. Python 3 standard library only.
 """
 import base64
 import os
@@ -35,11 +39,17 @@ KIT_FONTS = Path(os.environ.get("VHC_KIT_FONTS", HERE.parent / "fonts"))
 HUB = Path(os.environ.get("VHC_HUB_REPO", Path.home() / "Work/Concentrix/autoalchmey_tracker"))
 FONT_DIR = Path(os.environ.get("VHC_FONT_DIR", Path.home() / "Work/AINavigatorProject/ai-navigator/app/fonts"))
 
-# (CSS family, file, weight, where it comes from)
-FACES = (("Montserrat", "Montserrat.woff2", "100 900", "kit"),
-         ("Carlito", "Carlito-Regular.woff2", "400", "kit"),
-         ("Carlito", "Carlito-Bold.woff2", "700", "kit"),
-         ("Michroma", "Michroma.woff2", "400", "hub"))
+# (CSS family, file, weight, where it comes from, local() names tried before the file, size-adjust)
+# "Pulse Sans" is the reading face, exactly as Vera AI Pulse (src/global.css) declares it: the machine's own Calibri
+# first, else Carlito, one fixed size-adjust per weight. Calibri and Carlito share advance widths, so the same number
+# on both keeps every device's layout identical. 111% / 109.5% are what font-size-adjust:.53 resolved to on Carlito
+# Regular / Bold (x1.110 / x1.093), so the layout the kit was drawn with carries over. Montserrat resolved to
+# x0.985-1.009 (neutral) and Michroma is a drawn outline, so neither takes a size-adjust.
+FACES = (("Montserrat", "Montserrat.woff2", "100 900", "kit", (), None),
+         ("Pulse Sans", "Carlito-Regular.woff2", "400", "kit", ("Calibri",), "111%"),
+         ("Pulse Sans", "Carlito-Bold.woff2", "700", "kit", ("Calibri Bold", "Calibri-Bold"), "109.5%"),
+         ("Michroma", "Michroma.woff2", "400", "hub", (), None))
+FOOTER_NAME = {"Pulse Sans": "Pulse Sans (Carlito)"}    # what the page footer calls a family
 IMG_MIME = {".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
 PLACEHOLDER = re.compile(r"__([A-Z0-9_]+)__")
 COMMENTS = re.compile(r"<!--.*?-->|/\*.*?\*/", re.S)
@@ -48,6 +58,9 @@ EXTERNAL = (re.compile(r"""(?:src|href)\s*=\s*["'](?:https?:)?//""", re.I),
             re.compile(r"@import\b", re.I),
             re.compile(r"""url\(\s*(?!['"]?(?:data:|#))""", re.I),             # relative url(): a file request
             re.compile(r"""\ssrc\s*=\s*["'](?!data:)""", re.I))                # relative src=: a file request
+# type rules the page must not break (the same two Vera AI Pulse's typography.spec.ts enforces)
+BANNED = ((re.compile(r"font-size-adjust\s*:", re.I), "font-size-adjust (scale the face with size-adjust on its @font-face)"),
+          (re.compile(r"(?<![\w-])font\s*:[^;{}]*!important", re.I), "a `font:` shorthand with !important (it resets tabular figures)"))
 
 
 def tilde(path):
@@ -88,14 +101,15 @@ def hub_font(name):
 
 def fonts_css():
     rules, sources = [], {}
-    for family, name, weight, where in FACES:
+    for family, name, weight, where, locals_, size_adjust in FACES:
         raw, src = kit_font(name) if where == "kit" else hub_font(name)
         sources.setdefault(src, [])
-        if family not in sources[src]:
-            sources[src].append(family)
-        rules.append("@font-face{font-family:'%s';src:url(data:font/woff2;base64,%s) format('woff2');"
-                     "font-weight:%s;font-style:normal;font-display:swap}"
-                     % (family, base64.b64encode(raw).decode("ascii"), weight))
+        if FOOTER_NAME.get(family, family) not in sources[src]:
+            sources[src].append(FOOTER_NAME.get(family, family))
+        srcs = ["local('%s')" % n for n in locals_]
+        srcs.append("url(data:font/woff2;base64,%s) format('woff2')" % base64.b64encode(raw).decode("ascii"))
+        rules.append("@font-face{font-family:'%s';src:%s;font-weight:%s;font-style:normal;font-display:swap%s}"
+                     % (family, ",".join(srcs), weight, ";size-adjust:%s" % size_adjust if size_adjust else ""))
     label = " · ".join("%s: %s" % (" + ".join(fams), src) for src, fams in sources.items())
     return "\n".join(rules), label
 
@@ -154,6 +168,11 @@ def main(argv):
     hits = sum(len(rx.findall(live)) for rx in EXTERNAL)
     if hits:
         print("error: %d external or relative reference(s) in the output; the page must be self-contained" % hits)
+        return 1
+
+    banned = [why for rx, why in BANNED if rx.search(live)]
+    if banned:
+        print("error: the output uses %s" % "; ".join(banned))
         return 1
 
     out.parent.mkdir(parents=True, exist_ok=True)

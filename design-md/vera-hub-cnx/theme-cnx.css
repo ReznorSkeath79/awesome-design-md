@@ -437,13 +437,16 @@
 
 /* ───────────────────────────────────────────────────────────────────────────
    6 · TYPE — both themes (revised 2026-10-21: Concentrix asked for Montserrat /
-   Helvetica / Calibri over the "futuristic" Michroma + JetBrains Mono + Inter)
+   Helvetica / Calibri over the "futuristic" Michroma + JetBrains Mono + Inter;
+   the reading face was then aligned with Vera AI Pulse, PR #36)
 
    Roles (DESIGN.md § Typography has the scale):
      --font-display  titles, headings, the brand, the decision heading
      --font-num      every figure: KPI values, counts, stamps, scores (tabular)
      --font-label    eyebrows, chips, tags, buttons, table heads, nav
-     --font-sans     reading text: body, table cells, captions, source lines
+     --font-sans     reading text: body, table cells, captions, source lines.
+                     "Pulse Sans" = the machine's own Calibri, else Carlito
+                     (the name Vera AI Pulse uses; @font-face rules below)
      --font-hollow   ONLY the hollow outlined numerals (color: transparent +
                      -webkit-text-stroke): section-head numerals, gate and
                      decision-card numbers. Never for text that must be read.
@@ -451,31 +454,51 @@
                      nothing bundled. JetBrains Mono is retired.
 
    Fonts are NOT loaded here (a url() in a token file breaks inlined builds).
-   Self-host them next to the app, SIL OFL 1.1, licences in kit/fonts/:
-     @font-face  Montserrat  kit/fonts/Montserrat.woff2       weight 100 900 (variable, Latin)
-     @font-face  Carlito     kit/fonts/Carlito-Regular.woff2  weight 400
-     @font-face  Carlito     kit/fonts/Carlito-Bold.woff2     weight 700
-     @font-face  Michroma    Michroma.woff2 (Hub app/public/fonts) weight 400, only if
-                             the page has hollow numerals
+   Self-host them next to the app, SIL OFL 1.1, licences in kit/fonts/. These
+   are the exact rules Pulse ships (src/global.css) and the kit inlines:
+     @font-face  Montserrat  kit/fonts/Montserrat.woff2   weight 100 900 (variable, Latin)
+                             NO size-adjust
+     @font-face  Pulse Sans  src: local("Calibri"),
+                                  url(kit/fonts/Carlito-Regular.woff2)
+                             weight 400   size-adjust: 111%
+     @font-face  Pulse Sans  src: local("Calibri Bold"), local("Calibri-Bold"),
+                                  url(kit/fonts/Carlito-Bold.woff2)
+                             weight 700   size-adjust: 109.5%
+     @font-face  Michroma    Michroma.woff2 (Hub app/public/fonts) weight 400,
+                             only if the page has hollow numerals; NO size-adjust
    all with font-style: normal; font-display: swap. Calibri and Helvetica are
-   proprietary system fonts: named in the stacks, never bundled. Calibri comes
-   first so Windows / Office machines never download Carlito (its metric-
-   compatible OFL stand-in); Mac, Android and Linux get Carlito; Helvetica
-   Neue / Helvetica / Arial catch the glyphs the Latin subsets lack (arrows, ₱, ✓).
+   proprietary system fonts and are NEVER bundled: Calibri is reached through
+   local() only, Helvetica through the stacks only. Calibri comes first so
+   Windows / Office machines never download Carlito (its metric-compatible OFL
+   stand-in); Mac, Android and Linux get Carlito. Helvetica Neue / Helvetica /
+   Arial close every stack for the glyphs the Latin subsets lack (arrows, ₱, ✓).
+
+   Why a fixed size-adjust, and why these numbers: Calibri and Carlito share
+   advance widths, but both have a small x-height next to Montserrat's .517, so
+   the sans needs scaling up. The layout was drawn and checked with
+   font-size-adjust:.53, which Chrome resolved to x1.110 on Carlito Regular
+   (x-height .4775) and x1.093 on Carlito Bold (.4849). Those measured
+   numbers, as Pulse ships them (Regular 111%, Bold 109.5%), are the size-adjust
+   values above, so Carlito's layout is unchanged. The SAME number goes on the
+   local Calibri face, so a word takes the same box whichever font loaded.
+   font-size-adjust is NOT used: it scales each font to a target x-height, so
+   Calibri (.466) landed at x1.137 and Carlito at x1.110, 2.5% apart, with
+   Windows (the machine most Concentrix users have) the larger one. Montserrat
+   resolved to x0.985-1.009 (its x-height moves with weight), i.e. neutral, so
+   it takes no size-adjust.
 
    Two rules the tokens cannot carry, so the page layer applies them:
      · tabular figures on every --font-num use (Montserrat's default digits are
-       proportional): font-variant-numeric: tabular-nums. The `font` shorthand
-       resets it, so the kit sets it with !important on *.
-     · font-size-adjust: var(--fsa) wherever --font-sans is set (Calibri's
-       x-height is .466, Carlito's .478; .53 makes them read at the size the
-       layout was drawn for). Only on the sans: Montserrat (.517) and Michroma
-       (.562) stay unadjusted. The `font` shorthand resets it too.
+       proportional): *,*::before,*::after{font-variant-numeric:tabular-nums!important}.
+       The `font` shorthand resets font-variant-numeric on the element it
+       styles, so !important on * is the only rule that reaches every use.
+     · never write a `font:` shorthand with !important (it would reset the
+       rule above), and never use font-size-adjust anywhere.
    ─────────────────────────────────────────────────────────────────────────── */
 :root[data-theme^="cnx-"],
 :root[data-palette="cnx"][data-theme] {
   --font-display: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-sans:    Calibri, "Carlito", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans:    "Pulse Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;   /* Calibri, else Carlito; § 6 above */
   --font-num:     var(--font-display);
   --font-label:   var(--font-display);
   --font-hollow:  "Michroma", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -488,7 +511,6 @@
   --track-display: -0.015em;
   --track-label:   0.06em;   /* capital labels (the retired mono labels ran ~.15em) */
   --track-num:     0;
-  --fsa: 0.53;               /* font-size-adjust for --font-sans only */
 
   /* The AutoAlchemy Hub's own families (--ft-display / --ft-grot / --ft-mono) are deliberately NOT re-pointed:
      the Hub keeps Vera Hub type (owner, 2026-10-21) — this typography is for Vera AI Pulse and new CNX pages. */
