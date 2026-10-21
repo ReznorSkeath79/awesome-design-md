@@ -705,10 +705,9 @@ either app; check these when adopting:
       `app/layout.tsx` (Montserrat, Carlito, Michroma for hollow numerals), point `@theme`'s `--font-sans` at the
       Calibri stack, move number and label classes off `font-mono` to `--font-num` / `--font-label`, and keep a
       monospace only where code is shown.
-- [ ] **Type, Hub.** The overlay re-points `--ft-display` (Montserrat), `--ft-grot` (Calibri stack) and `--ft-mono`
-      (Montserrat, the label face). Headings set in `--ft-grot` turn Calibri (move them to `--ft-display`), hollow
-      numerals set in `--ft-display` turn Montserrat (move them to `--font-hollow`), and code set in `--ft-mono` turns
-      Montserrat (move it to `--font-code`). Add Montserrat and Carlito to `app/public/fonts` beside the current subsets.
+- [x] **Type, Hub: not applied (owner decision 2026-10-21).** The AutoAlchemy Hub keeps Vera Hub type (its own
+      `--ft-display` / `--ft-grot` / `--ft-mono` and font subsets) with the CNX palette; the overlay does not re-point the
+      Hub's families. The CNX typography is for Vera AI Pulse and new CNX pages built from this kit.
 - [ ] **Glyphs:** the Montserrat and Carlito Latin subsets have no `₱`, arrows or `✓`; they fall to Helvetica /
       Arial / the system font (§ Typography). The Hub's own subsets carry them; Montserrat's do not.
 
