@@ -2374,6 +2374,10 @@ body { overflow: hidden; }
     setAssist(app.getAttribute('data-assist') === 'off');
   });
   $('#assistClose').addEventListener('click', function () { setAssist(false); });
+  /* The assistant starts closed below 1200px; crossing the breakpoint resets it to that width's default. */
+  var assistDefault = window.matchMedia('(max-width: 1199px)');
+  setAssist(!assistDefault.matches);
+  assistDefault.addEventListener('change', function (event) { setAssist(!event.matches); });
 
   /* -- Profile menu ------------------------------------------------------ */
   function setProfileMenu(open) {
