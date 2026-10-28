@@ -1,300 +1,187 @@
 ---
-version: alpha
+version: beta
 name: Vera-zep-new
-description: "Vera Zep New is a quiet, native-feeling web-app system distilled from the Zephium browser's chrome (ReznorSkeath79/Zephium, frame/src/styles @ 175300d8, 2026-10-28). Graphite tonal ladder with no accent hue by default: luminance carries every state and the 'on' thing is simply the brightest thing in the frame (the lit rung). Optional one-attribute tint (sky, sage, rose, amber, teal, lavender, orchid). The app is a chrome frame (sidebar + assistant column on the window ground) holding one solid page sheet inset 8px with a 12px corner. Fill, not outline: controls are translucent fills with one top-edge 'shine' line, elevation only on what genuinely floats, one blur (menus/launcher). Role-named radii (row 12, control 10/14, card 18, panel 22). System font stack, 13px body. Motion named by purpose (70/120/200/300/400ms) with sampled-spring linear() curves, transform + opacity only, reduced motion respected. Drop-in stylesheet: theme.css."
+description: "Vera Zep New is the Zephium browser's own design system, lifted out for web apps (ReznorSkeath79/Zephium, frame/ @ 175300d8, 2026-10-28). Not a reinterpretation: theme.css is generated from Zephium's real token, axis and component CSS by build-theme.py; reference.html is a static render of the real Shell.svelte sidebar and New Tab captured from Zephium's own component-test harness; mockup.html makes that render clickable. The look, in the light theme the live app runs: a grey Liquid-Glass window ground (#878787 as seen live) with white-at-30% 'lifts' for every plate on it (Browse/Work switch, address pill, current tab row, dock tiles), a solid page sheet inset 8px with a 12px corner, 13px system type, favicon plates, and the New Tab: a baked day sky that dissolves into dots, the ZEPHIUM wordmark, time · date, a search field hanging from the top edge in a notch, and three stat chips at the foot. Graphite tonal ladder, no accent hue by default, role-named radii, motion named by purpose with sampled-spring linear() curves."
 
 colors:
-  # Dark (base)
-  canvas: "#1A1A1D"
-  chrome: "#1F1F22"
-  page: "#1A1A1D"
-  surface: "#26262A"
-  raised: "#2C2C30"
-  float: "#3D3D44"
-  text: "#F4F4F6"
-  label-secondary: "#D8D8DB"
-  muted: "rgba(244,244,246,.68)"
-  faint: "rgba(244,244,246,.44)"
-  fill: "rgba(255,255,255,.05)"
-  fill-hover: "rgba(255,255,255,.08)"
-  row-active: "rgba(255,255,255,.075)"
-  border: "rgba(255,255,255,.07)"
-  border-strong: "rgba(255,255,255,.13)"
-  lit: "#EDEDF0"
-  on-lit: "#161619"
-  danger: "#EF8A8E"
-  success: "#7FCAA1"
-  warning: "#DCB977"
-  info: "#8FBCF7"
-  # Light
-  light-canvas: "#F1F1F3"
-  light-chrome: "#E6E6E9"
-  light-page: "#F1F1F3"
-  light-surface: "#FFFFFF"
-  light-float: "#FFFFFF"
-  light-text: "#1C1C1F"
-  light-label-secondary: "#55555C"
-  light-muted: "rgba(28,28,31,.62)"
-  light-lit: "#222226"
-  light-on-lit: "#FFFFFF"
-  light-danger: "#C0474F"
-  light-success: "#2F7F5A"
-  # Tints (dark / light)
-  tint-sky: "#7FB3F5 / #3B82E6"
-  tint-sage: "#86C9A4 / #2F8A5E"
-  tint-rose: "#EE8F95 / #D2545E"
-  tint-amber: "#E9B872 / #A5680F"
-  tint-teal: "#6FC6C1 / #188A84"
-  tint-lavender: "#B3A4F2 / #6E5BD6"
-  tint-orchid: "#DC9AD8 / #B14FA9"
-  # Chart ladder (dark) — fixed order, never cycled
-  chart: "#6193DB #B37046 #2DA58F #A47D00 #B77094 #679936 #7E68AB #C6685B"
+  window-ground: "#878787"       # live Liquid Glass over the desktop (sampled); var(--vzn-window-ground)
+  lift: "rgba(255,255,255,.30)"  # every plate on the glass: switch track, address, current tab, dock tile
+  lift-pressed: "rgba(255,255,255,.40)"
+  segment-thumb: "rgba(255,255,255,.42)"
+  page: "#F1F1F3"                # light --color-page; a live site paints its own (usually white)
+  surface: "#FFFFFF"
+  chrome-light: "#E6E6E9"        # opaque fallback when there is no material
+  text: "#1C1C1F"
+  label-secondary: "#55555C"
+  muted: "rgba(28,28,31,.62)"
+  faint: "rgba(28,28,31,.42)"
+  lit: "#222226"                 # the 'on' rung in light: primary button, on switch, checked box
+  danger: "#C0474F"
+  success: "#2F7F5A"
+  sky-paper-day: "#F7F7F8"       # what the New Tab sky dissolves into
+  dark-canvas: "#1A1A1D"         # dark theme: canvas/page; chrome #1F1F22; surface #26262A; float #3D3D44
 
 typography:
-  display:      { fontFamily: system-ui, fontSize: 36px, fontWeight: 300, lineHeight: 1.1, letterSpacing: -0.02em }
-  headline:     { fontFamily: system-ui, fontSize: 26px, fontWeight: 600, lineHeight: 1.2, letterSpacing: -0.02em }
-  title:        { fontFamily: system-ui, fontSize: 22px, fontWeight: 600, lineHeight: 1.25, letterSpacing: -0.01em }
-  object-title: { fontFamily: system-ui, fontSize: 18px, fontWeight: 600, lineHeight: 1.3 }
-  reading:      { fontFamily: system-ui, fontSize: 15px, fontWeight: 400, lineHeight: 1.6 }
-  page-title:   { fontFamily: system-ui, fontSize: 14px, fontWeight: 600, lineHeight: 1.35 }
-  body:         { fontFamily: system-ui, fontSize: 13px, fontWeight: 400, lineHeight: 1.4 }
-  row:          { fontFamily: system-ui, fontSize: 13px, fontWeight: 500, currentWeight: 550 }
-  label:        { fontFamily: system-ui, fontSize: 12px, fontWeight: 500 }
-  caption:      { fontFamily: system-ui, fontSize: 11px, fontWeight: 600 }
-  code:         { fontFamily: ui-monospace, fontSize: 12px, fontWeight: 400 }
+  family: "-apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI Variable Text', 'Segoe UI', sans-serif"
+  caption: 11px
+  label: 12px
+  body: 13px
+  address: 13.5px
+  page-title: 14px
+  reading: 15px
+  title: 22px
+  headline: 26px
+  display: 36px
+  sidebar-row: "13px / 500, current 550"
 
 rounded:
-  swatch: 3px
   inset: 8px
-  row: 12px
+  row: 12px          # tab rows, address field
   control-compact: 10px
   control: 14px
   control-large: 18px
   card: 18px
-  panel: 22px
-  content: 12px
+  panel: 22px        # menus, popovers
+  content: 12px      # the page sheet
   capsule: 999px
 
 spacing:
-  rhythm: "8px, 4px subdivisions"
-  frame-gap: 8px
-  control: "24 compact · 30 regular · 34 large · 40 xl"
+  window-padding: 8px
+  sidebar: 240px (resizable)
+  titlebar: 32px
+  address-field: 34px tall
   row-sidebar: 36px
-  row-page: 58px
+  dock-tile: 44px
   menu-row: 34px
-  sidebar: "264px (rail 52px)"
-  assist: 336px
 
-components:
-  - vz-app / vz-sidebar / vz-page / vz-assist
-  - vz-row + vz-plate (gliding selection)
-  - vz-btn (secondary · primary · ghost · danger; compact · regular · large; aria-busy)
-  - vz-icon-btn
-  - vz-field (regular · page 48px)
-  - vz-segment + vz-segment-thumb
-  - vz-switch · vz-check
-  - vz-card · vz-group / vz-group-row · KPI
-  - vz-badge · vz-tag (soft colours) · kbd · vz-avatar · vz-orb
-  - vz-menu / vz-menu-item / vz-menu-sep · vz-launcher
-  - vz-toast · vz-dots · vz-skeleton
-  - vz-arrive · vz-cascade
+files:
+  theme.css: "generated — tokens, axes, base chrome CSS, shared/ui materials, component styles (unscoped)"
+  utilities.css: "captured — Tailwind preflight + the utilities the chrome markup uses"
+  reference.html: "captured — exact static render (sidebar + New Tab); the visual truth"
+  mockup.html: "reference.html + a small script: clickable tabs, Browse/Work switch, live clock, a sample app page"
+  build-theme.py: "regenerates theme.css from a Zephium checkout"
 ---
 
 # Vera Zep New
 
-## Overview
+## What this is
 
-A web-app system that feels like a well-made native app rather than a website. Source: the Zephium
-browser's chrome, whose design rules are stated at length in its own stylesheets
-(`frame/src/styles/tokens.css`, `docs/design/system.md`, `docs/design/interface.md`). This entry
-keeps the rules and the numbers and drops what only a browser needs (native window materials,
-traffic-light insets, WebView boundaries).
+Zephium's interface, taken from Zephium's source rather than redrawn. An earlier draft of this
+entry re-derived the system from the token files and came out as a generic dark dashboard that did
+not look like the app. This version renders and copies the real thing:
 
-Three ideas carry the whole system:
-
-1. **Tonal, not coloured.** Surfaces step by luminance. There is no brand hue: the selected tab, the
-   on switch and the primary button are all the *lit rung*, the brightest thing on screen. A tint is
-   one attribute (`data-tint`) and recolours only the accent.
-2. **Fill, not outline.** Controls are translucent fills on the ground they sit on, with a single
-   top-edge light line (`--shine-top`). A hairline appears only where a fill cannot separate two
-   things (light-theme cards, menus).
-3. **Frame and sheet.** The app is a *chrome frame* (sidebar, assistant column) on the window ground,
-   holding one *solid page sheet*. You look through the chrome and at the page.
-
-Files in this entry:
-- `theme.css`: tokens, axes and every component class. Drop it into any app.
-- `mockup.html`: a self-contained demo web app built only from `theme.css`.
-
-## Colors
-
-- **Ladder (dark):** canvas `#1A1A1D` → chrome `#1F1F22` → surface `#26262A` → raised `#2C2C30` →
-  float `#3D3D44`. Each step is a perceptible luminance change, not three hex points. The page sheet
-  is canvas-dark (`#1A1A1D`), one step *below* the chrome, so the frame reads as glass around it.
-- **Ladder (light):** the same ladder read the other way: page `#F1F1F3`, chrome `#E6E6E9`, and
-  surface, raised and float all white. Elevation still means brighter. The lit rung inverts to ink
-  (`#222226`), so a primary button becomes near-black.
-- **Text:** text, label-secondary, muted (68%), faint (44%). Inactive rows are muted, the current row
-  is full text at weight 550.
-- **State fills** are white (dark) or ink (light) at fixed alphas: fill 5%, hover 8%, active 12%,
-  pressed 16%, strong 22%. Rows are quieter: hover 4%, active 7.5% plus a 1px inner rim (6%).
-- **Status:** danger, success, warning and info are pastel in dark and deep in light. Status always
-  carries text; colour is never the only signal. A destructive menu row keeps its red in the
-  highlight, which is the only state fill allowed a hue.
-- **Soft colours** (sky, mint, lemon, peach, rose, lilac) are for what a *person* marks: tags, note
-  grounds, labels. Each is a 15% wash plus an ink mixed toward the text colour.
-- **Charts:** eight categorical tones in a fixed order, never cycled, chosen to be CVD-safe on the
-  surface. Use `--chart-1…8`, never tints, for data.
-- **The one gradient:** the assistant's orb (`--color-lead-orb` → `--color-lead-orb-to`). No other
-  gradient on content, no glow anywhere.
-
-## Typography
-
-The platform face (`-apple-system, system-ui, Segoe UI Variable…`), with `font-optical-sizing:auto`
-and antialiasing on. No webfont, because native menus and dialogs render in the system face and a
-webfont would change typeface under the cursor. This also means the pages need no font files.
-Optional: swap `--font-sans` to Geist for a branded marketing surface.
-
-Scale: caption 11 · label 12 · body 13 · page-title 14 · reading 15 · object-title 18 · title 22 ·
-headline 26 · display 36 (light weight, used for a home-screen clock or a hero number). Numbers in
-tables and KPIs use `tabular-nums`. Section labels are 11px/600 in faint, sentence case, never
-letter-spaced caps.
-
-## Layout
-
-```
-┌ chrome (window ground) ───────────────────────────────────────────────┐
-│ ┌ sidebar 264 ┐ ┌ page sheet (radius 12, solid) ─────┐ ┌ assist 336 ┐ │
-│ │ brand  ⌘K   │ │ header: title · segment · actions  │ │ orb · title │ │
-│ │ search      │ │                                     │ │ thread      │ │
-│ │ ─ Space ─   │ │ content (scrolls)                   │ │             │ │
-│ │ rows ▸      │ │                                     │ │ composer    │ │
-│ │ profile ⌄   │ └─────────────────────────────────────┘ └─────────────┘ │
-└───────────────────────────────────────────────────────────────────────┘
-          8px padding and 8px gaps everywhere around the sheet
-```
-
-- Only the lists scroll; headers and footers stay pinned. A label sits **above** what it governs.
-- The sidebar collapses to a 52px icon rail (`data-sidebar="rail"`). It never hover-expands.
-- The assistant column is optional and replaces content, never overlays it.
-- Below 900px the sidebar becomes the rail. Below 640px the assistant becomes a full-height sheet.
-
-## Elevation & Depth
-
-Elevation only for what genuinely floats. Everything else separates by fill.
-
-| Level | Token | Use |
+| File | How it was made | Use it for |
 |---|---|---|
-| flat | `--shine-top` only | buttons, fields, plates on a surface |
-| raised | `--shadow-raised` | a dragged row, a selected card |
-| float | `--shadow-float` | toast, popover |
-| overlay | `--shadow-overlay` | launcher / command palette |
-| menu | `--shadow-menu` + shine | dropdown menus: a rim plus one wide soft drop |
+| `reference.html` | Zephium's own component-test harness (`frame/src/app/browser/tests`, vitest + Playwright WebKit) rendered the real `Shell.svelte` and `features/newtab` in the light theme. The live DOM and compiled CSS were dumped, then composed the way `Shell.svelte` composes them for a new tab. Favicons and the sky are inlined as data URIs. | The visual truth. Compare any build against it. |
+| `mockup.html` | `reference.html` plus a small script: switch tabs, toggle Browse/Work, live clock, and a sample app page on the solid sheet for any tab other than New Tab. | Demo and starting point for an app shell. |
+| `theme.css` | `build-theme.py` concatenates Zephium's `styles/tokens*`, `styles/axes/*`, `controls.css`, `favicon.css`, `browser.css`, `shared/ui/**/*.css` and the `<style>` blocks of `shared/ui/*` plus the sidebar components, unscoped. | The stylesheet for your app. |
+| `utilities.css` | The Tailwind `base`, `properties` and `utilities` layers from the frame's compiled CSS. | Load after `theme.css` if you copy the chrome markup verbatim. |
 
-Each shadow is one soft drop plus a hairline rim, never a stack. The **one blur** (24px backdrop)
-belongs to menus and the launcher, the only things that float over other UI. Light-theme cards get a
-0.5px hairline (`--shadow-card`) because white on pale grey needs one.
+Regenerate after Zephium changes with `python3 build-theme.py ~/Work/ZepBrowser`. Recapture
+`reference.html` by re-running the capture tests. The procedure is in "Recapturing" below.
 
-## Components
+## The look (light theme, as the live app runs)
 
-All in `theme.css`, prefixed `vz-`:
+- **Window:** one grey sheet of Liquid Glass. It reads as `#878787` over a typical desktop. A web
+  app can't get real glass behind the page, so `--vzn-window-ground` stands in for it.
+- **Lifts, not fills:** everything that sits on the glass is a breath of white at 30% (`--lift`).
+  That covers the Browse/Work track, the address pill, the current tab row and the dock tiles.
+  Pressed is 40%, and the Browse/Work thumb is 42% with a 0.5px hairline. Nothing on the glass is
+  an opaque white plate.
+- **Page sheet:** solid, inset 8px from every window edge, corner 12px, no outline. The chrome is
+  what you look through; the page is what you look at.
+- **Sidebar, top to bottom:**
+  1. A 32px titlebar band: compact-mode, back, forward and reload icon buttons, all 28px.
+  2. The `.segmented` Browse/Work switch, full width.
+  3. The `.address-field` (34px, `rounded-row`, centred host text at 13.5px, site-info button on the right).
+  4. The `.space-bar` (Space name with a chevron, and + on the right).
+  5. The tab rows (`.browse-tab` > `button.tab-open`, 36px, 16px favicon on a plate, 13px/500 text).
+  6. The `footer.dock`: a 44px profile disc, a hairline rule, then wide essentials tiles.
+- **Current tab:** `.browse-tab[data-selected="true"]` gets `--row-active` plus `--row-rim` and
+  weight 550, and its favicon plate becomes `favicon-plate-lit`. Other rows have no fill and a
+  whisper of `--row-hover` on hover. Inactive favicons are desaturated (85%) and dimmed (82%).
+- **New Tab** (`section.newtab`):
+  - The baked day sky (`sky-day.avif`) dissolves through a dot screen into `--sky-day-paper`.
+  - The white ZEPHIUM wordmark sits centred, with `time · date` beneath it.
+  - The search field hangs from the top edge inside a notch cut into the page (an 18px-radius
+    `clip-path`).
+  - A settings disc sits top-right.
+  - The foot holds three capsule stat chips: ads blocked, focused time with a meter, and tasks due
+    with the overdue count in danger red.
+- **Type:** the platform face only. Body 13, labels 12, captions 11, address 13.5. There is no
+  webfont, so the page needs no font files.
 
-- **Row** (`.vz-row`): 36px, radius 12, muted at rest, whisper on hover. The current row is the plate
-  (`row-active` plus a rim) at weight 550. In a list with `data-glide-host`, one `.vz-plate` *travels*
-  to the selection on `--ease-spring` (300ms) instead of each row painting its own fill.
-- **Button** (`.vz-btn`): 30px, radius 10, 12px/500. Variants: secondary (control fill + shine),
-  `primary` (accent, which is the lit rung unless tinted), `ghost`, `danger` (16% red wash). Every
-  button in a row has the same height; only the fill varies. Press shrinks to 0.97 at 70ms. A busy
-  button shows a spinner and keeps its width.
-- **Icon button** (`.vz-icon-btn`): 28px square, 16px glyph, muted until hover. Press 0.94.
-- **Field** (`.vz-field`): same height as a button, field fill + shine. Focus deepens the fill and
-  adds a 1px inner ring, never a coloured glow. Page size is 48px / radius 18 for hero search.
-- **Segmented control** (`.vz-segment`): fill track. The thumb travels on `--ease-snap` (240ms) and is
-  white with a hairline in light mode. It is the single presentation for a mutually exclusive choice.
-- **Switch** (`.vz-switch`): 32×20 capsule, white 16px thumb with `--shadow-thumb`, which springs.
-  The on-track is `--color-track-on` and follows the tint.
-- **Checkbox** (`.vz-check`): 16px, radius 5. Checked fills with the accent and the tick *draws*
-  (stroke-dashoffset, 200ms).
-- **Card / Group** (`.vz-card`, `.vz-group`): surface, radius 18. A group stacks rows with inset
-  hairlines (the settings pattern: label and description left, control right).
-- **Badge / Tag** (`.vz-badge`, `.vz-tag`): 20px capsule with a status dot and a tone wash. A tag uses
-  a soft colour.
-- **Menu** (`.vz-menu`): radius 22, padding 6, 34px rows whose radius is 22 − 6 = 16, which keeps
-  them concentric with the panel. Opens with scale 0.96 → 1 and −4px → 0 in 200ms, and closes in
-  70ms.
-- **Launcher** (`.vz-launcher`): a ⌘K command palette. Menu material, a 48px field, result rows,
-  keyboard navigation.
-- **Toast** (`.vz-toast`): float pill at the bottom centre. It rises in 400ms on the emphasized curve
-  and leaves in 120ms.
-- **Working dots / skeleton:** a three-dot pending pulse and a breathing fill. These are the only
-  continuous animations, and only while something is genuinely in progress.
-- **Orb** (`.vz-orb`): the assistant's avatar and the only gradient.
+## Using it in a web app
 
-## Motion
+```html
+<html lang="en" data-theme="light" data-material="liquid_glass">
+<head>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="utilities.css">
+</head>
+<body>
+  <div class="shell flex h-screen w-screen p-2">
+    <aside class="browser-sidebar relative flex shrink-0 flex-col text-text select-none"
+           style="width:240px;--sidebar-width:240px"> … copy from mockup.html … </aside>
+    <div class="stage-column">
+      <main class="min-w-0 flex-1 ps-2">
+        <div class="content-pane h-full w-full overflow-auto" style="background:#fff">
+          … your app …
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
+```
 
-Named by purpose, never by length:
+- Copy the sidebar subtree from `mockup.html` and rename the rows to your app's sections. The
+  mockup's script shows the selection contract: toggle `data-selected`, `aria-current` and
+  `favicon-plate-lit`.
+- Inside the page, build with the kit in `theme.css`: `.ui-shine` / `.ui-shine-press` /
+  `.ui-shine-field` (the pressable material), `.ui-control` (every button and trigger),
+  `.icon-button`, `.ui-menu` / `.ui-menu-item` (menus, the one blur), `.segmented`, plus the
+  `shared/ui` component classes (Switch, Checkbox, Field, SearchField, ListRow, Badge, Chip,
+  Progress, SettingsGroup and SettingsRow, EmptyState). Read each component's section in
+  `theme.css` for its markup contract.
+- Use the semantic tokens only (`--color-*`, `--row-*`, `--radius-*`, `--motion-*`, `--ease-*`),
+  never the `--gray-*` primitives.
+- Dark theme: `data-theme="dark"`. Accent tints: `data-tint="sky|sage|rose|amber|teal|lavender|orchid"`.
+  Density: `data-density="compact"`. Reduced motion: `data-reduce-motion="true"`. These are all
+  Zephium's own axes.
+- Opaque fallback (no glass): `data-material="none"`, which puts the chrome on `--color-chrome`
+  `#E6E6E9`.
 
-| Token | ms | For |
-|---|---|---|
-| `--motion-instant` | 70 | the pointer is already there: hover fill, press, leaving |
-| `--motion-fast` | 120 | colour and small in-place changes |
-| `--motion-base` | 200 | menus opening, a tick drawing |
-| `--motion-slow` | 300 | things that travel: plate, thumb |
-| `--motion-page` | 400 | a surface arriving: page, toast, cascade |
+## Rules the source states (and the template keeps)
 
-Curves: `--ease-out` / `--ease-smooth` for feedback, `--ease-emphasized` for arrivals, `--ease-exit`
-for leaving (always quicker than arriving), `--ease-spring` (sampled damped spring, 2% overshoot) for
-small moving parts, `--ease-snap` (launched spring, 1.4%) for what answers a click.
+- Luminance carries state. The "on" thing is the lit rung (ink `#222226` in light), not a brand
+  hue. A tint recolours only the accent.
+- Fill, not outline: controls are fills, with at most a top-edge `--shine-top`. Elevation
+  (`--shadow-float`, `--shadow-menu`) only on what genuinely floats.
+- One blur: menus and popovers (`backdrop-filter: blur(24px)` on `--color-menu`).
+- Radii are named by job (`--radius-row`, `--radius-card`, `--radius-panel`). There is no size scale.
+- Motion is named by purpose: instant 70, fast 120, base 200, slow 300, page 400 ms. Arrivals use
+  `--ease-emphasized`, small moving parts `--ease-spring`, and what answers a click `--ease-snap`.
+  Leaving is quicker than arriving. Animate only transform and opacity, and honour reduced motion.
+- Scrollbars are off unless opted in with `.scrolls`, which shows a 4px capsule on hover with no
+  track.
+- Clipped labels fade at their end (`--mask-fade-end`) instead of ending in an ellipsis.
 
-Rules: animate `transform` and `opacity` only. Arrival rises 8px and fades in. A launch or page
-change cascades children at 40ms steps (`.vz-cascade`). A completed list item holds for a moment,
-then leaves. Nothing loops except an in-progress indicator. `prefers-reduced-motion` or
-`data-reduce-motion="true"` collapses every duration to 0.01ms, so `transitionend` still fires.
+## Recapturing `reference.html`
 
-## Do's and Don'ts
-
-- **Do** let luminance carry state. **Don't** add a brand colour to make things "pop". Use a tint.
-- **Do** use one height for every control in a row. **Don't** mix 15px and 16px icons in a cluster.
-- **Do** name radii by job (`--radius-row`, `--radius-card`). **Don't** use `rounded-md`-style sizes.
-- **Do** keep one blur (menus/launcher). **Don't** frost cards, sidebars or the page.
-- **Don't** draw an outline around the page sheet or a ring around a highlighted menu row; the fill
-  is already the edge.
-- **Don't** use gradients (except the orb), glows, or letter-spaced uppercase labels.
-- **Do** show a keyboard focus ring (2px, neutral, offset 2) on keyboard focus only.
-- **Do** fade clipped labels (`.fade-end`) instead of using an ellipsis in rows.
-- **Do** design both themes, reduced motion, and forced colours from the first component.
-
-## Responsive Behavior
-
-≥ 1200px: full frame (sidebar · page · assist). 900–1199px: assist closes by default.
-640–899px: sidebar becomes the 52px rail. < 640px: frame padding stays 8px, the rail becomes a
-bottom bar of icon buttons, and the assistant and launcher open as full-width sheets.
-
-## Mockup brief (`mockup.html`)
-
-A single self-contained file: `theme.css` inlined in `<style>`, no external requests, inline SVG
-icons, vanilla JS. It demonstrates every component in a believable app called **"Zep Workspace"**,
-with invented sample data labelled as such:
-
-- **Frame:** sidebar (brand + ⌘K button, search field, "Workspace" section, nav rows Home / Dashboard
-  / Tasks / Notes / Settings with gliding plate, a "Spaces" section with soft-colour dots, profile row
-  with menu at the foot), page sheet, assistant column (toggle from the page header).
-- **Home:** time in display type, muted date, one greeting line, 48px page search, a recent-items row
-  of tiles.
-- **Dashboard:** title + segmented range (7d / 30d / 90d, thumb springs, data changes), 4 KPI cards
-  with deltas, a bar or line chart in inline SVG using `--chart-*`, a table with badges.
-- **Tasks:** capture field shaped like a row, grouped list (Overdue / Today / Upcoming), checkboxes
-  that draw the tick then let the row hold and leave, soft tags.
-- **Settings:** groups with switches, theme segmented (Dark / Light / System), tint swatches (the 8
-  tints, live), density, reduce motion. All of them switch the app live.
-- **Overlays:** ⌘K launcher with keyboard navigation, a menu with a danger row, a toast with undo,
-  working dots in the assistant while it "replies".
-- Launch cascade on load, page arrival on navigation, rail collapse toggle.
+The capture tests are harness files based on Zephium's own `ShellLook` and `NewTabLook`. They are
+kept in `capture/` here, not in Zephium:
+1. `pnpm install` in the Zephium checkout, then
+   `npx playwright install webkit`.
+2. Put `VzCapture.component.test.ts` (Shell with the tab set) and `VzNewTab.component.test.ts` (New
+   Tab at 1176×884) in `frame/src/app/browser/tests/`. Run them with
+   `npx vitest run --project component <files>`. They write `frame/.vzn/{page,newtab}.{html,css}`.
+3. Compose: put the New Tab `section.newtab` inside
+   `.stage-column > main > .content-pane[data-ground=own]` of the Shell DOM, concatenate both CSS
+   dumps whole (never line-dedupe them), and set the ground override.
+4. Delete the harness files from the Zephium checkout.
 
 ## Relationship to other entries
 
-- **vera-hub:** the corporate navy console (glowing accent, raised cards on sunken wells, mono
-  labels). Vera Zep New is its opposite in temperament: neutral graphite, no glow, system type. Use
-  Zep for tools that should feel like a native app. Use Vera Hub for branded dashboards and approval
-  pages.
-- **linear.app / raycast (reference):** close cousins in spirit. Zep's distinguishing marks are the
-  lit rung instead of a brand accent, the frame-and-sheet shell, and the role-named radius ladder.
+- **vera-hub:** a branded navy console with a glowing accent and mono labels. Vera Zep New is
+  native-quiet graphite on glass. Use Zep for tools that should feel like a native Mac app.
