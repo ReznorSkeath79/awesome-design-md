@@ -1,0 +1,2571 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-tint="none" data-density="comfortable">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zep Workspace — Vera Zep New</title>
+<style id="vz-theme">
+/* ==========================================================================
+   Vera Zep New — drop-in theme for web apps.
+   Distilled from Zephium's chrome (github.com/ReznorSkeath79/Zephium,
+   frame/src/styles @ 175300d8). Graphite tonal ladder, no accent hue by
+   default, role-named radii, one "shine" material, motion named by purpose.
+
+   Usage:  <html data-theme="dark|light" data-tint="none|sky|sage|rose|amber|teal|lavender|orchid"
+                 data-density="comfortable|compact" data-reduce-motion="false|true">
+   Components never read primitives; they read the semantic tokens below.
+   ========================================================================== */
+
+/* -- 1. Primitives (raw material — components never use these) ------------ */
+:root {
+  --gray-0: #fff;
+  --gray-50: #f9f9fa;
+  --gray-100: #eeeef1;
+  --gray-150: #e6e6e9;
+  --gray-200: #dadadd;
+  --gray-300: #c3c3c7;
+  --gray-400: #9c9ca1;
+  --gray-500: #717176;
+  --gray-600: #4c4c51;
+  --gray-700: #2e2e33;
+  --gray-750: #26262a;
+  --gray-800: #1f1f22;
+  --gray-850: #1a1a1d;
+  --gray-900: #161619;
+  --gray-950: #101012;
+}
+
+/* -- 2. Semantic tokens — DARK is the base --------------------------------- */
+:root {
+  color-scheme: dark;
+
+  /* Tonal ladder: luminance carries every state. */
+  --color-canvas: #1a1a1d;   /* window ground behind everything */
+  --color-chrome: #1f1f22;   /* sidebar / app frame (the part you look through) */
+  --color-page: #1a1a1d;     /* the solid content sheet (the part you look at) */
+  --color-surface: #26262a;  /* a card on the page */
+  --color-raised: #2c2c30;   /* a card on a card */
+  --color-float: #3d3d44;    /* menus, popovers, launcher */
+  --wash-raised: 62%;
+  --color-menu: color-mix(in srgb, var(--color-float) var(--wash-raised), transparent);
+  --color-menu-separator: rgb(255 255 255 / 0.1);
+
+  --color-fill: rgb(255 255 255 / 0.05);
+  --color-fill-hover: rgb(255 255 255 / 0.08);
+  --color-fill-active: rgb(255 255 255 / 0.12);
+  --color-fill-pressed: rgb(255 255 255 / 0.16);
+  --color-fill-strong: rgb(255 255 255 / 0.22);
+  --color-tile: rgb(255 255 255 / 0.06);
+  --color-tile-hover: rgb(255 255 255 / 0.1);
+
+  --color-border: rgb(255 255 255 / 0.07);
+  --color-border-strong: rgb(255 255 255 / 0.13);
+
+  /* Rows: hover is a whisper, active is a real plate with a rim. */
+  --row-hover: rgb(255 255 255 / 0.04);
+  --row-active: rgb(255 255 255 / 0.075);
+  --row-pressed: rgb(255 255 255 / 0.1);
+  --row-rim: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  --segment-thumb: var(--row-active);
+  --shadow-segment-thumb: var(--row-rim);
+  --scroll-thumb: rgb(255 255 255 / 0.16);
+  --scroll-thumb-hover: rgb(255 255 255 / 0.28);
+
+  --color-text: #f4f4f6;
+  --color-label-secondary: #d8d8db;
+  --color-muted: rgb(244 244 246 / 0.68);
+  --color-faint: rgb(244 244 246 / 0.44);
+
+  /* Controls are fill and nothing else. */
+  --color-control: rgb(255 255 255 / 0.09);
+  --color-control-hover: rgb(255 255 255 / 0.13);
+  --color-control-pressed: rgb(255 255 255 / 0.17);
+  --color-on-control: var(--color-text);
+  --color-field: rgb(255 255 255 / 0.09);
+  --color-field-hover: rgb(255 255 255 / 0.12);
+  --color-field-ring: rgb(255 255 255 / 0.16);
+  --color-thumb: #e5e5e8;
+  --color-track: rgb(255 255 255 / 0.14);
+  --color-track-on: var(--gray-400);
+  --color-switch-thumb: #fff;
+
+  /* The lit rung: "on" is simply the brightest thing in the frame. */
+  --color-lit: #ededf0;
+  --color-lit-hover: #f7f7fa;
+  --color-on-lit: #161619;
+  --color-lit-soft: rgb(237 237 240 / 0.16);
+
+  /* Accent defaults to lit — the product ships neutral; a tint colours it. */
+  --color-accent: var(--color-lit);
+  --color-accent-hover: var(--color-lit-hover);
+  --color-on-accent: var(--color-on-lit);
+  --color-accent-soft: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  --color-ring: rgb(255 255 255 / 0.5);
+
+  --color-tint-sky: #7fb3f5;
+  --color-tint-sage: #86c9a4;
+  --color-tint-rose: #ee8f95;
+  --color-tint-amber: #e9b872;
+  --color-tint-teal: #6fc6c1;
+  --color-tint-lavender: #b3a4f2;
+  --color-tint-orchid: #dc9ad8;
+
+  --color-danger: #ef8a8e;
+  --color-success: #7fcaa1;
+  --color-warning: #dcb977;
+  --color-info: #8fbcf7;
+
+  /* Soft colour: what a person marks as theirs (tags, notes, chips). */
+  --color-soft-sky: #8db9f2;
+  --color-soft-mint: #88d0b3;
+  --color-soft-lemon: #e6cb80;
+  --color-soft-peach: #efaa89;
+  --color-soft-rose: #ee9aae;
+  --color-soft-lilac: #b7a6f0;
+  --soft-wash: 15%;
+  --soft-ink: 62%;
+
+  /* Chart ladder — fixed order, never cycled, CVD-safe adjacent pairs. */
+  --chart-1: #6193db;
+  --chart-2: #b37046;
+  --chart-3: #2da58f;
+  --chart-4: #a47d00;
+  --chart-5: #b77094;
+  --chart-6: #679936;
+  --chart-7: #7e68ab;
+  --chart-8: #c6685b;
+
+  /* The assistant's character — the ONLY gradient allowed in the system. */
+  --color-lead-orb: #8e9bff;
+  --color-lead-orb-to: #c98bff;
+
+  /* Shadows: elevation only for what genuinely floats. */
+  --shadow-card: none;
+  --shadow-control: none;
+  --shadow-field-focus: inset 0 0 0 1px var(--color-field-ring);
+  --shadow-thumb: 0 1px 2.5px rgb(0 0 0 / 0.2), 0 0 0 0.5px rgb(0 0 0 / 0.07);
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.16), 0 0 0 0.5px rgb(255 255 255 / 0.06);
+  --shadow-float: 0 6px 22px rgb(0 0 0 / 0.34), 0 0 0 0.5px rgb(255 255 255 / 0.08);
+  --shadow-overlay: 0 12px 36px rgb(0 0 0 / 0.3), 0 0 0 0.5px rgb(255 255 255 / 0.08);
+  --shadow-menu: 0 0 0 1px rgb(255 255 255 / 0.08), 0 14px 44px -10px rgb(0 0 0 / 0.34);
+  --shine:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.13), inset 0 -1px 0 0 rgb(255 255 255 / 0.04),
+    inset 0 0 0 1px rgb(255 255 255 / 0.05);
+  --shine-top: inset 0 1px 0 0 rgb(255 255 255 / 0.1);
+
+  /* Radius — named by job, never by size. */
+  --radius-swatch: 3px;
+  --radius-inset: 8px;
+  --radius-row: 12px;
+  --radius-control-compact: 10px;
+  --radius-control: 14px;
+  --radius-control-large: 18px;
+  --radius-card: 18px;
+  --radius-panel: 22px;
+  --radius-capsule: 999px;
+  --radius-content: 12px;
+
+  /* Type — the platform face. Body 13, labels 12, captions 11. */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI Variable Text", "Segoe UI",
+    "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Menlo", "Consolas", monospace;
+  --text-caption: 11px;
+  --text-label: 12px;
+  --text-body: 13px;
+  --text-page-title: 14px;
+  --text-reading: 15px;
+  --text-object-title: 18px;
+  --text-title: 22px;
+  --text-headline: 26px;
+  --text-display: 36px;
+
+  /* Metrics — 8px rhythm, 4px subdivisions. */
+  --control-compact: 24px;
+  --control-regular: 30px;
+  --control-large: 34px;
+  --control-xl: 40px;
+  --control-inset: 10px;
+  --row-sidebar: 36px;
+  --row-page: 58px;
+  --menu-pad: 6px;
+  --menu-row: 34px;
+  --sidebar-width: 264px;
+  --sidebar-rail: 52px;
+  --assist-width: 336px;
+  --frame-gap: 8px;
+
+  /* Motion — named by purpose. Leaving is always quicker than arriving. */
+  --motion-instant: 70ms;
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
+  --motion-page: 400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-press: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Launched spring, 1.4% give — what answers a click. */
+  --ease-snap: linear(0, 0.1776, 0.3343, 0.4698, 0.5848, 0.6808, 0.7597, 0.8234, 0.8742, 0.9138,
+    0.9443, 0.9672, 0.9839, 0.9959, 1.004, 1.0092, 1.0123, 1.0137, 1.0141, 1.0136, 1.0127, 1.0115,
+    1.0101, 1.0088, 1.0075, 1.0062, 1.0051, 1.0041, 1.0033, 1.0026, 1.002, 1.0015, 1);
+  /* Damped spring, 2% overshoot — small things that move (thumb, plate, tile). */
+  --ease-spring: linear(0, 0.0232, 0.0821, 0.1636, 0.2572, 0.3552, 0.452, 0.5438, 0.628, 0.7032,
+    0.7689, 0.825, 0.8719, 0.9103, 0.9412, 0.9653, 0.9838, 0.9974, 1.007, 1.0135, 1.0174, 1.0194,
+    1.0199, 1.0194, 1.0182, 1.0166, 1.0147, 1.0128, 1.0109, 1.009, 1.0074, 1.0059, 1.0046, 1.0035,
+    1.0025, 1.0018, 1.0012, 1.0007, 1.0003, 1);
+
+  --mask-fade-end: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+}
+
+/* -- 3. LIGHT — the same ladder read the other way ------------------------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-canvas: #f1f1f3;
+  --color-chrome: var(--gray-150);
+  --color-page: #f1f1f3;
+  --color-surface: #fff;
+  --color-raised: #fff;
+  --color-float: #fff;
+  --color-menu-separator: rgb(24 24 27 / 0.09);
+
+  --color-fill: rgb(24 24 27 / 0.05);
+  --color-fill-hover: rgb(24 24 27 / 0.08);
+  --color-fill-active: rgb(24 24 27 / 0.075);
+  --color-fill-pressed: rgb(24 24 27 / 0.11);
+  --color-fill-strong: rgb(24 24 27 / 0.16);
+  --color-tile: rgb(24 24 27 / 0.045);
+  --color-tile-hover: rgb(24 24 27 / 0.07);
+  --color-border: rgb(24 24 27 / 0.07);
+  --color-border-strong: rgb(24 24 27 / 0.13);
+
+  --row-hover: rgb(24 24 27 / 0.04);
+  --row-active: rgb(24 24 27 / 0.075);
+  --row-pressed: rgb(24 24 27 / 0.1);
+  --row-rim: inset 0 0 0 1px rgb(24 24 27 / 0.03);
+  --segment-thumb: #fff;
+  --shadow-segment-thumb: 0 0 0 0.5px rgb(24 24 27 / 0.08), 0 1px 3px rgb(24 24 27 / 0.1);
+  --scroll-thumb: rgb(24 24 27 / 0.2);
+  --scroll-thumb-hover: rgb(24 24 27 / 0.34);
+
+  --color-text: #1c1c1f;
+  --color-label-secondary: #55555c;
+  --color-muted: rgb(28 28 31 / 0.62);
+  --color-faint: rgb(28 28 31 / 0.42);
+
+  --color-control: #fff;
+  --color-control-hover: #f9f9f9;
+  --color-control-pressed: #f0f0f0;
+  --color-on-control: #18181b;
+  --color-field: rgb(228 228 230 / 0.7);
+  --color-field-hover: rgb(170 170 170 / 0.2);
+  --color-field-ring: rgb(0 0 0 / 0.14);
+  --color-thumb: #fff;
+  --color-track: #d7d7da;
+  --color-track-on: var(--gray-500);
+
+  /* The lit end inverts to ink on a light ground. */
+  --color-lit: #222226;
+  --color-lit-hover: #2e2e35;
+  --color-on-lit: #fff;
+  --color-lit-soft: rgb(34 34 38 / 0.12);
+  --color-ring: rgb(24 24 27 / 0.4);
+
+  --color-tint-sky: #3b82e6;
+  --color-tint-sage: #2f8a5e;
+  --color-tint-rose: #d2545e;
+  --color-tint-amber: #a5680f;
+  --color-tint-teal: #188a84;
+  --color-tint-lavender: #6e5bd6;
+  --color-tint-orchid: #b14fa9;
+  --color-danger: #c0474f;
+  --color-success: #2f7f5a;
+  --color-warning: #8c6a2a;
+  --color-info: #2f6fd6;
+  --color-soft-sky: #4f8fe0;
+  --color-soft-mint: #2f9c77;
+  --color-soft-lemon: #b88c14;
+  --color-soft-peach: #d2703f;
+  --color-soft-rose: #d35d7a;
+  --color-soft-lilac: #7e67d6;
+  --soft-wash: 13%;
+  --soft-ink: 78%;
+  --chart-1: #5d8fcc;
+  --chart-2: #a6531e;
+  --chart-3: #449d7a;
+  --chart-4: #7f5f0a;
+  --chart-5: #bc6082;
+  --chart-6: #3e6f25;
+  --chart-7: #7b68af;
+  --chart-8: #9d4547;
+  --color-lead-orb: #7584f5;
+  --color-lead-orb-to: #b673f2;
+
+  --shadow-card: 0 0 0 0.5px rgb(24 24 27 / 0.07), 0 1px 1.5px rgb(24 24 27 / 0.03);
+  --shadow-control: 0 0.5px 1.5px rgb(24 24 27 / 0.1), 0 0 0 0.5px rgb(24 24 27 / 0.07);
+  --shadow-thumb: 0 1px 2.5px rgb(24 24 27 / 0.16), 0 0 0 0.5px rgb(24 24 27 / 0.06);
+  --shadow-raised: 0 1px 2px rgb(24 24 27 / 0.08), 0 0 0 0.5px rgb(24 24 27 / 0.06);
+  --shadow-float: 0 6px 22px rgb(24 24 27 / 0.16), 0 0 0 0.5px rgb(24 24 27 / 0.1);
+  --shadow-overlay: 0 12px 36px rgb(24 24 27 / 0.14), 0 0 0 0.5px rgb(24 24 27 / 0.1);
+  --shadow-menu: 0 0 0 1px rgb(24 24 27 / 0.09), 0 14px 44px -10px rgb(24 24 27 / 0.16);
+  --shine: inset 0 1px 0 0 rgb(255 255 255 / 0.3);
+  --shine-top: inset 0 1px 0 0 rgb(255 255 255 / 0.55);
+}
+
+/* -- 4. Axes: tint, density, contrast, motion ------------------------------ */
+[data-tint="sky"]      { --color-accent: var(--color-tint-sky);      --color-accent-hover: #93c0f8; --color-on-accent: #0e1b2e; --color-track-on: #3b82e6; }
+[data-tint="sage"]     { --color-accent: var(--color-tint-sage);     --color-accent-hover: #98d3b2; --color-on-accent: #0f2118; --color-track-on: #34a26e; }
+[data-tint="rose"]     { --color-accent: var(--color-tint-rose);     --color-accent-hover: #f2a1a6; --color-on-accent: #2c1214; --color-track-on: #d9606a; }
+[data-tint="amber"]    { --color-accent: var(--color-tint-amber);    --color-accent-hover: #f2cb92; --color-on-accent: #2b1d08; --color-track-on: #c98a2b; }
+[data-tint="teal"]     { --color-accent: var(--color-tint-teal);     --color-accent-hover: #93d6d2; --color-on-accent: #0b2321; --color-track-on: #23978f; }
+[data-tint="lavender"] { --color-accent: var(--color-tint-lavender); --color-accent-hover: #c8bcf6; --color-on-accent: #1b1533; --color-track-on: #7b68e0; }
+[data-tint="orchid"]   { --color-accent: var(--color-tint-orchid);   --color-accent-hover: #e8b5e5; --color-on-accent: #2b1129; --color-track-on: #b85bb0; }
+[data-theme="light"][data-tint="sky"]      { --color-accent-hover: #4a8eea; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="sage"]     { --color-accent-hover: #37986a; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="rose"]     { --color-accent-hover: #d9646d; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="amber"]    { --color-accent-hover: #b8781c; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="teal"]     { --color-accent-hover: #1f9a93; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="lavender"] { --color-accent-hover: #7d6be0; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="orchid"]   { --color-accent-hover: #c05fb8; --color-on-accent: #fff; }
+
+[data-density="compact"] { --row-sidebar: 30px; --row-page: 44px; --control-regular: 28px; --menu-row: 30px; }
+[data-contrast="high"] { --color-muted: var(--color-text); --color-faint: var(--color-text); --color-border: var(--color-border-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+[data-reduce-motion="true"] *, [data-reduce-motion="true"] *::before, [data-reduce-motion="true"] *::after {
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+}
+
+/* -- 5. Base ---------------------------------------------------------------- */
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  font-synthesis: none;
+  font-kerning: normal;
+  font-optical-sizing: auto;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: default; -webkit-tap-highlight-color: transparent; }
+::selection { background: color-mix(in srgb, var(--color-text) 22%, transparent); }
+:where(button, a, [role="button"], [role="option"], [role="tab"]):focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible { outline: none; }
+.tnum { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--color-muted); }
+.faint { color: var(--color-faint); }
+.fade-end { -webkit-mask-image: var(--mask-fade-end); mask-image: var(--mask-fade-end); white-space: nowrap; overflow: hidden; }
+
+/* Scrollbars are off and opted into by name: a 4px capsule, no track. */
+*::-webkit-scrollbar { width: 0; height: 0; }
+.scrolls::-webkit-scrollbar { width: 12px; height: 12px; }
+.scrolls::-webkit-scrollbar-track, .scrolls::-webkit-scrollbar-corner { background: transparent; }
+.scrolls::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: var(--radius-capsule);
+  background-color: transparent;
+  background-clip: padding-box;
+}
+.scrolls:hover::-webkit-scrollbar-thumb { background-color: var(--scroll-thumb); }
+.scrolls::-webkit-scrollbar-thumb:hover { background-color: var(--scroll-thumb-hover); }
+
+/* -- 6. App shell: chrome frame + solid page sheet ------------------------- */
+.vz-app {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) auto;
+  gap: var(--frame-gap);
+  height: 100vh;
+  padding: var(--frame-gap);
+  box-sizing: border-box;
+  background: var(--color-chrome);
+  transition: grid-template-columns var(--motion-page) var(--ease-emphasized);
+}
+.vz-app[data-sidebar="rail"] { grid-template-columns: var(--sidebar-rail) minmax(0, 1fr) auto; }
+.vz-sidebar { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.vz-sidebar-scroll { flex: 1; overflow: auto; position: relative; }
+.vz-page {
+  position: relative;
+  min-width: 0;
+  overflow: auto;
+  border-radius: var(--radius-content);
+  background: var(--color-page);
+}
+.vz-assist { width: var(--assist-width); display: flex; flex-direction: column; min-height: 0; }
+.vz-section-label {
+  padding: 10px 10px 4px;
+  color: var(--color-faint);
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+
+/* -- 7. Rows (sidebar + lists) --------------------------------------------- */
+.vz-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--row-sidebar);
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: var(--radius-row);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--text-body);
+  font-weight: 500;
+  text-align: start;
+  transition: background-color var(--motion-instant) var(--ease-smooth), color var(--motion-instant) var(--ease-smooth);
+}
+.vz-row:hover { background: var(--row-hover); color: var(--color-text); }
+.vz-row:active { background: var(--row-pressed); }
+.vz-row[aria-current="page"], .vz-row[aria-selected="true"] {
+  background: var(--row-active);
+  box-shadow: var(--row-rim);
+  color: var(--color-text);
+  font-weight: 550;
+}
+/* With a gliding plate, the plate draws the active fill instead. */
+[data-glide-host] .vz-row[aria-current="page"] { background: transparent; box-shadow: none; }
+.vz-plate {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--row-sidebar);
+  border-radius: var(--radius-row);
+  background: var(--row-active);
+  box-shadow: var(--row-rim);
+  pointer-events: none;
+  transition: transform var(--motion-slow) var(--ease-spring), height var(--motion-slow) var(--ease-spring);
+}
+.vz-row svg, .vz-icon { width: 16px; height: 16px; flex: none; }
+
+/* -- 8. Shine material + buttons ------------------------------------------- */
+.vz-shine { border-radius: var(--radius-control); background: var(--row-active); box-shadow: var(--shine-top); }
+.vz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: var(--control-regular);
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-control);
+  box-shadow: var(--shadow-control), var(--shine-top);
+  color: var(--color-on-control);
+  font-size: var(--text-label);
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none;
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out),
+    scale var(--motion-base) var(--ease-spring);
+}
+.vz-btn:hover { background: var(--color-control-hover); }
+.vz-btn:active { background: var(--color-control-pressed); scale: 0.97; transition-duration: var(--motion-instant); }
+.vz-btn:disabled { opacity: 0.5; pointer-events: none; }
+.vz-btn[data-variant="primary"] { background: var(--color-accent); color: var(--color-on-accent); box-shadow: none; }
+.vz-btn[data-variant="primary"]:hover { background: var(--color-accent-hover); }
+.vz-btn[data-variant="ghost"] { background: transparent; box-shadow: none; color: var(--color-muted); }
+.vz-btn[data-variant="ghost"]:hover { background: var(--color-fill-hover); color: var(--color-text); }
+.vz-btn[data-variant="danger"] { background: color-mix(in srgb, var(--color-danger) 16%, transparent); color: var(--color-danger); box-shadow: none; }
+.vz-btn[data-variant="danger"]:hover { background: color-mix(in srgb, var(--color-danger) 24%, transparent); }
+.vz-btn[data-size="compact"] { min-height: var(--control-compact); padding: 0 var(--control-inset); }
+.vz-btn[data-size="large"] { min-height: var(--control-xl); padding: 0 18px; border-radius: var(--radius-control); font-size: var(--text-body); }
+.vz-btn[aria-busy="true"] { pointer-events: none; color: transparent; position: relative; }
+.vz-btn[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentcolor;
+  border-color: var(--color-on-accent) transparent var(--color-on-accent) var(--color-on-accent);
+  animation: vz-spin 0.8s linear infinite;
+}
+
+.vz-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control-compact);
+  background: transparent;
+  color: var(--color-muted);
+  transition:
+    color var(--motion-instant) var(--ease-smooth),
+    background-color var(--motion-instant) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-smooth);
+}
+.vz-icon-btn:hover, .vz-icon-btn[aria-pressed="true"] { background: var(--color-fill-hover); color: var(--color-text); }
+.vz-icon-btn:active { background: var(--color-fill-pressed); transform: scale(0.94); }
+.vz-icon-btn svg { width: 16px; height: 16px; }
+
+/* -- 9. Fields -------------------------------------------------------------- */
+.vz-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--control-regular);
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-field);
+  box-shadow: var(--shine-top);
+  color: var(--color-muted);
+  transition: background-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out);
+}
+.vz-field:hover { background: var(--color-field-hover); }
+.vz-field:focus-within { background: var(--color-field-hover); box-shadow: var(--shine-top), var(--shadow-field-focus); }
+.vz-field input, .vz-field textarea {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-body);
+  outline: none;
+}
+.vz-field input::placeholder, .vz-field textarea::placeholder { color: var(--color-faint); }
+.vz-field[data-size="page"] { height: 48px; padding: 0 16px; border-radius: var(--radius-control-large); font-size: var(--text-reading); }
+.vz-field[data-size="page"] input { font-size: var(--text-reading); }
+.vz-field[data-invalid="true"] { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-danger) 60%, transparent); }
+.vz-label { display: block; margin-bottom: 6px; color: var(--color-label-secondary); font-size: var(--text-label); font-weight: 500; }
+.vz-hint { margin-top: 6px; color: var(--color-faint); font-size: var(--text-caption); }
+
+/* -- 10. Segmented control (thumb travels on a snap spring) ---------------- */
+.vz-segment {
+  position: relative;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 2px;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-fill);
+}
+.vz-segment button {
+  position: relative;
+  z-index: 1;
+  min-height: 24px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  font-weight: 500;
+  transition: color var(--motion-fast) var(--ease-out);
+}
+.vz-segment button[aria-pressed="true"] { color: var(--color-text); }
+.vz-segment-thumb {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  border-radius: 8px;
+  background: var(--segment-thumb);
+  box-shadow: var(--shadow-segment-thumb);
+  transition: transform 240ms var(--ease-snap), width 240ms var(--ease-snap);
+}
+
+/* -- 11. Switch + checkbox -------------------------------------------------- */
+.vz-switch {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-capsule);
+  background: var(--color-track);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.07);
+  transition: background-color var(--motion-base) var(--ease-out);
+}
+.vz-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-switch-thumb);
+  box-shadow: var(--shadow-thumb);
+  transition: transform var(--motion-slow) var(--ease-spring);
+}
+.vz-switch[aria-checked="true"] { background: var(--color-track-on); }
+.vz-switch[aria-checked="true"]::after { transform: translateX(12px); }
+
+.vz-check {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: var(--color-field);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  color: var(--color-on-accent);
+  transition: background-color var(--motion-fast) var(--ease-out);
+}
+.vz-check svg { width: 12px; height: 12px; stroke-dasharray: 16; stroke-dashoffset: 16; }
+.vz-check[aria-checked="true"] { background: var(--color-accent); box-shadow: none; }
+.vz-check[aria-checked="true"] svg { animation: vz-draw var(--motion-base) var(--ease-out) forwards; }
+
+/* -- 12. Cards, groups, KPI ------------------------------------------------- */
+.vz-card {
+  padding: 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.vz-card-title { margin: 0 0 4px; font-size: var(--text-page-title); font-weight: 600; }
+.vz-group { border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--shadow-card); overflow: hidden; }
+.vz-group-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+.vz-group-row + .vz-group-row { border-top: 1px solid var(--color-border); }
+.vz-group-row .vz-grow { flex: 1; min-width: 0; }
+.vz-group-row .vz-desc { color: var(--color-muted); font-size: var(--text-label); }
+.vz-kpi-label { color: var(--color-muted); font-size: var(--text-label); font-weight: 500; }
+.vz-kpi-value { margin-top: 6px; font-size: var(--text-headline); font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.vz-delta { font-size: var(--text-label); font-weight: 500; font-variant-numeric: tabular-nums; }
+.vz-delta[data-dir="up"] { color: var(--color-success); }
+.vz-delta[data-dir="down"] { color: var(--color-danger); }
+
+/* -- 13. Badge, kbd, tag, avatar ------------------------------------------- */
+.vz-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: var(--radius-capsule);
+  background: var(--color-fill);
+  color: var(--color-label-secondary);
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+.vz-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentcolor; opacity: 0.9; }
+.vz-badge[data-tone="plain"]::before { display: none; }
+.vz-badge[data-tone="success"] { background: color-mix(in srgb, var(--color-success) 16%, transparent); color: var(--color-success); }
+.vz-badge[data-tone="warning"] { background: color-mix(in srgb, var(--color-warning) 16%, transparent); color: var(--color-warning); }
+.vz-badge[data-tone="danger"]  { background: color-mix(in srgb, var(--color-danger) 16%, transparent); color: var(--color-danger); }
+.vz-badge[data-tone="info"]    { background: color-mix(in srgb, var(--color-info) 16%, transparent); color: var(--color-info); }
+.vz-badge[data-tone="accent"]  { background: var(--color-accent-soft); color: var(--color-text); }
+
+.vz-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 6px; font-size: var(--text-caption); font-weight: 600; }
+.vz-tag[data-soft="sky"]   { background: color-mix(in oklab, var(--color-soft-sky) var(--soft-wash), transparent);   color: color-mix(in oklab, var(--color-soft-sky) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="mint"]  { background: color-mix(in oklab, var(--color-soft-mint) var(--soft-wash), transparent);  color: color-mix(in oklab, var(--color-soft-mint) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="lemon"] { background: color-mix(in oklab, var(--color-soft-lemon) var(--soft-wash), transparent); color: color-mix(in oklab, var(--color-soft-lemon) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="peach"] { background: color-mix(in oklab, var(--color-soft-peach) var(--soft-wash), transparent); color: color-mix(in oklab, var(--color-soft-peach) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="rose"]  { background: color-mix(in oklab, var(--color-soft-rose) var(--soft-wash), transparent);  color: color-mix(in oklab, var(--color-soft-rose) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="lilac"] { background: color-mix(in oklab, var(--color-soft-lilac) var(--soft-wash), transparent); color: color-mix(in oklab, var(--color-soft-lilac) var(--soft-ink), var(--color-text)); }
+
+kbd, .vz-kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 19px;
+  height: 18px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: var(--color-fill);
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.vz-avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-fill-strong);
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 600;
+}
+.vz-orb {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #fff 0 6%, transparent 24%),
+    linear-gradient(135deg, var(--color-lead-orb), var(--color-lead-orb-to));
+  box-shadow: inset 0 -2px 4px rgb(0 0 0 / 0.18);
+}
+
+/* -- 14. Menus, popovers, launcher (the one blur) -------------------------- */
+.vz-menu {
+  position: absolute;
+  z-index: 50;
+  min-width: 200px;
+  padding: var(--menu-pad);
+  box-sizing: border-box;
+  border-radius: var(--radius-panel);
+  background: var(--color-menu);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-menu), var(--shine-top);
+  transform-origin: top left;
+  opacity: 0;
+  scale: 0.96;
+  translate: 0 -4px;
+  visibility: hidden;
+  transition:
+    opacity var(--motion-instant) var(--ease-exit),
+    scale var(--motion-instant) var(--ease-exit),
+    translate var(--motion-instant) var(--ease-exit),
+    visibility 0s linear var(--motion-instant);
+}
+.vz-menu[data-open="true"] {
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+  visibility: visible;
+  transition:
+    opacity var(--motion-fast) var(--ease-out),
+    scale var(--motion-base) var(--ease-out),
+    translate var(--motion-base) var(--ease-out),
+    visibility 0s;
+}
+.vz-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--menu-row);
+  padding: 6px 8px;
+  box-sizing: border-box;
+  border: 0;
+  /* Concentric: row radius + menu padding = panel radius. */
+  border-radius: calc(var(--radius-panel) - var(--menu-pad));
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-body);
+  font-weight: 450;
+  text-align: start;
+  transition: background-color var(--motion-instant) var(--ease-smooth);
+}
+.vz-menu-item:hover, .vz-menu-item[data-highlighted] { background: var(--row-active); }
+.vz-menu-item:active { background: var(--row-pressed); }
+.vz-menu-item svg { width: 16px; height: 16px; color: var(--color-muted); }
+.vz-menu-item kbd { margin-inline-start: auto; }
+.vz-menu-item[data-danger="true"], .vz-menu-item[data-danger="true"] svg { color: var(--color-danger); }
+.vz-menu-item[data-danger="true"]:hover { background: color-mix(in srgb, var(--color-danger) 16%, transparent); }
+.vz-menu-sep { height: 1px; margin: 5px 8px; background: var(--color-menu-separator); }
+
+.vz-scrim { position: fixed; inset: 0; z-index: 60; display: grid; place-items: start center; padding-top: 14vh; }
+.vz-launcher {
+  width: min(640px, calc(100vw - 32px));
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: var(--radius-panel);
+  background: var(--color-menu);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-overlay), var(--shine-top);
+  animation: vz-pop var(--motion-base) var(--ease-out);
+}
+
+/* -- 15. Toast, working dots, skeleton ------------------------------------- */
+.vz-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 8px 0 14px;
+  border-radius: var(--radius-control-large);
+  background: var(--color-float);
+  box-shadow: var(--shadow-float), var(--shine-top);
+  translate: -50% 0;
+  animation: vz-rise var(--motion-page) var(--ease-emphasized);
+}
+.vz-toast[data-leaving] { animation: vz-leave var(--motion-fast) var(--ease-exit) forwards; }
+.vz-dots { display: inline-flex; gap: 3px; }
+.vz-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--color-text); animation: vz-pending 1.2s var(--ease-in-out) infinite; }
+.vz-dots i:nth-child(2) { animation-delay: 0.15s; }
+.vz-dots i:nth-child(3) { animation-delay: 0.3s; }
+.vz-skeleton { border-radius: var(--radius-inset); background: var(--color-fill); animation: vz-breathe 1.4s var(--ease-in-out) infinite alternate; }
+
+/* -- 16. Arrival (launch cascade) ------------------------------------------- */
+.vz-arrive { animation: vz-rise var(--motion-page) var(--ease-emphasized) both; }
+.vz-cascade > * { animation: vz-rise var(--motion-page) var(--ease-emphasized) both; }
+.vz-cascade > *:nth-child(1) { animation-delay: 0ms; }
+.vz-cascade > *:nth-child(2) { animation-delay: 40ms; }
+.vz-cascade > *:nth-child(3) { animation-delay: 80ms; }
+.vz-cascade > *:nth-child(4) { animation-delay: 120ms; }
+.vz-cascade > *:nth-child(5) { animation-delay: 160ms; }
+.vz-cascade > *:nth-child(6) { animation-delay: 200ms; }
+.vz-cascade > *:nth-child(n + 7) { animation-delay: 240ms; }
+
+/* -- 17. Keyframes (transform + opacity only) ------------------------------- */
+@keyframes vz-rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes vz-pop { from { opacity: 0; transform: scale(0.96) translateY(-4px); } }
+@keyframes vz-leave { to { opacity: 0; transform: translateY(4px); } }
+@keyframes vz-draw { to { stroke-dashoffset: 0; } }
+@keyframes vz-pending { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes vz-breathe { from { opacity: 0.55; } to { opacity: 1; } }
+@keyframes vz-spin { to { transform: rotate(360deg); } }
+
+/* -- 18. Forced colours ------------------------------------------------------ */
+@media (forced-colors: active) {
+  .vz-btn, .vz-field, .vz-card, .vz-group, .vz-menu, .vz-launcher { border: 1px solid ButtonText; }
+  .vz-row[aria-current="page"] { outline: 1px solid Highlight; }
+  .vz-menu, .vz-launcher { backdrop-filter: none; }
+}
+</style>
+<style id="vz-page">
+/* -- Page layer: only theme tokens and vz- classes ------------------------- */
+html, body { height: 100%; }
+body { overflow: hidden; }
+.i { width: 16px; height: 16px; flex: none; }
+.vz-app { height: 100vh; height: 100dvh; }
+
+/* Frame ------------------------------------------------------------------- */
+.vz-sidebar { padding: 2px 8px 8px; }
+.sb-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 2px 2px 4px 4px;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-fill-strong);
+  color: var(--color-text);
+}
+.brand-mark svg { width: 16px; height: 16px; }
+.brand-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.sb-search { margin: 0 2px; }
+.sb-search kbd { margin-inline-start: auto; }
+.sb-section { margin-top: 6px; }
+.sb-nav { position: relative; display: flex; flex-direction: column; gap: 2px; }
+.sb-nav .vz-plate { inset-inline: 0; }
+.sb-nav .nav-label { min-width: 0; overflow: hidden; white-space: nowrap; }
+.sb-foot { position: relative; padding-top: 4px; }
+.space-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-swatch);
+  background: var(--color-fill-strong);
+}
+.space-dot[data-soft="sky"] { background: var(--color-soft-sky); }
+.space-dot[data-soft="mint"] { background: var(--color-soft-mint); }
+.space-dot[data-soft="lemon"] { background: var(--color-soft-lemon); }
+.space-dot[data-soft="peach"] { background: var(--color-soft-peach); }
+.space-dot[data-soft="rose"] { background: var(--color-soft-rose); }
+.space-dot[data-soft="lilac"] { background: var(--color-soft-lilac); }
+.profile { min-height: 40px; gap: 9px; }
+.profile .vz-avatar { width: 26px; height: 26px; }
+.profile-copy { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.profile-name { color: var(--color-text); font-size: var(--text-label); font-weight: 600; }
+.profile-sub { color: var(--color-faint); font-size: var(--text-caption); }
+.profile .chev { margin-inline-start: auto; color: var(--color-faint); }
+.profile-menu {
+  inset-block: auto;
+  bottom: calc(100% + 6px);
+  left: 0;
+  right: auto;
+  min-width: 224px;
+  transform-origin: bottom left;
+}
+
+/* Page sheet -------------------------------------------------------------- */
+.vz-page { display: flex; flex-direction: column; overflow: hidden; }
+.page-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px 12px;
+}
+.page-head h1 {
+  margin: 0;
+  font-size: var(--text-title);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.page-head p { margin: 3px 0 0; font-size: var(--text-label); color: var(--color-muted); }
+.head-actions { display: flex; margin-inline-start: auto; align-items: center; gap: 2px; }
+.page-scroll { flex: 1; min-height: 0; overflow: auto; padding: 2px 24px 28px; }
+.page-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1080px;
+  padding-bottom: 4px;
+}
+.page-inner[hidden] { display: none; }
+.tile[hidden] { display: none; }
+.vz-menu-item[hidden] { display: none; }
+.sample {
+  margin: 0;
+  color: var(--color-faint);
+  font-size: var(--text-caption);
+  font-weight: 500;
+}
+
+/* Home -------------------------------------------------------------------- */
+.clock-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
+.clock {
+  font-size: var(--text-display);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.clock-date { font-size: var(--text-body); }
+.greeting { margin: 0; color: var(--color-muted); font-size: var(--text-reading); line-height: 1.6; }
+.home-search { margin-top: 2px; }
+.home-search kbd { margin-inline-start: auto; }
+.recent-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.recent-head h2 { margin: 0; font-size: var(--text-page-title); font-weight: 600; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; }
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 0;
+  border-radius: var(--radius-card);
+  background: var(--color-tile);
+  color: var(--color-text);
+  text-align: start;
+  transition: background-color var(--motion-fast) var(--ease-out),
+    transform var(--motion-instant) var(--ease-smooth);
+}
+.tile:hover { background: var(--color-tile-hover); }
+.tile:active { transform: scale(0.99); }
+.tile-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-fill);
+  color: var(--color-muted);
+}
+.tile-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tile-title { overflow: hidden; font-size: var(--text-body); font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.tile-meta { color: var(--color-faint); font-size: var(--text-caption); }
+
+/* Dashboard --------------------------------------------------------------- */
+.dash-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.dash-top h2 { margin: 0; font-size: var(--text-page-title); font-weight: 600; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.kpi { display: flex; flex-direction: column; gap: 2px; }
+.kpi-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.dash-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 10px; }
+.chart-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.legend { display: flex; gap: 12px; color: var(--color-faint); font-size: var(--text-caption); }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { display: inline-block; width: 8px; height: 8px; border-radius: var(--radius-swatch); }
+.legend .a { background: var(--chart-1); }
+.legend .b { background: var(--chart-2); }
+.chart { display: block; width: 100%; height: 196px; overflow: visible; }
+.chart .axis { fill: var(--color-faint); font-family: var(--font-sans); font-size: 10px; }
+.chart .grid-line { stroke: var(--color-border); stroke-width: 1; }
+.chart .bar-a,
+.chart .bar-b {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform var(--motion-slow) var(--ease-snap);
+}
+.chart .bar-a { fill: var(--chart-1); }
+.chart .bar-b { fill: var(--chart-2); }
+.attention { display: flex; flex-direction: column; }
+.attention-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: var(--text-body);
+}
+.attention-row + .attention-row { border-top: 1px solid var(--color-border); }
+.attention-row .vz-badge { margin-inline-start: auto; flex: none; }
+.table-card { padding: 0 0 2px; overflow: hidden; }
+.table-scroll { overflow-x: auto; }
+.data-table { min-width: 540px; }
+.table-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px 2px; }
+.table-head h2 { margin: 0; font-size: var(--text-page-title); font-weight: 600; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  padding: 8px 16px;
+  color: var(--color-faint);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  text-align: start;
+  white-space: nowrap;
+}
+.data-table td { padding: 11px 16px; border-top: 1px solid var(--color-border); font-size: var(--text-body); }
+.data-table tbody tr { transition: background-color var(--motion-instant) var(--ease-smooth); }
+.data-table tbody tr:hover { background: var(--row-hover); }
+.cell-owner { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.cell-num { color: var(--color-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Tasks ------------------------------------------------------------------- */
+.capture { height: 40px; margin-bottom: 0; border-radius: var(--radius-card); }
+.capture input { min-height: 30px; }
+.capture kbd { margin-inline-start: auto; }
+.task-row .vz-tag { flex: none; }
+.task-groups { display: flex; flex-direction: column; gap: 16px; }
+.task-group { display: flex; flex-direction: column; gap: 6px; }
+.task-group-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+  color: var(--color-faint);
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+.task-count { color: var(--color-faint); font-variant-numeric: tabular-nums; }
+.task-list {
+  padding: 2px 10px;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 4px 2px;
+  transition: opacity var(--motion-fast) var(--ease-exit), transform var(--motion-fast) var(--ease-exit);
+}
+.task-row + .task-row { border-top: 1px solid var(--color-border); }
+.task-row.is-leaving { opacity: 0; transform: translateX(8px); }
+.task-row.is-done .t-title { color: var(--color-muted); text-decoration: line-through; }
+.t-main { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
+.t-title { overflow: hidden; font-size: var(--text-body); font-weight: 500; white-space: nowrap; }
+.t-meta { color: var(--color-faint); font-size: var(--text-caption); }
+.task-empty { padding: 12px 2px; color: var(--color-faint); font-size: var(--text-label); }
+
+/* Notes ------------------------------------------------------------------- */
+.notes-wrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 12px; align-items: start; }
+.note-list { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+.note-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: var(--radius-row);
+  background: transparent;
+  color: var(--color-muted);
+  text-align: start;
+  transition: background-color var(--motion-instant) var(--ease-smooth),
+    color var(--motion-instant) var(--ease-smooth);
+}
+.note-item:hover { background: var(--row-hover); color: var(--color-text); }
+.note-item[aria-current="true"] { background: var(--row-active); box-shadow: var(--row-rim); color: var(--color-text); }
+.note-item-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.note-name { min-width: 0; overflow: hidden; font-size: var(--text-body); font-weight: 500; white-space: nowrap; }
+.note-snippet {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-faint);
+  font-size: var(--text-caption);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.reading { padding: 22px 26px; min-height: 420px; }
+.reading h2 { margin: 0; font-size: var(--text-title); font-weight: 600; letter-spacing: -0.01em; }
+.reading-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 18px; color: var(--color-faint); font-size: var(--text-caption); }
+.reading p { margin: 0 0 12px; color: var(--color-label-secondary); font-size: var(--text-reading); line-height: 1.6; }
+.reading blockquote {
+  margin: 18px 0;
+  padding: 2px 0 2px 14px;
+  border-inline-start: 2px solid var(--color-border-strong);
+  color: var(--color-muted);
+  font-size: var(--text-reading);
+  line-height: 1.6;
+}
+.reading-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+
+/* Settings ---------------------------------------------------------------- */
+.settings { display: flex; flex-direction: column; gap: 18px; max-width: 780px; }
+.set-h { margin: 0 0 8px 2px; color: var(--color-faint); font-size: var(--text-caption); font-weight: 600; }
+.settings .vz-group-row { flex-wrap: wrap; row-gap: 8px; }
+.set-copy { display: flex; flex-direction: column; gap: 2px; }
+.set-title { font-size: var(--text-body); font-weight: 500; }
+.set-desc { color: var(--color-muted); font-size: var(--text-label); }
+.tints { display: flex; flex-wrap: wrap; gap: 8px; }
+.tint {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-swatch);
+  background: var(--color-fill-strong);
+}
+.tint[data-tint="none"] { background: var(--color-lit); }
+.tint[data-tint="sky"] { background: var(--color-tint-sky); }
+.tint[data-tint="sage"] { background: var(--color-tint-sage); }
+.tint[data-tint="rose"] { background: var(--color-tint-rose); }
+.tint[data-tint="amber"] { background: var(--color-tint-amber); }
+.tint[data-tint="teal"] { background: var(--color-tint-teal); }
+.tint[data-tint="lavender"] { background: var(--color-tint-lavender); }
+.tint[data-tint="orchid"] { background: var(--color-tint-orchid); }
+.tint[aria-pressed="true"] { outline: 2px solid var(--color-text); outline-offset: 2px; }
+
+/* Assistant --------------------------------------------------------------- */
+.vz-assist { gap: 8px; padding: 2px 2px 2px 0; }
+.vz-app[data-assist="off"] .vz-assist { display: none; }
+.assist-head { display: flex; align-items: center; gap: 10px; padding: 8px 10px 6px; }
+.assist-head .vz-orb { width: 28px; height: 28px; }
+.assist-id { flex: 1; min-width: 0; line-height: 1.25; }
+.assist-name { font-size: var(--text-body); font-weight: 600; }
+.assist-sub { color: var(--color-faint); font-size: var(--text-caption); }
+.assist-thread { display: flex; flex: 1; min-height: 0; flex-direction: column; gap: 8px; overflow: auto; padding: 4px 10px 8px; }
+.msg {
+  max-width: 94%;
+  padding: 9px 12px;
+  border-radius: var(--radius-control-large);
+  font-size: var(--text-body);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.msg[data-role="assistant"] { align-self: flex-start; background: var(--color-surface); color: var(--color-label-secondary); }
+.msg[data-role="user"] { align-self: flex-end; background: var(--color-fill-strong); color: var(--color-text); }
+.msg .vz-dots { padding: 3px 0; }
+.assist-composer { display: flex; align-items: center; gap: 6px; padding: 2px 10px 8px; }
+.assist-composer .vz-field { flex: 1; height: 36px; border-radius: var(--radius-control-large); }
+.assist-composer .vz-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-capsule);
+  background: var(--color-control);
+  box-shadow: var(--shadow-control), var(--shine-top);
+  color: var(--color-on-control);
+}
+.assist-composer .vz-icon-btn:hover { background: var(--color-control-hover); }
+
+/* Launcher ---------------------------------------------------------------- */
+.vz-scrim { background: color-mix(in srgb, var(--color-canvas) 62%, transparent); }
+.vz-scrim[hidden] { display: none; }
+.launcher-field {
+  height: 48px;
+  padding: 0 14px;
+  border-radius: var(--radius-control-large);
+  background: var(--color-field);
+}
+.launcher-field input { font-size: var(--text-reading); }
+.launcher-field kbd { margin-inline-start: auto; }
+.launcher-list { display: flex; flex-direction: column; gap: 1px; max-height: min(52vh, 380px); margin-top: 6px; overflow: auto; }
+.launcher-list .vz-menu-item > span { flex: 1; }
+.launcher-list .vz-menu-item kbd { margin-inline-start: 0; }
+.launcher-empty { padding: 18px 12px; color: var(--color-faint); font-size: var(--text-label); text-align: center; }
+.launcher-empty[hidden] { display: none; }
+.vz-toast span { font-size: var(--text-label); }
+.vz-toast .vz-btn { flex: none; }
+
+/* Rail -------------------------------------------------------------------- */
+.vz-app[data-sidebar="rail"] .sb-full { display: none; }
+.vz-app[data-sidebar="rail"] .sb-top { flex-direction: column; justify-content: center; gap: 8px; padding: 4px 0 8px; }
+.vz-app[data-sidebar="rail"] .sb-nav .vz-row { justify-content: center; padding: 0; }
+.vz-app[data-sidebar="rail"] .sb-nav .vz-row .nav-label { display: none; }
+.vz-app[data-sidebar="rail"] .space-list .vz-row { justify-content: center; padding: 0; }
+.vz-app[data-sidebar="rail"] .profile { justify-content: center; padding: 0; }
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 1099px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dash-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 899px) {
+  .vz-app { grid-template-columns: var(--sidebar-rail) minmax(0, 1fr) auto; }
+  .sb-full { display: none; }
+  .sb-top { flex-direction: column; justify-content: center; gap: 8px; padding: 4px 0 8px; }
+  .sb-nav .vz-row { justify-content: center; padding: 0; }
+  .sb-nav .vz-row .nav-label { display: none; }
+  .space-list .vz-row { justify-content: center; padding: 0; }
+  .profile { justify-content: center; padding: 0; }
+  .notes-wrap { grid-template-columns: minmax(0, 1fr); }
+  .note-list { flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
+  .note-item { min-width: 190px; }
+  .reading { min-height: 0; }
+  .page-head { padding: 16px 18px 10px; }
+  .page-scroll { padding: 2px 18px 24px; }
+}
+@media (max-width: 639px) {
+  .vz-assist { display: none; }
+  .assist-toggle { display: none; }
+  .tiles { grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); }
+  .kpis { grid-template-columns: minmax(0, 1fr); }
+  .reading { padding: 18px; }
+  .page-head { padding: 14px 14px 10px; }
+  .page-scroll { padding: 2px 14px 22px; }
+}
+</style>
+</head>
+<body>
+<div class="vz-app">
+
+  <!-- Sidebar ------------------------------------------------------------- -->
+  <aside class="vz-sidebar" aria-label="Workspace navigation">
+    <div class="sb-top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12.5 8 3l5 9.5"/><path d="M5.2 9h5.6"/></svg>
+      </span>
+      <span class="brand-name sb-full">Zep Workspace</span>
+      <button class="vz-icon-btn" id="openLauncher" type="button" aria-label="Open command palette" title="Command palette">
+        <kbd>⌘K</kbd>
+      </button>
+    </div>
+
+    <div class="vz-field sb-search sb-full">
+      <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.4 10.4 3.1 3.1"/></svg>
+      <input id="sidebarSearch" type="search" placeholder="Search workspace" aria-label="Search workspace" autocomplete="off">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="vz-sidebar-scroll scrolls">
+      <div class="vz-section-label sb-full">Workspace</div>
+      <nav class="sb-nav" data-glide-host aria-label="Primary">
+        <span class="vz-plate" aria-hidden="true"></span>
+        <button class="vz-row" type="button" data-nav="home" aria-current="page">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.6 8 2.5l5.5 4.1v6.9a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1z"/><path d="M6.4 14.5v-4h3.2v4"/></svg>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="vz-row" type="button" data-nav="dashboard">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="4.4" height="4.4" rx="1.2"/><rect x="9.1" y="2.5" width="4.4" height="4.4" rx="1.2"/><rect x="2.5" y="9.1" width="4.4" height="4.4" rx="1.2"/><rect x="9.1" y="9.1" width="4.4" height="4.4" rx="1.2"/></svg>
+          <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="vz-row" type="button" data-nav="tasks">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11" rx="2.5"/><path d="m5.4 8 1.8 1.8 3.4-3.6"/></svg>
+          <span class="nav-label">Tasks</span>
+        </button>
+        <button class="vz-row" type="button" data-nav="notes">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 2.5h5.2l3.3 3.3v7.2a1 1 0 0 1-1 1h-7.5a1 1 0 0 1-1-1v-9.5a1 1 0 0 1 1-1z"/><path d="M8.7 2.5v3.3h3.3"/><path d="M5.5 9h5"/><path d="M5.5 11.5h3.3"/></svg>
+          <span class="nav-label">Notes</span>
+        </button>
+        <button class="vz-row" type="button" data-nav="settings">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.9v1.7M8 12.4v1.7M1.9 8h1.7M12.4 8h1.7M3.6 3.6l1.2 1.2M11.2 11.2l1.2 1.2M12.4 3.6l-1.2 1.2M4.8 11.2l-1.2 1.2"/></svg>
+          <span class="nav-label">Settings</span>
+        </button>
+      </nav>
+
+      <div class="vz-section-label sb-full sb-section">Spaces</div>
+      <div class="sb-nav space-list">
+        <button class="vz-row" type="button" title="Operations">
+          <span class="space-dot" data-soft="sky" aria-hidden="true"></span>
+          <span class="nav-label">Operations</span>
+        </button>
+        <button class="vz-row" type="button" title="Finance">
+          <span class="space-dot" data-soft="mint" aria-hidden="true"></span>
+          <span class="nav-label">Finance</span>
+        </button>
+        <button class="vz-row" type="button" title="Design">
+          <span class="space-dot" data-soft="lemon" aria-hidden="true"></span>
+          <span class="nav-label">Design</span>
+        </button>
+        <button class="vz-row" type="button" title="Field team">
+          <span class="space-dot" data-soft="rose" aria-hidden="true"></span>
+          <span class="nav-label">Field team</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sb-foot" id="profileWrap">
+      <button class="vz-row profile" type="button" id="profileBtn" aria-haspopup="menu" aria-expanded="false">
+        <span class="vz-avatar" aria-hidden="true">FL</span>
+        <span class="profile-copy sb-full">
+          <span class="profile-name">Ferdz Lopez</span>
+          <span class="profile-sub">Personal workspace</span>
+        </span>
+        <svg class="i chev sb-full" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 9.5 3.5-3.5 3.5 3.5"/></svg>
+      </button>
+      <div class="vz-menu profile-menu" id="profileMenu" role="menu" data-open="false">
+        <button class="vz-menu-item" type="button" role="menuitem" data-menu="account">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="5.5" r="2.6"/><path d="M3 13.2c.6-2.2 2.5-3.4 5-3.4s4.4 1.2 5 3.4"/></svg>
+          Account settings
+        </button>
+        <button class="vz-menu-item" type="button" role="menuitem" data-menu="invite">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5.5" r="2.4"/><path d="M1.8 13c.5-2 2.2-3.1 4.2-3.1 1 0 1.9.3 2.6.7"/><path d="M11.5 8.5v4M9.5 10.5h4"/></svg>
+          Invite people
+        </button>
+        <div class="vz-menu-sep" role="separator"></div>
+        <button class="vz-menu-item" type="button" role="menuitem" data-menu="signout" data-danger="true">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.4 3.5H4a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2.4"/><path d="m9 5.5 2.5 2.5L9 10.5"/><path d="M11.5 8H6"/></svg>
+          Sign out
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Page --------------------------------------------------------------- -->
+  <main class="vz-page">
+    <header class="page-head">
+      <div>
+        <h1 id="pageTitle">Home</h1>
+        <p id="pageSub">Your day at a glance · sample data</p>
+      </div>
+      <div class="head-actions">
+        <button class="vz-icon-btn assist-toggle" id="assistToggle" type="button" aria-pressed="true" aria-label="Toggle assistant" title="Assistant">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.4l1.3 3.4 3.4 1.3-3.4 1.3L8 11.8 6.7 8.4 3.3 7.1l3.4-1.3z"/><path d="M12.6 10.8l.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z"/></svg>
+        </button>
+        <button class="vz-icon-btn" id="railToggle" type="button" data-sidebar="rail" aria-pressed="false" aria-label="Collapse sidebar" title="Collapse sidebar">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="2.2"/><path d="M6.2 3v10"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="page-scroll scrolls" id="pageScroll">
+
+      <!-- Home ----------------------------------------------------------- -->
+      <section class="page-inner vz-cascade" data-page="home" aria-label="Home">
+        <div class="clock-row">
+          <span class="clock" id="clock">09:41</span>
+          <span class="clock-date muted" id="clockDate">Wednesday, 28 October</span>
+        </div>
+        <p class="greeting" id="greeting">Good morning, Ferdz. Here’s where the workspace stands.</p>
+        <div class="vz-field home-search" data-size="page">
+          <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.4 10.4 3.1 3.1"/></svg>
+          <input id="homeSearch" type="search" placeholder="Search pages, tasks and notes" aria-label="Search pages, tasks and notes" autocomplete="off">
+          <kbd>/</kbd>
+        </div>
+        <div class="recent-head">
+          <h2>Recent</h2>
+          <span class="sample">Sample data</span>
+        </div>
+        <div class="tiles" id="tiles">
+          <button class="tile" type="button" data-nav="notes">
+            <span class="tile-icon" aria-hidden="true">
+              <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2.5h5.2l3.3 3.3v7.2a1 1 0 0 1-1 1h-7.5a1 1 0 0 1-1-1v-9.5a1 1 0 0 1 1-1z"/><path d="M8.7 2.5v3.3h3.3"/><path d="M5.5 9h5"/></svg>
+            </span>
+            <span class="tile-copy"><span class="tile-title">Weekly ops digest</span><span class="tile-meta">Note · edited 2h ago</span></span>
+          </button>
+          <button class="tile" type="button" data-nav="dashboard">
+            <span class="tile-icon" aria-hidden="true">
+              <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="4.4" height="4.4" rx="1.2"/><rect x="9.1" y="2.5" width="4.4" height="4.4" rx="1.2"/><rect x="2.5" y="9.1" width="4.4" height="4.4" rx="1.2"/><rect x="9.1" y="9.1" width="4.4" height="4.4" rx="1.2"/></svg>
+            </span>
+            <span class="tile-copy"><span class="tile-title">Q4 rollout</span><span class="tile-meta">Dashboard · updated today</span></span>
+          </button>
+          <button class="tile" type="button" data-nav="tasks">
+            <span class="tile-icon" aria-hidden="true">
+              <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="11" height="11" rx="2.5"/><path d="m5.4 8 1.8 1.8 3.4-3.6"/></svg>
+            </span>
+            <span class="tile-copy"><span class="tile-title">Dataverse cleanup</span><span class="tile-meta">Tasks · 6 open</span></span>
+          </button>
+          <button class="tile" type="button" data-nav="notes">
+            <span class="tile-icon" aria-hidden="true">
+              <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2.5h5.2l3.3 3.3v7.2a1 1 0 0 1-1 1h-7.5a1 1 0 0 1-1-1v-9.5a1 1 0 0 1 1-1z"/><path d="M8.7 2.5v3.3h3.3"/><path d="M5.5 9h5"/></svg>
+            </span>
+            <span class="tile-copy"><span class="tile-title">Measure audit</span><span class="tile-meta">Note · edited yesterday</span></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Dashboard ------------------------------------------------------ -->
+      <section class="page-inner" data-page="dashboard" aria-label="Dashboard" hidden>
+        <div class="dash-top">
+          <div>
+            <h2>Workspace activity</h2>
+            <span class="sample">Sample data</span>
+          </div>
+          <div class="vz-segment" data-segment="range" role="group" aria-label="Time range">
+            <span class="vz-segment-thumb" aria-hidden="true"></span>
+            <button type="button" data-value="7d" aria-pressed="true">7d</button>
+            <button type="button" data-value="30d" aria-pressed="false">30d</button>
+            <button type="button" data-value="90d" aria-pressed="false">90d</button>
+          </div>
+        </div>
+
+        <div class="kpis" id="kpis"></div>
+
+        <div class="dash-grid">
+          <div class="vz-card">
+            <div class="chart-head">
+              <div>
+                <div class="vz-card-title">Completions</div>
+                <span class="sample">Sample data · bucketed</span>
+              </div>
+              <div class="legend">
+                <span><i class="a" aria-hidden="true"></i>This period</span>
+                <span><i class="b" aria-hidden="true"></i>Previous</span>
+              </div>
+            </div>
+            <svg class="chart" id="bars" viewBox="0 0 560 190" role="img" aria-label="Bar chart of task completions, this period against the previous one"></svg>
+          </div>
+          <div class="vz-card attention">
+            <div class="vz-card-title">Needs attention</div>
+            <div class="attention-row">
+              <span>Q4 access review</span>
+              <span class="vz-badge" data-tone="warning">At risk</span>
+            </div>
+            <div class="attention-row">
+              <span>Field enablement</span>
+              <span class="vz-badge" data-tone="danger">Blocked</span>
+            </div>
+            <div class="attention-row">
+              <span>Measure audit</span>
+              <span class="vz-badge" data-tone="info">Review</span>
+            </div>
+            <div class="attention-row">
+              <span>Duplicate contacts</span>
+              <span class="vz-badge" data-tone="accent">New</span>
+            </div>
+            <span class="sample">Sample data</span>
+          </div>
+        </div>
+
+        <div class="vz-card table-card">
+          <div class="table-head">
+            <h2>Projects</h2>
+            <span class="sample">Sample data</span>
+          </div>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Project</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Status</th>
+                <th scope="col">Updated</th>
+                <th scope="col">Budget</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Q4 access review</td>
+                <td><span class="cell-owner"><span class="vz-avatar" aria-hidden="true">PR</span>Priya Raman</span></td>
+                <td><span class="vz-badge" data-tone="warning">At risk</span></td>
+                <td class="cell-num">2h ago</td>
+                <td class="cell-num">$12.4k</td>
+              </tr>
+              <tr>
+                <td>Dataverse cleanup</td>
+                <td><span class="cell-owner"><span class="vz-avatar" aria-hidden="true">MD</span>Marco Diaz</span></td>
+                <td><span class="vz-badge" data-tone="success">On track</span></td>
+                <td class="cell-num">Yesterday</td>
+                <td class="cell-num">$8.1k</td>
+              </tr>
+              <tr>
+                <td>Measure audit</td>
+                <td><span class="cell-owner"><span class="vz-avatar" aria-hidden="true">LF</span>Lena Fischer</span></td>
+                <td><span class="vz-badge" data-tone="info">Review</span></td>
+                <td class="cell-num">3h ago</td>
+                <td class="cell-num">$6.7k</td>
+              </tr>
+              <tr>
+                <td>Field enablement</td>
+                <td><span class="cell-owner"><span class="vz-avatar" aria-hidden="true">SO</span>Sam Okafor</span></td>
+                <td><span class="vz-badge" data-tone="danger">Blocked</span></td>
+                <td class="cell-num">6h ago</td>
+                <td class="cell-num">$18.7k</td>
+              </tr>
+              <tr>
+                <td>Notes migration</td>
+                <td><span class="cell-owner"><span class="vz-avatar" aria-hidden="true">AT</span>Aiko Tanaka</span></td>
+                <td><span class="vz-badge" data-tone="success">On track</span></td>
+                <td class="cell-num">Yesterday</td>
+                <td class="cell-num">$4.2k</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks ---------------------------------------------------------- -->
+      <section class="page-inner" data-page="tasks" aria-label="Tasks" hidden>
+        <div>
+          <form class="vz-field capture" id="captureForm">
+            <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>
+            <input id="captureInput" type="text" placeholder="Add a task and press Enter" aria-label="Add a task" autocomplete="off">
+            <kbd>↵</kbd>
+          </form>
+          <div class="sample" style="margin-top:6px">Sample data · new tasks land in Today</div>
+        </div>
+        <div class="task-groups" id="taskGroups"></div>
+      </section>
+
+      <!-- Notes ---------------------------------------------------------- -->
+      <section class="page-inner" data-page="notes" aria-label="Notes" hidden>
+        <div class="notes-wrap">
+          <div>
+            <div class="recent-head">
+              <h2>All notes</h2>
+              <span class="sample">Sample data</span>
+            </div>
+            <div class="note-list" id="noteList"></div>
+          </div>
+          <article class="vz-card reading" id="reading" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <!-- Settings ------------------------------------------------------- -->
+      <section class="page-inner" data-page="settings" aria-label="Settings" hidden>
+        <div class="settings">
+          <div>
+            <h2 class="set-h">Appearance</h2>
+            <div class="vz-group">
+              <div class="vz-group-row">
+                <div class="vz-grow set-copy">
+                  <span class="set-title">Theme</span>
+                  <span class="set-desc">Follow the system or pin one</span>
+                </div>
+                <div class="vz-segment" data-segment="theme" role="group" aria-label="Theme">
+                  <span class="vz-segment-thumb" aria-hidden="true"></span>
+                  <button type="button" data-value="dark" aria-pressed="true">Dark</button>
+                  <button type="button" data-value="light" aria-pressed="false">Light</button>
+                  <button type="button" data-value="system" aria-pressed="false">System</button>
+                </div>
+              </div>
+              <div class="vz-group-row">
+                <div class="vz-grow set-copy">
+                  <span class="set-title">Accent tint</span>
+                  <span class="set-desc">Recolours the accent only — luminance still carries state</span>
+                </div>
+                <div class="tints" role="group" aria-label="Accent tint">
+                  <button class="tint" type="button" data-tint="none" aria-pressed="true" aria-label="No tint" title="No tint"></button>
+                  <button class="tint" type="button" data-tint="sky" aria-pressed="false" aria-label="Sky tint" title="Sky"></button>
+                  <button class="tint" type="button" data-tint="sage" aria-pressed="false" aria-label="Sage tint" title="Sage"></button>
+                  <button class="tint" type="button" data-tint="rose" aria-pressed="false" aria-label="Rose tint" title="Rose"></button>
+                  <button class="tint" type="button" data-tint="amber" aria-pressed="false" aria-label="Amber tint" title="Amber"></button>
+                  <button class="tint" type="button" data-tint="teal" aria-pressed="false" aria-label="Teal tint" title="Teal"></button>
+                  <button class="tint" type="button" data-tint="lavender" aria-pressed="false" aria-label="Lavender tint" title="Lavender"></button>
+                  <button class="tint" type="button" data-tint="orchid" aria-pressed="false" aria-label="Orchid tint" title="Orchid"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="set-h">Behaviour</h2>
+            <div class="vz-group">
+              <div class="vz-group-row">
+                <div class="vz-grow set-copy">
+                  <span class="set-title">Density</span>
+                  <span class="set-desc">Compact shortens sidebar rows and controls</span>
+                </div>
+                <div class="vz-segment" data-segment="density" role="group" aria-label="Density">
+                  <span class="vz-segment-thumb" aria-hidden="true"></span>
+                  <button type="button" data-value="comfortable" aria-pressed="true">Comfortable</button>
+                  <button type="button" data-value="compact" aria-pressed="false">Compact</button>
+                </div>
+              </div>
+              <div class="vz-group-row">
+                <div class="vz-grow set-copy">
+                  <span class="set-title">Reduce motion</span>
+                  <span class="set-desc">Collapses every duration to 0.01ms</span>
+                </div>
+                <button class="vz-switch" id="reduceMotion" type="button" role="switch" aria-checked="false" aria-label="Reduce motion"></button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="set-h">Notifications</h2>
+            <div class="vz-group">
+              <div class="vz-group-row">
+                <div class="vz-grow set-copy">
+                  <span class="set-title">Activity notifications</span>
+                  <span class="set-desc">Mentions, assignments and reviews</span>
+                </div>
+                <button class="vz-switch" type="button" role="switch" aria-checked="true" aria-label="Activity notifications"></button>
+              </div>
+              <div class="vz-group-row">
+                <div class="vz-grow set-copy">
+                  <span class="set-title">Weekly digest</span>
+                  <span class="set-desc">A Monday summary of workspace activity</span>
+                </div>
+                <button class="vz-switch" type="button" role="switch" aria-checked="false" aria-label="Weekly digest"></button>
+              </div>
+            </div>
+          </div>
+
+          <span class="sample">Sample data · demo switches do not persist</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Assistant ----------------------------------------------------------- -->
+  <aside class="vz-assist" aria-label="Assistant">
+    <div class="assist-head">
+      <span class="vz-orb" aria-hidden="true"></span>
+      <div class="assist-id">
+        <div class="assist-name">Vera</div>
+        <div class="assist-sub">Workspace assistant · sample</div>
+      </div>
+      <button class="vz-icon-btn" id="assistClose" type="button" aria-label="Hide assistant" title="Hide assistant">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 4.5 7 7M11.5 4.5l-7 7"/></svg>
+      </button>
+    </div>
+
+    <div class="assist-thread scrolls" id="thread">
+      <div class="msg" data-role="assistant">Morning, Ferdz. I can summarize the week, find a note, or draft a task.</div>
+      <div class="msg" data-role="user">What changed on the dashboard?</div>
+      <div class="msg" data-role="assistant">Two projects moved to at risk and cycle time dropped by 0.4 days. Want the breakdown?</div>
+    </div>
+
+    <form class="assist-composer" id="assistForm">
+      <div class="vz-field">
+        <input id="assistInput" type="text" placeholder="Ask Vera about the workspace" aria-label="Message Vera" autocomplete="off">
+      </div>
+      <button class="vz-icon-btn" type="submit" aria-label="Send message" title="Send">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12.5v-8"/><path d="M4.5 8 8 4.5 11.5 8"/></svg>
+      </button>
+    </form>
+  </aside>
+
+</div>
+
+<!-- Launcher ---------------------------------------------------------------->
+<div class="vz-scrim" id="scrim" hidden>
+  <div class="vz-launcher" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="vz-field launcher-field">
+      <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.4 10.4 3.1 3.1"/></svg>
+      <input id="launcherInput" type="text" placeholder="Search or run a command" aria-label="Search or run a command" aria-controls="launcherList" autocomplete="off">
+      <kbd>esc</kbd>
+    </div>
+    <div class="launcher-list" id="launcherList" role="listbox" aria-label="Commands">
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="go:home" data-label="Go to Home">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.6 8 2.5l5.5 4.1v6.9a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1z"/><path d="M6.4 14.5v-4h3.2v4"/></svg>
+        <span>Go to Home</span><kbd>H</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="go:dashboard" data-label="Go to Dashboard">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="4.4" height="4.4" rx="1.2"/><rect x="9.1" y="2.5" width="4.4" height="4.4" rx="1.2"/><rect x="2.5" y="9.1" width="4.4" height="4.4" rx="1.2"/><rect x="9.1" y="9.1" width="4.4" height="4.4" rx="1.2"/></svg>
+        <span>Go to Dashboard</span><kbd>D</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="go:tasks" data-label="Go to Tasks">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11" rx="2.5"/><path d="m5.4 8 1.8 1.8 3.4-3.6"/></svg>
+        <span>Go to Tasks</span><kbd>T</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="go:notes" data-label="Go to Notes">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 2.5h5.2l3.3 3.3v7.2a1 1 0 0 1-1 1h-7.5a1 1 0 0 1-1-1v-9.5a1 1 0 0 1 1-1z"/><path d="M8.7 2.5v3.3h3.3"/><path d="M5.5 9h5"/></svg>
+        <span>Go to Notes</span><kbd>N</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="go:settings" data-label="Go to Settings">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.9v1.7M8 12.4v1.7M1.9 8h1.7M12.4 8h1.7M3.6 3.6l1.2 1.2M11.2 11.2l1.2 1.2M12.4 3.6l-1.2 1.2M4.8 11.2l-1.2 1.2"/></svg>
+        <span>Go to Settings</span><kbd>S</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="act:task" data-label="Add a task">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9"/></svg>
+        <span>Add a task</span><kbd>A</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="act:assistant" data-label="Toggle assistant">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.4l1.3 3.4 3.4 1.3-3.4 1.3L8 11.8 6.7 8.4 3.3 7.1l3.4-1.3z"/></svg>
+        <span>Toggle assistant</span><kbd>V</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="act:rail" data-label="Collapse sidebar">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="2.2"/><path d="M6.2 3v10"/></svg>
+        <span>Collapse sidebar</span><kbd>B</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="act:theme" data-label="Toggle theme">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 9.7A5 5 0 0 1 6.3 3.4a5 5 0 1 0 6.3 6.3z"/></svg>
+        <span>Toggle theme</span><kbd>L</kbd>
+      </button>
+      <button class="vz-menu-item" type="button" role="option" aria-selected="false" data-cmd="act:motion" data-label="Toggle reduce motion">
+        <svg class="i" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11"/><path d="m5 4.5-3.5 3.5L5 11.5"/><path d="m11 4.5 3.5 3.5L11 11.5"/></svg>
+        <span>Toggle reduce motion</span><kbd>M</kbd>
+      </button>
+    </div>
+    <div class="launcher-empty" id="launcherEmpty" hidden>No commands match.</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (sel, root) { return (root || document).querySelector(sel); };
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  var html = document.documentElement;
+  var app = $('.vz-app');
+
+  function esc(value) {
+    return String(value).replace(/[&<>"']/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+
+  /* -- Navigation, plate, page arrival ---------------------------------- */
+  var currentPage = 'home';
+  var RANGE_WORDS = { '7d': 'last 7 days', '30d': 'last 30 days', '90d': 'last 90 days' };
+  var META = {
+    home: { title: 'Home', sub: 'Your day at a glance · sample data' },
+    dashboard: { title: 'Dashboard', sub: 'Workspace activity · last 7 days · sample data' },
+    tasks: { title: 'Tasks', sub: '8 open across 3 lists · sample data' },
+    notes: { title: 'Notes', sub: '5 notes · sample data' },
+    settings: { title: 'Settings', sub: 'Appearance and behaviour · sample data' }
+  };
+
+  function movePlate() {
+    var row = $('.sb-nav[data-glide-host] .vz-row[data-nav="' + currentPage + '"]');
+    var plate = $('[data-glide-host] .vz-plate');
+    if (!row || !plate) return;
+    plate.style.height = row.offsetHeight + 'px';
+    plate.style.transform = 'translateY(' + row.offsetTop + 'px)';
+  }
+
+  function navigate(page, opts) {
+    if (!META[page]) return;
+    opts = opts || {};
+    $$('.page-inner').forEach(function (section) {
+      section.hidden = section.getAttribute('data-page') !== page;
+      section.classList.remove('vz-cascade');
+    });
+    var target = $('.page-inner[data-page="' + page + '"]');
+    if (!target) return;
+    void target.offsetWidth;
+    target.classList.add('vz-cascade');
+
+    $$('.vz-row[data-nav]').forEach(function (row) {
+      if (row.getAttribute('data-nav') === page) row.setAttribute('aria-current', 'page');
+      else row.removeAttribute('aria-current');
+    });
+
+    currentPage = page;
+    $('#pageTitle').textContent = META[page].title;
+    $('#pageSub').textContent = META[page].sub;
+
+    if (page === 'dashboard') {
+      $('#pageSub').textContent = 'Workspace activity · ' + RANGE_WORDS[currentRange] + ' · sample data';
+      renderKPIs(currentRange);
+      updateChart(currentRange);
+    }
+    if (page === 'tasks') {
+      $('#pageSub').textContent = tasks.length + ' open across 3 lists · sample data';
+    }
+    if (page === 'notes') {
+      $('#pageSub').textContent = NOTES.length + ' notes · sample data';
+      selectNote(selectedNote);
+    }
+
+    $('#pageScroll').scrollTop = 0;
+    requestAnimationFrame(function () {
+      movePlate();
+      $$('.vz-segment', target).forEach(function (seg) { placeThumb(seg); });
+    });
+    if (opts.focus === 'capture') {
+      window.setTimeout(function () { $('#captureInput').focus(); }, 90);
+    }
+  }
+
+  $$('.vz-row[data-nav]').forEach(function (row) {
+    row.addEventListener('click', function () { navigate(row.getAttribute('data-nav')); });
+  });
+
+  /* -- Clock and greeting ------------------------------------------------ */
+  function pad(value) { return String(value).length < 2 ? '0' + value : String(value); }
+  function updateClock() {
+    var now = new Date();
+    $('#clock').textContent = pad(now.getHours()) + ':' + pad(now.getMinutes());
+    $('#clockDate').textContent = now.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' });
+    var hour = now.getHours();
+    var part = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+    $('#greeting').textContent = part + ', Ferdz. Here’s where the workspace stands.';
+  }
+  updateClock();
+  window.setInterval(updateClock, 1000);
+
+  /* -- Segmented controls ------------------------------------------------ */
+  function placeThumb(seg) {
+    if (!seg) return;
+    var thumb = $('.vz-segment-thumb', seg);
+    var active = $('button[aria-pressed="true"]', seg) || $('button', seg);
+    if (!thumb || !active) return;
+    thumb.style.width = active.offsetWidth + 'px';
+    thumb.style.transform = 'translateX(' + active.offsetLeft + 'px)';
+  }
+  function placeAllThumbs() { $$('.vz-segment').forEach(placeThumb); }
+
+  function initSegment(seg, onPick) {
+    if (!seg) return;
+    var buttons = $$('button', seg);
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (other) {
+          other.setAttribute('aria-pressed', other === btn ? 'true' : 'false');
+        });
+        placeThumb(seg);
+        if (onPick) onPick(btn.getAttribute('data-value'), btn);
+      });
+    });
+    requestAnimationFrame(function () { placeThumb(seg); });
+  }
+
+  /* -- Dashboard data ---------------------------------------------------- */
+  var currentRange = '7d';
+  var KPI = {
+    '7d': [
+      { label: 'Tasks completed', value: '286', delta: '+14.1%', dir: 'up' },
+      { label: 'Focus hours', value: '19.4h', delta: '+2.8h', dir: 'up' },
+      { label: 'Blocked items', value: '6', delta: '+2', dir: 'down' },
+      { label: 'Cycle time', value: '2.4d', delta: '+0.3d', dir: 'down' }
+    ],
+    '30d': [
+      { label: 'Tasks completed', value: '1,142', delta: '+9.7%', dir: 'up' },
+      { label: 'Focus hours', value: '82.6h', delta: '+4.2h', dir: 'up' },
+      { label: 'Blocked items', value: '19', delta: '+5', dir: 'down' },
+      { label: 'Cycle time', value: '2.1d', delta: '+0.1d', dir: 'down' }
+    ],
+    '90d': [
+      { label: 'Tasks completed', value: '3,486', delta: '+18.3%', dir: 'up' },
+      { label: 'Focus hours', value: '241h', delta: '+11.6h', dir: 'up' },
+      { label: 'Blocked items', value: '54', delta: '+12', dir: 'down' },
+      { label: 'Cycle time', value: '2.6d', delta: '+0.2d', dir: 'down' }
+    ]
+  };
+  var SERIES = {
+    '7d': {
+      a: [38, 52, 44, 61, 72, 55, 78],
+      b: [31, 40, 36, 48, 55, 44, 60],
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    '30d': {
+      a: [48, 57, 64, 59, 73, 68, 81],
+      b: [41, 47, 52, 50, 60, 57, 64],
+      labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7']
+    },
+    '90d': {
+      a: [42, 51, 58, 66, 62, 74, 86],
+      b: [36, 42, 48, 54, 52, 60, 70],
+      labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7']
+    }
+  };
+
+  function renderKPIs(range) {
+    var wrap = $('#kpis');
+    wrap.textContent = '';
+    KPI[range].forEach(function (kpi) {
+      var card = document.createElement('div');
+      card.className = 'vz-card kpi';
+      var top = document.createElement('div');
+      top.className = 'kpi-top';
+      var label = document.createElement('span');
+      label.className = 'vz-kpi-label';
+      label.textContent = kpi.label;
+      var delta = document.createElement('span');
+      delta.className = 'vz-delta';
+      delta.setAttribute('data-dir', kpi.dir);
+      delta.textContent = kpi.delta;
+      top.append(label, delta);
+      var value = document.createElement('div');
+      value.className = 'vz-kpi-value';
+      value.textContent = kpi.value;
+      card.append(top, value);
+      wrap.appendChild(card);
+    });
+    wrap.classList.remove('vz-cascade');
+    void wrap.offsetWidth;
+    wrap.classList.add('vz-cascade');
+  }
+
+  var chart = { built: false, a: [], b: [], labels: [] };
+  function buildChart() {
+    var svg = $('#bars');
+    var W = 560;
+    var H = 190;
+    var top = 10;
+    var base = H - 24;
+    var markup = '';
+    for (var g = 0; g <= 4; g++) {
+      var y = (top + (base - top) * (g / 4)).toFixed(1);
+      markup += '<line x1="0" x2="' + W + '" y1="' + y + '" y2="' + y + '" class="grid-line"/>';
+    }
+    var n = 7;
+    var slot = W / n;
+    var width = 14;
+    var gap = 5;
+    for (var i = 0; i < n; i++) {
+      var cx = slot * i + slot / 2;
+      var xa = cx - width - gap / 2;
+      var xb = cx + gap / 2;
+      markup += '<rect x="' + xa + '" y="' + top + '" width="' + width + '" height="' + (base - top) + '" class="bar-a" style="transform:scaleY(0.02)"/>';
+      markup += '<rect x="' + xb + '" y="' + top + '" width="' + width + '" height="' + (base - top) + '" class="bar-b" style="transform:scaleY(0.02)"/>';
+      markup += '<text x="' + cx + '" y="' + (base + 16) + '" text-anchor="middle" class="axis"></text>';
+    }
+    svg.innerHTML = markup;
+    chart.a = $$('.bar-a', svg);
+    chart.b = $$('.bar-b', svg);
+    chart.labels = $$('.axis', svg);
+    chart.built = true;
+  }
+  function updateChart(range) {
+    if (!chart.built) buildChart();
+    var series = SERIES[range];
+    chart.a.forEach(function (rect, i) {
+      rect.style.transform = 'scaleY(' + (series.a[i] / 100).toFixed(4) + ')';
+    });
+    chart.b.forEach(function (rect, i) {
+      rect.style.transform = 'scaleY(' + (series.b[i] / 100).toFixed(4) + ')';
+    });
+    chart.labels.forEach(function (text, i) { text.textContent = series.labels[i]; });
+  }
+
+  initSegment($('[data-segment="range"]'), function (value) {
+    currentRange = value;
+    renderKPIs(value);
+    updateChart(value);
+    $('#pageSub').textContent = 'Workspace activity · ' + RANGE_WORDS[value] + ' · sample data';
+  });
+
+  /* -- Tasks ------------------------------------------------------------- */
+  var taskSeq = 8;
+  var tasks = [
+    { id: 1, title: 'Send Q4 access review to IT', meta: 'Due 24 Oct · Security', soft: 'sky', tag: 'Security', group: 'overdue' },
+    { id: 2, title: 'Reconcile Dataverse contact duplicates', meta: 'Due 25 Oct · Finance', soft: 'lemon', tag: 'Data', group: 'overdue' },
+    { id: 3, title: 'Draft Vera onboarding checklist', meta: 'Today · Product', soft: 'peach', tag: 'Product', group: 'today' },
+    { id: 4, title: 'Review dashboard measure audit', meta: 'Today · Finance', soft: 'mint', tag: 'Finance', group: 'today' },
+    { id: 5, title: 'Reply to Priya about the rollout', meta: 'Today · Operations', soft: 'lilac', tag: 'Ops', group: 'today' },
+    { id: 6, title: 'Publish weekly ops digest', meta: 'Fri 30 Oct · Operations', soft: 'sky', tag: 'Comms', group: 'upcoming' },
+    { id: 7, title: 'Prep Friday leadership readout', meta: 'Fri 30 Oct · Leadership', soft: 'rose', tag: 'Review', group: 'upcoming' },
+    { id: 8, title: 'Archive legacy SharePoint lists', meta: 'Next week · Platform', soft: 'lemon', tag: 'Platform', group: 'upcoming' }
+  ];
+  var GROUPS = [['overdue', 'Overdue'], ['today', 'Today'], ['upcoming', 'Upcoming']];
+
+  function renderTasks() {
+    var wrap = $('#taskGroups');
+    wrap.textContent = '';
+    GROUPS.forEach(function (pair) {
+      var key = pair[0];
+      var label = pair[1];
+      var items = tasks.filter(function (task) { return task.group === key; });
+      var section = document.createElement('section');
+      section.className = 'task-group';
+      var head = document.createElement('div');
+      head.className = 'task-group-head';
+      var name = document.createElement('span');
+      name.textContent = label;
+      var count = document.createElement('span');
+      count.className = 'task-count';
+      count.textContent = String(items.length);
+      head.append(name, count);
+      var list = document.createElement('div');
+      list.className = 'task-list';
+      if (!items.length) {
+        var empty = document.createElement('div');
+        empty.className = 'task-empty';
+        empty.textContent = 'Nothing here.';
+        list.appendChild(empty);
+      } else {
+        items.forEach(function (task) {
+          var row = document.createElement('div');
+          row.className = 'task-row';
+          row.setAttribute('data-id', String(task.id));
+          row.innerHTML =
+            '<button class="vz-check" type="button" role="checkbox" aria-checked="false" aria-label="Complete ' + esc(task.title) + '">' +
+              '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.2 4.7 8.4 9.5 3.6"/></svg>' +
+            '</button>' +
+            '<div class="t-main"><div class="t-title fade-end">' + esc(task.title) + '</div><div class="t-meta">' + esc(task.meta) + '</div></div>' +
+            '<span class="vz-tag" data-soft="' + esc(task.soft) + '">' + esc(task.tag) + '</span>';
+          list.appendChild(row);
+        });
+      }
+      section.append(head, list);
+      wrap.appendChild(section);
+    });
+    if (currentPage === 'tasks') {
+      $('#pageSub').textContent = tasks.length + ' open across 3 lists · sample data';
+    }
+  }
+
+  $('#taskGroups').addEventListener('click', function (event) {
+    var check = event.target.closest('.vz-check');
+    if (!check) return;
+    var row = check.closest('.task-row');
+    if (!row || row.getAttribute('data-done') === 'true') return;
+    row.setAttribute('data-done', 'true');
+    check.setAttribute('aria-checked', 'true');
+    row.classList.add('is-done');
+    var id = Number(row.getAttribute('data-id'));
+    window.setTimeout(function () {
+      row.classList.add('is-leaving');
+      window.setTimeout(function () {
+        var index = tasks.findIndex(function (task) { return task.id === id; });
+        if (index < 0) return;
+        var removed = tasks.splice(index, 1)[0];
+        renderTasks();
+        showToast('Task completed', function () {
+          tasks.splice(Math.min(index, tasks.length), 0, removed);
+          renderTasks();
+        });
+      }, 180);
+    }, 600);
+  });
+
+  $('#captureForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var input = $('#captureInput');
+    var value = input.value.trim();
+    if (!value) return;
+    tasks.unshift({
+      id: ++taskSeq,
+      title: value,
+      meta: 'Added just now · Today',
+      soft: 'mint',
+      tag: 'New',
+      group: 'today'
+    });
+    input.value = '';
+    renderTasks();
+    showToast('Task added to Today');
+  });
+
+  /* -- Notes ------------------------------------------------------------- */
+  var NOTES = [
+    {
+      id: 'n1',
+      title: 'Q4 rollout notes',
+      snippet: 'Three waves: finance, operations, then the field teams…',
+      soft: 'lilac',
+      tag: 'Planning',
+      updated: 'today, 09:12',
+      words: 412,
+      tags: ['Planning', 'Rollout', 'Q4'],
+      body: [
+        'The Q4 rollout stays in three waves: finance first, then operations, then the field teams. Each wave owns its access review; nothing moves without a signed checklist and a named owner.',
+        'Two risks are still open. Duplicate contacts keep arriving through the legacy intake form, and the measure audit found three finance measures that resolve differently in the shared model.',
+        'The sequencing holds as long as the audit ships before the dashboard. Field enablement is the only wave without a confirmed training slot.'
+      ],
+      quote: 'Ship the audit before the dashboard. A wrong total costs more trust than a late page.'
+    },
+    {
+      id: 'n2',
+      title: 'Measure audit — finance',
+      snippet: 'Three measures resolve wrong under the shared filter context…',
+      soft: 'mint',
+      tag: 'DAX',
+      updated: 'yesterday',
+      words: 286,
+      tags: ['DAX', 'Finance', 'Audit'],
+      body: [
+        'Three finance measures inherit the page filter when they should keep their own date context. The totals drift by 2–4% once a region is selected.',
+        'Fix is local: wrap the filter in KEEPFILTERS, then re-baseline against the ledger extract. The audit sheet lists the expected totals for each month so the comparison is mechanical.',
+        'Do not change the shared date table until the six dependent reports are re-pointed. That work is already on the platform board.'
+      ],
+      quote: 'Validate the total before the visual. A chart can hide a wrong number; a table cannot.'
+    },
+    {
+      id: 'n3',
+      title: '1:1 with Priya',
+      snippet: 'Rollout ownership, the audit hand-off, and the Friday readout…',
+      soft: 'peach',
+      tag: 'People',
+      updated: 'yesterday',
+      words: 198,
+      tags: ['People', 'Operations'],
+      body: [
+        'Priya takes the Q4 rollout checklist and the field enablement slot. She wants the audit findings summarised in one page before Friday, not the full workbook.',
+        'She flagged that the operations space is getting noisy. We agreed to keep project chatter in the dashboard comments and reserve the space for decisions.',
+        'Next 1:1 is Thursday. Bring the updated RACI and the training dates.'
+      ]
+    },
+    {
+      id: 'n4',
+      title: 'Design tokens decision',
+      snippet: 'Luminance carries state; the tint only recolours the accent…',
+      soft: 'sky',
+      tag: 'Design',
+      updated: '2 days ago',
+      words: 324,
+      tags: ['Design', 'Decision', 'Tokens'],
+      body: [
+        'We keep one neutral ladder and let luminance carry every state. The selected row, the on switch and the primary button are all the lit rung — the brightest thing in the frame.',
+        'A tint is one attribute and it recolours the accent only. It never becomes a second semantic layer, and it never replaces the lit rung as the indicator of “on”.',
+        'Status colours stay pastel in dark and deep in light, always with text. Colour is never the only signal.'
+      ],
+      quote: 'If it needs a brand colour to pop, it is not using the ladder properly.'
+    },
+    {
+      id: 'n5',
+      title: 'On-call handover',
+      snippet: 'Two open incidents, one watch item, and the Monday checks…',
+      soft: 'lemon',
+      tag: 'Ops',
+      updated: '3 days ago',
+      words: 157,
+      tags: ['Ops', 'Handover'],
+      body: [
+        'Two incidents remain open: the duplicate contact stream and a slow nightly refresh on the finance extract. Both have owners and neither is customer-facing.',
+        'Watch the refresh duration after the next platform deploy. If it crosses 40 minutes, roll the extract back to the previous window.',
+        'Monday checks: queue depth, failed refreshes, and the access review reminders for finance.'
+      ]
+    }
+  ];
+  var selectedNote = 'n1';
+
+  function renderNoteList() {
+    var list = $('#noteList');
+    list.textContent = '';
+    NOTES.forEach(function (note) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'note-item';
+      button.setAttribute('data-note', note.id);
+      button.setAttribute('aria-current', note.id === selectedNote ? 'true' : 'false');
+      button.innerHTML =
+        '<span class="note-item-top"><span class="note-name fade-end">' + esc(note.title) + '</span>' +
+        '<span class="vz-tag" data-soft="' + esc(note.soft) + '">' + esc(note.tag) + '</span></span>' +
+        '<span class="note-snippet">' + esc(note.snippet) + '</span>';
+      button.addEventListener('click', function () { selectNote(note.id); });
+      list.appendChild(button);
+    });
+  }
+
+  function selectNote(id) {
+    var note = NOTES.find(function (item) { return item.id === id; });
+    if (!note) return;
+    selectedNote = id;
+    $$('.note-item').forEach(function (button) {
+      button.setAttribute('aria-current', button.getAttribute('data-note') === id ? 'true' : 'false');
+    });
+    var reading = $('#reading');
+    reading.innerHTML =
+      '<h2>' + esc(note.title) + '</h2>' +
+      '<div class="reading-meta"><span class="vz-tag" data-soft="' + esc(note.soft) + '">' + esc(note.tag) + '</span>' +
+      '<span>Edited ' + esc(note.updated) + '</span><span>·</span><span>' + note.words + ' words</span></div>' +
+      note.body.map(function (paragraph) { return '<p>' + esc(paragraph) + '</p>'; }).join('') +
+      (note.quote ? '<blockquote>' + esc(note.quote) + '</blockquote>' : '') +
+      '<div class="reading-tags">' + note.tags.map(function (tag) {
+        return '<span class="vz-tag" data-soft="' + esc(note.soft) + '">' + esc(tag) + '</span>';
+      }).join('') + '</div>';
+    reading.classList.remove('vz-arrive');
+    void reading.offsetWidth;
+    reading.classList.add('vz-arrive');
+  }
+
+  /* -- Toast ------------------------------------------------------------- */
+  var toastEl = null;
+  var toastTimer = null;
+
+  function dismissToast(el) {
+    if (!el) return;
+    if (toastTimer) { window.clearTimeout(toastTimer); toastTimer = null; }
+    el.setAttribute('data-leaving', 'true');
+    el.addEventListener('animationend', function () {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, { once: true });
+    window.setTimeout(function () {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 400);
+    if (toastEl === el) toastEl = null;
+  }
+
+  function showToast(message, undo) {
+    if (toastEl) {
+      if (toastEl.parentNode) toastEl.parentNode.removeChild(toastEl);
+      toastEl = null;
+    }
+    if (toastTimer) { window.clearTimeout(toastTimer); toastTimer = null; }
+
+    var el = document.createElement('div');
+    el.className = 'vz-toast';
+    el.setAttribute('role', 'status');
+    var label = document.createElement('span');
+    label.textContent = message;
+    el.appendChild(label);
+
+    if (undo) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'vz-btn';
+      button.setAttribute('data-size', 'compact');
+      button.setAttribute('data-variant', 'ghost');
+      button.textContent = 'Undo';
+      button.addEventListener('click', function () {
+        undo();
+        dismissToast(el);
+      });
+      el.appendChild(button);
+    }
+
+    document.body.appendChild(el);
+    toastEl = el;
+    toastTimer = window.setTimeout(function () { dismissToast(el); }, 5200);
+  }
+
+  /* -- Assistant --------------------------------------------------------- */
+  var replies = [
+    'Here’s the sample read: three tasks are overdue and the Q4 rollout is still on track. I can open the dashboard for the numbers.',
+    'I found two notes that match — “Q4 rollout notes” and “Measure audit — finance”. The first has the newer totals.',
+    'Added. It sits in Today with the rest of the sample queue.',
+    'Cycle time is down 0.4 days this week. Blocked items are up by two, so Field enablement is the one to watch.'
+  ];
+  var replyIndex = 0;
+  var thread = $('#thread');
+
+  function scrollThread() { thread.scrollTop = thread.scrollHeight; }
+
+  function addMessage(role, text) {
+    var message = document.createElement('div');
+    message.className = 'msg vz-arrive';
+    message.setAttribute('data-role', role);
+    message.textContent = text;
+    thread.appendChild(message);
+    scrollThread();
+    return message;
+  }
+
+  $('#assistForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var input = $('#assistInput');
+    var text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    addMessage('user', text);
+
+    var pending = document.createElement('div');
+    pending.className = 'msg vz-arrive';
+    pending.setAttribute('data-role', 'assistant');
+    var dots = document.createElement('span');
+    dots.className = 'vz-dots';
+    dots.setAttribute('aria-label', 'Vera is replying');
+    for (var i = 0; i < 3; i++) dots.appendChild(document.createElement('i'));
+    pending.appendChild(dots);
+    thread.appendChild(pending);
+    scrollThread();
+
+    var reply = replies[replyIndex++ % replies.length];
+    window.setTimeout(function () {
+      pending.textContent = reply;
+      pending.classList.remove('vz-arrive');
+      void pending.offsetWidth;
+      pending.classList.add('vz-arrive');
+      scrollThread();
+    }, 900);
+  });
+
+  /* -- Theme, tint, density, motion -------------------------------------- */
+  var themeMode = 'dark';
+
+  function applyTheme(mode) {
+    themeMode = mode;
+    var resolved = mode === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+      : mode;
+    html.setAttribute('data-theme', resolved);
+    var seg = $('[data-segment="theme"]');
+    if (seg) {
+      $$('button', seg).forEach(function (button) {
+        button.setAttribute('aria-pressed', button.getAttribute('data-value') === mode ? 'true' : 'false');
+      });
+      placeThumb(seg);
+    }
+  }
+
+  initSegment($('[data-segment="theme"]'), function (value) { applyTheme(value); });
+  applyTheme('dark');
+
+  var scheme = window.matchMedia('(prefers-color-scheme: light)');
+  var onScheme = function () { if (themeMode === 'system') applyTheme('system'); };
+  if (scheme.addEventListener) scheme.addEventListener('change', onScheme);
+  else if (scheme.addListener) scheme.addListener(onScheme);
+
+  $$('.tint').forEach(function (button) {
+    button.addEventListener('click', function () {
+      html.setAttribute('data-tint', button.getAttribute('data-tint'));
+      $$('.tint').forEach(function (other) {
+        other.setAttribute('aria-pressed', other === button ? 'true' : 'false');
+      });
+    });
+  });
+
+  initSegment($('[data-segment="density"]'), function (value) {
+    html.setAttribute('data-density', value);
+    requestAnimationFrame(movePlate);
+  });
+
+  var motionSwitch = $('#reduceMotion');
+  function setReducedMotion(on) {
+    motionSwitch.setAttribute('aria-checked', on ? 'true' : 'false');
+    html.setAttribute('data-reduce-motion', on ? 'true' : 'false');
+  }
+  motionSwitch.addEventListener('click', function () {
+    setReducedMotion(motionSwitch.getAttribute('aria-checked') !== 'true');
+  });
+
+  $$('.vz-switch[role="switch"]').forEach(function (sw) {
+    if (sw === motionSwitch) return;
+    sw.addEventListener('click', function () {
+      sw.setAttribute('aria-checked', sw.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  /* -- Sidebar rail and assistant visibility ----------------------------- */
+  var railButton = $('#railToggle');
+  function setRail(on) {
+    if (on) app.setAttribute('data-sidebar', 'rail');
+    else app.removeAttribute('data-sidebar');
+    railButton.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var label = on ? 'Expand sidebar' : 'Collapse sidebar';
+    railButton.setAttribute('aria-label', label);
+    railButton.title = label;
+    requestAnimationFrame(function () { movePlate(); placeAllThumbs(); });
+  }
+  railButton.addEventListener('click', function () {
+    setRail(app.getAttribute('data-sidebar') !== 'rail');
+  });
+
+  var assistButton = $('#assistToggle');
+  function setAssist(on) {
+    if (on) app.removeAttribute('data-assist');
+    else app.setAttribute('data-assist', 'off');
+    assistButton.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var label = on ? 'Hide assistant' : 'Show assistant';
+    assistButton.setAttribute('aria-label', label);
+    assistButton.title = label;
+  }
+  assistButton.addEventListener('click', function () {
+    setAssist(app.getAttribute('data-assist') === 'off');
+  });
+  $('#assistClose').addEventListener('click', function () { setAssist(false); });
+
+  /* -- Profile menu ------------------------------------------------------ */
+  function setProfileMenu(open) {
+    $('#profileMenu').setAttribute('data-open', open ? 'true' : 'false');
+    $('#profileBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  $('#profileBtn').addEventListener('click', function (event) {
+    event.stopPropagation();
+    setProfileMenu($('#profileMenu').getAttribute('data-open') !== 'true');
+  });
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('#profileWrap')) setProfileMenu(false);
+  });
+  $$('#profileMenu .vz-menu-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var action = item.getAttribute('data-menu');
+      setProfileMenu(false);
+      if (action === 'account') navigate('settings');
+      else if (action === 'invite') showToast('Invite link copied — sample');
+      else if (action === 'signout') showToast('Signed out — sample');
+    });
+  });
+
+  /* -- Home search, sidebar search, tiles -------------------------------- */
+  $('#homeSearch').addEventListener('input', function (event) {
+    var query = event.target.value.trim().toLowerCase();
+    $$('#tiles .tile').forEach(function (tile) {
+      tile.hidden = query ? tile.textContent.toLowerCase().indexOf(query) < 0 : false;
+    });
+  });
+  $('#homeSearch').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      openLauncher(event.target.value.trim());
+    }
+  });
+  $('#sidebarSearch').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      openLauncher(event.target.value.trim());
+    } else if (event.key === 'Escape') {
+      event.target.value = '';
+      event.target.blur();
+    }
+  });
+  $$('#tiles .tile').forEach(function (tile) {
+    tile.addEventListener('click', function () { navigate(tile.getAttribute('data-nav')); });
+  });
+
+  /* -- Launcher ---------------------------------------------------------- */
+  var scrim = $('#scrim');
+  var launcherInput = $('#launcherInput');
+  var launcherRows = $$('#launcherList .vz-menu-item');
+
+  function visibleRows() {
+    return launcherRows.filter(function (row) { return !row.hidden; });
+  }
+  function highlightRow(row) {
+    launcherRows.forEach(function (other) {
+      other.removeAttribute('data-highlighted');
+      other.setAttribute('aria-selected', 'false');
+    });
+    if (!row) return;
+    row.setAttribute('data-highlighted', 'true');
+    row.setAttribute('aria-selected', 'true');
+    row.scrollIntoView({ block: 'nearest' });
+  }
+  function filterLauncher() {
+    var query = launcherInput.value.trim().toLowerCase();
+    launcherRows.forEach(function (row) {
+      row.hidden = query ? row.getAttribute('data-label').toLowerCase().indexOf(query) < 0 : false;
+    });
+    var rows = visibleRows();
+    $('#launcherEmpty').hidden = rows.length > 0;
+    highlightRow(rows[0] || null);
+  }
+  function openLauncher(seed) {
+    scrim.hidden = false;
+    setProfileMenu(false);
+    launcherInput.value = seed || '';
+    filterLauncher();
+    launcherInput.focus();
+    if (seed) launcherInput.select();
+  }
+  function closeLauncher() {
+    scrim.hidden = true;
+  }
+  function runCommand(command) {
+    if (!command) return;
+    closeLauncher();
+    var parts = command.split(':');
+    if (parts[0] === 'go') {
+      navigate(parts[1]);
+    } else if (command === 'act:task') {
+      navigate('tasks', { focus: 'capture' });
+    } else if (command === 'act:assistant') {
+      setAssist(app.getAttribute('data-assist') === 'off');
+    } else if (command === 'act:rail') {
+      setRail(app.getAttribute('data-sidebar') !== 'rail');
+    } else if (command === 'act:theme') {
+      applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    } else if (command === 'act:motion') {
+      setReducedMotion(motionSwitch.getAttribute('aria-checked') !== 'true');
+    }
+  }
+
+  $('#openLauncher').addEventListener('click', function () { openLauncher(); });
+  launcherInput.addEventListener('input', filterLauncher);
+  scrim.addEventListener('click', function (event) {
+    if (event.target === scrim) closeLauncher();
+  });
+  launcherRows.forEach(function (row) {
+    row.addEventListener('mouseenter', function () { highlightRow(row); });
+    row.addEventListener('click', function () { runCommand(row.getAttribute('data-cmd')); });
+  });
+
+  /* -- Global keys ------------------------------------------------------- */
+  var shortcuts = {
+    h: 'go:home', d: 'go:dashboard', t: 'go:tasks', n: 'go:notes', s: 'go:settings',
+    a: 'act:task', v: 'act:assistant', b: 'act:rail', l: 'act:theme', m: 'act:motion'
+  };
+  function isTyping(el) {
+    if (!el) return false;
+    var tag = el.tagName;
+    return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+  }
+
+  document.addEventListener('keydown', function (event) {
+    var meta = event.metaKey || event.ctrlKey;
+    if (meta && !event.altKey && (event.key === 'k' || event.key === 'K')) {
+      event.preventDefault();
+      if (scrim.hidden) openLauncher();
+      else closeLauncher();
+      return;
+    }
+    if (event.key === 'Escape') {
+      if (!scrim.hidden) { closeLauncher(); return; }
+      setProfileMenu(false);
+      return;
+    }
+    if (!scrim.hidden) {
+      var rows = visibleRows();
+      if (!rows.length) return;
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        var index = rows.findIndex(function (row) { return row.hasAttribute('data-highlighted'); });
+        if (event.key === 'ArrowDown') index = index < 0 ? 0 : (index + 1) % rows.length;
+        else index = index <= 0 ? rows.length - 1 : index - 1;
+        highlightRow(rows[index]);
+      } else if (event.key === 'Enter') {
+        var active = rows.find(function (row) { return row.hasAttribute('data-highlighted'); }) || rows[0];
+        event.preventDefault();
+        runCommand(active.getAttribute('data-cmd'));
+      }
+      return;
+    }
+    if (isTyping(event.target)) return;
+    if (event.key === '/') {
+      event.preventDefault();
+      if (currentPage === 'home') $('#homeSearch').focus();
+      else openLauncher();
+      return;
+    }
+    if (meta || event.altKey) return;
+    var key = event.key.toLowerCase();
+    if (shortcuts[key]) {
+      event.preventDefault();
+      runCommand(shortcuts[key]);
+    }
+  });
+
+  /* -- Layout keeps ------------------------------------------------------ */
+  window.addEventListener('resize', function () {
+    movePlate();
+    placeAllThumbs();
+  });
+  window.addEventListener('load', function () {
+    movePlate();
+    placeAllThumbs();
+  });
+
+  /* -- Initial paint ----------------------------------------------------- */
+  renderTasks();
+  renderKPIs('7d');
+  renderNoteList();
+  selectNote(selectedNote);
+  movePlate();
+  requestAnimationFrame(function () {
+    movePlate();
+    placeAllThumbs();
+  });
+})();
+</script>
+</body>
+</html>

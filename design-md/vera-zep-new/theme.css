@@ -1,0 +1,851 @@
+/* ==========================================================================
+   Vera Zep New — drop-in theme for web apps.
+   Distilled from Zephium's chrome (github.com/ReznorSkeath79/Zephium,
+   frame/src/styles @ 175300d8). Graphite tonal ladder, no accent hue by
+   default, role-named radii, one "shine" material, motion named by purpose.
+
+   Usage:  <html data-theme="dark|light" data-tint="none|sky|sage|rose|amber|teal|lavender|orchid"
+                 data-density="comfortable|compact" data-reduce-motion="false|true">
+   Components never read primitives; they read the semantic tokens below.
+   ========================================================================== */
+
+/* -- 1. Primitives (raw material — components never use these) ------------ */
+:root {
+  --gray-0: #fff;
+  --gray-50: #f9f9fa;
+  --gray-100: #eeeef1;
+  --gray-150: #e6e6e9;
+  --gray-200: #dadadd;
+  --gray-300: #c3c3c7;
+  --gray-400: #9c9ca1;
+  --gray-500: #717176;
+  --gray-600: #4c4c51;
+  --gray-700: #2e2e33;
+  --gray-750: #26262a;
+  --gray-800: #1f1f22;
+  --gray-850: #1a1a1d;
+  --gray-900: #161619;
+  --gray-950: #101012;
+}
+
+/* -- 2. Semantic tokens — DARK is the base --------------------------------- */
+:root {
+  color-scheme: dark;
+
+  /* Tonal ladder: luminance carries every state. */
+  --color-canvas: #1a1a1d;   /* window ground behind everything */
+  --color-chrome: #1f1f22;   /* sidebar / app frame (the part you look through) */
+  --color-page: #1a1a1d;     /* the solid content sheet (the part you look at) */
+  --color-surface: #26262a;  /* a card on the page */
+  --color-raised: #2c2c30;   /* a card on a card */
+  --color-float: #3d3d44;    /* menus, popovers, launcher */
+  --wash-raised: 62%;
+  --color-menu: color-mix(in srgb, var(--color-float) var(--wash-raised), transparent);
+  --color-menu-separator: rgb(255 255 255 / 0.1);
+
+  --color-fill: rgb(255 255 255 / 0.05);
+  --color-fill-hover: rgb(255 255 255 / 0.08);
+  --color-fill-active: rgb(255 255 255 / 0.12);
+  --color-fill-pressed: rgb(255 255 255 / 0.16);
+  --color-fill-strong: rgb(255 255 255 / 0.22);
+  --color-tile: rgb(255 255 255 / 0.06);
+  --color-tile-hover: rgb(255 255 255 / 0.1);
+
+  --color-border: rgb(255 255 255 / 0.07);
+  --color-border-strong: rgb(255 255 255 / 0.13);
+
+  /* Rows: hover is a whisper, active is a real plate with a rim. */
+  --row-hover: rgb(255 255 255 / 0.04);
+  --row-active: rgb(255 255 255 / 0.075);
+  --row-pressed: rgb(255 255 255 / 0.1);
+  --row-rim: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  --segment-thumb: var(--row-active);
+  --shadow-segment-thumb: var(--row-rim);
+  --scroll-thumb: rgb(255 255 255 / 0.16);
+  --scroll-thumb-hover: rgb(255 255 255 / 0.28);
+
+  --color-text: #f4f4f6;
+  --color-label-secondary: #d8d8db;
+  --color-muted: rgb(244 244 246 / 0.68);
+  --color-faint: rgb(244 244 246 / 0.44);
+
+  /* Controls are fill and nothing else. */
+  --color-control: rgb(255 255 255 / 0.09);
+  --color-control-hover: rgb(255 255 255 / 0.13);
+  --color-control-pressed: rgb(255 255 255 / 0.17);
+  --color-on-control: var(--color-text);
+  --color-field: rgb(255 255 255 / 0.09);
+  --color-field-hover: rgb(255 255 255 / 0.12);
+  --color-field-ring: rgb(255 255 255 / 0.16);
+  --color-thumb: #e5e5e8;
+  --color-track: rgb(255 255 255 / 0.14);
+  --color-track-on: var(--gray-400);
+  --color-switch-thumb: #fff;
+
+  /* The lit rung: "on" is simply the brightest thing in the frame. */
+  --color-lit: #ededf0;
+  --color-lit-hover: #f7f7fa;
+  --color-on-lit: #161619;
+  --color-lit-soft: rgb(237 237 240 / 0.16);
+
+  /* Accent defaults to lit — the product ships neutral; a tint colours it. */
+  --color-accent: var(--color-lit);
+  --color-accent-hover: var(--color-lit-hover);
+  --color-on-accent: var(--color-on-lit);
+  --color-accent-soft: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  --color-ring: rgb(255 255 255 / 0.5);
+
+  --color-tint-sky: #7fb3f5;
+  --color-tint-sage: #86c9a4;
+  --color-tint-rose: #ee8f95;
+  --color-tint-amber: #e9b872;
+  --color-tint-teal: #6fc6c1;
+  --color-tint-lavender: #b3a4f2;
+  --color-tint-orchid: #dc9ad8;
+
+  --color-danger: #ef8a8e;
+  --color-success: #7fcaa1;
+  --color-warning: #dcb977;
+  --color-info: #8fbcf7;
+
+  /* Soft colour: what a person marks as theirs (tags, notes, chips). */
+  --color-soft-sky: #8db9f2;
+  --color-soft-mint: #88d0b3;
+  --color-soft-lemon: #e6cb80;
+  --color-soft-peach: #efaa89;
+  --color-soft-rose: #ee9aae;
+  --color-soft-lilac: #b7a6f0;
+  --soft-wash: 15%;
+  --soft-ink: 62%;
+
+  /* Chart ladder — fixed order, never cycled, CVD-safe adjacent pairs. */
+  --chart-1: #6193db;
+  --chart-2: #b37046;
+  --chart-3: #2da58f;
+  --chart-4: #a47d00;
+  --chart-5: #b77094;
+  --chart-6: #679936;
+  --chart-7: #7e68ab;
+  --chart-8: #c6685b;
+
+  /* The assistant's character — the ONLY gradient allowed in the system. */
+  --color-lead-orb: #8e9bff;
+  --color-lead-orb-to: #c98bff;
+
+  /* Shadows: elevation only for what genuinely floats. */
+  --shadow-card: none;
+  --shadow-control: none;
+  --shadow-field-focus: inset 0 0 0 1px var(--color-field-ring);
+  --shadow-thumb: 0 1px 2.5px rgb(0 0 0 / 0.2), 0 0 0 0.5px rgb(0 0 0 / 0.07);
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.16), 0 0 0 0.5px rgb(255 255 255 / 0.06);
+  --shadow-float: 0 6px 22px rgb(0 0 0 / 0.34), 0 0 0 0.5px rgb(255 255 255 / 0.08);
+  --shadow-overlay: 0 12px 36px rgb(0 0 0 / 0.3), 0 0 0 0.5px rgb(255 255 255 / 0.08);
+  --shadow-menu: 0 0 0 1px rgb(255 255 255 / 0.08), 0 14px 44px -10px rgb(0 0 0 / 0.34);
+  --shine:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.13), inset 0 -1px 0 0 rgb(255 255 255 / 0.04),
+    inset 0 0 0 1px rgb(255 255 255 / 0.05);
+  --shine-top: inset 0 1px 0 0 rgb(255 255 255 / 0.1);
+
+  /* Radius — named by job, never by size. */
+  --radius-swatch: 3px;
+  --radius-inset: 8px;
+  --radius-row: 12px;
+  --radius-control-compact: 10px;
+  --radius-control: 14px;
+  --radius-control-large: 18px;
+  --radius-card: 18px;
+  --radius-panel: 22px;
+  --radius-capsule: 999px;
+  --radius-content: 12px;
+
+  /* Type — the platform face. Body 13, labels 12, captions 11. */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI Variable Text", "Segoe UI",
+    "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Menlo", "Consolas", monospace;
+  --text-caption: 11px;
+  --text-label: 12px;
+  --text-body: 13px;
+  --text-page-title: 14px;
+  --text-reading: 15px;
+  --text-object-title: 18px;
+  --text-title: 22px;
+  --text-headline: 26px;
+  --text-display: 36px;
+
+  /* Metrics — 8px rhythm, 4px subdivisions. */
+  --control-compact: 24px;
+  --control-regular: 30px;
+  --control-large: 34px;
+  --control-xl: 40px;
+  --control-inset: 10px;
+  --row-sidebar: 36px;
+  --row-page: 58px;
+  --menu-pad: 6px;
+  --menu-row: 34px;
+  --sidebar-width: 264px;
+  --sidebar-rail: 52px;
+  --assist-width: 336px;
+  --frame-gap: 8px;
+
+  /* Motion — named by purpose. Leaving is always quicker than arriving. */
+  --motion-instant: 70ms;
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
+  --motion-page: 400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-press: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Launched spring, 1.4% give — what answers a click. */
+  --ease-snap: linear(0, 0.1776, 0.3343, 0.4698, 0.5848, 0.6808, 0.7597, 0.8234, 0.8742, 0.9138,
+    0.9443, 0.9672, 0.9839, 0.9959, 1.004, 1.0092, 1.0123, 1.0137, 1.0141, 1.0136, 1.0127, 1.0115,
+    1.0101, 1.0088, 1.0075, 1.0062, 1.0051, 1.0041, 1.0033, 1.0026, 1.002, 1.0015, 1);
+  /* Damped spring, 2% overshoot — small things that move (thumb, plate, tile). */
+  --ease-spring: linear(0, 0.0232, 0.0821, 0.1636, 0.2572, 0.3552, 0.452, 0.5438, 0.628, 0.7032,
+    0.7689, 0.825, 0.8719, 0.9103, 0.9412, 0.9653, 0.9838, 0.9974, 1.007, 1.0135, 1.0174, 1.0194,
+    1.0199, 1.0194, 1.0182, 1.0166, 1.0147, 1.0128, 1.0109, 1.009, 1.0074, 1.0059, 1.0046, 1.0035,
+    1.0025, 1.0018, 1.0012, 1.0007, 1.0003, 1);
+
+  --mask-fade-end: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+}
+
+/* -- 3. LIGHT — the same ladder read the other way ------------------------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-canvas: #f1f1f3;
+  --color-chrome: var(--gray-150);
+  --color-page: #f1f1f3;
+  --color-surface: #fff;
+  --color-raised: #fff;
+  --color-float: #fff;
+  --color-menu-separator: rgb(24 24 27 / 0.09);
+
+  --color-fill: rgb(24 24 27 / 0.05);
+  --color-fill-hover: rgb(24 24 27 / 0.08);
+  --color-fill-active: rgb(24 24 27 / 0.075);
+  --color-fill-pressed: rgb(24 24 27 / 0.11);
+  --color-fill-strong: rgb(24 24 27 / 0.16);
+  --color-tile: rgb(24 24 27 / 0.045);
+  --color-tile-hover: rgb(24 24 27 / 0.07);
+  --color-border: rgb(24 24 27 / 0.07);
+  --color-border-strong: rgb(24 24 27 / 0.13);
+
+  --row-hover: rgb(24 24 27 / 0.04);
+  --row-active: rgb(24 24 27 / 0.075);
+  --row-pressed: rgb(24 24 27 / 0.1);
+  --row-rim: inset 0 0 0 1px rgb(24 24 27 / 0.03);
+  --segment-thumb: #fff;
+  --shadow-segment-thumb: 0 0 0 0.5px rgb(24 24 27 / 0.08), 0 1px 3px rgb(24 24 27 / 0.1);
+  --scroll-thumb: rgb(24 24 27 / 0.2);
+  --scroll-thumb-hover: rgb(24 24 27 / 0.34);
+
+  --color-text: #1c1c1f;
+  --color-label-secondary: #55555c;
+  --color-muted: rgb(28 28 31 / 0.62);
+  --color-faint: rgb(28 28 31 / 0.42);
+
+  --color-control: #fff;
+  --color-control-hover: #f9f9f9;
+  --color-control-pressed: #f0f0f0;
+  --color-on-control: #18181b;
+  --color-field: rgb(228 228 230 / 0.7);
+  --color-field-hover: rgb(170 170 170 / 0.2);
+  --color-field-ring: rgb(0 0 0 / 0.14);
+  --color-thumb: #fff;
+  --color-track: #d7d7da;
+  --color-track-on: var(--gray-500);
+
+  /* The lit end inverts to ink on a light ground. */
+  --color-lit: #222226;
+  --color-lit-hover: #2e2e35;
+  --color-on-lit: #fff;
+  --color-lit-soft: rgb(34 34 38 / 0.12);
+  --color-ring: rgb(24 24 27 / 0.4);
+
+  --color-tint-sky: #3b82e6;
+  --color-tint-sage: #2f8a5e;
+  --color-tint-rose: #d2545e;
+  --color-tint-amber: #a5680f;
+  --color-tint-teal: #188a84;
+  --color-tint-lavender: #6e5bd6;
+  --color-tint-orchid: #b14fa9;
+  --color-danger: #c0474f;
+  --color-success: #2f7f5a;
+  --color-warning: #8c6a2a;
+  --color-info: #2f6fd6;
+  --color-soft-sky: #4f8fe0;
+  --color-soft-mint: #2f9c77;
+  --color-soft-lemon: #b88c14;
+  --color-soft-peach: #d2703f;
+  --color-soft-rose: #d35d7a;
+  --color-soft-lilac: #7e67d6;
+  --soft-wash: 13%;
+  --soft-ink: 78%;
+  --chart-1: #5d8fcc;
+  --chart-2: #a6531e;
+  --chart-3: #449d7a;
+  --chart-4: #7f5f0a;
+  --chart-5: #bc6082;
+  --chart-6: #3e6f25;
+  --chart-7: #7b68af;
+  --chart-8: #9d4547;
+  --color-lead-orb: #7584f5;
+  --color-lead-orb-to: #b673f2;
+
+  --shadow-card: 0 0 0 0.5px rgb(24 24 27 / 0.07), 0 1px 1.5px rgb(24 24 27 / 0.03);
+  --shadow-control: 0 0.5px 1.5px rgb(24 24 27 / 0.1), 0 0 0 0.5px rgb(24 24 27 / 0.07);
+  --shadow-thumb: 0 1px 2.5px rgb(24 24 27 / 0.16), 0 0 0 0.5px rgb(24 24 27 / 0.06);
+  --shadow-raised: 0 1px 2px rgb(24 24 27 / 0.08), 0 0 0 0.5px rgb(24 24 27 / 0.06);
+  --shadow-float: 0 6px 22px rgb(24 24 27 / 0.16), 0 0 0 0.5px rgb(24 24 27 / 0.1);
+  --shadow-overlay: 0 12px 36px rgb(24 24 27 / 0.14), 0 0 0 0.5px rgb(24 24 27 / 0.1);
+  --shadow-menu: 0 0 0 1px rgb(24 24 27 / 0.09), 0 14px 44px -10px rgb(24 24 27 / 0.16);
+  --shine: inset 0 1px 0 0 rgb(255 255 255 / 0.3);
+  --shine-top: inset 0 1px 0 0 rgb(255 255 255 / 0.55);
+}
+
+/* -- 4. Axes: tint, density, contrast, motion ------------------------------ */
+[data-tint="sky"]      { --color-accent: var(--color-tint-sky);      --color-accent-hover: #93c0f8; --color-on-accent: #0e1b2e; --color-track-on: #3b82e6; }
+[data-tint="sage"]     { --color-accent: var(--color-tint-sage);     --color-accent-hover: #98d3b2; --color-on-accent: #0f2118; --color-track-on: #34a26e; }
+[data-tint="rose"]     { --color-accent: var(--color-tint-rose);     --color-accent-hover: #f2a1a6; --color-on-accent: #2c1214; --color-track-on: #d9606a; }
+[data-tint="amber"]    { --color-accent: var(--color-tint-amber);    --color-accent-hover: #f2cb92; --color-on-accent: #2b1d08; --color-track-on: #c98a2b; }
+[data-tint="teal"]     { --color-accent: var(--color-tint-teal);     --color-accent-hover: #93d6d2; --color-on-accent: #0b2321; --color-track-on: #23978f; }
+[data-tint="lavender"] { --color-accent: var(--color-tint-lavender); --color-accent-hover: #c8bcf6; --color-on-accent: #1b1533; --color-track-on: #7b68e0; }
+[data-tint="orchid"]   { --color-accent: var(--color-tint-orchid);   --color-accent-hover: #e8b5e5; --color-on-accent: #2b1129; --color-track-on: #b85bb0; }
+[data-theme="light"][data-tint="sky"]      { --color-accent-hover: #4a8eea; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="sage"]     { --color-accent-hover: #37986a; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="rose"]     { --color-accent-hover: #d9646d; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="amber"]    { --color-accent-hover: #b8781c; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="teal"]     { --color-accent-hover: #1f9a93; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="lavender"] { --color-accent-hover: #7d6be0; --color-on-accent: #fff; }
+[data-theme="light"][data-tint="orchid"]   { --color-accent-hover: #c05fb8; --color-on-accent: #fff; }
+
+[data-density="compact"] { --row-sidebar: 30px; --row-page: 44px; --control-regular: 28px; --menu-row: 30px; }
+[data-contrast="high"] { --color-muted: var(--color-text); --color-faint: var(--color-text); --color-border: var(--color-border-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+[data-reduce-motion="true"] *, [data-reduce-motion="true"] *::before, [data-reduce-motion="true"] *::after {
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+}
+
+/* -- 5. Base ---------------------------------------------------------------- */
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  font-synthesis: none;
+  font-kerning: normal;
+  font-optical-sizing: auto;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: default; -webkit-tap-highlight-color: transparent; }
+::selection { background: color-mix(in srgb, var(--color-text) 22%, transparent); }
+:where(button, a, [role="button"], [role="option"], [role="tab"]):focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible { outline: none; }
+.tnum { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--color-muted); }
+.faint { color: var(--color-faint); }
+.fade-end { -webkit-mask-image: var(--mask-fade-end); mask-image: var(--mask-fade-end); white-space: nowrap; overflow: hidden; }
+
+/* Scrollbars are off and opted into by name: a 4px capsule, no track. */
+*::-webkit-scrollbar { width: 0; height: 0; }
+.scrolls::-webkit-scrollbar { width: 12px; height: 12px; }
+.scrolls::-webkit-scrollbar-track, .scrolls::-webkit-scrollbar-corner { background: transparent; }
+.scrolls::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: var(--radius-capsule);
+  background-color: transparent;
+  background-clip: padding-box;
+}
+.scrolls:hover::-webkit-scrollbar-thumb { background-color: var(--scroll-thumb); }
+.scrolls::-webkit-scrollbar-thumb:hover { background-color: var(--scroll-thumb-hover); }
+
+/* -- 6. App shell: chrome frame + solid page sheet ------------------------- */
+.vz-app {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) auto;
+  gap: var(--frame-gap);
+  height: 100vh;
+  padding: var(--frame-gap);
+  box-sizing: border-box;
+  background: var(--color-chrome);
+  transition: grid-template-columns var(--motion-page) var(--ease-emphasized);
+}
+.vz-app[data-sidebar="rail"] { grid-template-columns: var(--sidebar-rail) minmax(0, 1fr) auto; }
+.vz-sidebar { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.vz-sidebar-scroll { flex: 1; overflow: auto; position: relative; }
+.vz-page {
+  position: relative;
+  min-width: 0;
+  overflow: auto;
+  border-radius: var(--radius-content);
+  background: var(--color-page);
+}
+.vz-assist { width: var(--assist-width); display: flex; flex-direction: column; min-height: 0; }
+.vz-section-label {
+  padding: 10px 10px 4px;
+  color: var(--color-faint);
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+
+/* -- 7. Rows (sidebar + lists) --------------------------------------------- */
+.vz-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--row-sidebar);
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: var(--radius-row);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--text-body);
+  font-weight: 500;
+  text-align: start;
+  transition: background-color var(--motion-instant) var(--ease-smooth), color var(--motion-instant) var(--ease-smooth);
+}
+.vz-row:hover { background: var(--row-hover); color: var(--color-text); }
+.vz-row:active { background: var(--row-pressed); }
+.vz-row[aria-current="page"], .vz-row[aria-selected="true"] {
+  background: var(--row-active);
+  box-shadow: var(--row-rim);
+  color: var(--color-text);
+  font-weight: 550;
+}
+/* With a gliding plate, the plate draws the active fill instead. */
+[data-glide-host] .vz-row[aria-current="page"] { background: transparent; box-shadow: none; }
+.vz-plate {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--row-sidebar);
+  border-radius: var(--radius-row);
+  background: var(--row-active);
+  box-shadow: var(--row-rim);
+  pointer-events: none;
+  transition: transform var(--motion-slow) var(--ease-spring), height var(--motion-slow) var(--ease-spring);
+}
+.vz-row svg, .vz-icon { width: 16px; height: 16px; flex: none; }
+
+/* -- 8. Shine material + buttons ------------------------------------------- */
+.vz-shine { border-radius: var(--radius-control); background: var(--row-active); box-shadow: var(--shine-top); }
+.vz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: var(--control-regular);
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-control);
+  box-shadow: var(--shadow-control), var(--shine-top);
+  color: var(--color-on-control);
+  font-size: var(--text-label);
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none;
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out),
+    scale var(--motion-base) var(--ease-spring);
+}
+.vz-btn:hover { background: var(--color-control-hover); }
+.vz-btn:active { background: var(--color-control-pressed); scale: 0.97; transition-duration: var(--motion-instant); }
+.vz-btn:disabled { opacity: 0.5; pointer-events: none; }
+.vz-btn[data-variant="primary"] { background: var(--color-accent); color: var(--color-on-accent); box-shadow: none; }
+.vz-btn[data-variant="primary"]:hover { background: var(--color-accent-hover); }
+.vz-btn[data-variant="ghost"] { background: transparent; box-shadow: none; color: var(--color-muted); }
+.vz-btn[data-variant="ghost"]:hover { background: var(--color-fill-hover); color: var(--color-text); }
+.vz-btn[data-variant="danger"] { background: color-mix(in srgb, var(--color-danger) 16%, transparent); color: var(--color-danger); box-shadow: none; }
+.vz-btn[data-variant="danger"]:hover { background: color-mix(in srgb, var(--color-danger) 24%, transparent); }
+.vz-btn[data-size="compact"] { min-height: var(--control-compact); padding: 0 var(--control-inset); }
+.vz-btn[data-size="large"] { min-height: var(--control-xl); padding: 0 18px; border-radius: var(--radius-control); font-size: var(--text-body); }
+.vz-btn[aria-busy="true"] { pointer-events: none; color: transparent; position: relative; }
+.vz-btn[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentcolor;
+  border-color: var(--color-on-accent) transparent var(--color-on-accent) var(--color-on-accent);
+  animation: vz-spin 0.8s linear infinite;
+}
+
+.vz-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control-compact);
+  background: transparent;
+  color: var(--color-muted);
+  transition:
+    color var(--motion-instant) var(--ease-smooth),
+    background-color var(--motion-instant) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-smooth);
+}
+.vz-icon-btn:hover, .vz-icon-btn[aria-pressed="true"] { background: var(--color-fill-hover); color: var(--color-text); }
+.vz-icon-btn:active { background: var(--color-fill-pressed); transform: scale(0.94); }
+.vz-icon-btn svg { width: 16px; height: 16px; }
+
+/* -- 9. Fields -------------------------------------------------------------- */
+.vz-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--control-regular);
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-field);
+  box-shadow: var(--shine-top);
+  color: var(--color-muted);
+  transition: background-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out);
+}
+.vz-field:hover { background: var(--color-field-hover); }
+.vz-field:focus-within { background: var(--color-field-hover); box-shadow: var(--shine-top), var(--shadow-field-focus); }
+.vz-field input, .vz-field textarea {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-body);
+  outline: none;
+}
+.vz-field input::placeholder, .vz-field textarea::placeholder { color: var(--color-faint); }
+.vz-field[data-size="page"] { height: 48px; padding: 0 16px; border-radius: var(--radius-control-large); font-size: var(--text-reading); }
+.vz-field[data-size="page"] input { font-size: var(--text-reading); }
+.vz-field[data-invalid="true"] { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-danger) 60%, transparent); }
+.vz-label { display: block; margin-bottom: 6px; color: var(--color-label-secondary); font-size: var(--text-label); font-weight: 500; }
+.vz-hint { margin-top: 6px; color: var(--color-faint); font-size: var(--text-caption); }
+
+/* -- 10. Segmented control (thumb travels on a snap spring) ---------------- */
+.vz-segment {
+  position: relative;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 2px;
+  border-radius: var(--radius-control-compact);
+  background: var(--color-fill);
+}
+.vz-segment button {
+  position: relative;
+  z-index: 1;
+  min-height: 24px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  font-weight: 500;
+  transition: color var(--motion-fast) var(--ease-out);
+}
+.vz-segment button[aria-pressed="true"] { color: var(--color-text); }
+.vz-segment-thumb {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  border-radius: 8px;
+  background: var(--segment-thumb);
+  box-shadow: var(--shadow-segment-thumb);
+  transition: transform 240ms var(--ease-snap), width 240ms var(--ease-snap);
+}
+
+/* -- 11. Switch + checkbox -------------------------------------------------- */
+.vz-switch {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-capsule);
+  background: var(--color-track);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.07);
+  transition: background-color var(--motion-base) var(--ease-out);
+}
+.vz-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-switch-thumb);
+  box-shadow: var(--shadow-thumb);
+  transition: transform var(--motion-slow) var(--ease-spring);
+}
+.vz-switch[aria-checked="true"] { background: var(--color-track-on); }
+.vz-switch[aria-checked="true"]::after { transform: translateX(12px); }
+
+.vz-check {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: var(--color-field);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  color: var(--color-on-accent);
+  transition: background-color var(--motion-fast) var(--ease-out);
+}
+.vz-check svg { width: 12px; height: 12px; stroke-dasharray: 16; stroke-dashoffset: 16; }
+.vz-check[aria-checked="true"] { background: var(--color-accent); box-shadow: none; }
+.vz-check[aria-checked="true"] svg { animation: vz-draw var(--motion-base) var(--ease-out) forwards; }
+
+/* -- 12. Cards, groups, KPI ------------------------------------------------- */
+.vz-card {
+  padding: 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.vz-card-title { margin: 0 0 4px; font-size: var(--text-page-title); font-weight: 600; }
+.vz-group { border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--shadow-card); overflow: hidden; }
+.vz-group-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+.vz-group-row + .vz-group-row { border-top: 1px solid var(--color-border); }
+.vz-group-row .vz-grow { flex: 1; min-width: 0; }
+.vz-group-row .vz-desc { color: var(--color-muted); font-size: var(--text-label); }
+.vz-kpi-label { color: var(--color-muted); font-size: var(--text-label); font-weight: 500; }
+.vz-kpi-value { margin-top: 6px; font-size: var(--text-headline); font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.vz-delta { font-size: var(--text-label); font-weight: 500; font-variant-numeric: tabular-nums; }
+.vz-delta[data-dir="up"] { color: var(--color-success); }
+.vz-delta[data-dir="down"] { color: var(--color-danger); }
+
+/* -- 13. Badge, kbd, tag, avatar ------------------------------------------- */
+.vz-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: var(--radius-capsule);
+  background: var(--color-fill);
+  color: var(--color-label-secondary);
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+.vz-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentcolor; opacity: 0.9; }
+.vz-badge[data-tone="plain"]::before { display: none; }
+.vz-badge[data-tone="success"] { background: color-mix(in srgb, var(--color-success) 16%, transparent); color: var(--color-success); }
+.vz-badge[data-tone="warning"] { background: color-mix(in srgb, var(--color-warning) 16%, transparent); color: var(--color-warning); }
+.vz-badge[data-tone="danger"]  { background: color-mix(in srgb, var(--color-danger) 16%, transparent); color: var(--color-danger); }
+.vz-badge[data-tone="info"]    { background: color-mix(in srgb, var(--color-info) 16%, transparent); color: var(--color-info); }
+.vz-badge[data-tone="accent"]  { background: var(--color-accent-soft); color: var(--color-text); }
+
+.vz-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 6px; font-size: var(--text-caption); font-weight: 600; }
+.vz-tag[data-soft="sky"]   { background: color-mix(in oklab, var(--color-soft-sky) var(--soft-wash), transparent);   color: color-mix(in oklab, var(--color-soft-sky) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="mint"]  { background: color-mix(in oklab, var(--color-soft-mint) var(--soft-wash), transparent);  color: color-mix(in oklab, var(--color-soft-mint) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="lemon"] { background: color-mix(in oklab, var(--color-soft-lemon) var(--soft-wash), transparent); color: color-mix(in oklab, var(--color-soft-lemon) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="peach"] { background: color-mix(in oklab, var(--color-soft-peach) var(--soft-wash), transparent); color: color-mix(in oklab, var(--color-soft-peach) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="rose"]  { background: color-mix(in oklab, var(--color-soft-rose) var(--soft-wash), transparent);  color: color-mix(in oklab, var(--color-soft-rose) var(--soft-ink), var(--color-text)); }
+.vz-tag[data-soft="lilac"] { background: color-mix(in oklab, var(--color-soft-lilac) var(--soft-wash), transparent); color: color-mix(in oklab, var(--color-soft-lilac) var(--soft-ink), var(--color-text)); }
+
+kbd, .vz-kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 19px;
+  height: 18px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: var(--color-fill);
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.vz-avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-fill-strong);
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 600;
+}
+.vz-orb {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #fff 0 6%, transparent 24%),
+    linear-gradient(135deg, var(--color-lead-orb), var(--color-lead-orb-to));
+  box-shadow: inset 0 -2px 4px rgb(0 0 0 / 0.18);
+}
+
+/* -- 14. Menus, popovers, launcher (the one blur) -------------------------- */
+.vz-menu {
+  position: absolute;
+  z-index: 50;
+  min-width: 200px;
+  padding: var(--menu-pad);
+  box-sizing: border-box;
+  border-radius: var(--radius-panel);
+  background: var(--color-menu);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-menu), var(--shine-top);
+  transform-origin: top left;
+  opacity: 0;
+  scale: 0.96;
+  translate: 0 -4px;
+  visibility: hidden;
+  transition:
+    opacity var(--motion-instant) var(--ease-exit),
+    scale var(--motion-instant) var(--ease-exit),
+    translate var(--motion-instant) var(--ease-exit),
+    visibility 0s linear var(--motion-instant);
+}
+.vz-menu[data-open="true"] {
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+  visibility: visible;
+  transition:
+    opacity var(--motion-fast) var(--ease-out),
+    scale var(--motion-base) var(--ease-out),
+    translate var(--motion-base) var(--ease-out),
+    visibility 0s;
+}
+.vz-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--menu-row);
+  padding: 6px 8px;
+  box-sizing: border-box;
+  border: 0;
+  /* Concentric: row radius + menu padding = panel radius. */
+  border-radius: calc(var(--radius-panel) - var(--menu-pad));
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-body);
+  font-weight: 450;
+  text-align: start;
+  transition: background-color var(--motion-instant) var(--ease-smooth);
+}
+.vz-menu-item:hover, .vz-menu-item[data-highlighted] { background: var(--row-active); }
+.vz-menu-item:active { background: var(--row-pressed); }
+.vz-menu-item svg { width: 16px; height: 16px; color: var(--color-muted); }
+.vz-menu-item kbd { margin-inline-start: auto; }
+.vz-menu-item[data-danger="true"], .vz-menu-item[data-danger="true"] svg { color: var(--color-danger); }
+.vz-menu-item[data-danger="true"]:hover { background: color-mix(in srgb, var(--color-danger) 16%, transparent); }
+.vz-menu-sep { height: 1px; margin: 5px 8px; background: var(--color-menu-separator); }
+
+.vz-scrim { position: fixed; inset: 0; z-index: 60; display: grid; place-items: start center; padding-top: 14vh; }
+.vz-launcher {
+  width: min(640px, calc(100vw - 32px));
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: var(--radius-panel);
+  background: var(--color-menu);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-overlay), var(--shine-top);
+  animation: vz-pop var(--motion-base) var(--ease-out);
+}
+
+/* -- 15. Toast, working dots, skeleton ------------------------------------- */
+.vz-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 8px 0 14px;
+  border-radius: var(--radius-control-large);
+  background: var(--color-float);
+  box-shadow: var(--shadow-float), var(--shine-top);
+  translate: -50% 0;
+  animation: vz-rise var(--motion-page) var(--ease-emphasized);
+}
+.vz-toast[data-leaving] { animation: vz-leave var(--motion-fast) var(--ease-exit) forwards; }
+.vz-dots { display: inline-flex; gap: 3px; }
+.vz-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--color-text); animation: vz-pending 1.2s var(--ease-in-out) infinite; }
+.vz-dots i:nth-child(2) { animation-delay: 0.15s; }
+.vz-dots i:nth-child(3) { animation-delay: 0.3s; }
+.vz-skeleton { border-radius: var(--radius-inset); background: var(--color-fill); animation: vz-breathe 1.4s var(--ease-in-out) infinite alternate; }
+
+/* -- 16. Arrival (launch cascade) ------------------------------------------- */
+.vz-arrive { animation: vz-rise var(--motion-page) var(--ease-emphasized) both; }
+.vz-cascade > * { animation: vz-rise var(--motion-page) var(--ease-emphasized) both; }
+.vz-cascade > *:nth-child(1) { animation-delay: 0ms; }
+.vz-cascade > *:nth-child(2) { animation-delay: 40ms; }
+.vz-cascade > *:nth-child(3) { animation-delay: 80ms; }
+.vz-cascade > *:nth-child(4) { animation-delay: 120ms; }
+.vz-cascade > *:nth-child(5) { animation-delay: 160ms; }
+.vz-cascade > *:nth-child(6) { animation-delay: 200ms; }
+.vz-cascade > *:nth-child(n + 7) { animation-delay: 240ms; }
+
+/* -- 17. Keyframes (transform + opacity only) ------------------------------- */
+@keyframes vz-rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes vz-pop { from { opacity: 0; transform: scale(0.96) translateY(-4px); } }
+@keyframes vz-leave { to { opacity: 0; transform: translateY(4px); } }
+@keyframes vz-draw { to { stroke-dashoffset: 0; } }
+@keyframes vz-pending { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes vz-breathe { from { opacity: 0.55; } to { opacity: 1; } }
+@keyframes vz-spin { to { transform: rotate(360deg); } }
+
+/* -- 18. Forced colours ------------------------------------------------------ */
+@media (forced-colors: active) {
+  .vz-btn, .vz-field, .vz-card, .vz-group, .vz-menu, .vz-launcher { border: 1px solid ButtonText; }
+  .vz-row[aria-current="page"] { outline: 1px solid Highlight; }
+  .vz-menu, .vz-launcher { backdrop-filter: none; }
+}
